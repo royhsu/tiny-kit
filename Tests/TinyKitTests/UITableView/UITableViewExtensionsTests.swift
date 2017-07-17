@@ -14,35 +14,41 @@ import XCTest
 @testable import TinyKit
 
 class UITableViewExtensionsTests: XCTestCase {
-    
+
     // MARK: Property
-    
+
     var tableView: UITableView?
-    
+
     // MARK: Set Up
-    
+
     override func setUp() {
         super.setUp()
-        
+
         tableView = UITableView()
-        
+
     }
-    
+
     override func tearDown() {
-        
+
         tableView = nil
-        
+
         super.tearDown()
     }
-    
+
     // MARK: Register Cells
-    
+
     func testRegisterCellWithoutNib() {
-        
+
         tableView!.registerCell(
             NoNibTableViewCell.self
         )
-        
+
+        let cell = tableView?.dequeueReusableCell(
+            withIdentifier: "NoNibTableViewCell"
+        ) as? NoNibTableViewCell
+
+        XCTAssertNotNil(cell)
+
     }
-    
+
 }

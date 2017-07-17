@@ -12,18 +12,25 @@ import TinyCore
 import UIKit
 
 public extension UITableView {
-    
-    func registerCell<Cell>(_ CellType: Cell.Type) where Cell: UITableViewCell, Cell: Identifiable {
-        
-        let reuseIdentifier = CellType.identifier
-        
+
+    // MARK: Register Cells
+
+    /// Register an identifiable cell
+    ///
+    /// - parameter CellType: The subclass of target UITableViewCell. It must conform to the protocol Identifiable.
+    ///
+
+    func registerCell<Cell>(_ cellType: Cell.Type) where Cell: UITableViewCell, Cell: Identifiable {
+
+        let reuseIdentifier = cellType.identifier
+
         register(
-            CellType.self,
+            cellType.self,
             forCellReuseIdentifier: reuseIdentifier
         )
-    
+
     }
-    
+
 }
 
 #endif
