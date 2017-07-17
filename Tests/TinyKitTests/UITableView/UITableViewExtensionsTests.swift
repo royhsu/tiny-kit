@@ -94,6 +94,26 @@ class UITableViewExtensionsTests: XCTestCase {
 
     }
 
+    // MARK: Dequeue Reusable Cells
+
+    func testDequeueReusableCell() {
+
+        tableView!.registerCell(
+            NoNibTableViewCell.self
+        )
+
+        let index = components!.index(of: .nibCell)!
+
+        let section = components![index].rawValue
+
+        let cell: NoNibTableViewCell? = tableView!.dequeueReusableCell(
+            for: IndexPath(item: 0, section: section)
+        )
+
+        XCTAssertNotNil(cell)
+
+    }
+
 }
 
 extension UITableViewExtensionsTests: UITableViewDataSource {
