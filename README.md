@@ -1,1 +1,1 @@
-# tiny-kit
+# TinyKit
