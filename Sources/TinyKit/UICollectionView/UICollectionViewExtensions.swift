@@ -1,5 +1,5 @@
 //
-//  UITableViewExtensions.swift
+//  UICollectionViewExtensions.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 17/07/2017.
@@ -11,21 +11,21 @@
 import UIKit
 import TinyCore
 
-public extension UITableView {
+public extension UICollectionView {
 
     // MARK: Register Cells
 
     /// Register an identifiable cell.
     ///
-    /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol Identifiable.
+    /// - parameter cellType: The subclass of target UICollectionViewCell. It must conform to the protocol Identifiable.
     ///
-    func registerCell<Cell>(_ cellType: Cell.Type) where Cell: UITableViewCell, Cell: Identifiable {
+    func registerCell<Cell>(_ cellType: Cell.Type) where Cell: UICollectionViewCell, Cell: Identifiable {
 
         let reuseIdentifier = cellType.identifier
 
         register(
             cellType.self,
-            forCellReuseIdentifier: reuseIdentifier
+            forCellWithReuseIdentifier: reuseIdentifier
         )
 
     }
@@ -33,11 +33,11 @@ public extension UITableView {
     /// Register an identifiable cell with the corresponding nib file.
     /// Please make sure to the reuse identifier in the nib file match the one provided by `Identifiable` protocol.
     ///
-    /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol Identifiable.
+    /// - parameter cellType: The subclass of target UICollectionViewCell. It must conform to the protocol Identifiable.
     /// - parameter bundle: The bundle contains the nib file for the cell.
     ///
     // swiftlint:disable line_length
-    func registerCell<Cell>(_ cellType: Cell.Type, withNibIn bundle: Bundle) where Cell: UITableViewCell, Cell: Identifiable {
+    func registerCell<Cell>(_ cellType: Cell.Type, withNibIn bundle: Bundle) where Cell: UICollectionViewCell, Cell: Identifiable {
 
         let reuseIdentifier = cellType.identifier
 
@@ -48,7 +48,7 @@ public extension UITableView {
 
         register(
             nib,
-            forCellReuseIdentifier: reuseIdentifier
+            forCellWithReuseIdentifier: reuseIdentifier
         )
 
     }

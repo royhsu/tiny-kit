@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		B08D6EE81F1C826400376FBE /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EE61F1C826400376FBE /* NibTableViewCell.swift */; };
 		B08D6EE91F1C843200376FBE /* NibTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EE71F1C826400376FBE /* NibTableViewCell.xib */; };
+		B08D6EEF1F1C8AD100376FBE /* UICollectionViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EEE1F1C8AD100376FBE /* UICollectionViewExtensionsTests.swift */; };
+		B08D6EF01F1C8AD900376FBE /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EEB1F1C8AAD00376FBE /* UICollectionViewExtensions.swift */; };
+		B08D6EF21F1C8BA600376FBE /* NoNibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EF11F1C8BA600376FBE /* NoNibCollectionViewCell.swift */; };
+		B08D6EF51F1C8FA400376FBE /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EF31F1C8FA400376FBE /* NibCollectionViewCell.swift */; };
+		B08D6EF61F1C8FD000376FBE /* NibCollectionViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EF41F1C8FA400376FBE /* NibCollectionViewCell.xib */; };
 		OBJ_29 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Identifiable.swift */; };
 		OBJ_36 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* UITableViewExtensions.swift */; };
 		OBJ_38 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* TinyCore.framework */; };
@@ -45,6 +50,11 @@
 /* Begin PBXFileReference section */
 		B08D6EE61F1C826400376FBE /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		B08D6EE71F1C826400376FBE /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
+		B08D6EEB1F1C8AAD00376FBE /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		B08D6EEE1F1C8AD100376FBE /* UICollectionViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensionsTests.swift; sourceTree = "<group>"; };
+		B08D6EF11F1C8BA600376FBE /* NoNibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibCollectionViewCell.swift; sourceTree = "<group>"; };
+		B08D6EF31F1C8FA400376FBE /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
+		B08D6EF41F1C8FA400376FBE /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionViewCell.xib; sourceTree = "<group>"; };
 		OBJ_10 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		OBJ_14 /* NoNibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNibTableViewCell.swift; sourceTree = "<group>"; };
 		OBJ_15 /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
@@ -83,6 +93,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B08D6EEA1F1C8A9300376FBE /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B08D6EEB1F1C8AAD00376FBE /* UICollectionViewExtensions.swift */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		B08D6EED1F1C8AC300376FBE /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B08D6EF11F1C8BA600376FBE /* NoNibCollectionViewCell.swift */,
+				B08D6EF31F1C8FA400376FBE /* NibCollectionViewCell.swift */,
+				B08D6EF41F1C8FA400376FBE /* NibCollectionViewCell.xib */,
+				B08D6EEE1F1C8AD100376FBE /* UICollectionViewExtensionsTests.swift */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
 		OBJ_11 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +123,7 @@
 		OBJ_12 /* TinyKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				B08D6EED1F1C8AC300376FBE /* UICollectionView */,
 				OBJ_13 /* UITableView */,
 			);
 			name = TinyKitTests;
@@ -169,6 +199,7 @@
 		OBJ_8 /* TinyKit */ = {
 			isa = PBXGroup;
 			children = (
+				B08D6EEA1F1C8A9300376FBE /* UICollectionView */,
 				OBJ_9 /* UITableView */,
 			);
 			name = TinyKit;
@@ -208,7 +239,6 @@
 			buildPhases = (
 				OBJ_35 /* Sources */,
 				OBJ_37 /* Frameworks */,
-				B08D6EE11F1C80E100376FBE /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -226,6 +256,7 @@
 			buildPhases = (
 				OBJ_44 /* Sources */,
 				OBJ_47 /* Frameworks */,
+				B08D6EF71F1C910500376FBE /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -266,7 +297,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B08D6EE11F1C80E100376FBE /* Swiftlint */ = {
+		B08D6EF71F1C910500376FBE /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B08D6EF01F1C8AD900376FBE /* UICollectionViewExtensions.swift in Sources */,
 				OBJ_36 /* UITableViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,10 +335,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B08D6EF61F1C8FD000376FBE /* NibCollectionViewCell.xib in Sources */,
+				B08D6EEF1F1C8AD100376FBE /* UICollectionViewExtensionsTests.swift in Sources */,
 				B08D6EE91F1C843200376FBE /* NibTableViewCell.xib in Sources */,
 				OBJ_45 /* NoNibTableViewCell.swift in Sources */,
 				B08D6EE81F1C826400376FBE /* NibTableViewCell.swift in Sources */,
+				B08D6EF51F1C8FA400376FBE /* NibCollectionViewCell.swift in Sources */,
 				OBJ_46 /* UITableViewExtensionsTests.swift in Sources */,
+				B08D6EF21F1C8BA600376FBE /* NoNibCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
