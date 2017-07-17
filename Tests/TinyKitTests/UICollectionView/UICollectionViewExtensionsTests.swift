@@ -97,6 +97,26 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     }
 
+    // MARK: Dequeue Reusable Cells
+
+    func testDequeueReusableCell() {
+
+        collectionView!.registerCell(
+            NoNibCollectionViewCell.self
+        )
+
+        let index = components!.index(of: .nibCell)!
+
+        let section = components![index].rawValue
+
+        let cell: NoNibCollectionViewCell? = collectionView!.dequeueReusableCell(
+            for: IndexPath(item: 0, section: section)
+        )
+
+        XCTAssertNotNil(cell)
+
+    }
+
 }
 
 // MARK: - UICollectionViewDataSource

@@ -54,6 +54,22 @@ public extension UICollectionView {
     }
     // swiftlint:enable line_length
 
+    // MARK: Dequeue Reusable Cells
+
+    /// Dequeue an identifiable cell by indexPath.
+    ///
+    /// - parameter indexPath: The indexPath of the cell.
+    ///
+    /// - Returns: A target cell or nil.
+    ///
+    func dequeueReusableCell<Cell>(for indexPath: IndexPath) -> Cell? where Cell: UICollectionViewCell, Cell: Identifiable {
+
+        let identifier = Cell.identifier
+
+        return dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? Cell
+
+    }
+
 }
 
 #endif
