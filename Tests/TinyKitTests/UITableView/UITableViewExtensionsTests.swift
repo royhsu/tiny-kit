@@ -15,7 +15,19 @@ import XCTest
 
 class UITableViewExtensionsTests: XCTestCase {
 
+    // MARK: Component
+
+    enum Component: Int {
+
+        case noNibCell
+
+        case nibCell
+
+    }
+
     // MARK: Property
+
+    var components: [Component]?
 
     var tableView: UITableView?
 
@@ -24,11 +36,17 @@ class UITableViewExtensionsTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        components = [ .noNibCell, .nibCell ]
+
         tableView = UITableView()
+
+        tableView!.dataSource = self
 
     }
 
     override func tearDown() {
+
+        components = nil
 
         tableView = nil
 
@@ -43,8 +61,13 @@ class UITableViewExtensionsTests: XCTestCase {
             NoNibTableViewCell.self
         )
 
-        let cell = tableView?.dequeueReusableCell(
-            withIdentifier: "NoNibTableViewCell"
+        let index = components!.index(of: .noNibCell)!
+
+        let section = components![index].rawValue
+
+        let cell = tableView!.dequeueReusableCell(
+            withIdentifier: "NoNibTableViewCell",
+            for: IndexPath(item: 0, section: section)
         ) as? NoNibTableViewCell
 
         XCTAssertNotNil(cell)
@@ -58,11 +81,60 @@ class UITableViewExtensionsTests: XCTestCase {
             withNibIn: Bundle(for: classForCoder)
         )
 
-        let cell = tableView?.dequeueReusableCell(
-            withIdentifier: "NibTableViewCell"
-            ) as? NibTableViewCell
+        let index = components!.index(of: .nibCell)!
+
+        let section = components![index].rawValue
+
+        let cell = tableView!.dequeueReusableCell(
+            withIdentifier: "NibTableViewCell",
+            for: IndexPath(item: 0, section: section)
+        ) as? NibTableViewCell
 
         XCTAssertNotNil(cell)
+
+    }
+
+}
+
+extension UITableViewExtensionsTests: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return components!.count
+
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return 1
+
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let component = Component(rawValue: indexPath.section)!
+
+        switch component {
+
+        case .noNibCell:
+
+            let identifier = NoNibTableViewCell.identifier
+
+            return tableView.dequeueReusableCell(
+                withIdentifier: identifier,
+                for: indexPath
+            )
+
+        case .nibCell:
+
+            let identifier = NibTableViewCell.identifier
+
+            return tableView.dequeueReusableCell(
+                withIdentifier: identifier,
+                for: indexPath
+            )
+
+        }
 
     }
 

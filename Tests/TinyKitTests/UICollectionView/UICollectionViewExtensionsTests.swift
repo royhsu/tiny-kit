@@ -49,6 +49,8 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     override func tearDown() {
 
+        components = nil
+
         collectionView = nil
 
         super.tearDown()
@@ -103,13 +105,13 @@ extension UICollectionViewExtensionsTests: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
 
-        return 1
+        return components!.count
 
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return components!.count
+        return 1
 
     }
 
