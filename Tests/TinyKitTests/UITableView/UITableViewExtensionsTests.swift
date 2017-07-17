@@ -116,6 +116,8 @@ class UITableViewExtensionsTests: XCTestCase {
 
 }
 
+// MARK: - UITableViewDataSource
+
 extension UITableViewExtensionsTests: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
