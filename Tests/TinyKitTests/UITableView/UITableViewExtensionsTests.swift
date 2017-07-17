@@ -51,4 +51,19 @@ class UITableViewExtensionsTests: XCTestCase {
 
     }
 
+    func testRegisterCellWithNib() {
+
+        tableView!.registerCell(
+            NibTableViewCell.self,
+            withNibIn: Bundle(for: classForCoder)
+        )
+
+        let cell = tableView?.dequeueReusableCell(
+            withIdentifier: "NibTableViewCell"
+            ) as? NibTableViewCell
+
+        XCTAssertNotNil(cell)
+
+    }
+
 }

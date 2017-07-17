@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B08D6EE81F1C826400376FBE /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EE61F1C826400376FBE /* NibTableViewCell.swift */; };
+		B08D6EE91F1C843200376FBE /* NibTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EE71F1C826400376FBE /* NibTableViewCell.xib */; };
 		OBJ_29 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Identifiable.swift */; };
 		OBJ_36 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* UITableViewExtensions.swift */; };
 		OBJ_38 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* TinyCore.framework */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B08D6EE61F1C826400376FBE /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
+		B08D6EE71F1C826400376FBE /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		OBJ_10 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		OBJ_14 /* NoNibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNibTableViewCell.swift; sourceTree = "<group>"; };
 		OBJ_15 /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_14 /* NoNibTableViewCell.swift */,
+				B08D6EE61F1C826400376FBE /* NibTableViewCell.swift */,
+				B08D6EE71F1C826400376FBE /* NibTableViewCell.xib */,
 				OBJ_15 /* UITableViewExtensionsTests.swift */,
 			);
 			path = UITableView;
@@ -297,7 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B08D6EE91F1C843200376FBE /* NibTableViewCell.xib in Sources */,
 				OBJ_45 /* NoNibTableViewCell.swift in Sources */,
+				B08D6EE81F1C826400376FBE /* NibTableViewCell.swift in Sources */,
 				OBJ_46 /* UITableViewExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
