@@ -16,6 +16,8 @@
 		B08D6EF61F1C8FD000376FBE /* NibCollectionViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EF41F1C8FA400376FBE /* NibCollectionViewCell.xib */; };
 		B08D6EFE1F1CA01500376FBE /* UINibExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EFD1F1CA01500376FBE /* UINibExtensionsTests.swift */; };
 		B08D6EFF1F1CA01C00376FBE /* UINibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6EFB1F1CA00200376FBE /* UINibExtensions.swift */; };
+		B08D6F031F1CA29000376FBE /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6F021F1CA29000376FBE /* UIViewExtensions.swift */; };
+		B08D6F051F1CA29D00376FBE /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D6F041F1CA29D00376FBE /* UIViewExtensionsTests.swift */; };
 		OBJ_29 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Identifiable.swift */; };
 		OBJ_36 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* UITableViewExtensions.swift */; };
 		OBJ_38 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* TinyCore.framework */; };
@@ -59,6 +61,8 @@
 		B08D6EF41F1C8FA400376FBE /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionViewCell.xib; sourceTree = "<group>"; };
 		B08D6EFB1F1CA00200376FBE /* UINibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINibExtensions.swift; sourceTree = "<group>"; };
 		B08D6EFD1F1CA01500376FBE /* UINibExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINibExtensionsTests.swift; sourceTree = "<group>"; };
+		B08D6F021F1CA29000376FBE /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		B08D6F041F1CA29D00376FBE /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		OBJ_14 /* NoNibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNibTableViewCell.swift; sourceTree = "<group>"; };
 		OBJ_15 /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
@@ -132,6 +136,22 @@
 			path = UINib;
 			sourceTree = "<group>";
 		};
+		B08D6F001F1CA26900376FBE /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B08D6F021F1CA29000376FBE /* UIViewExtensions.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		B08D6F011F1CA27200376FBE /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B08D6F041F1CA29D00376FBE /* UIViewExtensionsTests.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		OBJ_11 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +165,7 @@
 			children = (
 				B08D6EED1F1C8AC300376FBE /* UICollectionView */,
 				B08D6EF91F1C9FEA00376FBE /* UINib */,
+				B08D6F011F1CA27200376FBE /* UIView */,
 				OBJ_13 /* UITableView */,
 			);
 			name = TinyKitTests;
@@ -222,6 +243,7 @@
 			children = (
 				B08D6EEA1F1C8A9300376FBE /* UICollectionView */,
 				B08D6EFA1F1C9FF400376FBE /* UINib */,
+				B08D6F001F1CA26900376FBE /* UIView */,
 				OBJ_9 /* UITableView */,
 			);
 			name = TinyKit;
@@ -350,6 +372,7 @@
 			files = (
 				B08D6EFF1F1CA01C00376FBE /* UINibExtensions.swift in Sources */,
 				B08D6EF01F1C8AD900376FBE /* UICollectionViewExtensions.swift in Sources */,
+				B08D6F031F1CA29000376FBE /* UIViewExtensions.swift in Sources */,
 				OBJ_36 /* UITableViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +389,7 @@
 				B08D6EFE1F1CA01500376FBE /* UINibExtensionsTests.swift in Sources */,
 				B08D6EF51F1C8FA400376FBE /* NibCollectionViewCell.swift in Sources */,
 				OBJ_46 /* UITableViewExtensionsTests.swift in Sources */,
+				B08D6F051F1CA29D00376FBE /* UIViewExtensionsTests.swift in Sources */,
 				B08D6EF21F1C8BA600376FBE /* NoNibCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

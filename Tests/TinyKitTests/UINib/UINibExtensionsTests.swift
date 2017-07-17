@@ -10,7 +10,7 @@
 
 import XCTest
 
-@testable import TinyCore
+@testable import TinyKit
 
 class UINibExtensionsTests: XCTestCase {
 

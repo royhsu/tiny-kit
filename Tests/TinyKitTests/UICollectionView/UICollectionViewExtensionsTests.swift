@@ -11,7 +11,7 @@
 import UIKit
 import XCTest
 
-@testable import TinyCore
+@testable import TinyKit
 
 class UICollectionViewExtensionsTests: XCTestCase {
 

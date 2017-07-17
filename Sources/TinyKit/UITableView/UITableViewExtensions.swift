@@ -17,7 +17,7 @@ public extension UITableView {
 
     /// Register an identifiable cell.
     ///
-    /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol Identifiable.
+    /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol `Identifiable`.
     ///
     func registerCell<Cell>(_ cellType: Cell.Type) where Cell: UITableViewCell, Cell: Identifiable {
 
@@ -33,7 +33,7 @@ public extension UITableView {
     /// Register an identifiable cell with the corresponding nib file.
     /// Please make sure to the reuse identifier in the nib file match the one provided by `Identifiable` protocol.
     ///
-    /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol Identifiable.
+    /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol `Identifiable`.
     /// - parameter bundle: The bundle contains the nib file for the cell.
     ///
     // swiftlint:disable line_length

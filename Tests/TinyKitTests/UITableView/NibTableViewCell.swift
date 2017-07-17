@@ -8,8 +8,8 @@
 
 // MARK: - NibTableViewCell
 
-import UIKit
 import TinyCore
+import UIKit
 
 class NibTableViewCell: UITableViewCell, Identifiable {
 
