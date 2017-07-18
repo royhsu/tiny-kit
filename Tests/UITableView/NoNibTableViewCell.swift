@@ -13,4 +13,12 @@ import UIKit
 
 class NoNibTableViewCell: UITableViewCell, Identifiable {
 
+    // MARK: Property
+
+    override var reuseIdentifier: String? {
+
+        return NibTableViewCell.identifier
+
+    }
+
 }
