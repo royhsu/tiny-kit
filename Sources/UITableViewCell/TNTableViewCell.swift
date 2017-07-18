@@ -52,20 +52,21 @@ public final class TNTableViewCell<Factory>: UITableViewCell, Identifiable where
 
     }
 
-    // MARK: Life Cycle
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-        componentView.frame = contentView.bounds
-
-    }
-
     // MARK: Set Up
 
     fileprivate func setUpComponentView() {
 
         contentView.addSubview(componentView)
+
+        componentView.translatesAutoresizingMaskIntoConstraints = false
+
+        componentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+
+        componentView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+
+        componentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+
+        componentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
     }
 
