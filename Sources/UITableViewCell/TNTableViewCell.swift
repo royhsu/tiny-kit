@@ -21,12 +21,11 @@ public protocol ComponentViewFactory {
 import UIKit
 import TinyCore
 
-public final class TNTableViewCell<Factory>: UITableViewCell, Identifiable where
-    Factory: ComponentViewFactory {
+public final class TNTableViewCell<Factory: ComponentViewFactory>: UITableViewCell, Identifiable {
 
     // MARK: Property
 
-    public let componentView: Factory.ComponentView
+    public final let componentView: Factory.ComponentView
 
     // MARK: Init
 
@@ -46,7 +45,7 @@ public final class TNTableViewCell<Factory>: UITableViewCell, Identifiable where
 
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
 
         fatalError("init(coder:) is not implemented.")
 
@@ -54,7 +53,7 @@ public final class TNTableViewCell<Factory>: UITableViewCell, Identifiable where
 
     // MARK: Set Up
 
-    fileprivate func setUpComponentView() {
+    fileprivate final func setUpComponentView() {
 
         contentView.addSubview(componentView)
 

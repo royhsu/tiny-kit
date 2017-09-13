@@ -13,7 +13,7 @@ import XCTest
 
 @testable import TinyKit
 
-class UICollectionViewExtensionsTests: XCTestCase {
+final class UICollectionViewExtensionsTests: XCTestCase {
 
     // MARK: Component
 
@@ -27,13 +27,13 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     // MARK: Property
 
-    var components: [Component]?
+    final var components: [Component]?
 
-    var collectionView: UICollectionView?
+    final var collectionView: UICollectionView?
 
     // MARK: Set Up
 
-    override func setUp() {
+    final override func setUp() {
         super.setUp()
 
         components = [ .noNibCell, .nibCell ]
@@ -47,7 +47,7 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     }
 
-    override func tearDown() {
+    final override func tearDown() {
 
         components = nil
 
@@ -58,7 +58,7 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     // MARK: Register Cells
 
-    func testRegisterCellWithoutNib() {
+    final func testRegisterCellWithoutNib() {
 
         collectionView!.registerCell(
             NoNibCollectionViewCell.self
@@ -77,11 +77,11 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     }
 
-    func testRegisterCellWithNib() {
+    final func testRegisterCellWithNib() {
 
         collectionView!.registerCell(
             NibCollectionViewCell.self,
-            withNibIn: Bundle(for: classForCoder)
+            withNibFrom: Bundle(for: classForCoder)
         )
 
         let index = components!.index(of: .nibCell)!
@@ -99,7 +99,7 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
     // MARK: Dequeue Reusable Cells
 
-    func testDequeueReusableCell() {
+    final func testDequeueReusableCell() {
 
         collectionView!.registerCell(
             NoNibCollectionViewCell.self
@@ -109,7 +109,8 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
         let section = components![index].rawValue
 
-        let cell: NoNibCollectionViewCell? = collectionView!.dequeueReusableCell(
+        let cell = collectionView!.dequeueReusableCell(
+            NoNibCollectionViewCell.self,
             for: IndexPath(item: 0, section: section)
         )
 
@@ -123,19 +124,19 @@ class UICollectionViewExtensionsTests: XCTestCase {
 
 extension UICollectionViewExtensionsTests: UICollectionViewDataSource {
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    final func numberOfSections(in collectionView: UICollectionView) -> Int {
 
         return components!.count
 
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    final func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return 1
 
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    final func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let component = Component(rawValue: indexPath.section)!
 

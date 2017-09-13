@@ -11,6 +11,6 @@
 import UIKit
 import TinyCore
 
-class NibCollectionViewCell: UICollectionViewCell, Identifiable {
+final class NibCollectionViewCell: UICollectionViewCell, Identifiable {
 
 }

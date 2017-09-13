@@ -11,11 +11,11 @@
 import UIKit
 import TinyCore
 
-class NoNibCollectionViewCell: UICollectionViewCell, Identifiable {
+final class NoNibCollectionViewCell: UICollectionViewCell, Identifiable {
 
     // MARK: Property
 
-    override var reuseIdentifier: String? {
+    final override var reuseIdentifier: String? {
 
         return NoNibCollectionViewCell.identifier
 

@@ -37,7 +37,7 @@ public extension UITableView {
     /// - parameter bundle: The bundle contains the nib file for the cell.
     ///
     // swiftlint:disable line_length
-    func registerCell<Cell: UITableViewCell>(_ cellType: Cell.Type, withNibFrom bundle: Bundle) where Cell: Identifiable {
+    public func registerCell<Cell: UITableViewCell>(_ cellType: Cell.Type, withNibFrom bundle: Bundle) where Cell: Identifiable {
 
         let reuseIdentifier = cellType.identifier
 
@@ -62,7 +62,7 @@ public extension UITableView {
     ///
     /// - Returns: A target cell or nil.
     ///
-    func dequeueReusableCell<Cell: UITableViewCell>(_ cellType: Cell.Type, for indexPath: IndexPath) -> Cell? where Cell: Identifiable {
+    public func dequeueReusableCell<Cell: UITableViewCell>(_ cellType: Cell.Type, for indexPath: IndexPath) -> Cell? where Cell: Identifiable {
 
         let identifier = Cell.identifier
 
