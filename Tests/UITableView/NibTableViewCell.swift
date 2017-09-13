@@ -11,6 +11,6 @@
 import TinyCore
 import UIKit
 
-class NibTableViewCell: UITableViewCell, Identifiable {
+final class NibTableViewCell: UITableViewCell, Identifiable {
 
 }

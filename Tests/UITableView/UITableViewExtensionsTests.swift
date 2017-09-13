@@ -13,7 +13,7 @@ import XCTest
 
 @testable import TinyKit
 
-class UITableViewExtensionsTests: XCTestCase {
+final class UITableViewExtensionsTests: XCTestCase {
 
     // MARK: Component
 
@@ -27,13 +27,13 @@ class UITableViewExtensionsTests: XCTestCase {
 
     // MARK: Property
 
-    var components: [Component]?
+    final var components: [Component]?
 
-    var tableView: UITableView?
+    final var tableView: UITableView?
 
     // MARK: Set Up
 
-    override func setUp() {
+    final override func setUp() {
         super.setUp()
 
         components = [ .noNibCell, .nibCell ]
@@ -44,7 +44,7 @@ class UITableViewExtensionsTests: XCTestCase {
 
     }
 
-    override func tearDown() {
+    final override func tearDown() {
 
         components = nil
 
@@ -55,7 +55,7 @@ class UITableViewExtensionsTests: XCTestCase {
 
     // MARK: Register Cells
 
-    func testRegisterCellWithoutNib() {
+    final func testRegisterCellWithoutNib() {
 
         tableView!.registerCell(
             NoNibTableViewCell.self
@@ -74,11 +74,11 @@ class UITableViewExtensionsTests: XCTestCase {
 
     }
 
-    func testRegisterCellWithNib() {
+    final func testRegisterCellWithNib() {
 
         tableView!.registerCell(
             NibTableViewCell.self,
-            withNibIn: Bundle(for: classForCoder)
+            withNibFrom: Bundle(for: classForCoder)
         )
 
         let index = components!.index(of: .nibCell)!
@@ -96,7 +96,7 @@ class UITableViewExtensionsTests: XCTestCase {
 
     // MARK: Dequeue Reusable Cells
 
-    func testDequeueReusableCell() {
+    final func testDequeueReusableCell() {
 
         tableView!.registerCell(
             NoNibTableViewCell.self
@@ -106,7 +106,8 @@ class UITableViewExtensionsTests: XCTestCase {
 
         let section = components![index].rawValue
 
-        let cell: NoNibTableViewCell? = tableView!.dequeueReusableCell(
+        let cell = tableView!.dequeueReusableCell(
+            NoNibTableViewCell.self,
             for: IndexPath(item: 0, section: section)
         )
 
@@ -120,13 +121,13 @@ class UITableViewExtensionsTests: XCTestCase {
 
 extension UITableViewExtensionsTests: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    final func numberOfSections(in tableView: UITableView) -> Int {
 
         return components!.count
 
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    final func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return 1
 

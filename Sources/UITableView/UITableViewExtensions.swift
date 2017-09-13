@@ -19,7 +19,7 @@ public extension UITableView {
     ///
     /// - parameter cellType: The subclass of target UITableViewCell. It must conform to the protocol `Identifiable`.
     ///
-    func registerCell<Cell>(_ cellType: Cell.Type) where Cell: UITableViewCell, Cell: Identifiable {
+    public func registerCell<Cell: UITableViewCell>(_ cellType: Cell.Type) where Cell: Identifiable {
 
         let reuseIdentifier = cellType.identifier
 
@@ -37,7 +37,7 @@ public extension UITableView {
     /// - parameter bundle: The bundle contains the nib file for the cell.
     ///
     // swiftlint:disable line_length
-    func registerCell<Cell>(_ cellType: Cell.Type, withNibIn bundle: Bundle) where Cell: UITableViewCell, Cell: Identifiable {
+    func registerCell<Cell: UITableViewCell>(_ cellType: Cell.Type, withNibFrom bundle: Bundle) where Cell: Identifiable {
 
         let reuseIdentifier = cellType.identifier
 
@@ -62,7 +62,7 @@ public extension UITableView {
     ///
     /// - Returns: A target cell or nil.
     ///
-    func dequeueReusableCell<Cell>(for indexPath: IndexPath) -> Cell? where Cell: UITableViewCell, Cell: Identifiable {
+    func dequeueReusableCell<Cell: UITableViewCell>(_ cellType: Cell.Type, for indexPath: IndexPath) -> Cell? where Cell: Identifiable {
 
         let identifier = Cell.identifier
 

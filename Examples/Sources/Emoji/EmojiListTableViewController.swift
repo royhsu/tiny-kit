@@ -57,7 +57,10 @@ public final class EmojiListTableViewController: UITableViewController {
     public final override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard
-            let cell: Cell = tableView.dequeueReusableCell(for: indexPath)
+            let cell = tableView.dequeueReusableCell(
+                Cell.self,
+                for: indexPath
+            )
             else {
 
                 fatalError("Please make sure the cell has been registerd.")
