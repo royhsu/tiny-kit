@@ -147,7 +147,7 @@
 					B05D4FFE1F1EE79D00929006 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 5CE6946X84;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -326,7 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -340,7 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
