@@ -11,19 +11,23 @@
 import UIKit
 import TinyKit
 
-class EmojiComponentViewFactory: ComponentViewFactory {
+public final class EmojiComponentViewFactory: ComponentViewFactory {
 
     // MARK: ComponentView
 
-    typealias ComponentView = EmojiComponentView
+    public typealias ComponentView = EmojiComponentView
 
     // MARK: ComponentViewFactory
 
-    static func makeComponentView() throws -> ComponentView {
+    public static func makeComponentView() throws -> ComponentView {
 
         guard
-            let componentView: ComponentView = UIView.load(from: .main)
-            else { fatalError("Cannot load the target ComponentView from the selected bundle.") }
+            let componentView = UIView.load(type: ComponentView.self, from: .main)
+            else {
+
+                fatalError("Cannot load the target ComponentView from the selected bundle.")
+
+        }
 
         return componentView
 

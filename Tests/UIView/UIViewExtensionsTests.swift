@@ -12,13 +12,14 @@ import XCTest
 
 @testable import TinyKit
 
-class UIViewExtensionsTests: XCTestCase {
+final class UIViewExtensionsTests: XCTestCase {
 
     // MARK: Load Views From Nibs
 
-    func testLoadViewFromNib() {
+    final func testLoadViewFromNib() {
 
-        let view: NibTableViewCell? = UIView.load(
+        let view = UIView.load(
+            type: NibTableViewCell.self,
             from: Bundle(for: classForCoder)
         )
 

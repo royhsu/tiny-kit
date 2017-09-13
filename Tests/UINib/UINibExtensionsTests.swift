@@ -12,11 +12,11 @@ import XCTest
 
 @testable import TinyKit
 
-class UINibExtensionsTests: XCTestCase {
+final class UINibExtensionsTests: XCTestCase {
 
     // MARK: Load Nibs
 
-    func testLoadNib() {
+    final func testLoadNib() {
 
         let nib = UINib.load(
             nibName: "NibTableViewCell",

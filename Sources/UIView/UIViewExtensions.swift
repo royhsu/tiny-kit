@@ -17,12 +17,12 @@ public extension UIView {
 
     /// A convenience method to load a view from the corresponding xib file.
     ///
-    /// - Parameter viewType: The subclass of target UIView. It must conform to the protocol `Identifiable`.
+    /// - Parameter type: The subclass of target UIView. It must conform to the protocol `Identifiable`.
     /// - Parameter bundle: The bundle contains the nib file for the view.
     ///
     /// - Returns: An target instance of the view.
     ///
-    public class func load<View>(from bundle: Bundle? = nil) -> View? where View: UIView, View: Identifiable {
+    public class func load<View: UIView>(type: View.Type, from bundle: Bundle? = nil) -> View? where View: Identifiable {
 
         let nibName = View.identifier
 

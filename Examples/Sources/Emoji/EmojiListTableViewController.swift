@@ -11,19 +11,19 @@
 import UIKit
 import TinyKit
 
-class EmojiListTableViewController: UITableViewController {
+public final class EmojiListTableViewController: UITableViewController {
 
     // MARK: Cell
 
-    typealias Cell = TNTableViewCell<EmojiComponentViewFactory>
+    public typealias Cell = TNTableViewCell<EmojiComponentViewFactory>
 
     // MARK: Property
 
-    let emojis = [ "😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "☺️", "😊" ]
+    public final let emojis = [ "😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "☺️", "😊" ]
 
     // MARK: View Life Cycle
 
-    override func viewDidLoad() {
+    public final override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerCell(
@@ -42,23 +42,27 @@ class EmojiListTableViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    public final override func numberOfSections(in tableView: UITableView) -> Int {
 
         return 1
 
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public final override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return emojis.count
 
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public final override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard
             let cell: Cell = tableView.dequeueReusableCell(for: indexPath)
-            else { fatalError("Please make sure the cell has been registerd.") }
+            else {
+
+                fatalError("Please make sure the cell has been registerd.")
+
+        }
 
         cell.componentView.emojiLabel.text = emojis[indexPath.row]
 

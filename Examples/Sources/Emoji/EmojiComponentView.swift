@@ -11,10 +11,10 @@
 import UIKit
 import TinyCore
 
-class EmojiComponentView: UIView, Identifiable {
+public final class EmojiComponentView: UIView, Identifiable {
 
     // MARK: Property
 
-    @IBOutlet private(set) weak var emojiLabel: UILabel!
+    @IBOutlet public fileprivate(set) weak var emojiLabel: UILabel!
 
 }
