@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode8.3
+branches:
+  only:
+    - swift3
+xcode_project: TinyKit.xcodeproj
+xcode_scheme: TinyKit
+script: xcodebuild clean && xcodebuild test -project TinyKit.xcodeproj -scheme TinyKit -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' ONLY_ACTIVE_ARCH=NO
