@@ -10,10 +10,8 @@
 		B05D4EDF1F1E0A8300929006 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4ED51F1E0A8300929006 /* TinyKit.framework */; };
 		B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B05D4EF11F1E0AF100929006 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B05D4EFE1F1E0AF100929006 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */; };
-		B05D4EFF1F1E0AF100929006 /* UINibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF51F1E0AF100929006 /* UINibExtensions.swift */; };
 		B05D4F001F1E0AF100929006 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF71F1E0AF100929006 /* UITableViewExtensions.swift */; };
-		B05D4F011F1E0AF100929006 /* TNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF91F1E0AF100929006 /* TNTableViewCell.swift */; };
-		B05D4F021F1E0AF100929006 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EFB1F1E0AF100929006 /* UIViewExtensions.swift */; };
+		B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */; };
 		B05D4F291F1E0C1500929006 /* NibCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D4F081F1E0AF700929006 /* NibCollectionViewCell.xib */; };
 		B05D4F2A1F1E0C1500929006 /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D4F0F1F1E0AF700929006 /* NibTableViewCell.xib */; };
 		B05D4F4F1F1E0C7800929006 /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F071F1E0AF700929006 /* NibCollectionViewCell.swift */; };
@@ -46,10 +44,8 @@
 		B05D4EF01F1E0AF100929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B05D4EF11F1E0AF100929006 /* TinyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
-		B05D4EF51F1E0AF100929006 /* UINibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINibExtensions.swift; sourceTree = "<group>"; };
 		B05D4EF71F1E0AF100929006 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
-		B05D4EF91F1E0AF100929006 /* TNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNTableViewCell.swift; sourceTree = "<group>"; };
-		B05D4EFB1F1E0AF100929006 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
 		B05D4F041F1E0AF700929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B05D4F071F1E0AF700929006 /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		B05D4F081F1E0AF700929006 /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -114,7 +110,6 @@
 				B05D4EF21F1E0AF100929006 /* UICollectionView */,
 				B05D4EF41F1E0AF100929006 /* UINib */,
 				B05D4EF61F1E0AF100929006 /* UITableView */,
-				B05D4EF81F1E0AF100929006 /* UITableViewCell */,
 				B05D4EFA1F1E0AF100929006 /* UIView */,
 			);
 			path = Sources;
@@ -131,7 +126,6 @@
 		B05D4EF41F1E0AF100929006 /* UINib */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EF51F1E0AF100929006 /* UINibExtensions.swift */,
 			);
 			path = UINib;
 			sourceTree = "<group>";
@@ -144,18 +138,10 @@
 			path = UITableView;
 			sourceTree = "<group>";
 		};
-		B05D4EF81F1E0AF100929006 /* UITableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4EF91F1E0AF100929006 /* TNTableViewCell.swift */,
-			);
-			path = UITableViewCell;
-			sourceTree = "<group>";
-		};
 		B05D4EFA1F1E0AF100929006 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EFB1F1E0AF100929006 /* UIViewExtensions.swift */,
+				B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -382,10 +368,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B05D4F001F1E0AF100929006 /* UITableViewExtensions.swift in Sources */,
-				B05D4F021F1E0AF100929006 /* UIViewExtensions.swift in Sources */,
-				B05D4F011F1E0AF100929006 /* TNTableViewCell.swift in Sources */,
+				B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */,
 				B05D4EFE1F1E0AF100929006 /* UICollectionViewExtensions.swift in Sources */,
-				B05D4EFF1F1E0AF100929006 /* UINibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
