@@ -12,19 +12,17 @@ import XCTest
 
 @testable import TinyKit
 
-final class UIViewExtensionsTests: XCTestCase {
-
-    // MARK: Load Views From Nibs
-
-    final func testLoadViewFromNib() {
-
-        let view = UIView.load(
-            type: NibTableViewCell.self,
-            from: Bundle(for: classForCoder)
-        )
-
-        XCTAssertNotNil(view)
-
-    }
-
-}
+//final class UIViewExtensionsTests: XCTestCase {
+//
+//    final func testLoadViewFromNib() {
+//
+//        let view = UIView.load(
+//            type: NibTableViewCell.self,
+//            from: Bundle(for: classForCoder)
+//        )
+//
+//        XCTAssertNotNil(view)
+//
+//    }
+//
+//}

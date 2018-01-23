@@ -8,17 +8,16 @@
 
 // MARK: - NoNibCollectionViewCell
 
-import UIKit
-import TinyCore
-
-final class NoNibCollectionViewCell: UICollectionViewCell, Identifiable {
-
-    // MARK: Property
-
-    final override var reuseIdentifier: String? {
-
-        return NoNibCollectionViewCell.identifier
-
-    }
-
-}
+//import UIKit
+//
+//final class NoNibCollectionViewCell: UICollectionViewCell {
+//
+//    // MARK: Property
+//
+//    final override var reuseIdentifier: String? {
+//
+//        return NoNibCollectionViewCell.identifier
+//
+//    }
+//
+//}

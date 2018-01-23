@@ -8,9 +8,9 @@
 
 // MARK: - NibTableViewCell
 
-import TinyCore
-import UIKit
-
-final class NibTableViewCell: UITableViewCell, Identifiable {
-
-}
+//import TinyCore
+//import UIKit
+//
+//final class NibTableViewCell: UITableViewCell {
+//
+//}
