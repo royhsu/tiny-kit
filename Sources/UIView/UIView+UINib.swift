@@ -20,7 +20,7 @@ public extension UIView {
     ///
     /// - Returns: An target instance of the view.
     ///
-    public class func load<View: UIView>(
+    public static func load<View: UIView>(
         _ type: View.Type,
         from bundle: Bundle? = nil
     )
