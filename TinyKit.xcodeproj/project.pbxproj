@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B05D4EDF1F1E0A8300929006 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4ED51F1E0A8300929006 /* TinyKit.framework */; };
 		B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B05D4EF11F1E0AF100929006 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B05D4EFE1F1E0AF100929006 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */; };
+		B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */; };
 		B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */; };
 		B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */; };
 		B05D4F291F1E0C1500929006 /* NibCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D4F081F1E0AF700929006 /* NibCollectionViewCell.xib */; };
@@ -43,7 +43,7 @@
 		B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D4EF01F1E0AF100929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B05D4EF11F1E0AF100929006 /* TinyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
-		B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
 		B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Cell.swift"; sourceTree = "<group>"; };
 		B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
 		B05D4F041F1E0AF700929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		B05D4EF21F1E0AF100929006 /* UICollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */,
+				B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */,
 			);
 			path = UICollectionView;
 			sourceTree = "<group>";
@@ -361,7 +361,7 @@
 			files = (
 				B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */,
 				B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */,
-				B05D4EFE1F1E0AF100929006 /* UICollectionViewExtensions.swift in Sources */,
+				B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

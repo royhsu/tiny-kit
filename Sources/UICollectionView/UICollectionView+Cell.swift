@@ -1,75 +1,77 @@
 //
-//  UICollectionViewExtensions.swift
+//  UICollectionView+Cell.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 17/07/2017.
 //
 //
 
-#if os(iOS)
+// MARK: - Cell
 
 import UIKit
-import TinyCore
 
 public extension UICollectionView {
 
-    // MARK: Register Cells
+    /// Register a cell by its type.
+    ///
+    /// - parameter type: The subclass of target UICollectionViewCell.
+    ///
+    public final func registerCell<Cell: UICollectionViewCell>(_ type: Cell.Type) {
 
-    /// Register an identifiable cell.
-    ///
-    /// - parameter cellType: The subclass of target UICollectionViewCell. It must conform to the protocol `Identifiable`.
-    ///
-//    public func registerCell<Cell: UICollectionViewCell>(_ cellType: Cell.Type) where Cell: Identifiable {
-//
-//        let reuseIdentifier = cellType.identifier
-//
-//        register(
-//            cellType.self,
-//            forCellWithReuseIdentifier: reuseIdentifier
-//        )
-//
-//    }
+        let typeName = String(describing: type)
 
-    /// Register an identifiable cell with the corresponding nib file.
-    /// Please make sure to the reuse identifier in the nib file match the one provided by `Identifiable` protocol.
+        register(
+            type.self,
+            forCellWithReuseIdentifier: typeName
+        )
+
+    }
+
+    /// Register a cell with the corresponding nib file.
+    /// Please make sure that the file name mathes its type name.
     ///
-    /// - parameter cellType: The subclass of target UICollectionViewCell. It must conform to the protocol `Identifiable`.
+    /// - parameter type: The subclass of target UICollectionViewCell.
     /// - parameter bundle: The bundle contains the nib file for the cell.
     ///
-    // swiftlint:disable line_length
-//    public func registerCell<Cell: UICollectionViewCell>(_ cellType: Cell.Type, withNibFrom bundle: Bundle) where Cell: Identifiable {
-//
-//        let reuseIdentifier = cellType.identifier
-//
-//        let nib = UINib(
-//            nibName: reuseIdentifier,
-//            bundle: bundle
-//        )
-//
-//        register(
-//            nib,
-//            forCellWithReuseIdentifier: reuseIdentifier
-//        )
-//
-//    }
-    // swiftlint:enable line_length
+    public final func registerCell<Cell: UICollectionViewCell>(
+        _ type: Cell.Type,
+        withNibFrom bundle: Bundle
+    ) {
 
-    // MARK: Dequeue Reusable Cells
+        let nibName = String(describing: type)
 
-    /// Dequeue an identifiable cell by indexPath.
+        let nib = UINib(
+            nibName: nibName,
+            bundle: bundle
+        )
+
+        register(
+            nib,
+            forCellWithReuseIdentifier: nibName
+        )
+
+    }
+
+    /// Dequeue cell by the given indexPath.
     ///
+    /// - parameter type: The subclass of target UICollectionViewCell.
     /// - parameter indexPath: The indexPath of the cell.
     ///
-    /// - Returns: A target cell or nil.
+    /// - Returns: The target cell or nil.
     ///
-//    public func dequeueReusableCell<Cell: UICollectionViewCell>(_ cellType: Cell.Type, for indexPath: IndexPath) -> Cell? where Cell: Identifiable {
-//
-//        let identifier = Cell.identifier
-//
-//        return dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? Cell
-//
-//    }
+    public final func dequeueReusableCell<Cell: UICollectionViewCell>(
+        _ type: Cell.Type,
+        for indexPath: IndexPath
+    )
+    -> Cell? {
+
+        let typeName = String(describing: type)
+
+        return dequeueReusableCell(
+            withReuseIdentifier: typeName,
+            for: indexPath
+        ) as? Cell
+
+    }
 
 }
-
-#endif
