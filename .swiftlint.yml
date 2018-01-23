@@ -1,10 +1,11 @@
-disabled_rules: # rule identifiers to exclude from running
+disabled_rules:
   - line_length
   - file_length
   - function_body_length
-excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - statement_position
+excluded:
+  - Carthage
   - Pods
-  - Library
-identifier_name:
+variable_name:
   excluded:
     - id
