@@ -14,7 +14,7 @@ import XCTest
 
 internal final class ComponentNodeTests: XCTestCase {
     
-    internal final func testAddChildComponentNode() {
+    internal final func testAddChildAndRemoveFromParentComponentNode() {
         
         let node = ComponentNode()
         
@@ -32,9 +32,15 @@ internal final class ComponentNodeTests: XCTestCase {
             childNode.parentComponentNode === node
         )
         
+        childNode.removeFromParentComponentNode()
+        
+        XCTAssert(node.childComponentNodes.isEmpty)
+        
+        XCTAssertNil(childNode.parentComponentNode)
+        
     }
     
-    internal final func testAddChildNode() {
+    internal final func testAddChildAndRemoveFromParentNode() {
         
         let node = ComponentNode()
         
@@ -51,6 +57,12 @@ internal final class ComponentNodeTests: XCTestCase {
         let parentNode = childNode.parent as? ComponentNode
         
         XCTAssert(parentNode === node)
+        
+        childNode.removeFromParent()
+        
+        XCTAssert(node.childs.isEmpty)
+        
+        XCTAssertNil(childNode.parent)
         
     }
     
