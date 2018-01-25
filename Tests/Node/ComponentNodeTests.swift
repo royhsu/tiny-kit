@@ -28,6 +28,10 @@ internal final class ComponentNodeTests: XCTestCase {
             )
         )
         
+        XCTAssert(
+            childNode.parentComponentNode === node
+        )
+        
     }
     
     internal final func testAddChildNode() {
@@ -43,6 +47,10 @@ internal final class ComponentNodeTests: XCTestCase {
                 where: { $0 as? ComponentNode === childNode }
             )
         )
+        
+        let parentNode = childNode.parent as? ComponentNode
+        
+        XCTAssert(parentNode === node)
         
     }
     
