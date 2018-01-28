@@ -16,8 +16,6 @@ internal final class ItemComponentTests: XCTestCase {
     
     internal final func testItemComponent() {
         
-        let colorViewFactory = ColorViewFactory()
-        
         let color = Color(
             red: 1.0,
             green: 0.0,
@@ -25,8 +23,8 @@ internal final class ItemComponentTests: XCTestCase {
             alpha: 1.0
         )
         
-        let viewModel = ComponentViewModel(
-            viewFactory: colorViewFactory,
+        let colorComponent = ItemComponent(
+            view: RectangleView(),
             model: color,
             binding: { colorView, color in
                 
@@ -40,35 +38,43 @@ internal final class ItemComponentTests: XCTestCase {
             height: 50.0
         )
         
-        let colorComponent = ItemComponent(
-            preferredContentSize: preferredContentSize,
-            viewModel: viewModel
-        )
+        colorComponent.preferredContentSize = preferredContentSize
         
-        let containerView = UIView()
-        
-        do {
+        guard
+            let colorView = colorComponent.view as? RectangleView
+        else {
             
-            try containerView.render(
-                AnyCollection([ colorComponent ])
-            )
+            XCTFail("Not the subclass of RectangelView.")
             
-            XCTAssert(colorComponent.view.superview === containerView)
-            
-            XCTAssertNotNil(colorComponent.view as? RectangleView)
-            
-            XCTAssertEqual(
-                colorComponent.view.backgroundColor,
-                color.uiColor()
-            )
-            
-            XCTAssertEqual(
-                containerView.frame.size,
-                colorComponent.preferredContentSize
-            )
+            return
             
         }
-        catch { XCTFail("\(error)") }
+        
+        XCTAssertEqual(
+            colorView.backgroundColor,
+            color.uiColor()
+        )
+        
+        XCTAssertEqual(
+            colorView.frame.size,
+            colorComponent.preferredContentSize
+        )
+        
+//        let containerView = UIView()
+//
+//        do {
+//
+//            try containerView.render(
+//                AnyCollection([ colorComponent ])
+//            )
+//
+//            XCTAssert(colorComponent.view.superview === containerView)
+//
+//
+
+//
+//        }
+//        catch { XCTFail("\(error)") }
         
     }
     

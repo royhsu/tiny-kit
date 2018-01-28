@@ -8,30 +8,73 @@
 
 // MARK: - ItemComponent
 
-public class ItemComponent<
-    View: UIView,
-    Model: Codable
+public final class ItemComponent<
+    V: View,
+    M: Codable
 >: ComponentNode, Component {
     
-    public typealias ViewModel = ComponentViewModel<View, Model>
+    /// The underlying view contains its type information.
+    private final let _view: V
     
-    private final let viewModel: ViewModel
+    /// Changing the model will also automatically reflect to the bond view.
+    public final var model: M {
+        
+        didSet {
+            
+            binding(
+                _view,
+                model
+            )
+            
+        }
+        
+    }
+    
+    public typealias Binding = (V, M) -> Void
+    
+    private final let binding: Binding
     
     public init(
-        preferredContentSize: CGSize,
-        viewModel: ViewModel
+        view: V,
+        model: M,
+        binding: @escaping Binding
     ) {
         
-        self.preferredContentSize = preferredContentSize
+        self._view = view
         
-        self.viewModel = viewModel
+        self.model = model
+        
+        self.binding = binding
+        
+        super.init()
+        
+        preferredContentSize = _view.bounds.size
+        
+        binding(
+            _view,
+            model
+        )
         
     }
     
     // MARK: ViewRenderable
     
-    public final var view: UIView { return viewModel.view }
+    public final var view: View { return _view }
     
-    public final var preferredContentSize: CGSize
+    public final var preferredContentSize: CGSize {
+    
+        get { return _view.bounds.size }
+    
+        set {
+    
+            var preferredFrame = _view.frame
+    
+            preferredFrame.size = newValue
+    
+            _view.frame = preferredFrame
+    
+        }
+    
+    }
 
 }

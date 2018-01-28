@@ -10,10 +10,17 @@
 
 public protocol ViewRender {
     
-    /// Note: View Render can ignore the preferred content size of renderables if needed.
+    /**
+     A render should define its way to render objects.
+    
+     - Author: Roy Hsu.
+     
+     - Parameter renderables: The objects to be rendered.
+    
+     Note: View Render can ignore the preferred content size of renderables if it's reasonable.
+    */
     func render(
         _ renderables: AnyCollection<ViewRenderable>
-    )
-    throws
+    ) throws
     
 }
