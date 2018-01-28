@@ -10,6 +10,10 @@
 
 public protocol ViewRender {
     
-    func render(_ renderable: ViewRenderable)
+    /// Note: View Render can ignore the preferred content size of renderables if needed.
+    func render(
+        _ renderables: AnyCollection<ViewRenderable>
+    )
+    throws
     
 }

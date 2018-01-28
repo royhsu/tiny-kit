@@ -35,26 +35,40 @@ internal final class ItemComponentTests: XCTestCase {
             }
         )
         
+        let preferredContentSize = CGSize(
+            width: 50.0,
+            height: 50.0
+        )
+        
         let colorComponent = ItemComponent(
-            preferredContentSize: CGSize(
-                width: 50.0,
-                height: 50.0
-            ),
+            preferredContentSize: preferredContentSize,
             viewModel: viewModel
         )
         
         let containerView = UIView()
         
-        containerView.render(colorComponent)
-        
-        XCTAssert(colorComponent.view.superview === containerView)
-        
-        XCTAssertNotNil(colorComponent.view as? RectangleView)
-        
-        XCTAssertEqual(
-            colorComponent.view.backgroundColor,
-            color.uiColor()
-        )
+        do {
+            
+            try containerView.render(
+                AnyCollection([ colorComponent ])
+            )
+            
+            XCTAssert(colorComponent.view.superview === containerView)
+            
+            XCTAssertNotNil(colorComponent.view as? RectangleView)
+            
+            XCTAssertEqual(
+                colorComponent.view.backgroundColor,
+                color.uiColor()
+            )
+            
+            XCTAssertEqual(
+                containerView.frame.size,
+                colorComponent.preferredContentSize
+            )
+            
+        }
+        catch { XCTFail("\(error)") }
         
     }
     

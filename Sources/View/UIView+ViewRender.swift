@@ -6,11 +6,26 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - ViewRender
+
 import UIKit
 
 extension UIView: ViewRender {
     
-    public final func render(_ renderable: ViewRenderable) {
+    public final func render(
+        _ renderables: AnyCollection<ViewRenderable>
+    )
+    throws {
+        
+        guard
+            let renderable = renderables.first
+        else {
+            
+            let error: UIViewRenderError = .atLeastOneRenderable
+            
+            throw error
+            
+        }
         
         let contentView = renderable.view
         
@@ -36,6 +51,12 @@ extension UIView: ViewRender {
                     .constraint(equalTo: bottomAnchor)
             ]
         )
+        
+        var preferredFrame = frame
+        
+        preferredFrame.size = renderable.preferredContentSize
+        
+        frame = preferredFrame
         
     }
     
