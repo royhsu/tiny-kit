@@ -8,4 +8,4 @@
 
 // MARK: - Component
 
-public typealias Component = ComponentNode & ViewRenderable & ViewRender
+public protocol Component: Node, ViewRenderable { }

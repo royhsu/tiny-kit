@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407C2019A7F8002FFD5B /* ItemComponent.swift */; };
+		B05340802019A911002FFD5B /* ComponentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407F2019A911002FFD5B /* ComponentViewModel.swift */; };
+		B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340822019A93E002FFD5B /* ItemComponentTests.swift */; };
+		B05340852019A9C5002FFD5B /* ColorViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340842019A9C5002FFD5B /* ColorViewFactory.swift */; };
+		B05340872019A9FD002FFD5B /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340862019A9FD002FFD5B /* ViewFactory.swift */; };
+		B053408A2019AD05002FFD5B /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340882019ACF1002FFD5B /* ColorModel.swift */; };
 		B05D4EDF1F1E0A8300929006 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4ED51F1E0A8300929006 /* TinyKit.framework */; };
 		B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B05D4EF11F1E0AF100929006 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */; };
@@ -29,6 +35,8 @@
 		B0A9DEAB2018849D00AEF782 /* ViewRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA92018849000AEF782 /* ViewRenderable.swift */; };
 		B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEAC2018857D00AEF782 /* ViewRender.swift */; };
 		B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEB0201885DE00AEF782 /* Component.swift */; };
+		B0C17DD1201D72D10063CA45 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD0201D72D10063CA45 /* UIView+ViewRender.swift */; };
+		B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD2201D7C560063CA45 /* RectangleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +50,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
+		B053407F2019A911002FFD5B /* ComponentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewModel.swift; sourceTree = "<group>"; };
+		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
+		B05340842019A9C5002FFD5B /* ColorViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewFactory.swift; sourceTree = "<group>"; };
+		B05340862019A9FD002FFD5B /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		B05340882019ACF1002FFD5B /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		B05D4ED51F1E0A8300929006 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D4EF01F1E0AF100929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +82,8 @@
 		B0A9DEA92018849000AEF782 /* ViewRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRenderable.swift; sourceTree = "<group>"; };
 		B0A9DEAC2018857D00AEF782 /* ViewRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRender.swift; sourceTree = "<group>"; };
 		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		B0C17DD0201D72D10063CA45 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
+		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,8 +253,10 @@
 		B0A9DEA82018844800AEF782 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B05340862019A9FD002FFD5B /* ViewFactory.swift */,
 				B0A9DEA92018849000AEF782 /* ViewRenderable.swift */,
 				B0A9DEAC2018857D00AEF782 /* ViewRender.swift */,
+				B0C17DD0201D72D10063CA45 /* UIView+ViewRender.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +264,10 @@
 		B0A9DEAE2018859000AEF782 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B0C17DD2201D7C560063CA45 /* RectangleView.swift */,
+				B05340842019A9C5002FFD5B /* ColorViewFactory.swift */,
+				B05340882019ACF1002FFD5B /* ColorModel.swift */,
+				B05340822019A93E002FFD5B /* ItemComponentTests.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -254,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				B0A9DEB0201885DE00AEF782 /* Component.swift */,
+				B053407C2019A7F8002FFD5B /* ItemComponent.swift */,
+				B053407F2019A911002FFD5B /* ComponentViewModel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -396,11 +420,15 @@
 				B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */,
 				B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */,
 				B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */,
+				B05340802019A911002FFD5B /* ComponentViewModel.swift in Sources */,
+				B05340872019A9FD002FFD5B /* ViewFactory.swift in Sources */,
 				B0A9DEA4201880FB00AEF782 /* ComponentNode.swift in Sources */,
 				B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */,
+				B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */,
 				B0A9DEAB2018849D00AEF782 /* ViewRenderable.swift in Sources */,
 				B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */,
 				B0A9DEA02018806200AEF782 /* Node.swift in Sources */,
+				B0C17DD1201D72D10063CA45 /* UIView+ViewRender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,9 +438,13 @@
 			files = (
 				B05D4F511F1E0C8200929006 /* UICollectionViewExtensionsTests.swift in Sources */,
 				B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */,
+				B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */,
 				B05D4F4F1F1E0C7800929006 /* NibCollectionViewCell.swift in Sources */,
 				B05D4F591F1E0CA100929006 /* UIViewExtensionsTests.swift in Sources */,
+				B053408A2019AD05002FFD5B /* ColorModel.swift in Sources */,
+				B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */,
 				B05D4F501F1E0C7B00929006 /* NoNibCollectionViewCell.swift in Sources */,
+				B05340852019A9C5002FFD5B /* ColorViewFactory.swift in Sources */,
 				B05D4F531F1E0C9300929006 /* NibTableViewCell.swift in Sources */,
 				B05D4F541F1E0C9700929006 /* NoNibTableViewCell.swift in Sources */,
 				B0A9DEA72018821100AEF782 /* ComponentNodeTests.swift in Sources */,
