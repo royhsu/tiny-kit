@@ -1,59 +1,36 @@
 //
-//  ListTableViewController.swift
+//  ListBridge.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 28/01/2018.
+//  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ListTableViewController
+// MARK: - ListBridge
 
-import UIKit
+public final class ListBridge: NSObject {
+    
+    public final let cellIdentifier: String
 
-internal final class ListTableViewController: UITableViewController {
+    public final var renderables = AnyCollection<ViewRenderable>([])
     
-    internal final let cellIdentifier = String(
-        describing: UITableViewCell.self
-    )
+    public init(cellIdentifier: String) { self.cellIdentifier = cellIdentifier }
     
-    internal final var renderables: AnyCollection<ViewRenderable> = AnyCollection(
-        []
-    )
+}
+
+// MARK: - UITableViewDataSource
+
+extension ListBridge: UITableViewDataSource {
     
-    // MARK: View Life Cycle
+    public final func numberOfSections(in tableView: UITableView) -> Int { return Int(renderables.count) }
     
-    internal final override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        setUpTableView(tableView)
-        
-    }
-    
-    // MARK: Set Up
-    
-    fileprivate final func setUpTableView(_ tableView: UITableView) {
-        
-        tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: cellIdentifier
-        )
-        
-        tableView.separatorStyle = .none
-        
-    }
-    
-    // MARK: UITableViewDataSource
-    
-    internal final override func numberOfSections(in tableView: UITableView) -> Int { return Int(renderables.count) }
-    
-    internal final override func tableView(
+    public final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
     -> Int { return 1 }
     
-    internal final override func tableView(
+    public final func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     )
@@ -108,13 +85,17 @@ internal final class ListTableViewController: UITableViewController {
         )
         
         return cell
-            
+        
     }
     
-    // MARK: UITableViewDelegate
+}
+
+// MARK: UITableViewDelegate
+
+extension ListBridge: UITableViewDelegate {
     
     // For self-resizing
-    internal final override func tableView(
+    public final func tableView(
         _ tableView: UITableView,
         estimatedHeightForRowAt indexPath: IndexPath
     )
@@ -129,7 +110,7 @@ internal final class ListTableViewController: UITableViewController {
     }
     
     // For self-resizing
-    internal final override func tableView(
+    public final func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     )

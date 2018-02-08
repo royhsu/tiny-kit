@@ -10,15 +10,46 @@
 
 public final class ListComponent: ComponentNode, Component {
     
-    internal final let tableViewController = ListTableViewController(style: .plain)
+    private final let cellIdentifier = String(
+        describing: UITableViewCell.self
+    )
+    
+    private final let bridge: ListBridge
+    
+    public final let tableView = UITableView()
+    
+    public override init() {
+        
+        self.bridge = ListBridge(cellIdentifier: cellIdentifier)
+        
+        super.init()
+        
+        setUpTableView(tableView)
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func setUpTableView(_ tableView: UITableView) {
+        
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: cellIdentifier
+        )
+        
+        tableView.separatorStyle = .none
+        
+        tableView.dataSource = bridge
+        
+        tableView.delegate = bridge
+        
+    }
     
     // MARK: ViewRenderable
     
-    public final var view: View { return tableViewController.tableView }
+    public final var view: View { return tableView }
 
-    public final var preferredContentSize: CGSize { return tableViewController.tableView.contentSize }
-    
-    public override init() { super.init() }
+    public final var preferredContentSize: CGSize { return tableView.contentSize }
     
 }
 
@@ -42,9 +73,9 @@ extension ListComponent: ViewRender {
         
             DispatchQueue.main.async {
                 
-                self.tableViewController.renderables = self.renderables
+                self.bridge.renderables = self.renderables
                 
-                self.tableViewController.tableView.reloadData()
+                self.tableView.reloadData()
                 
                 let result: Void = ()
                 

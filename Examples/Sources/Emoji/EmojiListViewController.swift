@@ -9,34 +9,25 @@
 // MARK: - EmojiListViewController
 
 import UIKit
-import TinyCore
 import TinyKit
 
 public final class EmojiListViewController: UIViewController {
     
     private final let listComponent = ListComponent()
     
-    public override init(
-        nibName nibNameOrNil: String?,
-        bundle nibBundleOrNil: Bundle?
-    ) {
-        
-        super.init(
-            nibName: nibNameOrNil,
-            bundle: nibBundleOrNil
-        )
-        
-        setUpListComponent(listComponent)
-        
-    }
+    // MARK: View Life Cycle
     
-    public required init?(coder aDecoder: NSCoder) {
+    public final override func loadView() { view = listComponent.view }
+    
+    public final override func viewDidLoad() {
         
-        super.init(coder: aDecoder)
+        super.viewDidLoad()
         
         setUpListComponent(listComponent)
         
     }
+
+    // MARK: Set Up
     
     fileprivate final func setUpListComponent(_ component: ListComponent) {
         
@@ -55,8 +46,6 @@ public final class EmojiListViewController: UIViewController {
         let emojiView2 = UIView.load(EmojiView.self)!
         
         emojiView2.emojiLabel.numberOfLines = 0
-        
-//        emojiView2.emojiLabel.font = .systemFont(ofSize: 20.0)
 
         let emojiItem2Component = ItemComponent(
             view: emojiView2,
@@ -98,25 +87,8 @@ public final class EmojiListViewController: UIViewController {
         )
         
         listComponent.addChild(emojiItem4Component)
-        
-        let contentView = component.view
-        
-        view.addSubview(contentView)
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addConstraints(
-            [
-                contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                contentView.topAnchor.constraint(equalTo: view.topAnchor),
-                contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ]
-        )
-        
-        listComponent.render().then {
-            
-        }
+
+        listComponent.render().then { }
         
     }
     
