@@ -10,8 +10,6 @@
 
 import XCTest
 
-import TinyCore
-
 @testable import TinyKit
 
 internal final class ListComponentTests: XCTestCase {

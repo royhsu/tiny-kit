@@ -37,10 +37,12 @@
 		B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEB0201885DE00AEF782 /* Component.swift */; };
 		B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD2201D7C560063CA45 /* RectangleView.swift */; };
 		B0C6ECA6202C575D00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
+		B0C6ECA7202C57AB00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
+		B0C6ECAB202C58CC00AFEE54 /* TinyCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B0A0B050202C55ED003FC1E1 /* PBXContainerItemProxy */ = {
+		B0C6ECA8202C57CC00AFEE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B05D4ECC1F1E0A8300929006 /* Project object */;
 			proxyType = 1;
@@ -48,6 +50,19 @@
 			remoteInfo = TinyKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B0C6ECAA202C58BB00AFEE54 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B0C6ECAB202C58CC00AFEE54 /* TinyCore.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B02449E4201D9B4700D20C50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -81,8 +96,8 @@
 		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		B0C6ECA2202C570F00AFEE54 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TinyKit.framework; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKit.framework"; sourceTree = "<absolute>"; };
-		B0C6ECA3202C570F00AFEE54 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TinyKitTests.xctest; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKitTests.xctest"; sourceTree = "<absolute>"; };
 		B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0C6ECAC202C58CC00AFEE54 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TinyKitTests.xctest; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKitTests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0C6ECA7202C57AB00AFEE54 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,15 +318,16 @@
 				B05D4EDA1F1E0A8300929006 /* Sources */,
 				B05D4EDB1F1E0A8300929006 /* Frameworks */,
 				B05D4EDC1F1E0A8300929006 /* Resources */,
+				B0C6ECAA202C58BB00AFEE54 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B0A0B051202C55ED003FC1E1 /* PBXTargetDependency */,
+				B0C6ECA9202C57CC00AFEE54 /* PBXTargetDependency */,
 			);
 			name = TinyKitTests;
 			productName = TinyKitTests;
-			productReference = B0C6ECA3202C570F00AFEE54 /* TinyKitTests.xctest */;
+			productReference = B0C6ECAC202C58CC00AFEE54 /* TinyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -451,10 +468,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B0A0B051202C55ED003FC1E1 /* PBXTargetDependency */ = {
+		B0C6ECA9202C57CC00AFEE54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B05D4ED41F1E0A8300929006 /* TinyKit */;
-			targetProxy = B0A0B050202C55ED003FC1E1 /* PBXContainerItemProxy */;
+			targetProxy = B0C6ECA8202C57CC00AFEE54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
