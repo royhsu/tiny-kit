@@ -36,10 +36,10 @@
 		B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEB0201885DE00AEF782 /* Component.swift */; };
 		B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD2201D7C560063CA45 /* RectangleView.swift */; };
 		B0E24D8D202C23DF0034E539 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4ED51F1E0A8300929006 /* TinyKit.framework */; };
-		B0E24D8E202C241E0034E539 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D8F202C241E0034E539 /* TinyCore.framework */; };
-		B0E24D90202C24430034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D82202C1F110034E539 /* Hydra.framework */; };
-		B0E24D92202C24DB0034E539 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D93202C24DB0034E539 /* TinyCore.framework */; };
-		B0E24D94202C24E90034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D82202C1F110034E539 /* Hydra.framework */; };
+		B0E24D97202C26F90034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D95202C26F90034E539 /* Hydra.framework */; };
+		B0E24D98202C26F90034E539 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D96202C26F90034E539 /* TinyCore.framework */; };
+		B0E24D99202C27360034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D95202C26F90034E539 /* Hydra.framework */; };
+		B0E24D9A202C27360034E539 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D96202C26F90034E539 /* TinyCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +84,8 @@
 		B0E24D8C202C235A0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E24D8F202C241E0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E24D93202C24DB0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0E24D95202C26F90034E539 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
+		B0E24D96202C26F90034E539 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E24D90202C24430034E539 /* Hydra.framework in Frameworks */,
-				B0E24D8E202C241E0034E539 /* TinyCore.framework in Frameworks */,
+				B0E24D97202C26F90034E539 /* Hydra.framework in Frameworks */,
+				B0E24D98202C26F90034E539 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E24D94202C24E90034E539 /* Hydra.framework in Frameworks */,
-				B0E24D92202C24DB0034E539 /* TinyCore.framework in Frameworks */,
+				B0E24D99202C27360034E539 /* Hydra.framework in Frameworks */,
+				B0E24D9A202C27360034E539 /* TinyCore.framework in Frameworks */,
 				B0E24D8D202C23DF0034E539 /* TinyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +231,8 @@
 		B05D4FC91F1E523C00929006 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0E24D95202C26F90034E539 /* Hydra.framework */,
+				B0E24D96202C26F90034E539 /* TinyCore.framework */,
 				B0E24D93202C24DB0034E539 /* TinyCore.framework */,
 				B0E24D8F202C241E0034E539 /* TinyCore.framework */,
 				B0E24D8C202C235A0034E539 /* TinyCore.framework */,
@@ -425,10 +429,12 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/tiny-core/Carthage/Build/iOS/Hydra.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -604,6 +610,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -628,6 +635,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -648,6 +656,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -666,6 +675,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

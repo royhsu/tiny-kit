@@ -1,0 +1,11 @@
+disabled_rules:
+  - line_length
+  - file_length
+  - function_body_length
+  - statement_position
+excluded:
+  - Carthage
+  - Pods
+variable_name:
+  excluded:
+    - id
