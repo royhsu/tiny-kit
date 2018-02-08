@@ -8,7 +8,7 @@
 
 // MARK: - ItemComponent
 
-public final class ItemComponent<
+open class ItemComponent<
     V: View,
     M: Codable
 >: ComponentNode, Component {

@@ -9,6 +9,7 @@
 // MARK: - AppDelegate
 
 import UIKit
+import TinyKit
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
@@ -27,11 +28,20 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
 
-        let navigationController = UINavigationController(
-            rootViewController: EmojiListViewController()
+//        let navigationController = UINavigationController(
+//            rootViewController: EmojiListViewController()
+//        )
+//
+//        window.rootViewController = navigationController
+        
+        let postComponent = PostComponent(
+            title: "Hello World",
+            content: "This is my first post about component-based architecture."
         )
 
-        window.rootViewController = navigationController
+        window.rootViewController = RootViewController(
+            renderable: postComponent
+        )
 
         window.makeKeyAndVisible()
         
