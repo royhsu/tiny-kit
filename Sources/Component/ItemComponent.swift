@@ -61,6 +61,18 @@ public final class ItemComponent<
     
     public final var view: View { return itemView }
     
-    public final var preferredContentSize: CGSize
+    public final var preferredContentSize: CGSize {
+        
+        didSet {
+            
+            var preferredFrame = itemView.frame
+            
+            preferredFrame.size = preferredContentSize
+            
+            itemView.frame = preferredFrame
+            
+        }
+        
+    }
 
 }
