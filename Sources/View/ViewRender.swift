@@ -8,19 +8,20 @@
 
 // MARK: - ViewRender
 
+import Hydra
+
 public protocol ViewRender {
     
-    /**
-     A render should define its way to render objects.
+    var renderables: AnyCollection<ViewRenderable> { get }
     
-     - Author: Roy Hsu.
-     
+    /**
+    A render should define its way to render objects.
+    
      - Parameter renderables: The objects to be rendered.
     
      Note: View Render can ignore the preferred content size of renderables if it's reasonable.
     */
-    func render(
-        _ renderables: AnyCollection<ViewRenderable>
-    ) throws
+    
+    func render() -> Promise<Void>
     
 }

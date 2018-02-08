@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B02449E5201D9B4700D20C50 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449E4201D9B4700D20C50 /* View.swift */; };
+		B02449E9201DAE8700D20C50 /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449E8201DAE8700D20C50 /* ListComponent.swift */; };
+		B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449EA201DAE9600D20C50 /* ListComponentTests.swift */; };
+		B02449EE201DB37500D20C50 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449ED201DB37500D20C50 /* ListTableViewController.swift */; };
 		B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407C2019A7F8002FFD5B /* ItemComponent.swift */; };
 		B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340822019A93E002FFD5B /* ItemComponentTests.swift */; };
 		B053408A2019AD05002FFD5B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340882019ACF1002FFD5B /* Color.swift */; };
@@ -34,6 +37,7 @@
 		B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEAC2018857D00AEF782 /* ViewRender.swift */; };
 		B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEB0201885DE00AEF782 /* Component.swift */; };
 		B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD2201D7C560063CA45 /* RectangleView.swift */; };
+		B0E24D83202C1F110034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D82202C1F110034E539 /* Hydra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,9 @@
 
 /* Begin PBXFileReference section */
 		B02449E4201D9B4700D20C50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		B02449E8201DAE8700D20C50 /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
+		B02449EA201DAE9600D20C50 /* ListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentTests.swift; sourceTree = "<group>"; };
+		B02449ED201DB37500D20C50 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
 		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05340882019ACF1002FFD5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -78,6 +85,7 @@
 		B0A9DEAC2018857D00AEF782 /* ViewRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRender.swift; sourceTree = "<group>"; };
 		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
+		B0E24D82202C1F110034E539 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = "tiny-core/Carthage/Build/iOS/Hydra.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E24D83202C1F110034E539 /* Hydra.framework in Frameworks */,
 				B05D4FCD1F1E528100929006 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +229,7 @@
 		B05D4FC91F1E523C00929006 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0E24D82202C1F110034E539 /* Hydra.framework */,
 				B05D4FCC1F1E528100929006 /* TinyCore.framework */,
 				B05D4FCA1F1E523C00929006 /* TinyCore.framework */,
 			);
@@ -260,6 +270,7 @@
 				B0C17DD2201D7C560063CA45 /* RectangleView.swift */,
 				B05340882019ACF1002FFD5B /* Color.swift */,
 				B05340822019A93E002FFD5B /* ItemComponentTests.swift */,
+				B02449EA201DAE9600D20C50 /* ListComponentTests.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -269,6 +280,8 @@
 			children = (
 				B0A9DEB0201885DE00AEF782 /* Component.swift */,
 				B053407C2019A7F8002FFD5B /* ItemComponent.swift */,
+				B02449E8201DAE8700D20C50 /* ListComponent.swift */,
+				B02449ED201DB37500D20C50 /* ListTableViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -296,6 +309,7 @@
 				B05D4ED21F1E0A8300929006 /* Headers */,
 				B05D4ED31F1E0A8300929006 /* Resources */,
 				B05D4FCF1F1E57DB00929006 /* Swiftlint */,
+				B02449EF201F289B00D20C50 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -386,6 +400,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B02449EF201F289B00D20C50 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/tiny-core/Carthage/Build/iOS/Hydra.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		B05D4FCF1F1E57DB00929006 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,6 +442,8 @@
 				B02449E5201D9B4700D20C50 /* View.swift in Sources */,
 				B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */,
 				B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */,
+				B02449EE201DB37500D20C50 /* ListTableViewController.swift in Sources */,
+				B02449E9201DAE8700D20C50 /* ListComponent.swift in Sources */,
 				B0A9DEA4201880FB00AEF782 /* ComponentNode.swift in Sources */,
 				B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */,
 				B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */,
@@ -426,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B05D4F511F1E0C8200929006 /* UICollectionViewExtensionsTests.swift in Sources */,
+				B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */,
 				B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */,
 				B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */,
 				B05D4F4F1F1E0C7800929006 /* NibCollectionViewCell.swift in Sources */,
@@ -572,7 +605,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -593,7 +629,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
