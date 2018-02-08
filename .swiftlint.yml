@@ -6,7 +6,6 @@ disabled_rules:
 excluded:
   - Carthage
   - Pods
-  - tiny-core
 variable_name:
   excluded:
     - id

@@ -37,14 +37,18 @@ extension ListComponent: ViewRender {
     public final func render() -> Promise<Void> {
      
         return Promise(in: .main) { fulfill, _, _ in
-            
-            self.tableViewController.renderables = self.renderables
         
-            self.tableViewController.tableView.reloadData()
-            
-            let result: Void = ()
-            
-            fulfill(result)
+            DispatchQueue.main.async {
+                
+                self.tableViewController.renderables = self.renderables
+                
+                self.tableViewController.tableView.reloadData()
+                
+                let result: Void = ()
+                
+                fulfill(result)
+                
+            }
                 
         }
         

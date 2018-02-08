@@ -9,12 +9,15 @@
 // MARK: - ListComponentTests
 
 import XCTest
+import Hydra
 
 @testable import TinyKit
 
 internal final class ListComponentTests: XCTestCase {
     
     internal final func testListComponent() {
+        
+        let promise = expectation(description: "Render a list component.")
         
         let listComponent = ListComponent()
         
@@ -52,12 +55,34 @@ internal final class ListComponentTests: XCTestCase {
         
         listComponent.addChild(blueItemComponent)
         
-//        listComponent.render()
-//        
-//        XCTAssertEqual(
-//            listComponent.tableView.numberOfSections,
-//            listComponent.childs.count
-//        )
+        listComponent
+            .render()
+            .then(in: .main) {
+
+                guard
+                    let tableView = listComponent.view as? UITableView
+                else {
+
+                    XCTFail("The view of list component must be a table view.")
+
+                    return
+
+                }
+
+                XCTAssertEqual(
+                    tableView.numberOfSections,
+                    Int(listComponent.childs.count)
+                )
+
+            }
+            .catch(in: .main) { XCTFail("\($0)") }
+            .always(in: .main) { promise.fulfill() }
+
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
         
     }
     
