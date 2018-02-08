@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B025126B202C612800FDDCED /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B025126A202C612800FDDCED /* TinyKit.framework */; };
+		B025126C202C612800FDDCED /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B025126A202C612800FDDCED /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
-		B05D50251F1EE8E500929006 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D50241F1EE8E500929006 /* TinyKit.framework */; };
-		B05D50261F1EE8E500929006 /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B05D50241F1EE8E500929006 /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B05D502B1F1EE9AA00929006 /* EmojiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */; };
 		B05D502D1F1EE9F700929006 /* EmojiComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */; };
 		B05D502F1F1EEA1A00929006 /* EmojiComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */; };
@@ -19,13 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B05D50271F1EE8E500929006 /* Embed Frameworks */ = {
+		B025126D202C612800FDDCED /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B05D50261F1EE8E500929006 /* TinyKit.framework in Embed Frameworks */,
+				B025126C202C612800FDDCED /* TinyKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,12 +33,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B025126A202C612800FDDCED /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D4FFF1F1EE79D00929006 /* TinyKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D50151F1EE7D300929006 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B05D50181F1EE7D300929006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B05D501B1F1EE7D400929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B05D50241F1EE8E500929006 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiListTableViewController.swift; sourceTree = "<group>"; };
 		B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComponentView.swift; sourceTree = "<group>"; };
 		B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmojiComponentView.xib; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D50251F1EE8E500929006 /* TinyKit.framework in Frameworks */,
+				B025126B202C612800FDDCED /* TinyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +60,7 @@
 		B05D4FF61F1EE79D00929006 = {
 			isa = PBXGroup;
 			children = (
-				B05D50281F1EE94000929006 /* Frameworks */,
+				B025126A202C612800FDDCED /* TinyKit.framework */,
 				B05D50141F1EE7D300929006 /* Sources */,
 				B05D50001F1EE79D00929006 /* Products */,
 			);
@@ -94,14 +94,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B05D50281F1EE94000929006 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B05D50241F1EE8E500929006 /* TinyKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B05D50291F1EE99D00929006 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +115,7 @@
 				B05D4FFB1F1EE79D00929006 /* Sources */,
 				B05D4FFC1F1EE79D00929006 /* Frameworks */,
 				B05D4FFD1F1EE79D00929006 /* Resources */,
-				B05D50271F1EE8E500929006 /* Embed Frameworks */,
+				B025126D202C612800FDDCED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

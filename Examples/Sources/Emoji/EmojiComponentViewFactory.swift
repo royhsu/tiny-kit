@@ -8,29 +8,30 @@
 
 // MARK: - EmojiComponentViewFactory
 
-import UIKit
-import TinyKit
+//import UIKit
+//import TinyKit
+//
+//public final class EmojiComponentViewFactory: ComponentViewFactory {
+//
+//    // MARK: ComponentView
+//
+//    public typealias ComponentView = EmojiComponentView
+//
+//    // MARK: ComponentViewFactory
+//
+//    public static func makeComponentView() throws -> ComponentView {
+//
+//        guard
+//            let componentView = UIView.load(type: ComponentView.self, from: .main)
+//            else {
+//
+//                fatalError("Cannot load the target ComponentView from the selected bundle.")
+//
+//        }
+//
+//        return componentView
+//
+//    }
+//
+//}
 
-public final class EmojiComponentViewFactory: ComponentViewFactory {
-
-    // MARK: ComponentView
-
-    public typealias ComponentView = EmojiComponentView
-
-    // MARK: ComponentViewFactory
-
-    public static func makeComponentView() throws -> ComponentView {
-
-        guard
-            let componentView = UIView.load(type: ComponentView.self, from: .main)
-            else {
-
-                fatalError("Cannot load the target ComponentView from the selected bundle.")
-
-        }
-
-        return componentView
-
-    }
-
-}

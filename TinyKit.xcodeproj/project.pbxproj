@@ -26,7 +26,6 @@
 		B05D4F541F1E0C9700929006 /* NoNibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F101F1E0AF700929006 /* NoNibTableViewCell.swift */; };
 		B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F111F1E0AF700929006 /* UITableViewExtensionsTests.swift */; };
 		B05D4F591F1E0CA100929006 /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F171F1E0AF700929006 /* UIViewExtensionsTests.swift */; };
-		B0A0B047202C53C1003FC1E1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A0B043202C53B1003FC1E1 /* Info.plist */; };
 		B0A0B049202C5478003FC1E1 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A0B044202C53B1003FC1E1 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0A9DEA02018806200AEF782 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DE9F2018806200AEF782 /* Node.swift */; };
 		B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA12018809200AEF782 /* AnyNode.swift */; };
@@ -72,6 +71,8 @@
 		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
 		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05340882019ACF1002FFD5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		B0554CC7202C608B00F0B15B /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0554CC8202C608B00F0B15B /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
 		B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Cell.swift"; sourceTree = "<group>"; };
 		B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
@@ -95,9 +96,7 @@
 		B0A9DEAC2018857D00AEF782 /* ViewRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRender.swift; sourceTree = "<group>"; };
 		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
-		B0C6ECA2202C570F00AFEE54 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TinyKit.framework; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKit.framework"; sourceTree = "<absolute>"; };
 		B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
-		B0C6ECAC202C58CC00AFEE54 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TinyKitTests.xctest; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKitTests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +125,8 @@
 				B05D4EEF1F1E0AF100929006 /* Sources */,
 				B05D4F031F1E0AF700929006 /* Tests */,
 				B0C6ECA4202C575D00AFEE54 /* Frameworks */,
+				B0554CC7202C608B00F0B15B /* TinyKit.framework */,
+				B0554CC8202C608B00F0B15B /* TinyKitTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -300,7 +301,7 @@
 			);
 			name = TinyKit;
 			productName = TinyKit;
-			productReference = B0C6ECA2202C570F00AFEE54 /* TinyKit.framework */;
+			productReference = B0554CC7202C608B00F0B15B /* TinyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B05D4EDD1F1E0A8300929006 /* TinyKitTests */ = {
@@ -319,7 +320,7 @@
 			);
 			name = TinyKitTests;
 			productName = TinyKitTests;
-			productReference = B0C6ECAC202C58CC00AFEE54 /* TinyKitTests.xctest */;
+			productReference = B0554CC8202C608B00F0B15B /* TinyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -369,7 +370,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A0B047202C53C1003FC1E1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

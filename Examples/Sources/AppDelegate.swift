@@ -11,28 +11,30 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public final class AppDelegate: UIResponder {
 
-    // MARK: Property
+    public final let window = UIWindow(frame: UIScreen.main.bounds)
 
-    var window: UIWindow?
+}
 
-    // MARK: UIApplicationDelegate
+// MARK: UIApplicationDelegate
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+extension AppDelegate: UIApplicationDelegate {
+
+    public final func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+    )
+    -> Bool {
 
         let navigationController = UINavigationController(
-            rootViewController: EmojiListTableViewController(style: .plain)
+            rootViewController: UITableViewController(style: .plain)
         )
-
-        let window = UIWindow(frame: UIScreen.main.bounds)
 
         window.rootViewController = navigationController
 
         window.makeKeyAndVisible()
-
-        self.window = window
-
+        
         return true
 
     }

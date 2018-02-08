@@ -9,12 +9,13 @@
 // MARK: - EmojiComponentView
 
 import UIKit
-import TinyCore
+//import TinyCore
 
-public final class EmojiComponentView: UIView, Identifiable {
+//public final class EmojiComponentView: UIView, Identifiable {
+//
+//    // MARK: Property
+//
+//    @IBOutlet public fileprivate(set) weak var emojiLabel: UILabel!
+//
+//}
 
-    // MARK: Property
-
-    @IBOutlet public fileprivate(set) weak var emojiLabel: UILabel!
-
-}
