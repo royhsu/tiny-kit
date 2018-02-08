@@ -28,7 +28,7 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         let navigationController = UINavigationController(
-            rootViewController: UITableViewController(style: .plain)
+            rootViewController: EmojiListViewController()
         )
 
         window.rootViewController = navigationController

@@ -14,15 +14,15 @@ public final class ItemComponent<
 >: ComponentNode, Component {
     
     /// The underlying view contains its type information.
-    private final let _view: V
+    public final let itemView: V
     
-    /// Changing the model will also automatically reflect to the bond view.
+    /// Changing the model will also automatically reflect to the bond item view.
     public final var model: M {
         
         didSet {
             
             binding(
-                _view,
+                itemView,
                 model
             )
             
@@ -40,18 +40,18 @@ public final class ItemComponent<
         binding: @escaping Binding
     ) {
         
-        self._view = view
+        self.itemView = view
         
         self.model = model
         
         self.binding = binding
         
+        self.preferredContentSize = itemView.bounds.size
+        
         super.init()
         
-        preferredContentSize = _view.bounds.size
-        
         binding(
-            _view,
+            itemView,
             model
         )
         
@@ -59,22 +59,8 @@ public final class ItemComponent<
     
     // MARK: ViewRenderable
     
-    public final var view: View { return _view }
+    public final var view: View { return itemView }
     
-    public final var preferredContentSize: CGSize {
-    
-        get { return _view.bounds.size }
-    
-        set {
-    
-            var preferredFrame = _view.frame
-    
-            preferredFrame.size = newValue
-    
-            _view.frame = preferredFrame
-    
-        }
-    
-    }
+    public final var preferredContentSize: CGSize
 
 }

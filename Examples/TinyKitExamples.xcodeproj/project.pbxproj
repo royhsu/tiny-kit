@@ -12,10 +12,11 @@
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
-		B05D502B1F1EE9AA00929006 /* EmojiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */; };
-		B05D502D1F1EE9F700929006 /* EmojiComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */; };
-		B05D502F1F1EEA1A00929006 /* EmojiComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */; };
-		B05D50311F1EEA8F00929006 /* EmojiComponentViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50301F1EEA8F00929006 /* EmojiComponentViewFactory.swift */; };
+		B05D502B1F1EE9AA00929006 /* EmojiListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502A1F1EE9AA00929006 /* EmojiListViewController.swift */; };
+		B05D502D1F1EE9F700929006 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502C1F1EE9F700929006 /* EmojiView.swift */; };
+		B05D502F1F1EEA1A00929006 /* EmojiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D502E1F1EEA1A00929006 /* EmojiView.xib */; };
+		B0A403C7202C663D00D2A284 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A403C6202C663D00D2A284 /* TinyCore.framework */; };
+		B0A403C8202C663D00D2A284 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0A403C6202C663D00D2A284 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B025126C202C612800FDDCED /* TinyKit.framework in Embed Frameworks */,
+				B0A403C8202C663D00D2A284 /* TinyCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,10 +41,10 @@
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B05D50181F1EE7D300929006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B05D501B1F1EE7D400929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiListTableViewController.swift; sourceTree = "<group>"; };
-		B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComponentView.swift; sourceTree = "<group>"; };
-		B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmojiComponentView.xib; sourceTree = "<group>"; };
-		B05D50301F1EEA8F00929006 /* EmojiComponentViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComponentViewFactory.swift; sourceTree = "<group>"; };
+		B05D502A1F1EE9AA00929006 /* EmojiListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiListViewController.swift; sourceTree = "<group>"; };
+		B05D502C1F1EE9F700929006 /* EmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
+		B05D502E1F1EEA1A00929006 /* EmojiView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmojiView.xib; sourceTree = "<group>"; };
+		B0A403C6202C663D00D2A284 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B025126B202C612800FDDCED /* TinyKit.framework in Frameworks */,
+				B0A403C7202C663D00D2A284 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 		B05D4FF61F1EE79D00929006 = {
 			isa = PBXGroup;
 			children = (
+				B0A403C6202C663D00D2A284 /* TinyCore.framework */,
 				B025126A202C612800FDDCED /* TinyKit.framework */,
 				B05D50141F1EE7D300929006 /* Sources */,
 				B05D50001F1EE79D00929006 /* Products */,
@@ -97,10 +101,9 @@
 		B05D50291F1EE99D00929006 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
-				B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */,
-				B05D50301F1EEA8F00929006 /* EmojiComponentViewFactory.swift */,
-				B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */,
-				B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */,
+				B05D502A1F1EE9AA00929006 /* EmojiListViewController.swift */,
+				B05D502C1F1EE9F700929006 /* EmojiView.swift */,
+				B05D502E1F1EEA1A00929006 /* EmojiView.xib */,
 			);
 			path = Emoji;
 			sourceTree = "<group>";
@@ -116,6 +119,7 @@
 				B05D4FFC1F1EE79D00929006 /* Frameworks */,
 				B05D4FFD1F1EE79D00929006 /* Resources */,
 				B025126D202C612800FDDCED /* Embed Frameworks */,
+				B0A403C5202C656D00D2A284 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -167,7 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D502F1F1EEA1A00929006 /* EmojiComponentView.xib in Resources */,
+				B05D502F1F1EEA1A00929006 /* EmojiView.xib in Resources */,
 				B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */,
 				B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -175,15 +179,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B0A403C5202C656D00D2A284 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B05D4FFB1F1EE79D00929006 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D50311F1EEA8F00929006 /* EmojiComponentViewFactory.swift in Sources */,
-				B05D502D1F1EE9F700929006 /* EmojiComponentView.swift in Sources */,
+				B05D502D1F1EE9F700929006 /* EmojiView.swift in Sources */,
 				B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */,
-				B05D502B1F1EE9AA00929006 /* EmojiListTableViewController.swift in Sources */,
+				B05D502B1F1EE9AA00929006 /* EmojiListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +335,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5CE6946X84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitExamples;
@@ -327,6 +353,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5CE6946X84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitExamples;

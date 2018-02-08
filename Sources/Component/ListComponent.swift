@@ -18,6 +18,8 @@ public final class ListComponent: ComponentNode, Component {
 
     public final var preferredContentSize: CGSize { return tableViewController.tableView.contentSize }
     
+    public override init() { super.init() }
+    
 }
 
 // MARK: - ViewRender
