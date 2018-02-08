@@ -77,6 +77,8 @@ extension ListComponent: ViewRender {
                 
                 self.tableView.reloadData()
                 
+                self.tableView.layoutIfNeeded()
+                
                 let result: Void = ()
                 
                 fulfill(result)

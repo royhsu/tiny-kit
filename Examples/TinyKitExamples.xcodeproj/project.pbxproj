@@ -12,7 +12,7 @@
 		B025126B202C612800FDDCED /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B025126A202C612800FDDCED /* TinyKit.framework */; };
 		B025126C202C612800FDDCED /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B025126A202C612800FDDCED /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B02F20C1202C8508001BC665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C0202C8508001BC665 /* Post.swift */; };
-		B02F20C3202C8563001BC665 /* Component+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C2202C8563001BC665 /* Component+Post.swift */; };
+		B02F20C3202C8563001BC665 /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C2202C8563001BC665 /* PostComponent.swift */; };
 		B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C4202C8714001BC665 /* RootViewController.swift */; };
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
@@ -44,7 +44,7 @@
 		B00657ED202C8352000E3E98 /* PostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
 		B025126A202C612800FDDCED /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02F20C0202C8508001BC665 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		B02F20C2202C8563001BC665 /* Component+Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Component+Post.swift"; sourceTree = "<group>"; };
+		B02F20C2202C8563001BC665 /* PostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
 		B02F20C4202C8714001BC665 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B05D4FFF1F1EE79D00929006 /* TinyKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D50151F1EE7D300929006 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				B00657EB202C832B000E3E98 /* PostView.swift */,
 				B00657ED202C8352000E3E98 /* PostView.xib */,
 				B02F20C0202C8508001BC665 /* Post.swift */,
-				B02F20C2202C8563001BC665 /* Component+Post.swift */,
+				B02F20C2202C8563001BC665 /* PostComponent.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 				B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */,
 				B05D502B1F1EE9AA00929006 /* EmojiListViewController.swift in Sources */,
 				B02F20C1202C8508001BC665 /* Post.swift in Sources */,
-				B02F20C3202C8563001BC665 /* Component+Post.swift in Sources */,
+				B02F20C3202C8563001BC665 /* PostComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

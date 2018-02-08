@@ -1,5 +1,5 @@
 //
-//  Component+Post.swift
+//  PostComponent.swift
 //  TinyKitExamples
 //
 //  Created by Roy Hsu on 08/02/2018.
