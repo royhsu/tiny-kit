@@ -77,7 +77,6 @@ internal final class ListComponentTests: XCTestCase {
             .catch(in: .main) { XCTFail("\($0)") }
             .always(in: .main) { promise.fulfill() }
 
-        
         wait(
             for: [ promise ],
             timeout: 10.0

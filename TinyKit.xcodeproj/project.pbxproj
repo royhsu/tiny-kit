@@ -173,10 +173,10 @@
 			children = (
 				B0A9DEAE2018859000AEF782 /* Component */,
 				B0A9DEA5201881F900AEF782 /* Node */,
-				B05D4F281F1E0B0E00929006 /* Supporting Files */,
 				B05D4F061F1E0AF700929006 /* UICollectionView */,
 				B05D4F0D1F1E0AF700929006 /* UITableView */,
 				B05D4F161F1E0AF700929006 /* UIView */,
+				B05D4F041F1E0AF700929006 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -209,14 +209,6 @@
 				B05D4F171F1E0AF700929006 /* UIViewExtensionsTests.swift */,
 			);
 			path = UIView;
-			sourceTree = "<group>";
-		};
-		B05D4F281F1E0B0E00929006 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4F041F1E0AF700929006 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		B0A9DE9E2018803700AEF782 /* Node */ = {
