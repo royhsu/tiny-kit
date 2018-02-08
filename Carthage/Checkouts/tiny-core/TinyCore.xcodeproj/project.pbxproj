@@ -21,6 +21,31 @@
 		B05D4FBB1F1E10C200929006 /* Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4FB81F1E10C200929006 /* Unique.swift */; };
 		B05D4FBD1F1E10C200929006 /* TinyCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B05D4FBA1F1E10C200929006 /* TinyCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B061889F1F34999E003B66F7 /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061889E1F349979003B66F7 /* ID.swift */; };
+		B0A0B011202C2E84003FC1E1 /* Promise+Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0AFFA202C2E84003FC1E1 /* Promise+Retry.swift */; };
+		B0A0B012202C2E84003FC1E1 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0AFFB202C2E84003FC1E1 /* Commons.swift */; };
+		B0A0B013202C2E84003FC1E1 /* Promise+Pass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0AFFC202C2E84003FC1E1 /* Promise+Pass.swift */; };
+		B0A0B014202C2E84003FC1E1 /* Promise+Reduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0AFFD202C2E84003FC1E1 /* Promise+Reduce.swift */; };
+		B0A0B015202C2E84003FC1E1 /* Promise+Recover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0AFFE202C2E84003FC1E1 /* Promise+Recover.swift */; };
+		B0A0B016202C2E84003FC1E1 /* Promise+Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0AFFF202C2E84003FC1E1 /* Promise+Cancel.swift */; };
+		B0A0B017202C2E84003FC1E1 /* Promise+Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B000202C2E84003FC1E1 /* Promise+Catch.swift */; };
+		B0A0B018202C2E84003FC1E1 /* Promise+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B001202C2E84003FC1E1 /* Promise+Async.swift */; };
+		B0A0B019202C2E84003FC1E1 /* Promise+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B002202C2E84003FC1E1 /* Promise+Any.swift */; };
+		B0A0B01A202C2E84003FC1E1 /* Promise+Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B003202C2E84003FC1E1 /* Promise+Await.swift */; };
+		B0A0B01B202C2E84003FC1E1 /* DispatchTimerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B004202C2E84003FC1E1 /* DispatchTimerWrapper.swift */; };
+		B0A0B01C202C2E84003FC1E1 /* Promise+Defer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B005202C2E84003FC1E1 /* Promise+Defer.swift */; };
+		B0A0B01D202C2E84003FC1E1 /* Promise+Always.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B006202C2E84003FC1E1 /* Promise+Always.swift */; };
+		B0A0B01E202C2E84003FC1E1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B007202C2E84003FC1E1 /* Context.swift */; };
+		B0A0B01F202C2E84003FC1E1 /* Promise+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B008202C2E84003FC1E1 /* Promise+Observer.swift */; };
+		B0A0B020202C2E84003FC1E1 /* Promise+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B009202C2E84003FC1E1 /* Promise+State.swift */; };
+		B0A0B021202C2E84003FC1E1 /* Promise+Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B00A202C2E84003FC1E1 /* Promise+Timeout.swift */; };
+		B0A0B022202C2E84003FC1E1 /* Promise+All.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B00B202C2E84003FC1E1 /* Promise+All.swift */; };
+		B0A0B023202C2E84003FC1E1 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B00C202C2E84003FC1E1 /* Promise.swift */; };
+		B0A0B024202C2E84003FC1E1 /* Promise+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B00D202C2E84003FC1E1 /* Promise+Map.swift */; };
+		B0A0B025202C2E84003FC1E1 /* Promise+Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B00E202C2E84003FC1E1 /* Promise+Zip.swift */; };
+		B0A0B026202C2E84003FC1E1 /* Promise+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B00F202C2E84003FC1E1 /* Promise+Validate.swift */; };
+		B0A0B027202C2E84003FC1E1 /* Promise+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B010202C2E84003FC1E1 /* Promise+Then.swift */; };
+		B0A0B02F202C3B9B003FC1E1 /* HTTPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B02D202C3B94003FC1E1 /* HTTPResult.swift */; };
+		B0A0B034202C3D5A003FC1E1 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0B033202C3D5A003FC1E1 /* HTTPError.swift */; };
 		B0A9DE86201724FE00AEF782 /* EventManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DE85201724FE00AEF782 /* EventManagerTests.swift */; };
 		B0A9DE882017255500AEF782 /* TouchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DE872017255500AEF782 /* TouchEvent.swift */; };
 		B0A9DE8A2017259300AEF782 /* StubEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DE892017259300AEF782 /* StubEventListener.swift */; };
@@ -34,11 +59,7 @@
 		B0AFDC322015BD2800D8DEF6 /* AnyID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC312015BD2800D8DEF6 /* AnyID.swift */; };
 		B0AFDC3E2015E00E00D8DEF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC3A2015DFDD00D8DEF6 /* User.swift */; };
 		B0AFDC3F2015E01300D8DEF6 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC3C2015DFE900D8DEF6 /* UserTests.swift */; };
-		B0AFDC422016216600D8DEF6 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC412016216600D8DEF6 /* Future.swift */; };
-		B0AFDC792016414000D8DEF6 /* FutureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC782016414000D8DEF6 /* FutureContext.swift */; };
 		B0AFDC8A201703DC00D8DEF6 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC89201703DC00D8DEF6 /* URLSessionHTTPClient.swift */; };
-		B0AFDC8C201704D800D8DEF6 /* Context+FutureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AFDC8B201704D800D8DEF6 /* Context+FutureContext.swift */; };
-		B0AFDC8F20170E9300D8DEF6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AFDC8E20170E9200D8DEF6 /* Hydra.framework */; };
 		B0DB58C81F989B9200DAD605 /* HTTPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DB58C71F989B9200DAD605 /* HTTPRouter.swift */; };
 		B0DB58CC1F989C1400DAD605 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DB58CB1F989C1400DAD605 /* HTTPClient.swift */; };
 		B0DB58E81F98AF3700DAD605 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DB58E61F98AECB00DAD605 /* JSON.swift */; };
@@ -72,6 +93,31 @@
 		B05D4FBA1F1E10C200929006 /* TinyCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyCore.h; sourceTree = "<group>"; };
 		B05D4FC21F1E10D100929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B061889E1F349979003B66F7 /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
+		B0A0AFFA202C2E84003FC1E1 /* Promise+Retry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Retry.swift"; sourceTree = "<group>"; };
+		B0A0AFFB202C2E84003FC1E1 /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
+		B0A0AFFC202C2E84003FC1E1 /* Promise+Pass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Pass.swift"; sourceTree = "<group>"; };
+		B0A0AFFD202C2E84003FC1E1 /* Promise+Reduce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Reduce.swift"; sourceTree = "<group>"; };
+		B0A0AFFE202C2E84003FC1E1 /* Promise+Recover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Recover.swift"; sourceTree = "<group>"; };
+		B0A0AFFF202C2E84003FC1E1 /* Promise+Cancel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Cancel.swift"; sourceTree = "<group>"; };
+		B0A0B000202C2E84003FC1E1 /* Promise+Catch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Catch.swift"; sourceTree = "<group>"; };
+		B0A0B001202C2E84003FC1E1 /* Promise+Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Async.swift"; sourceTree = "<group>"; };
+		B0A0B002202C2E84003FC1E1 /* Promise+Any.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Any.swift"; sourceTree = "<group>"; };
+		B0A0B003202C2E84003FC1E1 /* Promise+Await.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Await.swift"; sourceTree = "<group>"; };
+		B0A0B004202C2E84003FC1E1 /* DispatchTimerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTimerWrapper.swift; sourceTree = "<group>"; };
+		B0A0B005202C2E84003FC1E1 /* Promise+Defer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Defer.swift"; sourceTree = "<group>"; };
+		B0A0B006202C2E84003FC1E1 /* Promise+Always.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Always.swift"; sourceTree = "<group>"; };
+		B0A0B007202C2E84003FC1E1 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		B0A0B008202C2E84003FC1E1 /* Promise+Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Observer.swift"; sourceTree = "<group>"; };
+		B0A0B009202C2E84003FC1E1 /* Promise+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+State.swift"; sourceTree = "<group>"; };
+		B0A0B00A202C2E84003FC1E1 /* Promise+Timeout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Timeout.swift"; sourceTree = "<group>"; };
+		B0A0B00B202C2E84003FC1E1 /* Promise+All.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+All.swift"; sourceTree = "<group>"; };
+		B0A0B00C202C2E84003FC1E1 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		B0A0B00D202C2E84003FC1E1 /* Promise+Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Map.swift"; sourceTree = "<group>"; };
+		B0A0B00E202C2E84003FC1E1 /* Promise+Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Zip.swift"; sourceTree = "<group>"; };
+		B0A0B00F202C2E84003FC1E1 /* Promise+Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Validate.swift"; sourceTree = "<group>"; };
+		B0A0B010202C2E84003FC1E1 /* Promise+Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Then.swift"; sourceTree = "<group>"; };
+		B0A0B02D202C3B94003FC1E1 /* HTTPResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResult.swift; sourceTree = "<group>"; };
+		B0A0B033202C3D5A003FC1E1 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		B0A9DE85201724FE00AEF782 /* EventManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManagerTests.swift; sourceTree = "<group>"; };
 		B0A9DE872017255500AEF782 /* TouchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchEvent.swift; sourceTree = "<group>"; };
 		B0A9DE892017259300AEF782 /* StubEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventListener.swift; sourceTree = "<group>"; };
@@ -85,10 +131,7 @@
 		B0AFDC312015BD2800D8DEF6 /* AnyID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyID.swift; sourceTree = "<group>"; };
 		B0AFDC3A2015DFDD00D8DEF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B0AFDC3C2015DFE900D8DEF6 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		B0AFDC412016216600D8DEF6 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
-		B0AFDC782016414000D8DEF6 /* FutureContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureContext.swift; sourceTree = "<group>"; };
 		B0AFDC89201703DC00D8DEF6 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
-		B0AFDC8B201704D800D8DEF6 /* Context+FutureContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Context+FutureContext.swift"; sourceTree = "<group>"; };
 		B0AFDC8E20170E9200D8DEF6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B0DB58C71F989B9200DAD605 /* HTTPRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRouter.swift; sourceTree = "<group>"; };
 		B0DB58CB1F989C1400DAD605 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -100,7 +143,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0AFDC8F20170E9300D8DEF6 /* Hydra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,13 +215,13 @@
 		B05D4FB61F1E10C200929006 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B0A9DE8B2017315800AEF782 /* State */,
-				B00C35632017223700531F72 /* Event */,
 				B0577E731F98EBEF00B1578E /* Coder */,
-				B0AFDC402016215A00D8DEF6 /* Future */,
+				B00C35632017223700531F72 /* Event */,
 				B0DB58C61F989B7A00DAD605 /* HTTP */,
 				B03BE8761F68D53D002E076A /* Int+Extensions */,
 				B0DB58E51F98AEC200DAD605 /* JSON */,
+				B0A0AFF8202C2E6D003FC1E1 /* Library */,
+				B0A9DE8B2017315800AEF782 /* State */,
 				B05D4FB71F1E10C200929006 /* Unique */,
 				B0577E781F98F0A000B1578E /* Utilities */,
 				B05D4FC61F1E115600929006 /* Supporting Files */,
@@ -236,6 +278,44 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B0A0AFF8202C2E6D003FC1E1 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B0A0AFF9202C2E84003FC1E1 /* Hydra */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		B0A0AFF9202C2E84003FC1E1 /* Hydra */ = {
+			isa = PBXGroup;
+			children = (
+				B0A0AFFA202C2E84003FC1E1 /* Promise+Retry.swift */,
+				B0A0AFFB202C2E84003FC1E1 /* Commons.swift */,
+				B0A0AFFC202C2E84003FC1E1 /* Promise+Pass.swift */,
+				B0A0AFFD202C2E84003FC1E1 /* Promise+Reduce.swift */,
+				B0A0AFFE202C2E84003FC1E1 /* Promise+Recover.swift */,
+				B0A0AFFF202C2E84003FC1E1 /* Promise+Cancel.swift */,
+				B0A0B000202C2E84003FC1E1 /* Promise+Catch.swift */,
+				B0A0B001202C2E84003FC1E1 /* Promise+Async.swift */,
+				B0A0B002202C2E84003FC1E1 /* Promise+Any.swift */,
+				B0A0B003202C2E84003FC1E1 /* Promise+Await.swift */,
+				B0A0B004202C2E84003FC1E1 /* DispatchTimerWrapper.swift */,
+				B0A0B005202C2E84003FC1E1 /* Promise+Defer.swift */,
+				B0A0B006202C2E84003FC1E1 /* Promise+Always.swift */,
+				B0A0B007202C2E84003FC1E1 /* Context.swift */,
+				B0A0B008202C2E84003FC1E1 /* Promise+Observer.swift */,
+				B0A0B009202C2E84003FC1E1 /* Promise+State.swift */,
+				B0A0B00A202C2E84003FC1E1 /* Promise+Timeout.swift */,
+				B0A0B00B202C2E84003FC1E1 /* Promise+All.swift */,
+				B0A0B00C202C2E84003FC1E1 /* Promise.swift */,
+				B0A0B00D202C2E84003FC1E1 /* Promise+Map.swift */,
+				B0A0B00E202C2E84003FC1E1 /* Promise+Zip.swift */,
+				B0A0B00F202C2E84003FC1E1 /* Promise+Validate.swift */,
+				B0A0B010202C2E84003FC1E1 /* Promise+Then.swift */,
+			);
+			path = Hydra;
+			sourceTree = "<group>";
+		};
 		B0A9DE84201724E600AEF782 /* Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,16 +347,6 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		B0AFDC402016215A00D8DEF6 /* Future */ = {
-			isa = PBXGroup;
-			children = (
-				B0AFDC412016216600D8DEF6 /* Future.swift */,
-				B0AFDC782016414000D8DEF6 /* FutureContext.swift */,
-				B0AFDC8B201704D800D8DEF6 /* Context+FutureContext.swift */,
-			);
-			path = Future;
-			sourceTree = "<group>";
-		};
 		B0AFDC8D20170E9200D8DEF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,7 +359,9 @@
 			isa = PBXGroup;
 			children = (
 				B0DB58C71F989B9200DAD605 /* HTTPRouter.swift */,
+				B0A0B02D202C3B94003FC1E1 /* HTTPResult.swift */,
 				B0DB58CB1F989C1400DAD605 /* HTTPClient.swift */,
+				B0A0B033202C3D5A003FC1E1 /* HTTPError.swift */,
 				B0AFDC89201703DC00D8DEF6 /* URLSessionHTTPClient.swift */,
 			);
 			path = HTTP;
@@ -326,7 +398,6 @@
 				B05D4F611F1E0D9D00929006 /* Headers */,
 				B05D4F621F1E0D9D00929006 /* Resources */,
 				B0577E6E1F98E40E00B1578E /* Swiftlint */,
-				B0AFDC9020170ED300D8DEF6 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -429,22 +500,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		B0AFDC9020170ED300D8DEF6 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -454,26 +509,48 @@
 			files = (
 				B0DB58C81F989B9200DAD605 /* HTTPRouter.swift in Sources */,
 				B0577E7A1F98F0B300B1578E /* Result.swift in Sources */,
+				B0A0B019202C2E84003FC1E1 /* Promise+Any.swift in Sources */,
+				B0A0B018202C2E84003FC1E1 /* Promise+Async.swift in Sources */,
 				B0577E771F98EC7600B1578E /* PropertyListDecoder+ModelDecoder.swift in Sources */,
+				B0A0B027202C2E84003FC1E1 /* Promise+Then.swift in Sources */,
 				B0A9DE952017316800AEF782 /* StateMachine.swift in Sources */,
+				B0A0B012202C2E84003FC1E1 /* Commons.swift in Sources */,
+				B0A0B021202C2E84003FC1E1 /* Promise+Timeout.swift in Sources */,
+				B0A0B017202C2E84003FC1E1 /* Promise+Catch.swift in Sources */,
 				B00C35672017224600531F72 /* EventManager.swift in Sources */,
 				B0A9DE932017316800AEF782 /* State.swift in Sources */,
-				B0AFDC422016216600D8DEF6 /* Future.swift in Sources */,
+				B0A0B01D202C2E84003FC1E1 /* Promise+Always.swift in Sources */,
 				B0AFDC322015BD2800D8DEF6 /* AnyID.swift in Sources */,
-				B0AFDC8C201704D800D8DEF6 /* Context+FutureContext.swift in Sources */,
-				B0AFDC792016414000D8DEF6 /* FutureContext.swift in Sources */,
+				B0A0B014202C2E84003FC1E1 /* Promise+Reduce.swift in Sources */,
+				B0A0B01A202C2E84003FC1E1 /* Promise+Await.swift in Sources */,
+				B0A0B016202C2E84003FC1E1 /* Promise+Cancel.swift in Sources */,
 				B0A9DE922017316800AEF782 /* StateMachineError.swift in Sources */,
 				B0A9DE942017316800AEF782 /* StateMachineEvent.swift in Sources */,
+				B0A0B034202C3D5A003FC1E1 /* HTTPError.swift in Sources */,
 				B0AFDC8A201703DC00D8DEF6 /* URLSessionHTTPClient.swift in Sources */,
+				B0A0B023202C2E84003FC1E1 /* Promise.swift in Sources */,
 				B0DB58CC1F989C1400DAD605 /* HTTPClient.swift in Sources */,
 				B061889F1F34999E003B66F7 /* ID.swift in Sources */,
+				B0A0B015202C2E84003FC1E1 /* Promise+Recover.swift in Sources */,
+				B0A0B011202C2E84003FC1E1 /* Promise+Retry.swift in Sources */,
 				B05D4FBB1F1E10C200929006 /* Unique.swift in Sources */,
 				B03F39EA1F988DB300F7DA44 /* Int+RandomNumber.swift in Sources */,
+				B0A0B026202C2E84003FC1E1 /* Promise+Validate.swift in Sources */,
 				B00C35682017224600531F72 /* Event.swift in Sources */,
+				B0A0B02F202C3B9B003FC1E1 /* HTTPResult.swift in Sources */,
 				B0577E721F98EB2F00B1578E /* ModelDecoder.swift in Sources */,
 				B0577E751F98EC1400B1578E /* JSONDecoder+ModelDecoder.swift in Sources */,
+				B0A0B022202C2E84003FC1E1 /* Promise+All.swift in Sources */,
 				B00C35692017224600531F72 /* EventEmitter.swift in Sources */,
+				B0A0B020202C2E84003FC1E1 /* Promise+State.swift in Sources */,
+				B0A0B01F202C2E84003FC1E1 /* Promise+Observer.swift in Sources */,
+				B0A0B025202C2E84003FC1E1 /* Promise+Zip.swift in Sources */,
+				B0A0B01C202C2E84003FC1E1 /* Promise+Defer.swift in Sources */,
 				B0DB58E81F98AF3700DAD605 /* JSON.swift in Sources */,
+				B0A0B024202C2E84003FC1E1 /* Promise+Map.swift in Sources */,
+				B0A0B01E202C2E84003FC1E1 /* Context.swift in Sources */,
+				B0A0B013202C2E84003FC1E1 /* Promise+Pass.swift in Sources */,
+				B0A0B01B202C2E84003FC1E1 /* DispatchTimerWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,10 +704,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -651,10 +725,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

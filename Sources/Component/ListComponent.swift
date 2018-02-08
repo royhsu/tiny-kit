@@ -22,7 +22,7 @@ public final class ListComponent: ComponentNode, Component {
 
 // MARK: - ViewRender
 
-import Hydra
+import TinyCore
 
 extension ListComponent: ViewRender {
     

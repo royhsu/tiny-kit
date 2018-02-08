@@ -11,10 +11,10 @@
 public protocol HTTPClient {
 
     func data(
-        with request: URLRequest,
-        in context: FutureContext
+        in context: Context,
+        with request: URLRequest
     )
-    -> Future<Data>
+    -> Promise<HTTPResult>
 
 }
 
@@ -23,22 +23,22 @@ public protocol HTTPClient {
 public extension HTTPClient {
 
     public func model<D: Decodable>(
+        in context: Context,
         _ type: D.Type,
         with request: URLRequest,
-        in context: FutureContext,
         decoder: ModelDecoder
     )
-    -> Future<D> {
+    -> Promise<D> {
 
         return self.data(
-            with: request,
-            in: context
+            in: context,
+            with: request
         )
-        .then(in: context) { data in
+        .then(in: context) { result -> D in
 
             let object = try decoder.decode(
                 type,
-                from: data
+                from: result.data
             )
 
             return object

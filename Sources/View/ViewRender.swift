@@ -8,7 +8,7 @@
 
 // MARK: - ViewRender
 
-import Hydra
+import TinyCore
 
 public protocol ViewRender {
     

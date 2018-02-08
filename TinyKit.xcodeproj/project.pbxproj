@@ -14,7 +14,6 @@
 		B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407C2019A7F8002FFD5B /* ItemComponent.swift */; };
 		B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340822019A93E002FFD5B /* ItemComponentTests.swift */; };
 		B053408A2019AD05002FFD5B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340882019ACF1002FFD5B /* Color.swift */; };
-		B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B05D4EF11F1E0AF100929006 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */; };
 		B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */; };
 		B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */; };
@@ -27,6 +26,8 @@
 		B05D4F541F1E0C9700929006 /* NoNibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F101F1E0AF700929006 /* NoNibTableViewCell.swift */; };
 		B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F111F1E0AF700929006 /* UITableViewExtensionsTests.swift */; };
 		B05D4F591F1E0CA100929006 /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F171F1E0AF700929006 /* UIViewExtensionsTests.swift */; };
+		B0A0B047202C53C1003FC1E1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A0B043202C53B1003FC1E1 /* Info.plist */; };
+		B0A0B049202C5478003FC1E1 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A0B044202C53B1003FC1E1 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0A9DEA02018806200AEF782 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DE9F2018806200AEF782 /* Node.swift */; };
 		B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA12018809200AEF782 /* AnyNode.swift */; };
 		B0A9DEA4201880FB00AEF782 /* ComponentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA3201880FB00AEF782 /* ComponentNode.swift */; };
@@ -35,12 +36,18 @@
 		B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEAC2018857D00AEF782 /* ViewRender.swift */; };
 		B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEB0201885DE00AEF782 /* Component.swift */; };
 		B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD2201D7C560063CA45 /* RectangleView.swift */; };
-		B0E24D8D202C23DF0034E539 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4ED51F1E0A8300929006 /* TinyKit.framework */; };
-		B0E24D97202C26F90034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D95202C26F90034E539 /* Hydra.framework */; };
-		B0E24D98202C26F90034E539 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D96202C26F90034E539 /* TinyCore.framework */; };
-		B0E24D99202C27360034E539 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D95202C26F90034E539 /* Hydra.framework */; };
-		B0E24D9A202C27360034E539 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E24D96202C26F90034E539 /* TinyCore.framework */; };
+		B0C6ECA6202C575D00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0A0B050202C55ED003FC1E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B05D4ECC1F1E0A8300929006 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B05D4ED41F1E0A8300929006;
+			remoteInfo = TinyKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B02449E4201D9B4700D20C50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -50,10 +57,6 @@
 		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
 		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05340882019ACF1002FFD5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		B05D4ED51F1E0A8300929006 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B05D4EF01F1E0AF100929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B05D4EF11F1E0AF100929006 /* TinyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
 		B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Cell.swift"; sourceTree = "<group>"; };
 		B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
@@ -67,8 +70,8 @@
 		B05D4F101F1E0AF700929006 /* NoNibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibTableViewCell.swift; sourceTree = "<group>"; };
 		B05D4F111F1E0AF700929006 /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
 		B05D4F171F1E0AF700929006 /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B05D4FCA1F1E523C00929006 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = "tiny-core/build/Debug-iphoneos/TinyCore.framework"; sourceTree = "<group>"; };
-		B05D4FCC1F1E528100929006 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = "tiny-core/build/Debug-iphoneos/TinyCore.framework"; sourceTree = "<group>"; };
+		B0A0B043202C53B1003FC1E1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0A0B044202C53B1003FC1E1 /* TinyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B0A9DE9F2018806200AEF782 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		B0A9DEA12018809200AEF782 /* AnyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyNode.swift; sourceTree = "<group>"; };
 		B0A9DEA3201880FB00AEF782 /* ComponentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentNode.swift; sourceTree = "<group>"; };
@@ -77,15 +80,9 @@
 		B0A9DEAC2018857D00AEF782 /* ViewRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRender.swift; sourceTree = "<group>"; };
 		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
-		B0E24D82202C1F110034E539 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = "tiny-core/Carthage/Build/iOS/Hydra.framework"; sourceTree = "<group>"; };
-		B0E24D85202C21D60034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E24D88202C22680034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E24D8A202C231E0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E24D8C202C235A0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E24D8F202C241E0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E24D93202C24DB0034E539 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E24D95202C26F90034E539 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
-		B0E24D96202C26F90034E539 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0C6ECA2202C570F00AFEE54 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TinyKit.framework; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKit.framework"; sourceTree = "<absolute>"; };
+		B0C6ECA3202C570F00AFEE54 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TinyKitTests.xctest; path = "/Users/roy/Developer/swift/tiny-kit/build/Debug-iphoneos/TinyKitTests.xctest"; sourceTree = "<absolute>"; };
+		B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E24D97202C26F90034E539 /* Hydra.framework in Frameworks */,
-				B0E24D98202C26F90034E539 /* TinyCore.framework in Frameworks */,
+				B0C6ECA6202C575D00AFEE54 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,9 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E24D99202C27360034E539 /* Hydra.framework in Frameworks */,
-				B0E24D9A202C27360034E539 /* TinyCore.framework in Frameworks */,
-				B0E24D8D202C23DF0034E539 /* TinyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,18 +109,8 @@
 			children = (
 				B05D4EEF1F1E0AF100929006 /* Sources */,
 				B05D4F031F1E0AF700929006 /* Tests */,
-				B05D4ED61F1E0A8300929006 /* Products */,
-				B05D4FC91F1E523C00929006 /* Frameworks */,
+				B0C6ECA4202C575D00AFEE54 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		B05D4ED61F1E0A8300929006 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4ED51F1E0A8300929006 /* TinyKit.framework */,
-				B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		B05D4EEF1F1E0AF100929006 /* Sources */ = {
@@ -135,11 +118,12 @@
 			children = (
 				B0A9DEAF201885B500AEF782 /* Component */,
 				B0A9DE9E2018803700AEF782 /* Node */,
-				B05D4F271F1E0B0000929006 /* Supporting Files */,
 				B05D4EF21F1E0AF100929006 /* UICollectionView */,
 				B05D4EF61F1E0AF100929006 /* UITableView */,
 				B05D4EFA1F1E0AF100929006 /* UIView */,
 				B0A9DEA82018844800AEF782 /* View */,
+				B0A0B043202C53B1003FC1E1 /* Info.plist */,
+				B0A0B044202C53B1003FC1E1 /* TinyKit.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -211,39 +195,12 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
-		B05D4F271F1E0B0000929006 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4EF01F1E0AF100929006 /* Info.plist */,
-				B05D4EF11F1E0AF100929006 /* TinyKit.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		B05D4F281F1E0B0E00929006 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				B05D4F041F1E0AF700929006 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B05D4FC91F1E523C00929006 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B0E24D95202C26F90034E539 /* Hydra.framework */,
-				B0E24D96202C26F90034E539 /* TinyCore.framework */,
-				B0E24D93202C24DB0034E539 /* TinyCore.framework */,
-				B0E24D8F202C241E0034E539 /* TinyCore.framework */,
-				B0E24D8C202C235A0034E539 /* TinyCore.framework */,
-				B0E24D8A202C231E0034E539 /* TinyCore.framework */,
-				B0E24D88202C22680034E539 /* TinyCore.framework */,
-				B0E24D85202C21D60034E539 /* TinyCore.framework */,
-				B0E24D82202C1F110034E539 /* Hydra.framework */,
-				B05D4FCC1F1E528100929006 /* TinyCore.framework */,
-				B05D4FCA1F1E523C00929006 /* TinyCore.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B0A9DE9E2018803700AEF782 /* Node */ = {
@@ -296,6 +253,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		B0C6ECA4202C575D00AFEE54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -303,7 +268,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */,
+				B0A0B049202C5478003FC1E1 /* TinyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +284,7 @@
 				B05D4ED21F1E0A8300929006 /* Headers */,
 				B05D4ED31F1E0A8300929006 /* Resources */,
 				B05D4FCF1F1E57DB00929006 /* Swiftlint */,
-				B0E24D91202C24540034E539 /* ShellScript */,
+				B0E24D91202C24540034E539 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -327,7 +292,7 @@
 			);
 			name = TinyKit;
 			productName = TinyKit;
-			productReference = B05D4ED51F1E0A8300929006 /* TinyKit.framework */;
+			productReference = B0C6ECA2202C570F00AFEE54 /* TinyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B05D4EDD1F1E0A8300929006 /* TinyKitTests */ = {
@@ -341,10 +306,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				B0A0B051202C55ED003FC1E1 /* PBXTargetDependency */,
 			);
 			name = TinyKitTests;
 			productName = TinyKitTests;
-			productReference = B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */;
+			productReference = B0C6ECA3202C570F00AFEE54 /* TinyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -379,7 +345,7 @@
 				en,
 			);
 			mainGroup = B05D4ECB1F1E0A8300929006;
-			productRefGroup = B05D4ED61F1E0A8300929006 /* Products */;
+			productRefGroup = B05D4ECB1F1E0A8300929006;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -394,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A0B047202C53C1003FC1E1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,17 +390,16 @@
 			shellPath = /bin/sh;
 			shellScript = "#if which swiftlint >/dev/null; then\n#    swiftlint\n#else\n#    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi";
 		};
-		B0E24D91202C24540034E539 /* ShellScript */ = {
+		B0E24D91202C24540034E539 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
 			);
+			name = Carthage;
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +449,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0A0B051202C55ED003FC1E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B05D4ED41F1E0A8300929006 /* TinyKit */;
+			targetProxy = B0A0B050202C55ED003FC1E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B05D4EE71F1E0A8300929006 /* Debug */ = {
@@ -609,7 +583,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Sources/Info.plist;
@@ -634,7 +607,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Sources/Info.plist;
@@ -655,7 +627,6 @@
 				DEVELOPMENT_TEAM = 5CE6946X84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -674,7 +645,6 @@
 				DEVELOPMENT_TEAM = 5CE6946X84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/tiny-core/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;

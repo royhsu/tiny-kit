@@ -9,7 +9,8 @@
 // MARK: - ListComponentTests
 
 import XCTest
-import Hydra
+
+import TinyCore
 
 @testable import TinyKit
 

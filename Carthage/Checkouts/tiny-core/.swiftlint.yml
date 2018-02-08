@@ -6,6 +6,7 @@ disabled_rules:
 excluded:
   - Carthage
   - Pods
+  - Sources/Library
 variable_name:
   excluded:
     - id
