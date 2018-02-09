@@ -13,17 +13,11 @@ import TinyKit
 
 public final class PostComponent: ItemComponent<PostView, Post> {
     
-    public init(
-        title: String,
-        content: String
-    ) {
+    public init(post: Post) {
 
         super.init(
             view: UIView.load(PostView.self)!,
-            model: Post(
-                title: title,
-                content: content
-            ),
+            model: post,
             binding: { postView, post in
 
                 postView.titleLabel.text = post.title

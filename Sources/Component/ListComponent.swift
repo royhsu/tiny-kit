@@ -8,7 +8,7 @@
 
 // MARK: - ListComponent
 
-public final class ListComponent: Component {
+open class ListComponent: Component {
     
     public final var childComponents = AnyCollection<Component>(
         []
@@ -25,6 +25,8 @@ public final class ListComponent: Component {
     public init() {
         
         self.tableViewBridge = UITableViewBridge(cellIdentifier: cellIdentifier)
+        
+        self.preferredContentSize = tableView.bounds.size
         
         setUpTableView(tableView)
         
@@ -51,7 +53,7 @@ public final class ListComponent: Component {
     
     public final var view: View { return tableView }
 
-    public final var preferredContentSize: CGSize { return tableView.contentSize }
+    public final var preferredContentSize: CGSize
     
 }
 

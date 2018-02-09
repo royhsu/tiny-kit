@@ -1,50 +1,24 @@
 //
-//  PostList.swift
+//  PostListComponent.swift
 //  TinyKitExamples
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostList
+// MARK: - PostListComponent
 
 import UIKit
 import TinyCore
 import TinyKit
 
-public final class PostList: Collection {
+public final class PostListComponent: ListComponent {
     
-    private final var posts: [Post] = []
-    
-    public final var startIndex: Int { return 0 }
-    
-    public final var endIndex: Int { return posts.count }
-    
-    public final subscript(position: Int) -> Component {
+    public final func fetch(in context: Context) -> Promise<Void> {
         
-        let post = posts[position]
-        
-        let component = PostComponent(
-            title: post.title ?? "",
-            content: post.content ?? ""
-        )
-        
-        component.preferredContentSize = CGSize(
-            width: UITableViewAutomaticDimension,
-            height: UITableViewAutomaticDimension
-        )
-        
-        return component
-        
-    }
-    
-    public final func index(after i: Int) -> Int { return posts.index(after: i) }
-    
-    public final func fetch() -> Promise<Void> {
-
-        return Promise { fulfill, reject, _ in
-
-            self.posts = [
+        return Promise<[Post]>(in: context) { fulfill, reject, _ in
+            
+            let posts = [
                 Post(
                     title: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
                     content: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
@@ -59,10 +33,28 @@ public final class PostList: Collection {
                 )
             ]
             
-            let result: Void = ()
-            
-            fulfill(result)
+            fulfill(posts)
 
+        }
+        .then(in: .main) { posts -> Void in
+            
+            let components: [Component] = posts.map { post in
+                
+                let autoSize = CGSize(
+                    width: UITableViewAutomaticDimension,
+                    height: UITableViewAutomaticDimension
+                )
+                
+                let component = PostComponent(post: post)
+                
+                component.preferredContentSize = autoSize
+                
+                return component
+                
+            }
+            
+            self.childComponents = AnyCollection(components)
+            
         }
 
     }

@@ -15,8 +15,6 @@ import TinyKit
 public final class AppDelegate: UIResponder {
 
     public final let window = UIWindow(frame: UIScreen.main.bounds)
-    
-    public final let postList = PostList()
 
 }
 
@@ -29,73 +27,21 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-
-//        let navigationController = UINavigationController(
-//            rootViewController: EmojiListViewController()
-//        )
-//
-//        window.rootViewController = navigationController
-//
-        let listComponent = ListComponent()
-//
-//        let autoSize = CGSize(
-//            width: UITableViewAutomaticDimension,
-//            height: UITableViewAutomaticDimension
-//        )
-//
-//        let post1Component = PostComponent(
-//            title: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-//            content: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
-//        )
-//
-//        post1Component.preferredContentSize = autoSize
-//
-//        listComponent.addChild(
-//            post1Component
-//        )
-//
-//        let post2Component = PostComponent(
-//            title: "Nullam quis risus eget urna mollis ornare vel eu leo.",
-//            content: "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui."
-//        )
-//
-//        post2Component.preferredContentSize = autoSize
-//
-//        listComponent.addChild(
-//            post2Component
-//        )
-//
-//        let post3Component = PostComponent(
-//            title: "Aenean lacinia bibendum nulla sed consectetur.",
-//            content: "Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
-//        )
-//
-//        post3Component.preferredContentSize = autoSize
-//
-//        listComponent.addChild(
-//            post3Component
-//        )
+        
+        let postListComponent = PostListComponent()
 
         window.rootViewController = RootViewController(
-            renderable: listComponent
+            renderable: postListComponent
         )
 
         window.makeKeyAndVisible()
-            
-        postList.fetch().then {_ in
-            
-            listComponent.childComponents = AnyCollection(self.postList)
-            
-//            listComponent.setChildComponents(
-//                AnyCollection(self.postDataProvider)
-//            )
-            
-//            listComponent.childs.forEach { $0.removeFromParent() }
-            
-//            self.postDataProvider.forEach { listComponent.addChild($0) }
-            
-        }
-        .then(listComponent.render)
+        
+        postListComponent
+            .fetch(in: .background)
+            .then(
+                in: .main,
+                postListComponent.render
+            )
         
         return true
 

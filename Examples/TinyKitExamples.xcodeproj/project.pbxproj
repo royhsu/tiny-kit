@@ -14,7 +14,7 @@
 		B02F20C1202C8508001BC665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C0202C8508001BC665 /* Post.swift */; };
 		B02F20C3202C8563001BC665 /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C2202C8563001BC665 /* PostComponent.swift */; };
 		B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C4202C8714001BC665 /* RootViewController.swift */; };
-		B02F20C7202C929F001BC665 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C6202C929F001BC665 /* PostList.swift */; };
+		B02F20C7202C929F001BC665 /* PostListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C6202C929F001BC665 /* PostListComponent.swift */; };
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
@@ -47,7 +47,7 @@
 		B02F20C0202C8508001BC665 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B02F20C2202C8563001BC665 /* PostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
 		B02F20C4202C8714001BC665 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		B02F20C6202C929F001BC665 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
+		B02F20C6202C929F001BC665 /* PostListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListComponent.swift; sourceTree = "<group>"; };
 		B05D4FFF1F1EE79D00929006 /* TinyKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D50151F1EE7D300929006 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				B00657ED202C8352000E3E98 /* PostView.xib */,
 				B02F20C0202C8508001BC665 /* Post.swift */,
 				B02F20C2202C8563001BC665 /* PostComponent.swift */,
-				B02F20C6202C929F001BC665 /* PostList.swift */,
+				B02F20C6202C929F001BC665 /* PostListComponent.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 				B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */,
 				B00657EC202C832B000E3E98 /* PostView.swift in Sources */,
 				B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */,
-				B02F20C7202C929F001BC665 /* PostList.swift in Sources */,
+				B02F20C7202C929F001BC665 /* PostListComponent.swift in Sources */,
 				B05D502B1F1EE9AA00929006 /* EmojiListViewController.swift in Sources */,
 				B02F20C1202C8508001BC665 /* Post.swift in Sources */,
 				B02F20C3202C8563001BC665 /* PostComponent.swift in Sources */,
