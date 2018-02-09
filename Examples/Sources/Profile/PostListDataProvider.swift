@@ -10,6 +10,7 @@
 
 import UIKit
 import TinyCore
+import TinyKit
 
 public final class PostListDataProvider: Collection {
     
@@ -19,7 +20,7 @@ public final class PostListDataProvider: Collection {
     
     public final var endIndex: Int { return posts.count }
     
-    public final subscript(position: Int) -> PostComponent {
+    public final subscript(position: Int) -> Component {
         
         let post = posts[position]
         

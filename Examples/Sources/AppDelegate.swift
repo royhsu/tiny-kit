@@ -82,11 +82,13 @@ extension AppDelegate: UIApplicationDelegate {
 
         window.makeKeyAndVisible()
             
-        postDataProvider.fetch().then {
+        postDataProvider.fetch().then {_ in
             
-            listComponent.childs.forEach { $0.removeFromParent() }
+            listComponent.childComponents = AnyCollection(self.postDataProvider)
             
-            self.postDataProvider.forEach { listComponent.addChild($0) }
+//            listComponent.childs.forEach { $0.removeFromParent() }
+            
+//            self.postDataProvider.forEach { listComponent.addChild($0) }
             
         }
         .then(listComponent.render)

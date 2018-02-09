@@ -8,7 +8,33 @@
 
 // MARK: - ListComponent
 
-public final class ListComponent: ComponentNode, Component {
+public final class ListComponent: Component {
+    
+    public var parent: Node? = nil
+    
+    public var childs: AnyCollection<Node> {
+        
+        let nodes = childComponents.map { $0 as Node }
+        
+        return AnyCollection(nodes)
+        
+    }
+    
+    public func addChild(_ node: Node) {
+        fatalError()
+    }
+    
+    public func removeFromParent() {
+        fatalError()
+    }
+    
+    public final var childComponents = AnyCollection<Component>([])
+    
+//    public final func setChildComponents(_ components: [Component]) {
+//
+//
+//
+//    }
     
     private final let cellIdentifier = String(
         describing: UITableViewCell.self
@@ -18,11 +44,11 @@ public final class ListComponent: ComponentNode, Component {
     
     public final let tableView = UITableView()
     
-    public override init() {
+    public init() {
         
         self.bridge = ListBridge(cellIdentifier: cellIdentifier)
         
-        super.init()
+//        super.init()
         
         setUpTableView(tableView)
         
@@ -61,7 +87,7 @@ extension ListComponent: ViewRender {
     
     public final var renderables: AnyCollection<ViewRenderable> {
         
-        let renderables = childComponentNodes.flatMap { $0 as? ViewRenderable }
+        let renderables = childComponents.flatMap { $0 as ViewRenderable }
         
         return AnyCollection(renderables)
         
