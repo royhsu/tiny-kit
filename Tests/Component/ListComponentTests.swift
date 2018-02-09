@@ -20,7 +20,7 @@ internal final class ListComponentTests: XCTestCase {
         
         let listComponent = ListComponent()
         
-        let redItemComponent = ItemComponent(
+        let redComponent = ItemComponent(
             view: RectangleView(),
             model: Color(
                 red: 1.0,
@@ -35,7 +35,7 @@ internal final class ListComponentTests: XCTestCase {
             }
         )
         
-        let blueItemComponent = ItemComponent(
+        let blueComponent = ItemComponent(
             view: RectangleView(),
             model: Color(
                 red: 0.0,
@@ -50,9 +50,12 @@ internal final class ListComponentTests: XCTestCase {
             }
         )
         
-        listComponent.addChild(redItemComponent)
-        
-        listComponent.addChild(blueItemComponent)
+        listComponent.childComponents = AnyCollection(
+            [
+                redComponent,
+                blueComponent
+            ]
+        )
         
         listComponent
             .render()
@@ -70,7 +73,7 @@ internal final class ListComponentTests: XCTestCase {
 
                 XCTAssertEqual(
                     tableView.numberOfSections,
-                    Int(listComponent.childs.count)
+                    Int(listComponent.childComponents.count)
                 )
 
             }

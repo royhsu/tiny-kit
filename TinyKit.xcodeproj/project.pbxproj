@@ -10,6 +10,8 @@
 		B02449E5201D9B4700D20C50 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449E4201D9B4700D20C50 /* View.swift */; };
 		B02449E9201DAE8700D20C50 /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449E8201DAE8700D20C50 /* ListComponent.swift */; };
 		B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449EA201DAE9600D20C50 /* ListComponentTests.swift */; };
+		B02F20D3202DB65C001BC665 /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D2202DB65C001BC665 /* StateComponent.swift */; };
+		B02F20D6202DB6AE001BC665 /* StateComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */; };
 		B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407C2019A7F8002FFD5B /* ItemComponent.swift */; };
 		B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340822019A93E002FFD5B /* ItemComponentTests.swift */; };
 		B053408A2019AD05002FFD5B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340882019ACF1002FFD5B /* Color.swift */; };
@@ -67,6 +69,8 @@
 		B02449E4201D9B4700D20C50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		B02449E8201DAE8700D20C50 /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B02449EA201DAE9600D20C50 /* ListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentTests.swift; sourceTree = "<group>"; };
+		B02F20D2202DB65C001BC665 /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
+		B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponentTests.swift; sourceTree = "<group>"; };
 		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
 		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05340882019ACF1002FFD5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 				B05340882019ACF1002FFD5B /* Color.swift */,
 				B05340822019A93E002FFD5B /* ItemComponentTests.swift */,
 				B02449EA201DAE9600D20C50 /* ListComponentTests.swift */,
+				B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				B053407C2019A7F8002FFD5B /* ItemComponent.swift */,
 				B02449E8201DAE8700D20C50 /* ListComponent.swift */,
 				B0A403C9202C770900D2A284 /* UITableViewBridge.swift */,
+				B02F20D2202DB65C001BC665 /* StateComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 				B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */,
 				B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */,
 				B02449E5201D9B4700D20C50 /* View.swift in Sources */,
+				B02F20D3202DB65C001BC665 /* StateComponent.swift in Sources */,
 				B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */,
 				B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */,
 				B02449E9201DAE8700D20C50 /* ListComponent.swift in Sources */,
@@ -445,6 +452,7 @@
 				B05D4F511F1E0C8200929006 /* UICollectionViewExtensionsTests.swift in Sources */,
 				B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */,
 				B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */,
+				B02F20D6202DB6AE001BC665 /* StateComponentTests.swift in Sources */,
 				B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */,
 				B05D4F4F1F1E0C7800929006 /* NibCollectionViewCell.swift in Sources */,
 				B05D4F591F1E0CA100929006 /* UIViewExtensionsTests.swift in Sources */,
