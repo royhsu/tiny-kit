@@ -95,35 +95,19 @@ extension UITableViewBridge: UITableViewDataSource {
 // MARK: UITableViewDelegate
 
 extension UITableViewBridge: UITableViewDelegate {
-    
-    // For self-resizing
-    public final func tableView(
-        _ tableView: UITableView,
-        estimatedHeightForRowAt indexPath: IndexPath
-    )
-    -> CGFloat {
-        
-        let index = AnyIndex(indexPath.section)
-        
-        let renderable = renderables[index]
-        
-        return renderable.preferredContentSize.height
-            
-    }
-    
-    // For self-resizing
+
     public final func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     )
     -> CGFloat {
-        
+
         let index = AnyIndex(indexPath.section)
-        
+
         let renderable = renderables[index]
-        
+
         return renderable.preferredContentSize.height
-            
+
     }
     
 }

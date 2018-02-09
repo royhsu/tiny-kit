@@ -13,13 +13,50 @@ import TinyKit
 
 public final class ProfileComponent: ListComponent {
     
+    private final let headerComponent: ProfileHeaderComponent
+    
+    public override init() {
+        
+        let headerComponent = ProfileHeaderComponent(
+            profile: Profile(
+                pictureURL: nil,
+                name: nil
+            )
+        )
+        
+        let autoSize = CGSize(
+            width: UITableViewAutomaticDimension,
+            height: UITableViewAutomaticDimension
+        )
+        
+        headerComponent.preferredContentSize = autoSize
+        
+        self.headerComponent = headerComponent
+        
+        super.init()
+        
+        childComponents = AnyCollection(
+            [ headerComponent ]
+        )
+        
+    }
+    
     public final func fetch(in context: Context) -> Promise<Void> {
+        
+        let postListComponent = PostListComponent()
+        
+        let components: [Component] = [
+            headerComponent,
+            postListComponent
+        ]
+        
+        childComponents = AnyCollection(components)
         
         return Promise<Profile>(in: context) { fulfill, reject, _ in
             
             let profile = Profile(
                 pictureURL: nil,
-                name: "Roy Hsu"
+                name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper."
             )
             
             fulfill(profile)
@@ -27,20 +64,30 @@ public final class ProfileComponent: ListComponent {
         }
         .then(in: .main) { profile -> Void in
             
-            let headerComponent = ProfileHeaderComponent(profile: profile)
+            self.headerComponent.model = profile
             
-            let autoSize = CGSize(
-                width: UITableViewAutomaticDimension,
-                height: UITableViewAutomaticDimension
-            )
+        }
+        .then(
+            in: .main,
+            self.render
+        )
+        .always(in: context) {
             
-            headerComponent.preferredContentSize = autoSize
-            
-            let components: [Component] = [
-                headerComponent
-            ]
-            
-            self.childComponents = AnyCollection(components)
+            postListComponent
+                .fetch(in: context)
+                .then(
+                    in: .main,
+                    postListComponent.render
+                )
+                .then(in: .main) {
+                    
+                    postListComponent.preferredContentSize = postListComponent.tableView.contentSize
+                    
+                }
+                .then(
+                    in: .main,
+                    self.render
+                )
             
         }
         

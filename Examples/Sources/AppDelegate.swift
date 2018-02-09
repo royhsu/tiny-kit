@@ -29,8 +29,6 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
         
         let profileComponent = ProfileComponent()
-        
-//        let postListComponent = PostListComponent()
 
         window.rootViewController = RootViewController(
             renderable: profileComponent

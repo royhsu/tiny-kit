@@ -20,7 +20,7 @@ open class ListComponent: Component {
     
     private final let tableViewBridge: UITableViewBridge
     
-    private final let tableView = UITableView()
+    public final let tableView = UITableView(frame: UIScreen.main.bounds)
     
     public init() {
         
