@@ -28,19 +28,21 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let postListComponent = PostListComponent()
+        let profileComponent = ProfileComponent()
+        
+//        let postListComponent = PostListComponent()
 
         window.rootViewController = RootViewController(
-            renderable: postListComponent
+            renderable: profileComponent
         )
 
         window.makeKeyAndVisible()
         
-        postListComponent
+        profileComponent
             .fetch(in: .background)
             .then(
                 in: .main,
-                postListComponent.render
+                profileComponent.render
             )
         
         return true

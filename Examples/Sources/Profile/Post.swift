@@ -15,8 +15,8 @@ public struct Post: Codable {
     public var content: String?
     
     public init(
-        title: String?,
-        content: String?
+        title: String? = nil,
+        content: String? = nil
     ) {
         
         self.title = title
