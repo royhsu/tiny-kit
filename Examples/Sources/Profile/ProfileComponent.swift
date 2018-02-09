@@ -11,9 +11,7 @@
 import TinyCore
 import TinyKit
 
-public final class ProfileComponent: Component {
-    
-    private final let stateComponent: StateComponent<ProfileComponentState>
+public final class ProfileComponent: StateComponent<ProfileComponentState> {
 
     private final let loadingComponent = LoadingComponent()
     
@@ -21,14 +19,12 @@ public final class ProfileComponent: Component {
     
     public init() {
         
-        let stateComponent = StateComponent<ProfileComponentState>(
+        super.init(
             initialComponent: loadingComponent,
             initialState: .loading
         )
         
-        self.stateComponent = stateComponent
-        
-        stateComponent.registerComponent(
+        registerComponent(
             loadedComponent,
             for: .loaded
         )
@@ -104,7 +100,7 @@ public final class ProfileComponent: Component {
                 )
  
         }
-        .then(in: .main) { try self.stateComponent.enter(.loaded) }
+        .then(in: .main) { try self.enter(.loaded) }
         .catch(in: .main) { error in
             
             // Todo: error handling
@@ -114,11 +110,5 @@ public final class ProfileComponent: Component {
         .always(in: .main) { activityIndicatorView.stopAnimating() }
         
     }
-    
-    // MARK: ViewRenderable
-    
-    public final var view: View { return stateComponent.view }
-    
-    public final var preferredContentSize: CGSize { return stateComponent.preferredContentSize }
     
 }
