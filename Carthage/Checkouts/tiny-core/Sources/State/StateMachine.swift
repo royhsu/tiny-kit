@@ -22,9 +22,9 @@ public final class StateMachine<L: AnyObject> {
 
 }
 
-extension StateMachine {
+public extension StateMachine {
 
-    func enter(_ state: State) throws {
+    public final func enter(_ state: State) throws {
 
         guard
             currentState.isValidNextState(state)

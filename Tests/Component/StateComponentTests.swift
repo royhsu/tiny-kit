@@ -12,7 +12,7 @@ import TinyCore
 
 internal enum TrafficLight: String {
     
-    case red, yellow, green
+    case green, yellow, red
     
 }
 
@@ -29,9 +29,9 @@ extension TrafficLight: State {
         switch (old, next) {
             
         case
-            (.red, .green),
             (.green, .yellow),
-            (.yellow, .red):
+            (.yellow, .red),
+            (.red, .green):
             return true
             
         default: return false
@@ -53,11 +53,11 @@ internal final class StateComponentTests: XCTestCase {
         
         do {
             
-            let redComponent = ItemComponent(
+            let greenComponent = ItemComponent(
                 view: RectangleView(),
                 model: Color(
-                    red: 1.0,
-                    green: 0.0,
+                    red: 0.0,
+                    green: 1.0,
                     blue: 0.0,
                     alpha: 1.0
                 ),
@@ -83,10 +83,59 @@ internal final class StateComponentTests: XCTestCase {
                 }
             )
             
-            let stateComponent = StateComponent<TrafficLight>(
-                initialComponent: redComponent,
-                initialState: .red
+            let redComponent = ItemComponent(
+                view: RectangleView(),
+                model: Color(
+                    red: 1.0,
+                    green: 0.0,
+                    blue: 0.0,
+                    alpha: 1.0
+                ),
+                binding: { colorView, color in
+                    
+                    colorView.backgroundColor = color.uiColor()
+                    
+                }
             )
+            
+            let stateComponent = StateComponent<TrafficLight>(
+                initialComponent: greenComponent,
+                initialState: .green
+            )
+            
+            stateComponent.registerComponent(
+                yellowComponent,
+                for: .yellow
+            )
+            
+            stateComponent.registerComponent(
+                redComponent,
+                for: .red
+            )
+            
+            XCTAssertEqual(
+                stateComponent.currentState,
+                .green
+            )
+            
+            XCTAssertEqual(
+                stateComponent.view,
+                greenComponent.view
+            )
+            
+            try stateComponent.enter(.yellow)
+            
+            XCTAssertEqual(
+                stateComponent.currentState,
+                .yellow
+            )
+            
+            XCTAssertEqual(
+                stateComponent.view,
+                yellowComponent.view
+            )
+            
+            try stateComponent.enter(.red)
             
             XCTAssertEqual(
                 stateComponent.currentState,
@@ -97,13 +146,6 @@ internal final class StateComponentTests: XCTestCase {
                 stateComponent.view,
                 redComponent.view
             )
-            
-//            stateComponent.registerComponent(
-//                yellowComponent,
-//                for: TrafficLight.yellow
-//            )
-//
-//            try stateComponent.enter(TrafficLight.yellow)
             
         }
         catch { XCTFail("\(error)") }

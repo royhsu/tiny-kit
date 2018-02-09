@@ -42,7 +42,7 @@ open class StateComponent<CS: ComponentState>: Component {
     
     private final let stateMachine: StateMachine<StateComponent>
     
-    private final let stateComponentMap: [AnyComponentState<CS>: Component]
+    private final var stateComponentMap: [AnyComponentState<CS>: Component]
     
     public final var currentState: CS { return stateMachine.currentState as! CS }
     
@@ -78,5 +78,22 @@ open class StateComponent<CS: ComponentState>: Component {
     public final var view: View { return currentComponent.view }
     
     public final var preferredContentSize: CGSize { return currentComponent.preferredContentSize }
+    
+}
+
+public extension StateComponent {
+    
+    public final func registerComponent(
+        _ component: Component,
+        for state: CS
+    ) {
+        
+        let state = AnyComponentState(state)
+        
+        stateComponentMap[state] = component
+        
+    }
+    
+    public final func enter(_ state: CS) throws { try stateMachine.enter(state) }
     
 }
