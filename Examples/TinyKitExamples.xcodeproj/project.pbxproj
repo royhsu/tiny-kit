@@ -25,6 +25,10 @@
 		B02F20E0202DDA7D001BC665 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02F20DF202DDA7D001BC665 /* LoadingView.xib */; };
 		B02F20E2202DDA8B001BC665 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E1202DDA8B001BC665 /* LoadingView.swift */; };
 		B02F20E4202DDCCA001BC665 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E3202DDCCA001BC665 /* Loading.swift */; };
+		B02F20E6202DECC5001BC665 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E5202DECC5001BC665 /* ErrorView.swift */; };
+		B02F20E8202DECE0001BC665 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02F20E7202DECE0001BC665 /* ErrorView.xib */; };
+		B02F20EA202DEE80001BC665 /* ErrorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E9202DEE80001BC665 /* ErrorComponent.swift */; };
+		B02F20EC202DEF91001BC665 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20EB202DEF91001BC665 /* ErrorModel.swift */; };
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
@@ -68,6 +72,10 @@
 		B02F20DF202DDA7D001BC665 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		B02F20E1202DDA8B001BC665 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B02F20E3202DDCCA001BC665 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		B02F20E5202DECC5001BC665 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		B02F20E7202DECE0001BC665 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		B02F20E9202DEE80001BC665 /* ErrorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorComponent.swift; sourceTree = "<group>"; };
+		B02F20EB202DEF91001BC665 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		B05D4FFF1F1EE79D00929006 /* TinyKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D50151F1EE7D300929006 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,16 +108,20 @@
 				B02F20C0202C8508001BC665 /* Post.swift */,
 				B02F20C2202C8563001BC665 /* PostComponent.swift */,
 				B02F20C6202C929F001BC665 /* PostListComponent.swift */,
-				B02F20CE202D893C001BC665 /* Profile.swift */,
 				B02F20C8202D87ED001BC665 /* ProfileHeaderView.swift */,
 				B02F20CA202D8807001BC665 /* ProfileHeaderView.xib */,
+				B02F20CE202D893C001BC665 /* Profile.swift */,
 				B02F20CC202D88F9001BC665 /* ProfileHeaderComponent.swift */,
-				B02F20D0202D8AA2001BC665 /* ProfileComponent.swift */,
 				B02F20DB202DD94C001BC665 /* ProfileComponentState.swift */,
-				B02F20E3202DDCCA001BC665 /* Loading.swift */,
-				B02F20DD202DDA65001BC665 /* LoadingComponent.swift */,
+				B02F20D0202D8AA2001BC665 /* ProfileComponent.swift */,
 				B02F20E1202DDA8B001BC665 /* LoadingView.swift */,
 				B02F20DF202DDA7D001BC665 /* LoadingView.xib */,
+				B02F20E3202DDCCA001BC665 /* Loading.swift */,
+				B02F20DD202DDA65001BC665 /* LoadingComponent.swift */,
+				B02F20E5202DECC5001BC665 /* ErrorView.swift */,
+				B02F20E7202DECE0001BC665 /* ErrorView.xib */,
+				B02F20EB202DEF91001BC665 /* ErrorModel.swift */,
+				B02F20E9202DEE80001BC665 /* ErrorComponent.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -231,6 +243,7 @@
 				B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */,
 				B00657EE202C8352000E3E98 /* PostView.xib in Resources */,
 				B02F20E0202DDA7D001BC665 /* LoadingView.xib in Resources */,
+				B02F20E8202DECE0001BC665 /* ErrorView.xib in Resources */,
 				B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */,
 				B02F20CB202D8807001BC665 /* ProfileHeaderView.xib in Resources */,
 			);
@@ -266,8 +279,11 @@
 				B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */,
 				B02F20CD202D88F9001BC665 /* ProfileHeaderComponent.swift in Sources */,
 				B00657EC202C832B000E3E98 /* PostView.swift in Sources */,
+				B02F20E6202DECC5001BC665 /* ErrorView.swift in Sources */,
 				B02F20DE202DDA65001BC665 /* LoadingComponent.swift in Sources */,
+				B02F20EA202DEE80001BC665 /* ErrorComponent.swift in Sources */,
 				B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */,
+				B02F20EC202DEF91001BC665 /* ErrorModel.swift in Sources */,
 				B02F20E4202DDCCA001BC665 /* Loading.swift in Sources */,
 				B02F20D1202D8AA2001BC665 /* ProfileComponent.swift in Sources */,
 				B02F20C9202D87ED001BC665 /* ProfileHeaderView.swift in Sources */,

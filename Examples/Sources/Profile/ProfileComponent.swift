@@ -17,6 +17,10 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
     
     private final let loadedComponent = ListComponent()
     
+    private final let errorComponent = ErrorComponent(
+        errorModel: ErrorModel()
+    )
+    
     public init() {
         
         super.init(
@@ -29,7 +33,10 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
             for: .loaded
         )
         
-        // Todo: register the error state.
+        registerComponent(
+            errorComponent,
+            for: .error
+        )
         
     }
     
@@ -70,9 +77,9 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
                     pictureURL: nil,
                     name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper."
                 )
-            
+
                 fulfill(profile)
-                
+
             }
             
         }
@@ -103,8 +110,9 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
         .then(in: .main) { try self.enter(.loaded) }
         .catch(in: .main) { error in
             
-            // Todo: error handling
-            print("\(error)")
+            self.errorComponent.model = ErrorModel(message: "\(error)")
+            
+            try self.enter(.error)
             
         }
         .always(in: .main) { activityIndicatorView.stopAnimating() }
