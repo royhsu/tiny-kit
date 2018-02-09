@@ -11,11 +11,38 @@
 import TinyCore
 import TinyKit
 
-public final class ProfileComponent: ListComponent {
+public final class ProfileComponent: Component {
     
-    private final let headerComponent: ProfileHeaderComponent
+    private final let stateComponent: StateComponent<ProfileComponentState>
+
+    private final let loadingComponent = LoadingComponent()
     
-    public override init() {
+    private final let loadedComponent = ListComponent()
+    
+    public init() {
+        
+        let stateComponent = StateComponent<ProfileComponentState>(
+            initialComponent: loadingComponent,
+            initialState: .loading
+        )
+        
+        self.stateComponent = stateComponent
+        
+        stateComponent.registerComponent(
+            loadedComponent,
+            for: .loaded
+        )
+        
+        // Todo: register the error state.
+        
+    }
+    
+    public final func fetch(in context: Context) -> Promise<Void> {
+        
+        let autoSize = CGSize(
+            width: UITableViewAutomaticDimension,
+            height: UITableViewAutomaticDimension
+        )
         
         let headerComponent = ProfileHeaderComponent(
             profile: Profile(
@@ -24,24 +51,7 @@ public final class ProfileComponent: ListComponent {
             )
         )
         
-        let autoSize = CGSize(
-            width: UITableViewAutomaticDimension,
-            height: UITableViewAutomaticDimension
-        )
-        
         headerComponent.preferredContentSize = autoSize
-        
-        self.headerComponent = headerComponent
-        
-        super.init()
-        
-        childComponents = AnyCollection(
-            [ headerComponent ]
-        )
-        
-    }
-    
-    public final func fetch(in context: Context) -> Promise<Void> {
         
         let postListComponent = PostListComponent()
         
@@ -50,30 +60,34 @@ public final class ProfileComponent: ListComponent {
             postListComponent
         ]
         
-        childComponents = AnyCollection(components)
+        loadedComponent.childComponents = AnyCollection(components)
+        
+        let activityIndicatorView = loadingComponent.itemView.activityIndicatorView!
+        
+        activityIndicatorView.startAnimating()
         
         return Promise<Profile>(in: context) { fulfill, reject, _ in
             
-            let profile = Profile(
-                pictureURL: nil,
-                name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper."
-            )
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+
+                let profile = Profile(
+                    pictureURL: nil,
+                    name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper."
+                )
             
-            fulfill(profile)
+                fulfill(profile)
+                
+            }
             
         }
         .then(in: .main) { profile -> Void in
             
-            self.headerComponent.model = profile
+            headerComponent.model = profile
             
         }
-        .then(
-            in: .main,
-            self.render
-        )
-        .always(in: context) {
+        .then(in: context) { _ -> Promise<Void> in
             
-            postListComponent
+            return postListComponent
                 .fetch(in: context)
                 .then(
                     in: .main,
@@ -86,11 +100,25 @@ public final class ProfileComponent: ListComponent {
                 }
                 .then(
                     in: .main,
-                    self.render
+                    self.loadedComponent.render
                 )
+ 
+        }
+        .then(in: .main) { try self.stateComponent.enter(.loaded) }
+        .catch(in: .main) { error in
+            
+            // Todo: error handling
+            print("\(error)")
             
         }
+        .always(in: .main) { activityIndicatorView.stopAnimating() }
         
     }
+    
+    // MARK: ViewRenderable
+    
+    public final var view: View { return stateComponent.view }
+    
+    public final var preferredContentSize: CGSize { return stateComponent.preferredContentSize }
     
 }

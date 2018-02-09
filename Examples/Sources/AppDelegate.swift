@@ -38,10 +38,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         profileComponent
             .fetch(in: .background)
-            .then(
-                in: .main,
-                profileComponent.render
-            )
+            .then(in: .main) { }
         
         return true
 

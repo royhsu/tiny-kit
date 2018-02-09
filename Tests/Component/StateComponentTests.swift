@@ -119,7 +119,12 @@ internal final class StateComponentTests: XCTestCase {
             )
             
             XCTAssertEqual(
-                stateComponent.view,
+                stateComponent.view.subviews.count,
+                1
+            )
+            
+            XCTAssertEqual(
+                stateComponent.view.subviews.first,
                 greenComponent.view
             )
             
@@ -131,7 +136,12 @@ internal final class StateComponentTests: XCTestCase {
             )
             
             XCTAssertEqual(
-                stateComponent.view,
+                stateComponent.view.subviews.count,
+                1
+            )
+            
+            XCTAssertEqual(
+                stateComponent.view.subviews.first,
                 yellowComponent.view
             )
             
@@ -143,7 +153,12 @@ internal final class StateComponentTests: XCTestCase {
             )
             
             XCTAssertEqual(
-                stateComponent.view,
+                stateComponent.view.subviews.count,
+                1
+            )
+            
+            XCTAssertEqual(
+                stateComponent.view.subviews.first,
                 redComponent.view
             )
             

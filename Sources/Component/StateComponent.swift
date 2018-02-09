@@ -43,11 +43,39 @@ open class StateComponent<CS: ComponentState>: Component {
             AnyComponentState(initialState): initialComponent
         ]
         
+        updateCurrentView()
+        
+    }
+    
+    fileprivate final func updateCurrentView() {
+        
+        let currentView = currentComponent.view
+        
+        currentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(currentView)
+        
+        NSLayoutConstraint.activate(
+            [
+                currentView
+                    .leadingAnchor
+                    .constraint(equalTo: view.leadingAnchor),
+                currentView
+                    .topAnchor
+                    .constraint(equalTo: view.topAnchor),
+                currentView
+                    .trailingAnchor
+                    .constraint(equalTo: view.trailingAnchor),
+                currentView
+                    .bottomAnchor
+                    .constraint(equalTo: view.bottomAnchor)
+            ]
+        )
     }
     
     // MARK: ViewRenderable
     
-    public final var view: View { return currentComponent.view }
+    public final let view = View()
     
     public final var preferredContentSize: CGSize { return currentComponent.preferredContentSize }
     
@@ -66,6 +94,14 @@ public extension StateComponent {
         
     }
     
-    public final func enter(_ state: CS) throws { try stateMachine.enter(state) }
+    public final func enter(_ state: CS) throws {
+        
+        try stateMachine.enter(state)
+        
+        view.subviews.forEach { $0.removeFromSuperview() }
+        
+        updateCurrentView()
+        
+    }
     
 }

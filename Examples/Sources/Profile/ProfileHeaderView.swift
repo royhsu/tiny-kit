@@ -12,9 +12,11 @@ import UIKit
 
 public final class ProfileHeaderView: UIView {
     
-    @IBOutlet public fileprivate(set) weak var pictureImageView: UIImageView!
+    @IBOutlet
+    public fileprivate(set) weak var pictureImageView: UIImageView!
     
-    @IBOutlet public fileprivate(set) weak var nameLabel: UILabel!
+    @IBOutlet
+    public fileprivate(set) weak var nameLabel: UILabel!
     
     public final override func awakeFromNib() {
         
