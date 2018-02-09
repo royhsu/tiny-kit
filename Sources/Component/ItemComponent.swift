@@ -8,6 +8,8 @@
 
 // MARK: - ItemComponent
 
+/// Implementing a custom component by overriding this class.
+/// Be sure to initiatie and manipulate it only in the main thread.
 open class ItemComponent<
     V: View,
     M: Codable
