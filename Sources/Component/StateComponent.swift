@@ -6,34 +6,6 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-public typealias ComponentState = State & Hashable
-
-public struct AnyComponentState<CS: ComponentState>: ComponentState {
-    
-    private let base: CS
-    
-    public init(_ base: CS) { self.base = base }
-    
-    // MARK: State
-    
-    public func isValidNextState(_ state: State) -> Bool {
-        
-        return base.isValidNextState(state)
-        
-    }
-    
-    // MARK: Hashable
-    
-    public var hashValue: Int { return base.hashValue }
-    
-    public static func ==(
-        lhs: AnyComponentState<CS>,
-        rhs: AnyComponentState<CS>
-    )
-    -> Bool { return lhs.base == rhs.base }
-
-}
-
 // MARK: - StateComponent
 
 import TinyCore

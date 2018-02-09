@@ -12,6 +12,8 @@
 		B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449EA201DAE9600D20C50 /* ListComponentTests.swift */; };
 		B02F20D3202DB65C001BC665 /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D2202DB65C001BC665 /* StateComponent.swift */; };
 		B02F20D6202DB6AE001BC665 /* StateComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */; };
+		B02F20D8202DC6B2001BC665 /* ComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D7202DC6B2001BC665 /* ComponentState.swift */; };
+		B02F20DA202DC6C7001BC665 /* AnyComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D9202DC6C7001BC665 /* AnyComponentState.swift */; };
 		B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407C2019A7F8002FFD5B /* ItemComponent.swift */; };
 		B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340822019A93E002FFD5B /* ItemComponentTests.swift */; };
 		B053408A2019AD05002FFD5B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340882019ACF1002FFD5B /* Color.swift */; };
@@ -71,6 +73,8 @@
 		B02449EA201DAE9600D20C50 /* ListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentTests.swift; sourceTree = "<group>"; };
 		B02F20D2202DB65C001BC665 /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
 		B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponentTests.swift; sourceTree = "<group>"; };
+		B02F20D7202DC6B2001BC665 /* ComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentState.swift; sourceTree = "<group>"; };
+		B02F20D9202DC6C7001BC665 /* AnyComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyComponentState.swift; sourceTree = "<group>"; };
 		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
 		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05340882019ACF1002FFD5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				B02449E8201DAE8700D20C50 /* ListComponent.swift */,
 				B0A403C9202C770900D2A284 /* UITableViewBridge.swift */,
 				B02F20D2202DB65C001BC665 /* StateComponent.swift */,
+				B02F20D7202DC6B2001BC665 /* ComponentState.swift */,
+				B02F20D9202DC6C7001BC665 /* AnyComponentState.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02F20D8202DC6B2001BC665 /* ComponentState.swift in Sources */,
 				B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */,
 				B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */,
 				B02449E5201D9B4700D20C50 /* View.swift in Sources */,
@@ -441,6 +448,7 @@
 				B0A9DEAB2018849D00AEF782 /* ViewRenderable.swift in Sources */,
 				B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */,
 				B0A403CA202C770900D2A284 /* UITableViewBridge.swift in Sources */,
+				B02F20DA202DC6C7001BC665 /* AnyComponentState.swift in Sources */,
 				B0A9DEA02018806200AEF782 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
