@@ -11,7 +11,7 @@
 open class ItemComponent<
     V: View,
     M: Codable
->: ComponentNode, Component {
+>: Component {
     
     /// The underlying view contains its type information.
     public final let itemView: V
@@ -47,8 +47,6 @@ open class ItemComponent<
         self.binding = binding
         
         self.preferredContentSize = itemView.bounds.size
-        
-        super.init()
         
         binding(
             itemView,

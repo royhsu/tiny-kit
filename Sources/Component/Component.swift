@@ -8,4 +8,4 @@
 
 // MARK: - Component
 
-public protocol Component: Node, ViewRenderable { }
+public protocol Component: ViewRenderable { }

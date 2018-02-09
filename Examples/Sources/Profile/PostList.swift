@@ -1,18 +1,18 @@
 //
-//  PostListDataProvider.swift
+//  PostList.swift
 //  TinyKitExamples
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostListDataProvider
+// MARK: - PostList
 
 import UIKit
 import TinyCore
 import TinyKit
 
-public final class PostListDataProvider: Collection {
+public final class PostList: Collection {
     
     private final var posts: [Post] = []
     

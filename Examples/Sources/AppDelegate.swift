@@ -16,7 +16,7 @@ public final class AppDelegate: UIResponder {
 
     public final let window = UIWindow(frame: UIScreen.main.bounds)
     
-    public final let postDataProvider = PostListDataProvider()
+    public final let postList = PostList()
 
 }
 
@@ -82,9 +82,13 @@ extension AppDelegate: UIApplicationDelegate {
 
         window.makeKeyAndVisible()
             
-        postDataProvider.fetch().then {_ in
+        postList.fetch().then {_ in
             
-            listComponent.childComponents = AnyCollection(self.postDataProvider)
+            listComponent.childComponents = AnyCollection(self.postList)
+            
+//            listComponent.setChildComponents(
+//                AnyCollection(self.postDataProvider)
+//            )
             
 //            listComponent.childs.forEach { $0.removeFromParent() }
             

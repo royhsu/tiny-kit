@@ -10,45 +10,21 @@
 
 public final class ListComponent: Component {
     
-    public var parent: Node? = nil
-    
-    public var childs: AnyCollection<Node> {
-        
-        let nodes = childComponents.map { $0 as Node }
-        
-        return AnyCollection(nodes)
-        
-    }
-    
-    public func addChild(_ node: Node) {
-        fatalError()
-    }
-    
-    public func removeFromParent() {
-        fatalError()
-    }
-    
-    public final var childComponents = AnyCollection<Component>([])
-    
-//    public final func setChildComponents(_ components: [Component]) {
-//
-//
-//
-//    }
-    
+    public final var childComponents = AnyCollection<Component>(
+        []
+    )
+
     private final let cellIdentifier = String(
         describing: UITableViewCell.self
     )
     
-    private final let bridge: ListBridge
+    private final let tableViewBridge: UITableViewBridge
     
-    public final let tableView = UITableView()
+    private final let tableView = UITableView()
     
     public init() {
         
-        self.bridge = ListBridge(cellIdentifier: cellIdentifier)
-        
-//        super.init()
+        self.tableViewBridge = UITableViewBridge(cellIdentifier: cellIdentifier)
         
         setUpTableView(tableView)
         
@@ -65,9 +41,9 @@ public final class ListComponent: Component {
         
         tableView.separatorStyle = .none
         
-        tableView.dataSource = bridge
+        tableView.dataSource = tableViewBridge
         
-        tableView.delegate = bridge
+        tableView.delegate = tableViewBridge
         
     }
     
@@ -87,7 +63,7 @@ extension ListComponent: ViewRender {
     
     public final var renderables: AnyCollection<ViewRenderable> {
         
-        let renderables = childComponents.flatMap { $0 as ViewRenderable }
+        let renderables = childComponents.map { $0 as ViewRenderable }
         
         return AnyCollection(renderables)
         
@@ -99,7 +75,7 @@ extension ListComponent: ViewRender {
         
             DispatchQueue.main.async {
                 
-                self.bridge.renderables = self.renderables
+                self.tableViewBridge.renderables = self.renderables
                 
                 self.tableView.reloadData()
                 

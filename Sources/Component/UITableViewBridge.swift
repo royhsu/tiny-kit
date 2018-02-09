@@ -1,18 +1,20 @@
 //
-//  ListBridge.swift
+//  UITableViewBridge.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ListBridge
+// MARK: - UITableViewBridge
 
-public final class ListBridge: NSObject {
+public final class UITableViewBridge: NSObject {
     
     public final let cellIdentifier: String
 
-    public final var renderables = AnyCollection<ViewRenderable>([])
+    public final var renderables = AnyCollection<ViewRenderable>(
+        []
+    )
     
     public init(cellIdentifier: String) { self.cellIdentifier = cellIdentifier }
     
@@ -20,7 +22,7 @@ public final class ListBridge: NSObject {
 
 // MARK: - UITableViewDataSource
 
-extension ListBridge: UITableViewDataSource {
+extension UITableViewBridge: UITableViewDataSource {
     
     public final func numberOfSections(in tableView: UITableView) -> Int { return Int(renderables.count) }
     
@@ -92,7 +94,7 @@ extension ListBridge: UITableViewDataSource {
 
 // MARK: UITableViewDelegate
 
-extension ListBridge: UITableViewDelegate {
+extension UITableViewBridge: UITableViewDelegate {
     
     // For self-resizing
     public final func tableView(
