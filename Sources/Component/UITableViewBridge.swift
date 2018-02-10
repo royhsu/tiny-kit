@@ -54,7 +54,7 @@ extension UITableViewBridge: UITableViewDataSource {
         let containerView = cell.contentView
 
         let contentView = component.view
-        
+
         component.render()
 
         contentView.removeFromSuperview()

@@ -52,7 +52,7 @@ public final class ItemComponent<
     public final var contentMode: ComponentContentMode
 
     public final func render() {
-        
+
         binding(
             itemView,
             model
