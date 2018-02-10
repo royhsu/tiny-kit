@@ -50,7 +50,7 @@ internal final class ListComponentTests: XCTestCase {
             }
         )
         
-        listComponent.childComponents = AnyCollection(
+        listComponent.itemComponents = AnyCollection(
             [
                 redComponent,
                 blueComponent
@@ -73,7 +73,7 @@ internal final class ListComponentTests: XCTestCase {
 
                 XCTAssertEqual(
                     tableView.numberOfSections,
-                    Int(listComponent.childComponents.count)
+                    Int(listComponent.itemComponents.count)
                 )
 
             }

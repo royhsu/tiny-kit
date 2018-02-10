@@ -63,7 +63,7 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
             postListComponent
         ]
         
-        loadedComponent.childComponents = AnyCollection(components)
+        loadedComponent.itemComponents = AnyCollection(components)
         
         let activityIndicatorView = loadingComponent.itemView.activityIndicatorView!
         

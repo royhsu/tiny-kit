@@ -10,7 +10,32 @@
 
 open class ListComponent: Component {
     
-    public final var childComponents = AnyCollection<Component>(
+    public final var headerComponent: Component? {
+        
+        didSet {
+            
+            guard
+                let headerComponent = headerComponent
+            else {
+                
+                tableView.tableHeaderView = nil
+                
+                return
+                
+            }
+            
+            headerComponent.view.frame = CGRect(
+                origin: .zero,
+                size: headerComponent.preferredContentSize
+            )
+            
+            tableView.tableHeaderView = headerComponent.view
+            
+        }
+        
+    }
+    
+    public final var itemComponents = AnyCollection<Component>(
         []
     )
 
@@ -65,7 +90,7 @@ extension ListComponent: ViewRender {
     
     public final var renderables: AnyCollection<ViewRenderable> {
         
-        let renderables = childComponents.map { $0 as ViewRenderable }
+        let renderables = itemComponents.map { $0 as ViewRenderable }
         
         return AnyCollection(renderables)
         

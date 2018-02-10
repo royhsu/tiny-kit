@@ -53,7 +53,7 @@ public final class PostListComponent: ListComponent {
                 
             }
             
-            self.childComponents = AnyCollection(components)
+            self.itemComponents = AnyCollection(components)
             
         }
 
