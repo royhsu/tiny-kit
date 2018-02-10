@@ -131,7 +131,17 @@ public final class ListComponent: Component {
         }
 
         return all(
-            itemComponents.map { $0.render() }
+            itemComponents.map { component in
+
+                // TODO: not quite sure if the always function fixes the all function ends whenever any promises get rejected.
+                component
+                    .render()
+                    .always(
+                        in: .main,
+                        body: { }
+                    )
+
+            }
         )
         .then(in: .main) { _ in renderList }
 
