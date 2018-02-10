@@ -13,15 +13,9 @@ import TinyKit
 
 public final class EmojiComponent: Component {
     
-    public final var emoji: Emoji {
-        
-        get { return itemComponent.model }
-
-        set { itemComponent.model = newValue }
-        
-    }
+    private typealias BaseComponent = ItemComponent<UILabel, Emoji>
     
-    private final let itemComponent: ItemComponent<UILabel, Emoji>
+    private final let baseComponent: BaseComponent
     
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -36,7 +30,7 @@ public final class EmojiComponent: Component {
         
         emojiLabel.numberOfLines = 0
     
-        self.itemComponent = ItemComponent(
+        self.baseComponent = BaseComponent(
             contentMode: contentMode,
             view: emojiLabel,
             model: emoji,
@@ -51,20 +45,32 @@ public final class EmojiComponent: Component {
     
     // MARK: ViewRenderable
     
-    public final var view: View { return itemComponent.view }
+    public final var view: View { return baseComponent.view }
     
-    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return baseComponent.preferredContentSize }
     
     // MARK: Component
     
     public final var contentMode: ComponentContentMode {
         
-        get { return itemComponent.contentMode }
+        get { return baseComponent.contentMode }
         
-        set { itemComponent.contentMode = newValue }
+        set { baseComponent.contentMode = newValue }
         
     }
     
-    public final func render() -> Promise<Void> { return itemComponent.render() }
+    public final func render() -> Promise<Void> { return baseComponent.render() }
+    
+}
+
+public extension EmojiComponent {
+    
+    public final var emoji: Emoji {
+        
+        get { return baseComponent.model }
+        
+        set { baseComponent.model = newValue }
+        
+    }
     
 }
