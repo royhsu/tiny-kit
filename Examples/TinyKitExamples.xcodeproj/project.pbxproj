@@ -105,7 +105,6 @@
 		B00657EA202C82E8000E3E98 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B02F20C6202C929F001BC665 /* PostListComponent.swift */,
 				B02F20CE202D893C001BC665 /* Profile.swift */,
 				B02F20C8202D87ED001BC665 /* ProfileIntroductionView.swift */,
 				B02F20CA202D8807001BC665 /* ProfileIntroductionView.xib */,
@@ -183,6 +182,7 @@
 				B00657EB202C832B000E3E98 /* PostView.swift */,
 				B00657ED202C8352000E3E98 /* PostView.xib */,
 				B02F20C2202C8563001BC665 /* PostComponent.swift */,
+				B02F20C6202C929F001BC665 /* PostListComponent.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";

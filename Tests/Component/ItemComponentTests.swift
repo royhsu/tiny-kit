@@ -14,7 +14,7 @@ import XCTest
 
 internal final class ItemComponentTests: XCTestCase {
 
-    internal final func testRenderItemComponentWithSize() {
+    internal final func testRenderItemComponent() {
 
         let promise = expectation(description: "Render an item component.")
 

@@ -117,10 +117,7 @@ internal final class ListComponentTests: XCTestCase {
                     )
                 )
 
-                XCTAssertEqual(
-                    redCell?.contentView.subviews.first,
-                    redView
-                )
+                XCTAssertNotNil(redCell)
 
                 guard
                     let blueSection = colorComponents.index(
@@ -146,10 +143,7 @@ internal final class ListComponentTests: XCTestCase {
                     )
                 )
 
-                XCTAssertEqual(
-                    blueCell?.contentView.subviews.first,
-                    blueView
-                )
+                XCTAssertNotNil(blueCell)
 
                 XCTAssertEqual(
                     listComponent.preferredContentSize,

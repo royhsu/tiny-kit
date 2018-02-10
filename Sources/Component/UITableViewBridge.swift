@@ -8,15 +8,15 @@
 
 // MARK: - UITableViewBridge
 
-public final class UITableViewBridge: NSObject {
+internal final class UITableViewBridge: NSObject {
 
-    public final let cellIdentifier: String
+    internal final let cellIdentifier: String
 
-    public final var components = AnyCollection<Component>(
+    internal final var components = AnyCollection<Component>(
         []
     )
 
-    public init(cellIdentifier: String) { self.cellIdentifier = cellIdentifier }
+    internal init(cellIdentifier: String) { self.cellIdentifier = cellIdentifier }
 
 }
 
@@ -24,15 +24,15 @@ public final class UITableViewBridge: NSObject {
 
 extension UITableViewBridge: UITableViewDataSource {
 
-    public final func numberOfSections(in tableView: UITableView) -> Int { return Int(components.count) }
+    internal final func numberOfSections(in tableView: UITableView) -> Int { return Int(components.count) }
 
-    public final func tableView(
+    internal final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
     -> Int { return 1 }
 
-    public final func tableView(
+    internal final func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     )
@@ -96,7 +96,7 @@ extension UITableViewBridge: UITableViewDataSource {
 
 extension UITableViewBridge: UITableViewDelegate {
 
-    public final func tableView(
+    internal final func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     )

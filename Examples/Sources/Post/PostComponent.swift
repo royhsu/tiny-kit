@@ -13,9 +13,9 @@ import TinyKit
 
 public final class PostComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<PostView, Post>
+    internal typealias BaseComponent = ItemComponent<PostView, Post>
 
-    private final let baseComponent: BaseComponent
+    internal final let baseComponent: BaseComponent
 
     public init(
         contentMode: ComponentContentMode = .automatic,

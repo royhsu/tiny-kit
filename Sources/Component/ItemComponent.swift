@@ -25,7 +25,7 @@ public final class ItemComponent<
     private final let binding: Binding
 
     public init(
-        contentMode: ComponentContentMode,
+        contentMode: ComponentContentMode = .automatic,
         view: V,
         model: M,
         binding: @escaping Binding

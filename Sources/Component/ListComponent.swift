@@ -88,7 +88,7 @@ public final class ListComponent: Component {
 
     public final func render() -> Promise<Void> {
 
-        return Promise(in: .main) { fulfill, _, _ in
+        let renderList = Promise<Void>(in: .main) { fulfill, _, _ in
 
             DispatchQueue.main.async {
 
@@ -109,7 +109,9 @@ public final class ListComponent: Component {
                         height: height
                     )
 
-                case .automatic: size = self.tableView.contentSize
+                case .automatic:
+
+                    size = self.tableView.contentSize
 
                 }
 
@@ -126,6 +128,11 @@ public final class ListComponent: Component {
             }
 
         }
+
+        return all(
+            itemComponents.map { $0.render() }
+        )
+        .then(in: .main) { _ in renderList }
 
     }
 

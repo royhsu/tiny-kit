@@ -28,29 +28,34 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
 
-        let component = PostComponent()
-
+//        let component = PostComponent()
+//
+//        component.view.backgroundColor = .white
+//
+//        component.post = Post(
+//            title: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+//            content: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla."
+//        )
+        
+        let component = PostListComponent()
+        
         component.view.backgroundColor = .white
 
-        component.post = Post(
-            title: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-            content: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla."
+        window.rootViewController = RootViewController(
+            renderable: component
         )
-
-//        window.rootViewController = RootViewController(
-//            renderable: component
-//        )
-
-        window.rootViewController = UIViewController()
 
         window.makeKeyAndVisible()
 
         component
-            .render()
+            .fetch(in: .background)
+            .then(in: .main, component.render)
             .always(in: .main) {
-
-                print("\(component.view.frame)")
-
+                
+                print("list", component.view)
+                
+                self.window.rootViewController?.view.frame = UIScreen.main.bounds
+                
             }
 
         return true
