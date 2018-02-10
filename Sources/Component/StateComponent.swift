@@ -89,7 +89,7 @@ open class StateComponent<CS: ComponentState>: Component {
 
     // MARK: Component
 
-    public final func render() -> Promise<Void> {
+    public final func render() {
 
         fatalError()
 

@@ -53,7 +53,7 @@ public final class PostComponent: Component {
 
     }
 
-    public final func render() -> Promise<Void> { return baseComponent.render() }
+    public final func render() { baseComponent.render() }
 
 }
 

@@ -86,64 +86,36 @@ public final class ListComponent: Component {
 
     public final var contentMode: ComponentContentMode
 
-    // TODO: the current implementation won't allow any item component to fail while rendering.
-    public final func render() -> Promise<Void> {
+    public final func render() {
 
-        let renderList = Promise<Void>(in: .main) { fulfill, _, _ in
+        tableViewBridge.components = itemComponents
 
-            DispatchQueue.main.async {
+        tableView.reloadData()
 
-                self.tableViewBridge.components = self.itemComponents
+        tableView.layoutIfNeeded()
 
-                self.tableView.reloadData()
+        let size: CGSize
 
-                self.tableView.layoutIfNeeded()
+        switch contentMode {
 
-                let size: CGSize
+        case .size(let width, let height):
 
-                switch self.contentMode {
+            size = CGSize(
+                width: width,
+                height: height
+            )
 
-                case .size(let width, let height):
+        case .automatic:
 
-                    size = CGSize(
-                        width: width,
-                        height: height
-                    )
-
-                case .automatic:
-
-                    size = self.tableView.contentSize
-
-                }
-
-                var frame = self.tableView.frame
-
-                frame.size = size
-
-                self.tableView.frame = frame
-
-                let result: Void = ()
-
-                fulfill(result)
-
-            }
+            size = tableView.contentSize
 
         }
 
-        return all(
-            itemComponents.map { component in
+        var frame = tableView.frame
 
-                // TODO: not quite sure if the always function fixes the all function ends whenever any promises get rejected.
-                component
-                    .render()
-                    .always(
-                        in: .main,
-                        body: { }
-                    )
+        frame.size = size
 
-            }
-        )
-        .then(in: .main) { _ in renderList }
+        tableView.frame = frame
 
     }
 

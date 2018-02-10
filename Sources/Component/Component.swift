@@ -15,7 +15,7 @@ public protocol Component: ViewRenderable {
     var contentMode: ComponentContentMode { get set }
 
     /// The rendering should only happen on the main thread.
-    func render() -> Promise<Void>
+    func render()
 
 }
 

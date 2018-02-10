@@ -51,81 +51,69 @@ public final class ItemComponent<
 
     public final var contentMode: ComponentContentMode
 
-    public final func render() -> Promise<Void> {
+    public final func render() {
+        
+        binding(
+            itemView,
+            model
+        )
 
-        return Promise(in: .main) { fulfill, _, _ in
+        itemView.removeFromSuperview()
 
-            DispatchQueue.main.async {
+        itemView.translatesAutoresizingMaskIntoConstraints = false
 
-                self.binding(
-                    self.itemView,
-                    self.model
-                )
+        view.addSubview(itemView)
 
-                self.itemView.removeFromSuperview()
+        NSLayoutConstraint.activate(
+            [
+                view
+                    .leadingAnchor
+                    .constraint(equalTo: self.itemView.leadingAnchor),
+                view
+                    .topAnchor
+                    .constraint(equalTo: self.itemView.topAnchor),
+                view
+                    .trailingAnchor
+                    .constraint(equalTo: self.itemView.trailingAnchor)
+            ]
+        )
 
-                self.itemView.translatesAutoresizingMaskIntoConstraints = false
+        let size: CGSize
 
-                self.view.addSubview(self.itemView)
+        switch contentMode {
 
-                NSLayoutConstraint.activate(
-                    [
-                        self.view
-                            .leadingAnchor
-                            .constraint(equalTo: self.itemView.leadingAnchor),
-                        self.view
-                            .topAnchor
-                            .constraint(equalTo: self.itemView.topAnchor),
-                        self.view
-                            .trailingAnchor
-                            .constraint(equalTo: self.itemView.trailingAnchor)
-                    ]
-                )
+        case .size(let width, let height):
 
-                let size: CGSize
+            size = CGSize(
+                width: width,
+                height: height
+            )
 
-                switch self.contentMode {
+            // TODO: Should add constraints for the width and height?
 
-                case .size(let width, let height):
+        case .automatic:
 
-                    size = CGSize(
-                        width: width,
-                        height: height
-                    )
+            itemView.layoutIfNeeded()
 
-                    // TODO: Should add constraints for the width and height?
-
-                case .automatic:
-
-                    self.itemView.layoutIfNeeded()
-
-                    size = self.itemView.bounds.size
-
-                }
-
-                var frame = self.view.frame
-
-                frame.size = size
-
-                self.view.frame = frame
-
-                self.itemView.frame = frame
-
-                NSLayoutConstraint.activate(
-                    [
-                        self.view
-                            .bottomAnchor
-                            .constraint(equalTo: self.itemView.bottomAnchor)
-                    ]
-                )
-
-                let result: Void = ()
-
-                fulfill(result)
-
-            }
+            size = itemView.bounds.size
 
         }
+
+        var frame = view.frame
+
+        frame.size = size
+
+        view.frame = frame
+
+        itemView.frame = frame
+
+        NSLayoutConstraint.activate(
+            [
+                view
+                    .bottomAnchor
+                    .constraint(equalTo: itemView.bottomAnchor)
+            ]
+        )
 
     }
 
