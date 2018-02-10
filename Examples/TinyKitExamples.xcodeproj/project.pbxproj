@@ -30,6 +30,7 @@
 		B02F20EA202DEE80001BC665 /* ErrorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E9202DEE80001BC665 /* ErrorComponent.swift */; };
 		B02F20EC202DEF91001BC665 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20EB202DEF91001BC665 /* ErrorModel.swift */; };
 		B02F20EE202EC0CF001BC665 /* ProfileHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20ED202EC0CF001BC665 /* ProfileHeaderComponent.swift */; };
+		B0459A9B202EC75D0085A71C /* NewProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0459A9A202EC75D0085A71C /* NewProfileComponent.swift */; };
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
@@ -78,6 +79,7 @@
 		B02F20E9202DEE80001BC665 /* ErrorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorComponent.swift; sourceTree = "<group>"; };
 		B02F20EB202DEF91001BC665 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		B02F20ED202EC0CF001BC665 /* ProfileHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderComponent.swift; sourceTree = "<group>"; };
+		B0459A9A202EC75D0085A71C /* NewProfileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileComponent.swift; sourceTree = "<group>"; };
 		B05D4FFF1F1EE79D00929006 /* TinyKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D50151F1EE7D300929006 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				B02F20CC202D88F9001BC665 /* ProfileIntroductionComponent.swift */,
 				B02F20DB202DD94C001BC665 /* ProfileComponentState.swift */,
 				B02F20D0202D8AA2001BC665 /* ProfileComponent.swift */,
+				B0459A9A202EC75D0085A71C /* NewProfileComponent.swift */,
 				B02F20E1202DDA8B001BC665 /* LoadingView.swift */,
 				B02F20DF202DDA7D001BC665 /* LoadingView.xib */,
 				B02F20E3202DDCCA001BC665 /* Loading.swift */,
@@ -281,6 +284,7 @@
 				B05D502D1F1EE9F700929006 /* EmojiView.swift in Sources */,
 				B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */,
 				B02F20CD202D88F9001BC665 /* ProfileIntroductionComponent.swift in Sources */,
+				B0459A9B202EC75D0085A71C /* NewProfileComponent.swift in Sources */,
 				B00657EC202C832B000E3E98 /* PostView.swift in Sources */,
 				B02F20E6202DECC5001BC665 /* ErrorView.swift in Sources */,
 				B02F20DE202DDA65001BC665 /* LoadingComponent.swift in Sources */,

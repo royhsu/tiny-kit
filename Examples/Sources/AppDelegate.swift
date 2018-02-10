@@ -28,7 +28,7 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let profileComponent = ProfileHeaderComponent()
+        let profileComponent = NewProfileComponent()
         
 //        let postListComponent = PostListComponent()
 
@@ -40,10 +40,11 @@ extension AppDelegate: UIApplicationDelegate {
         
         profileComponent
             .fetch(in: .background)
-            .then(
-                in: .main,
-                profileComponent.render
-            )
+            .then(in: .main) { }
+//            .then(
+//                in: .main,
+//                profileComponent.render
+//            )
         
         return true
 
