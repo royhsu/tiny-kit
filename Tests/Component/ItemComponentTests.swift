@@ -16,8 +16,6 @@ internal final class ItemComponentTests: XCTestCase {
 
     internal final func testRenderItemComponent() {
 
-        let promise = expectation(description: "Render an item component.")
-
         let contentSize = CGSize(
             width: 50.0,
             height: 100.0
@@ -46,37 +44,26 @@ internal final class ItemComponentTests: XCTestCase {
             }
         )
 
-        colorComponent
-            .render()
-            .then(in: .main) {
+        colorComponent.render()
 
-                XCTAssertEqual(
-                    colorComponent.preferredContentSize,
-                    contentSize
-                )
+        XCTAssertEqual(
+            colorComponent.preferredContentSize,
+            contentSize
+        )
 
-                XCTAssertEqual(
-                    colorComponent.itemView,
-                    colorView
-                )
+        XCTAssertEqual(
+            colorComponent.itemView,
+            colorView
+        )
 
-                XCTAssertEqual(
-                    colorComponent.itemView.backgroundColor,
-                    color.uiColor()
-                )
+        XCTAssertEqual(
+            colorComponent.itemView.backgroundColor,
+            color.uiColor()
+        )
 
-                XCTAssertEqual(
-                    colorComponent.model,
-                    color
-                )
-
-            }
-            .catch(in: .main) { XCTFail("\($0)") }
-            .always(in: .main) { promise.fulfill() }
-
-        wait(
-            for: [ promise ],
-            timeout: 10.0
+        XCTAssertEqual(
+            colorComponent.model,
+            color
         )
 
     }

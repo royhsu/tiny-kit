@@ -16,8 +16,6 @@ internal final class ListComponentTests: XCTestCase {
 
     internal final func testRenderListComponent() {
 
-        let promise = expectation(description: "Render a list component.")
-
         let redContentSize = CGSize(
             width: 100.0,
             height: 100.0
@@ -79,84 +77,73 @@ internal final class ListComponentTests: XCTestCase {
 
         listComponent.itemComponents = AnyCollection(colorComponents)
 
-        listComponent
-            .render()
-            .then(in: .main) {
+        listComponent.render()
 
-                XCTAssertEqual(
-                    listComponent.view as? UITableView,
-                    listComponent.tableView
-                )
+        XCTAssertEqual(
+            listComponent.view as? UITableView,
+            listComponent.tableView
+        )
 
-                XCTAssertEqual(
-                    listComponent.tableView.numberOfSections,
-                    Int(listComponent.itemComponents.count)
-                )
+        XCTAssertEqual(
+            listComponent.tableView.numberOfSections,
+            Int(listComponent.itemComponents.count)
+        )
 
-                guard
-                    let redSection = colorComponents.index(
-                        where: { $0 as? ColorComponent === redComponent }
-                    )
-                else {
+        guard
+            let redSection = colorComponents.index(
+                where: { $0 as? ColorComponent === redComponent }
+            )
+        else {
 
-                    XCTFail("There should be a section for the red component.")
+            XCTFail("There should be a section for the red component.")
 
-                    return
+            return
 
-                }
+        }
 
-                XCTAssertEqual(
-                    listComponent.tableView.numberOfRows(inSection: redSection),
-                    1
-                )
+        XCTAssertEqual(
+            listComponent.tableView.numberOfRows(inSection: redSection),
+            1
+        )
 
-                let redCell = listComponent.tableView.cellForRow(
-                    at: IndexPath(
-                        row: 0,
-                        section: redSection
-                    )
-                )
+        let redCell = listComponent.tableView.cellForRow(
+            at: IndexPath(
+                row: 0,
+                section: redSection
+            )
+        )
 
-                XCTAssertNotNil(redCell)
+        XCTAssertNotNil(redCell)
 
-                guard
-                    let blueSection = colorComponents.index(
-                        where: { $0 as? ColorComponent === blueComponent }
-                    )
-                else {
+        guard
+            let blueSection = colorComponents.index(
+                where: { $0 as? ColorComponent === blueComponent }
+            )
+        else {
 
-                    XCTFail("There should be a section for the blue component.")
+            XCTFail("There should be a section for the blue component.")
 
-                    return
+            return
 
-                }
+        }
 
-                XCTAssertEqual(
-                    listComponent.tableView.numberOfRows(inSection: blueSection),
-                    1
-                )
+        XCTAssertEqual(
+            listComponent.tableView.numberOfRows(inSection: blueSection),
+            1
+        )
 
-                let blueCell = listComponent.tableView.cellForRow(
-                    at: IndexPath(
-                        row: 0,
-                        section: blueSection
-                    )
-                )
+        let blueCell = listComponent.tableView.cellForRow(
+            at: IndexPath(
+                row: 0,
+                section: blueSection
+            )
+        )
 
-                XCTAssertNotNil(blueCell)
+        XCTAssertNotNil(blueCell)
 
-                XCTAssertEqual(
-                    listComponent.preferredContentSize,
-                    listComponent.tableView.contentSize
-                )
-
-            }
-            .catch(in: .main) { XCTFail("\($0)") }
-            .always(in: .main) { promise.fulfill() }
-
-        wait(
-            for: [ promise ],
-            timeout: 10.0
+        XCTAssertEqual(
+            listComponent.preferredContentSize,
+            listComponent.tableView.contentSize
         )
 
     }
