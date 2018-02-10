@@ -105,10 +105,6 @@
 		B00657EA202C82E8000E3E98 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B02F20C0202C8508001BC665 /* Post.swift */,
-				B00657EB202C832B000E3E98 /* PostView.swift */,
-				B00657ED202C8352000E3E98 /* PostView.xib */,
-				B02F20C2202C8563001BC665 /* PostComponent.swift */,
 				B02F20C6202C929F001BC665 /* PostListComponent.swift */,
 				B02F20CE202D893C001BC665 /* Profile.swift */,
 				B02F20C8202D87ED001BC665 /* ProfileIntroductionView.swift */,
@@ -151,6 +147,7 @@
 		B05D50141F1EE7D300929006 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B0E643F9202F153F00E43B20 /* Post */,
 				B00657EA202C82E8000E3E98 /* Profile */,
 				B05D50291F1EE99D00929006 /* Emoji */,
 				B05D50231F1EE81600929006 /* Supporting Files */,
@@ -177,6 +174,17 @@
 				B0E643F5202F0CD600E43B20 /* EmojiComponent.swift */,
 			);
 			path = Emoji;
+			sourceTree = "<group>";
+		};
+		B0E643F9202F153F00E43B20 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B02F20C0202C8508001BC665 /* Post.swift */,
+				B00657EB202C832B000E3E98 /* PostView.swift */,
+				B00657ED202C8352000E3E98 /* PostView.xib */,
+				B02F20C2202C8563001BC665 /* PostComponent.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
