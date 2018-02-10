@@ -18,19 +18,18 @@ internal final class ListComponentTests: XCTestCase {
         
         let promise = expectation(description: "Render a list component.")
         
-        let redPreferredContentSize = CGSize(
+        let redContentSize = CGSize(
             width: 100.0,
             height: 100.0
         )
         
         let redView = RectangleView()
         
-        redView.frame = CGRect(
-            origin: .zero,
-            size: redPreferredContentSize
-        )
-        
         let redComponent = ColorComponent(
+            contentMode: .size(
+                width: redContentSize.width,
+                height: redContentSize.height
+            ),
             view: redView,
             model: Color(
                 red: 1.0,
@@ -45,19 +44,18 @@ internal final class ListComponentTests: XCTestCase {
             }
         )
         
-        let blueView = RectangleView()
-        
-        let bluePreferredContentSize = CGSize(
+        let blueContentSize = CGSize(
             width: 200.0,
             height: 200.0
         )
         
-        blueView.frame = CGRect(
-            origin: .zero,
-            size: bluePreferredContentSize
-        )
+        let blueView = RectangleView()
         
         let blueComponent = ColorComponent(
+            contentMode: .size(
+                width: blueContentSize.width,
+                height: blueContentSize.height
+            ),
             view: blueView,
             model: Color(
                 red: 0.0,

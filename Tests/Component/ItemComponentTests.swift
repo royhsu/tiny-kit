@@ -14,9 +14,16 @@ import XCTest
 
 internal final class ItemComponentTests: XCTestCase {
     
-    internal final func testRenderItemComponent() {
+    internal final func testRenderItemComponentWithSize() {
         
         let promise = expectation(description: "Render an item component.")
+        
+        let contentSize = CGSize(
+            width: 50.0,
+            height: 100.0
+        )
+        
+        let colorView = RectangleView()
         
         let color = Color(
             red: 1.0,
@@ -25,19 +32,11 @@ internal final class ItemComponentTests: XCTestCase {
             alpha: 1.0
         )
         
-        let colorView = RectangleView()
-        
-        let preferredContentSize = CGSize(
-            width: 50.0,
-            height: 50.0
-        )
-        
-        colorView.frame = CGRect(
-            origin: .zero,
-            size: preferredContentSize
-        )
-        
         let colorComponent = ColorComponent(
+            contentMode: .size(
+                width: contentSize.width,
+                height: contentSize.height
+            ),
             view: colorView,
             model: color,
             binding: { colorView, color in
@@ -58,7 +57,7 @@ internal final class ItemComponentTests: XCTestCase {
                 
                 XCTAssertEqual(
                     colorComponent.preferredContentSize,
-                    preferredContentSize
+                    contentSize
                 )
                 
                 XCTAssertEqual(

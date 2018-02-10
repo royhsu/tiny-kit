@@ -8,6 +8,8 @@
 
 // MARK: - ListComponent
 
+import TinyCore
+
 open class ListComponent: Component {
     
     public final var headerComponent: Component? {
@@ -78,21 +80,9 @@ open class ListComponent: Component {
 
     public final var preferredContentSize: CGSize { return tableView.contentSize }
     
-}
-
-// MARK: - ViewRender
-
-import TinyCore
-
-extension ListComponent: ViewRender {
+    // MAKR: Component
     
-    public final var renderables: AnyCollection<ViewRenderable> {
-        
-        let renderables = itemComponents.map { $0 as ViewRenderable }
-        
-        return AnyCollection(renderables)
-        
-    }
+    public final var contentMode: ComponentContentMode = .automatic
     
     public final func render() -> Promise<Void> {
      
@@ -100,7 +90,7 @@ extension ListComponent: ViewRender {
         
             DispatchQueue.main.async {
                 
-                self.tableViewBridge.renderables = self.renderables
+                self.tableViewBridge.components = self.itemComponents
                 
                 self.tableView.reloadData()
                 

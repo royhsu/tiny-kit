@@ -28,10 +28,13 @@ open class ItemComponent<
     private final let binding: Binding
     
     public init(
+        contentMode: ComponentContentMode,
         view: V,
         model: M,
         binding: @escaping Binding
     ) {
+        
+        self.contentMode = contentMode
         
         self.itemView = view
         
@@ -48,10 +51,31 @@ open class ItemComponent<
     public final var preferredContentSize: CGSize { return itemView.bounds.size }
     
     // MARK: Component
+    
+    public final var contentMode: ComponentContentMode
 
     public final func render() -> Promise<Void> {
         
         return Promise(in: .main) { fulfill, _, _ in
+            
+            switch self.contentMode {
+                
+            case .size(let width, let height):
+                
+                var frame = self.itemView.frame
+                
+                frame.size = CGSize(
+                    width: width,
+                    height: height
+                )
+                
+                self.itemView.frame = frame
+                
+            case .automatic:
+                
+                self.itemView.layoutIfNeeded()
+                
+            }
             
             self.binding(
                 self.itemView,

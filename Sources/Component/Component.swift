@@ -12,7 +12,22 @@ import TinyCore
 
 public protocol Component: ViewRenderable {
     
+    var contentMode: ComponentContentMode { get set }
+    
     /// The rendering should only happen on the main thread.
     func render() -> Promise<Void>
+    
+}
+
+// MARK: - ComponentContentMode
+
+public enum ComponentContentMode {
+    
+    case size(
+        width: CGFloat,
+        height: CGFloat
+    )
+    
+    case automatic
     
 }

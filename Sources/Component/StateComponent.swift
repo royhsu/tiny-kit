@@ -12,6 +12,9 @@ import TinyCore
 
 open class StateComponent<CS: ComponentState>: Component {
     
+    public var contentMode: ComponentContentMode = .automatic
+    
+    
     private final let stateMachine: StateMachine<StateComponent>
     
     private final var stateComponentMap: [AnyComponentState<CS>: Component]

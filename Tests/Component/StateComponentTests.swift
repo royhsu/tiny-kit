@@ -53,7 +53,11 @@ internal final class StateComponentTests: XCTestCase {
         
         do {
             
-            let greenComponent = ItemComponent(
+            let greenComponent = ColorComponent(
+                contentMode: .size(
+                    width: 50.0,
+                    height: 50.0
+                ),
                 view: RectangleView(),
                 model: Color(
                     red: 0.0,
@@ -68,7 +72,11 @@ internal final class StateComponentTests: XCTestCase {
                 }
             )
             
-            let yellowComponent = ItemComponent(
+            let yellowComponent = ColorComponent(
+                contentMode: .size(
+                    width: 50.0,
+                    height: 50.0
+                ),
                 view: RectangleView(),
                 model: Color(
                     red: 0.0,
@@ -83,7 +91,11 @@ internal final class StateComponentTests: XCTestCase {
                 }
             )
             
-            let redComponent = ItemComponent(
+            let redComponent = ColorComponent(
+                contentMode: .size(
+                    width: 50.0,
+                    height: 50.0
+                ),
                 view: RectangleView(),
                 model: Color(
                     red: 1.0,

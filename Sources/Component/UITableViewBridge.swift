@@ -12,7 +12,7 @@ public final class UITableViewBridge: NSObject {
     
     public final let cellIdentifier: String
 
-    public final var renderables = AnyCollection<ViewRenderable>(
+    public final var components = AnyCollection<Component>(
         []
     )
     
@@ -24,7 +24,7 @@ public final class UITableViewBridge: NSObject {
 
 extension UITableViewBridge: UITableViewDataSource {
     
-    public final func numberOfSections(in tableView: UITableView) -> Int { return Int(renderables.count) }
+    public final func numberOfSections(in tableView: UITableView) -> Int { return Int(components.count) }
     
     public final func tableView(
         _ tableView: UITableView,
@@ -49,11 +49,11 @@ extension UITableViewBridge: UITableViewDataSource {
         
         let index = AnyIndex(indexPath.section)
         
-        let renderable = renderables[index]
+        let component = components[index]
         
         let containerView = cell.contentView
         
-        let contentView = renderable.view
+        let contentView = component.view
         
         contentView.removeFromSuperview()
         
@@ -92,7 +92,7 @@ extension UITableViewBridge: UITableViewDataSource {
     
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension UITableViewBridge: UITableViewDelegate {
 
@@ -104,9 +104,15 @@ extension UITableViewBridge: UITableViewDelegate {
 
         let index = AnyIndex(indexPath.section)
 
-        let renderable = renderables[index]
+        let component = components[index]
 
-        return renderable.preferredContentSize.height
+        switch component.contentMode {
+            
+        case .size(_, let height): return height
+            
+        case .automatic: return UITableViewAutomaticDimension
+            
+        }
 
     }
     
