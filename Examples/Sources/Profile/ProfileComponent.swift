@@ -47,7 +47,7 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
             height: UITableViewAutomaticDimension
         )
         
-        let headerComponent = ProfileHeaderComponent(
+        let headerComponent = ProfileIntroductionComponent(
             profile: Profile(
                 pictureURL: nil,
                 name: nil
