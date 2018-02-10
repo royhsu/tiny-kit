@@ -37,7 +37,7 @@ internal final class ItemComponentTests: XCTestCase {
             size: preferredContentSize
         )
         
-        let colorComponent = ItemComponent(
+        let colorComponent = ColorComponent(
             view: colorView,
             model: color,
             binding: { colorView, color in
@@ -53,7 +53,7 @@ internal final class ItemComponentTests: XCTestCase {
                 
                 XCTAssertEqual(
                     colorComponent.view as? RectangleView,
-                    colorView
+                    colorComponent.itemView
                 )
                 
                 XCTAssertEqual(

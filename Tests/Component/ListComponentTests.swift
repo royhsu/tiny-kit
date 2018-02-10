@@ -14,14 +14,24 @@ import XCTest
 
 internal final class ListComponentTests: XCTestCase {
     
-    internal final func testListComponent() {
+    internal final func testRenderListComponent() {
         
         let promise = expectation(description: "Render a list component.")
         
-        let listComponent = ListComponent()
+        let redPreferredContentSize = CGSize(
+            width: 100.0,
+            height: 100.0
+        )
         
-        let redComponent = ItemComponent(
-            view: RectangleView(),
+        let redView = RectangleView()
+        
+        redView.frame = CGRect(
+            origin: .zero,
+            size: redPreferredContentSize
+        )
+        
+        let redComponent = ColorComponent(
+            view: redView,
             model: Color(
                 red: 1.0,
                 green: 0.0,
@@ -35,8 +45,20 @@ internal final class ListComponentTests: XCTestCase {
             }
         )
         
-        let blueComponent = ItemComponent(
-            view: RectangleView(),
+        let blueView = RectangleView()
+        
+        let bluePreferredContentSize = CGSize(
+            width: 200.0,
+            height: 200.0
+        )
+        
+        blueView.frame = CGRect(
+            origin: .zero,
+            size: bluePreferredContentSize
+        )
+        
+        let blueComponent = ColorComponent(
+            view: blueView,
             model: Color(
                 red: 0.0,
                 green: 0.0,
@@ -50,32 +72,92 @@ internal final class ListComponentTests: XCTestCase {
             }
         )
         
-        listComponent.itemComponents = AnyCollection(
-            [
-                redComponent,
-                blueComponent
-            ]
-        )
+        let colorComponents: [Component] = [
+            redComponent,
+            blueComponent
+        ]
+        
+        let listComponent = ListComponent()
+        
+        listComponent.itemComponents = AnyCollection(colorComponents)
         
         listComponent
             .render()
             .then(in: .main) {
 
-                guard
-                    let tableView = listComponent.view as? UITableView
-                else {
-
-                    XCTFail("The view of list component must be a table view.")
-
-                    return
-
-                }
-
                 XCTAssertEqual(
-                    tableView.numberOfSections,
+                    listComponent.view as? UITableView,
+                    listComponent.tableView
+                )
+                
+                XCTAssertEqual(
+                    listComponent.tableView.numberOfSections,
                     Int(listComponent.itemComponents.count)
                 )
-
+                
+                guard
+                    let redSection = colorComponents.index(
+                        where: { $0 as? ColorComponent === redComponent }
+                    )
+                else {
+                    
+                    XCTFail("There should be a section for the red component.")
+                    
+                    return
+                    
+                }
+                
+                XCTAssertEqual(
+                    listComponent.tableView.numberOfRows(inSection: redSection),
+                    1
+                )
+                
+                let redCell = listComponent.tableView.cellForRow(
+                    at: IndexPath(
+                        row: 0,
+                        section: redSection
+                    )
+                )
+                
+                XCTAssertEqual(
+                    redCell?.contentView.subviews.first,
+                    redView
+                )
+                
+                guard
+                    let blueSection = colorComponents.index(
+                        where: { $0 as? ColorComponent === blueComponent }
+                    )
+                else {
+                    
+                    XCTFail("There should be a section for the blue component.")
+                    
+                    return
+                    
+                }
+                
+                XCTAssertEqual(
+                    listComponent.tableView.numberOfRows(inSection: blueSection),
+                    1
+                )
+        
+                let blueCell = listComponent.tableView.cellForRow(
+                    at: IndexPath(
+                        row: 0,
+                        section: blueSection
+                    )
+                )
+                
+                XCTAssertEqual(
+                    blueCell?.contentView.subviews.first,
+                    blueView
+                )
+                
+                XCTAssertEqual(
+                    listComponent.preferredContentSize,
+                    listComponent.tableView.contentSize
+                )
+    
             }
             .catch(in: .main) { XCTFail("\($0)") }
             .always(in: .main) { promise.fulfill() }

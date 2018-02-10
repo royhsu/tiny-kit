@@ -12,13 +12,14 @@ import TinyCore
 
 /// Implementing a custom component by overriding this class.
 /// Be sure to initiatie and manipulate it only in the main thread.
+// Todo: make it finalized.
 open class ItemComponent<
     V: View,
     M: Codable
 >: Component {
     
-    /// The underlying view preserve the type information.
-    public final let itemView: V
+    /// The underlying view that preserves the type information.
+    internal final let itemView: V
     
     public final var model: M
     

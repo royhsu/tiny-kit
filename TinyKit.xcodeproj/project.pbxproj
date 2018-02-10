@@ -42,6 +42,7 @@
 		B0C6ECA6202C575D00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
 		B0C6ECA7202C57AB00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
 		B0C6ECAB202C58CC00AFEE54 /* TinyCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0E643F4202EF02800E43B20 /* ColorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E643F2202EF02400E43B20 /* ColorComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0E643F2202EF02400E43B20 /* ColorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			children = (
 				B0C17DD2201D7C560063CA45 /* RectangleView.swift */,
 				B05340882019ACF1002FFD5B /* Color.swift */,
+				B0E643F2202EF02400E43B20 /* ColorComponent.swift */,
 				B05340822019A93E002FFD5B /* ItemComponentTests.swift */,
 				B02449EA201DAE9600D20C50 /* ListComponentTests.swift */,
 				B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */,
@@ -470,6 +473,7 @@
 				B05D4F531F1E0C9300929006 /* NibTableViewCell.swift in Sources */,
 				B05D4F541F1E0C9700929006 /* NoNibTableViewCell.swift in Sources */,
 				B0A9DEA72018821100AEF782 /* ComponentNodeTests.swift in Sources */,
+				B0E643F4202EF02800E43B20 /* ColorComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

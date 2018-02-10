@@ -43,9 +43,9 @@ open class ListComponent: Component {
         describing: UITableViewCell.self
     )
     
-    private final let tableViewBridge: UITableViewBridge
+    internal final let tableView = UITableView(frame: UIScreen.main.bounds)
     
-    public final let tableView = UITableView(frame: UIScreen.main.bounds)
+    private final let tableViewBridge: UITableViewBridge
     
     public init() {
         
