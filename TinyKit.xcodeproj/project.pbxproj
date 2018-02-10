@@ -43,6 +43,7 @@
 		B0C6ECA7202C57AB00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
 		B0C6ECAB202C58CC00AFEE54 /* TinyCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0E643F4202EF02800E43B20 /* ColorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E643F2202EF02400E43B20 /* ColorComponent.swift */; };
+		B0E643FC202F418300E43B20 /* ComponentContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E643FB202F418300E43B20 /* ComponentContentMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0E643F2202EF02400E43B20 /* ColorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorComponent.swift; sourceTree = "<group>"; };
+		B0E643FB202F418300E43B20 /* ComponentContentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentContentMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 		B0A9DEAF201885B500AEF782 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B0E643FB202F418300E43B20 /* ComponentContentMode.swift */,
 				B0A9DEB0201885DE00AEF782 /* Component.swift */,
 				B053407C2019A7F8002FFD5B /* ItemComponent.swift */,
 				B02449E8201DAE8700D20C50 /* ListComponent.swift */,
@@ -439,6 +442,7 @@
 			files = (
 				B02F20D8202DC6B2001BC665 /* ComponentState.swift in Sources */,
 				B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */,
+				B0E643FC202F418300E43B20 /* ComponentContentMode.swift in Sources */,
 				B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */,
 				B02449E5201D9B4700D20C50 /* View.swift in Sources */,
 				B02F20D3202DB65C001BC665 /* StateComponent.swift in Sources */,

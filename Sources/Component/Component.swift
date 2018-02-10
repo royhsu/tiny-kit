@@ -16,16 +16,3 @@ public protocol Component: ViewRenderable {
     func render()
 
 }
-
-// MARK: - ComponentContentMode
-
-public enum ComponentContentMode {
-
-    case size(
-        width: CGFloat,
-        height: CGFloat
-    )
-
-    case automatic
-
-}

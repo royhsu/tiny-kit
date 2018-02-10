@@ -8,7 +8,6 @@
 
 // MARK: - PostComponent
 
-import TinyCore
 import TinyKit
 
 public final class PostComponent: Component {
