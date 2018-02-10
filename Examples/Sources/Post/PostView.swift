@@ -11,11 +11,11 @@
 import UIKit
 
 public final class PostView: UIView {
-    
+
     @IBOutlet
     public fileprivate(set) final weak var titleLabel: UILabel!
-    
+
     @IBOutlet
     public fileprivate(set) final weak var contentLabel: UILabel!
-    
+
 }

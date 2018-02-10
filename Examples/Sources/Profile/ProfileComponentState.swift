@@ -8,11 +8,10 @@
 
 // MARK: - ProfileComponentState
 
-
 public enum ProfileComponentState: String {
-    
+
     case loading, loaded, error
-    
+
 }
 
 // MARK: - State
@@ -20,28 +19,28 @@ public enum ProfileComponentState: String {
 import TinyCore
 
 extension ProfileComponentState: State {
-    
+
     public func isValidNextState(_ state: State) -> Bool {
-        
+
         guard
             let new = state as? ProfileComponentState
         else { return false }
-        
+
         let old = self
-        
+
         switch (old, new) {
-            
+
         case
             (.loading, .loaded),
             (.loading, .error),
             (.loaded, .loading),
             (.error, .loading):
-            
+
             return true
-            
+
         default: return false
         }
-        
+
     }
-    
+
 }

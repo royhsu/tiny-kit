@@ -14,60 +14,60 @@ public final class ItemComponent<
     V: View,
     M: Codable
 >: Component {
-    
+
     /// The underlying view that preserves the type information.
     internal final let itemView: V
-    
+
     public final var model: M
-    
+
     public typealias Binding = (V, M) -> Void
-    
+
     private final let binding: Binding
-    
+
     public init(
         contentMode: ComponentContentMode,
         view: V,
         model: M,
         binding: @escaping Binding
     ) {
-        
+
         self.contentMode = contentMode
-        
+
         self.itemView = view
-        
+
         self.model = model
-        
+
         self.binding = binding
-        
+
     }
-    
+
     // MARK: ViewRenderable
-    
+
     public final let view = View(frame: UIScreen.main.bounds)
-    
+
     public final var preferredContentSize: CGSize { return itemView.bounds.size }
-    
+
     // MARK: Component
-    
+
     public final var contentMode: ComponentContentMode
 
     public final func render() -> Promise<Void> {
-        
+
         return Promise(in: .main) { fulfill, _, _ in
-            
+
             DispatchQueue.main.async {
-            
+
                 self.binding(
                     self.itemView,
                     self.model
                 )
-                
+
                 self.itemView.removeFromSuperview()
-                
+
                 self.itemView.translatesAutoresizingMaskIntoConstraints = false
-                
+
                 self.view.addSubview(self.itemView)
-                
+
                 NSLayoutConstraint.activate(
                     [
                         self.view
@@ -81,34 +81,34 @@ public final class ItemComponent<
                             .constraint(equalTo: self.itemView.trailingAnchor)
                     ]
                 )
-                
+
                 let size: CGSize
-                
+
                 switch self.contentMode {
-                    
+
                 case .size(let width, let height):
-                    
+
                     size = CGSize(
                         width: width,
                         height: height
                     )
-                    
-                    // Todo: Should add constraints for the width and height?
-                    
+
+                    // TODO: Should add constraints for the width and height?
+
                 case .automatic:
-                    
+
                     self.itemView.layoutIfNeeded()
-                    
+
                     size = self.itemView.bounds.size
-                    
+
                 }
-                
+
                 var frame = self.view.frame
-                
+
                 frame.size = size
-                
+
                 self.view.frame = frame
-                
+
                 NSLayoutConstraint.activate(
                     [
                         self.view
@@ -116,15 +116,15 @@ public final class ItemComponent<
                             .constraint(equalTo: self.itemView.bottomAnchor)
                     ]
                 )
-                
+
                 let result: Void = ()
-                
+
                 fulfill(result)
-                
+
             }
-            
+
         }
-        
+
     }
-    
+
 }

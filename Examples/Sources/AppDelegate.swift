@@ -27,32 +27,32 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-        
+
         let component = PostComponent()
-        
+
         component.view.backgroundColor = .white
-        
+
         component.post = Post(
             title: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
             content: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla."
         )
-        
+
 //        window.rootViewController = RootViewController(
 //            renderable: component
 //        )
-        
+
         window.rootViewController = UIViewController()
-        
+
         window.makeKeyAndVisible()
-        
+
         component
             .render()
             .always(in: .main) {
-                
+
                 print("\(component.view.frame)")
-                
+
             }
-        
+
         return true
 
     }

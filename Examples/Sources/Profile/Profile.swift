@@ -11,20 +11,20 @@
 import Foundation
 
 public struct Profile: Codable {
-    
+
     public var pictureURL: URL?
-    
+
     public var name: String?
-    
+
     public init(
         pictureURL: URL? = nil,
         name: String? = nil
     ) {
-        
+
         self.pictureURL = pictureURL
-        
+
         self.name = name
-        
+
     }
-    
+
 }

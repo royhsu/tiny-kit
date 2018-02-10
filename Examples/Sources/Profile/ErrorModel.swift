@@ -9,9 +9,9 @@
 // MARK: - ErrorModel
 
 public struct ErrorModel: Codable {
-    
+
     public var message: String?
-    
+
     public init(message: String? = nil) { self.message = message }
-    
+
 }

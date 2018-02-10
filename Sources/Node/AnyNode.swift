@@ -10,23 +10,23 @@
 
 /// Type-erasure wrapper of Node.
 public struct AnyNode {
-    
+
     private let base: Node
-    
+
     public init(_ base: Node) { self.base = base }
-    
+
 }
 
 // MARK: - Node
 
 extension AnyNode: Node {
-    
+
     public var parent: Node? { return base.parent.map(AnyNode.init) }
-    
+
     public var childs: AnyCollection<Node> { return AnyCollection(base.childs) }
-    
+
     public func addChild(_ node: Node) { base.addChild(node) }
-    
+
     public func removeFromParent() { base.removeFromParent() }
-    
+
 }

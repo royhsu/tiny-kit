@@ -11,8 +11,8 @@
 import UIKit
 
 public final class LoadingView: UIView {
-    
+
     @IBOutlet
     public fileprivate(set) weak var activityIndicatorView: UIActivityIndicatorView!
-    
+
 }

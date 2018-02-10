@@ -9,13 +9,13 @@
 // MARK: - Node
 
 public protocol Node {
-    
+
     var parent: Node? { get }
-    
+
     var childs: AnyCollection<Node> { get }
-    
+
     func addChild(_ node: Node)
-    
+
     func removeFromParent()
-    
+
 }

@@ -46,4 +46,3 @@
 //    public final var preferredContentSize: CGSize { return postListComponent.preferredContentSize }
 //    
 //}
-

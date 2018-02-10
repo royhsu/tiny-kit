@@ -11,9 +11,9 @@
 import UIKit
 
 public protocol ViewRenderable {
-    
+
     var view: View { get }
 
     var preferredContentSize: CGSize { get }
-    
+
 }

@@ -13,9 +13,9 @@ import TinyCore
 /// A view render should define its own way to renderables.
 /// It can also ignore the preferred content size of renderables if it makes sense.
 public protocol ViewRender {
-    
+
     var renderables: AnyCollection<ViewRenderable> { get }
-    
+
     func render() -> Promise<Void>
-    
+
 }

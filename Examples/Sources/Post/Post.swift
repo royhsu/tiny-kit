@@ -9,20 +9,20 @@
 // MARK: - Post
 
 public struct Post: Codable {
-    
+
     public var title: String?
-    
+
     public var content: String?
-    
+
     public init(
         title: String? = nil,
         content: String? = nil
     ) {
-        
+
         self.title = title
-        
+
         self.content = content
-        
+
     }
-    
+
 }

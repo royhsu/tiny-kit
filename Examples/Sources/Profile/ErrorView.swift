@@ -11,8 +11,8 @@
 import UIKit
 
 public final class ErrorView: UIView {
-    
+
     @IBOutlet
     public fileprivate(set) final weak var messageLabel: UILabel!
-    
+
 }

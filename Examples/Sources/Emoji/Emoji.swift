@@ -9,13 +9,13 @@
 // MARK: - Emoji
 
 public struct Emoji: Codable {
-    
+
     public var text: String?
-    
+
     public init(text: String? = nil) {
-        
+
         self.text = text
-        
+
     }
-    
+
 }
