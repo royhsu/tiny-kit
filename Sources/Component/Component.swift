@@ -8,4 +8,11 @@
 
 // MARK: - Component
 
-public protocol Component: ViewRenderable { }
+import TinyCore
+
+public protocol Component: ViewRenderable {
+    
+    /// The rendering should only happen on the main thread.
+    func render() -> Promise<Void>
+    
+}

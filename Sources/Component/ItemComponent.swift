@@ -8,6 +8,8 @@
 
 // MARK: - ItemComponent
 
+import TinyCore
+
 /// Implementing a custom component by overriding this class.
 /// Be sure to initiatie and manipulate it only in the main thread.
 open class ItemComponent<
@@ -15,22 +17,10 @@ open class ItemComponent<
     M: Codable
 >: Component {
     
-    /// The underlying view contains its type information.
+    /// The underlying view preserve the type information.
     public final let itemView: V
     
-    /// Changing the model will also automatically reflect to the bond item view.
-    public final var model: M {
-        
-        didSet {
-            
-            binding(
-                itemView,
-                model
-            )
-            
-        }
-        
-    }
+    public final var model: M
     
     public typealias Binding = (V, M) -> Void
     
@@ -48,31 +38,31 @@ open class ItemComponent<
         
         self.binding = binding
         
-        self.preferredContentSize = itemView.bounds.size
-        
-        binding(
-            itemView,
-            model
-        )
-        
     }
     
     // MARK: ViewRenderable
     
     public final var view: View { return itemView }
     
-    public final var preferredContentSize: CGSize {
+    public final var preferredContentSize: CGSize { return itemView.bounds.size }
+    
+    // MARK: Component
+
+    public final func render() -> Promise<Void> {
         
-        didSet {
+        return Promise(in: .main) { fulfill, _, _ in
             
-            var preferredFrame = itemView.frame
+            self.binding(
+                self.itemView,
+                self.model
+            )
             
-            preferredFrame.size = preferredContentSize
+            let result: Void = ()
             
-            itemView.frame = preferredFrame
+            fulfill(result)
             
         }
         
     }
-
+    
 }

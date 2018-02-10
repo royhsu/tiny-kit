@@ -79,6 +79,14 @@ open class StateComponent<CS: ComponentState>: Component {
     
     public final var preferredContentSize: CGSize { return currentComponent.preferredContentSize }
     
+    // MARK: Component
+
+    public final func render() -> Promise<Void> {
+        
+        fatalError()
+        
+    }
+    
 }
 
 public extension StateComponent {

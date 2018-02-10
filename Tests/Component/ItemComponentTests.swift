@@ -14,7 +14,9 @@ import XCTest
 
 internal final class ItemComponentTests: XCTestCase {
     
-    internal final func testItemComponent() {
+    internal final func testRenderItemComponent() {
+        
+        let promise = expectation(description: "Render an item component.")
         
         let color = Color(
             red: 1.0,
@@ -23,8 +25,20 @@ internal final class ItemComponentTests: XCTestCase {
             alpha: 1.0
         )
         
+        let colorView = RectangleView()
+        
+        let preferredContentSize = CGSize(
+            width: 50.0,
+            height: 50.0
+        )
+        
+        colorView.frame = CGRect(
+            origin: .zero,
+            size: preferredContentSize
+        )
+        
         let colorComponent = ItemComponent(
-            view: RectangleView(),
+            view: colorView,
             model: color,
             binding: { colorView, color in
                 
@@ -33,48 +47,43 @@ internal final class ItemComponentTests: XCTestCase {
             }
         )
         
-        let preferredContentSize = CGSize(
-            width: 50.0,
-            height: 50.0
+        colorComponent
+            .render()
+            .then(in: .main) {
+                
+                XCTAssertEqual(
+                    colorComponent.view as? RectangleView,
+                    colorView
+                )
+                
+                XCTAssertEqual(
+                    colorComponent.preferredContentSize,
+                    preferredContentSize
+                )
+                
+                XCTAssertEqual(
+                    colorComponent.itemView,
+                    colorView
+                )
+                
+                XCTAssertEqual(
+                    colorComponent.itemView.backgroundColor,
+                    color.uiColor()
+                )
+                
+                XCTAssertEqual(
+                    colorComponent.model,
+                    color
+                )
+                
+            }
+            .catch(in: .main) { XCTFail("\($0)") }
+            .always(in: .main) { promise.fulfill() }
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
         )
-        
-        colorComponent.preferredContentSize = preferredContentSize
-        
-        guard
-            let colorView = colorComponent.view as? RectangleView
-        else {
-            
-            XCTFail("Not the subclass of RectangelView.")
-            
-            return
-            
-        }
-        
-        XCTAssertEqual(
-            colorView.backgroundColor,
-            color.uiColor()
-        )
-        
-        XCTAssertEqual(
-            colorView.frame.size,
-            colorComponent.preferredContentSize
-        )
-        
-//        let containerView = UIView()
-//
-//        do {
-//
-//            try containerView.render(
-//                AnyCollection([ colorComponent ])
-//            )
-//
-//            XCTAssert(colorComponent.view.superview === containerView)
-//
-//
-
-//
-//        }
-//        catch { XCTFail("\(error)") }
         
     }
     

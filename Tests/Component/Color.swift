@@ -22,6 +22,26 @@ internal struct Color: Codable {
     
 }
 
+// MARK: - Equatable
+
+extension Color: Equatable {
+    
+    internal static func ==(
+        lhs: Color,
+        rhs: Color
+    )
+    -> Bool {
+        
+        return
+            lhs.red == rhs.red
+            && lhs.green == rhs.green
+            && lhs.blue == rhs.blue
+            && lhs.alpha == rhs.alpha
+        
+    }
+    
+}
+
 // MARK: - UIColor
 
 internal extension Color {
