@@ -8,22 +8,23 @@
 
 // MARK: - ErrorComponent
 
-import TinyKit
+//import TinyKit
+//
+//public final class ErrorComponent: ItemComponent<ErrorView, ErrorModel> {
+//    
+//    public init(errorModel: ErrorModel) {
+//        
+//        super.init(
+//            view: UIView.load(ErrorView.self)!,
+//            model: errorModel,
+//            binding: { errorView, errorModel in
+//                
+//                errorView.messageLabel.text = errorModel.message
+//                
+//            }
+//        )
+//        
+//    }
+//    
+//}
 
-public final class ErrorComponent: ItemComponent<ErrorView, ErrorModel> {
-    
-    public init(errorModel: ErrorModel) {
-        
-        super.init(
-            view: UIView.load(ErrorView.self)!,
-            model: errorModel,
-            binding: { errorView, errorModel in
-                
-                errorView.messageLabel.text = errorModel.message
-                
-            }
-        )
-        
-    }
-    
-}

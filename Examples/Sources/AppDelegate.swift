@@ -28,23 +28,21 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let profileComponent = NewProfileComponent()
+        let component = EmojiComponent()
         
-//        let postListComponent = PostListComponent()
-
+        component.view.backgroundColor = .white
+        
+        component.emoji = Emoji(text: "😎")
+        
         window.rootViewController = RootViewController(
-            renderable: profileComponent
+            renderable: component
         )
-
+        
         window.makeKeyAndVisible()
         
-        profileComponent
-            .fetch(in: .background)
-            .then(in: .main) { }
-//            .then(
-//                in: .main,
-//                profileComponent.render
-//            )
+        component
+            .render()
+            .always(in: .main) { }
         
         return true
 

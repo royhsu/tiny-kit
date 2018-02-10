@@ -8,41 +8,42 @@
 
 // MARK: - NewProfileComponent
 
-import TinyCore
-import TinyKit
+//import TinyCore
+//import TinyKit
+//
+//public final class NewProfileComponent: Component {
+//    
+//    public let headerComponent = ProfileHeaderComponent()
+//    
+//    public let postListComponent = PostListComponent()
+//    
+//    public final func fetch(in context: Context) -> Promise<Void> {
+//        
+//        return headerComponent
+//            .fetch(in: context)
+//            .then(
+//                in: .main,
+//                headerComponent.render
+//            )
+//            .then(in: .main) { _ -> Promise<Void> in
+//                
+//                self.postListComponent.headerComponent = self.headerComponent
+//                
+//                return self.postListComponent.fetch(in: context)
+//                
+//            }
+//            .then(
+//                in: .main,
+//                postListComponent.render
+//            )
+//        
+//    }
+//    
+//    // MARK: ViewRenderable
+//    
+//    public final var view: View { return postListComponent.view }
+//    
+//    public final var preferredContentSize: CGSize { return postListComponent.preferredContentSize }
+//    
+//}
 
-public final class NewProfileComponent: Component {
-    
-    public let headerComponent = ProfileHeaderComponent()
-    
-    public let postListComponent = PostListComponent()
-    
-    public final func fetch(in context: Context) -> Promise<Void> {
-        
-        return headerComponent
-            .fetch(in: context)
-            .then(
-                in: .main,
-                headerComponent.render
-            )
-            .then(in: .main) { _ -> Promise<Void> in
-                
-                self.postListComponent.headerComponent = self.headerComponent
-                
-                return self.postListComponent.fetch(in: context)
-                
-            }
-            .then(
-                in: .main,
-                postListComponent.render
-            )
-        
-    }
-    
-    // MARK: ViewRenderable
-    
-    public final var view: View { return postListComponent.view }
-    
-    public final var preferredContentSize: CGSize { return postListComponent.preferredContentSize }
-    
-}

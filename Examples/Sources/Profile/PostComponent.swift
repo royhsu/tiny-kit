@@ -8,25 +8,26 @@
 
 // MARK: - Post
 
-import TinyCore
-import TinyKit
+//import TinyCore
+//import TinyKit
+//
+//public final class PostComponent: ItemComponent<PostView, Post> {
+//    
+//    public init(post: Post) {
+//
+//        super.init(
+//            view: UIView.load(PostView.self)!,
+//            model: post,
+//            binding: { postView, post in
+//
+//                postView.titleLabel.text = post.title
+//
+//                postView.contentLabel.text = post.content
+//
+//            }
+//        )
+//
+//    }
+//    
+//}
 
-public final class PostComponent: ItemComponent<PostView, Post> {
-    
-    public init(post: Post) {
-
-        super.init(
-            view: UIView.load(PostView.self)!,
-            model: post,
-            binding: { postView, post in
-
-                postView.titleLabel.text = post.title
-
-                postView.contentLabel.text = post.content
-
-            }
-        )
-
-    }
-    
-}

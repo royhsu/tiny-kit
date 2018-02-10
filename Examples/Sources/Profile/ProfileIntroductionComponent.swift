@@ -8,22 +8,23 @@
 
 import TinyKit
 
-public final class ProfileIntroductionComponent: ItemComponent<ProfileIntroductionView, Profile> {
-    
-    public init(
-        profile: Profile = Profile()
-    ) {
-        
-        super.init(
-            view: UIView.load(ProfileIntroductionView.self)!,
-            model: profile,
-            binding: { headerView, profile in
-                
-                headerView.nameLabel.text = profile.name
-                
-            }
-        )
-        
-    }
-    
-}
+//public final class ProfileIntroductionComponent: ItemComponent<ProfileIntroductionView, Profile> {
+//    
+//    public init(
+//        profile: Profile = Profile()
+//    ) {
+//        
+//        super.init(
+//            view: UIView.load(ProfileIntroductionView.self)!,
+//            model: profile,
+//            binding: { headerView, profile in
+//                
+//                headerView.nameLabel.text = profile.name
+//                
+//            }
+//        )
+//        
+//    }
+//    
+//}
+

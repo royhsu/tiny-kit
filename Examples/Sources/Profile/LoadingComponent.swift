@@ -8,18 +8,19 @@
 
 // MARK: - LoadingComponent
 
-import TinyKit
+//import TinyKit
+//
+//public final class LoadingComponent: ItemComponent<LoadingView, Loading> {
+//    
+//    public init() {
+//        
+//        super.init(
+//            view: UIView.load(LoadingView.self)!,
+//            model: Loading(),
+//            binding: { loadingView, loading in }
+//        )
+//        
+//    }
+//    
+//}
 
-public final class LoadingComponent: ItemComponent<LoadingView, Loading> {
-    
-    public init() {
-        
-        super.init(
-            view: UIView.load(LoadingView.self)!,
-            model: Loading(),
-            binding: { loadingView, loading in }
-        )
-        
-    }
-    
-}
