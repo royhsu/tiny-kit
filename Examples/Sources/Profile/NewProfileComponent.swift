@@ -26,8 +26,6 @@ public final class NewProfileComponent: Component {
                 headerComponent.render
             )
             .then(in: .main) { _ -> Promise<Void> in
-            
-                self.headerComponent.preferredContentSize = self.headerComponent.tableView.contentSize
                 
                 self.postListComponent.headerComponent = self.headerComponent
                 

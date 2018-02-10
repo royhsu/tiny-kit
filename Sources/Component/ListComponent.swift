@@ -51,8 +51,6 @@ open class ListComponent: Component {
         
         self.tableViewBridge = UITableViewBridge(cellIdentifier: cellIdentifier)
         
-        self.preferredContentSize = tableView.bounds.size
-        
         setUpTableView(tableView)
         
     }
@@ -78,7 +76,7 @@ open class ListComponent: Component {
     
     public final var view: View { return tableView }
 
-    public final var preferredContentSize: CGSize
+    public final var preferredContentSize: CGSize { return tableView.contentSize }
     
 }
 

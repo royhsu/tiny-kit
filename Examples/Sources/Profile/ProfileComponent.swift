@@ -96,11 +96,6 @@ public final class ProfileComponent: StateComponent<ProfileComponentState> {
                     in: .main,
                     postListComponent.render
                 )
-                .then(in: .main) {
-                    
-                    postListComponent.preferredContentSize = postListComponent.tableView.contentSize
-                    
-                }
                 .then(
                     in: .main,
                     self.loadedComponent.render
