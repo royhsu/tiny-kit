@@ -8,8 +8,6 @@
 
 // MARK: - ListComponent
 
-import TinyCore
-
 public final class ListComponent: Component {
 
     public final var headerComponent: Component?

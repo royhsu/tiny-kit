@@ -8,8 +8,6 @@
 
 // MARK: - ItemComponent
 
-import TinyCore
-
 public final class ItemComponent<
     V: View,
     M: Codable

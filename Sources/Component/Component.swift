@@ -8,8 +8,6 @@
 
 // MARK: - Component
 
-import TinyCore
-
 public protocol Component: ViewRenderable {
 
     var contentMode: ComponentContentMode { get set }
