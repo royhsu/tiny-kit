@@ -45,7 +45,7 @@ public final class ItemComponent<
 
     public final let view = View(frame: UIScreen.main.bounds)
 
-    public final var preferredContentSize: CGSize { return itemView.bounds.size }
+    public final var preferredContentSize: CGSize { return view.bounds.size }
 
     // MARK: Component
 
@@ -108,6 +108,8 @@ public final class ItemComponent<
                 frame.size = size
 
                 self.view.frame = frame
+
+                self.itemView.frame = frame
 
                 NSLayoutConstraint.activate(
                     [

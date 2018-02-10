@@ -51,11 +51,6 @@ internal final class ItemComponentTests: XCTestCase {
             .then(in: .main) {
 
                 XCTAssertEqual(
-                    colorComponent.view as? RectangleView,
-                    colorComponent.itemView
-                )
-
-                XCTAssertEqual(
                     colorComponent.preferredContentSize,
                     contentSize
                 )
