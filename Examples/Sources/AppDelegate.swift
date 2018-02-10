@@ -28,12 +28,7 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let component = PostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 100.0
-//            )
-        )
+        let component = PostComponent()
         
         component.view.backgroundColor = .white
         

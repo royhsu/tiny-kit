@@ -43,7 +43,7 @@ public final class ItemComponent<
     
     // MARK: ViewRenderable
     
-    public final var view: View { return itemView }
+    public final let view = View(frame: UIScreen.main.bounds)
     
     public final var preferredContentSize: CGSize { return itemView.bounds.size }
     
@@ -57,28 +57,64 @@ public final class ItemComponent<
             
             DispatchQueue.main.async {
             
+                self.binding(
+                    self.itemView,
+                    self.model
+                )
+                
+                self.itemView.removeFromSuperview()
+                
+                self.itemView.translatesAutoresizingMaskIntoConstraints = false
+                
+                self.view.addSubview(self.itemView)
+                
+                NSLayoutConstraint.activate(
+                    [
+                        self.view
+                            .leadingAnchor
+                            .constraint(equalTo: self.itemView.leadingAnchor),
+                        self.view
+                            .topAnchor
+                            .constraint(equalTo: self.itemView.topAnchor),
+                        self.view
+                            .trailingAnchor
+                            .constraint(equalTo: self.itemView.trailingAnchor)
+                    ]
+                )
+                
+                let size: CGSize
+                
                 switch self.contentMode {
                     
                 case .size(let width, let height):
                     
-                    var frame = self.itemView.frame
-                    
-                    frame.size = CGSize(
+                    size = CGSize(
                         width: width,
                         height: height
                     )
                     
-                    self.itemView.frame = frame
+                    // Todo: Should add constraints for the width and height?
                     
                 case .automatic:
                     
                     self.itemView.layoutIfNeeded()
                     
+                    size = self.itemView.bounds.size
+                    
                 }
                 
-                self.binding(
-                    self.itemView,
-                    self.model
+                var frame = self.view.frame
+                
+                frame.size = size
+                
+                self.view.frame = frame
+                
+                NSLayoutConstraint.activate(
+                    [
+                        self.view
+                            .bottomAnchor
+                            .constraint(equalTo: self.itemView.bottomAnchor)
+                    ]
                 )
                 
                 let result: Void = ()
