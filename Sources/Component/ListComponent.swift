@@ -10,7 +10,7 @@
 
 import TinyCore
 
-open class ListComponent: Component {
+public final class ListComponent: Component {
     
     public final var headerComponent: Component? {
         
@@ -49,7 +49,9 @@ open class ListComponent: Component {
     
     private final let tableViewBridge: UITableViewBridge
     
-    public init() {
+    public init(contentMode: ComponentContentMode = .automatic) {
+        
+        self.contentMode = contentMode
         
         self.tableViewBridge = UITableViewBridge(cellIdentifier: cellIdentifier)
         
@@ -78,11 +80,11 @@ open class ListComponent: Component {
     
     public final var view: View { return tableView }
 
-    public final var preferredContentSize: CGSize { return tableView.contentSize }
+    public final var preferredContentSize: CGSize { return tableView.bounds.size }
     
     // MAKR: Component
     
-    public final var contentMode: ComponentContentMode = .automatic
+    public final var contentMode: ComponentContentMode
     
     public final func render() -> Promise<Void> {
      
@@ -95,6 +97,27 @@ open class ListComponent: Component {
                 self.tableView.reloadData()
                 
                 self.tableView.layoutIfNeeded()
+                
+                let size: CGSize
+                
+                switch self.contentMode {
+                    
+                case .size(let width, let height):
+                    
+                    size = CGSize(
+                        width: width,
+                        height: height
+                    )
+                    
+                case .automatic: size = self.tableView.contentSize
+                    
+                }
+                
+                var frame = self.tableView.frame
+                
+                frame.size = size
+                
+                self.tableView.frame = frame
                 
                 let result: Void = ()
                 

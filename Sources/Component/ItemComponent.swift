@@ -10,10 +10,7 @@
 
 import TinyCore
 
-/// Implementing a custom component by overriding this class.
-/// Be sure to initiatie and manipulate it only in the main thread.
-// Todo: make it finalized.
-open class ItemComponent<
+public final class ItemComponent<
     V: View,
     M: Codable
 >: Component {
@@ -58,33 +55,37 @@ open class ItemComponent<
         
         return Promise(in: .main) { fulfill, _, _ in
             
-            switch self.contentMode {
+            DispatchQueue.main.async {
+            
+                switch self.contentMode {
+                    
+                case .size(let width, let height):
+                    
+                    var frame = self.itemView.frame
+                    
+                    frame.size = CGSize(
+                        width: width,
+                        height: height
+                    )
+                    
+                    self.itemView.frame = frame
+                    
+                case .automatic:
+                    
+                    self.itemView.layoutIfNeeded()
+                    
+                }
                 
-            case .size(let width, let height):
-                
-                var frame = self.itemView.frame
-                
-                frame.size = CGSize(
-                    width: width,
-                    height: height
+                self.binding(
+                    self.itemView,
+                    self.model
                 )
                 
-                self.itemView.frame = frame
+                let result: Void = ()
                 
-            case .automatic:
-                
-                self.itemView.layoutIfNeeded()
+                fulfill(result)
                 
             }
-            
-            self.binding(
-                self.itemView,
-                self.model
-            )
-            
-            let result: Void = ()
-            
-            fulfill(result)
             
         }
         
