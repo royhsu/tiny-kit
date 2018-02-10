@@ -10,13 +10,87 @@
 
 import TinyCore
 
-open class StateComponent<CS: ComponentState>: Component {
-
-    public var contentMode: ComponentContentMode = .automatic
+public final class StateComponent<CS: ComponentState>: Component {
 
     private final let stateMachine: StateMachine<StateComponent>
 
     private final var stateComponentMap: [AnyComponentState<CS>: Component]
+
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        initialComponent: Component,
+        initialState: CS
+    ) {
+
+        self.contentMode = contentMode
+
+        let stateMachine = StateMachine<StateComponent>(initialState: initialState)
+
+        self.stateMachine = stateMachine
+
+        self.stateComponentMap = [
+            AnyComponentState(initialState): initialComponent
+        ]
+
+    }
+
+    // MARK: ViewRenderable
+
+    public final let view = View()
+
+    public final var preferredContentSize: CGSize { return view.bounds.size }
+
+    // MARK: Component
+
+    public final var contentMode: ComponentContentMode
+
+    public final func render() {
+
+        for state in stateComponentMap.keys {
+
+            stateComponentMap[state]?.contentMode = contentMode
+
+        }
+
+        view.subviews.forEach { $0.removeFromSuperview() }
+
+        let currentView = currentComponent.view
+
+        currentView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(currentView)
+
+        NSLayoutConstraint.activate(
+            [
+                view
+                    .leadingAnchor
+                    .constraint(equalTo: currentView.leadingAnchor),
+                view
+                    .topAnchor
+                    .constraint(equalTo: currentView.topAnchor),
+                view
+                    .trailingAnchor
+                    .constraint(equalTo: currentView.trailingAnchor)
+            ]
+        )
+
+        currentComponent.render()
+
+        view.frame = currentView.bounds
+
+        NSLayoutConstraint.activate(
+            [
+                view
+                    .bottomAnchor
+                    .constraint(equalTo: currentView.bottomAnchor)
+            ]
+        )
+
+    }
+
+}
+
+public extension StateComponent {
 
     public final var currentState: CS {
 
@@ -32,66 +106,9 @@ open class StateComponent<CS: ComponentState>: Component {
 
         guard
             let component = stateComponentMap[state]
-        else { fatalError("No associated compoent found for the current state.") }
+        else { fatalError("No associated component found for the current state.") }
 
         return component
-
-    }
-
-    public init(
-        initialComponent: Component,
-        initialState: CS
-    ) {
-
-        let stateMachine = StateMachine<StateComponent>(initialState: initialState)
-
-        self.stateMachine = stateMachine
-
-        self.stateComponentMap = [
-            AnyComponentState(initialState): initialComponent
-        ]
-
-        updateCurrentView()
-
-    }
-
-    fileprivate final func updateCurrentView() {
-
-        let currentView = currentComponent.view
-
-        currentView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(currentView)
-
-        NSLayoutConstraint.activate(
-            [
-                currentView
-                    .leadingAnchor
-                    .constraint(equalTo: view.leadingAnchor),
-                currentView
-                    .topAnchor
-                    .constraint(equalTo: view.topAnchor),
-                currentView
-                    .trailingAnchor
-                    .constraint(equalTo: view.trailingAnchor),
-                currentView
-                    .bottomAnchor
-                    .constraint(equalTo: view.bottomAnchor)
-            ]
-        )
-    }
-
-    // MARK: ViewRenderable
-
-    public final let view = View()
-
-    public final var preferredContentSize: CGSize { return currentComponent.preferredContentSize }
-
-    // MARK: Component
-
-    public final func render() {
-
-        fatalError()
 
     }
 
@@ -110,14 +127,6 @@ public extension StateComponent {
 
     }
 
-    public final func enter(_ state: CS) throws {
-
-        try stateMachine.enter(state)
-
-        view.subviews.forEach { $0.removeFromSuperview() }
-
-        updateCurrentView()
-
-    }
+    public final func enter(_ state: CS) throws { try stateMachine.enter(state) }
 
 }
