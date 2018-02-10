@@ -86,6 +86,7 @@ public final class ListComponent: Component {
 
     public final var contentMode: ComponentContentMode
 
+    // TODO: the current implementation won't allow any item component to fail while rendering.
     public final func render() -> Promise<Void> {
 
         let renderList = Promise<Void>(in: .main) { fulfill, _, _ in
