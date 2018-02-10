@@ -12,30 +12,7 @@ import TinyCore
 
 public final class ListComponent: Component {
 
-    public final var headerComponent: Component? {
-
-        didSet {
-
-            guard
-                let headerComponent = headerComponent
-            else {
-
-                tableView.tableHeaderView = nil
-
-                return
-
-            }
-
-            headerComponent.view.frame = CGRect(
-                origin: .zero,
-                size: headerComponent.preferredContentSize
-            )
-
-            tableView.tableHeaderView = headerComponent.view
-
-        }
-
-    }
+    public final var headerComponent: Component?
 
     public final var itemComponents = AnyCollection<Component>(
         []
@@ -87,6 +64,10 @@ public final class ListComponent: Component {
     public final var contentMode: ComponentContentMode
 
     public final func render() {
+
+        headerComponent?.render()
+
+        tableView.tableHeaderView = headerComponent?.view
 
         tableViewBridge.components = itemComponents
 
