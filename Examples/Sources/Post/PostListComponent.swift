@@ -79,3 +79,15 @@ public final class PostListComponent: Component {
     public final func render() { baseComponent.render() }
     
 }
+
+public extension PostListComponent {
+    
+    public final var headerComponent: Component? {
+        
+        get { return baseComponent.headerComponent }
+        
+        set { baseComponent.headerComponent = newValue }
+        
+    }
+    
+}
