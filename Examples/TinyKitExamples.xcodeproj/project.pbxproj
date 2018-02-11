@@ -109,14 +109,6 @@
 				B02F20DB202DD94C001BC665 /* ProfileComponentState.swift */,
 				B02F20D0202D8AA2001BC665 /* ProfileComponent.swift */,
 				B0459A9A202EC75D0085A71C /* NewProfileComponent.swift */,
-				B02F20E1202DDA8B001BC665 /* LoadingView.swift */,
-				B02F20DF202DDA7D001BC665 /* LoadingView.xib */,
-				B02F20E3202DDCCA001BC665 /* Loading.swift */,
-				B02F20DD202DDA65001BC665 /* LoadingComponent.swift */,
-				B02F20E5202DECC5001BC665 /* MessageView.swift */,
-				B02F20E7202DECE0001BC665 /* MessageView.xib */,
-				B02F20EB202DEF91001BC665 /* Message.swift */,
-				B02F20E9202DEE80001BC665 /* MessageComponent.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -142,6 +134,8 @@
 		B05D50141F1EE7D300929006 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B0E64402202FDA1200E43B20 /* Loading */,
+				B0E64401202FD9F000E43B20 /* Message */,
 				B0E643F9202F153F00E43B20 /* Post */,
 				B00657EA202C82E8000E3E98 /* Profile */,
 				B05D50231F1EE81600929006 /* Supporting Files */,
@@ -171,6 +165,28 @@
 				B02F20C6202C929F001BC665 /* PostListComponent.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		B0E64401202FD9F000E43B20 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				B02F20EB202DEF91001BC665 /* Message.swift */,
+				B02F20E5202DECC5001BC665 /* MessageView.swift */,
+				B02F20E7202DECE0001BC665 /* MessageView.xib */,
+				B02F20E9202DEE80001BC665 /* MessageComponent.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		B0E64402202FDA1200E43B20 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B02F20E3202DDCCA001BC665 /* Loading.swift */,
+				B02F20E1202DDA8B001BC665 /* LoadingView.swift */,
+				B02F20DF202DDA7D001BC665 /* LoadingView.xib */,
+				B02F20DD202DDA65001BC665 /* LoadingComponent.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

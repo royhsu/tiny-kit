@@ -8,4 +8,8 @@
 
 // MARK: - Loading
 
-public struct Loading: Codable { }
+public struct Loading: Codable {
+    
+    public init() { }
+    
+}
