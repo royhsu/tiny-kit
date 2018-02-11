@@ -9,7 +9,6 @@
 // MARK: - AppDelegate
 
 import UIKit
-import TinyKit
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
@@ -28,21 +27,17 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let size = UIScreen.main.bounds.size
-        
         let component = ProfileComponent(
             contentMode: .size(
-                width: size.width,
-                height: size.height
+                width: window.bounds.width,
+                height: window.bounds.height
             )
         )
         
-        component.render()
-
         window.rootViewController = RootViewController(renderable: component)
-
+        
         window.makeKeyAndVisible()
-
+        
         component
             .fetch(in: .background)
             .then(

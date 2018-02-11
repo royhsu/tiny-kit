@@ -8,7 +8,6 @@
 
 // MARK: - RootViewController
 
-import Hydra
 import UIKit
 import TinyKit
 
@@ -24,7 +23,7 @@ public final class RootViewController: UIViewController {
             nibName: nil,
             bundle: nil
         )
-
+        
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError("Not implemented.") }
@@ -32,35 +31,5 @@ public final class RootViewController: UIViewController {
     // MAKR: View Life Cycle
 
     public final override func loadView() { view = renderable.view }
-
-}
-
-// MARK: - ViewRender
-
-import TinyCore
-
-extension RootViewController: ViewRender {
-
-    public final var renderables: AnyCollection<ViewRenderable> {
-
-        return AnyCollection(
-            [ renderable ]
-        )
-
-    }
-
-    public final func render() -> Promise<Void> {
-
-        return Promise(in: .main) { fulfill, _, _ in
-
-            self.view.layoutSubviews()
-
-            let result: Void = ()
-
-            fulfill(result)
-
-        }
-
-    }
 
 }

@@ -8,14 +8,9 @@
 
 // MARK: - ViewRender
 
-import Hydra
-
-/// A view render should define its own way to renderables.
-/// It can also ignore the preferred content size of renderables if it makes sense.
+/// A view render can ignore the preferred content size of the renderable if it makes sense.
 public protocol ViewRender {
 
-    var renderables: AnyCollection<ViewRenderable> { get }
-
-    func render() -> Promise<Void>
+    func render(for renderable: ViewRenderable)
 
 }

@@ -14,7 +14,7 @@ import TinyKit
 
 public final class ProfileComponent: Component {
     
-    private final let initialComponent: SplashComponent
+    private final let splashComponent: SplashComponent
     
     private final let loadingComponent: LoadingComponent
     
@@ -30,9 +30,9 @@ public final class ProfileComponent: Component {
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        let initialComponent = SplashComponent(contentMode: contentMode)
+        let splashComponent = SplashComponent(contentMode: contentMode)
         
-        self.initialComponent = initialComponent
+        self.splashComponent = splashComponent
         
         let loadingComponent = LoadingComponent(contentMode: contentMode)
         
@@ -50,7 +50,7 @@ public final class ProfileComponent: Component {
         
         let baseComponent = BaseComponent(
             contentMode: contentMode,
-            initialComponent: initialComponent,
+            initialComponent: splashComponent,
             initialState: .initial
         )
         
@@ -85,7 +85,11 @@ public final class ProfileComponent: Component {
             headerComponent.fetch(in: context).always(in: context) { },
             postListComponent.fetch(in: context).always(in: context) { }
         )
-        .then(in: .main) { _ -> Void in try self.baseComponent.enter(.loaded) }
+        .then(in: .main) { _ -> Void in
+            
+            try self.baseComponent.enter(.loaded)
+            
+        }
         .catch(in: .main) { error in
             
             try self.baseComponent.enter(.error)
