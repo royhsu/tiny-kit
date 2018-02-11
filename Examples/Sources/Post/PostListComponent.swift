@@ -14,7 +14,13 @@ import TinyKit
 
 public final class PostListComponent: Component {
 
-    internal final let baseComponent = ListComponent()
+    private final let baseComponent: ListComponent
+    
+    public init(contentMode: ComponentContentMode = .automatic) {
+        
+        self.baseComponent = ListComponent(contentMode: contentMode)
+        
+    }
     
     public final func fetch(in context: Context) -> Promise<Void> {
         

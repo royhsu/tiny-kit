@@ -18,9 +18,16 @@ public final class ProfileIntroductionView: UIView {
     @IBOutlet
     public fileprivate(set) weak var nameLabel: UILabel!
 
+    @IBOutlet
+    public fileprivate(set) weak var introductionLabel: UILabel!
+    
     public final override func awakeFromNib() {
 
         setUpPictureImageView(pictureImageView)
+        
+        setUpNameLabel(nameLabel)
+        
+        setUpIntroductionLabel(introductionLabel)
 
     }
 
@@ -34,6 +41,28 @@ public final class ProfileIntroductionView: UIView {
 
         imageView.clipsToBounds = true
 
+    }
+    
+    fileprivate final func setUpNameLabel(_ label: UILabel) {
+        
+        label.textAlignment = .center
+        
+        label.text = nil
+        
+        label.font = .preferredFont(forTextStyle: .title1)
+        
+    }
+    
+    fileprivate final func setUpIntroductionLabel(_ label: UILabel) {
+        
+        label.textAlignment = .center
+        
+        label.text = nil
+        
+        label.font = .preferredFont(forTextStyle: .caption1)
+        
+        label.textColor = .lightGray
+        
     }
 
 }

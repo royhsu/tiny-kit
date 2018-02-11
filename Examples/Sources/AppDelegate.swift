@@ -37,7 +37,9 @@ extension AppDelegate: UIApplicationDelegate {
 //            content: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla."
 //        )
         
-        let component = PostListComponent()
+        let component = ProfileHeaderComponent()
+        
+//        let component = PostListComponent()
         
         component.view.backgroundColor = .white
 
@@ -45,17 +47,15 @@ extension AppDelegate: UIApplicationDelegate {
             renderable: component
         )
 
-        window.makeKeyAndVisible()
+        window.makeKeyAndVisible()  
 
         component
             .fetch(in: .background)
             .then(in: .main, component.render)
             .always(in: .main) {
                 
-                print("list", component.view)
-                
                 self.window.rootViewController?.view.frame = UIScreen.main.bounds
-                
+
             }
 
         return true
