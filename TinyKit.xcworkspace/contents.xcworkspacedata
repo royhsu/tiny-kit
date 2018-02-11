@@ -5,6 +5,6 @@
       location = "group:TinyKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Examples/TinyKitExamples.xcodeproj">
+      location = "group:TinyKitExample.xcodeproj">
    </FileRef>
 </Workspace>

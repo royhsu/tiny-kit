@@ -75,8 +75,29 @@ public final class StateComponent<CS: ComponentState>: Component {
         )
 
         currentComponent.render()
+        
+        let size: CGSize
 
-        view.frame = currentView.bounds
+        switch contentMode {
+
+        case .size(let width, let height):
+
+            size = CGSize(
+                width: width,
+                height: height
+            )
+
+        case .automatic:
+
+            size = currentComponent.preferredContentSize
+
+        }
+
+        var frame = view.frame
+        
+        frame.size = size
+        
+        view.frame = frame
 
         NSLayoutConstraint.activate(
             [

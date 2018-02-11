@@ -2,8 +2,8 @@
 //  TinyKit.h
 //  TinyKit
 //
-//  Created by Roy Hsu on 18/07/2017.
-//  Copyright © 2017 TinyWorld. All rights reserved.
+//  Created by Roy Hsu on 11/02/2018.
+//  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
