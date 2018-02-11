@@ -27,7 +27,7 @@ public final class ProfileHeaderComponent: Component {
         
         return Promise<Profile>(in: context) { fulfill, reject, _ in
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 
                 let profile = Profile(
                     pictureURL: nil,

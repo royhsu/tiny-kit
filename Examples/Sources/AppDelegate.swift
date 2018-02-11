@@ -41,9 +41,18 @@ extension AppDelegate: UIApplicationDelegate {
         
 //        let component = PostListComponent()
         
-        let component = ProfileComponent()
+        let size = UIScreen.main.bounds.size
+        
+        let component = ProfileComponent(
+            contentMode: .size(
+                width: size.width,
+                height: size.height
+            )
+        )
         
         component.view.backgroundColor = .white
+        
+        component.render()
 
         window.rootViewController = RootViewController(
             renderable: component

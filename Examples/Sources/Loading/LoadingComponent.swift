@@ -16,14 +16,20 @@ public final class LoadingComponent: Component {
     
     private final let baseComponent: BaseComponent
     
+    private final let baseView: LoadingView
+    
     public init(
         contentMode: ComponentContentMode = .automatic,
         loading: Loading = Loading()
     ) {
         
+        let baseView = UIView.load(LoadingView.self)!
+        
+        self.baseView = baseView
+        
         self.baseComponent = BaseComponent(
             contentMode: contentMode,
-            view: UIView.load(LoadingView.self)!,
+            view: baseView,
             model: loading,
             binding: { loadingView, loading in }
         )
@@ -59,5 +65,13 @@ public extension LoadingComponent {
         set { baseComponent.model = newValue }
         
     }
+    
+}
+
+public extension LoadingComponent {
+    
+    public final func startAnimating() { baseView.activityIndicatorView.startAnimating() }
+    
+    public final func stopAnimating() { baseView.activityIndicatorView.stopAnimating() }
     
 }

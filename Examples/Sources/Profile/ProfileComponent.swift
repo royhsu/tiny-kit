@@ -2,116 +2,113 @@
 //  ProfileComponent.swift
 //  TinyKitExamples
 //
-//  Created by Roy Hsu on 09/02/2018.
+//  Created by Roy Hsu on 10/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
 // MARK: - ProfileComponent
 
-//import TinyCore
-//import TinyKit
-//
-//public final class ProfileComponent: StateComponent<ProfileComponentState> {
-//
-//    private final let loadingComponent = LoadingComponent()
-//    
-//    private final let loadedComponent = ListComponent()
-//    
-//    private final let errorComponent = ErrorComponent(
-//        errorModel: Message()
-//    )
-//    
-//    public init() {
-//        
-//        super.init(
-//            initialComponent: loadingComponent,
-//            initialState: .loading
-//        )
-//        
-//        registerComponent(
-//            loadedComponent,
-//            for: .loaded
-//        )
-//        
-//        registerComponent(
-//            errorComponent,
-//            for: .error
-//        )
-//        
-//    }
-//    
-//    public final func fetch(in context: Context) -> Promise<Void> {
-//        
-//        let autoSize = CGSize(
-//            width: UITableViewAutomaticDimension,
-//            height: UITableViewAutomaticDimension
-//        )
-//        
-//        let headerComponent = ProfileIntroductionComponent(
-//            profile: Profile(
-//                pictureURL: nil,
-//                name: nil
-//            )
-//        )
-//        
-//        headerComponent.preferredContentSize = autoSize
-//        
-//        let postListComponent = PostListComponent()
-//        
-//        let components: [Component] = [
-//            headerComponent,
-//            postListComponent
-//        ]
-//        
-//        loadedComponent.itemComponents = AnyCollection(components)
-//        
-//        let activityIndicatorView = loadingComponent.itemView.activityIndicatorView!
-//        
-//        activityIndicatorView.startAnimating()
-//        
-//        return Promise<Profile>(in: context) { fulfill, reject, _ in
-//            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//
-//                let profile = Profile(
-//                    pictureURL: nil,
-//                    name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper."
-//                )
-//
-//                fulfill(profile)
-//
-//            }
-//            
-//        }
-//        .then(in: .main) { profile -> Void in
-//            
-//            headerComponent.model = profile
-//            
-//        }
-//        .then(in: context) { _ -> Promise<Void> in
-//            
-//            return postListComponent
-//                .fetch(in: context)
-//                .then(
-//                    in: .main,
-//                    postListComponent.render
-//                )
-//                .then(
-//                    in: .main,
-//                    self.loadedComponent.render
-//                )
-// 
-//        }
-//        .then(in: .main) { try self.enter(.loaded) }
-//        .catch(in: .main) { error in
-//            
-//            self.errorComponent.model = ErrorModel(message: "\(error)")
-//            
-//            try self.enter(.error)
-//            
-//        }
-//        .always(in: .main) { activityIndicatorView.stopAnimating() }
-//        
-//    }
-//    
-//}
+import TinyCore
+import TinyKit
+
+public final class ProfileComponent: Component {
+    
+    private final let loadingComponent: LoadingComponent
+    
+    private final let messageComponent: MessageComponent
+    
+    private final let headerComponent = ProfileHeaderComponent()
+    
+    private final let postListComponent: PostListComponent
+    
+    private typealias BaseComponent = StateComponent<ProfileComponentState>
+    
+    private final let baseComponent: BaseComponent
+    
+    public init(contentMode: ComponentContentMode = .automatic) {
+        
+        let loadingComponent = LoadingComponent(contentMode: contentMode)
+        
+        self.loadingComponent = loadingComponent
+        
+        let messageComponent = MessageComponent(contentMode: contentMode)
+        
+        self.messageComponent = messageComponent
+        
+        let postListComponent = PostListComponent(contentMode: contentMode)
+        
+        postListComponent.headerComponent = headerComponent
+        
+        self.postListComponent = postListComponent
+        
+        let baseComponent = BaseComponent(
+            contentMode: contentMode,
+            initialComponent: loadingComponent,
+            initialState: .loading
+        )
+        
+        baseComponent.registerComponent(
+            messageComponent,
+            for: .error
+        )
+        
+        baseComponent.registerComponent(
+            postListComponent,
+            for: .loaded
+        )
+        
+        self.baseComponent = baseComponent
+        
+    }
+    
+    public final func fetch(in context: Context) -> Promise<Void> {
+        
+        // TODO: add initial state.
+        
+        loadingComponent.startAnimating()
+        
+        return all(
+            headerComponent.fetch(in: context).always(in: context) { },
+            postListComponent.fetch(in: context).always(in: context) { }
+        )
+        .then(in: .main) { _ -> Void in try self.baseComponent.enter(.loaded) }
+        .catch(in: .main) { error in
+            
+            try self.baseComponent.enter(.error)
+            
+            self.messageComponent.message = Message(error: error)
+            
+        }
+        .always(in: .main) { self.loadingComponent.stopAnimating() }
+        
+    }
+    
+    // MARK: ViewRenderable
+    
+    public final var view: View { return baseComponent.view }
+    
+    public final var preferredContentSize: CGSize { return baseComponent.preferredContentSize }
+    
+    // MARK: Component
+    
+    public final var contentMode: ComponentContentMode {
+        
+        get { return baseComponent.contentMode }
+        
+        set { baseComponent.contentMode = newValue }
+        
+    }
+    
+    public final func render() {
+        
+        loadingComponent.render()
+        
+        messageComponent.render()
+        
+        postListComponent.render()
+        
+        baseComponent.render()
+        
+    }
+    
+}

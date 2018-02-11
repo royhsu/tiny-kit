@@ -39,6 +39,7 @@ extension ProfileComponentState: State {
             return true
 
         default: return false
+            
         }
 
     }
