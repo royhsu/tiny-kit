@@ -13,6 +13,8 @@ import TinyKit
 
 public final class ProfileComponent: Component {
     
+    private final let initialComponent: SplashComponent
+    
     private final let loadingComponent: LoadingComponent
     
     private final let messageComponent: MessageComponent
@@ -26,6 +28,10 @@ public final class ProfileComponent: Component {
     private final let baseComponent: BaseComponent
     
     public init(contentMode: ComponentContentMode = .automatic) {
+        
+        let initialComponent = SplashComponent(contentMode: contentMode)
+        
+        self.initialComponent = initialComponent
         
         let loadingComponent = LoadingComponent(contentMode: contentMode)
         
@@ -43,8 +49,13 @@ public final class ProfileComponent: Component {
         
         let baseComponent = BaseComponent(
             contentMode: contentMode,
-            initialComponent: loadingComponent,
-            initialState: .loading
+            initialComponent: initialComponent,
+            initialState: .initial
+        )
+        
+        baseComponent.registerComponent(
+            loadingComponent,
+            for: .loading
         )
         
         baseComponent.registerComponent(
@@ -63,9 +74,11 @@ public final class ProfileComponent: Component {
     
     public final func fetch(in context: Context) -> Promise<Void> {
         
-        // TODO: add initial state.
+        try! baseComponent.enter(.loading)
         
         loadingComponent.startAnimating()
+        
+        render()
         
         return all(
             headerComponent.fetch(in: context).always(in: context) { },

@@ -33,8 +33,10 @@
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
+		B074DCD9202FE364001322A1 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B074DCD8202FE364001322A1 /* Splash.swift */; };
 		B0A403C7202C663D00D2A284 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A403C6202C663D00D2A284 /* TinyCore.framework */; };
 		B0A403C8202C663D00D2A284 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0A403C6202C663D00D2A284 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0E64405202FE2B300E43B20 /* SplashComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E64404202FE2B300E43B20 /* SplashComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,7 +82,9 @@
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B05D50181F1EE7D300929006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B05D501B1F1EE7D400929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B074DCD8202FE364001322A1 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		B0A403C6202C663D00D2A284 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0E64404202FE2B300E43B20 /* SplashComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 		B05D50141F1EE7D300929006 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B0E64403202FE2A600E43B20 /* Splash */,
 				B0E64402202FDA1200E43B20 /* Loading */,
 				B0E64401202FD9F000E43B20 /* Message */,
 				B0E643F9202F153F00E43B20 /* Post */,
@@ -184,6 +189,15 @@
 				B02F20DD202DDA65001BC665 /* LoadingComponent.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		B0E64403202FE2A600E43B20 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				B0E64404202FE2B300E43B20 /* SplashComponent.swift */,
+				B074DCD8202FE364001322A1 /* Splash.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +304,7 @@
 				B00657EC202C832B000E3E98 /* PostView.swift in Sources */,
 				B02F20E6202DECC5001BC665 /* MessageView.swift in Sources */,
 				B02F20DE202DDA65001BC665 /* LoadingComponent.swift in Sources */,
+				B0E64405202FE2B300E43B20 /* SplashComponent.swift in Sources */,
 				B02F20EA202DEE80001BC665 /* MessageComponent.swift in Sources */,
 				B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */,
 				B02F20EC202DEF91001BC665 /* Message.swift in Sources */,
@@ -297,6 +312,7 @@
 				B02F20C9202D87ED001BC665 /* ProfileIntroductionView.swift in Sources */,
 				B02F20E2202DDA8B001BC665 /* LoadingView.swift in Sources */,
 				B02F20C7202C929F001BC665 /* StateComponent.swift in Sources */,
+				B074DCD9202FE364001322A1 /* Splash.swift in Sources */,
 				B02F20EE202EC0CF001BC665 /* ProfileHeaderComponent.swift in Sources */,
 				B02F20CF202D893C001BC665 /* Profile.swift in Sources */,
 				B02F20C1202C8508001BC665 /* Post.swift in Sources */,

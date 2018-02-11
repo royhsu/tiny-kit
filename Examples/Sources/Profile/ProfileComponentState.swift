@@ -10,7 +10,7 @@
 
 public enum ProfileComponentState: String {
 
-    case loading, loaded, error
+    case initial, loading, loaded, error
 
 }
 
@@ -31,6 +31,7 @@ extension ProfileComponentState: State {
         switch (old, new) {
 
         case
+            (.initial, .loading),
             (.loading, .loaded),
             (.loading, .error),
             (.loaded, .loading),
