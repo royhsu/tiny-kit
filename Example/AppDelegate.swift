@@ -34,6 +34,8 @@ extension AppDelegate: UIApplicationDelegate {
             )
         )
         
+        component.render()
+        
         window.rootViewController = RootViewController(renderable: component)
         
         window.makeKeyAndVisible()
@@ -44,6 +46,7 @@ extension AppDelegate: UIApplicationDelegate {
                 in: .main,
                 component.render
             )
+            .always(in: .main) { print(component.view) }
 
         return true
 
