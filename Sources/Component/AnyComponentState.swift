@@ -30,7 +30,7 @@ public struct AnyComponentState<CS: ComponentState>: ComponentState {
 
     // MARK: Equatable
 
-    public static func ==(
+    public static func == (
         lhs: AnyComponentState<CS>,
         rhs: AnyComponentState<CS>
     )

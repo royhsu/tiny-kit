@@ -26,7 +26,7 @@ internal struct Color: Codable {
 
 extension Color: Equatable {
 
-    internal static func ==(
+    internal static func == (
         lhs: Color,
         rhs: Color
     )
