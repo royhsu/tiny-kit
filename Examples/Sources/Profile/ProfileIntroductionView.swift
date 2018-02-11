@@ -51,6 +51,8 @@ public final class ProfileIntroductionView: UIView {
         
         label.font = .preferredFont(forTextStyle: .title1)
         
+        label.numberOfLines = 1
+        
     }
     
     fileprivate final func setUpIntroductionLabel(_ label: UILabel) {
@@ -62,6 +64,8 @@ public final class ProfileIntroductionView: UIView {
         label.font = .preferredFont(forTextStyle: .caption1)
         
         label.textColor = .lightGray
+        
+        label.numberOfLines = 0
         
     }
 

@@ -30,8 +30,8 @@ public final class ProfileComponent: Component {
     public final func fetch(in context: Context) -> Promise<Void> {
         
         return all(
-            headerComponent.fetch(in: context),
-            baseComponent.fetch(in: context)
+            headerComponent.fetch(in: context).always(in: context) { },
+            baseComponent.fetch(in: context).always(in: context) { }
         )
         .then(in: .main) { _ -> Void in }
         

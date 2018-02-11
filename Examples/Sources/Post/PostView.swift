@@ -36,6 +36,8 @@ public final class PostView: UIView {
         
         label.font = .preferredFont(forTextStyle: .title3)
         
+        label.numberOfLines = 1
+        
     }
     
     fileprivate final func setUpContentLabel(_ label: UILabel) {
@@ -45,6 +47,8 @@ public final class PostView: UIView {
         label.textColor = .darkGray
         
         label.font = .preferredFont(forTextStyle: .body)
+        
+        label.numberOfLines = 0
         
     }
 

@@ -18,7 +18,7 @@
 //    private final let loadedComponent = ListComponent()
 //    
 //    private final let errorComponent = ErrorComponent(
-//        errorModel: ErrorModel()
+//        errorModel: Message()
 //    )
 //    
 //    public init() {
