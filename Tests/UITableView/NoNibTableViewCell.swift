@@ -8,17 +8,16 @@
 
 // MARK: - NoNibTableViewCell
 
-import TinyCore
-import UIKit
-
-class NoNibTableViewCell: UITableViewCell, Identifiable {
-
-    // MARK: Property
-
-    override var reuseIdentifier: String? {
-
-        return NibTableViewCell.identifier
-
-    }
-
-}
+//import UIKit
+//
+//class NoNibTableViewCell: UITableViewCell {
+//
+//    // MARK: Property
+//
+//    override var reuseIdentifier: String? {
+//
+//        return NibTableViewCell.identifier
+//
+//    }
+//
+//}

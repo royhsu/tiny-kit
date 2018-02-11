@@ -9,29 +9,46 @@
 // MARK: - AppDelegate
 
 import UIKit
+import TinyKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public final class AppDelegate: UIResponder {
 
-    // MARK: Property
+    public final let window = UIWindow(frame: UIScreen.main.bounds)
 
-    var window: UIWindow?
+}
 
-    // MARK: UIApplicationDelegate
+// MARK: UIApplicationDelegate
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+extension AppDelegate: UIApplicationDelegate {
 
-        let navigationController = UINavigationController(
-            rootViewController: EmojiListTableViewController(style: .plain)
+    public final func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+    )
+    -> Bool {
+        
+        let size = UIScreen.main.bounds.size
+        
+        let component = ProfileComponent(
+            contentMode: .size(
+                width: size.width,
+                height: size.height
+            )
         )
+        
+        component.render()
 
-        let window = UIWindow(frame: UIScreen.main.bounds)
-
-        window.rootViewController = navigationController
+        window.rootViewController = RootViewController(renderable: component)
 
         window.makeKeyAndVisible()
 
-        self.window = window
+        component
+            .fetch(in: .background)
+            .then(
+                in: .main,
+                component.render
+            )
 
         return true
 

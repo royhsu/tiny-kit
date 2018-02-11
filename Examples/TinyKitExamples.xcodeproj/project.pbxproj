@@ -7,25 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B00657EC202C832B000E3E98 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00657EB202C832B000E3E98 /* PostView.swift */; };
+		B00657EE202C8352000E3E98 /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00657ED202C8352000E3E98 /* PostView.xib */; };
+		B025126B202C612800FDDCED /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B025126A202C612800FDDCED /* TinyKit.framework */; };
+		B025126C202C612800FDDCED /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B025126A202C612800FDDCED /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B02F20C1202C8508001BC665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C0202C8508001BC665 /* Post.swift */; };
+		B02F20C3202C8563001BC665 /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C2202C8563001BC665 /* PostComponent.swift */; };
+		B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C4202C8714001BC665 /* RootViewController.swift */; };
+		B02F20C7202C929F001BC665 /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C6202C929F001BC665 /* StateComponent.swift */; };
+		B02F20C9202D87ED001BC665 /* ProfileIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20C8202D87ED001BC665 /* ProfileIntroductionView.swift */; };
+		B02F20CB202D8807001BC665 /* ProfileIntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02F20CA202D8807001BC665 /* ProfileIntroductionView.xib */; };
+		B02F20CD202D88F9001BC665 /* ProfileIntroductionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20CC202D88F9001BC665 /* ProfileIntroductionComponent.swift */; };
+		B02F20CF202D893C001BC665 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20CE202D893C001BC665 /* Profile.swift */; };
+		B02F20DC202DD94C001BC665 /* ProfileComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20DB202DD94C001BC665 /* ProfileComponentState.swift */; };
+		B02F20DE202DDA65001BC665 /* LoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20DD202DDA65001BC665 /* LoadingComponent.swift */; };
+		B02F20E0202DDA7D001BC665 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02F20DF202DDA7D001BC665 /* LoadingView.xib */; };
+		B02F20E2202DDA8B001BC665 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E1202DDA8B001BC665 /* LoadingView.swift */; };
+		B02F20E4202DDCCA001BC665 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E3202DDCCA001BC665 /* Loading.swift */; };
+		B02F20E6202DECC5001BC665 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E5202DECC5001BC665 /* MessageView.swift */; };
+		B02F20E8202DECE0001BC665 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02F20E7202DECE0001BC665 /* MessageView.xib */; };
+		B02F20EA202DEE80001BC665 /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20E9202DEE80001BC665 /* MessageComponent.swift */; };
+		B02F20EC202DEF91001BC665 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20EB202DEF91001BC665 /* Message.swift */; };
+		B02F20EE202EC0CF001BC665 /* ProfileHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20ED202EC0CF001BC665 /* ProfileHeaderComponent.swift */; };
+		B0459A9B202EC75D0085A71C /* ProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0459A9A202EC75D0085A71C /* ProfileComponent.swift */; };
 		B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50151F1EE7D300929006 /* AppDelegate.swift */; };
 		B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05D50161F1EE7D300929006 /* Assets.xcassets */; };
 		B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */; };
-		B05D50251F1EE8E500929006 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D50241F1EE8E500929006 /* TinyKit.framework */; };
-		B05D50261F1EE8E500929006 /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B05D50241F1EE8E500929006 /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B05D502B1F1EE9AA00929006 /* EmojiListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */; };
-		B05D502D1F1EE9F700929006 /* EmojiComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */; };
-		B05D502F1F1EEA1A00929006 /* EmojiComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */; };
-		B05D50311F1EEA8F00929006 /* EmojiComponentViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D50301F1EEA8F00929006 /* EmojiComponentViewFactory.swift */; };
+		B074DCD9202FE364001322A1 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B074DCD8202FE364001322A1 /* Splash.swift */; };
+		B0A403C7202C663D00D2A284 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A403C6202C663D00D2A284 /* TinyCore.framework */; };
+		B0A403C8202C663D00D2A284 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0A403C6202C663D00D2A284 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0E64405202FE2B300E43B20 /* SplashComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E64404202FE2B300E43B20 /* SplashComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B05D50271F1EE8E500929006 /* Embed Frameworks */ = {
+		B025126D202C612800FDDCED /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B05D50261F1EE8E500929006 /* TinyKit.framework in Embed Frameworks */,
+				B025126C202C612800FDDCED /* TinyKit.framework in Embed Frameworks */,
+				B0A403C8202C663D00D2A284 /* TinyCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,16 +55,36 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B00657EB202C832B000E3E98 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		B00657ED202C8352000E3E98 /* PostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
+		B025126A202C612800FDDCED /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B02F20C0202C8508001BC665 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B02F20C2202C8563001BC665 /* PostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
+		B02F20C4202C8714001BC665 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		B02F20C6202C929F001BC665 /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
+		B02F20C8202D87ED001BC665 /* ProfileIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIntroductionView.swift; sourceTree = "<group>"; };
+		B02F20CA202D8807001BC665 /* ProfileIntroductionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileIntroductionView.xib; sourceTree = "<group>"; };
+		B02F20CC202D88F9001BC665 /* ProfileIntroductionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIntroductionComponent.swift; sourceTree = "<group>"; };
+		B02F20CE202D893C001BC665 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		B02F20DB202DD94C001BC665 /* ProfileComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponentState.swift; sourceTree = "<group>"; };
+		B02F20DD202DDA65001BC665 /* LoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingComponent.swift; sourceTree = "<group>"; };
+		B02F20DF202DDA7D001BC665 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		B02F20E1202DDA8B001BC665 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B02F20E3202DDCCA001BC665 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		B02F20E5202DECC5001BC665 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		B02F20E7202DECE0001BC665 /* MessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		B02F20E9202DEE80001BC665 /* MessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
+		B02F20EB202DEF91001BC665 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B02F20ED202EC0CF001BC665 /* ProfileHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderComponent.swift; sourceTree = "<group>"; };
+		B0459A9A202EC75D0085A71C /* ProfileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponent.swift; sourceTree = "<group>"; };
 		B05D4FFF1F1EE79D00929006 /* TinyKitExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKitExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D50151F1EE7D300929006 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05D50161F1EE7D300929006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B05D50181F1EE7D300929006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B05D501B1F1EE7D400929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B05D50241F1EE8E500929006 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiListTableViewController.swift; sourceTree = "<group>"; };
-		B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComponentView.swift; sourceTree = "<group>"; };
-		B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmojiComponentView.xib; sourceTree = "<group>"; };
-		B05D50301F1EEA8F00929006 /* EmojiComponentViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComponentViewFactory.swift; sourceTree = "<group>"; };
+		B074DCD8202FE364001322A1 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		B0A403C6202C663D00D2A284 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0E64404202FE2B300E43B20 /* SplashComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,17 +92,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D50251F1EE8E500929006 /* TinyKit.framework in Frameworks */,
+				B025126B202C612800FDDCED /* TinyKit.framework in Frameworks */,
+				B0A403C7202C663D00D2A284 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B00657EA202C82E8000E3E98 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B02F20CE202D893C001BC665 /* Profile.swift */,
+				B02F20C8202D87ED001BC665 /* ProfileIntroductionView.swift */,
+				B02F20CA202D8807001BC665 /* ProfileIntroductionView.xib */,
+				B02F20CC202D88F9001BC665 /* ProfileIntroductionComponent.swift */,
+				B02F20ED202EC0CF001BC665 /* ProfileHeaderComponent.swift */,
+				B02F20DB202DD94C001BC665 /* ProfileComponentState.swift */,
+				B0459A9A202EC75D0085A71C /* ProfileComponent.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		B05D4FF61F1EE79D00929006 = {
 			isa = PBXGroup;
 			children = (
-				B05D50281F1EE94000929006 /* Frameworks */,
+				B0A403C6202C663D00D2A284 /* TinyCore.framework */,
+				B025126A202C612800FDDCED /* TinyKit.framework */,
 				B05D50141F1EE7D300929006 /* Sources */,
 				B05D50001F1EE79D00929006 /* Products */,
 			);
@@ -77,9 +135,14 @@
 		B05D50141F1EE7D300929006 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B05D50291F1EE99D00929006 /* Emoji */,
+				B0E64403202FE2A600E43B20 /* Splash */,
+				B0E64402202FDA1200E43B20 /* Loading */,
+				B0E64401202FD9F000E43B20 /* Message */,
+				B0E643F9202F153F00E43B20 /* Post */,
+				B00657EA202C82E8000E3E98 /* Profile */,
 				B05D50231F1EE81600929006 /* Supporting Files */,
 				B05D50151F1EE7D300929006 /* AppDelegate.swift */,
+				B02F20C4202C8714001BC665 /* RootViewController.swift */,
 				B05D50161F1EE7D300929006 /* Assets.xcassets */,
 				B05D50171F1EE7D300929006 /* LaunchScreen.storyboard */,
 			);
@@ -94,23 +157,47 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B05D50281F1EE94000929006 /* Frameworks */ = {
+		B0E643F9202F153F00E43B20 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				B05D50241F1EE8E500929006 /* TinyKit.framework */,
+				B02F20C0202C8508001BC665 /* Post.swift */,
+				B00657EB202C832B000E3E98 /* PostView.swift */,
+				B00657ED202C8352000E3E98 /* PostView.xib */,
+				B02F20C2202C8563001BC665 /* PostComponent.swift */,
+				B02F20C6202C929F001BC665 /* StateComponent.swift */,
 			);
-			name = Frameworks;
+			path = Post;
 			sourceTree = "<group>";
 		};
-		B05D50291F1EE99D00929006 /* Emoji */ = {
+		B0E64401202FD9F000E43B20 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				B05D502A1F1EE9AA00929006 /* EmojiListTableViewController.swift */,
-				B05D50301F1EEA8F00929006 /* EmojiComponentViewFactory.swift */,
-				B05D502C1F1EE9F700929006 /* EmojiComponentView.swift */,
-				B05D502E1F1EEA1A00929006 /* EmojiComponentView.xib */,
+				B02F20EB202DEF91001BC665 /* Message.swift */,
+				B02F20E5202DECC5001BC665 /* MessageView.swift */,
+				B02F20E7202DECE0001BC665 /* MessageView.xib */,
+				B02F20E9202DEE80001BC665 /* MessageComponent.swift */,
 			);
-			path = Emoji;
+			path = Message;
+			sourceTree = "<group>";
+		};
+		B0E64402202FDA1200E43B20 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B02F20E3202DDCCA001BC665 /* Loading.swift */,
+				B02F20E1202DDA8B001BC665 /* LoadingView.swift */,
+				B02F20DF202DDA7D001BC665 /* LoadingView.xib */,
+				B02F20DD202DDA65001BC665 /* LoadingComponent.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		B0E64403202FE2A600E43B20 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				B0E64404202FE2B300E43B20 /* SplashComponent.swift */,
+				B074DCD8202FE364001322A1 /* Splash.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +210,8 @@
 				B05D4FFB1F1EE79D00929006 /* Sources */,
 				B05D4FFC1F1EE79D00929006 /* Frameworks */,
 				B05D4FFD1F1EE79D00929006 /* Resources */,
-				B05D50271F1EE8E500929006 /* Embed Frameworks */,
+				B025126D202C612800FDDCED /* Embed Frameworks */,
+				B0A403C5202C656D00D2A284 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -175,23 +263,61 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D502F1F1EEA1A00929006 /* EmojiComponentView.xib in Resources */,
 				B05D501E1F1EE7D400929006 /* Assets.xcassets in Resources */,
+				B00657EE202C8352000E3E98 /* PostView.xib in Resources */,
+				B02F20E0202DDA7D001BC665 /* LoadingView.xib in Resources */,
+				B02F20E8202DECE0001BC665 /* MessageView.xib in Resources */,
 				B05D501F1F1EE7D400929006 /* LaunchScreen.storyboard in Resources */,
+				B02F20CB202D8807001BC665 /* ProfileIntroductionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B0A403C5202C656D00D2A284 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B05D4FFB1F1EE79D00929006 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D50311F1EEA8F00929006 /* EmojiComponentViewFactory.swift in Sources */,
-				B05D502D1F1EE9F700929006 /* EmojiComponentView.swift in Sources */,
 				B05D501D1F1EE7D400929006 /* AppDelegate.swift in Sources */,
-				B05D502B1F1EE9AA00929006 /* EmojiListTableViewController.swift in Sources */,
+				B02F20CD202D88F9001BC665 /* ProfileIntroductionComponent.swift in Sources */,
+				B0459A9B202EC75D0085A71C /* ProfileComponent.swift in Sources */,
+				B00657EC202C832B000E3E98 /* PostView.swift in Sources */,
+				B02F20E6202DECC5001BC665 /* MessageView.swift in Sources */,
+				B02F20DE202DDA65001BC665 /* LoadingComponent.swift in Sources */,
+				B0E64405202FE2B300E43B20 /* SplashComponent.swift in Sources */,
+				B02F20EA202DEE80001BC665 /* MessageComponent.swift in Sources */,
+				B02F20C5202C8714001BC665 /* RootViewController.swift in Sources */,
+				B02F20EC202DEF91001BC665 /* Message.swift in Sources */,
+				B02F20E4202DDCCA001BC665 /* Loading.swift in Sources */,
+				B02F20C9202D87ED001BC665 /* ProfileIntroductionView.swift in Sources */,
+				B02F20E2202DDA8B001BC665 /* LoadingView.swift in Sources */,
+				B02F20C7202C929F001BC665 /* StateComponent.swift in Sources */,
+				B074DCD9202FE364001322A1 /* Splash.swift in Sources */,
+				B02F20EE202EC0CF001BC665 /* ProfileHeaderComponent.swift in Sources */,
+				B02F20CF202D893C001BC665 /* Profile.swift in Sources */,
+				B02F20C1202C8508001BC665 /* Post.swift in Sources */,
+				B02F20DC202DD94C001BC665 /* ProfileComponentState.swift in Sources */,
+				B02F20C3202C8563001BC665 /* PostComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +447,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5CE6946X84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitExamples;
@@ -335,6 +465,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5CE6946X84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitExamples;

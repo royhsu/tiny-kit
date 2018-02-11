@@ -7,31 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B05D4EDF1F1E0A8300929006 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4ED51F1E0A8300929006 /* TinyKit.framework */; };
-		B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B05D4EF11F1E0AF100929006 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B05D4EFE1F1E0AF100929006 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */; };
-		B05D4EFF1F1E0AF100929006 /* UINibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF51F1E0AF100929006 /* UINibExtensions.swift */; };
-		B05D4F001F1E0AF100929006 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF71F1E0AF100929006 /* UITableViewExtensions.swift */; };
-		B05D4F011F1E0AF100929006 /* TNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF91F1E0AF100929006 /* TNTableViewCell.swift */; };
-		B05D4F021F1E0AF100929006 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EFB1F1E0AF100929006 /* UIViewExtensions.swift */; };
+		B02449E5201D9B4700D20C50 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449E4201D9B4700D20C50 /* View.swift */; };
+		B02449E9201DAE8700D20C50 /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449E8201DAE8700D20C50 /* ListComponent.swift */; };
+		B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02449EA201DAE9600D20C50 /* ListComponentTests.swift */; };
+		B02F20D3202DB65C001BC665 /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D2202DB65C001BC665 /* StateComponent.swift */; };
+		B02F20D6202DB6AE001BC665 /* StateComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */; };
+		B02F20D8202DC6B2001BC665 /* ComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D7202DC6B2001BC665 /* ComponentState.swift */; };
+		B02F20DA202DC6C7001BC665 /* AnyComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F20D9202DC6C7001BC665 /* AnyComponentState.swift */; };
+		B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053407C2019A7F8002FFD5B /* ItemComponent.swift */; };
+		B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340822019A93E002FFD5B /* ItemComponentTests.swift */; };
+		B053408A2019AD05002FFD5B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05340882019ACF1002FFD5B /* Color.swift */; };
+		B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */; };
+		B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */; };
+		B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */; };
 		B05D4F291F1E0C1500929006 /* NibCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D4F081F1E0AF700929006 /* NibCollectionViewCell.xib */; };
 		B05D4F2A1F1E0C1500929006 /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05D4F0F1F1E0AF700929006 /* NibTableViewCell.xib */; };
 		B05D4F4F1F1E0C7800929006 /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F071F1E0AF700929006 /* NibCollectionViewCell.swift */; };
 		B05D4F501F1E0C7B00929006 /* NoNibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F091F1E0AF700929006 /* NoNibCollectionViewCell.swift */; };
 		B05D4F511F1E0C8200929006 /* UICollectionViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F0A1F1E0AF700929006 /* UICollectionViewExtensionsTests.swift */; };
-		B05D4F521F1E0C8F00929006 /* UINibExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F0C1F1E0AF700929006 /* UINibExtensionsTests.swift */; };
 		B05D4F531F1E0C9300929006 /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F0E1F1E0AF700929006 /* NibTableViewCell.swift */; };
 		B05D4F541F1E0C9700929006 /* NoNibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F101F1E0AF700929006 /* NoNibTableViewCell.swift */; };
 		B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F111F1E0AF700929006 /* UITableViewExtensionsTests.swift */; };
-		B05D4F561F1E0C9D00929006 /* LabelComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F131F1E0AF700929006 /* LabelComponentView.swift */; };
-		B05D4F571F1E0C9D00929006 /* LabelComponentViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F141F1E0AF700929006 /* LabelComponentViewFactory.swift */; };
-		B05D4F581F1E0C9D00929006 /* TNTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F151F1E0AF700929006 /* TNTableViewCellTests.swift */; };
 		B05D4F591F1E0CA100929006 /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05D4F171F1E0AF700929006 /* UIViewExtensionsTests.swift */; };
-		B05D4FCD1F1E528100929006 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D4FCC1F1E528100929006 /* TinyCore.framework */; };
+		B0A0B049202C5478003FC1E1 /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A0B044202C53B1003FC1E1 /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0A403CA202C770900D2A284 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A403C9202C770900D2A284 /* UITableViewBridge.swift */; };
+		B0A9DEA02018806200AEF782 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DE9F2018806200AEF782 /* Node.swift */; };
+		B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA12018809200AEF782 /* AnyNode.swift */; };
+		B0A9DEA4201880FB00AEF782 /* ComponentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA3201880FB00AEF782 /* ComponentNode.swift */; };
+		B0A9DEA72018821100AEF782 /* ComponentNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA62018821100AEF782 /* ComponentNodeTests.swift */; };
+		B0A9DEAB2018849D00AEF782 /* ViewRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEA92018849000AEF782 /* ViewRenderable.swift */; };
+		B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEAC2018857D00AEF782 /* ViewRender.swift */; };
+		B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9DEB0201885DE00AEF782 /* Component.swift */; };
+		B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C17DD2201D7C560063CA45 /* RectangleView.swift */; };
+		B0C6ECA6202C575D00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
+		B0C6ECA7202C57AB00AFEE54 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; };
+		B0C6ECAB202C58CC00AFEE54 /* TinyCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0E643F4202EF02800E43B20 /* ColorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E643F2202EF02400E43B20 /* ColorComponent.swift */; };
+		B0E643FC202F418300E43B20 /* ComponentContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E643FB202F418300E43B20 /* ComponentContentMode.swift */; };
+		B0E64400202F499700E43B20 /* TrafficLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E643FD202F491B00E43B20 /* TrafficLight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B05D4EE01F1E0A8300929006 /* PBXContainerItemProxy */ = {
+		B0C6ECA8202C57CC00AFEE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B05D4ECC1F1E0A8300929006 /* Project object */;
 			proxyType = 1;
@@ -40,32 +57,60 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B0C6ECAA202C58BB00AFEE54 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B0C6ECAB202C58CC00AFEE54 /* TinyCore.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		B05D4ED51F1E0A8300929006 /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B05D4EF01F1E0AF100929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B05D4EF11F1E0AF100929006 /* TinyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
-		B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
-		B05D4EF51F1E0AF100929006 /* UINibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINibExtensions.swift; sourceTree = "<group>"; };
-		B05D4EF71F1E0AF100929006 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
-		B05D4EF91F1E0AF100929006 /* TNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNTableViewCell.swift; sourceTree = "<group>"; };
-		B05D4EFB1F1E0AF100929006 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		B02449E4201D9B4700D20C50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		B02449E8201DAE8700D20C50 /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
+		B02449EA201DAE9600D20C50 /* ListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentTests.swift; sourceTree = "<group>"; };
+		B02F20D2202DB65C001BC665 /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
+		B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponentTests.swift; sourceTree = "<group>"; };
+		B02F20D7202DC6B2001BC665 /* ComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentState.swift; sourceTree = "<group>"; };
+		B02F20D9202DC6C7001BC665 /* AnyComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyComponentState.swift; sourceTree = "<group>"; };
+		B053407C2019A7F8002FFD5B /* ItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
+		B05340822019A93E002FFD5B /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
+		B05340882019ACF1002FFD5B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		B0554CC7202C608B00F0B15B /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0554CC8202C608B00F0B15B /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
+		B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Cell.swift"; sourceTree = "<group>"; };
+		B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
 		B05D4F041F1E0AF700929006 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B05D4F071F1E0AF700929006 /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		B05D4F081F1E0AF700929006 /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionViewCell.xib; sourceTree = "<group>"; };
 		B05D4F091F1E0AF700929006 /* NoNibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibCollectionViewCell.swift; sourceTree = "<group>"; };
 		B05D4F0A1F1E0AF700929006 /* UICollectionViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B05D4F0C1F1E0AF700929006 /* UINibExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINibExtensionsTests.swift; sourceTree = "<group>"; };
 		B05D4F0E1F1E0AF700929006 /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		B05D4F0F1F1E0AF700929006 /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		B05D4F101F1E0AF700929006 /* NoNibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibTableViewCell.swift; sourceTree = "<group>"; };
 		B05D4F111F1E0AF700929006 /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B05D4F131F1E0AF700929006 /* LabelComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelComponentView.swift; sourceTree = "<group>"; };
-		B05D4F141F1E0AF700929006 /* LabelComponentViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelComponentViewFactory.swift; sourceTree = "<group>"; };
-		B05D4F151F1E0AF700929006 /* TNTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNTableViewCellTests.swift; sourceTree = "<group>"; };
 		B05D4F171F1E0AF700929006 /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B05D4FCA1F1E523C00929006 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = "tiny-core/build/Debug-iphoneos/TinyCore.framework"; sourceTree = "<group>"; };
-		B05D4FCC1F1E528100929006 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = "tiny-core/build/Debug-iphoneos/TinyCore.framework"; sourceTree = "<group>"; };
+		B0A0B043202C53B1003FC1E1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0A0B044202C53B1003FC1E1 /* TinyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
+		B0A403C9202C770900D2A284 /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
+		B0A9DE9F2018806200AEF782 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		B0A9DEA12018809200AEF782 /* AnyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyNode.swift; sourceTree = "<group>"; };
+		B0A9DEA3201880FB00AEF782 /* ComponentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentNode.swift; sourceTree = "<group>"; };
+		B0A9DEA62018821100AEF782 /* ComponentNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentNodeTests.swift; sourceTree = "<group>"; };
+		B0A9DEA92018849000AEF782 /* ViewRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRenderable.swift; sourceTree = "<group>"; };
+		B0A9DEAC2018857D00AEF782 /* ViewRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRender.swift; sourceTree = "<group>"; };
+		B0A9DEB0201885DE00AEF782 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		B0C17DD2201D7C560063CA45 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
+		B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0E643F2202EF02400E43B20 /* ColorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorComponent.swift; sourceTree = "<group>"; };
+		B0E643FB202F418300E43B20 /* ComponentContentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentContentMode.swift; sourceTree = "<group>"; };
+		B0E643FD202F491B00E43B20 /* TrafficLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D4FCD1F1E528100929006 /* TinyCore.framework in Frameworks */,
+				B0C6ECA6202C575D00AFEE54 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D4EDF1F1E0A8300929006 /* TinyKit.framework in Frameworks */,
+				B0C6ECA7202C57AB00AFEE54 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,29 +138,23 @@
 			children = (
 				B05D4EEF1F1E0AF100929006 /* Sources */,
 				B05D4F031F1E0AF700929006 /* Tests */,
-				B05D4ED61F1E0A8300929006 /* Products */,
-				B05D4FC91F1E523C00929006 /* Frameworks */,
+				B0C6ECA4202C575D00AFEE54 /* Frameworks */,
+				B0554CC7202C608B00F0B15B /* TinyKit.framework */,
+				B0554CC8202C608B00F0B15B /* TinyKitTests.xctest */,
 			);
-			sourceTree = "<group>";
-		};
-		B05D4ED61F1E0A8300929006 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4ED51F1E0A8300929006 /* TinyKit.framework */,
-				B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		B05D4EEF1F1E0AF100929006 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4F271F1E0B0000929006 /* Supporting Files */,
+				B0A9DEAF201885B500AEF782 /* Component */,
+				B0A9DE9E2018803700AEF782 /* Node */,
 				B05D4EF21F1E0AF100929006 /* UICollectionView */,
-				B05D4EF41F1E0AF100929006 /* UINib */,
 				B05D4EF61F1E0AF100929006 /* UITableView */,
-				B05D4EF81F1E0AF100929006 /* UITableViewCell */,
 				B05D4EFA1F1E0AF100929006 /* UIView */,
+				B0A9DEA82018844800AEF782 /* View */,
+				B0A0B043202C53B1003FC1E1 /* Info.plist */,
+				B0A0B044202C53B1003FC1E1 /* TinyKit.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -123,39 +162,23 @@
 		B05D4EF21F1E0AF100929006 /* UICollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EF31F1E0AF100929006 /* UICollectionViewExtensions.swift */,
+				B05D4EF31F1E0AF100929006 /* UICollectionView+Cell.swift */,
 			);
 			path = UICollectionView;
-			sourceTree = "<group>";
-		};
-		B05D4EF41F1E0AF100929006 /* UINib */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4EF51F1E0AF100929006 /* UINibExtensions.swift */,
-			);
-			path = UINib;
 			sourceTree = "<group>";
 		};
 		B05D4EF61F1E0AF100929006 /* UITableView */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EF71F1E0AF100929006 /* UITableViewExtensions.swift */,
+				B05D4EF71F1E0AF100929006 /* UITableView+Cell.swift */,
 			);
 			path = UITableView;
-			sourceTree = "<group>";
-		};
-		B05D4EF81F1E0AF100929006 /* UITableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4EF91F1E0AF100929006 /* TNTableViewCell.swift */,
-			);
-			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
 		B05D4EFA1F1E0AF100929006 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EFB1F1E0AF100929006 /* UIViewExtensions.swift */,
+				B05D4EFB1F1E0AF100929006 /* UIView+UINib.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -163,12 +186,12 @@
 		B05D4F031F1E0AF700929006 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4F281F1E0B0E00929006 /* Supporting Files */,
+				B0A9DEAE2018859000AEF782 /* Component */,
+				B0A9DEA5201881F900AEF782 /* Node */,
 				B05D4F061F1E0AF700929006 /* UICollectionView */,
-				B05D4F0B1F1E0AF700929006 /* UINib */,
 				B05D4F0D1F1E0AF700929006 /* UITableView */,
-				B05D4F121F1E0AF700929006 /* UITableViewCell */,
 				B05D4F161F1E0AF700929006 /* UIView */,
+				B05D4F041F1E0AF700929006 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -184,14 +207,6 @@
 			path = UICollectionView;
 			sourceTree = "<group>";
 		};
-		B05D4F0B1F1E0AF700929006 /* UINib */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4F0C1F1E0AF700929006 /* UINibExtensionsTests.swift */,
-			);
-			path = UINib;
-			sourceTree = "<group>";
-		};
 		B05D4F0D1F1E0AF700929006 /* UITableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,16 +218,6 @@
 			path = UITableView;
 			sourceTree = "<group>";
 		};
-		B05D4F121F1E0AF700929006 /* UITableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				B05D4F131F1E0AF700929006 /* LabelComponentView.swift */,
-				B05D4F141F1E0AF700929006 /* LabelComponentViewFactory.swift */,
-				B05D4F151F1E0AF700929006 /* TNTableViewCellTests.swift */,
-			);
-			path = UITableViewCell;
-			sourceTree = "<group>";
-		};
 		B05D4F161F1E0AF700929006 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,28 +226,67 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
-		B05D4F271F1E0B0000929006 /* Supporting Files */ = {
+		B0A9DE9E2018803700AEF782 /* Node */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4EF01F1E0AF100929006 /* Info.plist */,
-				B05D4EF11F1E0AF100929006 /* TinyKit.h */,
+				B0A9DE9F2018806200AEF782 /* Node.swift */,
+				B0A9DEA12018809200AEF782 /* AnyNode.swift */,
+				B0A9DEA3201880FB00AEF782 /* ComponentNode.swift */,
 			);
-			name = "Supporting Files";
+			path = Node;
 			sourceTree = "<group>";
 		};
-		B05D4F281F1E0B0E00929006 /* Supporting Files */ = {
+		B0A9DEA5201881F900AEF782 /* Node */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4F041F1E0AF700929006 /* Info.plist */,
+				B0A9DEA62018821100AEF782 /* ComponentNodeTests.swift */,
 			);
-			name = "Supporting Files";
+			path = Node;
 			sourceTree = "<group>";
 		};
-		B05D4FC91F1E523C00929006 /* Frameworks */ = {
+		B0A9DEA82018844800AEF782 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B05D4FCC1F1E528100929006 /* TinyCore.framework */,
-				B05D4FCA1F1E523C00929006 /* TinyCore.framework */,
+				B0A9DEA92018849000AEF782 /* ViewRenderable.swift */,
+				B0A9DEAC2018857D00AEF782 /* ViewRender.swift */,
+				B02449E4201D9B4700D20C50 /* View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B0A9DEAE2018859000AEF782 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B0C17DD2201D7C560063CA45 /* RectangleView.swift */,
+				B05340882019ACF1002FFD5B /* Color.swift */,
+				B0E643FD202F491B00E43B20 /* TrafficLight.swift */,
+				B0E643F2202EF02400E43B20 /* ColorComponent.swift */,
+				B05340822019A93E002FFD5B /* ItemComponentTests.swift */,
+				B02449EA201DAE9600D20C50 /* ListComponentTests.swift */,
+				B02F20D4202DB6AB001BC665 /* StateComponentTests.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		B0A9DEAF201885B500AEF782 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B0E643FB202F418300E43B20 /* ComponentContentMode.swift */,
+				B0A9DEB0201885DE00AEF782 /* Component.swift */,
+				B053407C2019A7F8002FFD5B /* ItemComponent.swift */,
+				B02449E8201DAE8700D20C50 /* ListComponent.swift */,
+				B0A403C9202C770900D2A284 /* UITableViewBridge.swift */,
+				B02F20D2202DB65C001BC665 /* StateComponent.swift */,
+				B02F20D7202DC6B2001BC665 /* ComponentState.swift */,
+				B02F20D9202DC6C7001BC665 /* AnyComponentState.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		B0C6ECA4202C575D00AFEE54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0C6ECA5202C575D00AFEE54 /* TinyCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,7 +298,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D4EFD1F1E0AF100929006 /* TinyKit.h in Headers */,
+				B0A0B049202C5478003FC1E1 /* TinyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +314,7 @@
 				B05D4ED21F1E0A8300929006 /* Headers */,
 				B05D4ED31F1E0A8300929006 /* Resources */,
 				B05D4FCF1F1E57DB00929006 /* Swiftlint */,
+				B0E24D91202C24540034E539 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -277,7 +322,7 @@
 			);
 			name = TinyKit;
 			productName = TinyKit;
-			productReference = B05D4ED51F1E0A8300929006 /* TinyKit.framework */;
+			productReference = B0554CC7202C608B00F0B15B /* TinyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B05D4EDD1F1E0A8300929006 /* TinyKitTests */ = {
@@ -287,15 +332,16 @@
 				B05D4EDA1F1E0A8300929006 /* Sources */,
 				B05D4EDB1F1E0A8300929006 /* Frameworks */,
 				B05D4EDC1F1E0A8300929006 /* Resources */,
+				B0C6ECAA202C58BB00AFEE54 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B05D4EE11F1E0A8300929006 /* PBXTargetDependency */,
+				B0C6ECA9202C57CC00AFEE54 /* PBXTargetDependency */,
 			);
 			name = TinyKitTests;
 			productName = TinyKitTests;
-			productReference = B05D4EDE1F1E0A8300929006 /* TinyKitTests.xctest */;
+			productReference = B0554CC8202C608B00F0B15B /* TinyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -330,7 +376,7 @@
 				en,
 			);
 			mainGroup = B05D4ECB1F1E0A8300929006;
-			productRefGroup = B05D4ED61F1E0A8300929006 /* Products */;
+			productRefGroup = B05D4ECB1F1E0A8300929006;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -374,6 +420,22 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		B0E24D91202C24540034E539 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -381,11 +443,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05D4F001F1E0AF100929006 /* UITableViewExtensions.swift in Sources */,
-				B05D4F021F1E0AF100929006 /* UIViewExtensions.swift in Sources */,
-				B05D4F011F1E0AF100929006 /* TNTableViewCell.swift in Sources */,
-				B05D4EFE1F1E0AF100929006 /* UICollectionViewExtensions.swift in Sources */,
-				B05D4EFF1F1E0AF100929006 /* UINibExtensions.swift in Sources */,
+				B02F20D8202DC6B2001BC665 /* ComponentState.swift in Sources */,
+				B05D4F001F1E0AF100929006 /* UITableView+Cell.swift in Sources */,
+				B0E643FC202F418300E43B20 /* ComponentContentMode.swift in Sources */,
+				B0A9DEB1201885DE00AEF782 /* Component.swift in Sources */,
+				B02449E5201D9B4700D20C50 /* View.swift in Sources */,
+				B02F20D3202DB65C001BC665 /* StateComponent.swift in Sources */,
+				B0A9DEA22018809200AEF782 /* AnyNode.swift in Sources */,
+				B05D4F021F1E0AF100929006 /* UIView+UINib.swift in Sources */,
+				B02449E9201DAE8700D20C50 /* ListComponent.swift in Sources */,
+				B0A9DEA4201880FB00AEF782 /* ComponentNode.swift in Sources */,
+				B05D4EFE1F1E0AF100929006 /* UICollectionView+Cell.swift in Sources */,
+				B053407D2019A7F8002FFD5B /* ItemComponent.swift in Sources */,
+				B0A9DEAB2018849D00AEF782 /* ViewRenderable.swift in Sources */,
+				B0A9DEAD2018857D00AEF782 /* ViewRender.swift in Sources */,
+				B0A403CA202C770900D2A284 /* UITableViewBridge.swift in Sources */,
+				B02F20DA202DC6C7001BC665 /* AnyComponentState.swift in Sources */,
+				B0A9DEA02018806200AEF782 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,26 +468,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				B05D4F511F1E0C8200929006 /* UICollectionViewExtensionsTests.swift in Sources */,
-				B05D4F581F1E0C9D00929006 /* TNTableViewCellTests.swift in Sources */,
-				B05D4F561F1E0C9D00929006 /* LabelComponentView.swift in Sources */,
-				B05D4F571F1E0C9D00929006 /* LabelComponentViewFactory.swift in Sources */,
+				B02449EC201DAE9C00D20C50 /* ListComponentTests.swift in Sources */,
 				B05D4F551F1E0C9A00929006 /* UITableViewExtensionsTests.swift in Sources */,
+				B02F20D6202DB6AE001BC665 /* StateComponentTests.swift in Sources */,
+				B0C17DD3201D7C560063CA45 /* RectangleView.swift in Sources */,
 				B05D4F4F1F1E0C7800929006 /* NibCollectionViewCell.swift in Sources */,
 				B05D4F591F1E0CA100929006 /* UIViewExtensionsTests.swift in Sources */,
+				B053408A2019AD05002FFD5B /* Color.swift in Sources */,
+				B05340832019A93E002FFD5B /* ItemComponentTests.swift in Sources */,
 				B05D4F501F1E0C7B00929006 /* NoNibCollectionViewCell.swift in Sources */,
 				B05D4F531F1E0C9300929006 /* NibTableViewCell.swift in Sources */,
 				B05D4F541F1E0C9700929006 /* NoNibTableViewCell.swift in Sources */,
-				B05D4F521F1E0C8F00929006 /* UINibExtensionsTests.swift in Sources */,
+				B0A9DEA72018821100AEF782 /* ComponentNodeTests.swift in Sources */,
+				B0E643F4202EF02800E43B20 /* ColorComponent.swift in Sources */,
+				B0E64400202F499700E43B20 /* TrafficLight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B05D4EE11F1E0A8300929006 /* PBXTargetDependency */ = {
+		B0C6ECA9202C57CC00AFEE54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B05D4ED41F1E0A8300929006 /* TinyKit */;
-			targetProxy = B05D4EE01F1E0A8300929006 /* PBXContainerItemProxy */;
+			targetProxy = B0C6ECA8202C57CC00AFEE54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -540,7 +618,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -561,7 +642,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -578,6 +662,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 5CE6946X84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitTests;
@@ -592,6 +680,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 5CE6946X84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitTests;

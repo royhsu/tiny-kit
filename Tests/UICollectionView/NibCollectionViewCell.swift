@@ -8,9 +8,8 @@
 
 // MARK: - NibCollectionViewCell
 
-import UIKit
-import TinyCore
-
-final class NibCollectionViewCell: UICollectionViewCell, Identifiable {
-
-}
+//import UIKit
+//
+//final class NibCollectionViewCell: UICollectionViewCell {
+//
+//}
