@@ -8,7 +8,7 @@
 
 // MARK: - ViewRender
 
-import TinyCore
+import Hydra
 
 /// A view render should define its own way to renderables.
 /// It can also ignore the preferred content size of renderables if it makes sense.

@@ -8,6 +8,8 @@
 
 // MARK: - HTTPClient
 
+import Hydra
+
 public protocol HTTPClient {
 
     func data(
