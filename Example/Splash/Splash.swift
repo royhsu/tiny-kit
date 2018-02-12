@@ -9,7 +9,7 @@
 // MARK: - Splash
 
 public struct Splash: Codable {
-    
+
     public init() { }
-    
+
 }

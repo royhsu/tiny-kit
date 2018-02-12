@@ -75,7 +75,7 @@ public final class StateComponent<CS: ComponentState>: Component {
         )
 
         currentComponent.render()
-        
+
         let size: CGSize
 
         switch contentMode {
@@ -94,9 +94,9 @@ public final class StateComponent<CS: ComponentState>: Component {
         }
 
         var frame = view.frame
-        
+
         frame.size = size
-        
+
         view.frame = frame
 
         NSLayoutConstraint.activate(
@@ -106,6 +106,8 @@ public final class StateComponent<CS: ComponentState>: Component {
                     .constraint(equalTo: currentView.bottomAnchor)
             ]
         )
+
+        currentView.layoutIfNeeded()
 
     }
 

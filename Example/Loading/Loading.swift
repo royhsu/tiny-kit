@@ -9,7 +9,7 @@
 // MARK: - Loading
 
 public struct Loading: Codable {
-    
+
     public init() { }
-    
+
 }

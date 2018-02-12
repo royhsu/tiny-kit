@@ -26,27 +26,28 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-        
+
+        /// The ROOT component must specify a size to rendering its content correctly.
         let component = ProfileComponent(
             contentMode: .size(
                 width: window.bounds.width,
                 height: window.bounds.height
             )
         )
-        
+
+        /// A component should render at least once for showing its view.
         component.render()
-        
-        window.rootViewController = RootViewController(renderable: component)
-        
+
+        window.render(with: component)
+
         window.makeKeyAndVisible()
-        
+
         component
             .fetch(in: .background)
             .then(
                 in: .main,
                 component.render
             )
-            .always(in: .main) { print(component.view) }
 
         return true
 

@@ -11,6 +11,6 @@
 /// A view render can ignore the preferred content size of the renderable if it makes sense.
 public protocol ViewRender {
 
-    func render(for renderable: ViewRenderable)
+    func render(with renderable: ViewRenderable)
 
 }

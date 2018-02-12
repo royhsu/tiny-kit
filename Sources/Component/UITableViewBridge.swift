@@ -51,40 +51,32 @@ extension UITableViewBridge: UITableViewDataSource {
 
         let component = components[index]
 
-        let containerView = cell.contentView
+        component.render()
+
+        let view = cell.contentView
 
         let contentView = component.view
 
-        component.render()
-
         contentView.removeFromSuperview()
-
-        containerView.addSubview(contentView)
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
 
+        view.addSubview(contentView)
+
         NSLayoutConstraint.activate(
             [
-                contentView
+                view
                     .leadingAnchor
-                    .constraint(
-                        equalTo: containerView.leadingAnchor
-                    ),
-                contentView
+                    .constraint(equalTo: contentView.leadingAnchor),
+                view
                     .topAnchor
-                    .constraint(
-                        equalTo: containerView.topAnchor
-                    ),
-                contentView
+                    .constraint(equalTo: contentView.topAnchor),
+                view
                     .trailingAnchor
-                    .constraint(
-                        equalTo: containerView.trailingAnchor
-                    ),
-                contentView
+                    .constraint(equalTo: contentView.trailingAnchor),
+                view
                     .bottomAnchor
-                    .constraint(
-                        equalTo: containerView.bottomAnchor
-                    )
+                    .constraint(equalTo: contentView.bottomAnchor)
             ]
         )
 

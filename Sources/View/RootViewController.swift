@@ -1,6 +1,6 @@
 //
 //  RootViewController.swift
-//  TinyKitExamples
+//  TinyKit
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
@@ -9,7 +9,6 @@
 // MARK: - RootViewController
 
 import UIKit
-import TinyKit
 
 public final class RootViewController: UIViewController {
 
@@ -23,7 +22,7 @@ public final class RootViewController: UIViewController {
             nibName: nil,
             bundle: nil
         )
-        
+
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError("Not implemented.") }

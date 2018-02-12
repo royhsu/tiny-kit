@@ -19,7 +19,7 @@ public struct Message: Codable {
 // MARK: - Error
 
 public extension Message {
-    
+
     public init(error: Error) { self.init(text: "\(error)") }
-    
+
 }

@@ -6,7 +6,6 @@ disabled_rules:
 excluded:
   - Carthage
   - Pods
-  - Examples
 variable_name:
   excluded:
     - id
