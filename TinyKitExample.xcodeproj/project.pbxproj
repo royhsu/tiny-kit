@@ -35,6 +35,8 @@
 		B00D972120307F6B00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
 		B00D972520307F8600EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
 		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
+		B0876EB52032AB050003CC59 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EB42032AB050003CC59 /* RedViewController.swift */; };
+		B0876EB72032AC750003CC59 /* YellowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EB62032AC750003CC59 /* YellowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +83,8 @@
 		B00D972220307F6B00EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D972320307F8600EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D972420307F8600EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0876EB42032AB050003CC59 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
+		B0876EB62032AC750003CC59 /* YellowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				B00D96E720307F4300EF0B7A /* Profile */,
 				B00D96EF20307F4400EF0B7A /* Splash */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
+				B0876EB42032AB050003CC59 /* RedViewController.swift */,
+				B0876EB62032AC750003CC59 /* YellowViewController.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -296,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0876EB52032AB050003CC59 /* RedViewController.swift in Sources */,
 				B00D970B20307F4400EF0B7A /* Splash.swift in Sources */,
 				B00D970D20307F4400EF0B7A /* LoadingComponent.swift in Sources */,
 				B00D971920307F4400EF0B7A /* Message.swift in Sources */,
@@ -305,6 +312,7 @@
 				B00D970420307F4400EF0B7A /* ProfileComponent.swift in Sources */,
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
 				B00D970520307F4400EF0B7A /* Profile.swift in Sources */,
+				B0876EB72032AC750003CC59 /* YellowViewController.swift in Sources */,
 				B00D971320307F4400EF0B7A /* PostComponent.swift in Sources */,
 				B00D970920307F4400EF0B7A /* ProfileHeaderComponent.swift in Sources */,
 				B00D971A20307F4400EF0B7A /* MessageView.swift in Sources */,

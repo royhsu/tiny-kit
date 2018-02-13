@@ -53,6 +53,8 @@
 		B0354DC22031617C002A4B71 /* UIWindow+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIWindow+ViewRender.swift */; };
 		B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E020329F25008DC89C /* URLMatcher.framework */; };
 		B097C1E320329F26008DC89C /* URLNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E120329F25008DC89C /* URLNavigator.framework */; };
+		B097C1E62032A014008DC89C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097C1E52032A014008DC89C /* Navigation.swift */; };
+		B097C1EB2032A355008DC89C /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097C1EA2032A355008DC89C /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		B0354DC12031617B002A4B71 /* UIWindow+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+ViewRender.swift"; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
+		B097C1E52032A014008DC89C /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		B097C1EA2032A355008DC89C /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				B00D961F2030758A00EF0B7A /* Component */,
+				B097C1E420329F7F008DC89C /* Navigation */,
 				B00D96282030758A00EF0B7A /* Node */,
 				B00D962C2030758A00EF0B7A /* UICollectionView */,
 				B00D96342030758A00EF0B7A /* UITableView */,
@@ -252,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				B00D9668203076C500EF0B7A /* Component */,
+				B097C1E92032A2C8008DC89C /* Navigation */,
 				B00D9664203076C500EF0B7A /* Node */,
 				B00D965F203076C500EF0B7A /* UICollectionView */,
 				B00D965A203076C500EF0B7A /* UITableView */,
@@ -322,6 +328,22 @@
 				B00D96832030779000EF0B7A /* TinyCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B097C1E420329F7F008DC89C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B097C1E52032A014008DC89C /* Navigation.swift */,
+				B097C1EA2032A355008DC89C /* Navigator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B097C1E92032A2C8008DC89C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
+				B097C1E62032A014008DC89C /* Navigation.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
 				B0354DBE20316136002A4B71 /* RootViewController.swift in Sources */,
 				B00D96362030758A00EF0B7A /* AnyComponentState.swift in Sources */,
@@ -476,6 +499,7 @@
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96372030758A00EF0B7A /* StateComponent.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
+				B097C1EB2032A355008DC89C /* Navigator.swift in Sources */,
 				B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */,
 				B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,

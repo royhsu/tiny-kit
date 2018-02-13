@@ -14,10 +14,14 @@ import UIKit
 public final class AppDelegate: UIResponder {
 
     public final let window = UIWindow(frame: UIScreen.main.bounds)
+    
+    public final let navigation: Navigation = Navigator()
 
 }
 
 // MARK: UIApplicationDelegate
+
+import TinyKit
 
 extension AppDelegate: UIApplicationDelegate {
 
@@ -28,26 +32,43 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         /// The ROOT component must specify a size to rendering its content correctly.
-        let component = ProfileComponent(
-            contentMode: .size(
-                width: window.bounds.width,
-                height: window.bounds.height
-            )
-        )
+//        let component = ProfileComponent(
+//            contentMode: .size(
+//                width: window.bounds.width,
+//                height: window.bounds.height
+//            )
+//        )
 
         /// A component should render at least once for showing its view.
-        component.render()
+//        component.render()
 
-        window.render(with: component)
+//        window.render(with: component)
 
+        navigation.register(
+            URL(string: "tinykit://yellow")!,
+            with: { url, info in
+                
+                return YellowViewController()
+                
+            }
+        )
+        
+        let redViewController = RedViewController()
+        
+        redViewController.navigation = navigation
+        
+        window.rootViewController = UINavigationController(
+            rootViewController: redViewController
+        )
+        
         window.makeKeyAndVisible()
 
-        component
-            .fetch(in: .background)
-            .then(
-                in: .main,
-                component.render
-            )
+//        component
+//            .fetch(in: .background)
+//            .then(
+//                in: .main,
+//                component.render
+//            )
 
         return true
 
