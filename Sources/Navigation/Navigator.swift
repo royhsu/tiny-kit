@@ -24,18 +24,21 @@ extension Navigator: Navigation {
     
     public final func register(
         _ url: URL,
-        with factory: @escaping UIViewControllerFactory
+        with handler: @escaping URLHandler
     ) {
         
         let pattern = URLPattern(url.absoluteString)
         
-        navigator.register(pattern) { _, values, _ in return factory(url, values) }
+        navigator.register(pattern) { _, values, _ in
+            
+            return handler(url, values)
+            
+        }
         
     }
     
-    
-    public final func show(
-        _ url: URL,
+    public final func navigate(
+        to url: URL,
         by type: NavigationType
     ) {
 
@@ -45,7 +48,9 @@ extension Navigator: Navigation {
             
         case .present: navigator.present(url)
             
-        case .open: navigator.open(url)
+        case .open:
+            
+            fatalError()
             
         case .root:
             

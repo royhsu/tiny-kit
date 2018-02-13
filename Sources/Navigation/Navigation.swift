@@ -10,17 +10,17 @@
 
 import UIKit
 
-public typealias UIViewControllerFactory = (_ url: URL, _ info: [String: Any]?) -> UIViewController
+public typealias URLHandler = (_ url: URL, _ info: [String: Any]?) -> UIViewController
 
 public protocol Navigation {
     
     func register(
         _ url: URL,
-        with factory: @escaping UIViewControllerFactory
+        with handler: @escaping URLHandler
     )
     
-    func show(
-        _ url: URL,
+    func navigate(
+        to url: URL,
         by type: NavigationType
     )
     

@@ -56,8 +56,8 @@ public final class RedViewController: UIViewController {
     @objc
     public final func goYellow(_ sender: Any) {
         
-        navigation?.show(
-            URL(string: "tinykit://yellow")!,
+        navigation?.navigate(
+            to: URL(string: "tinykit://yellow")!,
             by: .push
         )
         
