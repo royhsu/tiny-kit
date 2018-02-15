@@ -1,16 +1,16 @@
 //
-//  UIView+ViewRender.swift
+//  UIView+ViewRenderer.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 11/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ViewRender
+// MARK: - ViewRenderer
 
 import UIKit
 
-extension UIView: ViewRender {
+extension UIView: ViewRenderer {
 
     public final func render(with renderable: ViewRenderable) {
 

@@ -1,15 +1,15 @@
 //
-//  ViewRender.swift
+//  ViewRenderer.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 24/01/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ViewRender
+// MARK: - ViewRenderer
 
 /// A view render can ignore the preferred content size of the renderable if it makes sense.
-public protocol ViewRender {
+public protocol ViewRenderer {
 
     func render(with renderable: ViewRenderable)
 
