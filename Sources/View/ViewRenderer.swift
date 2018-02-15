@@ -8,7 +8,7 @@
 
 // MARK: - ViewRenderer
 
-/// A view render can ignore the preferred content size of the renderable if it makes sense.
+/// A view renderer can ignore the preferred content size of the renderable if it makes sense.
 public protocol ViewRenderer {
 
     func render(with renderable: ViewRenderable)
