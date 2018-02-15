@@ -1,22 +1,22 @@
 //
-//  RootViewController.swift
+//  ComponentViewController.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - RootViewController
+// MARK: - ComponentViewController
 
 import UIKit
 
-public final class RootViewController: UIViewController {
+public final class ComponentViewController: UIViewController {
 
-    public final let renderable: ViewRenderable
+    public final let component: Component
 
-    public init(renderable: ViewRenderable) {
+    public init(component: Component) {
 
-        self.renderable = renderable
+        self.component = component
 
         super.init(
             nibName: nil,
@@ -29,6 +29,6 @@ public final class RootViewController: UIViewController {
 
     // MAKR: View Life Cycle
 
-    public final override func loadView() { view = renderable.view }
+    public final override func loadView() { view = component.view }
 
 }

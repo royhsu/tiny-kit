@@ -10,11 +10,11 @@
 
 import UIKit
 
-extension UIWindow: ViewRender {
+extension UIWindow {
 
-    public final func render(with renderable: ViewRenderable) {
+    public final func render(with component: Component) {
 
-        rootViewController = RootViewController(renderable: renderable)
+        rootViewController = ComponentViewController(component: component)
 
     }
 

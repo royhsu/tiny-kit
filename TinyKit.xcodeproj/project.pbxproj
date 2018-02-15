@@ -49,7 +49,7 @@
 		B00D968B203078DB00EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; };
 		B00D968D2030790200EF0B7A /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B0354DBE20316136002A4B71 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DBD20316136002A4B71 /* RootViewController.swift */; };
+		B0354DBE20316136002A4B71 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DBD20316136002A4B71 /* ComponentViewController.swift */; };
 		B0354DC22031617C002A4B71 /* UIWindow+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIWindow+ViewRender.swift */; };
 		B0876EB92032DA4C0003CC59 /* NavigationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EB82032DA4C0003CC59 /* NavigationComponent.swift */; };
 		B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E020329F25008DC89C /* URLMatcher.framework */; };
@@ -125,7 +125,7 @@
 		B00D966F203076C500EF0B7A /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		B00D96822030779000EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
-		B0354DBD20316136002A4B71 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		B0354DBD20316136002A4B71 /* ComponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIWindow+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+ViewRender.swift"; sourceTree = "<group>"; };
 		B0876EB82032DA4C0003CC59 /* NavigationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationComponent.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 				B00D96312030758A00EF0B7A /* View.swift */,
 				B00D96322030758A00EF0B7A /* ViewRenderable.swift */,
 				B00D96332030758A00EF0B7A /* ViewRender.swift */,
-				B0354DBD20316136002A4B71 /* RootViewController.swift */,
+				B0354DBD20316136002A4B71 /* ComponentViewController.swift */,
 				B0354DC12031617B002A4B71 /* UIWindow+ViewRender.swift */,
 			);
 			path = View;
@@ -492,7 +492,7 @@
 				B0876EB92032DA4C0003CC59 /* NavigationComponent.swift in Sources */,
 				B097C1E62032A014008DC89C /* Navigation.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
-				B0354DBE20316136002A4B71 /* RootViewController.swift in Sources */,
+				B0354DBE20316136002A4B71 /* ComponentViewController.swift in Sources */,
 				B00D96362030758A00EF0B7A /* AnyComponentState.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
 				B0354DC22031617C002A4B71 /* UIWindow+ViewRender.swift in Sources */,

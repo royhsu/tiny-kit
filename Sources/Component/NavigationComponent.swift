@@ -9,61 +9,61 @@
 // MARK: - NavigationComponent
 
 //public protocol NavigationComponent: Component {
-//    
+//
 //    func push(_ component: Component)
-//    
+//
 //}
 //
 //public final class TinyNavigationComponent: NavigationComponent {
-//    
+//
 //    private final let navigationController: UINavigationController
-//    
+//
 //    public init(
 //        contentMode: ComponentContentMode = .automatic,
 //        rootComponent: Component
 //    ) {
-//        
+//
 //        self.navigationController = UINavigationController(
-//            rootViewController: RootViewController(renderable: rootComponent)
+//            rootViewController: ComponentViewController(renderable: rootComponent)
 //        )
-//        
+//
 //        self.contentMode = contentMode
-//        
+//
 //    }
-//    
+//
 //    public func push(_ component: Component) {
-//        
+//
 //    }
-//    
-//    
-//    
+//
+//
+//
 //    public final var contentMode: ComponentContentMode
-//    
+//
 //    public final func render() {
-//        
+//
 //        let size: CGSize
-//        
+//
 //        switch contentMode {
-//            
+//
 //        case .size(let width, let height):
-//            
+//
 //            size = CGSize(
 //                width: width,
 //                height: height
 //            )
-//            
+//
 //        case .automatic:
-//            
-//            
+//
+//
 //        }
-//        
+//
 //    }
-//    
+//
 //    // MARK: ViewRenderable
-//    
+//
 //    public final var view: View { return navigationController.view }
-//    
+//
 //    public final var preferredContentSize: CGSize { return view.bounds.size }
-//    
+//
 //}
 
