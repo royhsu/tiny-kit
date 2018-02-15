@@ -26,8 +26,12 @@ public final class TinyNavigationComponent: NavigationComponent {
         rootComponent: Component
     ) {
         
+        let testViewController = UIViewController()
+        
+        testViewController.view.backgroundColor = .yellow
+        
         self.navigationController = UINavigationController(
-            rootViewController: UIViewController()
+            rootViewController: testViewController
         )
         
         self.components = [ rootComponent ]
@@ -101,13 +105,13 @@ public final class TinyNavigationComponent: NavigationComponent {
         
         components[index].render()
    
-        let viewController = navigationController.viewControllers[index]
+        let contentView = navigationController.viewControllers[index].view!
         
-        viewController.view.render(
+        contentView.render(
             with: components[index]
         )
         
-        navigationController.view.frame.size = viewController.view.bounds.size
+//        navigationController.view.frame.size = viewController.view.bounds.size
 
     }
 

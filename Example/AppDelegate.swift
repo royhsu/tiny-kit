@@ -42,8 +42,6 @@ extension AppDelegate: UIApplicationDelegate {
         /// A component should render at least once for showing its view.
         component.render()
 
-//        window.render(with: component)
-
 //        navigation.register(
 //            URL(string: "tinykit://yellow")!,
 //            with: { url, info in
@@ -53,40 +51,42 @@ extension AppDelegate: UIApplicationDelegate {
 //            }
 //        )
 //
-        let postComponent = PostComponent(
-            post: Post(
-                title: "Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                content: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
-            )
-        )
-        
-        let postListComponent = ListComponent()
-
-        postListComponent.itemComponents = AnyCollection(
-            [
-               postComponent
-            ]
-        )
+//        let postComponent = PostComponent(
+//            post: Post(
+//                title: "Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+//                content: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+//            )
+//        )
+//
+//        let postListComponent = ListComponent()
+//
+//        postListComponent.itemComponents = AnyCollection(
+//            [
+//               postComponent
+//            ]
+//        )
         
 //        let postListComponent = PostListComponent()
 //
 //        postListComponent.view.backgroundColor = .white
         
-//        let navigationComponent = TinyNavigationComponent(
-//            contentMode: .size(
-//                width: window.bounds.width,
-//                height: window.bounds.height
-//            ),
-//            rootComponent: postListComponent
-//        )
-
-//        let rootViewController = UIViewController()
-//
-//        rootViewController.view.backgroundColor = .red
-        
-        window.rootViewController = RootViewController(
-            renderable: component
+        let navigationComponent = TinyNavigationComponent(
+            contentMode: .size(
+                width: window.bounds.width,
+                height: window.bounds.height
+            ),
+            rootComponent: component
         )
+        
+        navigationComponent.render()
+
+        let rootViewController = RootViewController(
+            renderable: navigationComponent
+        )
+
+        rootViewController.view.backgroundColor = .red
+        
+        window.rootViewController = rootViewController
         
         window.makeKeyAndVisible()
         
@@ -110,7 +110,7 @@ extension AppDelegate: UIApplicationDelegate {
             .fetch(in: .background)
             .then(
                 in: .main,
-                component.render
+                navigationComponent.render
             )
 //            .then(
 //                in: .main,
