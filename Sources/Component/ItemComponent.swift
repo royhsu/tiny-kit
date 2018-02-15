@@ -66,13 +66,13 @@ public final class ItemComponent<
             [
                 view
                     .leadingAnchor
-                    .constraint(equalTo: self.itemView.leadingAnchor),
+                    .constraint(equalTo: itemView.leadingAnchor),
                 view
                     .topAnchor
-                    .constraint(equalTo: self.itemView.topAnchor),
+                    .constraint(equalTo: itemView.topAnchor),
                 view
                     .trailingAnchor
-                    .constraint(equalTo: self.itemView.trailingAnchor)
+                    .constraint(equalTo: itemView.trailingAnchor)
             ]
         )
 
@@ -87,8 +87,6 @@ public final class ItemComponent<
                 height: height
             )
 
-            // TODO: Should add constraints for the width and height?
-
         case .automatic:
 
             itemView.layoutIfNeeded()
@@ -96,14 +94,10 @@ public final class ItemComponent<
             size = itemView.bounds.size
 
         }
+        
+        view.frame.size = size
 
-        var frame = view.frame
-
-        frame.size = size
-
-        view.frame = frame
-
-        itemView.frame = frame
+        itemView.frame.size = size
 
         NSLayoutConstraint.activate(
             [

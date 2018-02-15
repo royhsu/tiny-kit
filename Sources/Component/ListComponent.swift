@@ -62,7 +62,7 @@ public final class ListComponent: Component {
     public final var contentMode: ComponentContentMode
 
     public final func render() {
-
+        
         headerComponent?.render()
 
         tableView.tableHeaderView = headerComponent?.view
@@ -89,13 +89,9 @@ public final class ListComponent: Component {
             size = tableView.contentSize
 
         }
-
-        var frame = tableView.frame
-
-        frame.size = size
-
-        tableView.frame = frame
-
+        
+        tableView.frame.size = size
+        
     }
 
 }

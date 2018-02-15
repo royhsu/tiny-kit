@@ -15,24 +15,6 @@ public protocol NavigationComponent: Component {
 
 }
 
-private final class BaseViewController: UIViewController {
-    
-    public final var component: Component
-    
-    public init(component: Component) {
-        
-        self.component = component
-        
-        super.init(nibName: nil, bundle: nil)
-        
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-    
-}
-
 public final class TinyNavigationComponent: NavigationComponent {
 
     private final let navigationController: UINavigationController
@@ -43,18 +25,16 @@ public final class TinyNavigationComponent: NavigationComponent {
         contentMode: ComponentContentMode = .automatic,
         rootComponent: Component
     ) {
-
-        self.components = [ rootComponent ]
         
         self.navigationController = UINavigationController(
-            rootViewController: BaseViewController(component: rootComponent)
+            rootViewController: UIViewController()
         )
+        
+        self.components = [ rootComponent ]
 
         self.contentMode = contentMode
 
     }
-    
-    public final var topComponent: Component? { return components.last }
     
     fileprivate final func updateComponents() {
         
@@ -70,12 +50,25 @@ public final class TinyNavigationComponent: NavigationComponent {
         
         components = updatingComponents
         
+        let viewControllers = components.map { _ in return UIViewController() }
+        
         navigationController.setViewControllers(
-            components.map(BaseViewController.init),
+            viewControllers,
             animated: false
         )
         
     }
+    
+//    fileprivate final func show(
+//        _ viewController: UIViewController,
+//        with component: Component
+//    ) {
+//
+//        component.render()
+//
+//        viewController.view.render(with: component)
+//
+//    }
     
     // MARK: NavigationComponent
 
@@ -83,10 +76,10 @@ public final class TinyNavigationComponent: NavigationComponent {
 
         components.append(component)
         
-        navigationController.pushViewController(
-            BaseViewController(component: component),
-            animated: true
-        )
+//        navigationController.pushViewController(
+//            BaseViewController(component: component),
+//            animated: true
+//        )
         
     }
     
@@ -94,34 +87,27 @@ public final class TinyNavigationComponent: NavigationComponent {
 
     public final var contentMode: ComponentContentMode
     
+    /// Only rendering the top most component
     public final func render() {
-
-        updateComponents()
         
-        let size: CGSize
-
-        switch contentMode {
-
-        case .size(let width, let height):
-
-            size = CGSize(
-                width: width,
-                height: height
-            )
-
-        case .automatic:
-
-            size = topComponent?.preferredContentSize ?? .zero
-            
-        }
+        let lastIndex = components.count - 1
         
-        var frame = navigationController.view.frame
+        let index =
+            (lastIndex < 0)
+            ? 0
+            : lastIndex
         
-        frame.size = size
+        components[index].contentMode = contentMode
         
-        navigationController.view.frame = frame
+        components[index].render()
+   
+        let viewController = navigationController.viewControllers[index]
         
-        topComponent?.render()
+        viewController.view.render(
+            with: components[index]
+        )
+        
+        navigationController.view.frame.size = viewController.view.bounds.size
 
     }
 

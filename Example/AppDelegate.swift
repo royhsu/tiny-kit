@@ -32,15 +32,15 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         /// The ROOT component must specify a size to rendering its content correctly.
-//        let component = ProfileComponent(
-//            contentMode: .size(
-//                width: window.bounds.width,
-//                height: window.bounds.height
-//            )
-//        )
+        let component = ProfileComponent(
+            contentMode: .size(
+                width: window.bounds.width,
+                height: window.bounds.height
+            )
+        )
 
         /// A component should render at least once for showing its view.
-//        component.render()
+        component.render()
 
 //        window.render(with: component)
 
@@ -53,52 +53,72 @@ extension AppDelegate: UIApplicationDelegate {
 //            }
 //        )
 //
-//        let redViewController = RedViewController()
-//
-//        redViewController.navigation = navigation
-//
-//        window.rootViewController = UINavigationController(
-//            rootViewController: redViewController
-//        )
-        
         let postComponent = PostComponent(
             post: Post(
-                title: "Title 1",
-                content: "Content 1"
+                title: "Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+                content: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
             )
         )
         
-        postComponent.view.backgroundColor = .white
+        let postListComponent = ListComponent()
+
+        postListComponent.itemComponents = AnyCollection(
+            [
+               postComponent
+            ]
+        )
         
-        postComponent.render()
+//        let postListComponent = PostListComponent()
+//
+//        postListComponent.view.backgroundColor = .white
         
 //        let navigationComponent = TinyNavigationComponent(
-//            rootComponent: postComponent
+//            contentMode: .size(
+//                width: window.bounds.width,
+//                height: window.bounds.height
+//            ),
+//            rootComponent: postListComponent
 //        )
-        
-//        let rootViewController = ComponentViewController()
+
+//        let rootViewController = UIViewController()
 //
 //        rootViewController.view.backgroundColor = .red
-//
-//        rootViewController.render(component: postComponent)
-//
-        let rootViewController = UIViewController()
-
-        rootViewController.view.backgroundColor = .red
-
-        rootViewController.view.render(with: postComponent)
         
-        window.rootViewController = rootViewController
+        window.rootViewController = RootViewController(
+            renderable: component
+        )
         
         window.makeKeyAndVisible()
         
-//        navigationComponent.render()
+//        postListComponent.render()
+        
+//        print("2", postListComponent.view)
+        
+//        postComponent.render()
 
-//        component
-//            .fetch(in: .background)
+//        postListComponent.render()
+//
+//        rootViewController.view.render(with: postListComponent)
+
+        
+        
+        
+        
+//        print("3", postListComponent.view)
+        
+        component
+            .fetch(in: .background)
+            .then(
+                in: .main,
+                component.render
+            )
 //            .then(
 //                in: .main,
-//                component.render
+//                navigationComponent.render
+//            )
+//            .then(
+//                in: .main,
+//                postListComponent.render
 //            )
 
         return true

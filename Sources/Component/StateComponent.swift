@@ -36,7 +36,7 @@ public final class StateComponent<CS: ComponentState>: Component {
 
     // MARK: ViewRenderable
 
-    public final let view = View()
+    public final let view = View(frame: UIScreen.main.bounds)
 
     public final var preferredContentSize: CGSize { return view.bounds.size }
 
@@ -46,68 +46,72 @@ public final class StateComponent<CS: ComponentState>: Component {
 
     public final func render() {
 
-        for state in stateComponentMap.keys {
-
-            stateComponentMap[state]?.contentMode = contentMode
-
-        }
-
+//        for state in stateComponentMap.keys {
+//
+//            stateComponentMap[state]?.contentMode = contentMode
+//
+//        }
+        
         view.subviews.forEach { $0.removeFromSuperview() }
+        
+        let state = AnyComponentState(currentState)
 
-        let currentView = currentComponent.view
+        stateComponentMap[state]?.contentMode = contentMode
 
-        currentView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(currentView)
-
-        NSLayoutConstraint.activate(
-            [
-                view
-                    .leadingAnchor
-                    .constraint(equalTo: currentView.leadingAnchor),
-                view
-                    .topAnchor
-                    .constraint(equalTo: currentView.topAnchor),
-                view
-                    .trailingAnchor
-                    .constraint(equalTo: currentView.trailingAnchor)
-            ]
-        )
+//        let currentView = currentComponent.view
 
         currentComponent.render()
-
-        let size: CGSize
-
-        switch contentMode {
-
-        case .size(let width, let height):
-
-            size = CGSize(
-                width: width,
-                height: height
-            )
-
-        case .automatic:
-
-            size = currentComponent.preferredContentSize
-
-        }
-
-        var frame = view.frame
-
-        frame.size = size
-
-        view.frame = frame
-
-        NSLayoutConstraint.activate(
-            [
-                view
-                    .bottomAnchor
-                    .constraint(equalTo: currentView.bottomAnchor)
-            ]
-        )
-
-        currentView.layoutIfNeeded()
+        
+        view.render(with: currentComponent)
+        
+//        currentView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        view.addSubview(currentView)
+//
+//        NSLayoutConstraint.activate(
+//            [
+//                view
+//                    .leadingAnchor
+//                    .constraint(equalTo: currentView.leadingAnchor),
+//                view
+//                    .topAnchor
+//                    .constraint(equalTo: currentView.topAnchor),
+//                view
+//                    .trailingAnchor
+//                    .constraint(equalTo: currentView.trailingAnchor)
+//            ]
+//        )
+//
+//        currentComponent.render()
+//
+//        let size: CGSize
+//
+//        switch contentMode {
+//
+//        case .size(let width, let height):
+//
+//            size = CGSize(
+//                width: width,
+//                height: height
+//            )
+//
+//        case .automatic:
+//
+//            size = currentComponent.preferredContentSize
+//
+//        }
+//
+//        view.frame.size = size
+//
+//        NSLayoutConstraint.activate(
+//            [
+//                view
+//                    .bottomAnchor
+//                    .constraint(equalTo: currentView.bottomAnchor)
+//            ]
+//        )
+//
+//        currentView.layoutIfNeeded()
 
     }
 
