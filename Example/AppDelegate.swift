@@ -44,24 +44,55 @@ extension AppDelegate: UIApplicationDelegate {
 
 //        window.render(with: component)
 
-        navigation.register(
-            URL(string: "tinykit://yellow")!,
-            with: { url, info in
-                
-                return YellowViewController()
-                
-            }
+//        navigation.register(
+//            URL(string: "tinykit://yellow")!,
+//            with: { url, info in
+//
+//                return YellowViewController()
+//
+//            }
+//        )
+//
+//        let redViewController = RedViewController()
+//
+//        redViewController.navigation = navigation
+//
+//        window.rootViewController = UINavigationController(
+//            rootViewController: redViewController
+//        )
+        
+        let postComponent = PostComponent(
+            post: Post(
+                title: "Title 1",
+                content: "Content 1"
+            )
         )
         
-        let redViewController = RedViewController()
+        postComponent.view.backgroundColor = .white
         
-        redViewController.navigation = navigation
+        postComponent.render()
         
-        window.rootViewController = UINavigationController(
-            rootViewController: redViewController
-        )
+//        let navigationComponent = TinyNavigationComponent(
+//            rootComponent: postComponent
+//        )
+        
+//        let rootViewController = ComponentViewController()
+//
+//        rootViewController.view.backgroundColor = .red
+//
+//        rootViewController.render(component: postComponent)
+//
+        let rootViewController = UIViewController()
+
+        rootViewController.view.backgroundColor = .red
+
+        rootViewController.view.render(with: postComponent)
+        
+        window.rootViewController = rootViewController
         
         window.makeKeyAndVisible()
+        
+//        navigationComponent.render()
 
 //        component
 //            .fetch(in: .background)
