@@ -14,8 +14,6 @@ import UIKit
 public final class AppDelegate: UIResponder {
 
     public final let window = UIWindow(frame: UIScreen.main.bounds)
-    
-    public final let navigation: Navigation = Navigator()
 
 }
 
@@ -41,18 +39,9 @@ extension AppDelegate: UIApplicationDelegate {
 
         /// A component should render at least once for showing its view.
         component.render()
-
-//        navigation.register(
-//            URL(string: "tinykit://yellow")!,
-//            with: { url, info in
-//
-//                return YellowViewController()
-//
-//            }
-//        )
         
-        let rootViewController = ViewRendererController(
-            renderable: component
+        let rootViewController = ComponentViewController(
+            component: component
         )
 
         rootViewController.view.backgroundColor = .red

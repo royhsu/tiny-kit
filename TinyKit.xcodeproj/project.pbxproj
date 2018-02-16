@@ -50,11 +50,9 @@
 		B00D968D2030790200EF0B7A /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
-		B0876EBD2035B8300003CC59 /* ViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* ViewRendererController.swift */; };
+		B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* ComponentViewController.swift */; };
 		B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E020329F25008DC89C /* URLMatcher.framework */; };
 		B097C1E320329F26008DC89C /* URLNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E120329F25008DC89C /* URLNavigator.framework */; };
-		B097C1E62032A014008DC89C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097C1E52032A014008DC89C /* Navigation.swift */; };
-		B097C1EB2032A355008DC89C /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097C1EA2032A355008DC89C /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,11 +123,9 @@
 		B00D96822030779000EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
-		B0876EBC2035B8300003CC59 /* ViewRendererController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRendererController.swift; sourceTree = "<group>"; };
+		B0876EBC2035B8300003CC59 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
-		B097C1E52032A014008DC89C /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		B097C1EA2032A355008DC89C /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				B00D961F2030758A00EF0B7A /* Component */,
-				B097C1E420329F7F008DC89C /* Navigation */,
 				B00D96282030758A00EF0B7A /* Node */,
 				B00D962C2030758A00EF0B7A /* UICollectionView */,
 				B00D96342030758A00EF0B7A /* UITableView */,
@@ -195,14 +190,15 @@
 		B00D961F2030758A00EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96202030758A00EF0B7A /* AnyComponentState.swift */,
 				B00D96212030758A00EF0B7A /* StateComponent.swift */,
+				B00D96202030758A00EF0B7A /* AnyComponentState.swift */,
 				B00D96222030758A00EF0B7A /* UITableViewBridge.swift */,
 				B00D96232030758A00EF0B7A /* ComponentState.swift */,
 				B00D96242030758A00EF0B7A /* ListComponent.swift */,
 				B00D96252030758A00EF0B7A /* Component.swift */,
 				B00D96262030758A00EF0B7A /* ItemComponent.swift */,
 				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
+				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -240,7 +236,6 @@
 				B00D96322030758A00EF0B7A /* ViewRenderable.swift */,
 				B00D96332030758A00EF0B7A /* ViewRenderer.swift */,
 				B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */,
-				B0876EBC2035B8300003CC59 /* ViewRendererController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,15 +323,6 @@
 				B00D96832030779000EF0B7A /* TinyCore.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B097C1E420329F7F008DC89C /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				B097C1E52032A014008DC89C /* Navigation.swift */,
-				B097C1EA2032A355008DC89C /* Navigator.swift */,
-			);
-			path = Navigation;
 			sourceTree = "<group>";
 		};
 		B097C1E92032A2C8008DC89C /* Navigation */ = {
@@ -486,7 +472,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
-				B097C1E62032A014008DC89C /* Navigation.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
 				B00D96362030758A00EF0B7A /* AnyComponentState.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
@@ -498,8 +483,7 @@
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96372030758A00EF0B7A /* StateComponent.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
-				B0876EBD2035B8300003CC59 /* ViewRendererController.swift in Sources */,
-				B097C1EB2032A355008DC89C /* Navigator.swift in Sources */,
+				B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */,
 				B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */,
 				B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
