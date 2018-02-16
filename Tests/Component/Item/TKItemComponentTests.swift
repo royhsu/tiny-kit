@@ -14,7 +14,7 @@ import XCTest
 
 internal final class TKItemComponentTests: XCTestCase {
     
-    internal final func testRenderItemComponentWithDedicatedSize() {
+    internal final func testRenderItemComponent() {
         
         let rectangleSize = CGSize(
             width: 50.0,
@@ -36,6 +36,11 @@ internal final class TKItemComponentTests: XCTestCase {
         XCTAssertEqual(
             rectangleItemComponent.itemView,
             rectangleView
+        )
+        
+        XCTAssertEqual(
+            rectangleItemComponent.itemView.bounds.size,
+            rectangleItemComponent.view.bounds.size
         )
         
         XCTAssertEqual(
