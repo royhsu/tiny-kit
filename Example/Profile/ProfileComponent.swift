@@ -73,6 +73,7 @@ public final class ProfileComponent: Component {
 
     }
 
+    // TODO: split into data provider.
     public final func fetch(in context: Context) -> Promise<Void> {
 
         try! baseComponent.enter(.loading)
