@@ -95,7 +95,7 @@ public final class ProfileComponent: Component {
 
             try self.baseComponent.enter(.error)
 
-            self.messageComponent.message = Message(error: error)
+//            self.messageComponent.message = Message(error: error)
 
         }
         .always(in: .main) { self.loadingComponent.stopAnimating() }

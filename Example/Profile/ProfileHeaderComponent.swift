@@ -43,7 +43,7 @@ public final class ProfileHeaderComponent: Component {
         }
         .then(in: .main) { profile -> Void in
 
-            self.introductionComponent.profile = profile
+//            self.introductionComponent.profile = profile
 
         }
 

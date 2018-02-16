@@ -16,66 +16,30 @@ internal final class ListComponentTests: XCTestCase {
 
     internal final func testRenderListComponent() {
 
-        let redContentSize = CGSize(
-            width: 100.0,
-            height: 100.0
-        )
-
-        let redView = RectangleView()
-
-        let redComponent = ColorComponent(
+        let item1Component = ItemComponent(
             contentMode: .size(
-                width: redContentSize.width,
-                height: redContentSize.height
+                width: 100.0,
+                height: 100.0
             ),
-            view: redView,
-            model: Color(
-                red: 1.0,
-                green: 0.0,
-                blue: 0.0,
-                alpha: 1.0
-            ),
-            binding: { colorView, color in
-
-                colorView.backgroundColor = color.uiColor()
-
-            }
+            itemView: RectangleView()
         )
 
-        let blueContentSize = CGSize(
-            width: 200.0,
-            height: 200.0
-        )
-
-        let blueView = RectangleView()
-
-        let blueComponent = ColorComponent(
+        let item2Component = ItemComponent(
             contentMode: .size(
-                width: blueContentSize.width,
-                height: blueContentSize.height
+                width: 200.0,
+                height: 200.0
             ),
-            view: blueView,
-            model: Color(
-                red: 0.0,
-                green: 0.0,
-                blue: 1.0,
-                alpha: 1.0
-            ),
-            binding: { colorView, color in
-
-                colorView.backgroundColor = color.uiColor()
-
-            }
+            itemView: RectangleView()
         )
 
-        let colorComponents: [Component] = [
-            redComponent,
-            blueComponent
+        let itemComponents: [Component] = [
+            item1Component,
+            item2Component
         ]
 
         let listComponent = ListComponent()
 
-        listComponent.itemComponents = AnyCollection(colorComponents)
+        listComponent.itemComponents = AnyCollection(itemComponents)
 
         listComponent.render()
 
@@ -90,56 +54,56 @@ internal final class ListComponentTests: XCTestCase {
         )
 
         guard
-            let redSection = colorComponents.index(
-                where: { $0 as? ColorComponent === redComponent }
+            let item1Section = itemComponents.index(
+                where: { $0 as? ItemComponent<RectangleView> === item1Component }
             )
         else {
 
-            XCTFail("There should be a section for the red component.")
+            XCTFail("There should be a section for the item 1 component.")
 
             return
 
         }
 
         XCTAssertEqual(
-            listComponent.tableView.numberOfRows(inSection: redSection),
+            listComponent.tableView.numberOfRows(inSection: item1Section),
             1
         )
 
-        let redCell = listComponent.tableView.cellForRow(
+        let item1Cell = listComponent.tableView.cellForRow(
             at: IndexPath(
                 row: 0,
-                section: redSection
+                section: item1Section
             )
         )
 
-        XCTAssertNotNil(redCell)
+        XCTAssertNotNil(item1Cell)
 
         guard
-            let blueSection = colorComponents.index(
-                where: { $0 as? ColorComponent === blueComponent }
+            let item2Section = itemComponents.index(
+                where: { $0 as? ItemComponent<RectangleView> === item2Component }
             )
         else {
 
-            XCTFail("There should be a section for the blue component.")
+            XCTFail("There should be a section for the item 2 component.")
 
             return
 
         }
 
         XCTAssertEqual(
-            listComponent.tableView.numberOfRows(inSection: blueSection),
+            listComponent.tableView.numberOfRows(inSection: item2Section),
             1
         )
 
-        let blueCell = listComponent.tableView.cellForRow(
+        let item2Cell = listComponent.tableView.cellForRow(
             at: IndexPath(
                 row: 0,
-                section: blueSection
+                section: item2Section
             )
         )
 
-        XCTAssertNotNil(blueCell)
+        XCTAssertNotNil(item2Cell)
 
         XCTAssertEqual(
             listComponent.preferredContentSize,

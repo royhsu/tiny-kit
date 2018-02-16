@@ -12,7 +12,7 @@ import TinyKit
 
 public final class MessageComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<MessageView, Message>
+    private typealias BaseComponent = ItemComponent<MessageView>
 
     private final let baseComponent: BaseComponent
 
@@ -23,13 +23,7 @@ public final class MessageComponent: Component {
 
         self.baseComponent = BaseComponent(
             contentMode: contentMode,
-            view: UIView.load(MessageView.self)!,
-            model: message,
-            binding: { messageView, message in
-
-                messageView.textLabel.text = message.text
-
-            }
+            itemView: UIView.load(MessageView.self)!
         )
 
     }
@@ -51,17 +45,5 @@ public final class MessageComponent: Component {
     }
 
     public final func render() { baseComponent.render() }
-
-}
-
-public extension MessageComponent {
-
-    public final var message: Message {
-
-        get { return baseComponent.model }
-
-        set { baseComponent.model = newValue }
-
-    }
 
 }

@@ -51,15 +51,15 @@ public final class PostListComponent: Component {
         }
         .then(in: .main) { posts -> Void in
 
-            let components: [Component] = posts.map { post in
+//            let components: [Component] = posts.map { post in
+//
+//                let component = PostComponent(post: post)
+//
+//                return component
+//
+//            }
 
-                let component = PostComponent(post: post)
-
-                return component
-
-            }
-
-            self.baseComponent.itemComponents = AnyCollection(components)
+//            self.baseComponent.itemComponents = AnyCollection(components)
 
         }
 
