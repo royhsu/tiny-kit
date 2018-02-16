@@ -50,6 +50,9 @@
 		B00D968D2030790200EF0B7A /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
+		B05E675E2036D465003E8E0E /* NewItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E675D2036D465003E8E0E /* NewItemComponent.swift */; };
+		B05E67622036D5B6003E8E0E /* TKItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* TKItemComponentTests.swift */; };
+		B05E67652036D77C003E8E0E /* TKItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67642036D77C003E8E0E /* TKItemComponent.swift */; };
 		B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* ComponentViewController.swift */; };
 		B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E020329F25008DC89C /* URLMatcher.framework */; };
 		B097C1E320329F26008DC89C /* URLNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E120329F25008DC89C /* URLNavigator.framework */; };
@@ -123,6 +126,9 @@
 		B00D96822030779000EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
+		B05E675D2036D465003E8E0E /* NewItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemComponent.swift; sourceTree = "<group>"; };
+		B05E67602036D5B2003E8E0E /* TKItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKItemComponentTests.swift; sourceTree = "<group>"; };
+		B05E67642036D77C003E8E0E /* TKItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKItemComponent.swift; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
@@ -190,13 +196,14 @@
 		B00D961F2030758A00EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B05E67632036D76F003E8E0E /* Item */,
 				B00D96212030758A00EF0B7A /* StateComponent.swift */,
 				B00D96202030758A00EF0B7A /* AnyComponentState.swift */,
 				B00D96222030758A00EF0B7A /* UITableViewBridge.swift */,
 				B00D96232030758A00EF0B7A /* ComponentState.swift */,
 				B00D96242030758A00EF0B7A /* ListComponent.swift */,
-				B00D96252030758A00EF0B7A /* Component.swift */,
 				B00D96262030758A00EF0B7A /* ItemComponent.swift */,
+				B00D96252030758A00EF0B7A /* Component.swift */,
 				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
 				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
 			);
@@ -303,6 +310,7 @@
 		B00D9668203076C500EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B05E675F2036D57C003E8E0E /* Item */,
 				B00D9669203076C500EF0B7A /* ItemComponentTests.swift */,
 				B00D966A203076C500EF0B7A /* TrafficLight.swift */,
 				B00D966B203076C500EF0B7A /* ColorComponent.swift */,
@@ -323,6 +331,23 @@
 				B00D96832030779000EF0B7A /* TinyCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B05E675F2036D57C003E8E0E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				B05E67602036D5B2003E8E0E /* TKItemComponentTests.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		B05E67632036D76F003E8E0E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				B05E675D2036D465003E8E0E /* NewItemComponent.swift */,
+				B05E67642036D77C003E8E0E /* TKItemComponent.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		B097C1E92032A2C8008DC89C /* Navigation */ = {
@@ -483,11 +508,13 @@
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96372030758A00EF0B7A /* StateComponent.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
+				B05E67652036D77C003E8E0E /* TKItemComponent.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */,
 				B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */,
 				B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
 				B00D96392030758A00EF0B7A /* ComponentState.swift in Sources */,
+				B05E675E2036D465003E8E0E /* NewItemComponent.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
 				B00D963F2030758A00EF0B7A /* ComponentNode.swift in Sources */,
 			);
@@ -506,6 +533,7 @@
 				B00D967B203076C500EF0B7A /* TrafficLight.swift in Sources */,
 				B00D9673203076C500EF0B7A /* NoNibTableViewCell.swift in Sources */,
 				B00D967D203076C500EF0B7A /* StateComponentTests.swift in Sources */,
+				B05E67622036D5B6003E8E0E /* TKItemComponentTests.swift in Sources */,
 				B00D967F203076C500EF0B7A /* Color.swift in Sources */,
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
