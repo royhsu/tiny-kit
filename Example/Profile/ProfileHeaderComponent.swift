@@ -54,10 +54,28 @@ public final class ProfileHeaderComponent: Component {
 
 public extension ProfileHeaderComponent {
     
-    public final var pictureImageView: UIImageView { return introductionComponent.pictureImageView }
+    public final var pictureImage: UIImage? {
+        
+        get { return introductionComponent.pictureImage }
+        
+        set { introductionComponent.pictureImage = newValue }
+        
+    }
     
-    public final var nameLabel: UILabel { return introductionComponent.nameLabel }
+    public final var name: String? {
+        
+        get { return introductionComponent.name }
+        
+        set { introductionComponent.name = newValue }
+        
+    }
     
-    public final var introductionLabel: UILabel { return introductionComponent.introductionLabel }
+    public final var introduction: String? {
+        
+        get { return introductionComponent.introduction }
+        
+        set { introductionComponent.introduction = newValue }
+        
+    }
     
 }

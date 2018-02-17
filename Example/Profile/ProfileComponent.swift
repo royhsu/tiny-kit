@@ -14,92 +14,47 @@ import TinyKit
 
 public final class ProfileComponent: Component {
 
-    private final let splashComponent: SplashComponent
-
-    private final let loadingComponent: LoadingComponent
-
-    private final let messageComponent: MessageComponent
-
     private final let headerComponent = ProfileHeaderComponent()
 
-    private final let postListComponent: PostListComponent
-
-    private typealias BaseComponent = StateComponent<ProfileComponentState>
-
-    private final let baseComponent: BaseComponent
+    private final let baseComponent: ListComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
-        let splashComponent = SplashComponent(contentMode: contentMode)
+        let baseComponent = ListComponent(contentMode: contentMode)
 
-        self.splashComponent = splashComponent
-
-        let loadingComponent = LoadingComponent(contentMode: contentMode)
-
-        self.loadingComponent = loadingComponent
-
-        let messageComponent = MessageComponent(contentMode: contentMode)
-
-        self.messageComponent = messageComponent
-
-        let postListComponent = PostListComponent(contentMode: contentMode)
-
-        postListComponent.headerComponent = headerComponent
-
-        self.postListComponent = postListComponent
-
-        let baseComponent = BaseComponent(
-            contentMode: contentMode,
-            initialComponent: splashComponent,
-            initialState: .initial
-        )
-
-        baseComponent.registerComponent(
-            loadingComponent,
-            for: .loading
-        )
-
-        baseComponent.registerComponent(
-            messageComponent,
-            for: .error
-        )
-
-        baseComponent.registerComponent(
-            postListComponent,
-            for: .loaded
-        )
+        baseComponent.headerComponent = headerComponent
 
         self.baseComponent = baseComponent
 
     }
 
     // TODO: split into data provider.
-    public final func fetch(in context: Context) -> Promise<Void> {
-
-        try! baseComponent.enter(.loading)
-
-        loadingComponent.startAnimating()
-
-        render()
-
-        return all(
-            postListComponent.fetch(in: context).always(in: context) { }
-        )
-        .then(in: .main) { _ -> Void in
-
-            try self.baseComponent.enter(.loaded)
-
-        }
-        .catch(in: .main) { error in
-
-            try self.baseComponent.enter(.error)
-
-//            self.messageComponent.message = Message(error: error)
-
-        }
-        .always(in: .main) { self.loadingComponent.stopAnimating() }
-
-    }
+//    public final func fetch(in context: Context) -> Promise<Void> {
+//
+//        try! baseComponent.enter(.loading)
+//
+//        loadingComponent.startAnimating()
+//
+//        render()
+//
+//        return all(
+//            postListComponent.fetch(in: context).always(in: context) { }
+//        )
+//        .then(in: .main) { _ -> Void in
+//
+//            try self.baseComponent.enter(.loaded)
+//
+//        }
+//        .catch(in: .main) { error in
+//
+//            try self.baseComponent.enter(.error)
+//
+////            self.messageComponent.message = Message(error: error)
+//
+//        }
+//        .always(in: .main) { self.loadingComponent.stopAnimating() }
+//
+//    }
 
     // MARK: ViewRenderable
 
@@ -117,16 +72,56 @@ public final class ProfileComponent: Component {
 
     }
 
-    public final func render() {
+    public final func render() { baseComponent.render() }
 
-        loadingComponent.render()
+}
 
-        messageComponent.render()
-
-        postListComponent.render()
-
-        baseComponent.render()
-
+public extension ProfileComponent {
+    
+    public final var pictureImage: UIImage? {
+        
+        get { return headerComponent.pictureImage }
+        
+        set { headerComponent.pictureImage = newValue }
+        
     }
-
+    
+    public final var name: String? {
+        
+        get { return headerComponent.name }
+        
+        set { headerComponent.name = newValue }
+        
+    }
+    
+    public final var introduction: String? {
+        
+        get { return headerComponent.introduction }
+        
+        set { headerComponent.introduction = newValue }
+        
+    }
+    
+    public final func appendPosts(
+        _ posts: [Post]
+    ) {
+        
+        let postComponents: [Component] = posts.map { post in
+            
+            let component = PostComponent()
+            
+            component.title = post.title
+            
+            component.content = post.content
+            
+            return component
+            
+        }
+        
+        baseComponent.itemComponents = AnyCollection(
+            postComponents
+        )
+        
+    }
+    
 }

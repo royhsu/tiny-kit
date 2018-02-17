@@ -46,3 +46,23 @@ public final class PostComponent: Component {
     public final func render() { baseComponent.render() }
 
 }
+
+public extension PostComponent {
+    
+    public final var title: String? {
+        
+        get { return baseComponent.itemView.titleLabel.text }
+        
+        set { baseComponent.itemView.titleLabel.text = newValue }
+        
+    }
+    
+    public final var content: String? {
+        
+        get { return baseComponent.itemView.contentLabel.text }
+        
+        set { baseComponent.itemView.contentLabel.text = newValue }
+        
+    }
+    
+}

@@ -19,6 +19,7 @@ public final class AppDelegate: UIResponder {
 
 // MARK: UIApplicationDelegate
 
+import Hydra
 import TinyKit
 
 extension AppDelegate: UIApplicationDelegate {
@@ -30,14 +31,7 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         /// The ROOT component must specify a size to rendering its content correctly.
-//        let component = ProfileComponent(
-//            contentMode: .size(
-//                width: window.bounds.width,
-//                height: window.bounds.height
-//            )
-//        )
-        
-        let component = ProfileHeaderComponent(
+        let component = ProfileComponent(
             contentMode: .size(
                 width: window.bounds.width,
                 height: window.bounds.height
@@ -54,22 +48,41 @@ extension AppDelegate: UIApplicationDelegate {
         
         window.makeKeyAndVisible()
         
-        UserManager()
+        let userId = "1"
+        
+        let manager = UserManager()
+        
+        let fetchUser: Promise<Void> = manager
             .fetchUser(
                 in: .background,
-                id: "1"
+                userId: userId
             )
             .then(in: .main) { user -> Void in
                 
-                component.nameLabel.text = user.name
+                component.name = user.name
                 
-                component.introductionLabel.text = user.introduction
+                component.introduction = user.introduction
                 
             }
+        
+        let fetchPosts: Promise<Void> = manager
+            .fetchPosts(
+                in: .background,
+                userId: userId
+            )
             .then(
                 in: .main,
-                component.render /// A component should render at least once for showing its view.
+                component.appendPosts
             )
+        
+        all(
+            fetchUser,
+            fetchPosts
+        )
+        .always(
+            in: .main,
+            body: component.render /// A component should render at least once for showing its view.
+        )
         
         return true
 

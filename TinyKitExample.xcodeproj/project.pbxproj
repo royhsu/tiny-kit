@@ -21,7 +21,6 @@
 		B00D970E20307F4400EF0B7A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96F420307F4400EF0B7A /* LoadingView.xib */; };
 		B00D970F20307F4400EF0B7A /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F520307F4400EF0B7A /* Loading.swift */; };
 		B00D971020307F4400EF0B7A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F620307F4400EF0B7A /* LoadingView.swift */; };
-		B00D971220307F4400EF0B7A /* PostListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F920307F4400EF0B7A /* PostListComponent.swift */; };
 		B00D971320307F4400EF0B7A /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FA20307F4400EF0B7A /* PostComponent.swift */; };
 		B00D971420307F4400EF0B7A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FB20307F4400EF0B7A /* Post.swift */; };
 		B00D971520307F4400EF0B7A /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FC20307F4400EF0B7A /* PostView.swift */; };
@@ -68,7 +67,6 @@
 		B00D96F420307F4400EF0B7A /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		B00D96F520307F4400EF0B7A /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		B00D96F620307F4400EF0B7A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		B00D96F920307F4400EF0B7A /* PostListComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListComponent.swift; sourceTree = "<group>"; };
 		B00D96FA20307F4400EF0B7A /* PostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
 		B00D96FB20307F4400EF0B7A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B00D96FC20307F4400EF0B7A /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				B00D96FC20307F4400EF0B7A /* PostView.swift */,
 				B00D96FD20307F4400EF0B7A /* PostView.xib */,
 				B00D96FA20307F4400EF0B7A /* PostComponent.swift */,
-				B00D96F920307F4400EF0B7A /* PostListComponent.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -313,7 +310,6 @@
 				B00D971420307F4400EF0B7A /* Post.swift in Sources */,
 				B00D971520307F4400EF0B7A /* PostView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* ProfileIntroductionView.swift in Sources */,
-				B00D971220307F4400EF0B7A /* PostListComponent.swift in Sources */,
 				B00D970820307F4400EF0B7A /* ProfileComponentState.swift in Sources */,
 				B00D970C20307F4400EF0B7A /* SplashComponent.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,

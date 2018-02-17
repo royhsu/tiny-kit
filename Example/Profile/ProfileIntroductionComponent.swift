@@ -49,10 +49,28 @@ public final class ProfileIntroductionComponent: Component {
 
 public extension ProfileIntroductionComponent {
     
-    public final var pictureImageView: UIImageView { return baseComponent.itemView.pictureImageView }
+    public final var pictureImage: UIImage? {
+        
+        get { return baseComponent.itemView.pictureImageView.image }
+        
+        set { baseComponent.itemView.pictureImageView.image = newValue }
+        
+    }
     
-    public final var nameLabel: UILabel { return baseComponent.itemView.nameLabel }
+    public final var name: String? {
+        
+        get { return baseComponent.itemView.nameLabel.text }
+        
+        set { baseComponent.itemView.nameLabel.text = newValue }
+        
+    }
     
-    public final var introductionLabel: UILabel { return baseComponent.itemView.introductionLabel }
+    public final var introduction: String? {
+        
+        get { return baseComponent.itemView.introductionLabel.text }
+        
+        set { baseComponent.itemView.introductionLabel.text = newValue }
+        
+    }
     
 }
