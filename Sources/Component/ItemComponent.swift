@@ -70,8 +70,6 @@ public final class ItemComponent<V: View>: Component {
             
         case .automatic:
             
-            itemView.layoutIfNeeded()
-            
             size = itemView.bounds.size
             
         }

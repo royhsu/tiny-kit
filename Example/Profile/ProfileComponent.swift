@@ -83,7 +83,6 @@ public final class ProfileComponent: Component {
         render()
 
         return all(
-            headerComponent.fetch(in: context).always(in: context) { },
             postListComponent.fetch(in: context).always(in: context) { }
         )
         .then(in: .main) { _ -> Void in

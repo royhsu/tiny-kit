@@ -30,16 +30,20 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         /// The ROOT component must specify a size to rendering its content correctly.
-        let component = ProfileComponent(
+//        let component = ProfileComponent(
+//            contentMode: .size(
+//                width: window.bounds.width,
+//                height: window.bounds.height
+//            )
+//        )
+        
+        let component = ProfileHeaderComponent(
             contentMode: .size(
                 width: window.bounds.width,
                 height: window.bounds.height
             )
         )
 
-        /// A component should render at least once for showing its view.
-        component.render()
-        
         let rootViewController = ComponentViewController(
             component: component
         )
@@ -50,13 +54,23 @@ extension AppDelegate: UIApplicationDelegate {
         
         window.makeKeyAndVisible()
         
-        component
-            .fetch(in: .background)
+        UserManager()
+            .fetchUser(
+                in: .background,
+                id: "1"
+            )
+            .then(in: .main) { user -> Void in
+                
+                component.nameLabel.text = user.name
+                
+                component.introductionLabel.text = user.introduction
+                
+            }
             .then(
                 in: .main,
-                component.render
+                component.render /// A component should render at least once for showing its view.
             )
-
+        
         return true
 
     }

@@ -46,3 +46,13 @@ public final class ProfileIntroductionComponent: Component {
     public final func render() { baseComponent.render() }
 
 }
+
+public extension ProfileIntroductionComponent {
+    
+    public final var pictureImageView: UIImageView { return baseComponent.itemView.pictureImageView }
+    
+    public final var nameLabel: UILabel { return baseComponent.itemView.nameLabel }
+    
+    public final var introductionLabel: UILabel { return baseComponent.itemView.introductionLabel }
+    
+}

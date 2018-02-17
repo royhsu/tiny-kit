@@ -23,32 +23,7 @@ public final class ProfileHeaderComponent: Component {
         self.baseComponent = ListComponent(contentMode: contentMode)
 
     }
-
-    public final func fetch(in context: Context) -> Promise<Void> {
-
-        return Promise<Profile>(in: context) { fulfill, _, _ in
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-
-                let profile = Profile(
-                    pictureURL: nil,
-                    name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.",
-                    introduction: "Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis in, egestas eget quam."
-                )
-
-                fulfill(profile)
-
-            }
-
-        }
-        .then(in: .main) { profile -> Void in
-
-//            self.introductionComponent.profile = profile
-
-        }
-
-    }
-
+    
     // MARK: ViewRenderable
 
     public final var view: View { return baseComponent.view }
@@ -75,4 +50,14 @@ public final class ProfileHeaderComponent: Component {
 
     }
 
+}
+
+public extension ProfileHeaderComponent {
+    
+    public final var pictureImageView: UIImageView { return introductionComponent.pictureImageView }
+    
+    public final var nameLabel: UILabel { return introductionComponent.nameLabel }
+    
+    public final var introductionLabel: UILabel { return introductionComponent.introductionLabel }
+    
 }
