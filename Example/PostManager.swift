@@ -12,17 +12,17 @@ import Foundation
 import Hydra
 
 public final class PostManager {
-    
+
     public final func fetchPosts(
         in context: Context,
         userId: String
     )
     -> Promise<[Post]> {
-        
+
         return Promise(in: context) { fulfill, _, _ in
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                
+
                 let posts = [
                     Post(
                         title: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
@@ -37,14 +37,13 @@ public final class PostManager {
                         content: "Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
                     )
                 ]
-                
+
                 fulfill(posts)
-                
+
             }
-            
+
         }
-            
+
     }
-    
-    
+
 }

@@ -49,51 +49,51 @@ public final class ProfileComponent: Component {
 }
 
 public extension ProfileComponent {
-    
+
     public final var pictureImage: UIImage? {
-        
+
         get { return headerComponent.pictureImage }
-        
+
         set { headerComponent.pictureImage = newValue }
-        
+
     }
-    
+
     public final var name: String? {
-        
+
         get { return headerComponent.name }
-        
+
         set { headerComponent.name = newValue }
-        
+
     }
-    
+
     public final var introduction: String? {
-        
+
         get { return headerComponent.introduction }
-        
+
         set { headerComponent.introduction = newValue }
-        
+
     }
-    
+
     public final func appendPosts(
         _ posts: [Post]
     ) {
-        
+
         let postComponents: [Component] = posts.map { post in
-            
+
             let component = PostComponent()
-            
+
             component.title = post.title
-            
+
             component.content = post.content
-            
+
             return component
-            
+
         }
-        
+
         baseComponent.itemComponents = AnyCollection(
             postComponents
         )
-        
+
     }
-    
+
 }

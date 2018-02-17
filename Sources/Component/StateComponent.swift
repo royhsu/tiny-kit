@@ -51,9 +51,9 @@ public final class StateComponent<CS: ComponentState>: Component {
 //            stateComponentMap[state]?.contentMode = contentMode
 //
 //        }
-        
+
         view.subviews.forEach { $0.removeFromSuperview() }
-        
+
         let state = AnyComponentState(currentState)
 
         stateComponentMap[state]?.contentMode = contentMode
@@ -61,9 +61,9 @@ public final class StateComponent<CS: ComponentState>: Component {
 //        let currentView = currentComponent.view
 
         currentComponent.render()
-        
+
         view.render(with: currentComponent)
-        
+
 //        currentView.translatesAutoresizingMaskIntoConstraints = false
 //
 //        view.addSubview(currentView)

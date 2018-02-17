@@ -43,26 +43,26 @@ extension AppDelegate: UIApplicationDelegate {
         )
 
         rootViewController.view.backgroundColor = .red
-        
+
         window.rootViewController = rootViewController
-        
+
         window.makeKeyAndVisible()
-        
+
         let userId = "1"
-        
+
         let fetchUser: Promise<Void> = UserManager()
             .fetchUser(
                 in: .background,
                 userId: userId
             )
             .then(in: .main) { user -> Void in
-                
+
                 component.name = user.name
-                
+
                 component.introduction = user.introduction
-                
+
             }
-        
+
         let fetchPosts: Promise<Void> = PostManager()
             .fetchPosts(
                 in: .background,
@@ -72,7 +72,7 @@ extension AppDelegate: UIApplicationDelegate {
                 in: .main,
                 component.appendPosts
             )
-        
+
         all(
             fetchUser,
             fetchPosts
@@ -81,7 +81,7 @@ extension AppDelegate: UIApplicationDelegate {
             in: .main,
             body: component.render
         )
-        
+
         return true
 
     }

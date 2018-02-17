@@ -15,15 +15,15 @@ extension UIView: ViewRenderer {
     public final func render(with renderable: ViewRenderable) {
 
         frame.size = renderable.preferredContentSize
-        
+
         let contentView = renderable.view
-        
+
         contentView.removeFromSuperview()
-        
+
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         addSubview(contentView)
-        
+
         NSLayoutConstraint.activate(
             [
                 leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -32,7 +32,7 @@ extension UIView: ViewRenderer {
                 bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ]
         )
-        
+
     }
 
 }
