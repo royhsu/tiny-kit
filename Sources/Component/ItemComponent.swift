@@ -25,12 +25,6 @@ public final class ItemComponent<V: View>: Component {
 
     }
 
-    // MARK: ViewRenderable
-
-    public final let view = View()
-
-    public final var preferredContentSize: CGSize { return view.bounds.size }
-
     // MARK: Component
 
     public final var contentMode: ComponentContentMode
@@ -87,5 +81,11 @@ public final class ItemComponent<V: View>: Component {
         )
 
     }
-
+    
+    // MARK: ViewRenderable
+    
+    public final let view = View()
+    
+    public final var preferredContentSize: CGSize { return view.bounds.size }
+    
 }
