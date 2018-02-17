@@ -9,11 +9,11 @@
 // MARK: - ListComponentDataSource
 
 public protocol ListComponentDataSource {
-    
+
     func numberOfSections() -> Int
-    
+
     func numberOfItemsAtSection(_ section: Int) -> Int
-    
+
     func componentForItem(at indexPath: IndexPath) -> Component
-    
+
 }
