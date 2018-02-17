@@ -30,7 +30,7 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
 
-        /// The ROOT component must specify a size to rendering its content correctly.
+        /// The ROOT component must specify a size to render its content correctly.
         let component = ProfileComponent(
             contentMode: .size(
                 width: window.bounds.width,
