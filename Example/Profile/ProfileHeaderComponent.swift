@@ -14,9 +14,9 @@ import TinyKit
 
 public final class ProfileHeaderComponent: Component {
 
-    private final let baseComponent: ListComponent
-
     private final let introductionComponent = ProfileIntroductionComponent()
+    
+    private final let baseComponent: ListComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 

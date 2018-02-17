@@ -50,9 +50,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         let userId = "1"
         
-        let manager = UserManager()
-        
-        let fetchUser: Promise<Void> = manager
+        let fetchUser: Promise<Void> = UserManager()
             .fetchUser(
                 in: .background,
                 userId: userId
@@ -65,7 +63,7 @@ extension AppDelegate: UIApplicationDelegate {
                 
             }
         
-        let fetchPosts: Promise<Void> = manager
+        let fetchPosts: Promise<Void> = PostManager()
             .fetchPosts(
                 in: .background,
                 userId: userId
@@ -81,7 +79,7 @@ extension AppDelegate: UIApplicationDelegate {
         )
         .always(
             in: .main,
-            body: component.render /// A component should render at least once for showing its view.
+            body: component.render
         )
         
         return true

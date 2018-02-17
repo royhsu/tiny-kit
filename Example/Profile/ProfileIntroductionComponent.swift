@@ -12,15 +12,13 @@ import TinyKit
 
 public final class ProfileIntroductionComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<ProfileIntroductionView>
-
-    private final let baseComponent: BaseComponent
+    private final let baseComponent: ItemComponent<ProfileIntroductionView>
 
     public init(
         contentMode: ComponentContentMode = .automatic
     ) {
 
-        self.baseComponent = BaseComponent(
+        self.baseComponent = ItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(ProfileIntroductionView.self)!
         )

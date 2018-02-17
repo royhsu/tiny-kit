@@ -12,15 +12,13 @@ import TinyKit
 
 public final class PostComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<PostView>
-
-    private final let baseComponent: BaseComponent
+    private final let baseComponent: ItemComponent<PostView>
 
     public init(
         contentMode: ComponentContentMode = .automatic
     ) {
 
-        self.baseComponent = BaseComponent(
+        self.baseComponent = ItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(PostView.self)!
         )

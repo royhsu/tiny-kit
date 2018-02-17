@@ -28,34 +28,6 @@ public final class ProfileComponent: Component {
 
     }
 
-    // TODO: split into data provider.
-//    public final func fetch(in context: Context) -> Promise<Void> {
-//
-//        try! baseComponent.enter(.loading)
-//
-//        loadingComponent.startAnimating()
-//
-//        render()
-//
-//        return all(
-//            postListComponent.fetch(in: context).always(in: context) { }
-//        )
-//        .then(in: .main) { _ -> Void in
-//
-//            try self.baseComponent.enter(.loaded)
-//
-//        }
-//        .catch(in: .main) { error in
-//
-//            try self.baseComponent.enter(.error)
-//
-////            self.messageComponent.message = Message(error: error)
-//
-//        }
-//        .always(in: .main) { self.loadingComponent.stopAnimating() }
-//
-//    }
-
     // MARK: ViewRenderable
 
     public final var view: View { return baseComponent.view }

@@ -35,6 +35,7 @@
 		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
+		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +82,7 @@
 		B00D972420307F8600EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				B00D96EF20307F4400EF0B7A /* Splash */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
 				B05E676B2037B406003E8E0E /* UserManager.swift */,
+				B05E67712037C1BA003E8E0E /* PostManager.swift */,
 				B05E676D2037B467003E8E0E /* User.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
@@ -313,6 +316,7 @@
 				B00D970820307F4400EF0B7A /* ProfileComponentState.swift in Sources */,
 				B00D970C20307F4400EF0B7A /* SplashComponent.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
+				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* ProfileIntroductionComponent.swift in Sources */,
 				B05E676E2037B467003E8E0E /* User.swift in Sources */,
 			);
