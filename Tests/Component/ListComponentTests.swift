@@ -49,13 +49,43 @@ internal final class ListComponentTests: XCTestCase {
     
     internal final func testRenderListComponent() {
         
+        let headerComponent = ItemComponent(
+            contentMode: .size(
+                width: 50.0,
+                height: 50.0
+            ),
+            itemView: RectangleView()
+        )
+        
+        let footerComponent = ItemComponent(
+            contentMode: .size(
+                width: 50.0,
+                height: 50.0
+            ),
+            itemView: RectangleView()
+        )
+        
         let listComponent = NewListComponent()
+        
+        listComponent.headerComponent = headerComponent
+        
+        listComponent.footerComponent = footerComponent
         
         listComponent.dataSource = self
         
         listComponent.render()
         
         let tableView = listComponent.tableView
+        
+        XCTAssertEqual(
+            tableView.tableHeaderView,
+            headerComponent.view
+        )
+        
+        XCTAssertEqual(
+            tableView.tableFooterView,
+            footerComponent.view
+        )
         
         XCTAssertEqual(
             tableView.numberOfSections,
