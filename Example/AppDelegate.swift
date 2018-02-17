@@ -17,7 +17,10 @@ public final class AppDelegate: UIResponder {
 
 }
 
-// MARK: UIApplicationDelegate
+// MARK: - UIApplicationDelegate
+
+import Hydra
+import TinyKit
 
 extension AppDelegate: UIApplicationDelegate {
 
@@ -27,7 +30,7 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
 
-        /// The ROOT component must specify a size to rendering its content correctly.
+        /// The ROOT component must specify a size to render its content correctly.
         let component = ProfileComponent(
             contentMode: .size(
                 width: window.bounds.width,
@@ -35,19 +38,45 @@ extension AppDelegate: UIApplicationDelegate {
             )
         )
 
-        /// A component should render at least once for showing its view.
-        component.render()
-
-        window.render(with: component)
+        window.rootViewController = UINavigationController(
+            rootViewController: ComponentViewController(component: component)
+        )
 
         window.makeKeyAndVisible()
 
-        component
-            .fetch(in: .background)
+        let userId = "1"
+
+        let fetchUser: Promise<Void> = UserManager()
+            .fetchUser(
+                in: .background,
+                userId: userId
+            )
+            .then(in: .main) { user -> Void in
+
+                component.name = user.name
+
+                component.introduction = user.introduction
+
+            }
+
+        let fetchPosts: Promise<Void> = PostManager()
+            .fetchPosts(
+                in: .background,
+                userId: userId
+            )
             .then(
                 in: .main,
-                component.render
+                component.appendPosts
             )
+
+        all(
+            fetchUser,
+            fetchPosts
+        )
+        .always(
+            in: .main,
+            body: component.render
+        )
 
         return true
 

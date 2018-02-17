@@ -14,138 +14,121 @@ import XCTest
 
 internal final class ListComponentTests: XCTestCase {
 
+    internal final var itemComponents: [Component] = []
+
+    internal final override func setUp() {
+
+        super.setUp()
+
+        itemComponents = [
+            ItemComponent(
+                contentMode: .size(
+                    width: 100.0,
+                    height: 100.0
+                ),
+                itemView: RectangleView()
+            ),
+            ItemComponent(
+                contentMode: .size(
+                    width: 200.0,
+                    height: 200.0
+                ),
+                itemView: RectangleView()
+            )
+        ]
+
+    }
+
+    internal final override func tearDown() {
+
+        itemComponents = []
+
+        super.tearDown()
+
+    }
+
     internal final func testRenderListComponent() {
 
-        let redContentSize = CGSize(
-            width: 100.0,
-            height: 100.0
-        )
-
-        let redView = RectangleView()
-
-        let redComponent = ColorComponent(
+        let headerComponent = ItemComponent(
             contentMode: .size(
-                width: redContentSize.width,
-                height: redContentSize.height
+                width: 50.0,
+                height: 50.0
             ),
-            view: redView,
-            model: Color(
-                red: 1.0,
-                green: 0.0,
-                blue: 0.0,
-                alpha: 1.0
-            ),
-            binding: { colorView, color in
-
-                colorView.backgroundColor = color.uiColor()
-
-            }
+            itemView: RectangleView()
         )
 
-        let blueContentSize = CGSize(
-            width: 200.0,
-            height: 200.0
-        )
-
-        let blueView = RectangleView()
-
-        let blueComponent = ColorComponent(
+        let footerComponent = ItemComponent(
             contentMode: .size(
-                width: blueContentSize.width,
-                height: blueContentSize.height
+                width: 50.0,
+                height: 50.0
             ),
-            view: blueView,
-            model: Color(
-                red: 0.0,
-                green: 0.0,
-                blue: 1.0,
-                alpha: 1.0
-            ),
-            binding: { colorView, color in
-
-                colorView.backgroundColor = color.uiColor()
-
-            }
+            itemView: RectangleView()
         )
-
-        let colorComponents: [Component] = [
-            redComponent,
-            blueComponent
-        ]
 
         let listComponent = ListComponent()
 
-        listComponent.itemComponents = AnyCollection(colorComponents)
+        listComponent.headerComponent = headerComponent
+
+        listComponent.footerComponent = footerComponent
+
+        listComponent.dataSource = self
 
         listComponent.render()
 
+        let tableView = listComponent.tableView
+
         XCTAssertEqual(
-            listComponent.view as? UITableView,
-            listComponent.tableView
+            tableView.tableHeaderView,
+            headerComponent.view
         )
 
         XCTAssertEqual(
-            listComponent.tableView.numberOfSections,
-            Int(listComponent.itemComponents.count)
+            tableView.tableFooterView,
+            footerComponent.view
         )
 
-        guard
-            let redSection = colorComponents.index(
-                where: { $0 as? ColorComponent === redComponent }
-            )
-        else {
+        XCTAssertEqual(
+            tableView.numberOfSections,
+            numberOfSections()
+        )
 
-            XCTFail("There should be a section for the red component.")
+        for section in 0..<numberOfSections() {
 
-            return
+            for item in 0..<numberOfItemsAtSection(section) {
+
+                let indexPath = IndexPath(
+                    item: item,
+                    section: section
+                )
+
+                XCTAssertEqual(
+                    tableView.numberOfRows(inSection: section),
+                    numberOfItemsAtSection(section)
+                )
+
+                let component = componentForItem(at: indexPath)
+
+                XCTAssertEqual(
+                    tableView.cellForRow(at: indexPath),
+                    component.view.superview?.superview
+                )
+
+            }
 
         }
-
-        XCTAssertEqual(
-            listComponent.tableView.numberOfRows(inSection: redSection),
-            1
-        )
-
-        let redCell = listComponent.tableView.cellForRow(
-            at: IndexPath(
-                row: 0,
-                section: redSection
-            )
-        )
-
-        XCTAssertNotNil(redCell)
-
-        guard
-            let blueSection = colorComponents.index(
-                where: { $0 as? ColorComponent === blueComponent }
-            )
-        else {
-
-            XCTFail("There should be a section for the blue component.")
-
-            return
-
-        }
-
-        XCTAssertEqual(
-            listComponent.tableView.numberOfRows(inSection: blueSection),
-            1
-        )
-
-        let blueCell = listComponent.tableView.cellForRow(
-            at: IndexPath(
-                row: 0,
-                section: blueSection
-            )
-        )
-
-        XCTAssertNotNil(blueCell)
-
-        XCTAssertEqual(
-            listComponent.preferredContentSize,
-            listComponent.tableView.contentSize
-        )
 
     }
+
+}
+
+// MARK: - ListComponentDataSource
+
+extension ListComponentTests: ListComponentDataSource {
+
+    internal final func numberOfSections() -> Int { return itemComponents.count }
+
+    internal final func numberOfItemsAtSection(_ section: Int) -> Int { return 1 }
+
+    internal final func componentForItem(at indexPath: IndexPath) -> Component { return itemComponents[indexPath.section] }
 
 }

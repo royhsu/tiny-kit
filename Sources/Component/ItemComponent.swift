@@ -2,59 +2,34 @@
 //  ItemComponent.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 25/01/2018.
+//  Created by Roy Hsu on 16/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
 // MARK: - ItemComponent
 
-public final class ItemComponent<
-    V: View,
-    M: Codable
->: Component {
+public final class ItemComponent<V: View>: Component {
 
-    /// The underlying view that preserves the type information.
-    internal final let itemView: V
+    public typealias ItemView = V
 
-    public final var model: M
-
-    public typealias Binding = (V, M) -> Void
-
-    private final let binding: Binding
+    public final let itemView: ItemView
 
     public init(
         contentMode: ComponentContentMode = .automatic,
-        view: V,
-        model: M,
-        binding: @escaping Binding
+        itemView: ItemView
     ) {
 
         self.contentMode = contentMode
 
-        self.itemView = view
-
-        self.model = model
-
-        self.binding = binding
+        self.itemView = itemView
 
     }
-
-    // MARK: ViewRenderable
-
-    public final let view = View(frame: UIScreen.main.bounds)
-
-    public final var preferredContentSize: CGSize { return view.bounds.size }
 
     // MARK: Component
 
     public final var contentMode: ComponentContentMode
 
     public final func render() {
-
-        binding(
-            itemView,
-            model
-        )
 
         itemView.removeFromSuperview()
 
@@ -66,13 +41,13 @@ public final class ItemComponent<
             [
                 view
                     .leadingAnchor
-                    .constraint(equalTo: self.itemView.leadingAnchor),
+                    .constraint(equalTo: itemView.leadingAnchor),
                 view
                     .topAnchor
-                    .constraint(equalTo: self.itemView.topAnchor),
+                    .constraint(equalTo: itemView.topAnchor),
                 view
                     .trailingAnchor
-                    .constraint(equalTo: self.itemView.trailingAnchor)
+                    .constraint(equalTo: itemView.trailingAnchor)
             ]
         )
 
@@ -87,23 +62,15 @@ public final class ItemComponent<
                 height: height
             )
 
-            // TODO: Should add constraints for the width and height?
-
         case .automatic:
-
-            itemView.layoutIfNeeded()
 
             size = itemView.bounds.size
 
         }
 
-        var frame = view.frame
+        view.frame.size = size
 
-        frame.size = size
-
-        view.frame = frame
-
-        itemView.frame = frame
+        itemView.frame.size = size
 
         NSLayoutConstraint.activate(
             [
@@ -114,5 +81,11 @@ public final class ItemComponent<
         )
 
     }
+
+    // MARK: ViewRenderable
+
+    public final let view = View()
+
+    public final var preferredContentSize: CGSize { return view.bounds.size }
 
 }

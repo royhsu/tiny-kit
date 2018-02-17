@@ -10,7 +10,6 @@
 		B00D96E320307E0300EF0B7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00D96DD20307E0300EF0B7A /* Assets.xcassets */; };
 		B00D96E420307E0300EF0B7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */; };
 		B00D970420307F4400EF0B7A /* ProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96E820307F4300EF0B7A /* ProfileComponent.swift */; };
-		B00D970520307F4400EF0B7A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96E920307F4300EF0B7A /* Profile.swift */; };
 		B00D970620307F4400EF0B7A /* ProfileIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EA20307F4300EF0B7A /* ProfileIntroductionView.swift */; };
 		B00D970720307F4400EF0B7A /* ProfileIntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96EB20307F4300EF0B7A /* ProfileIntroductionView.xib */; };
 		B00D970820307F4400EF0B7A /* ProfileComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EC20307F4300EF0B7A /* ProfileComponentState.swift */; };
@@ -22,7 +21,6 @@
 		B00D970E20307F4400EF0B7A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96F420307F4400EF0B7A /* LoadingView.xib */; };
 		B00D970F20307F4400EF0B7A /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F520307F4400EF0B7A /* Loading.swift */; };
 		B00D971020307F4400EF0B7A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F620307F4400EF0B7A /* LoadingView.swift */; };
-		B00D971220307F4400EF0B7A /* PostListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F920307F4400EF0B7A /* PostListComponent.swift */; };
 		B00D971320307F4400EF0B7A /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FA20307F4400EF0B7A /* PostComponent.swift */; };
 		B00D971420307F4400EF0B7A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FB20307F4400EF0B7A /* Post.swift */; };
 		B00D971520307F4400EF0B7A /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FC20307F4400EF0B7A /* PostView.swift */; };
@@ -35,6 +33,9 @@
 		B00D972120307F6B00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
 		B00D972520307F8600EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
 		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
+		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
+		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
+		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +57,6 @@
 		B00D96DF20307E0300EF0B7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B00D96E120307E0300EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00D96E820307F4300EF0B7A /* ProfileComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileComponent.swift; sourceTree = "<group>"; };
-		B00D96E920307F4300EF0B7A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B00D96EA20307F4300EF0B7A /* ProfileIntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIntroductionView.swift; sourceTree = "<group>"; };
 		B00D96EB20307F4300EF0B7A /* ProfileIntroductionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileIntroductionView.xib; sourceTree = "<group>"; };
 		B00D96EC20307F4300EF0B7A /* ProfileComponentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileComponentState.swift; sourceTree = "<group>"; };
@@ -68,7 +68,6 @@
 		B00D96F420307F4400EF0B7A /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		B00D96F520307F4400EF0B7A /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		B00D96F620307F4400EF0B7A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		B00D96F920307F4400EF0B7A /* PostListComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListComponent.swift; sourceTree = "<group>"; };
 		B00D96FA20307F4400EF0B7A /* PostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
 		B00D96FB20307F4400EF0B7A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B00D96FC20307F4400EF0B7A /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
@@ -81,6 +80,9 @@
 		B00D972220307F6B00EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D972320307F8600EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D972420307F8600EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,9 @@
 				B00D96E720307F4300EF0B7A /* Profile */,
 				B00D96EF20307F4400EF0B7A /* Splash */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
+				B05E676B2037B406003E8E0E /* UserManager.swift */,
+				B05E67712037C1BA003E8E0E /* PostManager.swift */,
+				B05E676D2037B467003E8E0E /* User.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -133,7 +138,6 @@
 		B00D96E720307F4300EF0B7A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96E920307F4300EF0B7A /* Profile.swift */,
 				B00D96EA20307F4300EF0B7A /* ProfileIntroductionView.swift */,
 				B00D96EB20307F4300EF0B7A /* ProfileIntroductionView.xib */,
 				B00D96EE20307F4300EF0B7A /* ProfileIntroductionComponent.swift */,
@@ -171,7 +175,6 @@
 				B00D96FC20307F4400EF0B7A /* PostView.swift */,
 				B00D96FD20307F4400EF0B7A /* PostView.xib */,
 				B00D96FA20307F4400EF0B7A /* PostComponent.swift */,
-				B00D96F920307F4400EF0B7A /* PostListComponent.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -304,17 +307,18 @@
 				B00D971020307F4400EF0B7A /* LoadingView.swift in Sources */,
 				B00D970420307F4400EF0B7A /* ProfileComponent.swift in Sources */,
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
-				B00D970520307F4400EF0B7A /* Profile.swift in Sources */,
 				B00D971320307F4400EF0B7A /* PostComponent.swift in Sources */,
 				B00D970920307F4400EF0B7A /* ProfileHeaderComponent.swift in Sources */,
 				B00D971A20307F4400EF0B7A /* MessageView.swift in Sources */,
 				B00D971420307F4400EF0B7A /* Post.swift in Sources */,
 				B00D971520307F4400EF0B7A /* PostView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* ProfileIntroductionView.swift in Sources */,
-				B00D971220307F4400EF0B7A /* PostListComponent.swift in Sources */,
 				B00D970820307F4400EF0B7A /* ProfileComponentState.swift in Sources */,
 				B00D970C20307F4400EF0B7A /* SplashComponent.swift in Sources */,
+				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
+				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* ProfileIntroductionComponent.swift in Sources */,
+				B05E676E2037B467003E8E0E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  UITableViewBridge.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 08/02/2018.
+//  Created by Roy Hsu on 17/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
@@ -12,25 +12,29 @@ internal final class UITableViewBridge: NSObject {
 
     internal final let cellIdentifier: String
 
-    internal final var components = AnyCollection<Component>(
-        []
-    )
+    internal final var dataSource: ListComponentDataSource?
 
     internal init(cellIdentifier: String) { self.cellIdentifier = cellIdentifier }
 
 }
 
-// MARK: - UITableViewDataSource
-
 extension UITableViewBridge: UITableViewDataSource {
 
-    internal final func numberOfSections(in tableView: UITableView) -> Int { return Int(components.count) }
+    internal final func numberOfSections(in tableView: UITableView) -> Int {
+
+        return dataSource?.numberOfSections() ?? 0
+
+    }
 
     internal final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
-    -> Int { return 1 }
+    -> Int {
+
+        return dataSource?.numberOfItemsAtSection(section) ?? 0
+
+    }
 
     internal final func tableView(
         _ tableView: UITableView,
@@ -47,38 +51,13 @@ extension UITableViewBridge: UITableViewDataSource {
 
         cell.backgroundColor = .clear
 
-        let index = AnyIndex(indexPath.section)
+        if let component = dataSource?.componentForItem(at: indexPath) {
 
-        let component = components[index]
+            component.render()
 
-        component.render()
+            cell.contentView.render(with: component)
 
-        let view = cell.contentView
-
-        let contentView = component.view
-
-        contentView.removeFromSuperview()
-
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(contentView)
-
-        NSLayoutConstraint.activate(
-            [
-                view
-                    .leadingAnchor
-                    .constraint(equalTo: contentView.leadingAnchor),
-                view
-                    .topAnchor
-                    .constraint(equalTo: contentView.topAnchor),
-                view
-                    .trailingAnchor
-                    .constraint(equalTo: contentView.trailingAnchor),
-                view
-                    .bottomAnchor
-                    .constraint(equalTo: contentView.bottomAnchor)
-            ]
-        )
+        }
 
         return cell
 
@@ -96,9 +75,9 @@ extension UITableViewBridge: UITableViewDelegate {
     )
     -> CGFloat {
 
-        let index = AnyIndex(indexPath.section)
-
-        let component = components[index]
+        guard
+            let component = dataSource?.componentForItem(at: indexPath)
+        else { return 0.0 }
 
         switch component.contentMode {
 

@@ -12,21 +12,18 @@ import TinyKit
 
 public final class SplashComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<View, Splash>
+    private typealias BaseComponent = ItemComponent<View>
 
     private final let baseComponent: BaseComponent
 
     public init(
         contentMode: ComponentContentMode = .automatic,
-        splashView: View = UIView(),
-        splash: Splash = Splash()
+        splashView: View = UIView()
     ) {
 
         self.baseComponent = BaseComponent(
             contentMode: contentMode,
-            view: splashView,
-            model: splash,
-            binding: { _, _ in }
+            itemView: splashView
         )
 
     }

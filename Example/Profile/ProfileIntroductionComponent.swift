@@ -12,26 +12,15 @@ import TinyKit
 
 public final class ProfileIntroductionComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<ProfileIntroductionView, Profile>
-
-    private final let baseComponent: BaseComponent
+    private final let baseComponent: ItemComponent<ProfileIntroductionView>
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
-        profile: Profile = Profile()
+        contentMode: ComponentContentMode = .automatic
     ) {
 
-        self.baseComponent = BaseComponent(
+        self.baseComponent = ItemComponent(
             contentMode: contentMode,
-            view: UIView.load(ProfileIntroductionView.self)!,
-            model: profile,
-            binding: { introductionView, profile in
-
-                introductionView.nameLabel.text = profile.name
-
-                introductionView.introductionLabel.text = profile.introduction
-
-            }
+            itemView: UIView.load(ProfileIntroductionView.self)!
         )
 
     }
@@ -58,11 +47,27 @@ public final class ProfileIntroductionComponent: Component {
 
 public extension ProfileIntroductionComponent {
 
-    public final var profile: Profile {
+    public final var pictureImage: UIImage? {
 
-        get { return baseComponent.model }
+        get { return baseComponent.itemView.pictureImageView.image }
 
-        set { baseComponent.model = newValue }
+        set { baseComponent.itemView.pictureImageView.image = newValue }
+
+    }
+
+    public final var name: String? {
+
+        get { return baseComponent.itemView.nameLabel.text }
+
+        set { baseComponent.itemView.nameLabel.text = newValue }
+
+    }
+
+    public final var introduction: String? {
+
+        get { return baseComponent.itemView.introductionLabel.text }
+
+        set { baseComponent.itemView.introductionLabel.text = newValue }
 
     }
 
