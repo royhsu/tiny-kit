@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B00D96362030758A00EF0B7A /* AnyComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96202030758A00EF0B7A /* AnyComponentState.swift */; };
-		B00D96372030758A00EF0B7A /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96212030758A00EF0B7A /* StateComponent.swift */; };
 		B00D96382030758A00EF0B7A /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96222030758A00EF0B7A /* UITableViewBridge.swift */; };
-		B00D96392030758A00EF0B7A /* ComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96232030758A00EF0B7A /* ComponentState.swift */; };
 		B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96242030758A00EF0B7A /* ListComponent.swift */; };
 		B00D963B2030758A00EF0B7A /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96252030758A00EF0B7A /* Component.swift */; };
 		B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96272030758A00EF0B7A /* ComponentContentMode.swift */; };
@@ -83,10 +80,7 @@
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B00D96202030758A00EF0B7A /* AnyComponentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyComponentState.swift; sourceTree = "<group>"; };
-		B00D96212030758A00EF0B7A /* StateComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
 		B00D96222030758A00EF0B7A /* UITableViewBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
-		B00D96232030758A00EF0B7A /* ComponentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentState.swift; sourceTree = "<group>"; };
 		B00D96242030758A00EF0B7A /* ListComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B00D96252030758A00EF0B7A /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B00D96272030758A00EF0B7A /* ComponentContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentContentMode.swift; sourceTree = "<group>"; };
@@ -188,10 +182,7 @@
 		B00D961F2030758A00EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96212030758A00EF0B7A /* StateComponent.swift */,
-				B00D96202030758A00EF0B7A /* AnyComponentState.swift */,
 				B00D96222030758A00EF0B7A /* UITableViewBridge.swift */,
-				B00D96232030758A00EF0B7A /* ComponentState.swift */,
 				B05E67662036EDE5003E8E0E /* ItemComponent.swift */,
 				B00D96242030758A00EF0B7A /* ListComponent.swift */,
 				B00D96252030758A00EF0B7A /* Component.swift */,
@@ -486,20 +477,17 @@
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B05E67672036EDE5003E8E0E /* ItemComponent.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
-				B00D96362030758A00EF0B7A /* AnyComponentState.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
 				B00D96402030758A00EF0B7A /* Node.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
 				B00D96382030758A00EF0B7A /* UITableViewBridge.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
-				B00D96372030758A00EF0B7A /* StateComponent.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */,
 				B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */,
 				B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
-				B00D96392030758A00EF0B7A /* ComponentState.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
 				B00D963F2030758A00EF0B7A /* ComponentNode.swift in Sources */,
 			);
