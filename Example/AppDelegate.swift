@@ -17,7 +17,7 @@ public final class AppDelegate: UIResponder {
 
 }
 
-// MARK: UIApplicationDelegate
+// MARK: - UIApplicationDelegate
 
 import Hydra
 import TinyKit
