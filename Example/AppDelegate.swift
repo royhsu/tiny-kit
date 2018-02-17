@@ -38,13 +38,9 @@ extension AppDelegate: UIApplicationDelegate {
             )
         )
 
-        let rootViewController = ComponentViewController(
-            component: component
+        window.rootViewController = UINavigationController(
+            rootViewController: ComponentViewController(component: component)
         )
-
-        rootViewController.view.backgroundColor = .red
-
-        window.rootViewController = rootViewController
 
         window.makeKeyAndVisible()
 
