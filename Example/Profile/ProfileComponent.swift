@@ -16,11 +16,11 @@ public final class ProfileComponent: Component {
 
     private final let headerComponent = ProfileHeaderComponent()
 
-    private final let baseComponent: ListComponent
+    private final let baseComponent: NewListComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
-        let baseComponent = ListComponent(contentMode: contentMode)
+        let baseComponent = NewListComponent(contentMode: contentMode)
 
         baseComponent.headerComponent = headerComponent
 
@@ -90,7 +90,7 @@ public extension ProfileComponent {
 
         }
 
-        baseComponent.itemComponents = AnyCollection(
+        baseComponent.dataSource = AnyCollection(
             postComponents
         )
 

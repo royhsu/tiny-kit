@@ -115,3 +115,27 @@ public final class NewListComponent: Component {
     public final var preferredContentSize: CGSize { return tableView.bounds.size }
     
 }
+
+extension AnyCollection: ListComponentDataSource {
+    
+    public func numberOfSections() -> Int {
+        
+        return lazy.flatMap { $0 as? Component }.count
+        
+    }
+    
+    public func numberOfItemsAtSection(_ section: Int) -> Int {
+        
+        return 1
+        
+    }
+    
+    public func componentForItem(at indexPath: IndexPath) -> Component {
+        
+        let index = AnyIndex(indexPath.section)
+    
+        return lazy[index] as! Component
+        
+    }
+    
+}
