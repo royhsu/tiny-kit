@@ -14,38 +14,13 @@ import TinyKit
 
 public final class ProfileHeaderComponent: Component {
 
-    private final let baseComponent: ListComponent
-
     private final let introductionComponent = ProfileIntroductionComponent()
+
+    private final let baseComponent: ListComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
         self.baseComponent = ListComponent(contentMode: contentMode)
-
-    }
-
-    public final func fetch(in context: Context) -> Promise<Void> {
-
-        return Promise<Profile>(in: context) { fulfill, _, _ in
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-
-                let profile = Profile(
-                    pictureURL: nil,
-                    name: "Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.",
-                    introduction: "Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis in, egestas eget quam."
-                )
-
-                fulfill(profile)
-
-            }
-
-        }
-        .then(in: .main) { profile -> Void in
-
-            self.introductionComponent.profile = profile
-
-        }
 
     }
 
@@ -69,9 +44,37 @@ public final class ProfileHeaderComponent: Component {
 
         let components: [Component] = [ introductionComponent ]
 
-        baseComponent.itemComponents = AnyCollection(components)
+        baseComponent.dataSource = AnyCollection(components)
 
         baseComponent.render()
+
+    }
+
+}
+
+public extension ProfileHeaderComponent {
+
+    public final var pictureImage: UIImage? {
+
+        get { return introductionComponent.pictureImage }
+
+        set { introductionComponent.pictureImage = newValue }
+
+    }
+
+    public final var name: String? {
+
+        get { return introductionComponent.name }
+
+        set { introductionComponent.name = newValue }
+
+    }
+
+    public final var introduction: String? {
+
+        get { return introductionComponent.introduction }
+
+        set { introductionComponent.introduction = newValue }
 
     }
 

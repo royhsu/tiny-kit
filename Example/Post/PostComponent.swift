@@ -12,26 +12,15 @@ import TinyKit
 
 public final class PostComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<PostView, Post>
-
-    private final let baseComponent: BaseComponent
+    private final let baseComponent: ItemComponent<PostView>
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
-        post: Post = Post()
+        contentMode: ComponentContentMode = .automatic
     ) {
 
-        self.baseComponent = BaseComponent(
+        self.baseComponent = ItemComponent(
             contentMode: contentMode,
-            view: UIView.load(PostView.self)!,
-            model: post,
-            binding: { postView, post in
-
-                postView.titleLabel.text = post.title
-
-                postView.contentLabel.text = post.content
-
-            }
+            itemView: UIView.load(PostView.self)!
         )
 
     }
@@ -58,11 +47,19 @@ public final class PostComponent: Component {
 
 public extension PostComponent {
 
-    public final var post: Post {
+    public final var title: String? {
 
-        get { return baseComponent.model }
+        get { return baseComponent.itemView.titleLabel.text }
 
-        set { baseComponent.model = newValue }
+        set { baseComponent.itemView.titleLabel.text = newValue }
+
+    }
+
+    public final var content: String? {
+
+        get { return baseComponent.itemView.contentLabel.text }
+
+        set { baseComponent.itemView.contentLabel.text = newValue }
 
     }
 

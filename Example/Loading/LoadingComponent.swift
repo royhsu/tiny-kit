@@ -12,26 +12,17 @@ import TinyKit
 
 public final class LoadingComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<LoadingView, Loading>
+    private typealias BaseComponent = ItemComponent<LoadingView>
 
     private final let baseComponent: BaseComponent
 
-    private final let baseView: LoadingView
-
     public init(
-        contentMode: ComponentContentMode = .automatic,
-        loading: Loading = Loading()
+        contentMode: ComponentContentMode = .automatic
     ) {
-
-        let baseView = UIView.load(LoadingView.self)!
-
-        self.baseView = baseView
 
         self.baseComponent = BaseComponent(
             contentMode: contentMode,
-            view: baseView,
-            model: loading,
-            binding: { _, _ in }
+            itemView: UIView.load(LoadingView.self)!
         )
 
     }
@@ -58,20 +49,8 @@ public final class LoadingComponent: Component {
 
 public extension LoadingComponent {
 
-    public final var loading: Loading {
+    public final func startAnimating() { baseComponent.itemView.activityIndicatorView.startAnimating() }
 
-        get { return baseComponent.model }
-
-        set { baseComponent.model = newValue }
-
-    }
-
-}
-
-public extension LoadingComponent {
-
-    public final func startAnimating() { baseView.activityIndicatorView.startAnimating() }
-
-    public final func stopAnimating() { baseView.activityIndicatorView.stopAnimating() }
+    public final func stopAnimating() { baseComponent.itemView.activityIndicatorView.stopAnimating() }
 
 }

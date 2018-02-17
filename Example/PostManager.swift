@@ -1,31 +1,25 @@
 //
-//  PostListComponent.swift
-//  TinyKitExamples
+//  PostManager.swift
+//  TinyKitExample
 //
-//  Created by Roy Hsu on 08/02/2018.
+//  Created by Roy Hsu on 17/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostListComponent
+// MARK: - PostManager
 
+import Foundation
 import Hydra
-import UIKit
-import TinyCore
-import TinyKit
 
-public final class PostListComponent: Component {
+public final class PostManager {
 
-    private final let baseComponent: ListComponent
+    public final func fetchPosts(
+        in context: Context,
+        userId: String
+    )
+    -> Promise<[Post]> {
 
-    public init(contentMode: ComponentContentMode = .automatic) {
-
-        self.baseComponent = ListComponent(contentMode: contentMode)
-
-    }
-
-    public final func fetch(in context: Context) -> Promise<Void> {
-
-        return Promise<[Post]>(in: context) { fulfill, _, _ in
+        return Promise(in: context) { fulfill, _, _ in
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
@@ -49,49 +43,6 @@ public final class PostListComponent: Component {
             }
 
         }
-        .then(in: .main) { posts -> Void in
-
-            let components: [Component] = posts.map { post in
-
-                let component = PostComponent(post: post)
-
-                return component
-
-            }
-
-            self.baseComponent.itemComponents = AnyCollection(components)
-
-        }
-
-    }
-
-    // MARK: ViewRenderable
-
-    public final var view: View { return baseComponent.view }
-
-    public final var preferredContentSize: CGSize { return baseComponent.preferredContentSize }
-
-    // MARK: Component
-
-    public final var contentMode: ComponentContentMode {
-
-        get { return baseComponent.contentMode }
-
-        set { baseComponent.contentMode = newValue }
-
-    }
-
-    public final func render() { baseComponent.render() }
-
-}
-
-public extension PostListComponent {
-
-    public final var headerComponent: Component? {
-
-        get { return baseComponent.headerComponent }
-
-        set { baseComponent.headerComponent = newValue }
 
     }
 
