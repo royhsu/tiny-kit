@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B00D96382030758A00EF0B7A /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96222030758A00EF0B7A /* UITableViewBridge.swift */; };
-		B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96242030758A00EF0B7A /* ListComponent.swift */; };
 		B00D963B2030758A00EF0B7A /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96252030758A00EF0B7A /* Component.swift */; };
 		B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96272030758A00EF0B7A /* ComponentContentMode.swift */; };
 		B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96292030758A00EF0B7A /* AnyNode.swift */; };
@@ -32,10 +30,7 @@
 		B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */; };
 		B00D9678203076C500EF0B7A /* ComponentNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9665203076C500EF0B7A /* ComponentNodeTests.swift */; };
 		B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */; };
-		B00D967B203076C500EF0B7A /* TrafficLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966A203076C500EF0B7A /* TrafficLight.swift */; };
-		B00D967D203076C500EF0B7A /* StateComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966C203076C500EF0B7A /* StateComponentTests.swift */; };
 		B00D967E203076C500EF0B7A /* ListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966D203076C500EF0B7A /* ListComponentTests.swift */; };
-		B00D967F203076C500EF0B7A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966E203076C500EF0B7A /* Color.swift */; };
 		B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966F203076C500EF0B7A /* RectangleView.swift */; };
 		B00D96842030779000EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; };
 		B00D96852030779000EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; };
@@ -46,8 +41,10 @@
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */; };
 		B05E67672036EDE5003E8E0E /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* ItemComponent.swift */; };
-		B05E677520385ED0003E8E0E /* NewListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677420385ED0003E8E0E /* NewListComponent.swift */; };
-		B05E677720386432003E8E0E /* NewUITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677620386432003E8E0E /* NewUITableViewBridge.swift */; };
+		B05E677520385ED0003E8E0E /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677420385ED0003E8E0E /* ListComponent.swift */; };
+		B05E677720386432003E8E0E /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677620386432003E8E0E /* UITableViewBridge.swift */; };
+		B05E677920386FF3003E8E0E /* ListComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677820386FF3003E8E0E /* ListComponentDataSource.swift */; };
+		B05E677B20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677A20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift */; };
 		B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* ComponentViewController.swift */; };
 		B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E020329F25008DC89C /* URLMatcher.framework */; };
 		B097C1E320329F26008DC89C /* URLNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E120329F25008DC89C /* URLNavigator.framework */; };
@@ -82,8 +79,6 @@
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B00D96222030758A00EF0B7A /* UITableViewBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
-		B00D96242030758A00EF0B7A /* ListComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B00D96252030758A00EF0B7A /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B00D96272030758A00EF0B7A /* ComponentContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentContentMode.swift; sourceTree = "<group>"; };
 		B00D96292030758A00EF0B7A /* AnyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyNode.swift; sourceTree = "<group>"; };
@@ -107,18 +102,17 @@
 		B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		B00D9665203076C500EF0B7A /* ComponentNodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentNodeTests.swift; sourceTree = "<group>"; };
 		B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B00D966A203076C500EF0B7A /* TrafficLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficLight.swift; sourceTree = "<group>"; };
-		B00D966C203076C500EF0B7A /* StateComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateComponentTests.swift; sourceTree = "<group>"; };
 		B00D966D203076C500EF0B7A /* ListComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListComponentTests.swift; sourceTree = "<group>"; };
-		B00D966E203076C500EF0B7A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		B00D966F203076C500EF0B7A /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		B00D96822030779000EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05E67662036EDE5003E8E0E /* ItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
-		B05E677420385ED0003E8E0E /* NewListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListComponent.swift; sourceTree = "<group>"; };
-		B05E677620386432003E8E0E /* NewUITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUITableViewBridge.swift; sourceTree = "<group>"; };
+		B05E677420385ED0003E8E0E /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
+		B05E677620386432003E8E0E /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
+		B05E677820386FF3003E8E0E /* ListComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentDataSource.swift; sourceTree = "<group>"; };
+		B05E677A20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+ListComponentDataSource.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
@@ -186,11 +180,11 @@
 		B00D961F2030758A00EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96222030758A00EF0B7A /* UITableViewBridge.swift */,
 				B05E67662036EDE5003E8E0E /* ItemComponent.swift */,
-				B00D96242030758A00EF0B7A /* ListComponent.swift */,
-				B05E677420385ED0003E8E0E /* NewListComponent.swift */,
-				B05E677620386432003E8E0E /* NewUITableViewBridge.swift */,
+				B05E677820386FF3003E8E0E /* ListComponentDataSource.swift */,
+				B05E677A20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift */,
+				B05E677420385ED0003E8E0E /* ListComponent.swift */,
+				B05E677620386432003E8E0E /* UITableViewBridge.swift */,
 				B00D96252030758A00EF0B7A /* Component.swift */,
 				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
 				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
@@ -299,10 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */,
-				B00D966A203076C500EF0B7A /* TrafficLight.swift */,
-				B00D966C203076C500EF0B7A /* StateComponentTests.swift */,
 				B00D966D203076C500EF0B7A /* ListComponentTests.swift */,
-				B00D966E203076C500EF0B7A /* Color.swift */,
 				B00D966F203076C500EF0B7A /* RectangleView.swift */,
 			);
 			path = Component;
@@ -487,17 +478,17 @@
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
 				B00D96402030758A00EF0B7A /* Node.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
-				B00D96382030758A00EF0B7A /* UITableViewBridge.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */,
-				B05E677720386432003E8E0E /* NewUITableViewBridge.swift in Sources */,
+				B05E677920386FF3003E8E0E /* ListComponentDataSource.swift in Sources */,
+				B05E677720386432003E8E0E /* UITableViewBridge.swift in Sources */,
 				B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */,
-				B00D963A2030758A00EF0B7A /* ListComponent.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
 				B00D963F2030758A00EF0B7A /* ComponentNode.swift in Sources */,
-				B05E677520385ED0003E8E0E /* NewListComponent.swift in Sources */,
+				B05E677520385ED0003E8E0E /* ListComponent.swift in Sources */,
+				B05E677B20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,11 +500,8 @@
 				B00D967E203076C500EF0B7A /* ListComponentTests.swift in Sources */,
 				B00D9670203076C500EF0B7A /* UITableViewExtensionsTests.swift in Sources */,
 				B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */,
-				B00D967B203076C500EF0B7A /* TrafficLight.swift in Sources */,
 				B00D9673203076C500EF0B7A /* NoNibTableViewCell.swift in Sources */,
-				B00D967D203076C500EF0B7A /* StateComponentTests.swift in Sources */,
 				B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */,
-				B00D967F203076C500EF0B7A /* Color.swift in Sources */,
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
 				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,

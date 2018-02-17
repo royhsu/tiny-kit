@@ -44,7 +44,7 @@ public final class ProfileHeaderComponent: Component {
 
         let components: [Component] = [ introductionComponent ]
 
-        baseComponent.itemComponents = AnyCollection(components)
+        baseComponent.dataSource = AnyCollection(components)
 
         baseComponent.render()
 
