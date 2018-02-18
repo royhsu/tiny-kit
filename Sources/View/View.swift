@@ -8,5 +8,4 @@
 
 // MARK: - View
 
-// TODO: use protocol View.
 public typealias View = UIView

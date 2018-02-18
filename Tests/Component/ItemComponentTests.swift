@@ -23,7 +23,7 @@ internal final class ItemComponentTests: XCTestCase {
 
         let rectangleView = RectangleView()
 
-        let rectangleItemComponent = ItemComponent(
+        let rectangleItemComponent = UIItemComponent(
             contentMode: .size(
                 width: rectangleSize.width,
                 height: rectangleSize.height

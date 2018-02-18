@@ -12,7 +12,7 @@ import TinyKit
 
 public final class MessageComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<MessageView>
+    private typealias BaseComponent = UIItemComponent<MessageView>
 
     private final let baseComponent: BaseComponent
 

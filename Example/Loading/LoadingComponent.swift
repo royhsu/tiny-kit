@@ -12,7 +12,7 @@ import TinyKit
 
 public final class LoadingComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<LoadingView>
+    private typealias BaseComponent = UIItemComponent<LoadingView>
 
     private final let baseComponent: BaseComponent
 

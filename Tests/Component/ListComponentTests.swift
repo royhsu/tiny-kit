@@ -21,14 +21,14 @@ internal final class ListComponentTests: XCTestCase {
         super.setUp()
 
         itemComponents = [
-            ItemComponent(
+            UIItemComponent(
                 contentMode: .size(
                     width: 100.0,
                     height: 100.0
                 ),
                 itemView: RectangleView()
             ),
-            ItemComponent(
+            UIItemComponent(
                 contentMode: .size(
                     width: 200.0,
                     height: 200.0
@@ -49,7 +49,7 @@ internal final class ListComponentTests: XCTestCase {
 
     internal final func testRenderListComponent() {
 
-        let headerComponent = ItemComponent(
+        let headerComponent = UIItemComponent(
             contentMode: .size(
                 width: 50.0,
                 height: 50.0
@@ -57,7 +57,7 @@ internal final class ListComponentTests: XCTestCase {
             itemView: RectangleView()
         )
 
-        let footerComponent = ItemComponent(
+        let footerComponent = UIItemComponent(
             contentMode: .size(
                 width: 50.0,
                 height: 50.0

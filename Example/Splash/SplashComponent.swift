@@ -12,7 +12,7 @@ import TinyKit
 
 public final class SplashComponent: Component {
 
-    private typealias BaseComponent = ItemComponent<View>
+    private typealias BaseComponent = UIItemComponent<View>
 
     private final let baseComponent: BaseComponent
 

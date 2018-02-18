@@ -1,17 +1,14 @@
 //
-//  ItemComponent.swift
+//  UIItemComponent.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 16/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ItemComponent
+// MARK: - UIItemComponent
 
-// TODO: refactor to UIItemComponent
-public final class ItemComponent<V: View>: Component {
-
-    public typealias ItemView = V
+public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final let itemView: ItemView
 
