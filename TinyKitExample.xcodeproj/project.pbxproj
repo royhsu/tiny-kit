@@ -101,7 +101,7 @@
 		B00D96DB20307E0300EF0B7A /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				B05E67892039AB38003E8E0E /* Business Logics */,
+				B05E67892039AB38003E8E0E /* Core */,
 				B05E678C2039ABBB003E8E0E /* View */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
@@ -145,13 +145,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B05E67892039AB38003E8E0E /* Business Logics */ = {
+		B05E67892039AB38003E8E0E /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				B05E678A2039AB77003E8E0E /* Post */,
 				B05E678B2039AB82003E8E0E /* User */,
 			);
-			path = "Business Logics";
+			path = Core;
 			sourceTree = "<group>";
 		};
 		B05E678A2039AB77003E8E0E /* Post */ = {
