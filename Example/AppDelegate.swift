@@ -52,12 +52,12 @@ extension AppDelegate: UIApplicationDelegate {
                 userId: userId
             )
             .then { user -> UIProfileIntroduction in
-                
+
                 return UIProfileIntroduction(
                     name: user.name,
                     introduction: user.introduction
                 )
-                
+
             }
             .then(
                 in: .main,
@@ -70,16 +70,16 @@ extension AppDelegate: UIApplicationDelegate {
                 userId: userId
             )
             .then { posts -> [UIPost] in
-                
+
                 return posts.map { post in
-                    
+
                     return UIPost(
                         title: post.title,
                         content: post.content
                     )
-                    
+
                 }
-                
+
             }
             .then(
                 in: .main,

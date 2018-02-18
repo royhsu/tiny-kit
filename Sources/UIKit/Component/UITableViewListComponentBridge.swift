@@ -9,42 +9,42 @@
 // MARK: - UITableViewListComponentBridge
 
 internal final class UITableViewListComponentBridge: NSObject {
-    
+
     private final let cellIdentifier = String(
         describing: UITableViewCell.self
     )
-    
+
     internal final let tableView: UITableView
-    
+
     internal final var itemComponents: ListItemComponents?
 
     internal init(tableView: UITableView) {
-        
+
         self.tableView = tableView
-        
+
         super.init()
-        
+
         setUpTableView(tableView)
-        
+
     }
-    
+
     // MARK: Set Up
-    
+
     fileprivate final func setUpTableView(_ tableView: UITableView) {
-        
+
         tableView.register(
             UITableViewCell.self,
             forCellReuseIdentifier: cellIdentifier
         )
-        
+
         tableView.separatorStyle = .none
-        
+
         tableView.dataSource = self
-        
+
         tableView.delegate = self
-        
+
     }
-    
+
 }
 
 // MARK: - UITableViewDataSource

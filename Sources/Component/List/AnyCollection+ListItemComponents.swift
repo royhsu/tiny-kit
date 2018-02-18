@@ -6,7 +6,7 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ListComponentDataSource
+// MARK: - ListItemComponents
 
 /// Each section contains a dedicated component.
 extension AnyCollection: ListItemComponents {

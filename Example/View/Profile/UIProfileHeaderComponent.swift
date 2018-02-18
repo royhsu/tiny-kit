@@ -44,19 +44,19 @@ public final class UIProfileHeaderComponent: Component {
     }
 
     // MARK: ViewRenderable
-    
+
     public final var view: View { return listComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
-    
+
 }
 
 public extension UIProfileHeaderComponent {
 
     public final func setIntroduction(_ introduction: UIProfileIntroduction?) {
-        
+
         introductionComponent.setIntroduction(introduction)
-        
+
     }
 
 }

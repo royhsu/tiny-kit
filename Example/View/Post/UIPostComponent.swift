@@ -35,11 +35,11 @@ public final class UIPostComponent: Component {
     }
 
     public final func render() { itemComponent.render() }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return itemComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
 
 }
@@ -49,9 +49,9 @@ public extension UIPostComponent {
     public final func setPost(_ post: UIPost?) {
 
         let itemView = itemComponent.itemView
-        
+
         itemView.titleLabel.text = post?.title
-        
+
         itemView.contentLabel.text = post?.content
 
     }

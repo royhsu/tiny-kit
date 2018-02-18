@@ -9,20 +9,20 @@
 // MARK: - Post
 
 public struct Post {
-    
+
     public var title: String
-    
+
     public var content: String
-    
+
     public init(
         title: String,
         content: String
     ) {
-        
+
         self.title = title
-        
+
         self.content = content
-        
+
     }
-    
+
 }

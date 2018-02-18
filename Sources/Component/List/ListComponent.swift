@@ -9,11 +9,11 @@
 // MARK: - ListComponent
 
 public protocol ListComponent: Component {
-    
+
     var headerComponent: Component? { get set }
-    
+
     var footerComponent: Component? { get set }
-    
+
     var itemComponents: ListItemComponents? { get set }
-    
+
 }

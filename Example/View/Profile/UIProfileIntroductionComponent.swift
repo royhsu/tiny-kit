@@ -35,13 +35,13 @@ public final class UIProfileIntroductionComponent: Component {
     }
 
     public final func render() { itemComponent.render() }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return itemComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
-    
+
 }
 
 public extension UIProfileIntroductionComponent {
@@ -49,11 +49,11 @@ public extension UIProfileIntroductionComponent {
     public final func setIntroduction(_ introduction: UIProfileIntroduction?) {
 
         let itemView = itemComponent.itemView
-        
+
         itemView.pictureImageView.image = introduction?.pictureImage
-        
+
         itemView.nameLabel.text = introduction?.name
-        
+
         itemView.introductionLabel.text = introduction?.introduction
 
     }

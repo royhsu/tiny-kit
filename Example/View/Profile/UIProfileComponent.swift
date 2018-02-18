@@ -38,11 +38,11 @@ public final class UIProfileComponent: Component {
     }
 
     public final func render() { listComponent.render() }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return listComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
 
 }
@@ -50,9 +50,9 @@ public final class UIProfileComponent: Component {
 public extension UIProfileComponent {
 
     public final func setIntroduction(_ introduction: UIProfileIntroduction?) {
-        
+
         headerComponent.setIntroduction(introduction)
-        
+
     }
 
     public final func setPosts(
