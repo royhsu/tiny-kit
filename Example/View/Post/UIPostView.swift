@@ -1,16 +1,16 @@
 //
-//  PostView.swift
+//  UIPostView.swift
 //  TinyKitExamples
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostView
+// MARK: - UIPostView
 
 import UIKit
 
-public final class PostView: UIView {
+public final class UIPostView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var titleLabel: UILabel!

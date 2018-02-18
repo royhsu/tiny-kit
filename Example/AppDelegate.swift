@@ -31,7 +31,7 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         /// The ROOT component must specify a size to render its content correctly.
-        let component = ProfileComponent(
+        let component = UIProfileComponent(
             contentMode: .size(
                 width: window.bounds.width,
                 height: window.bounds.height
@@ -51,22 +51,39 @@ extension AppDelegate: UIApplicationDelegate {
                 in: .background,
                 userId: userId
             )
-            .then(in: .main) { user -> Void in
-
-                component.name = user.name
-
-                component.introduction = user.introduction
-
+            .then { user -> UIProfileIntroduction in
+                
+                return UIProfileIntroduction(
+                    name: user.name,
+                    introduction: user.introduction
+                )
+                
             }
+            .then(
+                in: .main,
+                component.setIntroduction
+            )
 
         let fetchPosts: Promise<Void> = PostManager()
             .fetchPosts(
                 in: .background,
                 userId: userId
             )
+            .then { posts -> [UIPost] in
+                
+                return posts.map { post in
+                    
+                    return UIPost(
+                        title: post.title,
+                        content: post.content
+                    )
+                    
+                }
+                
+            }
             .then(
                 in: .main,
-                component.appendPosts
+                component.setPosts
             )
 
         all(

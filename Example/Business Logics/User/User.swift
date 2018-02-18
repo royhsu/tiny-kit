@@ -14,13 +14,13 @@ public struct User {
 
     public var pictureURL: URL?
 
-    public var name: String?
+    public var name: String
 
     public var introduction: String?
 
     public init(
         pictureURL: URL? = nil,
-        name: String? = nil,
+        name: String,
         introduction: String? = nil
     ) {
 
