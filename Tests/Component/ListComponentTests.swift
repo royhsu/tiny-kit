@@ -65,13 +65,13 @@ internal final class ListComponentTests: XCTestCase {
             itemView: RectangleView()
         )
 
-        let listComponent = ListComponent()
+        let listComponent = UIListComponent()
 
         listComponent.headerComponent = headerComponent
 
         listComponent.footerComponent = footerComponent
 
-        listComponent.dataSource = self
+        listComponent.itemComponents = self
 
         listComponent.render()
 
@@ -123,7 +123,7 @@ internal final class ListComponentTests: XCTestCase {
 
 // MARK: - ListComponentDataSource
 
-extension ListComponentTests: ListComponentDataSource {
+extension ListComponentTests: ListItemComponents {
 
     internal final func numberOfSections() -> Int { return itemComponents.count }
 

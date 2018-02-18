@@ -1,14 +1,14 @@
 //
-//  ListComponentDataSource.swift
+//  ListItemComponents.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 17/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ListComponentDataSource
+// MARK: - ListItemComponents
 
-public protocol ListComponentDataSource {
+public protocol ListItemComponents {
 
     func numberOfSections() -> Int
 

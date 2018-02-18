@@ -16,11 +16,11 @@ public final class ProfileHeaderComponent: Component {
 
     private final let introductionComponent = ProfileIntroductionComponent()
 
-    private final let baseComponent: ListComponent
+    private final let baseComponent: UIListComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
-        self.baseComponent = ListComponent(contentMode: contentMode)
+        self.baseComponent = UIListComponent(contentMode: contentMode)
 
     }
 

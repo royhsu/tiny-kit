@@ -1,5 +1,5 @@
 //
-//  AnyCollection+ListComponentDataSource.swift
+//  AnyCollection+ListItemComponents.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 17/02/2018.
@@ -9,7 +9,7 @@
 // MARK: - ListComponentDataSource
 
 /// Each section contains a dedicated component.
-extension AnyCollection: ListComponentDataSource {
+extension AnyCollection: ListItemComponents {
 
     public func numberOfSections() -> Int {
 
