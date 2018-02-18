@@ -182,13 +182,11 @@
 		B00D961F2030758A00EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B05E677F20394875003E8E0E /* List */,
 				B05E677E20394388003E8E0E /* UIKit */,
+				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
 				B00D96252030758A00EF0B7A /* Component.swift */,
 				B05E67662036EDE5003E8E0E /* ItemComponent.swift */,
-				B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */,
-				B05E677C20394147003E8E0E /* ListComponent.swift */,
-				B05E677820386FF3003E8E0E /* ListItemComponents.swift */,
-				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
 				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
 			);
 			path = Component;
@@ -319,6 +317,16 @@
 				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B05E677F20394875003E8E0E /* List */ = {
+			isa = PBXGroup;
+			children = (
+				B05E677C20394147003E8E0E /* ListComponent.swift */,
+				B05E677820386FF3003E8E0E /* ListItemComponents.swift */,
+				B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		B097C1E92032A2C8008DC89C /* Navigation */ = {
