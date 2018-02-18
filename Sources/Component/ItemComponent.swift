@@ -8,6 +8,7 @@
 
 // MARK: - ItemComponent
 
+// TODO: refactor to UIItemComponent
 public final class ItemComponent<V: View>: Component {
 
     public typealias ItemView = V

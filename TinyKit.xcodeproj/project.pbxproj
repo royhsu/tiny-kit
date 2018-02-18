@@ -187,7 +187,6 @@
 				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
 				B00D96252030758A00EF0B7A /* Component.swift */,
 				B05E67662036EDE5003E8E0E /* ItemComponent.swift */,
-				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -315,6 +314,7 @@
 			children = (
 				B05E677420385ED0003E8E0E /* UIListComponent.swift */,
 				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
+				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";

@@ -8,6 +8,5 @@
 
 // MARK: - View
 
-import UIKit
-
+// TODO: use protocol View.
 public typealias View = UIView
