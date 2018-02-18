@@ -10,9 +10,6 @@
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B00D963B2030758A00EF0B7A /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96252030758A00EF0B7A /* Component.swift */; };
 		B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96272030758A00EF0B7A /* ComponentContentMode.swift */; };
-		B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96292030758A00EF0B7A /* AnyNode.swift */; };
-		B00D963F2030758A00EF0B7A /* ComponentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D962A2030758A00EF0B7A /* ComponentNode.swift */; };
-		B00D96402030758A00EF0B7A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D962B2030758A00EF0B7A /* Node.swift */; };
 		B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D962D2030758A00EF0B7A /* UICollectionView+Cell.swift */; };
 		B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D962F2030758A00EF0B7A /* UIView+UINib.swift */; };
 		B00D96432030758A00EF0B7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96312030758A00EF0B7A /* View.swift */; };
@@ -28,7 +25,6 @@
 		B00D9675203076C500EF0B7A /* NibCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D9661203076C500EF0B7A /* NibCollectionViewCell.xib */; };
 		B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9662203076C500EF0B7A /* NoNibCollectionViewCell.swift */; };
 		B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */; };
-		B00D9678203076C500EF0B7A /* ComponentNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9665203076C500EF0B7A /* ComponentNodeTests.swift */; };
 		B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */; };
 		B00D967E203076C500EF0B7A /* ListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966D203076C500EF0B7A /* ListComponentTests.swift */; };
 		B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966F203076C500EF0B7A /* RectangleView.swift */; };
@@ -40,14 +36,13 @@
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */; };
-		B05E67672036EDE5003E8E0E /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* ItemComponent.swift */; };
-		B05E677520385ED0003E8E0E /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677420385ED0003E8E0E /* ListComponent.swift */; };
-		B05E677720386432003E8E0E /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677620386432003E8E0E /* UITableViewBridge.swift */; };
-		B05E677920386FF3003E8E0E /* ListComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677820386FF3003E8E0E /* ListComponentDataSource.swift */; };
-		B05E677B20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677A20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift */; };
+		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
+		B05E677520385ED0003E8E0E /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677420385ED0003E8E0E /* UIListComponent.swift */; };
+		B05E677720386432003E8E0E /* UITableViewListComponentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */; };
+		B05E677920386FF3003E8E0E /* ListItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677820386FF3003E8E0E /* ListItemComponents.swift */; };
+		B05E677B20387010003E8E0E /* AnyCollection+ListItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */; };
+		B05E677D20394147003E8E0E /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677C20394147003E8E0E /* ListComponent.swift */; };
 		B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* ComponentViewController.swift */; };
-		B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E020329F25008DC89C /* URLMatcher.framework */; };
-		B097C1E320329F26008DC89C /* URLNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B097C1E120329F25008DC89C /* URLNavigator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,9 +76,6 @@
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00D96252030758A00EF0B7A /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B00D96272030758A00EF0B7A /* ComponentContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentContentMode.swift; sourceTree = "<group>"; };
-		B00D96292030758A00EF0B7A /* AnyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyNode.swift; sourceTree = "<group>"; };
-		B00D962A2030758A00EF0B7A /* ComponentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentNode.swift; sourceTree = "<group>"; };
-		B00D962B2030758A00EF0B7A /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		B00D962D2030758A00EF0B7A /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
 		B00D962F2030758A00EF0B7A /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
 		B00D96312030758A00EF0B7A /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -100,7 +92,6 @@
 		B00D9661203076C500EF0B7A /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionViewCell.xib; sourceTree = "<group>"; };
 		B00D9662203076C500EF0B7A /* NoNibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibCollectionViewCell.swift; sourceTree = "<group>"; };
 		B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
-		B00D9665203076C500EF0B7A /* ComponentNodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentNodeTests.swift; sourceTree = "<group>"; };
 		B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
 		B00D966D203076C500EF0B7A /* ListComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListComponentTests.swift; sourceTree = "<group>"; };
 		B00D966F203076C500EF0B7A /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
@@ -108,11 +99,12 @@
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
-		B05E67662036EDE5003E8E0E /* ItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
-		B05E677420385ED0003E8E0E /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
-		B05E677620386432003E8E0E /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
-		B05E677820386FF3003E8E0E /* ListComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentDataSource.swift; sourceTree = "<group>"; };
-		B05E677A20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+ListComponentDataSource.swift"; sourceTree = "<group>"; };
+		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
+		B05E677420385ED0003E8E0E /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
+		B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewListComponentBridge.swift; sourceTree = "<group>"; };
+		B05E677820386FF3003E8E0E /* ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemComponents.swift; sourceTree = "<group>"; };
+		B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+ListItemComponents.swift"; sourceTree = "<group>"; };
+		B05E677C20394147003E8E0E /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
@@ -125,8 +117,6 @@
 			files = (
 				B00D96842030779000EF0B7A /* Hydra.framework in Frameworks */,
 				B00D96852030779000EF0B7A /* TinyCore.framework in Frameworks */,
-				B097C1E220329F26008DC89C /* URLMatcher.framework in Frameworks */,
-				B097C1E320329F26008DC89C /* URLNavigator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,11 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				B00D961F2030758A00EF0B7A /* Component */,
-				B00D96282030758A00EF0B7A /* Node */,
-				B00D962C2030758A00EF0B7A /* UICollectionView */,
-				B00D96342030758A00EF0B7A /* UITableView */,
-				B00D962E2030758A00EF0B7A /* UIView */,
 				B00D96302030758A00EF0B7A /* View */,
+				B05E677E20394388003E8E0E /* UIKit */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
@@ -180,26 +167,11 @@
 		B00D961F2030758A00EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				B05E67662036EDE5003E8E0E /* ItemComponent.swift */,
-				B05E677820386FF3003E8E0E /* ListComponentDataSource.swift */,
-				B05E677A20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift */,
-				B05E677420385ED0003E8E0E /* ListComponent.swift */,
-				B05E677620386432003E8E0E /* UITableViewBridge.swift */,
-				B00D96252030758A00EF0B7A /* Component.swift */,
+				B05E677F20394875003E8E0E /* List */,
 				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
-				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
+				B00D96252030758A00EF0B7A /* Component.swift */,
 			);
 			path = Component;
-			sourceTree = "<group>";
-		};
-		B00D96282030758A00EF0B7A /* Node */ = {
-			isa = PBXGroup;
-			children = (
-				B00D96292030758A00EF0B7A /* AnyNode.swift */,
-				B00D962A2030758A00EF0B7A /* ComponentNode.swift */,
-				B00D962B2030758A00EF0B7A /* Node.swift */,
-			);
-			path = Node;
 			sourceTree = "<group>";
 		};
 		B00D962C2030758A00EF0B7A /* UICollectionView */ = {
@@ -224,7 +196,6 @@
 				B00D96312030758A00EF0B7A /* View.swift */,
 				B00D96322030758A00EF0B7A /* ViewRenderable.swift */,
 				B00D96332030758A00EF0B7A /* ViewRenderer.swift */,
-				B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,8 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				B00D9668203076C500EF0B7A /* Component */,
-				B097C1E92032A2C8008DC89C /* Navigation */,
-				B00D9664203076C500EF0B7A /* Node */,
 				B00D965F203076C500EF0B7A /* UICollectionView */,
 				B00D965A203076C500EF0B7A /* UITableView */,
 				B00D9666203076C500EF0B7A /* UIView */,
@@ -271,14 +240,6 @@
 				B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */,
 			);
 			path = UICollectionView;
-			sourceTree = "<group>";
-		};
-		B00D9664203076C500EF0B7A /* Node */ = {
-			isa = PBXGroup;
-			children = (
-				B00D9665203076C500EF0B7A /* ComponentNodeTests.swift */,
-			);
-			path = Node;
 			sourceTree = "<group>";
 		};
 		B00D9666203076C500EF0B7A /* UIView */ = {
@@ -310,11 +271,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B097C1E92032A2C8008DC89C /* Navigation */ = {
+		B05E677E20394388003E8E0E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B00D962C2030758A00EF0B7A /* UICollectionView */,
+				B00D96342030758A00EF0B7A /* UITableView */,
+				B00D962E2030758A00EF0B7A /* UIView */,
+				B05E67922039B7B4003E8E0E /* Component */,
+				B05E67912039B77B003E8E0E /* View */,
 			);
-			path = Navigation;
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B05E677F20394875003E8E0E /* List */ = {
+			isa = PBXGroup;
+			children = (
+				B05E677C20394147003E8E0E /* ListComponent.swift */,
+				B05E677820386FF3003E8E0E /* ListItemComponents.swift */,
+				B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		B05E67912039B77B003E8E0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B05E67922039B7B4003E8E0E /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
+				B05E677420385ED0003E8E0E /* UIListComponent.swift */,
+				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
+				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,15 +431,11 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/URLMatcher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/URLNavigator.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/URLMatcher.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/URLNavigator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -472,23 +463,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
-				B05E67672036EDE5003E8E0E /* ItemComponent.swift in Sources */,
+				B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
-				B00D96402030758A00EF0B7A /* Node.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */,
-				B05E677920386FF3003E8E0E /* ListComponentDataSource.swift in Sources */,
-				B05E677720386432003E8E0E /* UITableViewBridge.swift in Sources */,
-				B00D963E2030758A00EF0B7A /* AnyNode.swift in Sources */,
+				B05E677920386FF3003E8E0E /* ListItemComponents.swift in Sources */,
+				B05E677720386432003E8E0E /* UITableViewListComponentBridge.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
-				B00D963F2030758A00EF0B7A /* ComponentNode.swift in Sources */,
-				B05E677520385ED0003E8E0E /* ListComponent.swift in Sources */,
-				B05E677B20387010003E8E0E /* AnyCollection+ListComponentDataSource.swift in Sources */,
+				B05E677D20394147003E8E0E /* ListComponent.swift in Sources */,
+				B05E677520385ED0003E8E0E /* UIListComponent.swift in Sources */,
+				B05E677B20387010003E8E0E /* AnyCollection+ListItemComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +494,6 @@
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
 				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,
-				B00D9678203076C500EF0B7A /* ComponentNodeTests.swift in Sources */,
 				B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

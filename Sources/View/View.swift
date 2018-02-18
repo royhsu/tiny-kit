@@ -8,6 +8,4 @@
 
 // MARK: - View
 
-import UIKit
-
 public typealias View = UIView

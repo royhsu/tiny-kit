@@ -9,26 +9,15 @@
 /* Begin PBXBuildFile section */
 		B00D96E320307E0300EF0B7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00D96DD20307E0300EF0B7A /* Assets.xcassets */; };
 		B00D96E420307E0300EF0B7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */; };
-		B00D970420307F4400EF0B7A /* ProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96E820307F4300EF0B7A /* ProfileComponent.swift */; };
-		B00D970620307F4400EF0B7A /* ProfileIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EA20307F4300EF0B7A /* ProfileIntroductionView.swift */; };
-		B00D970720307F4400EF0B7A /* ProfileIntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96EB20307F4300EF0B7A /* ProfileIntroductionView.xib */; };
-		B00D970820307F4400EF0B7A /* ProfileComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EC20307F4300EF0B7A /* ProfileComponentState.swift */; };
-		B00D970920307F4400EF0B7A /* ProfileHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96ED20307F4300EF0B7A /* ProfileHeaderComponent.swift */; };
-		B00D970A20307F4400EF0B7A /* ProfileIntroductionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EE20307F4300EF0B7A /* ProfileIntroductionComponent.swift */; };
-		B00D970B20307F4400EF0B7A /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F020307F4400EF0B7A /* Splash.swift */; };
-		B00D970C20307F4400EF0B7A /* SplashComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F120307F4400EF0B7A /* SplashComponent.swift */; };
-		B00D970D20307F4400EF0B7A /* LoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F320307F4400EF0B7A /* LoadingComponent.swift */; };
-		B00D970E20307F4400EF0B7A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96F420307F4400EF0B7A /* LoadingView.xib */; };
-		B00D970F20307F4400EF0B7A /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F520307F4400EF0B7A /* Loading.swift */; };
-		B00D971020307F4400EF0B7A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96F620307F4400EF0B7A /* LoadingView.swift */; };
-		B00D971320307F4400EF0B7A /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FA20307F4400EF0B7A /* PostComponent.swift */; };
-		B00D971420307F4400EF0B7A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FB20307F4400EF0B7A /* Post.swift */; };
-		B00D971520307F4400EF0B7A /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FC20307F4400EF0B7A /* PostView.swift */; };
-		B00D971620307F4400EF0B7A /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96FD20307F4400EF0B7A /* PostView.xib */; };
-		B00D971720307F4400EF0B7A /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96FF20307F4400EF0B7A /* MessageView.xib */; };
-		B00D971820307F4400EF0B7A /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D970020307F4400EF0B7A /* MessageComponent.swift */; };
-		B00D971920307F4400EF0B7A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D970120307F4400EF0B7A /* Message.swift */; };
-		B00D971A20307F4400EF0B7A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D970220307F4400EF0B7A /* MessageView.swift */; };
+		B00D970420307F4400EF0B7A /* UIProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96E820307F4300EF0B7A /* UIProfileComponent.swift */; };
+		B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EA20307F4300EF0B7A /* UIProfileIntroductionView.swift */; };
+		B00D970720307F4400EF0B7A /* UIProfileIntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96EB20307F4300EF0B7A /* UIProfileIntroductionView.xib */; };
+		B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96ED20307F4300EF0B7A /* UIProfileHeaderComponent.swift */; };
+		B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96EE20307F4300EF0B7A /* UIProfileIntroductionComponent.swift */; };
+		B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FA20307F4400EF0B7A /* UIPostComponent.swift */; };
+		B00D971420307F4400EF0B7A /* UIPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FB20307F4400EF0B7A /* UIPost.swift */; };
+		B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FC20307F4400EF0B7A /* UIPostView.swift */; };
+		B00D971620307F4400EF0B7A /* UIPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96FD20307F4400EF0B7A /* UIPostView.xib */; };
 		B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D970320307F4400EF0B7A /* AppDelegate.swift */; };
 		B00D972120307F6B00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
 		B00D972520307F8600EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
@@ -36,6 +25,8 @@
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
+		B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E678D2039B25D003E8E0E /* UIProfileIntroduction.swift */; };
+		B05E67902039B509003E8E0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E678F2039B509003E8E0E /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,26 +47,15 @@
 		B00D96DD20307E0300EF0B7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B00D96DF20307E0300EF0B7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B00D96E120307E0300EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B00D96E820307F4300EF0B7A /* ProfileComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileComponent.swift; sourceTree = "<group>"; };
-		B00D96EA20307F4300EF0B7A /* ProfileIntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIntroductionView.swift; sourceTree = "<group>"; };
-		B00D96EB20307F4300EF0B7A /* ProfileIntroductionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileIntroductionView.xib; sourceTree = "<group>"; };
-		B00D96EC20307F4300EF0B7A /* ProfileComponentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileComponentState.swift; sourceTree = "<group>"; };
-		B00D96ED20307F4300EF0B7A /* ProfileHeaderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderComponent.swift; sourceTree = "<group>"; };
-		B00D96EE20307F4300EF0B7A /* ProfileIntroductionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIntroductionComponent.swift; sourceTree = "<group>"; };
-		B00D96F020307F4400EF0B7A /* Splash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
-		B00D96F120307F4400EF0B7A /* SplashComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashComponent.swift; sourceTree = "<group>"; };
-		B00D96F320307F4400EF0B7A /* LoadingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingComponent.swift; sourceTree = "<group>"; };
-		B00D96F420307F4400EF0B7A /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
-		B00D96F520307F4400EF0B7A /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
-		B00D96F620307F4400EF0B7A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		B00D96FA20307F4400EF0B7A /* PostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
-		B00D96FB20307F4400EF0B7A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		B00D96FC20307F4400EF0B7A /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
-		B00D96FD20307F4400EF0B7A /* PostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
-		B00D96FF20307F4400EF0B7A /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
-		B00D970020307F4400EF0B7A /* MessageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
-		B00D970120307F4400EF0B7A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		B00D970220307F4400EF0B7A /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		B00D96E820307F4300EF0B7A /* UIProfileComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProfileComponent.swift; sourceTree = "<group>"; };
+		B00D96EA20307F4300EF0B7A /* UIProfileIntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProfileIntroductionView.swift; sourceTree = "<group>"; };
+		B00D96EB20307F4300EF0B7A /* UIProfileIntroductionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIProfileIntroductionView.xib; sourceTree = "<group>"; };
+		B00D96ED20307F4300EF0B7A /* UIProfileHeaderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProfileHeaderComponent.swift; sourceTree = "<group>"; };
+		B00D96EE20307F4300EF0B7A /* UIProfileIntroductionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProfileIntroductionComponent.swift; sourceTree = "<group>"; };
+		B00D96FA20307F4400EF0B7A /* UIPostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostComponent.swift; sourceTree = "<group>"; };
+		B00D96FB20307F4400EF0B7A /* UIPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPost.swift; sourceTree = "<group>"; };
+		B00D96FC20307F4400EF0B7A /* UIPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostView.swift; sourceTree = "<group>"; };
+		B00D96FD20307F4400EF0B7A /* UIPostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPostView.xib; sourceTree = "<group>"; };
 		B00D970320307F4400EF0B7A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B00D972220307F6B00EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D972320307F8600EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
@@ -83,6 +63,8 @@
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		B05E678D2039B25D003E8E0E /* UIProfileIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileIntroduction.swift; sourceTree = "<group>"; };
+		B05E678F2039B509003E8E0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,15 +101,9 @@
 		B00D96DB20307E0300EF0B7A /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96F220307F4400EF0B7A /* Loading */,
-				B00D96FE20307F4400EF0B7A /* Message */,
-				B00D96F820307F4400EF0B7A /* Post */,
-				B00D96E720307F4300EF0B7A /* Profile */,
-				B00D96EF20307F4400EF0B7A /* Splash */,
+				B05E67892039AB38003E8E0E /* Core */,
+				B05E678C2039ABBB003E8E0E /* View */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
-				B05E676B2037B406003E8E0E /* UserManager.swift */,
-				B05E67712037C1BA003E8E0E /* PostManager.swift */,
-				B05E676D2037B467003E8E0E /* User.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -138,56 +114,25 @@
 		B00D96E720307F4300EF0B7A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96EA20307F4300EF0B7A /* ProfileIntroductionView.swift */,
-				B00D96EB20307F4300EF0B7A /* ProfileIntroductionView.xib */,
-				B00D96EE20307F4300EF0B7A /* ProfileIntroductionComponent.swift */,
-				B00D96ED20307F4300EF0B7A /* ProfileHeaderComponent.swift */,
-				B00D96EC20307F4300EF0B7A /* ProfileComponentState.swift */,
-				B00D96E820307F4300EF0B7A /* ProfileComponent.swift */,
+				B00D96EA20307F4300EF0B7A /* UIProfileIntroductionView.swift */,
+				B00D96EB20307F4300EF0B7A /* UIProfileIntroductionView.xib */,
+				B05E678D2039B25D003E8E0E /* UIProfileIntroduction.swift */,
+				B00D96EE20307F4300EF0B7A /* UIProfileIntroductionComponent.swift */,
+				B00D96ED20307F4300EF0B7A /* UIProfileHeaderComponent.swift */,
+				B00D96E820307F4300EF0B7A /* UIProfileComponent.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		B00D96EF20307F4400EF0B7A /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				B00D96F020307F4400EF0B7A /* Splash.swift */,
-				B00D96F120307F4400EF0B7A /* SplashComponent.swift */,
-			);
-			path = Splash;
-			sourceTree = "<group>";
-		};
-		B00D96F220307F4400EF0B7A /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				B00D96F520307F4400EF0B7A /* Loading.swift */,
-				B00D96F620307F4400EF0B7A /* LoadingView.swift */,
-				B00D96F420307F4400EF0B7A /* LoadingView.xib */,
-				B00D96F320307F4400EF0B7A /* LoadingComponent.swift */,
-			);
-			path = Loading;
 			sourceTree = "<group>";
 		};
 		B00D96F820307F4400EF0B7A /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96FB20307F4400EF0B7A /* Post.swift */,
-				B00D96FC20307F4400EF0B7A /* PostView.swift */,
-				B00D96FD20307F4400EF0B7A /* PostView.xib */,
-				B00D96FA20307F4400EF0B7A /* PostComponent.swift */,
+				B00D96FC20307F4400EF0B7A /* UIPostView.swift */,
+				B00D96FD20307F4400EF0B7A /* UIPostView.xib */,
+				B00D96FB20307F4400EF0B7A /* UIPost.swift */,
+				B00D96FA20307F4400EF0B7A /* UIPostComponent.swift */,
 			);
 			path = Post;
-			sourceTree = "<group>";
-		};
-		B00D96FE20307F4400EF0B7A /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				B00D970120307F4400EF0B7A /* Message.swift */,
-				B00D970220307F4400EF0B7A /* MessageView.swift */,
-				B00D96FF20307F4400EF0B7A /* MessageView.xib */,
-				B00D970020307F4400EF0B7A /* MessageComponent.swift */,
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		B00D972020307F6B00EF0B7A /* Frameworks */ = {
@@ -198,6 +143,42 @@
 				B00D972220307F6B00EF0B7A /* TinyKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B05E67892039AB38003E8E0E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B05E678A2039AB77003E8E0E /* Post */,
+				B05E678B2039AB82003E8E0E /* User */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B05E678A2039AB77003E8E0E /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B05E678F2039B509003E8E0E /* Post.swift */,
+				B05E67712037C1BA003E8E0E /* PostManager.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		B05E678B2039AB82003E8E0E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B05E676D2037B467003E8E0E /* User.swift */,
+				B05E676B2037B406003E8E0E /* UserManager.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B05E678C2039ABBB003E8E0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B00D96F820307F4400EF0B7A /* Post */,
+				B00D96E720307F4300EF0B7A /* Profile */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +193,7 @@
 				B00D96C720307D9C00EF0B7A /* Resources */,
 				B00D971F20307F5E00EF0B7A /* Embed Frameworks */,
 				B00D972720307FA100EF0B7A /* Carthage */,
+				B05E67932039B912003E8E0E /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -262,12 +244,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00D971720307F4400EF0B7A /* MessageView.xib in Resources */,
 				B00D96E320307E0300EF0B7A /* Assets.xcassets in Resources */,
-				B00D970E20307F4400EF0B7A /* LoadingView.xib in Resources */,
-				B00D971620307F4400EF0B7A /* PostView.xib in Resources */,
+				B00D971620307F4400EF0B7A /* UIPostView.xib in Resources */,
 				B00D96E420307E0300EF0B7A /* LaunchScreen.storyboard in Resources */,
-				B00D970720307F4400EF0B7A /* ProfileIntroductionView.xib in Resources */,
+				B00D970720307F4400EF0B7A /* UIProfileIntroductionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +272,20 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		B05E67932039B912003E8E0E /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -299,26 +293,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00D970B20307F4400EF0B7A /* Splash.swift in Sources */,
-				B00D970D20307F4400EF0B7A /* LoadingComponent.swift in Sources */,
-				B00D971920307F4400EF0B7A /* Message.swift in Sources */,
-				B00D971820307F4400EF0B7A /* MessageComponent.swift in Sources */,
-				B00D970F20307F4400EF0B7A /* Loading.swift in Sources */,
-				B00D971020307F4400EF0B7A /* LoadingView.swift in Sources */,
-				B00D970420307F4400EF0B7A /* ProfileComponent.swift in Sources */,
+				B00D970420307F4400EF0B7A /* UIProfileComponent.swift in Sources */,
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
-				B00D971320307F4400EF0B7A /* PostComponent.swift in Sources */,
-				B00D970920307F4400EF0B7A /* ProfileHeaderComponent.swift in Sources */,
-				B00D971A20307F4400EF0B7A /* MessageView.swift in Sources */,
-				B00D971420307F4400EF0B7A /* Post.swift in Sources */,
-				B00D971520307F4400EF0B7A /* PostView.swift in Sources */,
-				B00D970620307F4400EF0B7A /* ProfileIntroductionView.swift in Sources */,
-				B00D970820307F4400EF0B7A /* ProfileComponentState.swift in Sources */,
-				B00D970C20307F4400EF0B7A /* SplashComponent.swift in Sources */,
+				B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */,
+				B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */,
+				B05E67902039B509003E8E0E /* Post.swift in Sources */,
+				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
+				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
+				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
-				B00D970A20307F4400EF0B7A /* ProfileIntroductionComponent.swift in Sources */,
+				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
 				B05E676E2037B467003E8E0E /* User.swift in Sources */,
+				B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
