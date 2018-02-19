@@ -27,6 +27,9 @@
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
 		B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E678D2039B25D003E8E0E /* UIProfileIntroduction.swift */; };
 		B05E67902039B509003E8E0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E678F2039B509003E8E0E /* Post.swift */; };
+		B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */; };
+		B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6797203A7F45003E8E0E /* UILoadingView.swift */; };
+		B05E679A203A7F6A003E8E0E /* UILoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6799203A7F6A003E8E0E /* UILoadingView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +68,9 @@
 		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		B05E678D2039B25D003E8E0E /* UIProfileIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileIntroduction.swift; sourceTree = "<group>"; };
 		B05E678F2039B509003E8E0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingComponent.swift; sourceTree = "<group>"; };
+		B05E6797203A7F45003E8E0E /* UILoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingView.swift; sourceTree = "<group>"; };
+		B05E6799203A7F6A003E8E0E /* UILoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILoadingView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,10 +181,21 @@
 		B05E678C2039ABBB003E8E0E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B05E6794203A7EB0003E8E0E /* Loading */,
 				B00D96F820307F4400EF0B7A /* Post */,
 				B00D96E720307F4300EF0B7A /* Profile */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B05E6794203A7EB0003E8E0E /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B05E6797203A7F45003E8E0E /* UILoadingView.swift */,
+				B05E6799203A7F6A003E8E0E /* UILoadingView.xib */,
+				B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +210,6 @@
 				B00D96C720307D9C00EF0B7A /* Resources */,
 				B00D971F20307F5E00EF0B7A /* Embed Frameworks */,
 				B00D972720307FA100EF0B7A /* Carthage */,
-				B05E67932039B912003E8E0E /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -244,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05E679A203A7F6A003E8E0E /* UILoadingView.xib in Resources */,
 				B00D96E320307E0300EF0B7A /* Assets.xcassets in Resources */,
 				B00D971620307F4400EF0B7A /* UIPostView.xib in Resources */,
 				B00D96E420307E0300EF0B7A /* LaunchScreen.storyboard in Resources */,
@@ -272,20 +289,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		B05E67932039B912003E8E0E /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,9 +300,11 @@
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
 				B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */,
 				B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */,
+				B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */,
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
+				B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
