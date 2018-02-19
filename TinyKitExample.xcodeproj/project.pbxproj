@@ -30,6 +30,7 @@
 		B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */; };
 		B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6797203A7F45003E8E0E /* UILoadingView.swift */; };
 		B05E679A203A7F6A003E8E0E /* UILoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6799203A7F6A003E8E0E /* UILoadingView.xib */; };
+		B05E679D203A8243003E8E0E /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E679C203A8243003E8E0E /* ProfileCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +72,7 @@
 		B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingComponent.swift; sourceTree = "<group>"; };
 		B05E6797203A7F45003E8E0E /* UILoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingView.swift; sourceTree = "<group>"; };
 		B05E6799203A7F6A003E8E0E /* UILoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILoadingView.xib; sourceTree = "<group>"; };
+		B05E679C203A8243003E8E0E /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				B05E67892039AB38003E8E0E /* Core */,
 				B05E678C2039ABBB003E8E0E /* View */,
+				B05E679B203A822A003E8E0E /* Coordinator */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
@@ -196,6 +199,22 @@
 				B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		B05E679B203A822A003E8E0E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B05E679C203A8243003E8E0E /* ProfileCoordinator.swift */,
+				B05E679E203A9384003E8E0E /* New Group */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B05E679E203A9384003E8E0E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +323,7 @@
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
+				B05E679D203A8243003E8E0E /* ProfileCoordinator.swift in Sources */,
 				B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
