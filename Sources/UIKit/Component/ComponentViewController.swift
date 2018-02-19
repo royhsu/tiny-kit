@@ -8,10 +8,6 @@
 
 // MARK: - ComponentViewController
 
-import UIKit
-
-/// A component wrapper that can interact with the UIKit framework
-/// For example, adding a UINavigationController to component for navigation.
 public final class ComponentViewController: UIViewController {
 
     public final let component: Component

@@ -13,22 +13,9 @@ import UIKit
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
 
-    public final let rootCoordinator = ProfileCoordinator(
-        userId: "1",
-        userManager: UserManager(),
-        postManager: PostManager(),
-        loadingComponent: UILoadingComponent(
-            contentMode: .size(
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height
-            )
-        ),
-        profileComponent: UIProfileComponent(
-            contentMode: .size(
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height
-            )
-        )
+    public final let rootCoordinator = UIProfileCoordinator(
+        contentSize: UIScreen.main.bounds.size,
+        userId: "1"
     )
 
     public final let window = UIWindow(frame: UIScreen.main.bounds)
@@ -71,15 +58,15 @@ extension AppDelegate: UIApplicationDelegate {
 //            component: component
 //        )
 
-        window.rootViewController = UIViewController()
+        window.rootViewController = UIViewRendererController(renderable: rootCoordinator)
 
         window.makeKeyAndVisible()
+
+        rootCoordinator.start()
 
 //        component.render()
 //
 //        component.startAnimating()
-
-        rootCoordinator.start()
 
 //        let fetchUser: Promise<Void> = UserManager()
 //            .fetchUser(

@@ -22,6 +22,10 @@
 		B00D972120307F6B00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
 		B00D972520307F8600EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
 		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
+		B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA92203AC47B00B9DCBA /* StateMachine.swift */; };
+		B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */; };
+		B031CA97203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA96203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift */; };
+		B031CA9D203AF44600B9DCBA /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
@@ -30,7 +34,7 @@
 		B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */; };
 		B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6797203A7F45003E8E0E /* UILoadingView.swift */; };
 		B05E679A203A7F6A003E8E0E /* UILoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6799203A7F6A003E8E0E /* UILoadingView.xib */; };
-		B05E679D203A8243003E8E0E /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E679C203A8243003E8E0E /* ProfileCoordinator.swift */; };
+		B05E679D203A8243003E8E0E /* UIProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E679C203A8243003E8E0E /* UIProfileCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +68,10 @@
 		B00D972220307F6B00EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D972320307F8600EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D972420307F8600EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B031CA92203AC47B00B9DCBA /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileState.swift; sourceTree = "<group>"; };
+		B031CA96203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProfileCoordinator+ViewRenderable.swift"; sourceTree = "<group>"; };
+		B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
@@ -72,7 +80,7 @@
 		B05E6795203A7F30003E8E0E /* UILoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingComponent.swift; sourceTree = "<group>"; };
 		B05E6797203A7F45003E8E0E /* UILoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingView.swift; sourceTree = "<group>"; };
 		B05E6799203A7F6A003E8E0E /* UILoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILoadingView.xib; sourceTree = "<group>"; };
-		B05E679C203A8243003E8E0E /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		B05E679C203A8243003E8E0E /* UIProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,8 @@
 				B05E678C2039ABBB003E8E0E /* View */,
 				B05E679B203A822A003E8E0E /* Coordinator */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
+				B031CA92203AC47B00B9DCBA /* StateMachine.swift */,
+				B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -204,17 +214,19 @@
 		B05E679B203A822A003E8E0E /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				B05E679C203A8243003E8E0E /* ProfileCoordinator.swift */,
-				B05E679E203A9384003E8E0E /* New Group */,
+				B05E679E203A9384003E8E0E /* Profile */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		B05E679E203A9384003E8E0E /* New Group */ = {
+		B05E679E203A9384003E8E0E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */,
+				B05E679C203A8243003E8E0E /* UIProfileCoordinator.swift */,
+				B031CA96203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift */,
 			);
-			path = "New Group";
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,19 +328,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00D970420307F4400EF0B7A /* UIProfileComponent.swift in Sources */,
+				B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */,
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
 				B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */,
 				B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */,
+				B031CA9D203AF44600B9DCBA /* UIViewRendererController.swift in Sources */,
 				B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */,
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
+				B031CA97203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
-				B05E679D203A8243003E8E0E /* ProfileCoordinator.swift in Sources */,
+				B05E679D203A8243003E8E0E /* UIProfileCoordinator.swift in Sources */,
 				B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
+				B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */,
 				B05E676E2037B467003E8E0E /* User.swift in Sources */,
 				B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */,
 			);
