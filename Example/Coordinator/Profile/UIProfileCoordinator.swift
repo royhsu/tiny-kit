@@ -80,7 +80,7 @@ public final class UIProfileCoordinator: ViewRenderable {
 
     }
 
-    public final func start() {
+    public final func activate() {
 
         stateMachine.delegate = self
 
@@ -131,7 +131,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
         guard
             let old = old as? UIProfileState,
             let new = new as? UIProfileState
-        else { return }
+        else { fatalError("Unexpected state.") }
 
         switch (old, new) {
 

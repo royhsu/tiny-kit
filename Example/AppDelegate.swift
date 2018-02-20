@@ -62,7 +62,7 @@ extension AppDelegate: UIApplicationDelegate {
 
         window.makeKeyAndVisible()
 
-        rootCoordinator.start()
+        rootCoordinator.activate()
 
 //        component.render()
 //
