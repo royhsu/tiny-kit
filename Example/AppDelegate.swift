@@ -33,7 +33,9 @@ extension AppDelegate: UIApplicationDelegate {
         /// The ROOT must specify a size to render its content correctly.
         let rootCoordinator = UIProfileCoordinator(
             contentSize: window.bounds.size,
-            userId: "1"
+            userId: "1",
+            userManager: UserManager(),
+            postManager: PostManager()
         )
 
         window.rootViewController = UIViewRendererController(renderable: rootCoordinator)

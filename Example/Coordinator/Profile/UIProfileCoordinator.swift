@@ -25,9 +25,9 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     public final let userId: String
 
-    private final let userManager = UserManager()
+    private final let userManager: UserManager
 
-    private final let postManager = PostManager()
+    private final let postManager: PostManager
 
     private final let splashComponent: UIItemComponent<UIView>
 
@@ -39,10 +39,16 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     public init(
         contentSize: CGSize,
-        userId: String
+        userId: String,
+        userManager: UserManager,
+        postManager: PostManager
     ) {
 
         self.userId = userId
+
+        self.userManager = userManager
+
+        self.postManager = postManager
 
         self.splashComponent = UIItemComponent(
             contentMode: .size(
