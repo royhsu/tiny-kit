@@ -9,6 +9,7 @@
 // MARK: - UIProfileCoordinator
 
 import Hydra
+import TinyCore
 import TinyKit
 
 public final class UIProfileCoordinator: Coordinator, ViewRenderable {

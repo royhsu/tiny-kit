@@ -24,7 +24,6 @@
 		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
 		B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F6203BEAE80074CD5E /* UIMessageComponent.swift */; };
 		B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F8203BEBD40074CD5E /* UIMessage.swift */; };
-		B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA92203AC47B00B9DCBA /* StateMachine.swift */; };
 		B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */; };
 		B031CA9F203BE6F900B9DCBA /* UIMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */; };
 		B031CAA2203BE73E00B9DCBA /* UIMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */; };
@@ -72,7 +71,6 @@
 		B00D972420307F8600EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B01ED1F6203BEAE80074CD5E /* UIMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessageComponent.swift; sourceTree = "<group>"; };
 		B01ED1F8203BEBD40074CD5E /* UIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessage.swift; sourceTree = "<group>"; };
-		B031CA92203AC47B00B9DCBA /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileState.swift; sourceTree = "<group>"; };
 		B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessageView.swift; sourceTree = "<group>"; };
 		B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMessageView.xib; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				B05E678C2039ABBB003E8E0E /* View */,
 				B05E679B203A822A003E8E0E /* Coordinator */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
-				B031CA92203AC47B00B9DCBA /* StateMachine.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -360,7 +357,6 @@
 				B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
-				B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */,
 				B05E676E2037B467003E8E0E /* User.swift in Sources */,
 				B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */,
 			);

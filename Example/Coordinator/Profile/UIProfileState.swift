@@ -8,6 +8,8 @@
 
 // MARK: - UIProfileState
 
+import TinyCore
+
 public enum UIProfileState: State {
 
     case initial
