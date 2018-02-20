@@ -104,7 +104,7 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     }
 
-    // MARK: - ViewRenderable
+    // MARK: ViewRenderable
 
     public final let view = View()
 
