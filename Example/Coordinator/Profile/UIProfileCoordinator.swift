@@ -23,20 +23,6 @@ public final class UIProfileCoordinator: ViewRenderable {
 
     }
 
-    internal final func component(for state: UIProfileState) -> Component {
-
-        switch state {
-
-        case .initial: return splashComponent
-
-        case .loading: return loadingComponent
-
-        case .loaded: return profileComponent
-
-        }
-
-    }
-
     public final let userId: String
 
     private final let userManager = UserManager()
@@ -48,6 +34,8 @@ public final class UIProfileCoordinator: ViewRenderable {
     private final let loadingComponent: UILoadingComponent
 
     private final let profileComponent: UIProfileComponent
+
+    private final let messageComponent: UIMessageComponent
 
     public init(
         contentSize: CGSize,
@@ -78,33 +66,30 @@ public final class UIProfileCoordinator: ViewRenderable {
             )
         )
 
+        self.messageComponent = UIMessageComponent(
+            contentMode: .size(
+                width: contentSize.width,
+                height: contentSize.height
+            )
+        )
+
     }
 
     public final func activate() {
 
-        stateMachine.delegate = self
+        switch currentState {
 
-        do {
+        case .initial:
 
-            switch currentState {
+            stateMachine.delegate = self
 
-            case .initial:
+            splashComponent.render()
 
-                splashComponent.render()
+            view.render(with: splashComponent)
 
-                view.render(with: splashComponent)
+            stateMachine.enter(UIProfileState.loading)
 
-                try stateMachine.enter(UIProfileState.loading)
-
-            case .loading, .loaded: break
-
-            }
-
-        }
-        catch {
-
-            // TODO: show error.
-            print("\(error)")
+        case .loading, .loaded, .error: break
 
         }
 
@@ -143,53 +128,31 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             view.render(with: loadingComponent)
 
-            let fetchUser: Promise<Void> = userManager
-                .fetchUser(
+            Promise<Void>.zip(
+                userManager.fetchUser(
+                    in: .background,
+                    userId: userId
+                ),
+                postManager.fetchPosts(
                     in: .background,
                     userId: userId
                 )
-                .then { user -> UIProfileIntroduction in
-
-                    return UIProfileIntroduction(
-                        name: user.name,
-                        introduction: user.introduction
-                    )
-
-                }
-                .then(
-                    in: .main,
-                    profileComponent.setIntroduction
-                )
-
-            let fetchPosts: Promise<Void> = postManager
-                .fetchPosts(
-                    in: .background,
-                    userId: userId
-                )
-                .then { posts -> [UIPost] in
-
-                    return posts.map { post in
-
-                        return UIPost(
-                            title: post.title,
-                            content: post.content
-                        )
-
-                    }
-
-                }
-                .then(
-                    in: .main,
-                    profileComponent.setPosts
-                )
-
-            all(
-                fetchUser,
-                fetchPosts
             )
-            .then(in: .main) { _ in
+            .then(in: .main) { result in
 
-                try self.stateMachine.enter(UIProfileState.loaded)
+                self.stateMachine.enter(
+                    UIProfileState.loaded(
+                        user: result.0,
+                        posts: result.1
+                    )
+                )
+
+            }
+            .catch(in: .main) { error in
+
+                self.stateMachine.enter(
+                    UIProfileState.error(error)
+                )
 
             }
             .always(
@@ -197,11 +160,49 @@ extension UIProfileCoordinator: StateMachineDelegate {
                 body: loadingComponent.stopAnimating
             )
 
-        case (.loading, .loaded):
+        case (
+            .loading,
+            .loaded(let user, let posts)
+        ):
+
+            profileComponent.setIntroduction(
+                UIProfileIntroduction(
+                    pictureImage: nil,
+                    name: user.name,
+                    introduction: user.introduction
+                )
+            )
+
+            profileComponent.setPosts(
+                posts.map { post in
+
+                    return UIPost(
+                        title: post.title,
+                        content: post.content
+                    )
+
+                }
+            )
 
             profileComponent.render()
 
             view.render(with: profileComponent)
+
+        case (
+            .loading,
+            .error(let error)
+        ):
+
+            messageComponent.setMessage(
+                UIMessage(
+                    title: "⚠️",
+                    text: "\(error)"
+                )
+            )
+
+            messageComponent.render()
+
+            view.render(with: messageComponent)
 
         default: fatalError("Invalid state transition.")
 

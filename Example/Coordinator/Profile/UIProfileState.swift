@@ -10,7 +10,13 @@
 
 public enum UIProfileState: State {
 
-    case initial, loading, loaded
+    case initial
+
+    case loading
+
+    case loaded(user: User, posts: [Post])
+
+    case error(Error)
 
     // MARK: State
 
@@ -27,7 +33,8 @@ public enum UIProfileState: State {
         case
             (.initial, .loading),
             (.loading, .loaded),
-            (.loaded, .loading):
+            (.loaded, .loading),
+            (.loading, .error):
 
             return true
 

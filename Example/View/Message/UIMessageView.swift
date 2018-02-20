@@ -34,6 +34,8 @@ public final class UIMessageView: UIView {
 
         label.text = nil
 
+        label.numberOfLines = 0
+
         label.font = UIFont.preferredFont(forTextStyle: .title1)
 
         label.textAlignment = .center
@@ -43,6 +45,8 @@ public final class UIMessageView: UIView {
     fileprivate final func setUpTextLabel(_ label: UILabel) {
 
         label.text = nil
+
+        label.numberOfLines = 0
 
         label.font = UIFont.preferredFont(forTextStyle: .body)
 

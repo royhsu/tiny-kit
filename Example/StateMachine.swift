@@ -12,12 +12,6 @@ public protocol State {
 
 }
 
-public enum StateMachineError: Error {
-
-    case invalidTransition(from: State, to: State)
-
-}
-
 public protocol StateMachineDelegate: class {
 
     func stateMachine(
@@ -52,18 +46,11 @@ public final class StateMachine {
 
 public extension StateMachine {
 
-    public final func enter(_ state: State) throws {
+    public final func enter(_ state: State) {
 
         guard
             currentState.isValidNextState(state)
-        else {
-
-            throw StateMachineError.invalidTransition(
-                from: currentState,
-                to: state
-            )
-
-        }
+        else { fatalError("Invalid state transition from \(currentState) to \(state).") }
 
         currentState = state
 
