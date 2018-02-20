@@ -1,18 +1,14 @@
 //
-//  ComponentViewController.swift
+//  UIComponentViewController.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ComponentViewController
+// MARK: - UIComponentViewController
 
-import UIKit
-
-/// A component wrapper that can interact with the UIKit framework
-/// For example, adding a UINavigationController to component for navigation.
-public final class ComponentViewController: UIViewController {
+public final class UIComponentViewController: UIViewController {
 
     public final let component: Component
 

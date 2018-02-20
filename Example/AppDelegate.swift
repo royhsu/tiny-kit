@@ -19,7 +19,6 @@ public final class AppDelegate: UIResponder {
 
 // MARK: - UIApplicationDelegate
 
-import Hydra
 import TinyKit
 
 extension AppDelegate: UIApplicationDelegate {
@@ -30,70 +29,19 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
 
-        /// The ROOT component must specify a size to render its content correctly.
-        let component = UIProfileComponent(
-            contentMode: .size(
-                width: window.bounds.width,
-                height: window.bounds.height
-            )
+        /// The ROOT must specify a size to render its content correctly.
+        let rootCoordinator = UIProfileCoordinator(
+            contentSize: window.bounds.size,
+            userId: "1",
+            userManager: UserManager(),
+            postManager: PostManager()
         )
 
-        window.rootViewController = UINavigationController(
-            rootViewController: ComponentViewController(component: component)
-        )
+        window.rootViewController = UIViewRendererController(renderable: rootCoordinator)
 
         window.makeKeyAndVisible()
 
-        let userId = "1"
-
-        let fetchUser: Promise<Void> = UserManager()
-            .fetchUser(
-                in: .background,
-                userId: userId
-            )
-            .then { user -> UIProfileIntroduction in
-
-                return UIProfileIntroduction(
-                    name: user.name,
-                    introduction: user.introduction
-                )
-
-            }
-            .then(
-                in: .main,
-                component.setIntroduction
-            )
-
-        let fetchPosts: Promise<Void> = PostManager()
-            .fetchPosts(
-                in: .background,
-                userId: userId
-            )
-            .then { posts -> [UIPost] in
-
-                return posts.map { post in
-
-                    return UIPost(
-                        title: post.title,
-                        content: post.content
-                    )
-
-                }
-
-            }
-            .then(
-                in: .main,
-                component.setPosts
-            )
-
-        all(
-            fetchUser,
-            fetchPosts
-        )
-        .always(
-            in: .main,
-            body: component.render
-        )
+        rootCoordinator.activate()
 
         return true
 

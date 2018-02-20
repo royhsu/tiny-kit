@@ -6,17 +6,37 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - StateMachineDelegate
+
+public protocol StateMachineDelegate: class {
+
+    func stateMachine(
+        _ stateMachine: StateMachine,
+        didChangeFrom old: State,
+        to new: State
+    )
+
+}
+
 // MARK: - StateMachine
 
-public final class StateMachine<L: AnyObject> {
+public final class StateMachine {
 
-    public let eventManger = EventManager<StateMachineEvent, L>()
+    public private(set) final var currentState: State {
 
-    public private(set) var currentState: State {
+        didSet {
 
-        didSet { eventManger.emit(.updateCurrentState) }
+            delegate?.stateMachine(
+                self,
+                didChangeFrom: oldValue,
+                to: currentState
+            )
+
+        }
 
     }
+
+    public final weak var delegate: StateMachineDelegate?
 
     public init(initialState: State) { self.currentState = initialState }
 
@@ -24,17 +44,11 @@ public final class StateMachine<L: AnyObject> {
 
 public extension StateMachine {
 
-    public final func enter(_ state: State) throws {
+    public final func enter(_ state: State) {
 
         guard
             currentState.isValidNextState(state)
-        else {
-
-            let error: StateMachineError = .invalidNextState(state)
-
-            throw error
-
-        }
+        else { fatalError("Invalid state transition from \(currentState) to \(state).") }
 
         currentState = state
 
