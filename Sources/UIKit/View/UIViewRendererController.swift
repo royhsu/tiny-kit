@@ -8,8 +8,6 @@
 
 // MARK: - UIViewRendererController
 
-import TinyKit
-
 public final class UIViewRendererController: UIViewController {
 
     public final let renderable: ViewRenderable

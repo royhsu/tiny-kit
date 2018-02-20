@@ -1,14 +1,14 @@
 //
-//  ComponentViewController.swift
+//  UIComponentViewController.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 08/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ComponentViewController
+// MARK: - UIComponentViewController
 
-public final class ComponentViewController: UIViewController {
+public final class UIComponentViewController: UIViewController {
 
     public final let component: Component
 

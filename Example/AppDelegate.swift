@@ -19,7 +19,6 @@ public final class AppDelegate: UIResponder {
 
 // MARK: - UIApplicationDelegate
 
-import Hydra
 import TinyKit
 
 extension AppDelegate: UIApplicationDelegate {

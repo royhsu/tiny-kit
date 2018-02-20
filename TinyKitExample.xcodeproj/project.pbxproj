@@ -26,7 +26,6 @@
 		B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F8203BEBD40074CD5E /* UIMessage.swift */; };
 		B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA92203AC47B00B9DCBA /* StateMachine.swift */; };
 		B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */; };
-		B031CA9D203AF44600B9DCBA /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */; };
 		B031CA9F203BE6F900B9DCBA /* UIMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */; };
 		B031CAA2203BE73E00B9DCBA /* UIMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
@@ -75,7 +74,6 @@
 		B01ED1F8203BEBD40074CD5E /* UIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessage.swift; sourceTree = "<group>"; };
 		B031CA92203AC47B00B9DCBA /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileState.swift; sourceTree = "<group>"; };
-		B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
 		B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessageView.swift; sourceTree = "<group>"; };
 		B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMessageView.xib; sourceTree = "<group>"; };
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				B05E679B203A822A003E8E0E /* Coordinator */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
 				B031CA92203AC47B00B9DCBA /* StateMachine.swift */,
-				B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -350,7 +347,6 @@
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
 				B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */,
 				B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */,
-				B031CA9D203AF44600B9DCBA /* UIViewRendererController.swift in Sources */,
 				B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */,
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,

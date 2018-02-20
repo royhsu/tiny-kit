@@ -35,6 +35,7 @@
 		B00D968D2030790200EF0B7A /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FD203BFD580074CD5E /* Coordinator.swift */; };
+		B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */; };
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
@@ -43,7 +44,7 @@
 		B05E677920386FF3003E8E0E /* ListItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677820386FF3003E8E0E /* ListItemComponents.swift */; };
 		B05E677B20387010003E8E0E /* AnyCollection+ListItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */; };
 		B05E677D20394147003E8E0E /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677C20394147003E8E0E /* ListComponent.swift */; };
-		B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* ComponentViewController.swift */; };
+		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		B00D96822030779000EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B01ED1FD203BFD580074CD5E /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 		B05E677820386FF3003E8E0E /* ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemComponents.swift; sourceTree = "<group>"; };
 		B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+ListItemComponents.swift"; sourceTree = "<group>"; };
 		B05E677C20394147003E8E0E /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
-		B0876EBC2035B8300003CC59 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
+		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -308,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */,
+				B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,7 +321,7 @@
 				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
 				B05E677420385ED0003E8E0E /* UIListComponent.swift */,
 				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
-				B0876EBC2035B8300003CC59 /* ComponentViewController.swift */,
+				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -481,7 +484,7 @@
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
-				B0876EBD2035B8300003CC59 /* ComponentViewController.swift in Sources */,
+				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
 				B05E677920386FF3003E8E0E /* ListItemComponents.swift in Sources */,
 				B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */,
 				B05E677720386432003E8E0E /* UITableViewListComponentBridge.swift in Sources */,
@@ -490,6 +493,7 @@
 				B05E677D20394147003E8E0E /* ListComponent.swift in Sources */,
 				B05E677520385ED0003E8E0E /* UIListComponent.swift in Sources */,
 				B05E677B20387010003E8E0E /* AnyCollection+ListItemComponents.swift in Sources */,
+				B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
