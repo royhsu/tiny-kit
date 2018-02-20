@@ -24,9 +24,9 @@
 		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
 		B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F6203BEAE80074CD5E /* UIMessageComponent.swift */; };
 		B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F8203BEBD40074CD5E /* UIMessage.swift */; };
+		B01ED1FB203BF9020074CD5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FA203BF9020074CD5E /* Coordinator.swift */; };
 		B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA92203AC47B00B9DCBA /* StateMachine.swift */; };
 		B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */; };
-		B031CA97203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA96203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift */; };
 		B031CA9D203AF44600B9DCBA /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */; };
 		B031CA9F203BE6F900B9DCBA /* UIMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */; };
 		B031CAA2203BE73E00B9DCBA /* UIMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */; };
@@ -74,9 +74,9 @@
 		B00D972420307F8600EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B01ED1F6203BEAE80074CD5E /* UIMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessageComponent.swift; sourceTree = "<group>"; };
 		B01ED1F8203BEBD40074CD5E /* UIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessage.swift; sourceTree = "<group>"; };
+		B01ED1FA203BF9020074CD5E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B031CA92203AC47B00B9DCBA /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileState.swift; sourceTree = "<group>"; };
-		B031CA96203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProfileCoordinator+ViewRenderable.swift"; sourceTree = "<group>"; };
 		B031CA9C203AF44600B9DCBA /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
 		B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessageView.swift; sourceTree = "<group>"; };
 		B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMessageView.xib; sourceTree = "<group>"; };
@@ -234,6 +234,7 @@
 		B05E679B203A822A003E8E0E /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				B01ED1FA203BF9020074CD5E /* Coordinator.swift */,
 				B05E679E203A9384003E8E0E /* Profile */,
 			);
 			path = Coordinator;
@@ -244,7 +245,6 @@
 			children = (
 				B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */,
 				B05E679C203A8243003E8E0E /* UIProfileCoordinator.swift */,
-				B031CA96203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -356,7 +356,6 @@
 				B031CA9D203AF44600B9DCBA /* UIViewRendererController.swift in Sources */,
 				B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */,
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
-				B031CA97203AF0C000B9DCBA /* UIProfileCoordinator+ViewRenderable.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
 				B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */,
@@ -366,6 +365,7 @@
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
 				B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */,
+				B01ED1FB203BF9020074CD5E /* Coordinator.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
 				B031CA93203AC47B00B9DCBA /* StateMachine.swift in Sources */,

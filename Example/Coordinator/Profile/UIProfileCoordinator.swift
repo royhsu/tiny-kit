@@ -11,7 +11,7 @@
 import Hydra
 import TinyKit
 
-public final class UIProfileCoordinator: ViewRenderable {
+public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     private final let stateMachine = StateMachine(initialState: UIProfileState.initial)
 
@@ -74,6 +74,8 @@ public final class UIProfileCoordinator: ViewRenderable {
         )
 
     }
+
+    // MARK: Coordinator
 
     public final func activate() {
 
