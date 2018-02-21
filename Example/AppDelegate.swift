@@ -30,18 +30,29 @@ extension AppDelegate: UIApplicationDelegate {
     -> Bool {
 
         /// The ROOT must specify a size to render its content correctly.
-        let rootCoordinator = UIProfileCoordinator(
-            contentSize: window.bounds.size,
-            userId: "1",
-            userManager: UserManager(),
-            postManager: PostManager()
+//        let rootCoordinator = UIProfileCoordinator(
+//            contentSize: window.bounds.size,
+//            userId: "1",
+//            userManager: UserManager(),
+//            postManager: PostManager()
+//        )
+//
+//        window.rootViewController = UIViewRendererController(renderable: rootCoordinator)
+        
+        //        rootCoordinator.activate()
+
+        let rootComponent = UISignInComponent(
+            contentMode: .size(
+                width: window.bounds.width,
+                height: window.bounds.height
+            )
         )
-
-        window.rootViewController = UIViewRendererController(renderable: rootCoordinator)
-
+        
+        rootComponent.render()
+        
+        window.rootViewController = UIViewRendererController(renderable: rootComponent)
+        
         window.makeKeyAndVisible()
-
-        rootCoordinator.activate()
 
         return true
 
