@@ -6,11 +6,27 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UISignInComponentDelegate
+
+public protocol UISignInComponentDelegate: class {
+    
+    func component(
+        _ component: UISignInComponent,
+        authenicateWithEmail email: String,
+        password: String
+    )
+    
+}
+
 // MARK: - UISignInComponent
 
 import TinyKit
 
 public final class UISignInComponent: Component {
+    
+    // TODO: add state machine for managing the validation of inputs.
+    
+    public final weak var delegate: UISignInComponentDelegate?
     
     private final var signIn = UISignIn() {
         
@@ -59,8 +75,7 @@ public final class UISignInComponent: Component {
             let email = signIn.email,
             !email.isEmpty,
             let password = signIn.password,
-            !password.isEmpty
-        { isValid = true }
+            !password.isEmpty { isValid = true }
         else { isValid = false }
         
         button.isEnabled = isValid
@@ -135,7 +150,16 @@ public final class UISignInComponent: Component {
     @objc
     public final func handleActionButtonClicked(_ sender: Any) {
         
-        print(signIn)
+        guard
+            let email = signIn.email,
+            let password = signIn.password
+        else { fatalError("The input is invalid.") }
+        
+        delegate?.component(
+            self,
+            authenicateWithEmail: email,
+            password: password
+        )
         
     }
     
