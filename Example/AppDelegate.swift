@@ -14,7 +14,7 @@ import UIKit
 public final class AppDelegate: UIResponder {
     
     public final let authCoordinator = UIAuthCoordinator(
-        contentSize: UIScreen.main.bounds.size,
+        frame: UIScreen.main.bounds,
         authProvider: AuthManager()
     )
     
@@ -31,21 +31,6 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-
-        /// The ROOT must specify a size to render its content correctly.
-//        let rootCoordinator = UIProfileCoordinator(
-//            contentSize: window.bounds.size,
-//            userId: "1",
-//            userManager: UserManager(),
-//            postManager: PostManager()
-//        )
-//
-//        window.rootViewController = UIViewRendererController(renderable: rootCoordinator)
-        
-        //        rootCoordinator.activate()
-
-        
-//        rootComponent.render()
 
         authCoordinator.activate()
         

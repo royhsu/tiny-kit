@@ -12,7 +12,7 @@ import TinyKit
 
 public final class UIAuthCoordinator {
     
-    public final let window = UIWindow(frame: UIScreen.main.bounds)
+    public final let window: UIWindow
     
     public final let navigationController: UINavigationController
     
@@ -21,16 +21,18 @@ public final class UIAuthCoordinator {
     private final let signInComponent: UISignInComponent
     
     public init(
-        contentSize: CGSize,
+        frame: CGRect,
         authProvider: AuthProvider
     ) {
         
         self.authProvider = authProvider
         
+        self.window = UIWindow(frame: frame)
+        
         self.signInComponent = UISignInComponent(
             contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
+                width: frame.width,
+                height: frame.height
             )
         )
         
