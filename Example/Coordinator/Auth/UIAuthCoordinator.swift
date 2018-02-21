@@ -1,5 +1,5 @@
 //
-//  SignInCoordinator.swift
+//  UIAuthCoordinator.swift
 //  TinyKitExample
 //
 //  Created by Roy Hsu on 21/02/2018.
@@ -10,11 +10,11 @@
 
 import TinyKit
 
-public final class UIAuthCoordinator {
+public final class UIAuthCoordinator: Coordinator {
     
-    public final let window: UIWindow
+    private final let window: UIWindow
     
-    public final let navigationController: UINavigationController
+    private final let navigationController: UINavigationController
     
     private final let authProvider: AuthProvider
     
