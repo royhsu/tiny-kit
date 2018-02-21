@@ -12,9 +12,19 @@ import TinyKit
 
 public final class UISignInComponent: Component {
     
+    private final var signIn = UISignIn() {
+        
+        didSet { setUpActionButton(actionComponent.itemView) }
+        
+    }
+    
     private final let emailComponent = UIAuthInputComponent()
     
     private final let passwordComponent = UIAuthInputComponent()
+    
+    private final let actionComponent = UIItemComponent(
+        itemView: UIButton(type: .system)
+    )
     
     /// The base component.
     private final let listComponent: UIListComponent
@@ -22,6 +32,38 @@ public final class UISignInComponent: Component {
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func setUpActionButton(_ button: UIButton) {
+        
+        button.setTitle(
+            NSLocalizedString(
+                "Sign In",
+                comment: ""
+            ),
+            for: .normal
+        )
+        
+        button.addTarget(
+            self,
+            action: #selector(handleActionButtonClicked),
+            for: .touchUpInside
+        )
+        
+        let isValid: Bool
+        
+        if
+            let email = signIn.email,
+            !email.isEmpty,
+            let password = signIn.password,
+            !password.isEmpty
+        { isValid = true }
+        else { isValid = false }
+        
+        button.isEnabled = isValid
         
     }
     
@@ -68,9 +110,12 @@ public final class UISignInComponent: Component {
         
         passwordComponent.delegate = self
         
+        setUpActionButton(actionComponent.itemView)
+        
         let components: [Component] = [
             emailComponent,
-            passwordComponent
+            passwordComponent,
+            actionComponent
         ]
         
         listComponent.itemComponents = AnyCollection(components)
@@ -85,6 +130,15 @@ public final class UISignInComponent: Component {
     
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
     
+    // MARK: Action
+    
+    @objc
+    public final func handleActionButtonClicked(_ sender: Any) {
+        
+        print(signIn)
+        
+    }
+    
 }
 
 // MARK: - UIAuthInputComponentDelegate
@@ -96,7 +150,23 @@ extension UISignInComponent: UIAuthInputComponentDelegate {
         didEnter text: String
     ) {
         
-        print(text)
+        if component === emailComponent {
+            
+            signIn.email = text
+            
+            return
+            
+        }
+            
+        if component === passwordComponent {
+            
+            signIn.password = text
+            
+            return
+            
+        }
+            
+        fatalError("Unexpected input.")
         
     }
     
