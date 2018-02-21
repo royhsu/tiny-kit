@@ -12,9 +12,12 @@ import UIKit
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
-
-    public final let window = UIWindow(frame: UIScreen.main.bounds)
-
+    
+    public final let authCoordinator = UIAuthCoordinator(
+        contentSize: UIScreen.main.bounds.size,
+        authProvider: AuthManager()
+    )
+    
 }
 
 // MARK: - UIApplicationDelegate
@@ -41,19 +44,11 @@ extension AppDelegate: UIApplicationDelegate {
         
         //        rootCoordinator.activate()
 
-        let rootComponent = UISignInComponent(
-            contentMode: .size(
-                width: window.bounds.width,
-                height: window.bounds.height
-            )
-        )
         
-        rootComponent.render()
-        
-        window.rootViewController = UIViewRendererController(renderable: rootComponent)
-        
-        window.makeKeyAndVisible()
+//        rootComponent.render()
 
+        authCoordinator.activate()
+        
         return true
 
     }

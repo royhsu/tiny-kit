@@ -11,9 +11,8 @@
 public protocol UISignInComponentDelegate: class {
     
     func component(
-        _ component: UISignInComponent,
-        authenicateWithEmail email: String,
-        password: String
+        _ component: Component,
+        didSupply credentials: BasicCredentials
     )
     
 }
@@ -157,8 +156,10 @@ public final class UISignInComponent: Component {
         
         delegate?.component(
             self,
-            authenicateWithEmail: email,
-            password: password
+            didSupply: BasicCredentials(
+                username: email,
+                password: password
+            )
         )
         
     }
@@ -170,9 +171,13 @@ public final class UISignInComponent: Component {
 extension UISignInComponent: UIAuthInputComponentDelegate {
     
     public final func component(
-        _ component: UIAuthInputComponent,
+        _ component: Component,
         didEnter text: String
     ) {
+        
+        guard
+            let component = component as? UIAuthInputComponent
+        else { fatalError("Unexpected component.") }
         
         if component === emailComponent {
             

@@ -36,6 +36,13 @@
 		B039D520203D503D005A5A23 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B039D521203D503D005A5A23 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
 		B039D522203D503D005A5A23 /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B039D528203D6575005A5A23 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D527203D6575005A5A23 /* SignInCoordinator.swift */; };
+		B039D52A203D875A005A5A23 /* SignInComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D529203D875A005A5A23 /* SignInComponent.swift */; };
+		B039D52C203D87A4005A5A23 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D52B203D87A4005A5A23 /* Auth.swift */; };
+		B039D52E203D87AF005A5A23 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D52D203D87AF005A5A23 /* AuthProvider.swift */; };
+		B039D530203D9096005A5A23 /* Credentails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D52F203D9096005A5A23 /* Credentails.swift */; };
+		B039D532203D90AF005A5A23 /* BasicCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D531203D90AF005A5A23 /* BasicCredentials.swift */; };
+		B039D535203D9DF4005A5A23 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D534203D9DF4005A5A23 /* AuthManager.swift */; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
@@ -92,6 +99,13 @@
 		B039D511203D2526005A5A23 /* UIAuthInputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthInputComponent.swift; sourceTree = "<group>"; };
 		B039D513203D25E7005A5A23 /* UIAuthInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthInput.swift; sourceTree = "<group>"; };
 		B039D515203D4991005A5A23 /* UISignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISignIn.swift; sourceTree = "<group>"; };
+		B039D527203D6575005A5A23 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		B039D529203D875A005A5A23 /* SignInComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInComponent.swift; sourceTree = "<group>"; };
+		B039D52B203D87A4005A5A23 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		B039D52D203D87AF005A5A23 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		B039D52F203D9096005A5A23 /* Credentails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentails.swift; sourceTree = "<group>"; };
+		B039D531203D90AF005A5A23 /* BasicCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCredentials.swift; sourceTree = "<group>"; };
+		B039D534203D9DF4005A5A23 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
@@ -144,6 +158,10 @@
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
+				B039D52B203D87A4005A5A23 /* Auth.swift */,
+				B039D52F203D9096005A5A23 /* Credentails.swift */,
+				B039D531203D90AF005A5A23 /* BasicCredentials.swift */,
+				B039D52D203D87AF005A5A23 /* AuthProvider.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -206,9 +224,35 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		B039D525203D655C005A5A23 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B039D526203D6562005A5A23 /* Sign In */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B039D526203D6562005A5A23 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				B039D529203D875A005A5A23 /* SignInComponent.swift */,
+				B039D527203D6575005A5A23 /* SignInCoordinator.swift */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
+		B039D533203D9DEA005A5A23 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B039D534203D9DF4005A5A23 /* AuthManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		B05E67892039AB38003E8E0E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B039D533203D9DEA005A5A23 /* Auth */,
 				B05E678A2039AB77003E8E0E /* Post */,
 				B05E678B2039AB82003E8E0E /* User */,
 			);
@@ -258,6 +302,7 @@
 		B05E679B203A822A003E8E0E /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				B039D525203D655C005A5A23 /* Auth */,
 				B05E679E203A9384003E8E0E /* Profile */,
 			);
 			path = Coordinator;
@@ -376,12 +421,16 @@
 				B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */,
 				B039D512203D2526005A5A23 /* UIAuthInputComponent.swift in Sources */,
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
+				B039D52E203D87AF005A5A23 /* AuthProvider.swift in Sources */,
 				B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */,
 				B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */,
 				B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */,
 				B039D50C203D1E78005A5A23 /* UISignInComponent.swift in Sources */,
+				B039D528203D6575005A5A23 /* SignInCoordinator.swift in Sources */,
+				B039D530203D9096005A5A23 /* Credentails.swift in Sources */,
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
+				B039D52C203D87A4005A5A23 /* Auth.swift in Sources */,
 				B039D516203D4991005A5A23 /* UISignIn.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
 				B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */,
@@ -392,9 +441,12 @@
 				B039D50E203D216F005A5A23 /* UIAuthInputView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
+				B039D532203D90AF005A5A23 /* BasicCredentials.swift in Sources */,
+				B039D535203D9DF4005A5A23 /* AuthManager.swift in Sources */,
 				B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
+				B039D52A203D875A005A5A23 /* SignInComponent.swift in Sources */,
 				B05E676E2037B467003E8E0E /* User.swift in Sources */,
 				B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */,
 			);

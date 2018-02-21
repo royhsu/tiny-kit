@@ -11,7 +11,7 @@
 public protocol UIAuthInputComponentDelegate: class {
     
     func component(
-        _ component: UIAuthInputComponent,
+        _ component: Component,
         didEnter text: String
     )
     
