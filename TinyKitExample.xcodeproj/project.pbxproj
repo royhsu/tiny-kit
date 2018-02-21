@@ -42,6 +42,9 @@
 		B039D530203D9096005A5A23 /* Credentails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D52F203D9096005A5A23 /* Credentails.swift */; };
 		B039D532203D90AF005A5A23 /* BasicCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D531203D90AF005A5A23 /* BasicCredentials.swift */; };
 		B039D535203D9DF4005A5A23 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D534203D9DF4005A5A23 /* AuthManager.swift */; };
+		B039D537203DC0B3005A5A23 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */; };
+		B039D539203DC699005A5A23 /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D538203DC699005A5A23 /* ViewControllerRepresentable.swift */; };
+		B039D53B203DC6AC005A5A23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D53A203DC6AC005A5A23 /* ViewController.swift */; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
@@ -104,6 +107,9 @@
 		B039D52F203D9096005A5A23 /* Credentails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentails.swift; sourceTree = "<group>"; };
 		B039D531203D90AF005A5A23 /* BasicCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCredentials.swift; sourceTree = "<group>"; };
 		B039D534203D9DF4005A5A23 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
+		B039D538203DC699005A5A23 /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		B039D53A203DC6AC005A5A23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
@@ -153,6 +159,9 @@
 				B05E678C2039ABBB003E8E0E /* View */,
 				B05E679B203A822A003E8E0E /* Coordinator */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
+				B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */,
+				B039D53A203DC6AC005A5A23 /* ViewController.swift */,
+				B039D538203DC699005A5A23 /* ViewControllerRepresentable.swift */,
 				B039D52B203D87A4005A5A23 /* Auth.swift */,
 				B039D52F203D9096005A5A23 /* Credentails.swift */,
 				B039D531203D90AF005A5A23 /* BasicCredentials.swift */,
@@ -421,6 +430,7 @@
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
 				B039D52C203D87A4005A5A23 /* Auth.swift in Sources */,
 				B039D516203D4991005A5A23 /* UISignIn.swift in Sources */,
+				B039D537203DC0B3005A5A23 /* UIApplicationCoordinator.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
 				B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */,
 				B039D514203D25E7005A5A23 /* UIAuthInput.swift in Sources */,
@@ -431,10 +441,12 @@
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
 				B039D532203D90AF005A5A23 /* BasicCredentials.swift in Sources */,
+				B039D53B203DC6AC005A5A23 /* ViewController.swift in Sources */,
 				B039D535203D9DF4005A5A23 /* AuthManager.swift in Sources */,
 				B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
+				B039D539203DC699005A5A23 /* ViewControllerRepresentable.swift in Sources */,
 				B05E676E2037B467003E8E0E /* User.swift in Sources */,
 				B05E678E2039B25D003E8E0E /* UIProfileIntroduction.swift in Sources */,
 			);

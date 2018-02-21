@@ -13,9 +13,11 @@ import UIKit
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
     
-    public final let authCoordinator = UIAuthCoordinator(
-        frame: UIScreen.main.bounds,
-        authProvider: AuthManager()
+    public final let appCoordinator = UIApplicationCoordinator(
+        rootCoordinator: UIAuthCoordinator(
+            contentSize: UIScreen.main.bounds.size,
+            authProvider: AuthManager()
+        )
     )
     
 }
@@ -31,8 +33,8 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-
-        authCoordinator.activate()
+        
+        appCoordinator.activate()
         
         return true
 

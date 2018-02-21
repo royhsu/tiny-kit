@@ -12,8 +12,6 @@ import TinyKit
 
 public final class UIAuthCoordinator: Coordinator {
     
-    private final let window: UIWindow
-    
     private final let navigationController: UINavigationController
     
     private final let authProvider: AuthProvider
@@ -21,18 +19,16 @@ public final class UIAuthCoordinator: Coordinator {
     private final let signInComponent: UISignInComponent
     
     public init(
-        frame: CGRect,
+        contentSize: CGSize,
         authProvider: AuthProvider
     ) {
         
         self.authProvider = authProvider
         
-        self.window = UIWindow(frame: frame)
-        
         self.signInComponent = UISignInComponent(
             contentMode: .size(
-                width: frame.width,
-                height: frame.height
+                width: contentSize.width,
+                height: contentSize.height
             )
         )
         
@@ -61,10 +57,6 @@ public final class UIAuthCoordinator: Coordinator {
         
         signInComponent.render()
         
-        window.rootViewController = navigationController
-        
-        window.makeKeyAndVisible()
-        
     }
     
 }
@@ -77,5 +69,13 @@ extension UIAuthCoordinator: UISignInComponentDelegate {
         _ component: Component,
         didSupply credentials: BasicCredentials
     ) { authorize(with: credentials) }
+    
+}
+
+// MARK: - ViewControllerRepresentable
+
+extension UIAuthCoordinator: ViewControllerRepresentable {
+    
+    public final var viewController: ViewController { return navigationController }
     
 }
