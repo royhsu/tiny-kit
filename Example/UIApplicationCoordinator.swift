@@ -66,11 +66,36 @@ extension UIApplicationCoordinator: UIAuthCoordinatorDelegate {
             postManager: PostManager()
         )
         
+        profileCoordinator.delegate = self
+        
         window.rootViewController = profileCoordinator.viewController
         
         profileCoordinator.activate()
         
         rootCoordinator = profileCoordinator
+        
+    }
+    
+}
+
+// MARK: - UIProfileCoordinatorDelegate
+
+extension UIApplicationCoordinator: UIProfileCoordinatorDelegate {
+    
+    public final func coordinatorDidSignOut(_ coordinator: Coordinator) {
+        
+        let authCoordinator = UIAuthCoordinator(
+            contentSize: window.bounds.size,
+            authProvider: AuthManager()
+        )
+        
+        authCoordinator.delegate = self
+        
+        window.rootViewController = authCoordinator.viewController
+        
+        authCoordinator.activate()
+        
+        rootCoordinator = authCoordinator
         
     }
     

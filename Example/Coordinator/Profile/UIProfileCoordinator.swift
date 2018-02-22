@@ -6,6 +6,14 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UIProfileCoordinatorDelegate
+
+public protocol UIProfileCoordinatorDelegate: class {
+    
+    func coordinatorDidSignOut(_ coordinator: Coordinator)
+    
+}
+
 // MARK: - UIProfileCoordinator
 
 import Hydra
@@ -13,6 +21,8 @@ import TinyCore
 import TinyKit
 
 public final class UIProfileCoordinator: Coordinator {
+    
+    private final let navigationController: UINavigationController
 
     private final let containerViewController: UIViewController
     
@@ -57,6 +67,8 @@ public final class UIProfileCoordinator: Coordinator {
     private final let profileComponent: UIProfileComponent
 
     private final let messageComponent: UIMessageComponent
+    
+    public final weak var delegate: UIProfileCoordinatorDelegate?
 
     public init(
         contentSize: CGSize,
@@ -78,6 +90,8 @@ public final class UIProfileCoordinator: Coordinator {
         containerViewController.view.frame.size = contentSize
         
         self.containerViewController = containerViewController
+        
+        self.navigationController = UINavigationController(rootViewController: containerViewController)
 
         self.splashComponent = UIItemComponent(
             contentMode: .size(
@@ -131,6 +145,11 @@ public final class UIProfileCoordinator: Coordinator {
         }
 
     }
+    
+    // MARK: Action
+    
+    @objc
+    public final func handleSignOut() { delegate?.coordinatorDidSignOut(self) }
     
 }
 
@@ -218,6 +237,16 @@ extension UIProfileCoordinator: StateMachineDelegate {
             profileComponent.render()
 
             containerView.render(with: profileComponent)
+            
+            containerViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: NSLocalizedString(
+                    "Sign Out",
+                    comment: ""
+                ),
+                style: .plain,
+                target: self,
+                action: #selector(handleSignOut)
+            )
 
         case (
             .loading,
@@ -247,6 +276,6 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
 extension UIProfileCoordinator: ViewControllerRepresentable {
     
-    public final var viewController: ViewController { return containerViewController }
+    public final var viewController: ViewController { return navigationController }
     
 }
