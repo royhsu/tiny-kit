@@ -13,7 +13,7 @@ import UIKit
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
     
-    public final let appCoordinator = UIApplicationCoordinator()
+    public final let appCoordinator = UIApplicationCoordinator(contentSize: UIScreen.main.bounds.size)
     
 }
 

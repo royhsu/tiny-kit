@@ -12,18 +12,23 @@ import TinyKit
 
 public final class UIApplicationCoordinator: Coordinator {
     
-    public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
-    
     private final let window: UIWindow
+    
+    public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
     
     private final var rootCoordinator: RootCoordinator
     
-    public init() {
+    public init(contentSize: CGSize) {
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(
+            frame: CGRect(
+                origin: .zero,
+                size: contentSize
+            )
+        )
         
         let authCoordinator = UIAuthCoordinator(
-            contentSize: UIScreen.main.bounds.size,
+            contentSize: contentSize,
             authProvider: AuthManager()
         )
         
