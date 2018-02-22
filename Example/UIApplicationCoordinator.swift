@@ -16,27 +16,56 @@ public final class UIApplicationCoordinator: Coordinator {
     
     private final let window: UIWindow
     
-    private final let rootCoordinator: RootCoordinator
+    private final var rootCoordinator: RootCoordinator
     
-    public init(rootCoordinator: RootCoordinator) {
+    public init() {
         
-        self.rootCoordinator = rootCoordinator
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let viewController = rootCoordinator.viewController
+        let authCoordinator = UIAuthCoordinator(
+            contentSize: UIScreen.main.bounds.size,
+            authProvider: AuthManager()
+        )
         
-        let window = UIWindow(frame: viewController.view.bounds)
+        self.rootCoordinator = authCoordinator
         
-        window.rootViewController = viewController
-        
-        self.window = window
+        authCoordinator.delegate = self
         
     }
     
     public final func activate() {
         
+        window.rootViewController = rootCoordinator.viewController
+        
         window.makeKeyAndVisible()
         
         rootCoordinator.activate()
+        
+    }
+    
+}
+
+// MARK: - UIAuthCoordinatorDelegate
+
+extension UIApplicationCoordinator: UIAuthCoordinatorDelegate {
+    
+    public final func coordinate(
+        _ coordinate: Coordinator,
+        didGrant auth: Auth
+    ) {
+        
+        let profileCoordinator = UIProfileCoordinator(
+            contentSize: window.bounds.size,
+            userId: "1",
+            userManager: UserManager(),
+            postManager: PostManager()
+        )
+        
+        window.rootViewController = profileCoordinator.viewController
+        
+        profileCoordinator.activate()
+        
+        rootCoordinator = profileCoordinator
         
     }
     

@@ -13,12 +13,7 @@ import UIKit
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
     
-    public final let appCoordinator = UIApplicationCoordinator(
-        rootCoordinator: UIAuthCoordinator(
-            contentSize: UIScreen.main.bounds.size,
-            authProvider: AuthManager()
-        )
-    )
+    public final let appCoordinator = UIApplicationCoordinator()
     
 }
 

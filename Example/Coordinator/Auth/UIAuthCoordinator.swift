@@ -6,6 +6,17 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UIAuthCoordinatorDelegate
+
+public protocol UIAuthCoordinatorDelegate: class {
+    
+    func coordinate(
+        _ coordinate: Coordinator,
+        didGrant auth: Auth
+    )
+    
+}
+
 // MARK: - UIAuthCoordinator
 
 import TinyKit
@@ -17,6 +28,8 @@ public final class UIAuthCoordinator: Coordinator {
     private final let authProvider: AuthProvider
     
     private final let signInComponent: UISignInComponent
+    
+    public final weak var delegate: UIAuthCoordinatorDelegate?
     
     public init(
         contentSize: CGSize,
@@ -44,7 +57,14 @@ public final class UIAuthCoordinator: Coordinator {
             in: .background,
             credentials: credentials
         )
-        .then(in: .main) { auth in print("\(auth)") }
+        .then(in: .main) { auth in
+            
+            self.delegate?.coordinate(
+                self,
+                didGrant: auth
+            )
+            
+        }
         .catch(in: .main) { error in print("\(error)") }
         
     }

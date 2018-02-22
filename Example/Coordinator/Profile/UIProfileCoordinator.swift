@@ -12,16 +12,36 @@ import Hydra
 import TinyCore
 import TinyKit
 
-public final class UIProfileCoordinator: Coordinator, ViewRenderable {
+public final class UIProfileCoordinator: Coordinator {
 
-    private final let stateMachine = StateMachine(initialState: UIProfileState.initial)
+    private final let containerViewController: UIViewController
+    
+    private final var containerView: View { return containerViewController.view }
+    
+    private final let stateMachine: StateMachine
 
-    internal final var currentState: UIProfileState {
+    private final var currentState: UIProfileState {
 
         // swiftlint:disable force_cast
         return stateMachine.currentState as! UIProfileState
         // swiftlint:enable force_cast
 
+    }
+    
+    private final var currentComponent: Component {
+        
+        switch currentState {
+            
+        case .initial: return splashComponent
+            
+        case .loading: return loadingComponent
+            
+        case .loaded: return profileComponent
+            
+        case .error: return messageComponent
+            
+        }
+        
     }
 
     public final let userId: String
@@ -50,6 +70,14 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
         self.userManager = userManager
 
         self.postManager = postManager
+        
+        self.stateMachine = StateMachine(initialState: UIProfileState.initial)
+        
+        let containerViewController = UIViewController()
+        
+        containerViewController.view.frame.size = contentSize
+        
+        self.containerViewController = containerViewController
 
         self.splashComponent = UIItemComponent(
             contentMode: .size(
@@ -58,7 +86,7 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
             ),
             itemView: UIView()
         )
-
+        
         self.loadingComponent = UILoadingComponent(
             contentMode: .size(
                 width: contentSize.width,
@@ -94,7 +122,7 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
             splashComponent.render()
 
-            view.render(with: splashComponent)
+            containerView.render(with: splashComponent)
 
             stateMachine.enter(UIProfileState.loading)
 
@@ -103,13 +131,7 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
         }
 
     }
-
-    // MARK: ViewRenderable
-
-    public final let view = View()
-
-    public final var preferredContentSize: CGSize { return view.bounds.size }
-
+    
 }
 
 // MARK: - StateMachineDelegate
@@ -135,7 +157,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             loadingComponent.startAnimating()
 
-            view.render(with: loadingComponent)
+            containerView.render(with: loadingComponent)
 
             Promise<Void>.zip(
                 userManager.fetchUser(
@@ -195,7 +217,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             profileComponent.render()
 
-            view.render(with: profileComponent)
+            containerView.render(with: profileComponent)
 
         case (
             .loading,
@@ -211,7 +233,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             messageComponent.render()
 
-            view.render(with: messageComponent)
+            containerView.render(with: messageComponent)
 
         default: fatalError("Invalid state transition.")
 
@@ -219,4 +241,12 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
     }
 
+}
+
+// MARK: - ViewControllerRepresentable
+
+extension UIProfileCoordinator: ViewControllerRepresentable {
+    
+    public final var viewController: ViewController { return containerViewController }
+    
 }
