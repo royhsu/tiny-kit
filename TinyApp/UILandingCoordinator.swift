@@ -19,11 +19,9 @@ public final class UILandingCoordinator: Coordinator {
     public init(contentSize: CGSize) {
         
         let landingComponent = UILandingComponent(
-            listComponent: UIListComponent(
-                contentMode: .size(
-                    width: contentSize.width,
-                    height: contentSize.height
-                )
+            contentMode: .size(
+                width: contentSize.width,
+                height: contentSize.height
             )
         )
         
@@ -37,8 +35,8 @@ public final class UILandingCoordinator: Coordinator {
     
     public final func activate() {
         
-        landingComponent.setHeader(
-            UILandingHeader(
+        landingComponent.setLogo(
+            UILandingLogo(
                 logoImage: UIImage(),
                 backgroundImage: UIImage()
             )

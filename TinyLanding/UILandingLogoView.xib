@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UILandingLogoView" customModule="TinyLanding" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7M1-2c-Oj8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x0J-fd-5jK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="7M1-2c-Oj8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="19S-yd-LBz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7M1-2c-Oj8" secondAttribute="trailing" id="7Qk-j8-MG3"/>
+                <constraint firstItem="7M1-2c-Oj8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="D0v-rg-c6x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7M1-2c-Oj8" secondAttribute="bottom" id="cbf-cO-7wl"/>
+                <constraint firstItem="x0J-fd-5jK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="d9i-Mf-hxB"/>
+                <constraint firstItem="x0J-fd-5jK" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gVh-QW-cYj"/>
+                <constraint firstItem="x0J-fd-5jK" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="kL7-3G-mfI"/>
+                <constraint firstItem="x0J-fd-5jK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zQe-L7-H7b"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="x0J-fd-5jK" id="s1W-0J-fXj"/>
+                <outlet property="logoImageView" destination="7M1-2c-Oj8" id="mQ6-sK-wcj"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

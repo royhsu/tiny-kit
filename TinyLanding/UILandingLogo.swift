@@ -1,14 +1,14 @@
 //
-//  UILandingHeader.swift
+//  UILandingLogo.swift
 //  TinyLanding
 //
 //  Created by Roy Hsu on 27/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UILandingHeader
+// MARK: - UILandingLogo
 
-public struct UILandingHeader {
+public struct UILandingLogo {
     
     public var logoImage: UIImage?
     
