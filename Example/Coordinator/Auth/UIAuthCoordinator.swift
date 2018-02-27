@@ -31,12 +31,14 @@ public final class UIAuthCoordinator: Coordinator {
 
     public init(contentSize: CGSize) {
 
-        self.signInComponent = UISignInComponent(
+        let signInComponent = UISignInComponent(
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
             )
         )
+
+        self.signInComponent = signInComponent
 
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: signInComponent)

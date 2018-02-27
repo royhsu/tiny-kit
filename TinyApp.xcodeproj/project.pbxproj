@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
-		B03C3E6B20457FEC004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6A20457FEC004E318B /* ViewController.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
 		B03C3E8020458172004E318B /* TinyLanding.h in Headers */ = {isa = PBXBuildFile; fileRef = B03C3E7E20458172004E318B /* TinyLanding.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -20,6 +19,9 @@
 		B044A018204585D300AAED35 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
 		B044A019204585D300AAED35 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B044A01A204585D300AAED35 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
+		B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01B2045870700AAED35 /* UILandingComponent.swift */; };
+		B044A01E204588EA00AAED35 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */; };
+		B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +64,6 @@
 /* Begin PBXFileReference section */
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B03C3E6A20457FEC004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B03C3E6F20457FEC004E318B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B03C3E7120457FEC004E318B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +73,9 @@
 		B03C3E9120458279004E318B /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E9220458438004E318B /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B03C3E9320458438004E318B /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B044A01B2045870700AAED35 /* UILandingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingComponent.swift; sourceTree = "<group>"; };
+		B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationCoordinator.swift; path = Example/UIApplicationCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				B03C3E6820457FEC004E318B /* AppDelegate.swift */,
-				B03C3E6A20457FEC004E318B /* ViewController.swift */,
+				B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */,
+				B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */,
 				B03C3E6C20457FEC004E318B /* Assets.xcassets */,
 				B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */,
 				B03C3E7120457FEC004E318B /* Info.plist */,
@@ -130,6 +135,7 @@
 		B03C3E7D20458172004E318B /* TinyLanding */ = {
 			isa = PBXGroup;
 			children = (
+				B044A01B2045870700AAED35 /* UILandingComponent.swift */,
 				B03C3E7E20458172004E318B /* TinyLanding.h */,
 				B03C3E7F20458172004E318B /* Info.plist */,
 			);
@@ -215,6 +221,7 @@
 					};
 					B03C3E7B20458172004E318B = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -283,8 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B03C3E6B20457FEC004E318B /* ViewController.swift in Sources */,
+				B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
+				B044A01E204588EA00AAED35 /* UIApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +436,7 @@
 		B03C3E7520457FEC004E318B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5CE6946X84;
@@ -446,6 +456,7 @@
 		B03C3E7620457FEC004E318B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5CE6946X84;
@@ -465,6 +476,7 @@
 		B03C3E8520458172004E318B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -483,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyLanding;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -493,6 +506,7 @@
 		B03C3E8620458172004E318B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

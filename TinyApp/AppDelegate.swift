@@ -11,28 +11,28 @@
 import UIKit
 
 @UIApplicationMain
-public final class AppDelegate: UIResponder, UIApplicationDelegate {
+public final class AppDelegate: UIResponder {
+    
+    public final let appCoordinator = UIApplicationCoordinator(contentSize: UIScreen.main.bounds.size)
+    
+}
 
-    // MARK: Property
+// MARK: - UIApplicationDelegate
 
-    public final let window = UIWindow(frame: UIScreen.main.bounds)
+import TinyKit
 
-    // MARK: UIApplicationDelegate
-
+extension AppDelegate: UIApplicationDelegate {
+    
     public final func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-
-        window.rootViewController = UINavigationController(
-            rootViewController: ViewController()
-        )
-
-        window.makeKeyAndVisible()
-
+        
+        appCoordinator.activate()
+        
         return true
-
+            
     }
-
+    
 }
