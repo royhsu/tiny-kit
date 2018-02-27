@@ -53,6 +53,17 @@ public final class UILandingCoordinator: Coordinator {
                 ),
                 action: { print("Go sign up!") }
             )
+            .addButton(
+                with: UIPrimaryButtonItem(
+                    title: NSLocalizedString(
+                        "Sign In",
+                        comment: ""
+                    ),
+                    titleColor: .white,
+                    backgroundColor: .black
+                ),
+                action: { print("Go sign in!") }
+            )
             .render()
         
     }
