@@ -37,9 +37,9 @@ public final class UILandingCoordinator: Coordinator {
         
         landingComponent.setLogo(
             UILandingLogo(
-                logoImage: UIImage(),
-                backgroundImage: UIImage(),
-                backgroundColor: UIColor(patternImage: #imageLiteral(resourceName: "image-landing-logo-background"))
+                logoImage: #imageLiteral(resourceName: "icon-logo"),
+                backgroundImage: #imageLiteral(resourceName: "image-landing-logo-background")
+//                backgroundColor: UIColor(patternImage: #imageLiteral(resourceName: "image-landing-logo-background"))
             )
         )
         
