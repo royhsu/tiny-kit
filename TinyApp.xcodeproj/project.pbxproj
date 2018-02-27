@@ -151,15 +151,11 @@
 		B03C3E7D20458172004E318B /* TinyLanding */ = {
 			isa = PBXGroup;
 			children = (
+				B0A629222045BE1F000F97E3 /* Button */,
 				B0A629172045AB86000F97E3 /* Logo */,
 				B044A01B2045870700AAED35 /* UILandingComponent.swift */,
 				B03C3E7E20458172004E318B /* TinyLanding.h */,
 				B03C3E7F20458172004E318B /* Info.plist */,
-				B0A629182045ABA9000F97E3 /* UIPrimaryButton.swift */,
-				B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */,
-				B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */,
-				B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */,
-				B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */,
 			);
 			path = TinyLanding;
 			sourceTree = "<group>";
@@ -182,6 +178,18 @@
 				B044A02120458E8900AAED35 /* UILandingLogo.swift */,
 			);
 			path = Logo;
+			sourceTree = "<group>";
+		};
+		B0A629222045BE1F000F97E3 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				B0A629182045ABA9000F97E3 /* UIPrimaryButton.swift */,
+				B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */,
+				B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */,
+				B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */,
+				B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
