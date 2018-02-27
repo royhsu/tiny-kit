@@ -13,9 +13,9 @@ import Hydra
 
 public final class UserManager {
 
-    public final func fetchUser(
+    public final func fetchMe(
         in context: Context,
-        userId: String
+        accessToken: AccessToken
     )
     -> Promise<User> {
 

@@ -25,18 +25,11 @@ public final class UIAuthCoordinator: Coordinator {
     
     private final let navigationController: UINavigationController
     
-    private final let authProvider: AuthProvider
-    
     private final let signInComponent: UISignInComponent
     
     public final weak var delegate: UIAuthCoordinatorDelegate?
     
-    public init(
-        contentSize: CGSize,
-        authProvider: AuthProvider
-    ) {
-        
-        self.authProvider = authProvider
+    public init(contentSize: CGSize) {
         
         self.signInComponent = UISignInComponent(
             contentMode: .size(
@@ -48,24 +41,6 @@ public final class UIAuthCoordinator: Coordinator {
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: signInComponent)
         )
-        
-    }
-    
-    fileprivate final func authorize(with credentials: BasicCredentials) {
-        
-        authProvider.authorize(
-            in: .background,
-            credentials: credentials
-        )
-        .then(in: .main) { auth in
-            
-            self.delegate?.coordinate(
-                self,
-                didGrant: auth
-            )
-            
-        }
-        .catch(in: .main) { error in print("\(error)") }
         
     }
     
@@ -87,8 +62,26 @@ extension UIAuthCoordinator: UISignInComponentDelegate {
     
     public final func component(
         _ component: Component,
-        didSupply credentials: BasicCredentials
-    ) { authorize(with: credentials) }
+        didSupplyEmail email: String,
+        password: String
+    ) {
+        
+        BasicAuthManager(
+            email: email,
+            password: password
+        )
+        .authorize(in: .background)
+        .then(in: .main) { auth in
+            
+            self.delegate?.coordinate(
+                self,
+                didGrant: auth
+            )
+            
+        }
+        .catch(in: .main) { error in print("\(error)") }
+        
+    }
     
 }
 

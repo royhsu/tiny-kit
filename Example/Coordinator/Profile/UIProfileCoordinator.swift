@@ -54,7 +54,7 @@ public final class UIProfileCoordinator: Coordinator {
         
     }
 
-    public final let userId: String
+    public final let accessToken: AccessToken
 
     private final let userManager: UserManager
 
@@ -72,12 +72,12 @@ public final class UIProfileCoordinator: Coordinator {
 
     public init(
         contentSize: CGSize,
-        userId: String,
+        accessToken: AccessToken,
         userManager: UserManager,
         postManager: PostManager
     ) {
 
-        self.userId = userId
+        self.accessToken = accessToken
 
         self.userManager = userManager
 
@@ -179,13 +179,13 @@ extension UIProfileCoordinator: StateMachineDelegate {
             containerView.render(with: loadingComponent)
 
             Promise<Void>.zip(
-                userManager.fetchUser(
+                userManager.fetchMe(
                     in: .background,
-                    userId: userId
+                    accessToken: accessToken
                 ),
-                postManager.fetchPosts(
+                postManager.fetchMyPosts(
                     in: .background,
-                    userId: userId
+                    accessToken: accessToken
                 )
             )
             .then(in: .main) { result in

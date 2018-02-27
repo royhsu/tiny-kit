@@ -12,7 +12,8 @@ public protocol UISignInComponentDelegate: class {
     
     func component(
         _ component: Component,
-        didSupply credentials: BasicCredentials
+        didSupplyEmail email: String,
+        password: String
     )
     
 }
@@ -156,10 +157,8 @@ public final class UISignInComponent: Component {
         
         delegate?.component(
             self,
-            didSupply: BasicCredentials(
-                username: email,
-                password: password
-            )
+            didSupplyEmail: email,
+            password: password
         )
         
     }

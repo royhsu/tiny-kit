@@ -27,10 +27,7 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        let authCoordinator = UIAuthCoordinator(
-            contentSize: contentSize,
-            authProvider: AuthManager()
-        )
+        let authCoordinator = UIAuthCoordinator(contentSize: contentSize)
         
         self.rootCoordinator = authCoordinator
         
@@ -61,7 +58,7 @@ extension UIApplicationCoordinator: UIAuthCoordinatorDelegate {
         
         let profileCoordinator = UIProfileCoordinator(
             contentSize: window.bounds.size,
-            userId: "1",
+            accessToken: auth.accessToken,
             userManager: UserManager(),
             postManager: PostManager()
         )
@@ -84,10 +81,7 @@ extension UIApplicationCoordinator: UIProfileCoordinatorDelegate {
     
     public final func coordinatorDidSignOut(_ coordinator: Coordinator) {
         
-        let authCoordinator = UIAuthCoordinator(
-            contentSize: window.bounds.size,
-            authProvider: AuthManager()
-        )
+        let authCoordinator = UIAuthCoordinator(contentSize: window.bounds.size)
         
         authCoordinator.delegate = self
         
