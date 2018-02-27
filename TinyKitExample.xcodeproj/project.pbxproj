@@ -30,8 +30,6 @@
 		B039D512203D2526005A5A23 /* UIAuthInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D511203D2526005A5A23 /* UIAuthInputComponent.swift */; };
 		B039D514203D25E7005A5A23 /* UIAuthInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D513203D25E7005A5A23 /* UIAuthInput.swift */; };
 		B039D516203D4991005A5A23 /* UISignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D515203D4991005A5A23 /* UISignIn.swift */; };
-		B039D51D203D503D005A5A23 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
-		B039D51E203D503D005A5A23 /* Hydra.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B039D51F203D503D005A5A23 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
 		B039D520203D503D005A5A23 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B039D521203D503D005A5A23 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
@@ -41,6 +39,8 @@
 		B039D537203DC0B3005A5A23 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */; };
 		B03C3E59204573B7004E318B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E58204573B7004E318B /* Auth.swift */; };
 		B03C3E5B204573E1004E318B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E5A204573E1004E318B /* AccessToken.swift */; };
+		B044A011204584F100AAED35 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
+		B044A012204584F100AAED35 /* Hydra.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
@@ -59,7 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B039D51E203D503D005A5A23 /* Hydra.framework in Embed Frameworks */,
+				B044A012204584F100AAED35 /* Hydra.framework in Embed Frameworks */,
 				B039D522203D503D005A5A23 /* TinyKit.framework in Embed Frameworks */,
 				B039D520203D503D005A5A23 /* TinyCore.framework in Embed Frameworks */,
 			);
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B039D51D203D503D005A5A23 /* Hydra.framework in Frameworks */,
+				B044A011204584F100AAED35 /* Hydra.framework in Frameworks */,
 				B039D521203D503D005A5A23 /* TinyKit.framework in Frameworks */,
 				B039D51F203D503D005A5A23 /* TinyCore.framework in Frameworks */,
 			);
