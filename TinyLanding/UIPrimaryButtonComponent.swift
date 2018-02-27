@@ -6,10 +6,6 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIPrimaryButtonAction
-
-public typealias UIPrimaryButtonAction = () -> Void
-
 // MARK: - UIPrimaryButtonComponent
 
 public final class UIPrimaryButtonComponent: Component {
@@ -17,7 +13,7 @@ public final class UIPrimaryButtonComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UIPrimaryButton>
     
-    private final var action: UIPrimaryButtonAction?
+    private final var tapHandler: UIPrimaryButtonTapHandler?
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -38,7 +34,7 @@ public final class UIPrimaryButtonComponent: Component {
     // MARK: Action
     
     @objc
-    public final func performAction(_ sender: Any) { action?() }
+    public final func handleTap(_ sender: Any) { tapHandler?() }
     
     // MARK: Component
     
@@ -54,7 +50,7 @@ public final class UIPrimaryButtonComponent: Component {
         
         itemComponent.itemView.actionButton.addTarget(
             self,
-            action: #selector(performAction),
+            action: #selector(handleTap),
             for: .touchUpInside
         )
         
@@ -88,9 +84,9 @@ public extension UIPrimaryButtonComponent {
     }
     
     @discardableResult
-    public final func setAction(_ action: UIPrimaryButtonAction? = nil) -> UIPrimaryButtonComponent {
+    public final func onTap(handler: UIPrimaryButtonTapHandler? = nil) -> UIPrimaryButtonComponent {
         
-        self.action = action
+        tapHandler = handler
         
         return self
         

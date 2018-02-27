@@ -29,6 +29,7 @@
 		B0A6291B2045ABB6000F97E3 /* UIPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */; };
 		B0A6291D2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */; };
 		B0A6291F2045B2B2000F97E3 /* UIPrimaryButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */; };
+		B0A629212045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIPrimaryButton.xib; sourceTree = "<group>"; };
 		B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonItem.swift; sourceTree = "<group>"; };
+		B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonTapHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				B0A629182045ABA9000F97E3 /* UIPrimaryButton.swift */,
 				B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */,
 				B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */,
+				B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */,
 				B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */,
 			);
 			path = TinyLanding;
@@ -333,6 +336,7 @@
 			files = (
 				B0A6291D2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift in Sources */,
 				B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */,
+				B0A629212045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */,
 				B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */,
 				B0A6291F2045B2B2000F97E3 /* UIPrimaryButtonItem.swift in Sources */,
 				B0A629192045ABA9000F97E3 /* UIPrimaryButton.swift in Sources */,

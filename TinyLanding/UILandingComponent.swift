@@ -102,13 +102,13 @@ public extension UILandingComponent {
     @discardableResult
     public final func addButton(
         with item: UIPrimaryButtonItem,
-        action: @escaping () -> Void
+        action handler: @escaping () -> Void
     ) 
     -> UILandingComponent {
         
         let component = UIPrimaryButtonComponent()
             .setButtonItem(item)
-            .setAction(action)
+            .onTap(handler: handler)
         
         buttonComponents.append(component)
         
