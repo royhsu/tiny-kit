@@ -9,7 +9,7 @@
 // MARK: - ViewControllerRepresentable
 
 public protocol ViewControllerRepresentable {
-    
+
     var viewController: ViewController { get }
-    
+
 }

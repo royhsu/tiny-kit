@@ -9,25 +9,25 @@
 // MARK: - UIAuthInput
 
 public struct UIAuthInput {
-    
+
     public var name: String
-    
+
     public var placeholder: String?
-    
+
     public var isSecured: Bool
-    
+
     public init(
         name: String,
         placeholder: String? = nil,
         isSecured: Bool = false
     ) {
-        
+
         self.name = name
-        
+
         self.placeholder = placeholder
-        
+
         self.isSecured = isSecured
-        
+
     }
-    
+
 }

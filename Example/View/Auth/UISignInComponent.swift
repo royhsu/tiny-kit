@@ -9,13 +9,13 @@
 // MARK: - UISignInComponentDelegate
 
 public protocol UISignInComponentDelegate: class {
-    
+
     func component(
         _ component: Component,
         didSupplyEmail email: String,
         password: String
     )
-    
+
 }
 
 // MARK: - UISignInComponent
@@ -23,38 +23,38 @@ public protocol UISignInComponentDelegate: class {
 import TinyKit
 
 public final class UISignInComponent: Component {
-    
+
     // TODO: add state machine for managing the validation of inputs.
-    
+
     public final weak var delegate: UISignInComponentDelegate?
-    
+
     private final var signIn = UISignIn() {
-        
+
         didSet { setUpActionButton(actionComponent.itemView) }
-        
+
     }
-    
+
     private final let emailComponent = UIAuthInputComponent()
-    
+
     private final let passwordComponent = UIAuthInputComponent()
-    
+
     private final let actionComponent = UIItemComponent(
         itemView: UIButton(type: .system)
     )
-    
+
     /// The base component.
     private final let listComponent: UIListComponent
-    
+
     public init(contentMode: ComponentContentMode = .automatic) {
-        
+
         self.listComponent = UIListComponent(contentMode: contentMode)
-        
+
     }
-    
+
     // MARK: Set Up
-    
+
     fileprivate final func setUpActionButton(_ button: UIButton) {
-        
+
         button.setTitle(
             NSLocalizedString(
                 "Sign In",
@@ -62,38 +62,38 @@ public final class UISignInComponent: Component {
             ),
             for: .normal
         )
-        
+
         button.addTarget(
             self,
             action: #selector(handleActionButtonClicked),
             for: .touchUpInside
         )
-        
+
         let isValid: Bool
-        
+
         if
             let email = signIn.email,
             !email.isEmpty,
             let password = signIn.password,
             !password.isEmpty { isValid = true }
         else { isValid = false }
-        
+
         button.isEnabled = isValid
-        
+
     }
-    
+
     // MARK: Component
-    
+
     public final var contentMode: ComponentContentMode {
-        
+
         get { return listComponent.contentMode }
-        
+
         set { listComponent.contentMode = newValue }
-        
+
     }
-    
+
     public final func render() {
-        
+
         emailComponent.setInput(
             UIAuthInput(
                 name: NSLocalizedString(
@@ -106,9 +106,9 @@ public final class UISignInComponent: Component {
                 )
             )
         )
-        
+
         emailComponent.delegate = self
-        
+
         passwordComponent.setInput(
             UIAuthInput(
                 name: NSLocalizedString(
@@ -122,80 +122,80 @@ public final class UISignInComponent: Component {
                 isSecured: true
             )
         )
-        
+
         passwordComponent.delegate = self
-        
+
         setUpActionButton(actionComponent.itemView)
-        
+
         let components: [Component] = [
             emailComponent,
             passwordComponent,
             actionComponent
         ]
-        
+
         listComponent.itemComponents = AnyCollection(components)
-        
+
         listComponent.render()
-        
+
     }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return listComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
-    
+
     // MARK: Action
-    
+
     @objc
     public final func handleActionButtonClicked(_ sender: Any) {
-        
+
         guard
             let email = signIn.email,
             let password = signIn.password
         else { fatalError("The input is invalid.") }
-        
+
         delegate?.component(
             self,
             didSupplyEmail: email,
             password: password
         )
-        
+
     }
-    
+
 }
 
 // MARK: - UIAuthInputComponentDelegate
 
 extension UISignInComponent: UIAuthInputComponentDelegate {
-    
+
     public final func component(
         _ component: Component,
         didEnter text: String
     ) {
-        
+
         guard
             let component = component as? UIAuthInputComponent
         else { fatalError("Unexpected component.") }
-        
+
         if component === emailComponent {
-            
+
             signIn.email = text
-            
+
             return
-            
+
         }
-            
+
         if component === passwordComponent {
-            
+
             signIn.password = text
-            
+
             return
-            
+
         }
-            
+
         fatalError("Unexpected input.")
-        
+
     }
-    
+
 }

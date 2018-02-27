@@ -9,9 +9,9 @@
 // MARK: - UIProfileCoordinatorDelegate
 
 public protocol UIProfileCoordinatorDelegate: class {
-    
+
     func coordinatorDidSignOut(_ coordinator: Coordinator)
-    
+
 }
 
 // MARK: - UIProfileCoordinator
@@ -21,13 +21,13 @@ import TinyCore
 import TinyKit
 
 public final class UIProfileCoordinator: Coordinator {
-    
+
     private final let navigationController: UINavigationController
 
     private final let containerViewController: UIViewController
-    
+
     private final var containerView: View { return containerViewController.view }
-    
+
     private final let stateMachine: StateMachine
 
     private final var currentState: UIProfileState {
@@ -37,21 +37,21 @@ public final class UIProfileCoordinator: Coordinator {
         // swiftlint:enable force_cast
 
     }
-    
+
     private final var currentComponent: Component {
-        
+
         switch currentState {
-            
+
         case .initial: return splashComponent
-            
+
         case .loading: return loadingComponent
-            
+
         case .loaded: return profileComponent
-            
+
         case .error: return messageComponent
-            
+
         }
-        
+
     }
 
     public final let accessToken: AccessToken
@@ -67,7 +67,7 @@ public final class UIProfileCoordinator: Coordinator {
     private final let profileComponent: UIProfileComponent
 
     private final let messageComponent: UIMessageComponent
-    
+
     public final weak var delegate: UIProfileCoordinatorDelegate?
 
     public init(
@@ -82,15 +82,15 @@ public final class UIProfileCoordinator: Coordinator {
         self.userManager = userManager
 
         self.postManager = postManager
-        
+
         self.stateMachine = StateMachine(initialState: UIProfileState.initial)
-        
+
         let containerViewController = UIViewController()
-        
+
         containerViewController.view.frame.size = contentSize
-        
+
         self.containerViewController = containerViewController
-        
+
         self.navigationController = UINavigationController(rootViewController: containerViewController)
 
         self.splashComponent = UIItemComponent(
@@ -100,7 +100,7 @@ public final class UIProfileCoordinator: Coordinator {
             ),
             itemView: UIView()
         )
-        
+
         self.loadingComponent = UILoadingComponent(
             contentMode: .size(
                 width: contentSize.width,
@@ -145,12 +145,12 @@ public final class UIProfileCoordinator: Coordinator {
         }
 
     }
-    
+
     // MARK: Action
-    
+
     @objc
     public final func handleSignOut() { delegate?.coordinatorDidSignOut(self) }
-    
+
 }
 
 // MARK: - StateMachineDelegate
@@ -237,7 +237,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
             profileComponent.render()
 
             containerView.render(with: profileComponent)
-            
+
             containerViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: NSLocalizedString(
                     "Sign Out",
@@ -275,7 +275,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 // MARK: - ViewControllerRepresentable
 
 extension UIProfileCoordinator: ViewControllerRepresentable {
-    
+
     public final var viewController: ViewController { return navigationController }
-    
+
 }

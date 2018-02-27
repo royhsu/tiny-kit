@@ -9,9 +9,9 @@
 // MARK: - Auth
 
 public struct Auth {
-    
+
     public let accessToken: AccessToken
-    
+
     public init(accessToken: AccessToken) { self.accessToken = accessToken }
 
 }

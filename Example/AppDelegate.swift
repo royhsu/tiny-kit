@@ -12,9 +12,9 @@ import UIKit
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
-    
+
     public final let appCoordinator = UIApplicationCoordinator(contentSize: UIScreen.main.bounds.size)
-    
+
 }
 
 // MARK: - UIApplicationDelegate
@@ -28,9 +28,9 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     )
     -> Bool {
-        
+
         appCoordinator.activate()
-        
+
         return true
 
     }
