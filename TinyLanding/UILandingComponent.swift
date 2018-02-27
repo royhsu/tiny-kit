@@ -88,6 +88,8 @@ public extension UILandingComponent {
         
         logoView.backgroundImageView.image = logo?.backgroundImage
         
+        logoView.backgroundColor = logo?.backgroundColor
+        
     }
     
 }
