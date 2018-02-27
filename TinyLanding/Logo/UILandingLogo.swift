@@ -14,12 +14,12 @@ public struct UILandingLogo {
     
     public var backgroundImage: UIImage?
     
-    public var backgroundColor: UIColor?
+    public var backgroundColor: UIColor
     
     public init(
         logoImage: UIImage? = nil,
         backgroundImage: UIImage? = nil,
-        backgroundColor: UIColor? = nil
+        backgroundColor: UIColor = .clear
     ) {
         
         self.logoImage = logoImage

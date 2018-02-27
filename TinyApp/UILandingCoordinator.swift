@@ -35,15 +35,25 @@ public final class UILandingCoordinator: Coordinator {
     
     public final func activate() {
         
-        landingComponent.setLogo(
-            UILandingLogo(
-                logoImage: #imageLiteral(resourceName: "icon-logo"),
-                backgroundImage: #imageLiteral(resourceName: "image-landing-logo-background")
-//                backgroundColor: UIColor(patternImage: #imageLiteral(resourceName: "image-landing-logo-background"))
+        landingComponent
+            .setLogo(
+                UILandingLogo(
+                    logoImage: #imageLiteral(resourceName: "icon-logo"),
+                    backgroundImage: #imageLiteral(resourceName: "image-landing-logo-background")
+                )
             )
-        )
-        
-        landingComponent.render()
+            .addButton(
+                with: UIPrimaryButtonItem(
+                    title: NSLocalizedString(
+                        "Sign Up",
+                        comment: ""
+                    ),
+                    titleColor: .white,
+                    backgroundColor: .red
+                ),
+                action: { print("clicked!") }
+            )
+            .render()
         
     }
     

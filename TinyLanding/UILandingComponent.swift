@@ -15,6 +15,8 @@ public final class UILandingComponent: Component {
     
     private final let logoComponent: UIItemComponent<UILandingLogoView>
     
+    private final var buttonComponents: [UIPrimaryButtonComponent] = []
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
@@ -66,6 +68,8 @@ public final class UILandingComponent: Component {
         
         listComponent.headerComponent = logoComponent
         
+        listComponent.itemComponents = AnyCollection(buttonComponents)
+        
         listComponent.render()
         
     }
@@ -80,7 +84,8 @@ public final class UILandingComponent: Component {
 
 public extension UILandingComponent {
     
-    public final func setLogo(_ logo: UILandingLogo? = nil) {
+    @discardableResult
+    public final func setLogo(_ logo: UILandingLogo? = nil) -> UILandingComponent {
         
         let logoView = logoComponent.itemView
         
@@ -89,6 +94,25 @@ public extension UILandingComponent {
         logoView.backgroundImageView.image = logo?.backgroundImage
         
         logoView.backgroundColor = logo?.backgroundColor
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func addButton(
+        with item: UIPrimaryButtonItem,
+        action: @escaping () -> Void
+    ) 
+    -> UILandingComponent {
+        
+        let component = UIPrimaryButtonComponent()
+        
+        component.setButtonItem(item)
+        
+        buttonComponents.append(component)
+        
+        return self
         
     }
     
