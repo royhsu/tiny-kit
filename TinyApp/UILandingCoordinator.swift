@@ -35,7 +35,18 @@ public final class UILandingCoordinator: Coordinator {
         
     }
     
-    public final func activate() { landingComponent.render() }
+    public final func activate() {
+        
+        landingComponent.setHeader(
+            UILandingHeader(
+                logoImage: UIImage(),
+                backgroundImage: UIImage()
+            )
+        )
+        
+        landingComponent.render()
+        
+    }
     
 }
 

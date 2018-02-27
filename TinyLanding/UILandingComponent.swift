@@ -36,3 +36,13 @@ public final class UILandingComponent: Component {
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
     
 }
+
+public extension UILandingComponent {
+    
+    public final func setHeader(_ header: UILandingHeader? = nil) {
+        
+        
+        
+    }
+    
+}

@@ -22,6 +22,7 @@
 		B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01B2045870700AAED35 /* UILandingComponent.swift */; };
 		B044A01E204588EA00AAED35 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */; };
 		B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */; };
+		B044A02220458E8900AAED35 /* UILandingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02120458E8900AAED35 /* UILandingHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		B044A01B2045870700AAED35 /* UILandingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingComponent.swift; sourceTree = "<group>"; };
 		B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationCoordinator.swift; path = Example/UIApplicationCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingCoordinator.swift; sourceTree = "<group>"; };
+		B044A02120458E8900AAED35 /* UILandingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		B03C3E7D20458172004E318B /* TinyLanding */ = {
 			isa = PBXGroup;
 			children = (
+				B044A02120458E8900AAED35 /* UILandingHeader.swift */,
 				B044A01B2045870700AAED35 /* UILandingComponent.swift */,
 				B03C3E7E20458172004E318B /* TinyLanding.h */,
 				B03C3E7F20458172004E318B /* Info.plist */,
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B044A02220458E8900AAED35 /* UILandingHeader.swift in Sources */,
 				B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
