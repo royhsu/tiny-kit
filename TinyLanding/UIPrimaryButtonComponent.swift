@@ -6,12 +6,18 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UIPrimaryButtonAction
+
+public typealias UIPrimaryButtonAction = () -> Void
+
 // MARK: - UIPrimaryButtonComponent
 
 public final class UIPrimaryButtonComponent: Component {
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIPrimaryButton>
+    
+    private final var action: UIPrimaryButtonAction?
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -29,6 +35,11 @@ public final class UIPrimaryButtonComponent: Component {
         
     }
     
+    // MARK: Action
+    
+    @objc
+    public final func performAction(_ sender: Any) { action?() }
+    
     // MARK: Component
     
     public final var contentMode: ComponentContentMode {
@@ -39,7 +50,17 @@ public final class UIPrimaryButtonComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        itemComponent.itemView.actionButton.addTarget(
+            self,
+            action: #selector(performAction),
+            for: .touchUpInside
+        )
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -61,6 +82,15 @@ public extension UIPrimaryButtonComponent {
         buttonView.actionLabel.textColor = item?.titleColor
         
         buttonView.actionView.backgroundColor = item?.backgroundColor
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setAction(_ action: UIPrimaryButtonAction? = nil) -> UIPrimaryButtonComponent {
+        
+        self.action = action
         
         return self
         

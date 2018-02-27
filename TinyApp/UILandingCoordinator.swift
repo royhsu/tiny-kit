@@ -51,7 +51,7 @@ public final class UILandingCoordinator: Coordinator {
                     titleColor: .white,
                     backgroundColor: .red
                 ),
-                action: { print("clicked!") }
+                action: { print("Go sign up!") }
             )
             .render()
         
