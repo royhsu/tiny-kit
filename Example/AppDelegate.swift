@@ -13,7 +13,7 @@ import UIKit
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
 
-    public final let window = UIWindow(frame: UIScreen.main.bounds)
+    public final let appCoordinator = UIApplicationCoordinator(contentSize: UIScreen.main.bounds.size)
 
 }
 
@@ -29,19 +29,7 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
 
-        /// The ROOT must specify a size to render its content correctly.
-        let rootCoordinator = UIProfileCoordinator(
-            contentSize: window.bounds.size,
-            userId: "1",
-            userManager: UserManager(),
-            postManager: PostManager()
-        )
-
-        window.rootViewController = UIViewRendererController(renderable: rootCoordinator)
-
-        window.makeKeyAndVisible()
-
-        rootCoordinator.activate()
+        appCoordinator.activate()
 
         return true
 

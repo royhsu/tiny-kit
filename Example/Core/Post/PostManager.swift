@@ -13,9 +13,9 @@ import Hydra
 
 public final class PostManager {
 
-    public final func fetchPosts(
+    public final func fetchMyPosts(
         in context: Context,
-        userId: String
+        accessToken: AccessToken
     )
     -> Promise<[Post]> {
 

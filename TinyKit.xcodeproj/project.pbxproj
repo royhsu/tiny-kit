@@ -37,6 +37,8 @@
 		B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FD203BFD580074CD5E /* Coordinator.swift */; };
 		B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
+		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
+		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
 		B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */; };
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
 		B05E677520385ED0003E8E0E /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677420385ED0003E8E0E /* UIListComponent.swift */; };
@@ -102,6 +104,8 @@
 		B01ED1FD203BFD580074CD5E /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
+		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
 		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
 		B05E677420385ED0003E8E0E /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 		B00D96302030758A00EF0B7A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B03C3E4A20456E69004E318B /* Controller */,
 				B00D96312030758A00EF0B7A /* View.swift */,
 				B00D96322030758A00EF0B7A /* ViewRenderable.swift */,
 				B00D96332030758A00EF0B7A /* ViewRenderer.swift */,
@@ -282,6 +287,15 @@
 				B01ED1FD203BFD580074CD5E /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B03C3E4A20456E69004E318B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B03C3E4720456E2D004E318B /* ViewController.swift */,
+				B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B05E677E20394388003E8E0E /* UIKit */ = {
@@ -479,12 +493,14 @@
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
+				B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
+				B03C3E4920456E2D004E318B /* ViewController.swift in Sources */,
 				B05E677920386FF3003E8E0E /* ListItemComponents.swift in Sources */,
 				B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */,
 				B05E677720386432003E8E0E /* UITableViewListComponentBridge.swift in Sources */,

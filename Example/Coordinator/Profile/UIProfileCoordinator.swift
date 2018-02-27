@@ -6,17 +6,31 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UIProfileCoordinatorDelegate
+
+public protocol UIProfileCoordinatorDelegate: class {
+
+    func coordinatorDidSignOut(_ coordinator: Coordinator)
+
+}
+
 // MARK: - UIProfileCoordinator
 
 import Hydra
 import TinyCore
 import TinyKit
 
-public final class UIProfileCoordinator: Coordinator, ViewRenderable {
+public final class UIProfileCoordinator: Coordinator {
 
-    private final let stateMachine = StateMachine(initialState: UIProfileState.initial)
+    private final let navigationController: UINavigationController
 
-    internal final var currentState: UIProfileState {
+    private final let containerViewController: UIViewController
+
+    private final var containerView: View { return containerViewController.view }
+
+    private final let stateMachine: StateMachine
+
+    private final var currentState: UIProfileState {
 
         // swiftlint:disable force_cast
         return stateMachine.currentState as! UIProfileState
@@ -24,7 +38,23 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     }
 
-    public final let userId: String
+    private final var currentComponent: Component {
+
+        switch currentState {
+
+        case .initial: return splashComponent
+
+        case .loading: return loadingComponent
+
+        case .loaded: return profileComponent
+
+        case .error: return messageComponent
+
+        }
+
+    }
+
+    public final let accessToken: AccessToken
 
     private final let userManager: UserManager
 
@@ -38,18 +68,30 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     private final let messageComponent: UIMessageComponent
 
+    public final weak var delegate: UIProfileCoordinatorDelegate?
+
     public init(
         contentSize: CGSize,
-        userId: String,
+        accessToken: AccessToken,
         userManager: UserManager,
         postManager: PostManager
     ) {
 
-        self.userId = userId
+        self.accessToken = accessToken
 
         self.userManager = userManager
 
         self.postManager = postManager
+
+        self.stateMachine = StateMachine(initialState: UIProfileState.initial)
+
+        let containerViewController = UIViewController()
+
+        containerViewController.view.frame.size = contentSize
+
+        self.containerViewController = containerViewController
+
+        self.navigationController = UINavigationController(rootViewController: containerViewController)
 
         self.splashComponent = UIItemComponent(
             contentMode: .size(
@@ -94,7 +136,7 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
             splashComponent.render()
 
-            view.render(with: splashComponent)
+            containerView.render(with: splashComponent)
 
             stateMachine.enter(UIProfileState.loading)
 
@@ -104,11 +146,10 @@ public final class UIProfileCoordinator: Coordinator, ViewRenderable {
 
     }
 
-    // MARK: ViewRenderable
+    // MARK: Action
 
-    public final let view = View()
-
-    public final var preferredContentSize: CGSize { return view.bounds.size }
+    @objc
+    public final func handleSignOut() { delegate?.coordinatorDidSignOut(self) }
 
 }
 
@@ -135,16 +176,16 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             loadingComponent.startAnimating()
 
-            view.render(with: loadingComponent)
+            containerView.render(with: loadingComponent)
 
             Promise<Void>.zip(
-                userManager.fetchUser(
+                userManager.fetchMe(
                     in: .background,
-                    userId: userId
+                    accessToken: accessToken
                 ),
-                postManager.fetchPosts(
+                postManager.fetchMyPosts(
                     in: .background,
-                    userId: userId
+                    accessToken: accessToken
                 )
             )
             .then(in: .main) { result in
@@ -195,7 +236,17 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             profileComponent.render()
 
-            view.render(with: profileComponent)
+            containerView.render(with: profileComponent)
+
+            containerViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: NSLocalizedString(
+                    "Sign Out",
+                    comment: ""
+                ),
+                style: .plain,
+                target: self,
+                action: #selector(handleSignOut)
+            )
 
         case (
             .loading,
@@ -211,12 +262,20 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             messageComponent.render()
 
-            view.render(with: messageComponent)
+            containerView.render(with: messageComponent)
 
         default: fatalError("Invalid state transition.")
 
         }
 
     }
+
+}
+
+// MARK: - ViewControllerRepresentable
+
+extension UIProfileCoordinator: ViewControllerRepresentable {
+
+    public final var viewController: ViewController { return navigationController }
 
 }

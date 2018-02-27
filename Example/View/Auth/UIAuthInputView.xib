@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UIAuthInputView" customModule="TinyKitExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amet Mattis Quam" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpA-eI-xDg">
+                    <rect key="frame" x="16" y="16.5" width="72.5" height="18"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4k-Ac-NzG">
+                    <rect key="frame" x="96.5" y="10" width="262.5" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EpA-eI-xDg" firstAttribute="centerY" secondItem="s4k-Ac-NzG" secondAttribute="centerY" id="KMX-q0-g63"/>
+                <constraint firstItem="EpA-eI-xDg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Pe3-Nw-QlM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="s4k-Ac-NzG" secondAttribute="bottom" constant="10" id="Rli-Wv-76M"/>
+                <constraint firstItem="s4k-Ac-NzG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="7/10" id="ebc-nG-ukW"/>
+                <constraint firstItem="s4k-Ac-NzG" firstAttribute="leading" secondItem="EpA-eI-xDg" secondAttribute="trailing" constant="8" id="gPk-bK-8q0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="s4k-Ac-NzG" secondAttribute="trailing" constant="16" id="qEB-CO-gsb"/>
+                <constraint firstItem="s4k-Ac-NzG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="wE1-5K-8z1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="label" destination="EpA-eI-xDg" id="0ps-YD-c6m"/>
+                <outlet property="textField" destination="s4k-Ac-NzG" id="SbH-aF-hrP"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-245"/>
+        </view>
+    </objects>
+</document>

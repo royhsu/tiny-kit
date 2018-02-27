@@ -19,14 +19,28 @@
 		B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96FC20307F4400EF0B7A /* UIPostView.swift */; };
 		B00D971620307F4400EF0B7A /* UIPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D96FD20307F4400EF0B7A /* UIPostView.xib */; };
 		B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D970320307F4400EF0B7A /* AppDelegate.swift */; };
-		B00D972120307F6B00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
-		B00D972520307F8600EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
-		B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
 		B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F6203BEAE80074CD5E /* UIMessageComponent.swift */; };
 		B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1F8203BEBD40074CD5E /* UIMessage.swift */; };
 		B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */; };
 		B031CA9F203BE6F900B9DCBA /* UIMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */; };
 		B031CAA2203BE73E00B9DCBA /* UIMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */; };
+		B039D50C203D1E78005A5A23 /* UISignInComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D50B203D1E78005A5A23 /* UISignInComponent.swift */; };
+		B039D50E203D216F005A5A23 /* UIAuthInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D50D203D216F005A5A23 /* UIAuthInputView.swift */; };
+		B039D510203D21E7005A5A23 /* UIAuthInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B039D50F203D21E7005A5A23 /* UIAuthInputView.xib */; };
+		B039D512203D2526005A5A23 /* UIAuthInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D511203D2526005A5A23 /* UIAuthInputComponent.swift */; };
+		B039D514203D25E7005A5A23 /* UIAuthInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D513203D25E7005A5A23 /* UIAuthInput.swift */; };
+		B039D516203D4991005A5A23 /* UISignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D515203D4991005A5A23 /* UISignIn.swift */; };
+		B039D51D203D503D005A5A23 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; };
+		B039D51E203D503D005A5A23 /* Hydra.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972320307F8600EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B039D51F203D503D005A5A23 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; };
+		B039D520203D503D005A5A23 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972420307F8600EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B039D521203D503D005A5A23 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; };
+		B039D522203D503D005A5A23 /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D972220307F6B00EF0B7A /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B039D528203D6575005A5A23 /* UIAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D527203D6575005A5A23 /* UIAuthCoordinator.swift */; };
+		B039D535203D9DF4005A5A23 /* BasicAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D534203D9DF4005A5A23 /* BasicAuthManager.swift */; };
+		B039D537203DC0B3005A5A23 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */; };
+		B03C3E59204573B7004E318B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E58204573B7004E318B /* Auth.swift */; };
+		B03C3E5B204573E1004E318B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E5A204573E1004E318B /* AccessToken.swift */; };
 		B05E676C2037B406003E8E0E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676B2037B406003E8E0E /* UserManager.swift */; };
 		B05E676E2037B467003E8E0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E676D2037B467003E8E0E /* User.swift */; };
 		B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67712037C1BA003E8E0E /* PostManager.swift */; };
@@ -39,12 +53,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B00D971F20307F5E00EF0B7A /* Embed Frameworks */ = {
+		B039D523203D503D005A5A23 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B039D51E203D503D005A5A23 /* Hydra.framework in Embed Frameworks */,
+				B039D522203D503D005A5A23 /* TinyKit.framework in Embed Frameworks */,
+				B039D520203D503D005A5A23 /* TinyCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +91,17 @@
 		B031CA94203AEFFC00B9DCBA /* UIProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProfileState.swift; sourceTree = "<group>"; };
 		B031CA9E203BE6F900B9DCBA /* UIMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessageView.swift; sourceTree = "<group>"; };
 		B031CAA1203BE73E00B9DCBA /* UIMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMessageView.xib; sourceTree = "<group>"; };
+		B039D50B203D1E78005A5A23 /* UISignInComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISignInComponent.swift; sourceTree = "<group>"; };
+		B039D50D203D216F005A5A23 /* UIAuthInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthInputView.swift; sourceTree = "<group>"; };
+		B039D50F203D21E7005A5A23 /* UIAuthInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIAuthInputView.xib; sourceTree = "<group>"; };
+		B039D511203D2526005A5A23 /* UIAuthInputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthInputComponent.swift; sourceTree = "<group>"; };
+		B039D513203D25E7005A5A23 /* UIAuthInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthInput.swift; sourceTree = "<group>"; };
+		B039D515203D4991005A5A23 /* UISignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISignIn.swift; sourceTree = "<group>"; };
+		B039D527203D6575005A5A23 /* UIAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthCoordinator.swift; sourceTree = "<group>"; };
+		B039D534203D9DF4005A5A23 /* BasicAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthManager.swift; sourceTree = "<group>"; };
+		B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
+		B03C3E58204573B7004E318B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		B03C3E5A204573E1004E318B /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		B05E676B2037B406003E8E0E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B05E676D2037B467003E8E0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B05E67712037C1BA003E8E0E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
@@ -90,9 +118,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00D972520307F8600EF0B7A /* Hydra.framework in Frameworks */,
-				B00D972620307F8600EF0B7A /* TinyCore.framework in Frameworks */,
-				B00D972120307F6B00EF0B7A /* TinyKit.framework in Frameworks */,
+				B039D51D203D503D005A5A23 /* Hydra.framework in Frameworks */,
+				B039D521203D503D005A5A23 /* TinyKit.framework in Frameworks */,
+				B039D51F203D503D005A5A23 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +151,7 @@
 				B05E678C2039ABBB003E8E0E /* View */,
 				B05E679B203A822A003E8E0E /* Coordinator */,
 				B00D970320307F4400EF0B7A /* AppDelegate.swift */,
+				B039D536203DC0B3005A5A23 /* UIApplicationCoordinator.swift */,
 				B00D96DD20307E0300EF0B7A /* Assets.xcassets */,
 				B00D96DE20307E0300EF0B7A /* LaunchScreen.storyboard */,
 				B00D96E120307E0300EF0B7A /* Info.plist */,
@@ -175,9 +204,41 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		B039D508203D1DC3005A5A23 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B039D50D203D216F005A5A23 /* UIAuthInputView.swift */,
+				B039D50F203D21E7005A5A23 /* UIAuthInputView.xib */,
+				B039D513203D25E7005A5A23 /* UIAuthInput.swift */,
+				B039D511203D2526005A5A23 /* UIAuthInputComponent.swift */,
+				B039D50B203D1E78005A5A23 /* UISignInComponent.swift */,
+				B039D515203D4991005A5A23 /* UISignIn.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B039D525203D655C005A5A23 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B039D527203D6575005A5A23 /* UIAuthCoordinator.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B039D533203D9DEA005A5A23 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B039D534203D9DF4005A5A23 /* BasicAuthManager.swift */,
+				B03C3E5A204573E1004E318B /* AccessToken.swift */,
+				B03C3E58204573B7004E318B /* Auth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		B05E67892039AB38003E8E0E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B039D533203D9DEA005A5A23 /* Auth */,
 				B05E678A2039AB77003E8E0E /* Post */,
 				B05E678B2039AB82003E8E0E /* User */,
 			);
@@ -205,6 +266,7 @@
 		B05E678C2039ABBB003E8E0E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B039D508203D1DC3005A5A23 /* Auth */,
 				B031CAA0203BE71A00B9DCBA /* Message */,
 				B05E6794203A7EB0003E8E0E /* Loading */,
 				B00D96F820307F4400EF0B7A /* Post */,
@@ -226,6 +288,7 @@
 		B05E679B203A822A003E8E0E /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				B039D525203D655C005A5A23 /* Auth */,
 				B05E679E203A9384003E8E0E /* Profile */,
 			);
 			path = Coordinator;
@@ -250,8 +313,8 @@
 				B00D96C520307D9C00EF0B7A /* Sources */,
 				B00D96C620307D9C00EF0B7A /* Frameworks */,
 				B00D96C720307D9C00EF0B7A /* Resources */,
-				B00D971F20307F5E00EF0B7A /* Embed Frameworks */,
 				B00D972720307FA100EF0B7A /* Carthage */,
+				B039D523203D503D005A5A23 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B05E679A203A7F6A003E8E0E /* UILoadingView.xib in Resources */,
+				B039D510203D21E7005A5A23 /* UIAuthInputView.xib in Resources */,
 				B00D96E320307E0300EF0B7A /* Assets.xcassets in Resources */,
 				B00D971620307F4400EF0B7A /* UIPostView.xib in Resources */,
 				B00D96E420307E0300EF0B7A /* LaunchScreen.storyboard in Resources */,
@@ -341,19 +405,29 @@
 			files = (
 				B00D970420307F4400EF0B7A /* UIProfileComponent.swift in Sources */,
 				B031CA95203AEFFC00B9DCBA /* UIProfileState.swift in Sources */,
+				B039D512203D2526005A5A23 /* UIAuthInputComponent.swift in Sources */,
 				B00D971B20307F4400EF0B7A /* AppDelegate.swift in Sources */,
 				B00D971320307F4400EF0B7A /* UIPostComponent.swift in Sources */,
+				B03C3E59204573B7004E318B /* Auth.swift in Sources */,
 				B00D970920307F4400EF0B7A /* UIProfileHeaderComponent.swift in Sources */,
 				B05E6796203A7F30003E8E0E /* UILoadingComponent.swift in Sources */,
+				B039D50C203D1E78005A5A23 /* UISignInComponent.swift in Sources */,
+				B03C3E5B204573E1004E318B /* AccessToken.swift in Sources */,
+				B039D528203D6575005A5A23 /* UIAuthCoordinator.swift in Sources */,
 				B05E67902039B509003E8E0E /* Post.swift in Sources */,
 				B00D971420307F4400EF0B7A /* UIPost.swift in Sources */,
+				B039D516203D4991005A5A23 /* UISignIn.swift in Sources */,
+				B039D537203DC0B3005A5A23 /* UIApplicationCoordinator.swift in Sources */,
 				B00D971520307F4400EF0B7A /* UIPostView.swift in Sources */,
 				B01ED1F7203BEAE80074CD5E /* UIMessageComponent.swift in Sources */,
+				B039D514203D25E7005A5A23 /* UIAuthInput.swift in Sources */,
 				B05E679D203A8243003E8E0E /* UIProfileCoordinator.swift in Sources */,
 				B031CA9F203BE6F900B9DCBA /* UIMessageView.swift in Sources */,
 				B05E6798203A7F45003E8E0E /* UILoadingView.swift in Sources */,
+				B039D50E203D216F005A5A23 /* UIAuthInputView.swift in Sources */,
 				B00D970620307F4400EF0B7A /* UIProfileIntroductionView.swift in Sources */,
 				B05E676C2037B406003E8E0E /* UserManager.swift in Sources */,
+				B039D535203D9DF4005A5A23 /* BasicAuthManager.swift in Sources */,
 				B01ED1F9203BEBD40074CD5E /* UIMessage.swift in Sources */,
 				B05E67722037C1BA003E8E0E /* PostManager.swift in Sources */,
 				B00D970A20307F4400EF0B7A /* UIProfileIntroductionComponent.swift in Sources */,
