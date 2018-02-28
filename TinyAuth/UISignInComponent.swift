@@ -6,79 +6,36 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UISignInComponentDelegate
-
-//public protocol UISignInComponentDelegate: class {
-//
-//    func component(
-//        _ component: Component,
-//        didSupplyEmail email: String,
-//        password: String
-//    )
-//
-//}
-
 // MARK: - UISignInComponent
 
+// TODO: isolate primary button from landing
+import TinyLanding
 import TinyKit
 
 public final class UISignInComponent: Component {
 
-    private final var signIn = UISignIn() {
-
-        didSet { setUpActionButton(actionComponent.itemView) }
-
-    }
+    private final var signIn: UISignIn
 
     private final let emailComponent: UITextInputComponent
 
     private final let passwordComponent: UITextInputComponent
 
-    private final let actionComponent = UIItemComponent(
-        itemView: UIButton(type: .system)
-    )
+    private final let submitComponent: UIPrimaryButtonComponent
 
     /// The base component.
     private final let listComponent: UIListComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
+        self.signIn = UISignIn()
+        
         self.emailComponent = UITextInputComponent()
         
         self.passwordComponent = UITextInputComponent()
         
+        self.submitComponent = UIPrimaryButtonComponent()
+        
         self.listComponent = UIListComponent(contentMode: contentMode)
-
-    }
-
-    // MARK: Set Up
-
-    fileprivate final func setUpActionButton(_ button: UIButton) {
-
-        button.setTitle(
-            NSLocalizedString(
-                "Sign In",
-                comment: ""
-            ),
-            for: .normal
-        )
-
-        button.addTarget(
-            self,
-            action: #selector(handleActionButtonClicked),
-            for: .touchUpInside
-        )
-
-        let isValid: Bool
-
-        if
-            let email = signIn.email,
-            !email.isEmpty,
-            let password = signIn.password,
-            !password.isEmpty { isValid = true }
-        else { isValid = false }
-
-        button.isEnabled = isValid
 
     }
 
@@ -107,11 +64,7 @@ public final class UISignInComponent: Component {
                     )
                 )
             )
-            .onEdit { text in
-                
-                print("\(text)")
-                
-            }
+            .onEdit { self.signIn.email = $0 }
         
         passwordComponent
             .setItem(
@@ -127,18 +80,29 @@ public final class UISignInComponent: Component {
                     isSecured: true
                 )
             )
-            .onEdit { text in
+            .onEdit { self.signIn.password = $0 }
+
+        submitComponent
+            .setItem(
+                UIPrimaryButtonItem(
+                    title: NSLocalizedString(
+                        "Sign In",
+                        comment: ""
+                    ),
+                    titleColor: .white,
+                    backgroundColor: .black
+                )
+            )
+            .onTap {
                 
-                print("\(text)")
+                print("Submit!", self.signIn)
                 
             }
-
-        setUpActionButton(actionComponent.itemView)
 
         let components: [Component] = [
             emailComponent,
             passwordComponent,
-            actionComponent
+            submitComponent
         ]
 
         listComponent.itemComponents = AnyCollection(components)
@@ -152,24 +116,6 @@ public final class UISignInComponent: Component {
     public final var view: View { return listComponent.view }
 
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
-
-    // MARK: Action
-
-    @objc
-    public final func handleActionButtonClicked(_ sender: Any) {
-
-        guard
-            let email = signIn.email,
-            let password = signIn.password
-        else { fatalError("The input is invalid.") }
-
-//        delegate?.component(
-//            self,
-//            didSupplyEmail: email,
-//            password: password
-//        )
-
-    }
 
 }
 
