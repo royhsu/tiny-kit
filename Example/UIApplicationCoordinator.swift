@@ -8,6 +8,7 @@
 
 // MARK: - UIApplicationCoordinator
 
+import TinyAuth
 import TinyKit
 
 public final class UIApplicationCoordinator: Coordinator {
@@ -18,6 +19,9 @@ public final class UIApplicationCoordinator: Coordinator {
 
     private final var rootCoordinator: RootCoordinator
 
+    // TODO: development only.
+    private final var rootComponent: Component
+    
     public init(contentSize: CGSize) {
 
         self.window = UIWindow(
@@ -29,15 +33,28 @@ public final class UIApplicationCoordinator: Coordinator {
 
         self.rootCoordinator = UILandingCoordinator(contentSize: contentSize)
 
+        self.rootComponent = UISignInComponent(
+            contentMode: .size(
+                width: contentSize.width,
+                height: contentSize.height
+            )
+        )
+        
     }
 
     public final func activate() {
 
-        window.rootViewController = rootCoordinator.viewController
+//        window.rootViewController = rootCoordinator.viewController
 
+        // TODO: development only.
+        window.rootViewController = UIComponentViewController(component: rootComponent)
+        
         window.makeKeyAndVisible()
 
-        rootCoordinator.activate()
+//        rootCoordinator.activate()
+        
+        // TODO: development only.
+        rootComponent.render()
 
     }
 

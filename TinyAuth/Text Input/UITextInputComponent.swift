@@ -17,9 +17,16 @@ public final class UITextInputComponent: Component {
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
+        let bundle = Bundle(
+            for: type(of: self)
+        )
+        
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
-            itemView: UIView.load(UITextInput.self)!
+            itemView: UIView.load(
+                UITextInput.self,
+                from: bundle
+            )!
         )
 
     }
