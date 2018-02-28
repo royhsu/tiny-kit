@@ -1,6 +1,6 @@
 //
 //  UIApplicationCoordinator.swift
-//  TinyKitExample
+//  TinyApp
 //
 //  Created by Roy Hsu on 21/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
@@ -27,11 +27,7 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
 
-        let authCoordinator = UIAuthCoordinator(contentSize: contentSize)
-
-        self.rootCoordinator = authCoordinator
-
-        authCoordinator.delegate = self
+        self.rootCoordinator = UILandingCoordinator(contentSize: contentSize)
 
     }
 
@@ -42,54 +38,6 @@ public final class UIApplicationCoordinator: Coordinator {
         window.makeKeyAndVisible()
 
         rootCoordinator.activate()
-
-    }
-
-}
-
-// MARK: - UIAuthCoordinatorDelegate
-
-extension UIApplicationCoordinator: UIAuthCoordinatorDelegate {
-
-    public final func coordinate(
-        _ coordinate: Coordinator,
-        didGrant auth: Auth
-    ) {
-
-        let profileCoordinator = UIProfileCoordinator(
-            contentSize: window.bounds.size,
-            accessToken: auth.accessToken,
-            userManager: UserManager(),
-            postManager: PostManager()
-        )
-
-        profileCoordinator.delegate = self
-
-        window.rootViewController = profileCoordinator.viewController
-
-        profileCoordinator.activate()
-
-        rootCoordinator = profileCoordinator
-
-    }
-
-}
-
-// MARK: - UIProfileCoordinatorDelegate
-
-extension UIApplicationCoordinator: UIProfileCoordinatorDelegate {
-
-    public final func coordinatorDidSignOut(_ coordinator: Coordinator) {
-
-        let authCoordinator = UIAuthCoordinator(contentSize: window.bounds.size)
-
-        authCoordinator.delegate = self
-
-        window.rootViewController = authCoordinator.viewController
-
-        authCoordinator.activate()
-
-        rootCoordinator = authCoordinator
 
     }
 
