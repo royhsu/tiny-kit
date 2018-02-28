@@ -39,6 +39,12 @@ public final class UIApplicationCoordinator: Coordinator {
                 height: contentSize.height
             )
         )
+        .setSignIn(
+            UISignIn(
+                email: "hello@world.com",
+                password: "helloworld"
+            )
+        )
         
     }
 

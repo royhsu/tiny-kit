@@ -79,15 +79,17 @@ public final class UITextInputComponent: Component {
 public extension UITextInputComponent {
 
     @discardableResult
-    public final func setItem(_ item: UITextInputItem?) -> UITextInputComponent {
+    public final func setItem(_ item: UITextInputItem) -> UITextInputComponent {
 
         let inputView = itemComponent.itemView
 
-        inputView.titleLabel.text = item?.title
+        inputView.titleLabel.text = item.title
+        
+        inputView.inputTextField.text = item.text
 
-        inputView.inputTextField.placeholder = item?.placeholder
+        inputView.inputTextField.placeholder = item.placeholder
 
-        inputView.inputTextField.isSecureTextEntry = item?.isSecured ?? false
+        inputView.inputTextField.isSecureTextEntry = item.isSecured
         
         return self
 

@@ -51,6 +51,7 @@
 		B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299C20465828000F97E3 /* UITextInputComponent.swift */; };
 		B0A629A7204658EE000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
 		B0A629A8204658F4000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
+		B0A629AA20465F18000F97E3 /* UILandingLogoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		B0A6299A20465828000F97E3 /* UITextInputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputItem.swift; sourceTree = "<group>"; };
 		B0A6299B20465828000F97E3 /* UITextInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITextInput.xib; sourceTree = "<group>"; };
 		B0A6299C20465828000F97E3 /* UITextInputComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputComponent.swift; sourceTree = "<group>"; };
+		B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogoComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				B044A02320458F6400AAED35 /* UILandingLogoView.swift */,
 				B0A62915204590D4000F97E3 /* UILandingLogoView.xib */,
 				B044A02120458E8900AAED35 /* UILandingLogo.swift */,
+				B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */,
 			);
 			path = Logo;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 			files = (
 				B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */,
 				B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */,
+				B0A629AA20465F18000F97E3 /* UILandingLogoComponent.swift in Sources */,
 				B044A02420458F6400AAED35 /* UILandingLogoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

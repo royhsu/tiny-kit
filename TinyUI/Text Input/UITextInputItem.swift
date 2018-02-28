@@ -11,6 +11,8 @@
 public struct UITextInputItem {
 
     public var title: String
+    
+    public var text: String?
 
     public var placeholder: String?
 
@@ -18,11 +20,14 @@ public struct UITextInputItem {
 
     public init(
         title: String,
+        text: String? = nil,
         placeholder: String? = nil,
         isSecured: Bool = false
     ) {
 
         self.title = title
+        
+        self.text = text
 
         self.placeholder = placeholder
 

@@ -69,15 +69,15 @@ public final class UIPrimaryButtonComponent: Component {
 public extension UIPrimaryButtonComponent {
     
     @discardableResult
-    public final func setItem(_ item: UIPrimaryButtonItem?) -> UIPrimaryButtonComponent {
+    public final func setItem(_ item: UIPrimaryButtonItem) -> UIPrimaryButtonComponent {
         
         let buttonView = itemComponent.itemView
         
-        buttonView.actionLabel.text = item?.title
+        buttonView.actionLabel.text = item.title
         
-        buttonView.actionLabel.textColor = item?.titleColor
+        buttonView.actionLabel.textColor = item.titleColor
         
-        buttonView.actionView.backgroundColor = item?.backgroundColor
+        buttonView.actionView.backgroundColor = item.backgroundColor
         
         return self
         

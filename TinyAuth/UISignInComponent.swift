@@ -8,15 +8,16 @@
 
 // MARK: - UISignInComponent
 
-import TinyUI
-import TinyKit
-
 public final class UISignInComponent: Component {
 
     private final var signIn: UISignIn
 
+    private final var emailItem: UITextInputItem
+    
     private final let emailComponent: UITextInputComponent
 
+    private final var passwordItem: UITextInputItem
+    
     private final let passwordComponent: UITextInputComponent
 
     private final let submitComponent: UIPrimaryButtonComponent
@@ -28,7 +29,30 @@ public final class UISignInComponent: Component {
 
         self.signIn = UISignIn()
         
+        self.emailItem = UITextInputItem(
+            title: NSLocalizedString(
+                "Email", comment:
+                ""
+            ),
+            placeholder: NSLocalizedString(
+                "Please fill in your email address.",
+                comment: ""
+            )
+        )
+        
         self.emailComponent = UITextInputComponent()
+        
+        self.passwordItem = UITextInputItem(
+            title: NSLocalizedString(
+                "Password", comment:
+                ""
+            ),
+            placeholder: NSLocalizedString(
+                "Please fill in your password.",
+                comment: ""
+            ),
+            isSecured: true
+        )
         
         self.passwordComponent = UITextInputComponent()
         
@@ -51,34 +75,11 @@ public final class UISignInComponent: Component {
     public final func render() {
         
         emailComponent
-            .setItem(
-                UITextInputItem(
-                    title: NSLocalizedString(
-                        "Email", comment:
-                        ""
-                    ),
-                    placeholder: NSLocalizedString(
-                        "Please fill in your email address.",
-                        comment: ""
-                    )
-                )
-            )
+            .setItem(emailItem)
             .onEdit { self.signIn.email = $0 }
         
         passwordComponent
-            .setItem(
-                UITextInputItem(
-                    title: NSLocalizedString(
-                        "Password", comment:
-                        ""
-                    ),
-                    placeholder: NSLocalizedString(
-                        "Please fill in your password.",
-                        comment: ""
-                    ),
-                    isSecured: true
-                )
-            )
+            .setItem(passwordItem)
             .onEdit { self.signIn.password = $0 }
 
         submitComponent
@@ -118,6 +119,22 @@ public final class UISignInComponent: Component {
 
 }
 
+public extension UISignInComponent {
+    
+    public final func setSignIn(_ signIn: UISignIn) -> UISignInComponent {
+        
+        self.signIn = signIn
+        
+        emailItem.text = signIn.email
+        
+        passwordItem.text = signIn.password
+        
+        return self
+        
+    }
+    
+}
+
 // MARK: - UIAuthInputComponentDelegate
 
 //extension UISignInComponent: UIAuthInputComponentDelegate {
@@ -152,4 +169,3 @@ public final class UISignInComponent: Component {
 //    }
 //
 //}
-
