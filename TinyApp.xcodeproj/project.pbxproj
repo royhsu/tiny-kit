@@ -25,11 +25,6 @@
 		B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02120458E8900AAED35 /* UILandingLogo.swift */; };
 		B044A02420458F6400AAED35 /* UILandingLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02320458F6400AAED35 /* UILandingLogoView.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
-		B0A629192045ABA9000F97E3 /* UIPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629182045ABA9000F97E3 /* UIPrimaryButton.swift */; };
-		B0A6291B2045ABB6000F97E3 /* UIPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */; };
-		B0A6291D2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */; };
-		B0A6291F2045B2B2000F97E3 /* UIPrimaryButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */; };
-		B0A629212045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0A6292F204646DD000F97E3 /* TinyAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62928204646DD000F97E3 /* TinyAuth.framework */; };
 		B0A62930204646DD000F97E3 /* TinyAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62928204646DD000F97E3 /* TinyAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -37,12 +32,25 @@
 		B0A62935204646E6000F97E3 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B0A62936204646E6000F97E3 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
 		B0A6294920464756000F97E3 /* UISignInComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6294320464755000F97E3 /* UISignInComponent.swift */; };
-		B0A6294A20464756000F97E3 /* UITextInput.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6294420464756000F97E3 /* UITextInput.xib */; };
 		B0A6294B20464756000F97E3 /* UISignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6294520464756000F97E3 /* UISignIn.swift */; };
-		B0A6294C20464756000F97E3 /* UITextInputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6294620464756000F97E3 /* UITextInputItem.swift */; };
-		B0A6294D20464756000F97E3 /* UITextInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6294720464756000F97E3 /* UITextInputComponent.swift */; };
-		B0A6294E20464756000F97E3 /* UITextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6294820464756000F97E3 /* UITextInput.swift */; };
-		B0A6295020464AB9000F97E3 /* UITextInputEditHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6294F20464AB9000F97E3 /* UITextInputEditHandler.swift */; };
+		B0A62986204657C9000F97E3 /* TinyUI.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A62984204657C9000F97E3 /* TinyUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0A62989204657C9000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
+		B0A6298A204657C9000F97E3 /* TinyUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0A6298E204657D9000F97E3 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
+		B0A6298F204657D9000F97E3 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
+		B0A62990204657D9000F97E3 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
+		B0A6299D20465828000F97E3 /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */; };
+		B0A6299E20465828000F97E3 /* UIPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6299320465827000F97E3 /* UIPrimaryButton.xib */; };
+		B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299420465827000F97E3 /* UIPrimaryButton.swift */; };
+		B0A629A020465828000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */; };
+		B0A629A120465828000F97E3 /* UIPrimaryButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */; };
+		B0A629A220465828000F97E3 /* UITextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299820465828000F97E3 /* UITextInput.swift */; };
+		B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */; };
+		B0A629A420465828000F97E3 /* UITextInputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299A20465828000F97E3 /* UITextInputItem.swift */; };
+		B0A629A520465828000F97E3 /* UITextInput.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6299B20465828000F97E3 /* UITextInput.xib */; };
+		B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299C20465828000F97E3 /* UITextInputComponent.swift */; };
+		B0A629A7204658EE000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
+		B0A629A8204658F4000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,13 @@
 			remoteGlobalIDString = B0A62927204646DD000F97E3;
 			remoteInfo = TinyAuth;
 		};
+		B0A62987204657C9000F97E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B03C3E5D20457FEC004E318B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0A62981204657C9000F97E3;
+			remoteInfo = TinyUI;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B0A6298A204657C9000F97E3 /* TinyUI.framework in Embed Frameworks */,
 				B0A62930204646DD000F97E3 /* TinyAuth.framework in Embed Frameworks */,
 				B03C3E8420458172004E318B /* TinyLanding.framework in Embed Frameworks */,
 			);
@@ -108,21 +124,24 @@
 		B044A02120458E8900AAED35 /* UILandingLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogo.swift; sourceTree = "<group>"; };
 		B044A02320458F6400AAED35 /* UILandingLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogoView.swift; sourceTree = "<group>"; };
 		B0A62915204590D4000F97E3 /* UILandingLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILandingLogoView.xib; sourceTree = "<group>"; };
-		B0A629182045ABA9000F97E3 /* UIPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButton.swift; sourceTree = "<group>"; };
-		B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIPrimaryButton.xib; sourceTree = "<group>"; };
-		B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonComponent.swift; sourceTree = "<group>"; };
-		B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonItem.swift; sourceTree = "<group>"; };
-		B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonTapHandler.swift; sourceTree = "<group>"; };
 		B0A62928204646DD000F97E3 /* TinyAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A6292A204646DD000F97E3 /* TinyAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyAuth.h; sourceTree = "<group>"; };
 		B0A6292B204646DD000F97E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0A6294320464755000F97E3 /* UISignInComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISignInComponent.swift; sourceTree = "<group>"; };
-		B0A6294420464756000F97E3 /* UITextInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITextInput.xib; sourceTree = "<group>"; };
 		B0A6294520464756000F97E3 /* UISignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISignIn.swift; sourceTree = "<group>"; };
-		B0A6294620464756000F97E3 /* UITextInputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputItem.swift; sourceTree = "<group>"; };
-		B0A6294720464756000F97E3 /* UITextInputComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputComponent.swift; sourceTree = "<group>"; };
-		B0A6294820464756000F97E3 /* UITextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInput.swift; sourceTree = "<group>"; };
-		B0A6294F20464AB9000F97E3 /* UITextInputEditHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextInputEditHandler.swift; sourceTree = "<group>"; };
+		B0A62982204657C9000F97E3 /* TinyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0A62984204657C9000F97E3 /* TinyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyUI.h; sourceTree = "<group>"; };
+		B0A62985204657C9000F97E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonComponent.swift; sourceTree = "<group>"; };
+		B0A6299320465827000F97E3 /* UIPrimaryButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPrimaryButton.xib; sourceTree = "<group>"; };
+		B0A6299420465827000F97E3 /* UIPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButton.swift; sourceTree = "<group>"; };
+		B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonTapHandler.swift; sourceTree = "<group>"; };
+		B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonItem.swift; sourceTree = "<group>"; };
+		B0A6299820465828000F97E3 /* UITextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInput.swift; sourceTree = "<group>"; };
+		B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputEditHandler.swift; sourceTree = "<group>"; };
+		B0A6299A20465828000F97E3 /* UITextInputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputItem.swift; sourceTree = "<group>"; };
+		B0A6299B20465828000F97E3 /* UITextInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITextInput.xib; sourceTree = "<group>"; };
+		B0A6299C20465828000F97E3 /* UITextInputComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A62989204657C9000F97E3 /* TinyUI.framework in Frameworks */,
 				B0A6292F204646DD000F97E3 /* TinyAuth.framework in Frameworks */,
 				B03C3E8320458172004E318B /* TinyLanding.framework in Frameworks */,
 			);
@@ -139,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A629A8204658F4000F97E3 /* TinyUI.framework in Frameworks */,
 				B044A018204585D300AAED35 /* Hydra.framework in Frameworks */,
 				B044A019204585D300AAED35 /* TinyCore.framework in Frameworks */,
 				B044A01A204585D300AAED35 /* TinyKit.framework in Frameworks */,
@@ -149,9 +170,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A629A7204658EE000F97E3 /* TinyUI.framework in Frameworks */,
 				B0A62934204646E6000F97E3 /* Hydra.framework in Frameworks */,
 				B0A62935204646E6000F97E3 /* TinyCore.framework in Frameworks */,
 				B0A62936204646E6000F97E3 /* TinyKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0A6297E204657C9000F97E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0A6298E204657D9000F97E3 /* Hydra.framework in Frameworks */,
+				B0A6298F204657D9000F97E3 /* TinyCore.framework in Frameworks */,
+				B0A62990204657D9000F97E3 /* TinyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +196,7 @@
 				B03C3E6720457FEC004E318B /* TinyApp */,
 				B03C3E7D20458172004E318B /* TinyLanding */,
 				B0A62929204646DD000F97E3 /* TinyAuth */,
+				B0A62983204657C9000F97E3 /* TinyUI */,
 				B03C3E6620457FEC004E318B /* Products */,
 				B03C3E89204581D5004E318B /* Frameworks */,
 			);
@@ -175,6 +208,7 @@
 				B03C3E6520457FEC004E318B /* TinyApp.app */,
 				B03C3E7C20458172004E318B /* TinyLanding.framework */,
 				B0A62928204646DD000F97E3 /* TinyAuth.framework */,
+				B0A62982204657C9000F97E3 /* TinyUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,7 +229,6 @@
 		B03C3E7D20458172004E318B /* TinyLanding */ = {
 			isa = PBXGroup;
 			children = (
-				B0A629222045BE1F000F97E3 /* Button */,
 				B0A629172045AB86000F97E3 /* Logo */,
 				B044A01B2045870700AAED35 /* UILandingComponent.swift */,
 				B03C3E7E20458172004E318B /* TinyLanding.h */,
@@ -224,22 +257,9 @@
 			path = Logo;
 			sourceTree = "<group>";
 		};
-		B0A629222045BE1F000F97E3 /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				B0A629182045ABA9000F97E3 /* UIPrimaryButton.swift */,
-				B0A6291A2045ABB6000F97E3 /* UIPrimaryButton.xib */,
-				B0A6291E2045B2B2000F97E3 /* UIPrimaryButtonItem.swift */,
-				B0A629202045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift */,
-				B0A6291C2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift */,
-			);
-			path = Button;
-			sourceTree = "<group>";
-		};
 		B0A62929204646DD000F97E3 /* TinyAuth */ = {
 			isa = PBXGroup;
 			children = (
-				B0A6295120464D75000F97E3 /* Text Input */,
 				B0A6294520464756000F97E3 /* UISignIn.swift */,
 				B0A6294320464755000F97E3 /* UISignInComponent.swift */,
 				B0A6292A204646DD000F97E3 /* TinyAuth.h */,
@@ -248,14 +268,37 @@
 			path = TinyAuth;
 			sourceTree = "<group>";
 		};
-		B0A6295120464D75000F97E3 /* Text Input */ = {
+		B0A62983204657C9000F97E3 /* TinyUI */ = {
 			isa = PBXGroup;
 			children = (
-				B0A6294820464756000F97E3 /* UITextInput.swift */,
-				B0A6294420464756000F97E3 /* UITextInput.xib */,
-				B0A6294620464756000F97E3 /* UITextInputItem.swift */,
-				B0A6294F20464AB9000F97E3 /* UITextInputEditHandler.swift */,
-				B0A6294720464756000F97E3 /* UITextInputComponent.swift */,
+				B0A6299120465827000F97E3 /* Button */,
+				B0A6299720465828000F97E3 /* Text Input */,
+				B0A62984204657C9000F97E3 /* TinyUI.h */,
+				B0A62985204657C9000F97E3 /* Info.plist */,
+			);
+			path = TinyUI;
+			sourceTree = "<group>";
+		};
+		B0A6299120465827000F97E3 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				B0A6299420465827000F97E3 /* UIPrimaryButton.swift */,
+				B0A6299320465827000F97E3 /* UIPrimaryButton.xib */,
+				B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */,
+				B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */,
+				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		B0A6299720465828000F97E3 /* Text Input */ = {
+			isa = PBXGroup;
+			children = (
+				B0A6299820465828000F97E3 /* UITextInput.swift */,
+				B0A6299B20465828000F97E3 /* UITextInput.xib */,
+				B0A6299A20465828000F97E3 /* UITextInputItem.swift */,
+				B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */,
+				B0A6299C20465828000F97E3 /* UITextInputComponent.swift */,
 			);
 			path = "Text Input";
 			sourceTree = "<group>";
@@ -279,6 +322,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0A6297F204657C9000F97E3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0A62986204657C9000F97E3 /* TinyUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +349,7 @@
 			dependencies = (
 				B03C3E8220458172004E318B /* PBXTargetDependency */,
 				B0A6292E204646DD000F97E3 /* PBXTargetDependency */,
+				B0A62988204657C9000F97E3 /* PBXTargetDependency */,
 			);
 			name = TinyApp;
 			productName = TinyApp;
@@ -340,6 +392,24 @@
 			productReference = B0A62928204646DD000F97E3 /* TinyAuth.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B0A62981204657C9000F97E3 /* TinyUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0A6298B204657C9000F97E3 /* Build configuration list for PBXNativeTarget "TinyUI" */;
+			buildPhases = (
+				B0A6297D204657C9000F97E3 /* Sources */,
+				B0A6297E204657C9000F97E3 /* Frameworks */,
+				B0A6297F204657C9000F97E3 /* Headers */,
+				B0A62980204657C9000F97E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TinyUI;
+			productName = TinyUI;
+			productReference = B0A62982204657C9000F97E3 /* TinyUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -364,6 +434,10 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
+					B0A62981204657C9000F97E3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = B03C3E6020457FEC004E318B /* Build configuration list for PBXProject "TinyApp" */;
@@ -382,6 +456,7 @@
 				B03C3E6420457FEC004E318B /* TinyApp */,
 				B03C3E7B20458172004E318B /* TinyLanding */,
 				B0A62927204646DD000F97E3 /* TinyAuth */,
+				B0A62981204657C9000F97E3 /* TinyUI */,
 			);
 		};
 /* End PBXProject section */
@@ -400,7 +475,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A6291B2045ABB6000F97E3 /* UIPrimaryButton.xib in Resources */,
 				B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +483,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A6294A20464756000F97E3 /* UITextInput.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0A62980204657C9000F97E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0A6299E20465828000F97E3 /* UIPrimaryButton.xib in Resources */,
+				B0A629A520465828000F97E3 /* UITextInput.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,12 +533,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A6291D2045AF8A000F97E3 /* UIPrimaryButtonComponent.swift in Sources */,
 				B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */,
-				B0A629212045BD79000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */,
 				B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */,
-				B0A6291F2045B2B2000F97E3 /* UIPrimaryButtonItem.swift in Sources */,
-				B0A629192045ABA9000F97E3 /* UIPrimaryButton.swift in Sources */,
 				B044A02420458F6400AAED35 /* UILandingLogoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,12 +543,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A6294D20464756000F97E3 /* UITextInputComponent.swift in Sources */,
-				B0A6294E20464756000F97E3 /* UITextInput.swift in Sources */,
-				B0A6294C20464756000F97E3 /* UITextInputItem.swift in Sources */,
 				B0A6294920464756000F97E3 /* UISignInComponent.swift in Sources */,
-				B0A6295020464AB9000F97E3 /* UITextInputEditHandler.swift in Sources */,
 				B0A6294B20464756000F97E3 /* UISignIn.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0A6297D204657C9000F97E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0A629A220465828000F97E3 /* UITextInput.swift in Sources */,
+				B0A629A420465828000F97E3 /* UITextInputItem.swift in Sources */,
+				B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */,
+				B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */,
+				B0A629A120465828000F97E3 /* UIPrimaryButtonItem.swift in Sources */,
+				B0A629A020465828000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */,
+				B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */,
+				B0A6299D20465828000F97E3 /* UIPrimaryButtonComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +575,11 @@
 			isa = PBXTargetDependency;
 			target = B0A62927204646DD000F97E3 /* TinyAuth */;
 			targetProxy = B0A6292D204646DD000F97E3 /* PBXContainerItemProxy */;
+		};
+		B0A62988204657C9000F97E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0A62981204657C9000F97E3 /* TinyUI */;
+			targetProxy = B0A62987204657C9000F97E3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -768,6 +862,64 @@
 			};
 			name = Release;
 		};
+		B0A6298C204657C9000F97E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TinyUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B0A6298D204657C9000F97E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TinyUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -803,6 +955,15 @@
 			buildConfigurations = (
 				B0A62931204646DD000F97E3 /* Debug */,
 				B0A62932204646DD000F97E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0A6298B204657C9000F97E3 /* Build configuration list for PBXNativeTarget "TinyUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0A6298C204657C9000F97E3 /* Debug */,
+				B0A6298D204657C9000F97E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

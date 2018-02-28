@@ -8,8 +8,7 @@
 
 // MARK: - UISignInComponent
 
-// TODO: isolate primary button from landing
-import TinyLanding
+import TinyUI
 import TinyKit
 
 public final class UISignInComponent: Component {

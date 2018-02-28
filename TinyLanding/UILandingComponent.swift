@@ -8,6 +8,8 @@
 
 // MARK: - UILandingComponent
 
+import TinyUI
+
 public final class UILandingComponent: Component {
     
     /// The base component.
