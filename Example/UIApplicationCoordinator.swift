@@ -55,17 +55,17 @@ public final class UIApplicationCoordinator: Coordinator {
 
     public final func activate() {
 
-//        window.rootViewController = rootCoordinator.viewController
+        window.rootViewController = rootCoordinator.viewController
 
         // TODO: development only.
-        window.rootViewController = UIComponentViewController(component: rootComponent)
+//        window.rootViewController = UIComponentViewController(component: rootComponent)
         
         window.makeKeyAndVisible()
 
-//        rootCoordinator.activate()
+        rootCoordinator.activate()
         
         // TODO: development only.
-        rootComponent.render()
+//        rootComponent.render()
 
     }
 

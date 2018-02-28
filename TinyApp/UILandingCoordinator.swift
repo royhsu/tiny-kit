@@ -8,6 +8,7 @@
 
 // MARK: - UILandingCoordinator
 
+import TinyAuth
 import TinyLanding
 
 public final class UILandingCoordinator: Coordinator {
@@ -62,9 +63,30 @@ public final class UILandingCoordinator: Coordinator {
                     titleColor: .white,
                     backgroundColor: .black
                 ),
-                action: { print("Go sign in!") }
+                action: signIn
             )
             .render()
+        
+    }
+    
+    fileprivate final func signIn() {
+        
+        let signInComponent = UISignInComponent().onSubmit { [weak self] email, password in
+            
+            print(email, password)
+            
+            self?.navigationController.popViewController(animated: true)
+            
+        }
+        
+        let viewController = UIComponentViewController(component: signInComponent)
+        
+        signInComponent.render()
+        
+        navigationController.pushViewController(
+            viewController,
+            animated: true
+        )
         
     }
     
