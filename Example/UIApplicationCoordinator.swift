@@ -9,15 +9,12 @@
 // MARK: - UIApplicationCoordinator
 
 import TinyAuth
-import TinyKit
 
 public final class UIApplicationCoordinator: Coordinator {
 
     private final let window: UIWindow
 
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
-    
-    private final var authCoordinator: UIAuthCoordinator?
 
     private final var rootCoordinator: RootCoordinator
     
@@ -30,22 +27,13 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        let authCoordinator = UIAuthCoordinator(contentSize: contentSize)
-
-        self.authCoordinator = authCoordinator
-        
-        self.rootCoordinator = authCoordinator
+        self.rootCoordinator = UIAuthCoordinator(contentSize: contentSize)
+            .onGrant { accessToken in print(accessToken) }
         
     }
 
     public final func activate() {
 
-        authCoordinator?.onGrant { accessToken in
-            
-            print(accessToken)
-            
-        }
-        
         window.rootViewController = rootCoordinator.viewController
         
         window.makeKeyAndVisible()
