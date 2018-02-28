@@ -107,7 +107,7 @@ public extension UILandingComponent {
     -> UILandingComponent {
         
         let component = UIPrimaryButtonComponent()
-            .setButtonItem(item)
+            .setItem(item)
             .onTap(handler: handler)
         
         buttonComponents.append(component)

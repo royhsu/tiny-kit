@@ -69,7 +69,7 @@ public final class UIPrimaryButtonComponent: Component {
 public extension UIPrimaryButtonComponent {
     
     @discardableResult
-    public final func setButtonItem(_ item: UIPrimaryButtonItem?) -> UIPrimaryButtonComponent {
+    public final func setItem(_ item: UIPrimaryButtonItem?) -> UIPrimaryButtonComponent {
         
         let buttonView = itemComponent.itemView
         
