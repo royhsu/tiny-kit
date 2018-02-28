@@ -53,6 +53,12 @@
 		B0A629A8204658F4000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
 		B0A629AA20465F18000F97E3 /* UILandingLogoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */; };
 		B0A629AC2046617C000F97E3 /* UISignInSubmitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629AB2046617C000F97E3 /* UISignInSubmitHandler.swift */; };
+		B0A629AE204674AA000F97E3 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629AD204674AA000F97E3 /* AuthCoordinator.swift */; };
+		B0A629B0204675D4000F97E3 /* UIAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629AF204675D4000F97E3 /* UIAuthCoordinator.swift */; };
+		B0A629B220467E2B000F97E3 /* UILandingSupply.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B120467E2B000F97E3 /* UILandingSupply.swift */; };
+		B0A629B420467E43000F97E3 /* UILandingSupplyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */; };
+		B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B520467EAC000F97E3 /* AccessToken.swift */; };
+		B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B720467EBD000F97E3 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +152,12 @@
 		B0A6299C20465828000F97E3 /* UITextInputComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputComponent.swift; sourceTree = "<group>"; };
 		B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogoComponent.swift; sourceTree = "<group>"; };
 		B0A629AB2046617C000F97E3 /* UISignInSubmitHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISignInSubmitHandler.swift; sourceTree = "<group>"; };
+		B0A629AD204674AA000F97E3 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		B0A629AF204675D4000F97E3 /* UIAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAuthCoordinator.swift; sourceTree = "<group>"; };
+		B0A629B120467E2B000F97E3 /* UILandingSupply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingSupply.swift; sourceTree = "<group>"; };
+		B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingSupplyHandler.swift; sourceTree = "<group>"; };
+		B0A629B520467EAC000F97E3 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		B0A629B720467EBD000F97E3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,8 +232,11 @@
 		B03C3E6720457FEC004E318B /* TinyApp */ = {
 			isa = PBXGroup;
 			children = (
+				B0A629B920467ECA000F97E3 /* Core */,
 				B03C3E6820457FEC004E318B /* AppDelegate.swift */,
 				B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */,
+				B0A629AD204674AA000F97E3 /* AuthCoordinator.swift */,
+				B0A629AF204675D4000F97E3 /* UIAuthCoordinator.swift */,
 				B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */,
 				B03C3E6C20457FEC004E318B /* Assets.xcassets */,
 				B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */,
@@ -234,6 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				B0A629172045AB86000F97E3 /* Logo */,
+				B0A629B120467E2B000F97E3 /* UILandingSupply.swift */,
+				B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */,
 				B044A01B2045870700AAED35 /* UILandingComponent.swift */,
 				B03C3E7E20458172004E318B /* TinyLanding.h */,
 				B03C3E7F20458172004E318B /* Info.plist */,
@@ -307,6 +324,15 @@
 				B0A6299C20465828000F97E3 /* UITextInputComponent.swift */,
 			);
 			path = "Text Input";
+			sourceTree = "<group>";
+		};
+		B0A629B920467ECA000F97E3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B0A629B520467EAC000F97E3 /* AccessToken.swift */,
+				B0A629B720467EBD000F97E3 /* AuthManager.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,8 +556,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */,
+				B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
+				B0A629B0204675D4000F97E3 /* UIAuthCoordinator.swift in Sources */,
+				B0A629AE204674AA000F97E3 /* AuthCoordinator.swift in Sources */,
 				B044A01E204588EA00AAED35 /* UIApplicationCoordinator.swift in Sources */,
+				B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,9 +570,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */,
+				B0A629B420467E43000F97E3 /* UILandingSupplyHandler.swift in Sources */,
 				B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */,
 				B0A629AA20465F18000F97E3 /* UILandingLogoComponent.swift in Sources */,
 				B044A02420458F6400AAED35 /* UILandingLogoView.swift in Sources */,
+				B0A629B220467E2B000F97E3 /* UILandingSupply.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

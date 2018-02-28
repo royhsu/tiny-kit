@@ -16,11 +16,10 @@ public final class UIApplicationCoordinator: Coordinator {
     private final let window: UIWindow
 
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
+    
+    private final var authCoordinator: UIAuthCoordinator?
 
     private final var rootCoordinator: RootCoordinator
-
-    // TODO: development only.
-    private final var rootComponent: Component
     
     public init(contentSize: CGSize) {
 
@@ -30,42 +29,28 @@ public final class UIApplicationCoordinator: Coordinator {
                 size: contentSize
             )
         )
+        
+        let authCoordinator = UIAuthCoordinator(contentSize: contentSize)
 
-        self.rootCoordinator = UILandingCoordinator(contentSize: contentSize)
-
-        self.rootComponent = UISignInComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
-        )
-        .setSignIn(
-            UISignIn(
-                email: "hello@world.com",
-                password: "helloworld"
-            )
-        )
-        .onSubmit { email, password in
-            
-            print(email, password)
-            
-        }
+        self.authCoordinator = authCoordinator
+        
+        self.rootCoordinator = authCoordinator
         
     }
 
     public final func activate() {
 
+        authCoordinator?.onGrant { accessToken in
+            
+            print(accessToken)
+            
+        }
+        
         window.rootViewController = rootCoordinator.viewController
-
-        // TODO: development only.
-//        window.rootViewController = UIComponentViewController(component: rootComponent)
         
         window.makeKeyAndVisible()
 
         rootCoordinator.activate()
-        
-        // TODO: development only.
-//        rootComponent.render()
 
     }
 

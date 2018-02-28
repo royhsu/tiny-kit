@@ -17,6 +17,8 @@ public final class UILandingCoordinator: Coordinator {
     
     private final let landingComponent: UILandingComponent
     
+    private final var supplyHandler: UILandingSupplyHandler?
+    
     public init(contentSize: CGSize) {
         
         let landingComponent = UILandingComponent(
@@ -73,9 +75,12 @@ public final class UILandingCoordinator: Coordinator {
         
         let signInComponent = UISignInComponent().onSubmit { [weak self] email, password in
             
-            print(email, password)
-            
-            self?.navigationController.popViewController(animated: true)
+            self?.supplyHandler?(
+                .basic(
+                    username: email,
+                    password: password
+                )
+            )
             
         }
         
@@ -88,6 +93,18 @@ public final class UILandingCoordinator: Coordinator {
             animated: true
         )
         
+    }
+    
+}
+
+public extension UILandingCoordinator {
+    
+    public final func onSupply(handler: UILandingSupplyHandler? = nil) -> UILandingCoordinator {
+        
+        supplyHandler = handler
+        
+        return self
+            
     }
     
 }
