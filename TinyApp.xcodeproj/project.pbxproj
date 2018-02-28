@@ -52,6 +52,7 @@
 		B0A629A7204658EE000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
 		B0A629A8204658F4000F97E3 /* TinyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62982204657C9000F97E3 /* TinyUI.framework */; };
 		B0A629AA20465F18000F97E3 /* UILandingLogoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */; };
+		B0A629AC2046617C000F97E3 /* UISignInSubmitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629AB2046617C000F97E3 /* UISignInSubmitHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		B0A6299B20465828000F97E3 /* UITextInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITextInput.xib; sourceTree = "<group>"; };
 		B0A6299C20465828000F97E3 /* UITextInputComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputComponent.swift; sourceTree = "<group>"; };
 		B0A629A920465F18000F97E3 /* UILandingLogoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogoComponent.swift; sourceTree = "<group>"; };
+		B0A629AB2046617C000F97E3 /* UISignInSubmitHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISignInSubmitHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				B0A6294520464756000F97E3 /* UISignIn.swift */,
+				B0A629AB2046617C000F97E3 /* UISignInSubmitHandler.swift */,
 				B0A6294320464755000F97E3 /* UISignInComponent.swift */,
 				B0A6292A204646DD000F97E3 /* TinyAuth.h */,
 				B0A6292B204646DD000F97E3 /* Info.plist */,
@@ -549,6 +552,7 @@
 			files = (
 				B0A6294920464756000F97E3 /* UISignInComponent.swift in Sources */,
 				B0A6294B20464756000F97E3 /* UISignIn.swift in Sources */,
+				B0A629AC2046617C000F97E3 /* UISignInSubmitHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

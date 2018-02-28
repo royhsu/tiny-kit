@@ -21,6 +21,8 @@ public final class UISignInComponent: Component {
     private final let passwordComponent: UITextInputComponent
 
     private final let submitComponent: UIPrimaryButtonComponent
+    
+    private final var submitHandler: UISignInSubmitHandler?
 
     /// The base component.
     private final let listComponent: UIListComponent
@@ -95,7 +97,14 @@ public final class UISignInComponent: Component {
             )
             .onTap {
                 
-                print("Submit!", self.signIn)
+                let email = self.signIn.email ?? "Invalid"
+                
+                let password = self.signIn.password ?? "Invalid"
+                
+                self.submitHandler?(
+                    email,
+                    password
+                )
                 
             }
 
@@ -133,39 +142,12 @@ public extension UISignInComponent {
         
     }
     
+    public final func onSubmit(handler: UISignInSubmitHandler? = nil) -> UISignInComponent {
+        
+        submitHandler = handler
+        
+        return self
+        
+    }
+    
 }
-
-// MARK: - UIAuthInputComponentDelegate
-
-//extension UISignInComponent: UIAuthInputComponentDelegate {
-//
-//    public final func component(
-//        _ component: Component,
-//        didEnter text: String
-//    ) {
-//
-//        guard
-//            let component = component as? UITextInputComponent
-//        else { fatalError("Unexpected component.") }
-//
-//        if component === emailComponent {
-//
-//            signIn.email = text
-//
-//            return
-//
-//        }
-//
-//        if component === passwordComponent {
-//
-//            signIn.password = text
-//
-//            return
-//
-//        }
-//
-//        fatalError("Unexpected input.")
-//
-//    }
-//
-//}

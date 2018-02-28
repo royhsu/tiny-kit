@@ -45,6 +45,11 @@ public final class UIApplicationCoordinator: Coordinator {
                 password: "helloworld"
             )
         )
+        .onSubmit { email, password in
+            
+            print(email, password)
+            
+        }
         
     }
 
