@@ -10,7 +10,7 @@
 
 public protocol ProductGalleryComponent {
     
-    associatedtype Image
+    associatedtype Image: UIImage
     
     func numberOfImages() -> Int
     

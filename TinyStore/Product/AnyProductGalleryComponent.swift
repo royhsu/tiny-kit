@@ -8,7 +8,7 @@
 
 // MARK: - AnyProductGalleryComponent
 
-public struct AnyProductGalleryComponent<T>: ProductGalleryComponent {
+public struct AnyProductGalleryComponent<T: UIImage>: ProductGalleryComponent {
     
     private let _numberOfImages: () -> Int
     
