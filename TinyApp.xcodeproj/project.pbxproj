@@ -65,6 +65,9 @@
 		B0D90E142048447900AC9A0A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
 		B0D90E152048447900AC9A0A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B0D90E162048447900AC9A0A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
+		B0D90E19204844CB00AC9A0A /* UIProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */; };
+		B0D90E1B2048452000AC9A0A /* ProductGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E1A2048452000AC9A0A /* ProductGalleryComponent.swift */; };
+		B0D90E1F20484E5000AC9A0A /* AnyProductGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E1E20484E5000AC9A0A /* AnyProductGalleryComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +178,9 @@
 		B0D90E082048446F00AC9A0A /* TinyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
 		B0D90E0B2048446F00AC9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductComponent.swift; sourceTree = "<group>"; };
+		B0D90E1A2048452000AC9A0A /* ProductGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGalleryComponent.swift; sourceTree = "<group>"; };
+		B0D90E1E20484E5000AC9A0A /* AnyProductGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyProductGalleryComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,10 +374,21 @@
 		B0D90E092048446F00AC9A0A /* TinyStore */ = {
 			isa = PBXGroup;
 			children = (
+				B0D90E17204844AF00AC9A0A /* Product */,
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
 			);
 			path = TinyStore;
+			sourceTree = "<group>";
+		};
+		B0D90E17204844AF00AC9A0A /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */,
+				B0D90E1A2048452000AC9A0A /* ProductGalleryComponent.swift */,
+				B0D90E1E20484E5000AC9A0A /* AnyProductGalleryComponent.swift */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -538,6 +555,7 @@
 					};
 					B0D90E072048446F00AC9A0A = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -685,6 +703,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D90E1F20484E5000AC9A0A /* AnyProductGalleryComponent.swift in Sources */,
+				B0D90E1B2048452000AC9A0A /* ProductGalleryComponent.swift in Sources */,
+				B0D90E19204844CB00AC9A0A /* UIProductComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1074,7 @@
 		B0D90E112048446F00AC9A0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1072,6 +1094,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyStore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1082,6 +1105,7 @@
 		B0D90E122048446F00AC9A0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
