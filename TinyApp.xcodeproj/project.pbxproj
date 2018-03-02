@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02B43A4204992C300F3D7C0 /* UIGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A3204992C300F3D7C0 /* UIGalleryComponent.swift */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
@@ -66,8 +67,6 @@
 		B0D90E152048447900AC9A0A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B0D90E162048447900AC9A0A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
 		B0D90E19204844CB00AC9A0A /* UIProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */; };
-		B0D90E1B2048452000AC9A0A /* ProductGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E1A2048452000AC9A0A /* ProductGalleryComponent.swift */; };
-		B0D90E1F20484E5000AC9A0A /* AnyProductGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E1E20484E5000AC9A0A /* AnyProductGalleryComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +131,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B02B43A3204992C300F3D7C0 /* UIGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGalleryComponent.swift; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,8 +179,6 @@
 		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
 		B0D90E0B2048446F00AC9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductComponent.swift; sourceTree = "<group>"; };
-		B0D90E1A2048452000AC9A0A /* ProductGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGalleryComponent.swift; sourceTree = "<group>"; };
-		B0D90E1E20484E5000AC9A0A /* AnyProductGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyProductGalleryComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,8 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */,
-				B0D90E1A2048452000AC9A0A /* ProductGalleryComponent.swift */,
-				B0D90E1E20484E5000AC9A0A /* AnyProductGalleryComponent.swift */,
+				B02B43A3204992C300F3D7C0 /* UIGalleryComponent.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -703,8 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0D90E1F20484E5000AC9A0A /* AnyProductGalleryComponent.swift in Sources */,
-				B0D90E1B2048452000AC9A0A /* ProductGalleryComponent.swift in Sources */,
+				B02B43A4204992C300F3D7C0 /* UIGalleryComponent.swift in Sources */,
 				B0D90E19204844CB00AC9A0A /* UIProductComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
