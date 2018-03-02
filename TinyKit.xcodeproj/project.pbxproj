@@ -36,6 +36,9 @@
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FD203BFD580074CD5E /* Coordinator.swift */; };
 		B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */; };
+		B02B43A62049942500F3D7C0 /* UICarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A52049942500F3D7C0 /* UICarouselComponent.swift */; };
+		B02B43A92049947B00F3D7C0 /* UICarouselComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A72049943D00F3D7C0 /* UICarouselComponentTests.swift */; };
+		B02B43AB20499B7100F3D7C0 /* UICollectionViewUICarouselComponentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43AA20499B7100F3D7C0 /* UICollectionViewUICarouselComponentBridge.swift */; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
 		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
@@ -103,6 +106,9 @@
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B01ED1FD203BFD580074CD5E /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
+		B02B43A52049942500F3D7C0 /* UICarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselComponent.swift; sourceTree = "<group>"; };
+		B02B43A72049943D00F3D7C0 /* UICarouselComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselComponentTests.swift; sourceTree = "<group>"; };
+		B02B43AA20499B7100F3D7C0 /* UICollectionViewUICarouselComponentBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewUICarouselComponentBridge.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 			children = (
 				B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */,
 				B00D966D203076C500EF0B7A /* ListComponentTests.swift */,
+				B02B43A72049943D00F3D7C0 /* UICarouselComponentTests.swift */,
 				B00D966F203076C500EF0B7A /* RectangleView.swift */,
 			);
 			path = Component;
@@ -335,6 +342,8 @@
 				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
 				B05E677420385ED0003E8E0E /* UIListComponent.swift */,
 				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
+				B02B43A52049942500F3D7C0 /* UICarouselComponent.swift */,
+				B02B43AA20499B7100F3D7C0 /* UICollectionViewUICarouselComponentBridge.swift */,
 				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
 			);
 			path = Component;
@@ -478,11 +487,13 @@
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
+				B02B43AB20499B7100F3D7C0 /* UICollectionViewUICarouselComponentBridge.swift in Sources */,
 				B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
+				B02B43A62049942500F3D7C0 /* UICarouselComponent.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
 				B03C3E4920456E2D004E318B /* ViewController.swift in Sources */,
@@ -511,6 +522,7 @@
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
 				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,
+				B02B43A92049947B00F3D7C0 /* UICarouselComponentTests.swift in Sources */,
 				B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
