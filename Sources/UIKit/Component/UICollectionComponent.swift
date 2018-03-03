@@ -21,13 +21,13 @@ public final class UICollectionComponent: Component {
     
     internal final let collectionView: UICollectionView
     
-    private final let collectionLayout: UICollectionViewFlowLayout
+    private final let collectionLayout: UICollectionViewLayout
     
     private final let bridge: UICollectionViewCollectionComponentBridge
     
     public init(
         contentMode: ComponentContentMode = .automatic,
-        collectionLayout: UICollectionViewFlowLayout
+        collectionLayout: UICollectionViewLayout
     ) {
         
         self.contentMode = contentMode
@@ -94,8 +94,6 @@ public final class UICollectionComponent: Component {
         }
         
         collectionView.frame.size = size
-        
-        print(collectionLayout.collectionViewContentSize)
         
     }
     

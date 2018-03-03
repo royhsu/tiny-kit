@@ -87,7 +87,7 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDelegateFlo
     -> CGSize {
         
         let component = componentGroup.componentForItem(at: indexPath)
-
+        
         return component.preferredContentSize
 
     }

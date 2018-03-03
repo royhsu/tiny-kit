@@ -20,13 +20,13 @@ public final class UIRootCoordinator: Coordinator {
         
         let flowLayout = UICollectionViewFlowLayout()
         
-        flowLayout.sectionInset = .zero
-        
-        flowLayout.minimumInteritemSpacing = 0.0
-
-        flowLayout.minimumLineSpacing = 0.0
+//        flowLayout.sectionInset = .zero
+//        
+//        flowLayout.minimumInteritemSpacing = 0.0
+//
+//        flowLayout.minimumLineSpacing = 0.0
     
-        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+//        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         
         flowLayout.scrollDirection = .horizontal
         
@@ -39,10 +39,7 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         let postComponent = UIPostComponent(
-            contentMode: .size(
-                width: 350.0,
-                height: 350.0
-            )
+            contentMode: .size(width: 150.0, height: 150.0)
         )
         
         postComponent.setPost(
@@ -53,20 +50,13 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         let post2Component = UIPostComponent(
-            contentMode: .size(
-                width: 350.0,
-                height: 350.0
-            )
+            contentMode: .size(width: 150.0, height: 150.0)
         )
             
         post2Component.setPost(
             UIPost(
-                title: "123",
-                content: """
-                😎
-                😎
-                😎
-                """
+                title: "aaaaaa",
+                content: "😎"
             )
         )
         
