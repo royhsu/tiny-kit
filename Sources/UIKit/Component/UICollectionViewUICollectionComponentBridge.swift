@@ -1,16 +1,16 @@
 //
-//  UICollectionViewUICarouselComponentBridge.swift
+//  UICollectionViewUICollectionComponentBridge.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 02/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICollectionViewUICarouselComponentBridge
+// MARK: - UICollectionViewUICollectionComponentBridge
 
-internal final class UICollectionViewUICarouselComponentBridge: NSObject {
+internal final class UICollectionViewUICollectionComponentBridge: NSObject {
     
-    internal final var itemComponents: ComponentCollection = AnyCollection(
+    internal final var itemComponents: ComponentGroup = AnyCollection(
         [Component]()
     )
     
@@ -38,7 +38,7 @@ internal final class UICollectionViewUICarouselComponentBridge: NSObject {
 
 // MARK: - UICollectionViewDataSource
 
-extension UICollectionViewUICarouselComponentBridge: UICollectionViewDataSource {
+extension UICollectionViewUICollectionComponentBridge: UICollectionViewDataSource {
     
     internal final func numberOfSections(in collectionView: UICollectionView) -> Int { return itemComponents.numberOfSections() }
     

@@ -1,14 +1,14 @@
 //
-//  ComponentCollection.swift
+//  ComponentGroup.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 03/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ComponentCollection
+// MARK: - ComponentGroup
 
-public protocol ComponentCollection {
+public protocol ComponentGroup {
     
     func numberOfSections() -> Int
     

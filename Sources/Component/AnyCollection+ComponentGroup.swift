@@ -1,14 +1,14 @@
 //
-//  AnyCollection+ComponentCollection.swift
+//  AnyCollection+ComponentGroup.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 03/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ComponentCollection
+// MARK: - ComponentGroup
 
-extension AnyCollection: ComponentCollection {
+extension AnyCollection: ComponentGroup {
     
     public func numberOfSections() -> Int {
 

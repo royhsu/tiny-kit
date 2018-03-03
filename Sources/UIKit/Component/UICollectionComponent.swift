@@ -10,7 +10,7 @@
 
 public final class UICollectionComponent: Component {
     
-    public final var itemComponents: ComponentCollection {
+    public final var itemComponents: ComponentGroup {
         
         get { return bridge.itemComponents }
         
@@ -22,7 +22,7 @@ public final class UICollectionComponent: Component {
     
     private final let collectionViewLayout: UICollectionViewFlowLayout
     
-    private final let bridge: UICollectionViewUICarouselComponentBridge
+    private final let bridge: UICollectionViewUICollectionComponentBridge
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -39,7 +39,7 @@ public final class UICollectionComponent: Component {
         
         self.collectionView = collectionView
         
-        let bridge = UICollectionViewUICarouselComponentBridge(collectionView: collectionView)
+        let bridge = UICollectionViewUICollectionComponentBridge(collectionView: collectionView)
         
         self.bridge = bridge
         

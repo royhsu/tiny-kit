@@ -10,7 +10,7 @@
 
 import TinyKit
 
-internal class UIStubComponentCollection: ComponentCollection {
+internal class UIStubComponentCollection: ComponentGroup {
     
     private final let _numberOfSections: () -> Int
     
