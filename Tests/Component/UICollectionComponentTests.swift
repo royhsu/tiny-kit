@@ -16,7 +16,9 @@ internal final class UICollectionComponentTests: XCTestCase {
     
     internal final func testRenderComponent() {
         
-        let component = UICollectionComponent()
+        let component = UICollectionComponent(
+            collectionLayout: UICollectionViewFlowLayout()
+        )
         
         let components: [Component] = [
             UIItemComponent(
