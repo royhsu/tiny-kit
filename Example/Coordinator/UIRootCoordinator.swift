@@ -14,27 +14,66 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let navigationController: UINavigationController
     
-    private final let rootComponent: Component
+    private final let rootComponent: UICollectionComponent
     
     public init(contentSize: CGSize) {
         
-        let rootComponent = UIListComponent(
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        flowLayout.sectionInset = .zero
+        
+        flowLayout.minimumInteritemSpacing = 0.0
+
+        flowLayout.minimumLineSpacing = 0.0
+    
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        
+        flowLayout.scrollDirection = .horizontal
+        
+        let rootComponent = UICollectionComponent(
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
+            ),
+            collectionLayout: flowLayout
+        )
+        
+        let postComponent = UIPostComponent(
+            contentMode: .size(
+                width: 350.0,
+                height: 350.0
             )
         )
         
-        let button = UIButton(type: .system)
+        postComponent.setPost(
+            UIPost(
+                title: "aaaaaa",
+                content: "😎"
+            )
+        )
         
-        button.setTitle(
-            "Hello World",
-            for: .normal
+        let post2Component = UIPostComponent(
+            contentMode: .size(
+                width: 350.0,
+                height: 350.0
+            )
+        )
+            
+        post2Component.setPost(
+            UIPost(
+                title: "123",
+                content: """
+                😎
+                😎
+                😎
+                """
+            )
         )
         
         rootComponent.itemComponents = AnyCollection(
             [
-                UIItemComponent(itemView: button)
+                postComponent,
+                post2Component
             ]
         )
         

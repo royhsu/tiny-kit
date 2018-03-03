@@ -52,7 +52,7 @@ extension UITableViewListComponentBridge: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
-        -> Int { return componentGroup.numberOfItems(inSection: section) }
+    -> Int { return componentGroup.numberOfItems(inSection: section) }
 
     internal final func tableView(
         _ tableView: UITableView,
@@ -98,8 +98,8 @@ extension UITableViewListComponentBridge: UITableViewDelegate {
         switch component.contentMode {
 
         case .size(_, let height): return height
-
-        case .automatic: return UITableViewAutomaticDimension
+            
+        case .automatic: return component.preferredContentSize.height
 
         }
 

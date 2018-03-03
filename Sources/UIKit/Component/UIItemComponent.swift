@@ -20,6 +20,28 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         self.contentMode = contentMode
 
         self.itemView = itemView
+        
+        let frame: CGRect
+        
+        switch contentMode {
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame = UIScreen.main.bounds
+            
+        case .size(let width, let height):
+            
+            frame = CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: width,
+                height: height
+            )
+            
+        }
+        
+        self.view = View(frame: frame)
 
     }
 
@@ -59,6 +81,13 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 width: width,
                 height: height
             )
+            
+            NSLayoutConstraint.activate(
+                [
+                    itemView.widthAnchor.constraint(equalToConstant: width),
+                    itemView.heightAnchor.constraint(equalToConstant: height)
+                ]
+            )
 
         case .automatic:
 
@@ -77,12 +106,12 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                     .constraint(equalTo: itemView.bottomAnchor)
             ]
         )
-
+        
     }
 
     // MARK: ViewRenderable
 
-    public final let view = View()
+    public final let view: View
 
     public final var preferredContentSize: CGSize { return view.bounds.size }
 

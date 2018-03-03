@@ -32,6 +32,8 @@ internal final class UICollectionViewCollectionComponentBridge: NSObject {
         
         collectionView.dataSource = self
         
+        collectionView.delegate = self
+        
     }
     
 }
@@ -46,7 +48,7 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDataSource 
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     )
-        -> Int { return componentGroup.numberOfItems(inSection: section) }
+    -> Int { return componentGroup.numberOfItems(inSection: section) }
     
     internal final func collectionView(
         _ collectionView: UICollectionView,
@@ -69,6 +71,25 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDataSource 
         
         return cell
         
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension UICollectionViewCollectionComponentBridge: UICollectionViewDelegateFlowLayout {
+    
+    internal final func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    )
+    -> CGSize {
+        
+        let component = componentGroup.componentForItem(at: indexPath)
+
+        return component.preferredContentSize
+
     }
     
 }

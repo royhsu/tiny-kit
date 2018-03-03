@@ -30,8 +30,27 @@ public final class UIListComponent: Component {
 
         self.contentMode = contentMode
 
-        // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-        let tableView = UITableView(frame: UIScreen.main.bounds)
+        let frame: CGRect
+        
+        switch contentMode {
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame = UIScreen.main.bounds
+            
+        case .size(let width, let height):
+            
+            frame = CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: width,
+                height: height
+            )
+            
+        }
+        
+        let tableView = UITableView(frame: frame)
         
         self.tableView = tableView
         

@@ -10,17 +10,17 @@
 
 extension AnyCollection: ComponentGroup {
     
-    public func numberOfSections() -> Int {
+    public func numberOfSections() -> Int { return 1 }
 
+    public func numberOfItems(inSection section: Int) -> Int {
+        
         return lazy.flatMap { $0 as? Component }.count
-
+        
     }
-
-    public func numberOfItems(inSection section: Int) -> Int { return 1 }
 
     public func componentForItem(at indexPath: IndexPath) -> Component {
 
-        let index = AnyIndex(indexPath.section)
+        let index = AnyIndex(indexPath.row)
 
         // swiftlint:disable force_cast
         return lazy[index] as! Component

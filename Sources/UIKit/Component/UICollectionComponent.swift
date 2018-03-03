@@ -21,21 +21,41 @@ public final class UICollectionComponent: Component {
     
     internal final let collectionView: UICollectionView
     
-    private final let collectionLayout: UICollectionViewLayout
+    private final let collectionLayout: UICollectionViewFlowLayout
     
     private final let bridge: UICollectionViewCollectionComponentBridge
     
     public init(
         contentMode: ComponentContentMode = .automatic,
-        collectionLayout: UICollectionViewLayout
+        collectionLayout: UICollectionViewFlowLayout
     ) {
         
         self.contentMode = contentMode
         
         self.collectionLayout = collectionLayout
         
+        let frame: CGRect
+        
+        switch contentMode {
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame = UIScreen.main.bounds
+            
+        case .size(let width, let height):
+            
+            frame = CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: width,
+                height: height
+            )
+            
+        }
+        
         let collectionView = UICollectionView(
-            frame: UIScreen.main.bounds, // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame: frame,
             collectionViewLayout: collectionLayout
         )
         
@@ -75,12 +95,14 @@ public final class UICollectionComponent: Component {
         
         collectionView.frame.size = size
         
+        print(collectionLayout.collectionViewContentSize)
+        
     }
     
     // MARK: ViewRenderable
 
     public final var view: View { return collectionView }
     
-    public final var preferredContentSize: CGSize { return collectionLayout.collectionViewContentSize }
+    public final var preferredContentSize: CGSize { return collectionView.bounds.size }
     
 }
