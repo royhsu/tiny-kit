@@ -16,10 +16,6 @@ internal final class UICollectionComponentTests: XCTestCase {
     
     internal final func testRenderComponent() {
         
-        let collectionComponent = UICollectionComponent(
-            collectionLayout: UICollectionViewFlowLayout()
-        )
-        
         let itemComponents: [Component] = [
             UIItemComponent(
                 contentMode: .size(
@@ -36,6 +32,10 @@ internal final class UICollectionComponentTests: XCTestCase {
                 itemView: RectangleView()
             )
         ]
+        
+        let collectionComponent = UICollectionComponent(
+            collectionLayout: UICollectionViewFlowLayout()
+        )
         
         collectionComponent.itemComponents = UIStubComponentCollection(
             numberOfSections: { return itemComponents.count },
