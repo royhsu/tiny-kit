@@ -84,17 +84,21 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDelegateFlo
     )
     -> CGSize {
         
-        let maxWidth = collectionView.bounds.width
+        var maxWidth = collectionView.bounds.width
             - collectionView.contentInset.left
             - collectionView.contentInset.right
             - collectionView.safeAreaInsets.left
             - collectionView.safeAreaInsets.right
         
-        let maxHeight = collectionView.bounds.height
+        if maxWidth < 0.0 { maxWidth = 0.0 }
+        
+        var maxHeight = collectionView.bounds.height
             - collectionView.contentInset.top
             - collectionView.contentInset.bottom
             - collectionView.safeAreaInsets.top
             - collectionView.safeAreaInsets.bottom
+        
+        if maxHeight < 0.0 { maxHeight = 0.0 }
         
         let component = componentGroup.componentForItem(at: indexPath)
         
