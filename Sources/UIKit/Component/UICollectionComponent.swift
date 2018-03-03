@@ -21,18 +21,21 @@ public final class UICollectionComponent: Component {
     
     internal final let collectionView: UICollectionView
     
-    private final let collectionLayout: UICollectionViewLayout
+    private final let collectionLayout: UICollectionViewFlowLayout
     
     private final let bridge: UICollectionViewCollectionComponentBridge
     
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        collectionLayout: UICollectionViewLayout
-    ) {
+    public final var scrollDirection: UICollectionViewScrollDirection {
+        
+        get { return collectionLayout.scrollDirection }
+        
+        set { collectionLayout.scrollDirection = newValue }
+        
+    }
+    
+    public init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
-        
-        self.collectionLayout = collectionLayout
         
         let frame: CGRect
         
@@ -53,6 +56,18 @@ public final class UICollectionComponent: Component {
             )
             
         }
+        
+        let collectionLayout = UICollectionViewFlowLayout()
+        
+        collectionLayout.minimumInteritemSpacing = 0.0
+        
+        collectionLayout.minimumLineSpacing = 0.0
+        
+        collectionLayout.headerReferenceSize = .zero
+        
+        collectionLayout.footerReferenceSize = .zero
+        
+        self.collectionLayout = collectionLayout
         
         let collectionView = UICollectionView(
             frame: frame,

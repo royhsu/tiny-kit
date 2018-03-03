@@ -65,8 +65,6 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDataSource 
         
         let component = componentGroup.componentForItem(at: indexPath)
         
-        component.render()
-        
         cell.contentView.render(with: component)
         
         return cell
@@ -86,9 +84,34 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDelegateFlo
     )
     -> CGSize {
         
+        let maxWidth = collectionView.bounds.width
+            - collectionView.contentInset.left
+            - collectionView.contentInset.right
+            - collectionView.safeAreaInsets.left
+            - collectionView.safeAreaInsets.right
+        
+        let maxHeight = collectionView.bounds.height
+            - collectionView.contentInset.top
+            - collectionView.contentInset.bottom
+            - collectionView.safeAreaInsets.top
+            - collectionView.safeAreaInsets.bottom
+        
         let component = componentGroup.componentForItem(at: indexPath)
         
-        return component.preferredContentSize
+        component.render()
+        
+        let width = (component.preferredContentSize.width < maxWidth)
+            ? component.preferredContentSize.width
+            : maxWidth
+        
+        let height = (component.preferredContentSize.height < maxHeight)
+            ? component.preferredContentSize.height
+            : maxHeight
+        
+        return CGSize(
+            width: width,
+            height: height
+        )
 
     }
     

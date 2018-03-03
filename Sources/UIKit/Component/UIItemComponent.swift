@@ -82,10 +82,18 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 height: height
             )
             
+            let widthConstraint = itemView.widthAnchor.constraint(equalToConstant: width)
+            
+            widthConstraint.priority = UILayoutPriority(rawValue: 900.0)
+            
+            let heightConstraint = itemView.heightAnchor.constraint(equalToConstant: height)
+            
+            heightConstraint.priority = UILayoutPriority(rawValue: 900.0)
+            
             NSLayoutConstraint.activate(
                 [
-                    itemView.widthAnchor.constraint(equalToConstant: width),
-                    itemView.heightAnchor.constraint(equalToConstant: height)
+                    widthConstraint,
+                    heightConstraint
                 ]
             )
 
