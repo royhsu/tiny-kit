@@ -35,7 +35,7 @@ internal final class UICollectionComponentTests: XCTestCase {
             )
         ]
         
-        component.itemComponents = StubItemComponents(
+        component.itemComponents = UIStubComponentCollection(
             numberOfSections: { return components.count },
             numberOfItemsInSection: { section in return 1 },
             componentAtItem: { indexPath in components[indexPath.section] }

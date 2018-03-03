@@ -47,9 +47,10 @@
 		B05E677520385ED0003E8E0E /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677420385ED0003E8E0E /* UIListComponent.swift */; };
 		B05E677720386432003E8E0E /* UITableViewListComponentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */; };
 		B05E677920386FF3003E8E0E /* ListItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677820386FF3003E8E0E /* ListItemComponents.swift */; };
-		B05E677B20387010003E8E0E /* AnyCollection+ListItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */; };
 		B05E677D20394147003E8E0E /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E677C20394147003E8E0E /* ListComponent.swift */; };
-		B0606FA5204A528600091504 /* StubItemComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA3204A520F00091504 /* StubItemComponents.swift */; };
+		B0606FA5204A528600091504 /* UIStubComponentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA3204A520F00091504 /* UIStubComponentCollection.swift */; };
+		B0606FA7204A56DA00091504 /* ComponentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA6204A56DA00091504 /* ComponentCollection.swift */; };
+		B0606FA9204A579200091504 /* AnyCollection+UIComponentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA8204A579200091504 /* AnyCollection+UIComponentCollection.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -118,9 +119,10 @@
 		B05E677420385ED0003E8E0E /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
 		B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewListComponentBridge.swift; sourceTree = "<group>"; };
 		B05E677820386FF3003E8E0E /* ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemComponents.swift; sourceTree = "<group>"; };
-		B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+ListItemComponents.swift"; sourceTree = "<group>"; };
 		B05E677C20394147003E8E0E /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
-		B0606FA3204A520F00091504 /* StubItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubItemComponents.swift; sourceTree = "<group>"; };
+		B0606FA3204A520F00091504 /* UIStubComponentCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStubComponentCollection.swift; sourceTree = "<group>"; };
+		B0606FA6204A56DA00091504 /* ComponentCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollection.swift; sourceTree = "<group>"; };
+		B0606FA8204A579200091504 /* AnyCollection+UIComponentCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+UIComponentCollection.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
@@ -274,7 +276,7 @@
 				B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */,
 				B00D966D203076C500EF0B7A /* ListComponentTests.swift */,
 				B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */,
-				B0606FA3204A520F00091504 /* StubItemComponents.swift */,
+				B0606FA3204A520F00091504 /* UIStubComponentCollection.swift */,
 				B00D966F203076C500EF0B7A /* RectangleView.swift */,
 			);
 			path = Component;
@@ -325,7 +327,6 @@
 			children = (
 				B05E677C20394147003E8E0E /* ListComponent.swift */,
 				B05E677820386FF3003E8E0E /* ListItemComponents.swift */,
-				B05E677A20387010003E8E0E /* AnyCollection+ListItemComponents.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -345,6 +346,8 @@
 				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
 				B05E677420385ED0003E8E0E /* UIListComponent.swift */,
 				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
+				B0606FA6204A56DA00091504 /* ComponentCollection.swift */,
+				B0606FA8204A579200091504 /* AnyCollection+UIComponentCollection.swift */,
 				B02B43A52049942500F3D7C0 /* UICollectionComponent.swift */,
 				B02B43AA20499B7100F3D7C0 /* UICollectionViewUICarouselComponentBridge.swift */,
 				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
@@ -507,7 +510,8 @@
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
 				B05E677D20394147003E8E0E /* ListComponent.swift in Sources */,
 				B05E677520385ED0003E8E0E /* UIListComponent.swift in Sources */,
-				B05E677B20387010003E8E0E /* AnyCollection+ListItemComponents.swift in Sources */,
+				B0606FA7204A56DA00091504 /* ComponentCollection.swift in Sources */,
+				B0606FA9204A579200091504 /* AnyCollection+UIComponentCollection.swift in Sources */,
 				B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,7 +530,7 @@
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
 				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,
 				B02B43A92049947B00F3D7C0 /* UICollectionComponentTests.swift in Sources */,
-				B0606FA5204A528600091504 /* StubItemComponents.swift in Sources */,
+				B0606FA5204A528600091504 /* UIStubComponentCollection.swift in Sources */,
 				B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

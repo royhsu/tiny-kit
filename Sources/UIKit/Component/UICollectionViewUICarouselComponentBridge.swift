@@ -10,7 +10,7 @@
 
 internal final class UICollectionViewUICarouselComponentBridge: NSObject {
     
-    internal final var itemComponents: ListItemComponents = AnyCollection(
+    internal final var itemComponents: ComponentCollection = AnyCollection(
         [Component]()
     )
     
@@ -46,7 +46,7 @@ extension UICollectionViewUICarouselComponentBridge: UICollectionViewDataSource 
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     )
-    -> Int { return itemComponents.numberOfItemsAtSection(section) }
+        -> Int { return itemComponents.numberOfItems(inSection: section) }
     
     internal final func collectionView(
         _ collectionView: UICollectionView,

@@ -1,23 +1,22 @@
 //
-//  AnyCollection+ListItemComponents.swift
+//  AnyCollection+ComponentCollection.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 17/02/2018.
+//  Created by Roy Hsu on 03/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ListItemComponents
+// MARK: - ComponentCollection
 
-/// Each section contains a dedicated component.
-extension AnyCollection: ListItemComponents {
-
+extension AnyCollection: ComponentCollection {
+    
     public func numberOfSections() -> Int {
 
         return lazy.flatMap { $0 as? Component }.count
 
     }
 
-    public func numberOfItemsAtSection(_ section: Int) -> Int { return 1 }
+    public func numberOfItems(inSection section: Int) -> Int { return 1 }
 
     public func componentForItem(at indexPath: IndexPath) -> Component {
 
@@ -28,5 +27,5 @@ extension AnyCollection: ListItemComponents {
         // swiftlint:enable force_cast
 
     }
-
+    
 }

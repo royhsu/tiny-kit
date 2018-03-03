@@ -10,7 +10,7 @@
 
 public final class UICollectionComponent: Component {
     
-    public final var itemComponents: ListItemComponents {
+    public final var itemComponents: ComponentCollection {
         
         get { return bridge.itemComponents }
         
