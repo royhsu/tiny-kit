@@ -8,10 +8,10 @@
 
 // MARK: - UICollectionComponent
 
-// TODO: make collection component internal. it's not ready to be public.
-public final class UICollectionComponent: Component {
+/// NOTE: The maximum size of an item is limited to the size of the collection.
+internal final class UICollectionComponent: Component {
     
-    public final var itemComponents: ComponentGroup {
+    internal final var itemComponents: ComponentGroup {
         
         get { return bridge.componentGroup }
         
@@ -25,7 +25,7 @@ public final class UICollectionComponent: Component {
     
     private final let bridge: UICollectionViewCollectionComponentBridge
     
-    public final var scrollDirection: UICollectionViewScrollDirection {
+    internal final var scrollDirection: UICollectionViewScrollDirection {
         
         get { return collectionLayout.scrollDirection }
         
@@ -33,7 +33,7 @@ public final class UICollectionComponent: Component {
         
     }
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    internal init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
         
@@ -84,9 +84,9 @@ public final class UICollectionComponent: Component {
     
     // MARK: Component
     
-    public final var contentMode: ComponentContentMode
+    internal final var contentMode: ComponentContentMode
     
-    public final func render() {
+    internal final func render() {
         
         collectionView.reloadData()
         
@@ -116,8 +116,8 @@ public final class UICollectionComponent: Component {
     
     // MARK: ViewRenderable
 
-    public final var view: View { return collectionView }
+    internal final var view: View { return collectionView }
     
-    public final var preferredContentSize: CGSize { return collectionView.bounds.size }
+    internal final var preferredContentSize: CGSize { return collectionView.bounds.size }
     
 }
