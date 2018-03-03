@@ -41,11 +41,6 @@ public final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case .automatic:
-            
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            frame = UIScreen.main.bounds
-            
         case .size(let width, let height):
             
             frame = CGRect(
@@ -54,6 +49,11 @@ public final class UICollectionComponent: Component {
                 width: width,
                 height: height
             )
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame = UIScreen.main.bounds
             
         }
         
@@ -66,6 +66,8 @@ public final class UICollectionComponent: Component {
         collectionLayout.headerReferenceSize = .zero
         
         collectionLayout.footerReferenceSize = .zero
+        
+        collectionLayout.sectionInset = .zero
         
         self.collectionLayout = collectionLayout
         

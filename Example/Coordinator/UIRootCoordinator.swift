@@ -25,142 +25,38 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
         
-        let post1Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 736,
-//                height: 736
-//            )
-        )
+        let post1Component = UIPostComponent()
         
         post1Component.setPost(
             UIPost(
-                title: "1",
+                title: "1111111",
                 content: "😎"
             )
         )
         
-        let post2Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
+        let post2Component = UIPostComponent()
             
         post2Component.setPost(
             UIPost(
-                title: "2",
+                title: "22222222222",
                 content: "😎"
             )
         )
         
-        let post3Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
+        let post3Component = UIPostComponent()
         
         post3Component.setPost(
             UIPost(
-                title: "3",
+                title: "333333333333333",
                 content: "😎"
             )
         )
         
-        let post4Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
-        
-        post4Component.setPost(
-            UIPost(
-                title: "4",
-                content: "😎"
-            )
-        )
-        
-        let post5Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
-        
-        post5Component.setPost(
-            UIPost(
-                title: "5",
-                content: "😎"
-            )
-        )
-        
-        let post6Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
-        
-        post6Component.setPost(
-            UIPost(
-                title: "6",
-                content: "😎"
-            )
-        )
-        
-        let post7Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
-        
-        post7Component.setPost(
-            UIPost(
-                title: "7",
-                content: "😎"
-            )
-        )
-        
-        let post8Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
-        
-        post8Component.setPost(
-            UIPost(
-                title: "8",
-                content: "😎"
-            )
-        )
-        
-        let post9Component = UIPostComponent(
-//            contentMode: .size(
-//                width: 100.0,
-//                height: 450.0
-//            )
-        )
-        
-        post9Component.setPost(
-            UIPost(
-                title: "9",
-                content: "😎"
-            )
-        )
         rootComponent.itemComponents = AnyCollection(
             [
                 post1Component,
                 post2Component,
-                post3Component,
-                post4Component,
-                post5Component,
-                post6Component,
-                post7Component,
-                post8Component,
-                post9Component
+                post3Component
             ]
         )
         

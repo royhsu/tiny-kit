@@ -34,11 +34,6 @@ public final class UIListComponent: Component {
         
         switch contentMode {
             
-        case .automatic:
-            
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            frame = UIScreen.main.bounds
-            
         case .size(let width, let height):
             
             frame = CGRect(
@@ -47,6 +42,11 @@ public final class UIListComponent: Component {
                 width: width,
                 height: height
             )
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame = UIScreen.main.bounds
             
         }
         

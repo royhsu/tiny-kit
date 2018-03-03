@@ -89,34 +89,36 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDelegateFlo
             - collectionView.contentInset.right
             - collectionView.safeAreaInsets.left
             - collectionView.safeAreaInsets.right
-        
+
         if maxWidth < 0.0 { maxWidth = 0.0 }
-        
+
         var maxHeight = collectionView.bounds.height
             - collectionView.contentInset.top
             - collectionView.contentInset.bottom
             - collectionView.safeAreaInsets.top
             - collectionView.safeAreaInsets.bottom
-        
+
         if maxHeight < 0.0 { maxHeight = 0.0 }
-        
+
         let component = componentGroup.componentForItem(at: indexPath)
-        
+
         component.render()
-        
+
         let width = (component.preferredContentSize.width < maxWidth)
             ? component.preferredContentSize.width
             : maxWidth
-        
+
         let height = (component.preferredContentSize.height < maxHeight)
             ? component.preferredContentSize.height
             : maxHeight
-        
+
+        // TODO: make warnings for item size that's not in a valid range.
+
         return CGSize(
             width: width,
             height: height
         )
-
+        
     }
     
 }

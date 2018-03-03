@@ -12,18 +12,12 @@ public final class UICarouselComponent: Component {
     
     /// The base component.
     private final let collectionComponent: UICollectionComponent
+
+    public final var itemComponents: AnyCollection<Component> = AnyCollection(
+        []
+    )
     
-    public final var itemComponents: ComponentGroup {
-        
-        get { return collectionComponent.itemComponents }
-        
-        set { collectionComponent.itemComponents = newValue }
-        
-    }
-    
-    public init(
-        contentMode: ComponentContentMode = .automatic
-    ) {
+    public init(contentMode: ComponentContentMode = .automatic) {
         
         let collectionComponent = UICollectionComponent(contentMode: contentMode)
         
@@ -43,7 +37,30 @@ public final class UICarouselComponent: Component {
         
     }
     
-    public final func render() { collectionComponent.render() }
+    public final func render() {
+        
+        let components = itemComponents.map { component -> Component in
+
+            component.render()
+            
+            var itemComponent = component
+
+            itemComponent.contentMode = .size(
+                width: component.view.bounds.width,
+                height: view.bounds.height
+            )
+
+            return itemComponent
+
+        }
+
+        itemComponents = AnyCollection(components)
+        
+        collectionComponent.itemComponents = itemComponents
+        
+        collectionComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     

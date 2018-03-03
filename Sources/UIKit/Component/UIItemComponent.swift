@@ -25,11 +25,6 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         switch contentMode {
             
-        case .automatic:
-            
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            frame = UIScreen.main.bounds
-            
         case .size(let width, let height):
             
             frame = CGRect(
@@ -39,6 +34,10 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 height: height
             )
             
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            frame = UIScreen.main.bounds
         }
         
         self.view = View(frame: frame)
@@ -64,10 +63,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                     .constraint(equalTo: itemView.leadingAnchor),
                 view
                     .topAnchor
-                    .constraint(equalTo: itemView.topAnchor),
-                view
-                    .trailingAnchor
-                    .constraint(equalTo: itemView.trailingAnchor)
+                    .constraint(equalTo: itemView.topAnchor)
             ]
         )
 
@@ -98,6 +94,8 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             )
 
         case .automatic:
+            
+            itemView.layoutIfNeeded()
 
             size = itemView.bounds.size
 
@@ -109,6 +107,9 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         NSLayoutConstraint.activate(
             [
+                view
+                    .trailingAnchor
+                    .constraint(equalTo: itemView.trailingAnchor),
                 view
                     .bottomAnchor
                     .constraint(equalTo: itemView.bottomAnchor)
