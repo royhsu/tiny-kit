@@ -8,6 +8,7 @@
 
 // MARK: - UICarouselComponent
 
+/// All items in a carousel component will be stretch out to fit the height of it.
 public final class UICarouselComponent: Component {
     
     /// The base component.
