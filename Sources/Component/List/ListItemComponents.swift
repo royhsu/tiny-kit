@@ -12,6 +12,7 @@ public protocol ListItemComponents {
 
     func numberOfSections() -> Int
 
+    // TODO: numberOfItems(inSection section: Int) -> Int
     func numberOfItemsAtSection(_ section: Int) -> Int
 
     func componentForItem(at indexPath: IndexPath) -> Component

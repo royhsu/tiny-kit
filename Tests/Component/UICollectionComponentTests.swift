@@ -1,54 +1,22 @@
 //
-//  UICarouselComponentTests.swift
+//  UICollectionComponentTests.swift
 //  TinyKitTests
 //
 //  Created by Roy Hsu on 02/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - StubItemComponents
-
-internal class StubItemComponents: ListItemComponents {
-    
-    private final let _numberOfSections: () -> Int
-    
-    private final let _numberOfItemsAtSection: (_ section: Int) -> Int
-    
-    private final let _componentAtItem: (_ indexPath: IndexPath) -> Component
-    
-    public init(
-        numberOfSections: @escaping () -> Int,
-        numberOfItemsAtSection: @escaping (_ section: Int) -> Int,
-        componentAtItem: @escaping (_ indexPath: IndexPath) -> Component
-    ) {
-        
-        self._numberOfSections = numberOfSections
-        
-        self._numberOfItemsAtSection = numberOfItemsAtSection
-        
-        self._componentAtItem = componentAtItem
-        
-    }
-    
-    internal final func numberOfSections() -> Int { return _numberOfSections() }
-    
-    internal final func numberOfItemsAtSection(_ section: Int) -> Int { return _numberOfItemsAtSection(section) }
-    
-    internal final func componentForItem(at indexPath: IndexPath) -> Component { return _componentAtItem(indexPath) }
-    
-}
-
-// MARK: - UICarouselComponentTests
+// MARK: - UICollectionComponentTests
 
 import XCTest
 
 @testable import TinyKit
 
-internal final class UICarouselComponentTests: XCTestCase {
+internal final class UICollectionComponentTests: XCTestCase {
     
-    internal final func testRenderCarouselComponent() {
+    internal final func testRenderComponent() {
         
-        let carouselComponent = UICarouselComponent()
+        let component = UICollectionComponent()
         
         let components: [Component] = [
             UIItemComponent(
@@ -67,22 +35,24 @@ internal final class UICarouselComponentTests: XCTestCase {
             )
         ]
         
-        carouselComponent.itemComponents = StubItemComponents(
+        component.itemComponents = StubItemComponents(
             numberOfSections: { return components.count },
-            numberOfItemsAtSection: { section in return 1 },
+            numberOfItemsInSection: { section in return 1 },
             componentAtItem: { indexPath in components[indexPath.section] }
         )
         
-        carouselComponent.render()
+        component.render()
         
-        let collectionView = carouselComponent.collectionView
+        let collectionView = component.collectionView
+        
+        let numberOfSections = components.count
         
         XCTAssertEqual(
             collectionView.numberOfSections,
-            components.count
+            numberOfSections
         )
         
-        for section in 0..<components.count {
+        for section in 0..<numberOfSections {
             
             XCTAssertEqual(
                 collectionView.numberOfItems(inSection: section),

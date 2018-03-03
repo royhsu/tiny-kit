@@ -1,14 +1,14 @@
 //
-//  UICarouselComponent.swift
+//  UICollectionComponent.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 02/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICarouselComponent
+// MARK: - UICollectionComponent
 
-public final class UICarouselComponent: Component {
+public final class UICollectionComponent: Component {
     
     public final var itemComponents: ListItemComponents {
         
@@ -27,23 +27,6 @@ public final class UICarouselComponent: Component {
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
-        
-//        open var minimumLineSpacing: CGFloat
-//
-//        open var minimumInteritemSpacing: CGFloat
-//
-//        open var itemSize: CGSize
-//
-//        @available(iOS 8.0, *)
-//        open var estimatedItemSize: CGSize // defaults to CGSizeZero - setting a non-zero size enables cells that self-size via -preferredLayoutAttributesFittingAttributes:
-//
-//        open var scrollDirection: UICollectionViewScrollDirection // default is UICollectionViewScrollDirectionVertical
-//
-//        open var headerReferenceSize: CGSize
-//
-//        open var footerReferenceSize: CGSize
-//
-//        open var sectionInset: UIEdgeInsets
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         
