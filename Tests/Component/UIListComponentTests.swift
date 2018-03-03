@@ -1,25 +1,37 @@
 //
-//  UICollectionComponentTests.swift
+//  UIListComponentTests.swift
 //  TinyKitTests
 //
-//  Created by Roy Hsu on 02/03/2018.
+//  Created by Roy Hsu on 28/01/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICollectionComponentTests
+// MARK: - UIListComponentTests
 
 import XCTest
 
 @testable import TinyKit
 
-internal final class UICollectionComponentTests: XCTestCase {
-    
+internal final class UIListComponentTests: XCTestCase {
+
     internal final func testRenderComponent() {
-        
-        let collectionComponent = UICollectionComponent(
-            collectionLayout: UICollectionViewFlowLayout()
+
+        let headerComponent = UIItemComponent(
+            contentMode: .size(
+                width: 50.0,
+                height: 50.0
+            ),
+            itemView: RectangleView()
         )
-        
+
+        let footerComponent = UIItemComponent(
+            contentMode: .size(
+                width: 50.0,
+                height: 50.0
+            ),
+            itemView: RectangleView()
+        )
+
         let itemComponents: [Component] = [
             UIItemComponent(
                 contentMode: .size(
@@ -37,54 +49,70 @@ internal final class UICollectionComponentTests: XCTestCase {
             )
         ]
         
-        collectionComponent.itemComponents = UIStubComponentCollection(
+        let listComponent = UIListComponent()
+
+        listComponent.headerComponent = headerComponent
+
+        listComponent.footerComponent = footerComponent
+
+        listComponent.itemComponents = UIStubComponentCollection(
             numberOfSections: { return itemComponents.count },
             numberOfItemsInSection: { section in return 1 },
             componentAtItem: { indexPath in itemComponents[indexPath.section] }
         )
-        
-        collectionComponent.render()
-        
-        let collectionView = collectionComponent.collectionView
+
+        listComponent.render()
+
+        let tableView = listComponent.tableView
         
         let numberOfSections = itemComponents.count
-        
+
         XCTAssertEqual(
-            collectionView.numberOfSections,
+            tableView.tableHeaderView,
+            headerComponent.view
+        )
+
+        XCTAssertEqual(
+            tableView.tableFooterView,
+            footerComponent.view
+        )
+
+        XCTAssertEqual(
+            tableView.numberOfSections,
             numberOfSections
         )
-        
+
         for section in 0..<numberOfSections {
-            
+
             XCTAssertEqual(
-                collectionView.numberOfItems(inSection: section),
+                tableView.numberOfRows(inSection: section),
                 1
             )
-            
+
             let indexPath = IndexPath(
                 item: 0,
                 section: section
             )
-            
+
             let itemComponent = itemComponents[section]
             
             guard
-                let cell = itemComponent.view.superview?.superview as? UICollectionViewCell
+                let cell = itemComponent.view.superview?.superview as? UITableViewCell
             else {
                 
-                XCTFail("Must be a UICollectionViewCell.")
+                XCTFail("Must be a UITableViewCell.")
                 
                 return
-                
+                    
             }
-            
+
             XCTAssertEqual(
-                collectionView.cellForItem(at: indexPath),
+                tableView.cellForRow(at: indexPath),
                 cell
             )
-            
+
         }
-        
+
     }
-    
+
 }

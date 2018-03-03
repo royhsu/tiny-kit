@@ -8,13 +8,14 @@
 
 // MARK: - UICollectionComponent
 
+// TODO: make collection component internal. it's not ready to be public.
 public final class UICollectionComponent: Component {
     
     public final var itemComponents: ComponentGroup {
         
-        get { return bridge.itemComponents }
+        get { return bridge.componentGroup }
         
-        set { bridge.itemComponents = newValue }
+        set { bridge.componentGroup = newValue }
         
     }
     
@@ -22,7 +23,7 @@ public final class UICollectionComponent: Component {
     
     private final let collectionLayout: UICollectionViewLayout
     
-    private final let bridge: UICollectionViewUICollectionComponentBridge
+    private final let bridge: UICollectionViewCollectionComponentBridge
     
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -40,7 +41,7 @@ public final class UICollectionComponent: Component {
         
         self.collectionView = collectionView
         
-        self.bridge = UICollectionViewUICollectionComponentBridge(collectionView: collectionView)
+        self.bridge = UICollectionViewCollectionComponentBridge(collectionView: collectionView)
         
     }
     
@@ -54,6 +55,25 @@ public final class UICollectionComponent: Component {
         
         /// Reference: https://stackoverflow.com/questions/22861804/uicollectionview-cellforitematindexpath-is-nil
         collectionView.layoutIfNeeded()
+        
+        let size: CGSize
+        
+        switch contentMode {
+            
+        case .size(let width, let height):
+            
+            size = CGSize(
+                width: width,
+                height: height
+            )
+            
+        case .automatic:
+            
+            size = collectionLayout.collectionViewContentSize
+            
+        }
+        
+        collectionView.frame.size = size
         
     }
     

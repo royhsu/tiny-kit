@@ -8,21 +8,21 @@
 
 // MARK: - UIListComponent
 
-public final class UIListComponent: ListComponent {
+public final class UIListComponent: Component {
 
     public final var headerComponent: Component?
 
     public final var footerComponent: Component?
 
-    public final var itemComponents: ListItemComponents? {
+    public final var itemComponents: ComponentGroup {
 
-        get { return bridge.itemComponents }
+        get { return bridge.componentGroup }
 
-        set { bridge.itemComponents = newValue }
+        set { bridge.componentGroup = newValue }
 
     }
 
-    internal final let tableView = UITableView(frame: UIScreen.main.bounds)
+    internal final let tableView: UITableView
 
     private final let bridge: UITableViewListComponentBridge
 
@@ -30,6 +30,11 @@ public final class UIListComponent: ListComponent {
 
         self.contentMode = contentMode
 
+        // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+        let tableView = UITableView(frame: UIScreen.main.bounds)
+        
+        self.tableView = tableView
+        
         self.bridge = UITableViewListComponentBridge(tableView: tableView)
 
     }

@@ -1,20 +1,20 @@
 //
-//  UICollectionViewUICollectionComponentBridge.swift
+//  UICollectionViewCollectionComponentBridge.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 02/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICollectionViewUICollectionComponentBridge
+// MARK: - UICollectionViewCollectionComponentBridge
 
-internal final class UICollectionViewUICollectionComponentBridge: NSObject {
+internal final class UICollectionViewCollectionComponentBridge: NSObject {
     
-    internal final var itemComponents: ComponentGroup = AnyCollection(
+    internal final var componentGroup: ComponentGroup = AnyCollection(
         [Component]()
     )
     
-    internal final let collectionView: UICollectionView
+    internal unowned final let collectionView: UICollectionView
     
     internal init(collectionView: UICollectionView) {
         
@@ -38,15 +38,15 @@ internal final class UICollectionViewUICollectionComponentBridge: NSObject {
 
 // MARK: - UICollectionViewDataSource
 
-extension UICollectionViewUICollectionComponentBridge: UICollectionViewDataSource {
+extension UICollectionViewCollectionComponentBridge: UICollectionViewDataSource {
     
-    internal final func numberOfSections(in collectionView: UICollectionView) -> Int { return itemComponents.numberOfSections() }
+    internal final func numberOfSections(in collectionView: UICollectionView) -> Int { return componentGroup.numberOfSections() }
     
     internal final func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     )
-        -> Int { return itemComponents.numberOfItems(inSection: section) }
+        -> Int { return componentGroup.numberOfItems(inSection: section) }
     
     internal final func collectionView(
         _ collectionView: UICollectionView,
@@ -61,7 +61,7 @@ extension UICollectionViewUICollectionComponentBridge: UICollectionViewDataSourc
             )
         else { fatalError("Cannot dequeue a cell from type UICollectionViewCell.") }
         
-        let component = itemComponents.componentForItem(at: indexPath)
+        let component = componentGroup.componentForItem(at: indexPath)
         
         component.render()
         
