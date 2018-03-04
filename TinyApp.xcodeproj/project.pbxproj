@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02B43A4204992C300F3D7C0 /* UIGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A3204992C300F3D7C0 /* UIGalleryComponent.swift */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
@@ -20,10 +21,10 @@
 		B044A019204585D300AAED35 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B044A01A204585D300AAED35 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
 		B044A01C2045870700AAED35 /* UILandingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01B2045870700AAED35 /* UILandingComponent.swift */; };
-		B044A01E204588EA00AAED35 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */; };
 		B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */; };
 		B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02120458E8900AAED35 /* UILandingLogo.swift */; };
 		B044A02420458F6400AAED35 /* UILandingLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02320458F6400AAED35 /* UILandingLogoView.swift */; };
+		B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0A6292F204646DD000F97E3 /* TinyAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62928204646DD000F97E3 /* TinyAuth.framework */; };
@@ -59,6 +60,13 @@
 		B0A629B420467E43000F97E3 /* UILandingSupplyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */; };
 		B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B520467EAC000F97E3 /* AccessToken.swift */; };
 		B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B720467EBD000F97E3 /* AuthManager.swift */; };
+		B0D90E0C2048446F00AC9A0A /* TinyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D90E0A2048446F00AC9A0A /* TinyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; };
+		B0D90E102048446F00AC9A0A /* TinyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0D90E142048447900AC9A0A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
+		B0D90E152048447900AC9A0A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
+		B0D90E162048447900AC9A0A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
+		B0D90E19204844CB00AC9A0A /* UIProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +91,13 @@
 			remoteGlobalIDString = B0A62981204657C9000F97E3;
 			remoteInfo = TinyUI;
 		};
+		B0D90E0D2048446F00AC9A0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B03C3E5D20457FEC004E318B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0D90E072048446F00AC9A0A;
+			remoteInfo = TinyStore;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,6 +107,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B0D90E102048446F00AC9A0A /* TinyStore.framework in Embed Frameworks */,
 				B0A6298A204657C9000F97E3 /* TinyUI.framework in Embed Frameworks */,
 				B0A62930204646DD000F97E3 /* TinyAuth.framework in Embed Frameworks */,
 				B03C3E8420458172004E318B /* TinyLanding.framework in Embed Frameworks */,
@@ -115,6 +131,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B02B43A3204992C300F3D7C0 /* UIGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGalleryComponent.swift; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,10 +144,10 @@
 		B03C3E9220458438004E318B /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B03C3E9320458438004E318B /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B044A01B2045870700AAED35 /* UILandingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingComponent.swift; sourceTree = "<group>"; };
-		B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationCoordinator.swift; path = Example/UIApplicationCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingCoordinator.swift; sourceTree = "<group>"; };
 		B044A02120458E8900AAED35 /* UILandingLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogo.swift; sourceTree = "<group>"; };
 		B044A02320458F6400AAED35 /* UILandingLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogoView.swift; sourceTree = "<group>"; };
+		B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B0A62915204590D4000F97E3 /* UILandingLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILandingLogoView.xib; sourceTree = "<group>"; };
 		B0A62928204646DD000F97E3 /* TinyAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A6292A204646DD000F97E3 /* TinyAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyAuth.h; sourceTree = "<group>"; };
@@ -158,6 +175,10 @@
 		B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingSupplyHandler.swift; sourceTree = "<group>"; };
 		B0A629B520467EAC000F97E3 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		B0A629B720467EBD000F97E3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		B0D90E082048446F00AC9A0A /* TinyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
+		B0D90E0B2048446F00AC9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */,
 				B0A62989204657C9000F97E3 /* TinyUI.framework in Frameworks */,
 				B0A6292F204646DD000F97E3 /* TinyAuth.framework in Frameworks */,
 				B03C3E8320458172004E318B /* TinyLanding.framework in Frameworks */,
@@ -203,6 +225,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0D90E042048446F00AC9A0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0D90E142048447900AC9A0A /* Hydra.framework in Frameworks */,
+				B0D90E152048447900AC9A0A /* TinyCore.framework in Frameworks */,
+				B0D90E162048447900AC9A0A /* TinyKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -213,6 +245,7 @@
 				B03C3E7D20458172004E318B /* TinyLanding */,
 				B0A62929204646DD000F97E3 /* TinyAuth */,
 				B0A62983204657C9000F97E3 /* TinyUI */,
+				B0D90E092048446F00AC9A0A /* TinyStore */,
 				B03C3E6620457FEC004E318B /* Products */,
 				B03C3E89204581D5004E318B /* Frameworks */,
 			);
@@ -225,6 +258,7 @@
 				B03C3E7C20458172004E318B /* TinyLanding.framework */,
 				B0A62928204646DD000F97E3 /* TinyAuth.framework */,
 				B0A62982204657C9000F97E3 /* TinyUI.framework */,
+				B0D90E082048446F00AC9A0A /* TinyStore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,7 +268,7 @@
 			children = (
 				B0A629B920467ECA000F97E3 /* Core */,
 				B03C3E6820457FEC004E318B /* AppDelegate.swift */,
-				B044A01D204588EA00AAED35 /* UIApplicationCoordinator.swift */,
+				B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */,
 				B0A629AD204674AA000F97E3 /* AuthCoordinator.swift */,
 				B0A629AF204675D4000F97E3 /* UIAuthCoordinator.swift */,
 				B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */,
@@ -335,6 +369,25 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		B0D90E092048446F00AC9A0A /* TinyStore */ = {
+			isa = PBXGroup;
+			children = (
+				B0D90E17204844AF00AC9A0A /* Product */,
+				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
+				B0D90E0B2048446F00AC9A0A /* Info.plist */,
+			);
+			path = TinyStore;
+			sourceTree = "<group>";
+		};
+		B0D90E17204844AF00AC9A0A /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				B0D90E18204844CB00AC9A0A /* UIProductComponent.swift */,
+				B02B43A3204992C300F3D7C0 /* UIGalleryComponent.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -362,6 +415,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0D90E052048446F00AC9A0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0D90E0C2048446F00AC9A0A /* TinyStore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -382,6 +443,7 @@
 				B03C3E8220458172004E318B /* PBXTargetDependency */,
 				B0A6292E204646DD000F97E3 /* PBXTargetDependency */,
 				B0A62988204657C9000F97E3 /* PBXTargetDependency */,
+				B0D90E0E2048446F00AC9A0A /* PBXTargetDependency */,
 			);
 			name = TinyApp;
 			productName = TinyApp;
@@ -442,6 +504,24 @@
 			productReference = B0A62982204657C9000F97E3 /* TinyUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B0D90E072048446F00AC9A0A /* TinyStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0D90E132048446F00AC9A0A /* Build configuration list for PBXNativeTarget "TinyStore" */;
+			buildPhases = (
+				B0D90E032048446F00AC9A0A /* Sources */,
+				B0D90E042048446F00AC9A0A /* Frameworks */,
+				B0D90E052048446F00AC9A0A /* Headers */,
+				B0D90E062048446F00AC9A0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TinyStore;
+			productName = TinyStore;
+			productReference = B0D90E082048446F00AC9A0A /* TinyStore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -470,6 +550,11 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					B0D90E072048446F00AC9A0A = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = B03C3E6020457FEC004E318B /* Build configuration list for PBXProject "TinyApp" */;
@@ -489,6 +574,7 @@
 				B03C3E7B20458172004E318B /* TinyLanding */,
 				B0A62927204646DD000F97E3 /* TinyAuth */,
 				B0A62981204657C9000F97E3 /* TinyUI */,
+				B0D90E072048446F00AC9A0A /* TinyStore */,
 			);
 		};
 /* End PBXProject section */
@@ -527,6 +613,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0D90E062048446F00AC9A0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -560,8 +653,8 @@
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
 				B0A629B0204675D4000F97E3 /* UIAuthCoordinator.swift in Sources */,
 				B0A629AE204674AA000F97E3 /* AuthCoordinator.swift in Sources */,
-				B044A01E204588EA00AAED35 /* UIApplicationCoordinator.swift in Sources */,
 				B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */,
+				B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +696,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0D90E032048446F00AC9A0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B02B43A4204992C300F3D7C0 /* UIGalleryComponent.swift in Sources */,
+				B0D90E19204844CB00AC9A0A /* UIProductComponent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -620,6 +722,11 @@
 			isa = PBXTargetDependency;
 			target = B0A62981204657C9000F97E3 /* TinyUI */;
 			targetProxy = B0A62987204657C9000F97E3 /* PBXContainerItemProxy */;
+		};
+		B0D90E0E2048446F00AC9A0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0D90E072048446F00AC9A0A /* TinyStore */;
+			targetProxy = B0D90E0D2048446F00AC9A0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -960,6 +1067,67 @@
 			};
 			name = Release;
 		};
+		B0D90E112048446F00AC9A0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TinyStore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyStore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B0D90E122048446F00AC9A0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TinyStore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyStore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1004,6 +1172,15 @@
 			buildConfigurations = (
 				B0A6298C204657C9000F97E3 /* Debug */,
 				B0A6298D204657C9000F97E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0D90E132048446F00AC9A0A /* Build configuration list for PBXNativeTarget "TinyStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0D90E112048446F00AC9A0A /* Debug */,
+				B0D90E122048446F00AC9A0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
