@@ -18,7 +18,12 @@ public final class UIProductComponent: Component {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
         
-        self.galleryComponent = UIGalleryComponent()
+        self.galleryComponent = UIGalleryComponent(
+            contentMode: .size(
+                width: 300.0,
+                height: 300.0
+            )
+        )
         
     }
     
@@ -47,5 +52,21 @@ public final class UIProductComponent: Component {
     public final var view: View { return listComponent.view }
     
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
+    
+}
+
+public extension UIProductComponent {
+    
+    @discardableResult
+    public final func setImages(
+        _ images: [UIImage]
+    )
+    -> UIProductComponent {
+        
+        galleryComponent.setImages(images)
+        
+        return self
+        
+    }
     
 }

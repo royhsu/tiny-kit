@@ -24,6 +24,7 @@
 		B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */; };
 		B044A02220458E8900AAED35 /* UILandingLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02120458E8900AAED35 /* UILandingLogo.swift */; };
 		B044A02420458F6400AAED35 /* UILandingLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044A02320458F6400AAED35 /* UILandingLogoView.swift */; };
+		B04EBD7B204BC8DC00C9235F /* UIRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EBD7A204BC8DC00C9235F /* UIRootCoordinator.swift */; };
 		B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -147,6 +148,7 @@
 		B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingCoordinator.swift; sourceTree = "<group>"; };
 		B044A02120458E8900AAED35 /* UILandingLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogo.swift; sourceTree = "<group>"; };
 		B044A02320458F6400AAED35 /* UILandingLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingLogoView.swift; sourceTree = "<group>"; };
+		B04EBD7A204BC8DC00C9235F /* UIRootCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRootCoordinator.swift; sourceTree = "<group>"; };
 		B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B0A62915204590D4000F97E3 /* UILandingLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILandingLogoView.xib; sourceTree = "<group>"; };
 		B0A62928204646DD000F97E3 /* TinyAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +271,7 @@
 				B0A629B920467ECA000F97E3 /* Core */,
 				B03C3E6820457FEC004E318B /* AppDelegate.swift */,
 				B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */,
+				B04EBD7A204BC8DC00C9235F /* UIRootCoordinator.swift */,
 				B0A629AD204674AA000F97E3 /* AuthCoordinator.swift */,
 				B0A629AF204675D4000F97E3 /* UIAuthCoordinator.swift */,
 				B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */,
@@ -648,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04EBD7B204BC8DC00C9235F /* UIRootCoordinator.swift in Sources */,
 				B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */,
 				B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
