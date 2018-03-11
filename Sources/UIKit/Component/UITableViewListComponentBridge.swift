@@ -10,13 +10,11 @@
 
 internal final class UITableViewListComponentBridge: NSObject {
 
-    private final let cellIdentifier = String(
-        describing: UITableViewCell.self
+    internal final var componentGroup: ComponentGroup = AnyCollection(
+        [Component]()
     )
-
-    internal final let tableView: UITableView
-
-    internal final var itemComponents: ListItemComponents?
+    
+    internal unowned final let tableView: UITableView
 
     internal init(tableView: UITableView) {
 
@@ -32,10 +30,7 @@ internal final class UITableViewListComponentBridge: NSObject {
 
     fileprivate final func setUpTableView(_ tableView: UITableView) {
 
-        tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: cellIdentifier
-        )
+        tableView.registerCell(UITableViewCell.self)
 
         tableView.separatorStyle = .none
 
@@ -51,21 +46,13 @@ internal final class UITableViewListComponentBridge: NSObject {
 
 extension UITableViewListComponentBridge: UITableViewDataSource {
 
-    internal final func numberOfSections(in tableView: UITableView) -> Int {
-
-        return itemComponents?.numberOfSections() ?? 0
-
-    }
+    internal final func numberOfSections(in tableView: UITableView) -> Int { return componentGroup.numberOfSections() }
 
     internal final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
-    -> Int {
-
-        return itemComponents?.numberOfItemsAtSection(section) ?? 0
-
-    }
+    -> Int { return componentGroup.numberOfItems(inSection: section) }
 
     internal final func tableView(
         _ tableView: UITableView,
@@ -73,22 +60,22 @@ extension UITableViewListComponentBridge: UITableViewDataSource {
     )
     -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellIdentifier,
-            for: indexPath
-        )
+        guard
+            let cell = tableView.dequeueReusableCell(
+                UITableViewCell.self,
+                for: indexPath
+            )
+        else { fatalError("Cannot dequeue a cell from type UITableViewCell.") }
 
         cell.selectionStyle = .none
 
         cell.backgroundColor = .clear
 
-        if let component = itemComponents?.componentForItem(at: indexPath) {
+        let component = componentGroup.componentForItem(at: indexPath)
 
-            component.render()
+        component.render()
 
-            cell.contentView.render(with: component)
-
-        }
+        cell.contentView.render(with: component)
 
         return cell
 
@@ -106,15 +93,13 @@ extension UITableViewListComponentBridge: UITableViewDelegate {
     )
     -> CGFloat {
 
-        guard
-            let component = itemComponents?.componentForItem(at: indexPath)
-        else { return 0.0 }
+        let component = componentGroup.componentForItem(at: indexPath)
 
         switch component.contentMode {
 
         case .size(_, let height): return height
-
-        case .automatic: return UITableViewAutomaticDimension
+            
+        case .automatic: return component.preferredContentSize.height
 
         }
 

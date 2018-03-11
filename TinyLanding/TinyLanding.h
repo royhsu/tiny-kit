@@ -6,7 +6,7 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-#import <TinyKit/TinyKit.h>
+#import <TinyUI/TinyUI.h>
 
 //! Project version number for TinyLanding.
 FOUNDATION_EXPORT double TinyLandingVersionNumber;
