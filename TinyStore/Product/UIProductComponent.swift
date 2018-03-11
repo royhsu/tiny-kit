@@ -18,12 +18,7 @@ public final class UIProductComponent: Component {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
         
-        self.galleryComponent = UIGalleryComponent(
-            contentMode: .size(
-                width: 300.0,
-                height: 300.0
-            )
-        )
+        self.galleryComponent = UIGalleryComponent()
         
     }
     
@@ -38,6 +33,13 @@ public final class UIProductComponent: Component {
     }
     
     public final func render() {
+        
+        let width = listComponent.view.bounds.width
+        
+        galleryComponent.contentMode = .size(
+            width: width,
+            height: width
+        )
         
         listComponent.itemComponents = AnyCollection(
             [ galleryComponent ]

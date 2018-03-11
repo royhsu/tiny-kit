@@ -13,6 +13,8 @@ public final class UIGalleryComponent: Component {
     /// The base component
     private final let carouselComponent: UICarouselComponent
     
+    private final var images: [UIImage] = []
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.carouselComponent = UICarouselComponent(contentMode: contentMode)
@@ -29,7 +31,19 @@ public final class UIGalleryComponent: Component {
         
     }
     
-    public final func render() { carouselComponent.render() }
+    public final func render() {
+        
+        carouselComponent.render()
+        
+        for index in 0..<images.count {
+            
+            let imageComponent = self.carouselComponent.itemComponents[AnyIndex(index)] as? UIItemComponent<UIGalleryImageView>
+            
+            imageComponent?.itemView.imageView.image = self.images[index]
+            
+        }
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -47,15 +61,24 @@ public extension UIGalleryComponent {
     )
     -> UIGalleryComponent {
         
-        let imageComponents: [Component] = images.map { image -> UIItemComponent<UIImageView> in
+        self.images = images
+        
+        let imageComponents: [Component] = images.map { image -> UIItemComponent<UIGalleryImageView> in
             
-            let imageView = UIImageView(image: image)
+            let bundle = Bundle(
+                for: type(of: self)
+            )
             
-            imageView.contentMode = .scaleAspectFill
+            let component = UIItemComponent(
+                itemView: UIView.load(
+                    UIGalleryImageView.self,
+                    from: bundle
+                )!
+            )
             
-            imageView.clipsToBounds = true
+//            component.itemView.imageView.image = image
             
-            return UIItemComponent(itemView: imageView)
+            return component
             
         }
         
