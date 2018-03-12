@@ -10,6 +10,13 @@
 		B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */; };
 		B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00820564C1D00AB47C4 /* UIGridItemView.swift */; };
 		B032B00B20564C2400AB47C4 /* UIGridItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B00A20564C2400AB47C4 /* UIGridItemView.xib */; };
+		B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B047205670EE00AB47C4 /* ShadowView+BlurProcess.swift */; };
+		B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B048205670EE00AB47C4 /* UIView+Image.swift */; };
+		B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B049205670EE00AB47C4 /* UIImage+Size.swift */; };
+		B032B051205670EE00AB47C4 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B04A205670EE00AB47C4 /* ShadowView.swift */; };
+		B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B04B205670EE00AB47C4 /* UIImageEffects.swift */; };
+		B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B04C205670EE00AB47C4 /* UIView+Shadow.swift */; };
+		B032B056205670FC00AB47C4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B032B055205670FC00AB47C4 /* Info.plist */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
@@ -137,6 +144,13 @@
 		B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemComponent.swift; sourceTree = "<group>"; };
 		B032B00820564C1D00AB47C4 /* UIGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemView.swift; sourceTree = "<group>"; };
 		B032B00A20564C2400AB47C4 /* UIGridItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIGridItemView.xib; sourceTree = "<group>"; };
+		B032B047205670EE00AB47C4 /* ShadowView+BlurProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShadowView+BlurProcess.swift"; sourceTree = "<group>"; };
+		B032B048205670EE00AB47C4 /* UIView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Image.swift"; sourceTree = "<group>"; };
+		B032B049205670EE00AB47C4 /* UIImage+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Size.swift"; sourceTree = "<group>"; };
+		B032B04A205670EE00AB47C4 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		B032B04B205670EE00AB47C4 /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
+		B032B04C205670EE00AB47C4 /* UIView+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		B032B055205670FC00AB47C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -244,6 +258,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B032B046205670EE00AB47C4 /* ShadowView */ = {
+			isa = PBXGroup;
+			children = (
+				B032B047205670EE00AB47C4 /* ShadowView+BlurProcess.swift */,
+				B032B048205670EE00AB47C4 /* UIView+Image.swift */,
+				B032B049205670EE00AB47C4 /* UIImage+Size.swift */,
+				B032B04A205670EE00AB47C4 /* ShadowView.swift */,
+				B032B04B205670EE00AB47C4 /* UIImageEffects.swift */,
+				B032B04C205670EE00AB47C4 /* UIView+Shadow.swift */,
+				B032B055205670FC00AB47C4 /* Info.plist */,
+			);
+			path = ShadowView;
+			sourceTree = "<group>";
+		};
 		B03C3E5C20457FEC004E318B = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +407,7 @@
 		B0D90E092048446F00AC9A0A /* TinyStore */ = {
 			isa = PBXGroup;
 			children = (
+				B032B046205670EE00AB47C4 /* ShadowView */,
 				B0D90E17204844AF00AC9A0A /* Product */,
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
@@ -626,6 +655,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B032B056205670FC00AB47C4 /* Info.plist in Resources */,
 				B032B00B20564C2400AB47C4 /* UIGridItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -711,9 +741,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
+				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
+				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,
 				B0D90E19204844CB00AC9A0A /* UIGridComponent.swift in Sources */,
+				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
+				B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */,
+				B032B051205670EE00AB47C4 /* ShadowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

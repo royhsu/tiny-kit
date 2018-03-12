@@ -6,9 +6,16 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// NOTE: The source code of the included third-party library ShadowView is modified. The rendering priorty gets higher from .utilities to .userinteractive.
+// Beware of this if the library needs to be updated.
+
 // MARK: - UIGridItemView
 
+// TODO: measure the performance impact while rending preview image with a shadow.
 public final class UIGridItemView: UIView {
+    
+    @IBOutlet
+    public fileprivate(set) final weak var shadowView: ShadowView!
     
     @IBOutlet
     public fileprivate(set) final var previewImageView: UIImageView!
@@ -23,6 +30,8 @@ public final class UIGridItemView: UIView {
     
     public final override func awakeFromNib() {
         
+        setUpShadowView(shadowView)
+        
         setUpPreviewImageView(previewImageView)
         
         setUpTitleLabel(titleLabel)
@@ -33,9 +42,18 @@ public final class UIGridItemView: UIView {
     
     // MARK: Set Up
     
-    fileprivate final func setUpPreviewImageView(_ imageView: UIImageView) {
+    fileprivate final func setUpShadowView(_ shadowView: ShadowView) {
+    
+        shadowView.shadowRadius = 4.0
         
-        imageView.backgroundColor = .lightGray
+        shadowView.shadowOffset = CGSize(
+            width: 0.0,
+            height: 4.5
+        )
+        
+    }
+    
+    fileprivate final func setUpPreviewImageView(_ imageView: UIImageView) {
         
         imageView.contentMode = .scaleAspectFill
         

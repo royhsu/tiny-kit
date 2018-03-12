@@ -39,7 +39,13 @@ public final class UIGridItemComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        itemComponent.render()
+        
+        itemComponent.itemView.shadowView.updateShadow()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -55,8 +61,15 @@ public extension UIGridItemComponent {
     public final func setItem(_ item: UIGridItem) -> UIGridItemComponent {
         
         let itemView = itemComponent.itemView
-        
+
         itemView.previewImageView.image = item.previewImages.first
+        
+        let hasPreviewImage = (itemView.previewImageView.image != nil)
+        
+        itemView.previewImageView.backgroundColor =
+            hasPreviewImage
+            ? nil
+            : .lightGray
         
         itemView.titleLabel.text = item.title
         

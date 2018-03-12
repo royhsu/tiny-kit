@@ -29,9 +29,9 @@ public final class UIRootCoordinator: Coordinator {
         rootComponent.setItems(
             [
                 UIGridItem(
-                    previewImages: [],
-                    title: "Hello",
-                    subtitle: "World"
+                    previewImages: [ #imageLiteral(resourceName: "image-dessert-1") ],
+                    title: "Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.",
+                    subtitle: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
                 ),
                 UIGridItem(
                     previewImages: [],

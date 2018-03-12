@@ -16,12 +16,24 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="363"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICU-cr-BuP">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hM6-5y-J7t" customClass="ShadowView" customModule="TinyStore" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICU-cr-BuP">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ICU-cr-BuP" secondAttribute="height" multiplier="4:3" id="kVL-JN-Atk"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="ICU-cr-BuP" secondAttribute="height" multiplier="4:3" id="kVL-JN-Atk"/>
+                        <constraint firstItem="ICU-cr-BuP" firstAttribute="top" secondItem="hM6-5y-J7t" secondAttribute="top" id="ebK-Mc-ITj"/>
+                        <constraint firstAttribute="trailing" secondItem="ICU-cr-BuP" secondAttribute="trailing" id="pwj-2D-RT5"/>
+                        <constraint firstItem="ICU-cr-BuP" firstAttribute="leading" secondItem="hM6-5y-J7t" secondAttribute="leading" id="py0-MK-kdH"/>
+                        <constraint firstAttribute="bottom" secondItem="ICU-cr-BuP" secondAttribute="bottom" id="vyQ-dI-aD4"/>
                     </constraints>
-                </imageView>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ta-1z-hRw">
                     <rect key="frame" x="6" y="314" width="388" height="31.5"/>
                     <string key="text">Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
@@ -39,20 +51,21 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pFN-4V-iS6" secondAttribute="trailing" constant="6" id="19g-Af-rD6"/>
+                <constraint firstAttribute="trailing" secondItem="hM6-5y-J7t" secondAttribute="trailing" id="3AK-0S-qgb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6ta-1z-hRw" secondAttribute="trailing" constant="6" id="DrL-mE-XTS"/>
-                <constraint firstItem="ICU-cr-BuP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="JCn-7a-Nu9"/>
                 <constraint firstItem="pFN-4V-iS6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="JEj-Uz-Fd6"/>
-                <constraint firstItem="6ta-1z-hRw" firstAttribute="top" secondItem="ICU-cr-BuP" secondAttribute="bottom" constant="13.5" id="afC-Z4-ZZC"/>
+                <constraint firstItem="pFN-4V-iS6" firstAttribute="top" secondItem="6ta-1z-hRw" secondAttribute="bottom" priority="900" constant="2" id="YEd-UY-XPv"/>
                 <constraint firstItem="6ta-1z-hRw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="cxS-yw-feS"/>
-                <constraint firstItem="pFN-4V-iS6" firstAttribute="top" secondItem="6ta-1z-hRw" secondAttribute="bottom" constant="2" id="gqW-2q-WW9"/>
+                <constraint firstItem="hM6-5y-J7t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dB8-wk-SgT"/>
                 <constraint firstItem="pFN-4V-iS6" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="oe2-Zu-h7I"/>
-                <constraint firstItem="ICU-cr-BuP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qGH-tt-CXp"/>
-                <constraint firstItem="ICU-cr-BuP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tv8-p8-4mk"/>
+                <constraint firstItem="hM6-5y-J7t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v2V-MP-uLh"/>
+                <constraint firstItem="6ta-1z-hRw" firstAttribute="top" secondItem="hM6-5y-J7t" secondAttribute="bottom" constant="14" id="z86-jy-1bY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="previewImageView" destination="ICU-cr-BuP" id="IUm-lb-SgA"/>
+                <outlet property="shadowView" destination="hM6-5y-J7t" id="ebS-0Y-9pT"/>
                 <outlet property="subtitleLabel" destination="pFN-4V-iS6" id="aWG-oC-YLk"/>
                 <outlet property="titleLabel" destination="6ta-1z-hRw" id="SPA-EK-orw"/>
             </connections>
