@@ -55,6 +55,8 @@ public final class UIGridItemView: UIView {
     
     fileprivate final func setUpPreviewImageView(_ imageView: UIImageView) {
         
+        imageView.layer.cornerRadius = 4.0
+        
         imageView.contentMode = .scaleAspectFill
         
         imageView.clipsToBounds = true

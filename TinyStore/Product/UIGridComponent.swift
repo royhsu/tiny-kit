@@ -30,6 +30,8 @@ public final class UIGridComponent: Component {
     
     public final func render() {
         
+        collectionComponent.view.backgroundColor = .white
+        
         collectionComponent.collectionLayout.minimumLineSpacing = 20.0
         
         let columns = 2
