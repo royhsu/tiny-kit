@@ -15,22 +15,37 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let navigationController: UINavigationController
     
-    private final let rootComponent: UIProductComponent
+    private final let rootComponent: Component
     
     public init(contentSize: CGSize) {
         
-        let rootComponent = UIProductComponent(
+//        let rootComponent = UIProductComponent(
+//            contentMode: .size(
+//                width: contentSize.width,
+//                height: contentSize.height
+//            )
+//        )
+//        .setImages(
+//            [
+//                #imageLiteral(resourceName: "image-dessert-1"),
+//                #imageLiteral(resourceName: "image-dessert-2"),
+//                #imageLiteral(resourceName: "image-dessert-3")
+//            ]
+//        )
+        
+        let rootComponent = UIGridItemComponent(
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
             )
         )
-        .setImages(
-            [
-                #imageLiteral(resourceName: "image-dessert-1"),
-                #imageLiteral(resourceName: "image-dessert-2"),
-                #imageLiteral(resourceName: "image-dessert-3")
-            ]
+        
+        rootComponent.setItem(
+            UIGridItem(
+                previewImages: [],
+                title: "Hello",
+                subtitle: "World"
+            )
         )
         
         self.rootComponent = rootComponent

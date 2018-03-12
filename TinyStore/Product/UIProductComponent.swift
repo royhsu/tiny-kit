@@ -12,13 +12,9 @@ public final class UIProductComponent: Component {
     
     private final let listComponent: UIListComponent
     
-    private final let galleryComponent: UIGalleryComponent
-    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
-        
-        self.galleryComponent = UIGalleryComponent()
         
     }
     
@@ -34,16 +30,9 @@ public final class UIProductComponent: Component {
     
     public final func render() {
         
-        let width = listComponent.view.bounds.width
-        
-        galleryComponent.contentMode = .size(
-            width: width,
-            height: width
-        )
-        
-        listComponent.itemComponents = AnyCollection(
-            [ galleryComponent ]
-        )
+//        listComponent.itemComponents = AnyCollection(
+//            []
+//        )
         
         listComponent.render()
         
@@ -64,8 +53,6 @@ public extension UIProductComponent {
         _ images: [UIImage]
     )
     -> UIProductComponent {
-        
-        galleryComponent.setImages(images)
         
         return self
         
