@@ -19,33 +19,71 @@ public final class UIRootCoordinator: Coordinator {
     
     public init(contentSize: CGSize) {
         
-//        let rootComponent = UIProductComponent(
-//            contentMode: .size(
-//                width: contentSize.width,
-//                height: contentSize.height
-//            )
-//        )
-//        .setImages(
-//            [
-//                #imageLiteral(resourceName: "image-dessert-1"),
-//                #imageLiteral(resourceName: "image-dessert-2"),
-//                #imageLiteral(resourceName: "image-dessert-3")
-//            ]
-//        )
-        
-        let rootComponent = UIGridItemComponent(
+        let rootComponent = UIGridComponent(
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
             )
         )
         
-        rootComponent.setItem(
-            UIGridItem(
-                previewImages: [],
-                title: "Hello",
-                subtitle: "World"
-            )
+        rootComponent.setItems(
+            [
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                ),
+                UIGridItem(
+                    previewImages: [],
+                    title: "Hello",
+                    subtitle: "World"
+                )
+            ]
         )
         
         self.rootComponent = rootComponent
