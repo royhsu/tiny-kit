@@ -60,7 +60,23 @@ public final class UIRootCoordinator: Coordinator {
                 defaultSpacingComponent(),
                 UIProductTitleComponent(),
                 defaultSpacingComponent(),
-                UIProductSectionHeaderComponent()
+                UIProductSectionHeaderComponent(),
+                defaultSpacingComponent(),
+                UIProductReviewCarouselComponent(
+                    contentMode: .size(
+                        width: contentSize.width,
+                        height: 143.0 + 20.0 // shadow
+                    )
+                )
+                .setReviews(
+                    [
+                        UIProductReview(),
+                        UIProductReview(),
+                        UIProductReview(),
+                        UIProductReview(),
+                        UIProductReview()
+                    ]
+                )
             ]
         )
         
