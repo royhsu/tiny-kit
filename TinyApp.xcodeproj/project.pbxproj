@@ -24,6 +24,9 @@
 		B032B0622057B93500AB47C4 /* UIProductTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0612057B93500AB47C4 /* UIProductTitleView.swift */; };
 		B032B0642057B96900AB47C4 /* UIProductTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B0632057B96900AB47C4 /* UIProductTitleView.xib */; };
 		B032B0662057BBB800AB47C4 /* UIProductTitleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0652057BBB800AB47C4 /* UIProductTitleComponent.swift */; };
+		B032B0682057BE6100AB47C4 /* UIProductSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0672057BE6100AB47C4 /* UIProductSectionHeader.swift */; };
+		B032B06A2057BE7B00AB47C4 /* UIProductSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B0692057BE7B00AB47C4 /* UIProductSectionHeader.xib */; };
+		B032B06C2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B06B2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
@@ -165,6 +168,9 @@
 		B032B0612057B93500AB47C4 /* UIProductTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductTitleView.swift; sourceTree = "<group>"; };
 		B032B0632057B96900AB47C4 /* UIProductTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIProductTitleView.xib; sourceTree = "<group>"; };
 		B032B0652057BBB800AB47C4 /* UIProductTitleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductTitleComponent.swift; sourceTree = "<group>"; };
+		B032B0672057BE6100AB47C4 /* UIProductSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeader.swift; sourceTree = "<group>"; };
+		B032B0692057BE7B00AB47C4 /* UIProductSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIProductSectionHeader.xib; sourceTree = "<group>"; };
+		B032B06B2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeaderComponent.swift; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -295,6 +301,9 @@
 				B032B0612057B93500AB47C4 /* UIProductTitleView.swift */,
 				B032B0632057B96900AB47C4 /* UIProductTitleView.xib */,
 				B032B0652057BBB800AB47C4 /* UIProductTitleComponent.swift */,
+				B032B0672057BE6100AB47C4 /* UIProductSectionHeader.swift */,
+				B032B0692057BE7B00AB47C4 /* UIProductSectionHeader.xib */,
+				B032B06B2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -695,6 +704,7 @@
 				B032B056205670FC00AB47C4 /* Info.plist in Resources */,
 				B032B05B2057A73200AB47C4 /* UIProductGalleryView.xib in Resources */,
 				B032B00B20564C2400AB47C4 /* UIGridItemView.xib in Resources */,
+				B032B06A2057BE7B00AB47C4 /* UIProductSectionHeader.xib in Resources */,
 				B032B0642057B96900AB47C4 /* UIProductTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -780,7 +790,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B032B06C2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift in Sources */,
 				B032B0602057A92F00AB47C4 /* UIProductGalleryComponent.swift in Sources */,
+				B032B0682057BE6100AB47C4 /* UIProductSectionHeader.swift in Sources */,
 				B032B0622057B93500AB47C4 /* UIProductTitleView.swift in Sources */,
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,

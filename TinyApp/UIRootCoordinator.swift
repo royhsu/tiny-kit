@@ -26,6 +26,29 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
         
+        let spacingComponent: (CGSize) -> Component =  { size in
+            
+            return UIItemComponent(
+                contentMode: .size(
+                    width: size.width,
+                    height: size.height
+                ),
+                itemView: UIView()
+            )
+            
+        }
+        
+        let defaultSpacingComponent: () -> Component = {
+            
+            return spacingComponent(
+                CGSize(
+                    width: 20.0,
+                    height: 20.0
+                )
+            )
+
+        }
+        
         rootComponent.itemComponents = AnyCollection(
             [
                 UIProductGalleryComponent(
@@ -34,14 +57,10 @@ public final class UIRootCoordinator: Coordinator {
                         height: contentSize.width / (16.0 / 9.0)
                     )
                 ),
-                UIItemComponent(
-                    contentMode: .size(
-                        width: 20.0,
-                        height: 20.0
-                    ),
-                    itemView: UIView()
-                ),
-                UIProductTitleComponent()
+                defaultSpacingComponent(),
+                UIProductTitleComponent(),
+                defaultSpacingComponent(),
+                UIProductSectionHeaderComponent()
             ]
         )
         
