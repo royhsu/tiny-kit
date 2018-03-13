@@ -17,6 +17,13 @@
 		B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B04B205670EE00AB47C4 /* UIImageEffects.swift */; };
 		B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B04C205670EE00AB47C4 /* UIView+Shadow.swift */; };
 		B032B056205670FC00AB47C4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B032B055205670FC00AB47C4 /* Info.plist */; };
+		B032B0592057A6FE00AB47C4 /* UIProductGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0582057A6FE00AB47C4 /* UIProductGalleryView.swift */; };
+		B032B05B2057A73200AB47C4 /* UIProductGalleryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B05A2057A73200AB47C4 /* UIProductGalleryView.xib */; };
+		B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B05D2057A85C00AB47C4 /* TriangleView.swift */; };
+		B032B0602057A92F00AB47C4 /* UIProductGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B05F2057A92F00AB47C4 /* UIProductGalleryComponent.swift */; };
+		B032B0622057B93500AB47C4 /* UIProductTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0612057B93500AB47C4 /* UIProductTitleView.swift */; };
+		B032B0642057B96900AB47C4 /* UIProductTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B0632057B96900AB47C4 /* UIProductTitleView.xib */; };
+		B032B0662057BBB800AB47C4 /* UIProductTitleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0652057BBB800AB47C4 /* UIProductTitleComponent.swift */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
@@ -151,6 +158,13 @@
 		B032B04B205670EE00AB47C4 /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		B032B04C205670EE00AB47C4 /* UIView+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		B032B055205670FC00AB47C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B032B0582057A6FE00AB47C4 /* UIProductGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductGalleryView.swift; sourceTree = "<group>"; };
+		B032B05A2057A73200AB47C4 /* UIProductGalleryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIProductGalleryView.xib; sourceTree = "<group>"; };
+		B032B05D2057A85C00AB47C4 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		B032B05F2057A92F00AB47C4 /* UIProductGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductGalleryComponent.swift; sourceTree = "<group>"; };
+		B032B0612057B93500AB47C4 /* UIProductTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductTitleView.swift; sourceTree = "<group>"; };
+		B032B0632057B96900AB47C4 /* UIProductTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIProductTitleView.xib; sourceTree = "<group>"; };
+		B032B0652057BBB800AB47C4 /* UIProductTitleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductTitleComponent.swift; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -270,6 +284,27 @@
 				B032B055205670FC00AB47C4 /* Info.plist */,
 			);
 			path = ShadowView;
+			sourceTree = "<group>";
+		};
+		B032B0572057A6D300AB47C4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B032B0582057A6FE00AB47C4 /* UIProductGalleryView.swift */,
+				B032B05A2057A73200AB47C4 /* UIProductGalleryView.xib */,
+				B032B05F2057A92F00AB47C4 /* UIProductGalleryComponent.swift */,
+				B032B0612057B93500AB47C4 /* UIProductTitleView.swift */,
+				B032B0632057B96900AB47C4 /* UIProductTitleView.xib */,
+				B032B0652057BBB800AB47C4 /* UIProductTitleComponent.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B032B05C2057A84B00AB47C4 /* TriangleView */ = {
+			isa = PBXGroup;
+			children = (
+				B032B05D2057A85C00AB47C4 /* TriangleView.swift */,
+			);
+			path = TriangleView;
 			sourceTree = "<group>";
 		};
 		B03C3E5C20457FEC004E318B = {
@@ -407,6 +442,7 @@
 		B0D90E092048446F00AC9A0A /* TinyStore */ = {
 			isa = PBXGroup;
 			children = (
+				B032B05C2057A84B00AB47C4 /* TriangleView */,
 				B032B046205670EE00AB47C4 /* ShadowView */,
 				B0D90E17204844AF00AC9A0A /* Product */,
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
@@ -418,10 +454,11 @@
 		B0D90E17204844AF00AC9A0A /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				B0D90E18204844CB00AC9A0A /* UIGridComponent.swift */,
+				B032B0572057A6D300AB47C4 /* Detail */,
 				B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */,
 				B032B00820564C1D00AB47C4 /* UIGridItemView.swift */,
 				B032B00A20564C2400AB47C4 /* UIGridItemView.xib */,
+				B0D90E18204844CB00AC9A0A /* UIGridComponent.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -656,7 +693,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B032B056205670FC00AB47C4 /* Info.plist in Resources */,
+				B032B05B2057A73200AB47C4 /* UIProductGalleryView.xib in Resources */,
 				B032B00B20564C2400AB47C4 /* UIGridItemView.xib in Resources */,
+				B032B0642057B96900AB47C4 /* UIProductTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +780,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B032B0602057A92F00AB47C4 /* UIProductGalleryComponent.swift in Sources */,
+				B032B0622057B93500AB47C4 /* UIProductTitleView.swift in Sources */,
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
@@ -748,6 +789,9 @@
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,
 				B0D90E19204844CB00AC9A0A /* UIGridComponent.swift in Sources */,
 				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
+				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,
+				B032B0662057BBB800AB47C4 /* UIProductTitleComponent.swift in Sources */,
+				B032B0592057A6FE00AB47C4 /* UIProductGalleryView.swift in Sources */,
 				B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */,
 				B032B051205670EE00AB47C4 /* ShadowView.swift in Sources */,
 			);
