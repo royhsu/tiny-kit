@@ -48,3 +48,28 @@ public final class UIProductGalleryComponent: Component {
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
 }
+
+public extension UIProductGalleryComponent {
+    
+    @discardableResult
+    public final func setGallery(_ gallery: UIProductGallery) -> UIProductGalleryComponent {
+        
+        let galleryView = itemComponent.itemView
+        
+        if let previewImage = gallery.images.first {
+            
+            galleryView.imageView.image = previewImage
+            
+            galleryView.imageView.backgroundColor = .clear
+            
+        }
+        else { galleryView.imageView.backgroundColor = .lightGray }
+        
+        // NOTE: The added image will cover up the triangle view.
+        galleryView.bringSubview(toFront: galleryView.triangleView)
+        
+        return self
+        
+    }
+    
+}

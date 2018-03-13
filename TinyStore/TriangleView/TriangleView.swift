@@ -10,9 +10,9 @@
 
 import UIKit
 
-public class TriangleView: UIView {
+open class TriangleView: UIView {
     
-    public var triangleColor: UIColor = .white {
+    open var triangleColor: UIColor = .white {
     
         didSet { setNeedsDisplay() }
         
@@ -20,7 +20,7 @@ public class TriangleView: UIView {
     
     // MARK: Draw
     
-    public override func draw(_ rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         
         guard
             let context = UIGraphicsGetCurrentContext()

@@ -30,8 +30,6 @@ public final class UIProductGalleryView: UIView {
     
     fileprivate final func setUpImageView(_ imageView: UIImageView) {
         
-        imageView.backgroundColor = .lightGray
-        
         imageView.contentMode = .scaleAspectFill
         
         imageView.clipsToBounds = true

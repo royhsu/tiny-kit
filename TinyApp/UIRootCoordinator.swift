@@ -56,6 +56,11 @@ public final class UIRootCoordinator: Coordinator {
                         width: contentSize.width,
                         height: contentSize.width / (16.0 / 9.0)
                     )
+                )
+                .setGallery(
+                    UIProductGallery(
+                        images: [ #imageLiteral(resourceName: "image-dessert-1") ]
+                    )
                 ),
                 defaultSpacingComponent(),
                 UIProductDescriptionComponent().setTitle(

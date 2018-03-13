@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */; };
+		B03082B420580B9300992255 /* UIProductGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03082B320580B9300992255 /* UIProductGallery.swift */; };
 		B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */; };
 		B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00820564C1D00AB47C4 /* UIGridItemView.swift */; };
 		B032B00B20564C2400AB47C4 /* UIGridItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B00A20564C2400AB47C4 /* UIGridItemView.xib */; };
@@ -159,6 +160,7 @@
 
 /* Begin PBXFileReference section */
 		B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeader.swift; sourceTree = "<group>"; };
+		B03082B320580B9300992255 /* UIProductGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductGallery.swift; sourceTree = "<group>"; };
 		B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemComponent.swift; sourceTree = "<group>"; };
 		B032B00820564C1D00AB47C4 /* UIGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemView.swift; sourceTree = "<group>"; };
 		B032B00A20564C2400AB47C4 /* UIGridItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIGridItemView.xib; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				B032B0582057A6FE00AB47C4 /* UIProductGalleryView.swift */,
 				B032B05A2057A73200AB47C4 /* UIProductGalleryView.xib */,
+				B03082B320580B9300992255 /* UIProductGallery.swift */,
 				B032B05F2057A92F00AB47C4 /* UIProductGalleryComponent.swift */,
 				B032B0772057FBCE00AB47C4 /* UIProductDescriptionView.swift */,
 				B032B0782057FBCE00AB47C4 /* UIProductDescriptionView.xib */,
@@ -818,6 +821,7 @@
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
+				B03082B420580B9300992255 /* UIProductGallery.swift in Sources */,
 				B032B07C2057FC5300AB47C4 /* UIProductDescription.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,
