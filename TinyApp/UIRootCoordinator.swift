@@ -76,7 +76,9 @@ public final class UIRootCoordinator: Coordinator {
                         UIProductReview(),
                         UIProductReview()
                     ]
-                )
+                ),
+                defaultSpacingComponent(),
+                UIProductSectionHeaderComponent()
             ]
         )
         
