@@ -58,7 +58,12 @@ public final class UIRootCoordinator: Coordinator {
                     )
                 ),
                 defaultSpacingComponent(),
-                UIProductTitleComponent(),
+                UIProductDescriptionComponent().setTitle(
+                    UIProductDescription(
+                        title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
+                        subtitle: "Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."
+                    )
+                ),
                 defaultSpacingComponent(),
                 UIProductSectionHeaderComponent(),
                 defaultSpacingComponent(),

@@ -1,17 +1,18 @@
 //
-//  UIProductTitleComponent.swift
+//  UIProductDescriptionComponent.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIProductTitleComponent
+// MARK: - UIProductDescriptionComponent
 
-public final class UIProductTitleComponent: Component {
+// TODO: CANNOT automatically self-sizing. Need to investigate deeply.
+public final class UIProductDescriptionComponent: Component {
     
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIProductTitleView>
+    private final let itemComponent: UIItemComponent<UIProductDescriptionView>
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -22,7 +23,7 @@ public final class UIProductTitleComponent: Component {
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UIProductTitleView.self,
+                UIProductDescriptionView.self,
                 from: bundle
             )!
         )
@@ -48,3 +49,21 @@ public final class UIProductTitleComponent: Component {
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
 }
+
+public extension UIProductDescriptionComponent {
+    
+    @discardableResult
+    public final func setTitle(_ title: UIProductDescription) -> UIProductDescriptionComponent {
+        
+        let titleView = itemComponent.itemView
+        
+        titleView.titleLabel.text = title.title
+        
+        titleView.subtitleLabel.text = title.subtitle
+        
+        return self
+        
+    }
+    
+}
+
