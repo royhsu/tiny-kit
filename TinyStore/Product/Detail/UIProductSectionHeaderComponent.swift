@@ -11,7 +11,7 @@
 public final class UIProductSectionHeaderComponent: Component {
     
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIProductSectionHeader>
+    private final let itemComponent: UIItemComponent<UIProductSectionHeaderView>
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -22,7 +22,7 @@ public final class UIProductSectionHeaderComponent: Component {
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UIProductSectionHeader.self,
+                UIProductSectionHeaderView.self,
                 from: bundle
             )!
         )
@@ -46,5 +46,29 @@ public final class UIProductSectionHeaderComponent: Component {
     public final var view: View { return itemComponent.view }
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+}
+
+public extension UIProductSectionHeaderComponent {
+    
+    @discardableResult
+    public final func setHeader(_ header: UIProductSectionHeader) -> UIProductSectionHeaderComponent {
+
+        let headerView = itemComponent.itemView
+        
+        if let iconImage = header.iconImage {
+            
+            headerView.iconImageView.image = iconImage
+            
+            headerView.iconImageView.backgroundColor = .clear
+            
+        }
+        else { headerView.iconImageView.backgroundColor = .lightGray }
+        
+        headerView.titleLabel.text = header.title
+        
+        return self
+
+    }
     
 }

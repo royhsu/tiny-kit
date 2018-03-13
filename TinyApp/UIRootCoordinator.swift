@@ -65,7 +65,12 @@ public final class UIRootCoordinator: Coordinator {
                     )
                 ),
                 defaultSpacingComponent(),
-                UIProductSectionHeaderComponent(),
+                UIProductSectionHeaderComponent().setHeader(
+                    UIProductSectionHeader(
+                        iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
+                        title: "Reviews"
+                    )
+                ),
                 defaultSpacingComponent(),
                 UIProductReviewCarouselComponent(
                     contentMode: .size(

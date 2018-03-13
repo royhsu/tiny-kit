@@ -8,54 +8,20 @@
 
 // MARK: - UIProductSectionHeader
 
-public final class UIProductSectionHeader: UIView {
+public struct UIProductSectionHeader {
     
-    @IBOutlet
-    public fileprivate(set) final weak var iconImageView: UIImageView!
+    public var iconImage: UIImage?
     
-    @IBOutlet
-    public fileprivate(set) final weak var titleLabel: UILabel!
+    public var title: String?
     
-    // MARK: Life Cycle
-    
-    public final override func awakeFromNib() {
+    public init(
+        iconImage: UIImage? = nil,
+        title: String? = nil
+    ) {
         
-        setUpIconImageView(iconImageView)
+        self.iconImage = iconImage
         
-        setUpTitleLabel(titleLabel)
-        
-    }
-    
-    // MARK: Set Up
-    
-    fileprivate final func setUpIconImageView(_ imageView: UIImageView) {
-        
-        imageView.contentMode = .scaleAspectFit
-        
-        imageView.tintColor = UIColor(
-            red: 69.0 / 255.0,
-            green: 69.0 / 255.0,
-            blue: 69.0 / 255.0,
-            alpha: 1.0
-        )
-        
-    }
-    
-    fileprivate final func setUpTitleLabel(_ label: UILabel) {
-        
-        label.font = UIFont.systemFont(
-            ofSize: 10.0,
-            weight: .medium
-        )
-        
-//        label.text = nil
-        
-        label.textColor = UIColor(
-            red: 69.0 / 255.0,
-            green: 69.0 / 255.0,
-            blue: 69.0 / 255.0,
-            alpha: 1.0
-        )
+        self.title = title
         
     }
     

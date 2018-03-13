@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="0Nz-mL-2eW" customClass="UIProductSectionHeader" customModule="TinyStore" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="0Nz-mL-2eW" customClass="UIProductSectionHeaderView" customModule="TinyStore" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -20,7 +20,6 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PeD-BQ-6ED">
                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Ed9-wY-PdB"/>
                                 <constraint firstAttribute="width" constant="20" id="gEi-ex-eEl"/>
