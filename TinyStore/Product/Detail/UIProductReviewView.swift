@@ -25,7 +25,17 @@ public final class UIProductReviewView: UIView {
         
         setUpRootView(self)
         
+        setUpPictureImageView(pictureImageView)
+        
     }
+    
+    public final override func layoutSubviews() {
+        
+        pictureImageView.layer.cornerRadius = pictureImageView.bounds.width / 2.0
+        
+    }
+    
+    // MARK: Set Up
     
     fileprivate final func setUpRootView(_ view: UIView) {
         
@@ -39,6 +49,14 @@ public final class UIProductReviewView: UIView {
         view.layer.shadowOpacity = 0.15
         
         view.layer.shadowRadius = 5.0
+        
+    }
+    
+    fileprivate final func setUpPictureImageView(_ imageView: UIImageView) {
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
         
     }
     

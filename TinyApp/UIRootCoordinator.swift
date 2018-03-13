@@ -80,18 +80,23 @@ public final class UIRootCoordinator: Coordinator {
                 )
                 .setReviews(
                     [
-                        UIProductReview(),
-                        UIProductReview(),
-                        UIProductReview(),
-                        UIProductReview(),
-                        UIProductReview()
+                        UIProductReview(
+                            pictureImage: #imageLiteral(resourceName: "image-carolyn-simmons"),
+                            title: "Carolyn Simmons",
+                            content: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."
+                        ),
+                        UIProductReview(
+                            pictureImage: #imageLiteral(resourceName: "image-jerry-price"),
+                            title: "Jerry Price",
+                            content: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                        )
                     ]
                 ),
                 defaultSpacingComponent(),
                 UIProductSectionHeaderComponent()
             ]
         )
-        
+
 //        let rootComponent = UIGridComponent(
 //            contentMode: .size(
 //                width: contentSize.width,

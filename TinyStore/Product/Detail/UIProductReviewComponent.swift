@@ -52,14 +52,18 @@ public final class UIProductReviewComponent: Component {
 public extension UIProductReviewComponent {
     
     @discardableResult
-    public final func setReview(
-        _ review: UIProductReview
-    )
-    -> UIProductReviewComponent {
+    public final func setReview(_ review: UIProductReview) -> UIProductReviewComponent {
         
         let reviewView = itemComponent.itemView
         
-        reviewView.pictureImageView.image = review.pictureImage
+        if let pictureImage = review.pictureImage {
+        
+            reviewView.pictureImageView.image = pictureImage
+            
+            reviewView.pictureImageView.backgroundColor = .clear
+            
+        }
+        else { reviewView.pictureImageView.backgroundColor = .lightGray }
         
         reviewView.titleLabel.text = review.title
         

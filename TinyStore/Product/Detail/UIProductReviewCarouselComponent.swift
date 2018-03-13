@@ -44,6 +44,10 @@ public final class UIProductReviewCarouselComponent: Component {
             right: 16.0
         )
         
+        collectionComponent.collectionView.showsHorizontalScrollIndicator = false
+        
+        collectionComponent.collectionView.showsVerticalScrollIndicator = false
+        
         let sections = collectionComponent.itemComponents.numberOfSections()
         
         for section in 0..<sections {

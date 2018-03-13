@@ -17,21 +17,20 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIj-72-ltJ">
                     <rect key="frame" x="12" y="12" width="25" height="25"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="QOl-s0-UNp"/>
                         <constraint firstAttribute="height" constant="25" id="hZr-79-xeU"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTY-jx-F4Y">
-                    <rect key="frame" x="49" y="16.5" width="314" height="17"/>
+                    <rect key="frame" x="49" y="16" width="314" height="17"/>
                     <string key="text">Maecenas faucibus mollis interdum. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbb-UB-Dd9">
-                    <rect key="frame" x="12" y="47" width="351" height="150.5"/>
+                    <rect key="frame" x="12" y="47" width="351" height="150"/>
                     <string key="text">Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
@@ -43,7 +42,7 @@
                 <constraint firstItem="dbb-UB-Dd9" firstAttribute="top" secondItem="PIj-72-ltJ" secondAttribute="bottom" constant="10" id="7jh-rT-KTu"/>
                 <constraint firstItem="bTY-jx-F4Y" firstAttribute="centerY" secondItem="PIj-72-ltJ" secondAttribute="centerY" id="9K1-qs-RHk"/>
                 <constraint firstItem="PIj-72-ltJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="PuQ-pD-bvG"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dbb-UB-Dd9" secondAttribute="bottom" constant="12" id="dWJ-cR-Ac3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dbb-UB-Dd9" secondAttribute="bottom" constant="12" id="dWJ-cR-Ac3"/>
                 <constraint firstItem="dbb-UB-Dd9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="oYv-3g-VrG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dbb-UB-Dd9" secondAttribute="trailing" constant="12" id="pix-WH-avX"/>
                 <constraint firstItem="bTY-jx-F4Y" firstAttribute="leading" secondItem="PIj-72-ltJ" secondAttribute="trailing" constant="12" id="uZ4-ye-oLx"/>
