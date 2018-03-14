@@ -63,6 +63,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
         
+        // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
         trailingConstraint.priority = UILayoutPriority(990.0)
 
         NSLayoutConstraint.activate(
@@ -103,6 +104,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
 
+        // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
         bottomConstraint.priority = UILayoutPriority(990.0)
         
         NSLayoutConstraint.activate(
