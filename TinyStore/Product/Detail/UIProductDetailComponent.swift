@@ -54,11 +54,17 @@ public final class UIProductDetailHeaderComponent: Component {
     
     private final let galleryComponent: UIProductGalleryComponent
     
+    private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
+    
+    private final let descriptionComponent: UIProductDescriptionComponent
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
         
         self.galleryComponent = UIProductGalleryComponent()
+        
+        self.descriptionComponent = UIProductDescriptionComponent()
         
     }
     
@@ -74,18 +80,20 @@ public final class UIProductDetailHeaderComponent: Component {
     
     public final func render() {
         
-        let width = view.bounds.width
+        let galleryWidth = view.bounds.width
         
-        let height = width / (16.0 / 9.0)
+        let galleryHeight = (galleryWidth / galleryAspectRatio)
         
         galleryComponent.contentMode = .size(
-            width: width,
-            height: height
+            width: galleryWidth,
+            height: galleryHeight
         )
         
         listComponent.itemComponents = AnyCollection(
             [
-                galleryComponent
+                galleryComponent,
+                makeSpacingComponent(spacing: 20.0),
+                descriptionComponent
             ]
         )
         
@@ -99,13 +107,39 @@ public final class UIProductDetailHeaderComponent: Component {
     
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
     
+    // MARK: Spacing
+    
+    fileprivate final func makeSpacingComponent(spacing: CGFloat) -> UIItemComponent<UIView> {
+        
+        let spacingComponent = UIItemComponent(
+            contentMode: .size(
+                width: spacing,
+                height: spacing
+            ),
+            itemView: UIView()
+        )
+        
+        return spacingComponent
+        
+    }
+    
 }
 
 public extension UIProductDetailHeaderComponent {
     
+    @discardableResult
     public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailHeaderComponent {
         
         galleryComponent.setGallery(gallery)
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailHeaderComponent {
+        
+        descriptionComponent.setDescription(description)
         
         return self
         

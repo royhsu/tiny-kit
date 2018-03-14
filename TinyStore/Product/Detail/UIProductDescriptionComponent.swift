@@ -27,6 +27,10 @@ public final class UIProductDescriptionComponent: Component {
             )!
         )
         
+        self.setDescription(
+            UIProductDescription()
+        )
+        
     }
     
     // MARK: Component

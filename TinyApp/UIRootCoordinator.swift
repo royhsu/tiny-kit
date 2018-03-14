@@ -32,6 +32,12 @@ public final class UIRootCoordinator: Coordinator {
                 images: [ #imageLiteral(resourceName: "image-dessert-1") ]
             )
         )
+        .setDescription(
+            UIProductDescription(
+                title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.",
+                subtitle: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui."
+            )
+        )
         
         let spacingComponent: (CGSize) -> Component =  { size in
 
