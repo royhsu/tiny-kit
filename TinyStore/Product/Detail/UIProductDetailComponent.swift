@@ -131,13 +131,7 @@ public extension UIProductDetailComponent {
         
         var components: [Component] = [
             spacingComponent(defaultSpacing),
-            UIProductSectionHeaderComponent(
-                contentMode: .size(
-                    width: 20.0,
-                    height: 20.0
-                )
-            )
-            .setHeader(
+            UIProductSectionHeaderComponent().setHeader(
                 UIProductSectionHeader(
                     iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
                     title: "Story"

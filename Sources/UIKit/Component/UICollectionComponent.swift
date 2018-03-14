@@ -41,7 +41,7 @@ public final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case .size(let width, let height):
+        case let .size(width, height):
             
             frame = CGRect(
                 x: 0.0,
@@ -76,6 +76,8 @@ public final class UICollectionComponent: Component {
             collectionViewLayout: collectionLayout
         )
         
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.collectionView = collectionView
         
         self.bridge = UICollectionViewCollectionComponentBridge(collectionView: collectionView)
@@ -97,16 +99,14 @@ public final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case .size(let width, let height):
+        case let .size(width, height):
             
             size = CGSize(
                 width: width,
                 height: height
             )
             
-        case .automatic:
-            
-            size = collectionLayout.collectionViewContentSize
+        case .automatic: size = collectionLayout.collectionViewContentSize
             
         }
         

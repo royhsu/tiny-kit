@@ -25,7 +25,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         switch contentMode {
             
-        case .size(let width, let height):
+        case let .size(width, height):
             
             frame = CGRect(
                 x: 0.0,
@@ -38,9 +38,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
             // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
             frame = UIScreen.main.bounds
+            
         }
         
-        self.view = View(frame: frame)
+        let view = View(frame: frame)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view = view
 
     }
 
@@ -55,15 +60,16 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         itemView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(itemView)
+        
+        let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
+        
+        trailingConstraint.priority = UILayoutPriority(990.0)
 
         NSLayoutConstraint.activate(
             [
-                view
-                    .leadingAnchor
-                    .constraint(equalTo: itemView.leadingAnchor),
-                view
-                    .topAnchor
-                    .constraint(equalTo: itemView.topAnchor)
+                view.leadingAnchor.constraint(equalTo: itemView.leadingAnchor),
+                view.topAnchor.constraint(equalTo: itemView.topAnchor),
+                trailingConstraint
             ]
         )
 
@@ -77,22 +83,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 width: width,
                 height: height
             )
-            
-            let widthConstraint = itemView.widthAnchor.constraint(equalToConstant: width)
-            
-            widthConstraint.priority = UILayoutPriority(rawValue: 900.0)
-            
-            let heightConstraint = itemView.heightAnchor.constraint(equalToConstant: height)
-            
-            heightConstraint.priority = UILayoutPriority(rawValue: 900.0)
-            
+    
             NSLayoutConstraint.activate(
                 [
-                    widthConstraint,
-                    heightConstraint
+                    itemView.widthAnchor.constraint(equalToConstant: width),
+                    itemView.heightAnchor.constraint(equalToConstant: height)
                 ]
             )
-
+            
         case .automatic:
             
             itemView.layoutIfNeeded()
@@ -102,17 +100,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         }
 
         view.frame.size = size
+        
+        let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
 
-        itemView.frame.size = size
-
+        bottomConstraint.priority = UILayoutPriority(990.0)
+        
         NSLayoutConstraint.activate(
             [
-                view
-                    .trailingAnchor
-                    .constraint(equalTo: itemView.trailingAnchor),
-                view
-                    .bottomAnchor
-                    .constraint(equalTo: itemView.bottomAnchor)
+                bottomConstraint
             ]
         )
         

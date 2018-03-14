@@ -29,9 +29,7 @@ internal final class UITableViewListComponentBridge: NSObject {
     // MARK: Set Up
 
     fileprivate final func setUpTableView(_ tableView: UITableView) {
-
-        tableView.registerCell(UITableViewCell.self)
-
+        
         tableView.separatorStyle = .none
 
         tableView.dataSource = self
@@ -59,13 +57,12 @@ extension UITableViewListComponentBridge: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     )
     -> UITableViewCell {
-
-        guard
-            let cell = tableView.dequeueReusableCell(
-                UITableViewCell.self,
-                for: indexPath
-            )
-        else { fatalError("Cannot dequeue a cell from type UITableViewCell.") }
+        
+        // NOTE: DONNOT use reusable cells because they contain the incorrect height information while dequeued.
+        let cell = UITableViewCell(
+            style: .default,
+            reuseIdentifier: nil
+        )
 
         cell.selectionStyle = .none
 
@@ -74,7 +71,7 @@ extension UITableViewListComponentBridge: UITableViewDataSource {
         let component = componentGroup.componentForItem(at: indexPath)
 
         component.render()
-
+        
         cell.contentView.render(with: component)
 
         return cell
@@ -94,11 +91,11 @@ extension UITableViewListComponentBridge: UITableViewDelegate {
     -> CGFloat {
 
         let component = componentGroup.componentForItem(at: indexPath)
-
+        
         switch component.contentMode {
 
-        case .size(_, let height): return height
-            
+        case let .size(_, height): return height
+
         case .automatic: return UITableViewAutomaticDimension
 
         }

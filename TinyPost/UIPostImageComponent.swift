@@ -42,7 +42,12 @@ public final class UIPostImageComponent: Component {
         
         switch contentMode {
             
-        case .size: break
+        case let .size(width, height):
+            
+            itemComponent.contentMode = .size(
+                width: width,
+                height: height
+            )
             
         case .automatic:
             

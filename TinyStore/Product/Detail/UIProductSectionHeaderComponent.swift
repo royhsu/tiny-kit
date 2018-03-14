@@ -63,7 +63,13 @@ public extension UIProductSectionHeaderComponent {
             headerView.iconImageView.backgroundColor = .clear
             
         }
-        else { headerView.iconImageView.backgroundColor = .lightGray }
+        else {
+            
+            headerView.iconImageView.image = nil
+            
+            headerView.iconImageView.backgroundColor = .lightGray
+            
+        }
         
         headerView.titleLabel.text = header.title
         

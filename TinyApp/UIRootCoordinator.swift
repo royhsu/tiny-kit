@@ -55,9 +55,12 @@ public final class UIRootCoordinator: Coordinator {
         )
         .setPost(
             elements: [
-                UIPostParagraph(content: "Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit."),
-                UIPostImage(image: #imageLiteral(resourceName: "pexels-photo-277253")),
-                UIPostParagraph(content: "Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.")
+                UIPostParagraph(content: "Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
+                UIPostImage(image: #imageLiteral(resourceName: "image-product-story-1")),
+                UIPostImage(image: #imageLiteral(resourceName: "image-product-story-2")),
+                UIPostParagraph(content: "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                UIPostImage(image: #imageLiteral(resourceName: "image-product-story-3")),
+                UIPostImage(image: #imageLiteral(resourceName: "image-product-story-4")),
             ]
         )
         
