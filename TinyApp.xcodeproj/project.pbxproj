@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */; };
+		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
+		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B024C8F12058BDCB00CFAE50 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
+		B024C8F22058BDCB00CFAE50 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
+		B024C8F32058BDCB00CFAE50 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
+		B024C8F52058BE6A00CFAE50 /* UIPostParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8F42058BE6A00CFAE50 /* UIPostParagraph.swift */; };
+		B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */; };
+		B024C8F92058BF8900CFAE50 /* UIPostParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */; };
+		B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */; };
 		B03082B420580B9300992255 /* UIProductGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03082B320580B9300992255 /* UIProductGallery.swift */; };
 		B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */; };
 		B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00820564C1D00AB47C4 /* UIGridItemView.swift */; };
@@ -98,6 +108,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B024C8EA2058BDB900CFAE50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B03C3E5D20457FEC004E318B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B024C8E42058BDB800CFAE50;
+			remoteInfo = TinyPost;
+		};
 		B03C3E8120458172004E318B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B03C3E5D20457FEC004E318B /* Project object */;
@@ -136,6 +153,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B0D90E102048446F00AC9A0A /* TinyStore.framework in Embed Frameworks */,
+				B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */,
 				B0A6298A204657C9000F97E3 /* TinyUI.framework in Embed Frameworks */,
 				B0A62930204646DD000F97E3 /* TinyAuth.framework in Embed Frameworks */,
 				B03C3E8420458172004E318B /* TinyLanding.framework in Embed Frameworks */,
@@ -160,6 +178,13 @@
 
 /* Begin PBXFileReference section */
 		B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeader.swift; sourceTree = "<group>"; };
+		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
+		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B024C8F42058BE6A00CFAE50 /* UIPostParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraph.swift; sourceTree = "<group>"; };
+		B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraphView.swift; sourceTree = "<group>"; };
+		B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIPostParagraphView.xib; sourceTree = "<group>"; };
+		B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraphComponent.swift; sourceTree = "<group>"; };
 		B03082B320580B9300992255 /* UIProductGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductGallery.swift; sourceTree = "<group>"; };
 		B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemComponent.swift; sourceTree = "<group>"; };
 		B032B00820564C1D00AB47C4 /* UIGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemView.swift; sourceTree = "<group>"; };
@@ -238,11 +263,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B024C8E12058BDB800CFAE50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B024C8F12058BDCB00CFAE50 /* Hydra.framework in Frameworks */,
+				B024C8F22058BDCB00CFAE50 /* TinyCore.framework in Frameworks */,
+				B024C8F32058BDCB00CFAE50 /* TinyKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B03C3E6220457FEC004E318B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */,
+				B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */,
 				B0A62989204657C9000F97E3 /* TinyUI.framework in Frameworks */,
 				B0A6292F204646DD000F97E3 /* TinyAuth.framework in Frameworks */,
 				B03C3E8320458172004E318B /* TinyLanding.framework in Frameworks */,
@@ -294,6 +330,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B024C8E62058BDB800CFAE50 /* TinyPost */ = {
+			isa = PBXGroup;
+			children = (
+				B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */,
+				B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */,
+				B024C8F42058BE6A00CFAE50 /* UIPostParagraph.swift */,
+				B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */,
+				B024C8E72058BDB900CFAE50 /* TinyPost.h */,
+				B024C8E82058BDB900CFAE50 /* Info.plist */,
+			);
+			path = TinyPost;
+			sourceTree = "<group>";
+		};
 		B032B046205670EE00AB47C4 /* ShadowView */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +397,7 @@
 				B0A62929204646DD000F97E3 /* TinyAuth */,
 				B0A62983204657C9000F97E3 /* TinyUI */,
 				B0D90E092048446F00AC9A0A /* TinyStore */,
+				B024C8E62058BDB800CFAE50 /* TinyPost */,
 				B03C3E6620457FEC004E318B /* Products */,
 				B03C3E89204581D5004E318B /* Frameworks */,
 			);
@@ -361,6 +411,7 @@
 				B0A62928204646DD000F97E3 /* TinyAuth.framework */,
 				B0A62982204657C9000F97E3 /* TinyUI.framework */,
 				B0D90E082048446F00AC9A0A /* TinyStore.framework */,
+				B024C8E52058BDB800CFAE50 /* TinyPost.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -499,6 +550,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B024C8E22058BDB800CFAE50 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B03C3E7920458172004E318B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,6 +593,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B024C8E42058BDB800CFAE50 /* TinyPost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B024C8F02058BDB900CFAE50 /* Build configuration list for PBXNativeTarget "TinyPost" */;
+			buildPhases = (
+				B024C8E02058BDB800CFAE50 /* Sources */,
+				B024C8E12058BDB800CFAE50 /* Frameworks */,
+				B024C8E22058BDB800CFAE50 /* Headers */,
+				B024C8E32058BDB800CFAE50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TinyPost;
+			productName = TinyPost;
+			productReference = B024C8E52058BDB800CFAE50 /* TinyPost.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		B03C3E6420457FEC004E318B /* TinyApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B03C3E7420457FEC004E318B /* Build configuration list for PBXNativeTarget "TinyApp" */;
@@ -552,6 +629,7 @@
 				B0A6292E204646DD000F97E3 /* PBXTargetDependency */,
 				B0A62988204657C9000F97E3 /* PBXTargetDependency */,
 				B0D90E0E2048446F00AC9A0A /* PBXTargetDependency */,
+				B024C8EB2058BDB900CFAE50 /* PBXTargetDependency */,
 			);
 			name = TinyApp;
 			productName = TinyApp;
@@ -640,6 +718,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = TinyWorld;
 				TargetAttributes = {
+					B024C8E42058BDB800CFAE50 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
 					B03C3E6420457FEC004E318B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -683,11 +766,20 @@
 				B0A62927204646DD000F97E3 /* TinyAuth */,
 				B0A62981204657C9000F97E3 /* TinyUI */,
 				B0D90E072048446F00AC9A0A /* TinyStore */,
+				B024C8E42058BDB800CFAE50 /* TinyPost */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B024C8E32058BDB800CFAE50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B024C8F92058BF8900CFAE50 /* UIPostParagraphView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B03C3E6320457FEC004E318B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -758,6 +850,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B024C8E02058BDB800CFAE50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B024C8F52058BE6A00CFAE50 /* UIPostParagraph.swift in Sources */,
+				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
+				B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B03C3E6120457FEC004E318B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -844,6 +946,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B024C8EB2058BDB900CFAE50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B024C8E42058BDB800CFAE50 /* TinyPost */;
+			targetProxy = B024C8EA2058BDB900CFAE50 /* PBXContainerItemProxy */;
+		};
 		B03C3E8220458172004E318B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B03C3E7B20458172004E318B /* TinyLanding */;
@@ -878,6 +985,67 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B024C8EE2058BDB900CFAE50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TinyPost/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyPost;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B024C8EF2058BDB900CFAE50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TinyPost/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyPost;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B03C3E7220457FEC004E318B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1267,6 +1435,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B024C8F02058BDB900CFAE50 /* Build configuration list for PBXNativeTarget "TinyPost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B024C8EE2058BDB900CFAE50 /* Debug */,
+				B024C8EF2058BDB900CFAE50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B03C3E6020457FEC004E318B /* Build configuration list for PBXProject "TinyApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

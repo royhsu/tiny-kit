@@ -99,7 +99,7 @@ extension UITableViewListComponentBridge: UITableViewDelegate {
 
         case .size(_, let height): return height
             
-        case .automatic: return component.preferredContentSize.height
+        case .automatic: return UITableViewAutomaticDimension
 
         }
 
