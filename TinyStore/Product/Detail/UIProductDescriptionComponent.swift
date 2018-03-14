@@ -8,7 +8,6 @@
 
 // MARK: - UIProductDescriptionComponent
 
-// TODO: CANNOT automatically self-sizing. Need to investigate deeply.
 public final class UIProductDescriptionComponent: Component {
     
     /// The base component.
@@ -53,13 +52,13 @@ public final class UIProductDescriptionComponent: Component {
 public extension UIProductDescriptionComponent {
     
     @discardableResult
-    public final func setTitle(_ title: UIProductDescription) -> UIProductDescriptionComponent {
+    public final func setDescription(_ description: UIProductDescription) -> UIProductDescriptionComponent {
         
-        let titleView = itemComponent.itemView
+        let descriptionView = itemComponent.itemView
         
-        titleView.titleLabel.text = title.title
+        descriptionView.titleLabel.text = description.title
         
-        titleView.subtitleLabel.text = title.subtitle
+        descriptionView.subtitleLabel.text = description.subtitle
         
         return self
         

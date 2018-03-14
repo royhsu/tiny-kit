@@ -60,10 +60,16 @@ public extension UIProductGalleryComponent {
             
             galleryView.imageView.image = previewImage
             
-            galleryView.imageView.backgroundColor = .clear
+            galleryView.imageView.backgroundColor = nil
             
         }
-        else { galleryView.imageView.backgroundColor = .lightGray }
+        else {
+            
+            galleryView.imageView.image = nil
+            
+            galleryView.imageView.backgroundColor = .lightGray
+            
+        }
         
         // NOTE: The added image will cover up the triangle view.
         galleryView.bringSubview(toFront: galleryView.triangleView)

@@ -63,7 +63,13 @@ public extension UIProductReviewComponent {
             reviewView.pictureImageView.backgroundColor = .clear
             
         }
-        else { reviewView.pictureImageView.backgroundColor = .lightGray }
+        else {
+            
+            reviewView.pictureImageView.image = nil
+            
+            reviewView.pictureImageView.backgroundColor = .lightGray
+            
+        }
         
         reviewView.titleLabel.text = review.title
         

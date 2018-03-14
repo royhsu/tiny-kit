@@ -61,15 +61,21 @@ public extension UIGridItemComponent {
     public final func setItem(_ item: UIGridItem) -> UIGridItemComponent {
         
         let itemView = itemComponent.itemView
-
-        itemView.previewImageView.image = item.previewImages.first
         
-        let hasPreviewImage = (itemView.previewImageView.image != nil)
+        if let previewImage = itemView.previewImageView.image {
         
-        itemView.previewImageView.backgroundColor =
-            hasPreviewImage
-            ? nil
-            : .lightGray
+            itemView.previewImageView.image = previewImage
+            
+            itemView.previewImageView.backgroundColor = nil
+            
+        }
+        else {
+            
+            itemView.previewImageView.image = nil
+            
+            itemView.previewImageView.backgroundColor = .lightGray
+            
+        }
         
         itemView.titleLabel.text = item.title
         
