@@ -38,7 +38,37 @@ public final class UIPostImageComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        switch contentMode {
+            
+        case .size: break
+            
+        case .automatic:
+            
+            let width = view.bounds.width
+            
+            let height: CGFloat
+            
+            if let image = itemComponent.itemView.image {
+                
+                let imageAspectRatio = (image.size.width / image.size.height)
+                
+                height = (width / imageAspectRatio)
+                
+            }
+            else { height = 0.0 }
+            
+            itemComponent.contentMode = .size(
+                width: width,
+                height: height
+            )
+            
+        }
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     

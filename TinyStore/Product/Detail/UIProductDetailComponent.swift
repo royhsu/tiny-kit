@@ -83,4 +83,62 @@ public extension UIProductDetailComponent {
         
     }
     
+    @discardableResult
+    public final func setPost(
+        elements: [UIPostElement]
+    )
+    -> UIProductDetailComponent {
+        
+        let validComponents: [Component] = elements.flatMap { element in
+            
+            if let paragraph = element as? UIPostParagraph {
+                
+                return UIPostParagraphComponent().setParagraph(paragraph)
+                
+            }
+            
+            if let image = element as? UIPostImage {
+                
+                return UIPostImageComponent().setImage(image)
+                
+            }
+            
+            return nil
+            
+        }
+        
+        // Insert spacings between elements.
+        let defaultSpacing: CGFloat = 20.0
+        
+        let spacingComponent: (CGFloat) -> Component = { spacing in
+            
+            return UIItemComponent(
+                contentMode: .size(
+                    width: spacing,
+                    height: spacing
+                ),
+                itemView: UIView()
+            )
+            
+        }
+        
+        let components = validComponents
+            .map { [ $0 ] }
+            .joined(
+                separator: [ spacingComponent(defaultSpacing) ]
+            )
+            .flatMap { $0 }
+        
+        listComponent.itemComponents = AnyCollection(components)
+        
+        return self
+        
+    }
+    
 }
+
+public protocol UIPostElement { }
+
+extension UIPostImage: UIPostElement { }
+
+extension UIPostParagraph: UIPostElement { }

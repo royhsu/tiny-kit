@@ -53,37 +53,13 @@ public final class UIRootCoordinator: Coordinator {
                 )
             ]
         )
-        
-//        let image = #imageLiteral(resourceName: "pexels-photo-277253")
-//
-//        let imageWidth = contentSize.width
-//
-//        let imageHeight = contentSize.width / ( image.size.width / image.size.height )
-        
-//        rootComponent.itemComponents = AnyCollection(
-//            [
-//                UIPostParagraphComponent().setParagraph(
-//                    UIPostParagraph(content: "Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.")
-//                ),
-//                defaultSpacingComponent(),
-//                UIPostImageComponent(
-//                    contentMode: .size(
-//                        width: imageWidth,
-//                        height: imageHeight
-//                    )
-//                )
-//                .setImage(
-//                    UIPostImage(
-//                        image: image
-//                    )
-//                ),
-//                defaultSpacingComponent(),
-//                UIPostParagraphComponent().setParagraph(
-//                    UIPostParagraph(content: "Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui."
-//                    )
-//                ),
-//            ]
-//        )
+        .setPost(
+            elements: [
+                UIPostParagraph(content: "Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit."),
+                UIPostImage(image: #imageLiteral(resourceName: "pexels-photo-277253")),
+                UIPostParagraph(content: "Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.")
+            ]
+        )
         
 //        let rootComponent = UIGridComponent(
 //            contentMode: .size(
