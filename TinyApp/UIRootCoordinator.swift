@@ -21,7 +21,7 @@ public final class UIRootCoordinator: Coordinator {
     
     public init(contentSize: CGSize) {
         
-        let rootComponent = UIProductDetailHeaderComponent(
+        let rootComponent = UIProductDetailComponent(
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
@@ -34,39 +34,31 @@ public final class UIRootCoordinator: Coordinator {
         )
         .setDescription(
             UIProductDescription(
-                title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.",
-                subtitle: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui."
+                title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
+                subtitle: "Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."
+
             )
         )
-        
-        let spacingComponent: (CGSize) -> Component =  { size in
-
-            return UIItemComponent(
-                contentMode: .size(
-                    width: size.width,
-                    height: size.height
+        .setReviews(
+            [
+                UIProductReview(
+                    pictureImage: #imageLiteral(resourceName: "image-carolyn-simmons"),
+                    title: "Carolyn Simmons",
+                    content: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."
                 ),
-                itemView: UIView()
-            )
-
-        }
-        
-        let defaultSpacingComponent: () -> Component = {
-
-            return spacingComponent(
-                CGSize(
-                    width: 20.0,
-                    height: 20.0
+                UIProductReview(
+                    pictureImage: #imageLiteral(resourceName: "image-jerry-price"),
+                    title: "Jerry Price",
+                    content: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 )
-            )
-
-        }
+            ]
+        )
         
-        let image = #imageLiteral(resourceName: "pexels-photo-277253")
-        
-        let imageWidth = contentSize.width
-        
-        let imageHeight = contentSize.width / ( image.size.width / image.size.height )
+//        let image = #imageLiteral(resourceName: "pexels-photo-277253")
+//
+//        let imageWidth = contentSize.width
+//
+//        let imageHeight = contentSize.width / ( image.size.width / image.size.height )
         
 //        rootComponent.itemComponents = AnyCollection(
 //            [
@@ -92,60 +84,7 @@ public final class UIRootCoordinator: Coordinator {
 //                ),
 //            ]
 //        )
-
-//        rootComponent.itemComponents = AnyCollection(
-//            [
-//                UIProductGalleryComponent(
-//                    contentMode: .size(
-//                        width: contentSize.width,
-//                        height: contentSize.width / (16.0 / 9.0)
-//                    )
-//                )
-//                .setGallery(
-//                    UIProductGallery(
-//                        images: [ #imageLiteral(resourceName: "image-dessert-1") ]
-//                    )
-//                ),
-//                defaultSpacingComponent(),
-//                UIProductDescriptionComponent().setTitle(
-//                    UIProductDescription(
-//                        title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
-//                        subtitle: "Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."
-//                    )
-//                ),
-//                defaultSpacingComponent(),
-//                UIProductSectionHeaderComponent().setHeader(
-//                    UIProductSectionHeader(
-//                        iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-//                        title: "Reviews"
-//                    )
-//                ),
-//                defaultSpacingComponent(),
-//                UIProductReviewCarouselComponent(
-//                    contentMode: .size(
-//                        width: contentSize.width,
-//                        height: 143.0 + 20.0 // shadow
-//                    )
-//                )
-//                .setReviews(
-//                    [
-//                        UIProductReview(
-//                            pictureImage: #imageLiteral(resourceName: "image-carolyn-simmons"),
-//                            title: "Carolyn Simmons",
-//                            content: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."
-//                        ),
-//                        UIProductReview(
-//                            pictureImage: #imageLiteral(resourceName: "image-jerry-price"),
-//                            title: "Jerry Price",
-//                            content: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-//                        )
-//                    ]
-//                ),
-//                defaultSpacingComponent(),
-//                UIProductSectionHeaderComponent()
-//            ]
-//        )
-
+        
 //        let rootComponent = UIGridComponent(
 //            contentMode: .size(
 //                width: contentSize.width,

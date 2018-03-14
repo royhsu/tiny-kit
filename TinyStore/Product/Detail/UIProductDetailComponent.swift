@@ -15,9 +15,13 @@ public final class UIProductDetailComponent: Component {
     /// The base component
     private final let listComponent: UIListComponent
     
+    private final let detailHeaderComponent: UIProductDetailHeaderComponent
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
+        
+        self.detailHeaderComponent = UIProductDetailHeaderComponent()
         
     }
     
@@ -33,6 +37,8 @@ public final class UIProductDetailComponent: Component {
     
     public final func render() {
         
+        listComponent.headerComponent = detailHeaderComponent
+        
         listComponent.render()
         
     }
@@ -45,101 +51,33 @@ public final class UIProductDetailComponent: Component {
     
 }
 
-// MARK: - UIProductDetailHeaderComponent
-
-public final class UIProductDetailHeaderComponent: Component {
-    
-    /// The base component.
-    private final let listComponent: UIListComponent
-    
-    private final let galleryComponent: UIProductGalleryComponent
-    
-    private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
-    
-    private final let descriptionComponent: UIProductDescriptionComponent
-    
-    public init(contentMode: ComponentContentMode = .automatic) {
-        
-        self.listComponent = UIListComponent(contentMode: contentMode)
-        
-        self.galleryComponent = UIProductGalleryComponent()
-        
-        self.descriptionComponent = UIProductDescriptionComponent()
-        
-    }
-    
-    // MARK: Component
-    
-    public final var contentMode: ComponentContentMode {
-        
-        get { return listComponent.contentMode }
-        
-        set { listComponent.contentMode = newValue }
-        
-    }
-    
-    public final func render() {
-        
-        let galleryWidth = view.bounds.width
-        
-        let galleryHeight = (galleryWidth / galleryAspectRatio)
-        
-        galleryComponent.contentMode = .size(
-            width: galleryWidth,
-            height: galleryHeight
-        )
-        
-        listComponent.itemComponents = AnyCollection(
-            [
-                galleryComponent,
-                makeSpacingComponent(spacing: 20.0),
-                descriptionComponent
-            ]
-        )
-        
-        listComponent.render()
-        
-    }
-    
-    // MARK: ViewRenderable
-    
-    public final var view: View { return listComponent.view }
-    
-    public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
-    
-    // MARK: Spacing
-    
-    fileprivate final func makeSpacingComponent(spacing: CGFloat) -> UIItemComponent<UIView> {
-        
-        let spacingComponent = UIItemComponent(
-            contentMode: .size(
-                width: spacing,
-                height: spacing
-            ),
-            itemView: UIView()
-        )
-        
-        return spacingComponent
-        
-    }
-    
-}
-
-public extension UIProductDetailHeaderComponent {
+public extension UIProductDetailComponent {
     
     @discardableResult
-    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailHeaderComponent {
+    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailComponent {
         
-        galleryComponent.setGallery(gallery)
+        detailHeaderComponent.setGallery(gallery)
         
         return self
         
     }
     
     @discardableResult
-    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailHeaderComponent {
+    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailComponent {
         
-        descriptionComponent.setDescription(description)
+        detailHeaderComponent.setDescription(description)
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setReviews(
+        _ reviews: [UIProductReview]
+    )
+    -> UIProductDetailComponent {
+        
+        detailHeaderComponent.setReviews(reviews)
         
         return self
         
