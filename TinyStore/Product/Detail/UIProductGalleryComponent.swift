@@ -27,6 +27,10 @@ public final class UIProductGalleryComponent: Component {
             )!
         )
         
+        self.setGallery(
+            UIProductGallery()
+        )
+        
     }
     
     // MARK: Component

@@ -20,6 +20,8 @@
 		B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */; };
 		B024C8FD2058C89700CFAE50 /* UIPostImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FC2058C89700CFAE50 /* UIPostImage.swift */; };
 		B024C8FF2058C8C400CFAE50 /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FE2058C8C400CFAE50 /* UIPostImageComponent.swift */; };
+		B024C9012058E5D600CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
+		B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */; };
 		B03082B420580B9300992255 /* UIProductGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03082B320580B9300992255 /* UIProductGallery.swift */; };
 		B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */; };
 		B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00820564C1D00AB47C4 /* UIGridItemView.swift */; };
@@ -189,6 +191,7 @@
 		B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraphComponent.swift; sourceTree = "<group>"; };
 		B024C8FC2058C89700CFAE50 /* UIPostImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostImage.swift; sourceTree = "<group>"; };
 		B024C8FE2058C8C400CFAE50 /* UIPostImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
+		B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductDetailComponent.swift; sourceTree = "<group>"; };
 		B03082B320580B9300992255 /* UIProductGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductGallery.swift; sourceTree = "<group>"; };
 		B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemComponent.swift; sourceTree = "<group>"; };
 		B032B00820564C1D00AB47C4 /* UIGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridItemView.swift; sourceTree = "<group>"; };
@@ -325,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B024C9012058E5D600CFAE50 /* TinyPost.framework in Frameworks */,
 				B0D90E142048447900AC9A0A /* Hydra.framework in Frameworks */,
 				B0D90E152048447900AC9A0A /* TinyCore.framework in Frameworks */,
 				B0D90E162048447900AC9A0A /* TinyKit.framework in Frameworks */,
@@ -383,6 +387,7 @@
 				B032B0752057CA3500AB47C4 /* UIProductReview.swift */,
 				B032B0712057C4FC00AB47C4 /* UIProductReviewComponent.swift */,
 				B032B0732057C55000AB47C4 /* UIProductReviewCarouselComponent.swift */,
+				B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -931,6 +936,7 @@
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
+				B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */,
 				B03082B420580B9300992255 /* UIProductGallery.swift in Sources */,
 				B032B07C2057FC5300AB47C4 /* UIProductDescription.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,
