@@ -51,6 +51,8 @@ public final class UIProductDetailComponent: Component {
     
 }
 
+import TinyUI
+
 public extension UIProductDetailComponent {
     
     @discardableResult
@@ -66,6 +68,15 @@ public extension UIProductDetailComponent {
     public final func setDescription(_ description: UIProductDescription) -> UIProductDetailComponent {
         
         detailHeaderComponent.setDescription(description)
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
+        
+        detailHeaderComponent.setActionButtonItem(item)
         
         return self
         
@@ -149,9 +160,3 @@ public extension UIProductDetailComponent {
     }
     
 }
-
-public protocol UIPostElement { }
-
-extension UIPostImage: UIPostElement { }
-
-extension UIPostParagraph: UIPostElement { }

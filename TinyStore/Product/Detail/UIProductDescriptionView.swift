@@ -8,6 +8,8 @@
 
 // MARK: - UIProductDescriptionView
 
+import TinyUI
+
 public final class UIProductDescriptionView: UIView {
     
     @IBOutlet
@@ -26,6 +28,8 @@ public final class UIProductDescriptionView: UIView {
         setUpTitleLabel(titleLabel)
         
         setUpSubtitleLabel(subtitleLabel)
+        
+        setUpActionContainerView(actionContainerView)
         
     }
     
@@ -59,6 +63,12 @@ public final class UIProductDescriptionView: UIView {
         label.font = UIFont.systemFont(ofSize: 15.0)
         
         label.textColor = .lightGray
+        
+    }
+    
+    fileprivate final func setUpActionContainerView(_ view: UIView) {
+        
+        view.backgroundColor = nil
         
     }
     

@@ -104,6 +104,8 @@ public final class UIProductDetailHeaderComponent: Component {
     
 }
 
+import TinyUI
+
 public extension UIProductDetailHeaderComponent {
     
     @discardableResult
@@ -119,6 +121,15 @@ public extension UIProductDetailHeaderComponent {
     public final func setDescription(_ description: UIProductDescription) -> UIProductDetailHeaderComponent {
         
         descriptionComponent.setDescription(description)
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailHeaderComponent {
+    
+        descriptionComponent.setActionButtonItem(item)
         
         return self
         

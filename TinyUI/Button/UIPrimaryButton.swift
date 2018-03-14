@@ -11,31 +11,48 @@
 public final class UIPrimaryButton: UIView {
     
     @IBOutlet
-    public fileprivate(set) final var actionLabel: UILabel!
+    public fileprivate(set) final weak var titleLabel: UILabel!
     
     @IBOutlet
-    public fileprivate(set) final var actionView: UIView!
+    public fileprivate(set) final weak var iconImageView: UIImageView!
     
     @IBOutlet
-    public fileprivate(set) final var actionButton: UIButton!
-    
-    // MARK: Life Cycle
+    public fileprivate(set) final weak var actionButton: UIButton!
     
     public final override func awakeFromNib() {
         
-        setUpActionLabel(actionLabel)
+        setUpTitleLabel(titleLabel)
+        
+        setUpIconImageView(iconImageView)
+        
+    }
+    
+    public final override func layoutSubviews() {
+        
+        layer.cornerRadius = (bounds.height / 2.0)
         
     }
     
     // MARK: Set Up
     
-    fileprivate final func setUpActionLabel(_ label: UILabel) {
+    fileprivate final func setUpTitleLabel(_ label: UILabel) {
         
         label.textAlignment = .center
         
         label.text = nil
         
         label.numberOfLines = 1
+        
+        label.font = .systemFont(
+            ofSize: 14.0,
+            weight: .medium
+        )
+        
+    }
+    
+    fileprivate final func setUpIconImageView(_ imageView: UIImageView) {
+        
+        imageView.contentMode = .center
         
     }
     

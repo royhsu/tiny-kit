@@ -10,6 +10,7 @@
 
 import TinyKit
 
+import TinyUI
 import TinyPost
 import TinyStore
 
@@ -37,6 +38,19 @@ public final class UIRootCoordinator: Coordinator {
                 title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
                 subtitle: "Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."
 
+            )
+        )
+        .setActionButtonItem(
+            UIPrimaryButtonItem(
+                title: "Add to Cart",
+                titleColor: .white,
+                iconImage: nil,
+                backgroundColor: UIColor(
+                    red: 0.35,
+                    green: 0.56,
+                    blue: 0.87,
+                    alpha: 1.0
+                )
             )
         )
         .setReviews(

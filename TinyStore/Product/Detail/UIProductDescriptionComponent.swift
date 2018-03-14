@@ -8,10 +8,14 @@
 
 // MARK: - UIProductDescriptionComponent
 
+import TinyUI
+
 public final class UIProductDescriptionComponent: Component {
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductDescriptionView>
+    
+    private final let actionButtonComponent: UIPrimaryButtonComponent
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -26,6 +30,8 @@ public final class UIProductDescriptionComponent: Component {
                 from: bundle
             )!
         )
+        
+        self.actionButtonComponent = UIPrimaryButtonComponent()
         
         self.setDescription(
             UIProductDescription()
@@ -43,7 +49,17 @@ public final class UIProductDescriptionComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let descriptionView = itemComponent.itemView
+        
+        descriptionView.actionContainerView.render(with: actionButtonComponent)
+        
+        actionButtonComponent.render()
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -63,6 +79,15 @@ public extension UIProductDescriptionComponent {
         descriptionView.titleLabel.text = description.title
         
         descriptionView.subtitleLabel.text = description.subtitle
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDescriptionComponent {
+        
+        actionButtonComponent.setItem(item)
         
         return self
         
