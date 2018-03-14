@@ -89,7 +89,7 @@ public extension UIProductDetailComponent {
     )
     -> UIProductDetailComponent {
         
-        let validComponents: [Component] = elements.flatMap { element in
+        let elementComponents: [Component] = elements.flatMap { element in
             
             if let paragraph = element as? UIPostParagraph {
                 
@@ -122,12 +122,31 @@ public extension UIProductDetailComponent {
             
         }
         
-        let components = validComponents
+        let spacedElementComponents = elementComponents
             .map { [ $0 ] }
             .joined(
                 separator: [ spacingComponent(defaultSpacing) ]
             )
             .flatMap { $0 }
+        
+        var components: [Component] = [
+            spacingComponent(defaultSpacing),
+            UIProductSectionHeaderComponent(
+                contentMode: .size(
+                    width: 20.0,
+                    height: 20.0
+                )
+            )
+            .setHeader(
+                UIProductSectionHeader(
+                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
+                    title: "Story"
+                )
+            ),
+            spacingComponent(defaultSpacing)
+        ]
+        
+        components.append(contentsOf: spacedElementComponents)
         
         listComponent.itemComponents = AnyCollection(components)
         

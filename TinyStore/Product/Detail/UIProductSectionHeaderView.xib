@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,31 +16,27 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cNA-WI-ayj">
-                    <rect key="frame" x="16" y="0.0" width="343" height="20"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PeD-BQ-6ED">
-                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Ed9-wY-PdB"/>
-                                <constraint firstAttribute="width" constant="20" id="gEi-ex-eEl"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JI-Lv-kHK">
-                            <rect key="frame" x="25" y="4" width="318" height="12"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JI-Lv-kHK">
+                    <rect key="frame" x="41" y="4" width="318" height="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PeD-BQ-6ED">
+                    <rect key="frame" x="16" y="0.0" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PeD-BQ-6ED" secondAttribute="height" multiplier="1:1" id="3Mq-pZ-pxT"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="tTu-8m-gg0" firstAttribute="bottom" secondItem="cNA-WI-ayj" secondAttribute="bottom" id="FCr-gV-U6p"/>
-                <constraint firstItem="cNA-WI-ayj" firstAttribute="top" secondItem="tTu-8m-gg0" secondAttribute="top" id="RYN-Rf-S8G"/>
-                <constraint firstItem="tTu-8m-gg0" firstAttribute="trailing" secondItem="cNA-WI-ayj" secondAttribute="trailing" constant="16" id="tfX-yg-wkT"/>
-                <constraint firstItem="cNA-WI-ayj" firstAttribute="leading" secondItem="tTu-8m-gg0" secondAttribute="leading" constant="16" id="wkd-iV-GGb"/>
+                <constraint firstItem="PeD-BQ-6ED" firstAttribute="bottom" secondItem="tTu-8m-gg0" secondAttribute="bottom" id="8HW-Ik-7Q1"/>
+                <constraint firstAttribute="trailing" secondItem="3JI-Lv-kHK" secondAttribute="trailing" constant="16" id="T6M-gs-LOY"/>
+                <constraint firstItem="PeD-BQ-6ED" firstAttribute="leading" secondItem="tTu-8m-gg0" secondAttribute="leading" constant="16" id="UKB-cM-cZ7"/>
+                <constraint firstItem="3JI-Lv-kHK" firstAttribute="leading" secondItem="PeD-BQ-6ED" secondAttribute="trailing" constant="5" id="aGM-g3-lzI"/>
+                <constraint firstItem="PeD-BQ-6ED" firstAttribute="top" secondItem="tTu-8m-gg0" secondAttribute="top" id="eAk-gJ-Nb6"/>
+                <constraint firstItem="3JI-Lv-kHK" firstAttribute="centerY" secondItem="PeD-BQ-6ED" secondAttribute="centerY" id="nXW-G9-LJB"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -48,6 +45,7 @@
                 <outlet property="iconImageView" destination="PeD-BQ-6ED" id="4J3-jG-HZz"/>
                 <outlet property="titleLabel" destination="3JI-Lv-kHK" id="r9e-7W-KCQ"/>
             </connections>
+            <point key="canvasLocation" x="33.5" y="55"/>
         </view>
     </objects>
 </document>

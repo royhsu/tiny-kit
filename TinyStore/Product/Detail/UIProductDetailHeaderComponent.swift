@@ -67,12 +67,19 @@ public final class UIProductDetailHeaderComponent: Component {
                 makeSpacingComponent(spacing: 20.0),
                 descriptionComponent,
                 makeSpacingComponent(spacing: 20.0),
-                UIProductSectionHeaderComponent().setHeader(
+                UIProductSectionHeaderComponent(
+                    contentMode: .size(
+                        width: 20.0,
+                        height: 20.0
+                    )
+                )
+                .setHeader(
                     UIProductSectionHeader(
                         iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
                         title: "Reviews"
                     )
                 ),
+                makeSpacingComponent(spacing: 20.0),
                 reviewCarouselComponent
             ]
         )

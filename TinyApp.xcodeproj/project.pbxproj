@@ -389,8 +389,8 @@
 				B032B0752057CA3500AB47C4 /* UIProductReview.swift */,
 				B032B0712057C4FC00AB47C4 /* UIProductReviewComponent.swift */,
 				B032B0732057C55000AB47C4 /* UIProductReviewCarouselComponent.swift */,
-				B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */,
 				B024C9042058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift */,
+				B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
