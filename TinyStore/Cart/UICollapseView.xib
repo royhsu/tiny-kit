@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICartView" customModule="TinyStore" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICollapseView" customModule="TinyStore" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -19,11 +19,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2e-ov-kmX">
+                    <rect key="frame" x="0.0" y="365" width="375" height="10"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="1cr-2a-b2u"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uV7-Gl-gRI">
-                    <rect key="frame" x="0.0" y="315" width="375" height="0.0"/>
+                    <rect key="frame" x="0.0" y="215" width="375" height="100"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" id="htl-9J-Hz7"/>
+                        <constraint firstAttribute="height" constant="100" id="htl-9J-Hz7"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-4l-bgb">
@@ -31,13 +38,6 @@
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="JMT-BL-v7I"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2e-ov-kmX">
-                    <rect key="frame" x="0.0" y="365" width="375" height="10"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="10" id="1cr-2a-b2u"/>
                     </constraints>
                 </view>
             </subviews>
@@ -67,12 +67,12 @@
             </variation>
             <connections>
                 <outlet property="backgroundView" destination="2WA-tE-O6d" id="VuS-Tu-8te"/>
+                <outlet property="barContentView" destination="uV7-Gl-gRI" id="Uz2-by-zmb"/>
+                <outlet property="barContentViewHeightConstraint" destination="htl-9J-Hz7" id="P1L-Aa-yMl"/>
+                <outlet property="barContentViewTopConstraint" destination="7V2-LD-ztC" id="Pa5-kR-Y6O"/>
                 <outlet property="barView" destination="hsN-4l-bgb" id="wAz-ph-ttF"/>
-                <outlet property="itemListContainerView" destination="uV7-Gl-gRI" id="Uz2-by-zmb"/>
-                <outlet property="itemListContainerViewHeightConstraint" destination="htl-9J-Hz7" id="nsX-K3-3jw"/>
-                <outlet property="itemListContainerViewTopConstraint" destination="7V2-LD-ztC" id="gP8-MN-Fcy"/>
                 <outlet property="safeAreaBottomView" destination="M2e-ov-kmX" id="ruR-KQ-bbz"/>
-                <outlet property="safeAreaBottomViewHeightConstraint" destination="1cr-2a-b2u" id="G5r-72-1U4"/>
+                <outlet property="safeAreaBottomViewHeightConstraint" destination="1cr-2a-b2u" id="ZKZ-tU-qBV"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

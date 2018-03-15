@@ -57,14 +57,14 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let rootComponent = UICartComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            ),
-            backgroundComponent: gridComponent,
-            itemListComponent: itemListComponent
-        )
+//        let rootComponent = UICollapseBarContrller(
+//            contentMode: .size(
+//                width: contentSize.width,
+//                height: contentSize.height
+//            ),
+//            backgroundComponent: gridComponent,
+//            itemListComponent: itemListComponent
+//        )
         
         
 //        let rootComponent = UIProductDetailComponent(
@@ -136,7 +136,7 @@ public final class UIRootCoordinator: Coordinator {
 //        )
         
         
-        self.rootComponent = rootComponent
+        self.rootComponent = gridComponent
         
         let tabBarController = UITabBarController(
             nibName: nil,
@@ -150,8 +150,15 @@ public final class UIRootCoordinator: Coordinator {
             tag: 0
         )
         
+        let collapseBarController = UICollapseBarContrller()
+        
+        collapseBarController.tabBarItem = UITabBarItem(
+            tabBarSystemItem: .featured,
+            tag: 0
+        )
+        
         tabBarController.setViewControllers(
-            [ componentViewController ],
+            [ collapseBarController ],
             animated: true
         )
         
