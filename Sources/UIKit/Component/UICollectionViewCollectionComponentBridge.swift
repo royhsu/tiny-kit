@@ -113,7 +113,7 @@ extension UICollectionViewCollectionComponentBridge: UICollectionViewDelegateFlo
             : maxHeight
 
         // TODO: make warnings for item size that's not in a valid range.
-
+        
         return CGSize(
             width: width,
             height: height

@@ -52,6 +52,8 @@ public final class UIListComponent: Component {
         
         let tableView = UITableView(frame: frame)
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.tableView = tableView
         
         self.bridge = UITableViewListComponentBridge(tableView: tableView)
@@ -87,9 +89,7 @@ public final class UIListComponent: Component {
                 height: height
             )
 
-        case .automatic:
-
-            size = tableView.contentSize
+        case .automatic: size = tableView.contentSize
 
         }
 

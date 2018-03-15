@@ -14,17 +14,22 @@ public struct UIPrimaryButtonItem {
     
     public var titleColor: UIColor
     
+    public var iconImage: UIImage?
+    
     public var backgroundColor: UIColor
     
     public init(
         title: String? = nil,
         titleColor: UIColor = .black,
-        backgroundColor: UIColor = .clear
+        iconImage: UIImage? = nil,
+        backgroundColor: UIColor = .lightGray
     ) {
         
         self.title = title
         
         self.titleColor = titleColor
+        
+        self.iconImage = iconImage
         
         self.backgroundColor = backgroundColor
         

@@ -23,7 +23,7 @@ extension UIView: ViewRenderer {
         contentView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(contentView)
-
+        
         NSLayoutConstraint.activate(
             [
                 leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

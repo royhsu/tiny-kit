@@ -29,6 +29,10 @@ public final class UIPrimaryButtonComponent: Component {
             )!
         )
         
+        self.setItem(
+            UIPrimaryButtonItem()
+        )
+        
     }
     
     // MARK: Action
@@ -48,7 +52,9 @@ public final class UIPrimaryButtonComponent: Component {
     
     public final func render() {
         
-        itemComponent.itemView.actionButton.addTarget(
+        let buttonView = itemComponent.itemView
+        
+        buttonView.actionButton.addTarget(
             self,
             action: #selector(handleTap),
             for: .touchUpInside
@@ -73,11 +79,28 @@ public extension UIPrimaryButtonComponent {
         
         let buttonView = itemComponent.itemView
         
-        buttonView.actionLabel.text = item.title
+        buttonView.titleLabel.text = item.title
         
-        buttonView.actionLabel.textColor = item.titleColor
+        buttonView.titleLabel.textColor = item.titleColor
         
-        buttonView.actionView.backgroundColor = item.backgroundColor
+        buttonView.iconImageView.tintColor = item.titleColor
+        
+        if let iconImage = item.iconImage {
+            
+            buttonView.iconImageView.image = iconImage
+            
+            buttonView.iconImageView.backgroundColor = nil
+            
+        }
+        else {
+            
+            buttonView.iconImageView.image = nil
+            
+            buttonView.iconImageView.backgroundColor = .darkGray
+            
+        }
+        
+        buttonView.backgroundColor = item.backgroundColor
         
         return self
         
