@@ -53,6 +53,12 @@ public final class UICollapseView: UIView {
         
     }
     
+    public final override func layoutSubviews() {
+        
+        safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
+        
+    }
+    
     // MARK: Set Up
     
     fileprivate final func setUpBarContainer(_ view: UIView) {

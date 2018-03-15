@@ -38,16 +38,25 @@ public final class UICollapseBarController: UIViewController {
         
         super.viewDidLoad()
         
-//        disableShadow(for: collapseView.barContentView)
-//
-//        enableShadow(for: collapseView.barView)
-        
         collapseView.addGestureRecognizer(
             UITapGestureRecognizer(
                 target: self,
                 action: #selector(toggleContent)
             )
         )
+        
+    }
+    
+    public final override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        // Extend to the bottom of the safe area.
+        if tabBarController == nil {
+
+            collapseView.safeAreaBottomViewHeightConstraint.constant = view.safeAreaInsets.bottom
+
+        }
         
     }
 
