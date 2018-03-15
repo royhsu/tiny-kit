@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICartView" customModule="TinyStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WA-tE-O6d">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uV7-Gl-gRI">
+                    <rect key="frame" x="0.0" y="331" width="375" height="0.0"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="htl-9J-Hz7"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-4l-bgb">
+                    <rect key="frame" x="0.0" y="331" width="375" height="44"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="JMT-BL-v7I"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uV7-Gl-gRI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="150" id="7V2-LD-ztC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2WA-tE-O6d" secondAttribute="trailing" id="ApG-s3-wPs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hsN-4l-bgb" secondAttribute="trailing" id="Hxk-Jm-VcU"/>
+                <constraint firstItem="2WA-tE-O6d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ncp-12-neE"/>
+                <constraint firstItem="uV7-Gl-gRI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Z7s-O5-eGm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uV7-Gl-gRI" secondAttribute="bottom" constant="44" id="bzg-1Q-zX3"/>
+                <constraint firstItem="uV7-Gl-gRI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fPa-U5-4ad"/>
+                <constraint firstItem="hsN-4l-bgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fgg-lz-GOt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2WA-tE-O6d" secondAttribute="bottom" id="nKW-ht-rYG"/>
+                <constraint firstItem="2WA-tE-O6d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wwA-Ye-hC9"/>
+                <constraint firstItem="hsN-4l-bgb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xHg-QR-AbS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="7V2-LD-ztC"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="backgroundView" destination="2WA-tE-O6d" id="VuS-Tu-8te"/>
+                <outlet property="barView" destination="hsN-4l-bgb" id="wAz-ph-ttF"/>
+                <outlet property="itemListContainerView" destination="uV7-Gl-gRI" id="Uz2-by-zmb"/>
+                <outlet property="itemListContainerViewHeightConstraint" destination="htl-9J-Hz7" id="nsX-K3-3jw"/>
+                <outlet property="itemListContainerViewTopConstraint" destination="7V2-LD-ztC" id="gP8-MN-Fcy"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

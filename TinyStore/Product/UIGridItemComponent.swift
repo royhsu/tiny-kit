@@ -62,7 +62,7 @@ public extension UIGridItemComponent {
         
         let itemView = itemComponent.itemView
         
-        if let previewImage = itemView.previewImageView.image {
+        if let previewImage = item.previewImages.first {
         
             itemView.previewImageView.image = previewImage
             
