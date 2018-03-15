@@ -157,6 +157,10 @@ public final class UIRootCoordinator: Coordinator {
             tag: 0
         )
         
+        collapseBarController.setBackgroundViewController(
+            UITableViewController(style: .plain)
+        )
+        
         tabBarController.setViewControllers(
             [ collapseBarController ],
             animated: true

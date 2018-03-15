@@ -12,9 +12,11 @@ import TinyUI
 
 public final class UICollapseBarController: UIViewController {
     
-    public final var collapseView: UICollapseView!
+    public final var collapseView: UICollapseView { return view as! UICollapseView }
     
     public private(set) var isCollapsed: Bool = true
+    
+    private final var backgroundViewController: UIViewController?
     
     public final override func loadView() {
         
@@ -22,12 +24,10 @@ public final class UICollapseBarController: UIViewController {
             for: type(of: self)
         )
         
-        collapseView = UIView.load(
+        view = UIView.load(
             UICollapseView.self,
             from: bundle
-        )
-        
-        view = collapseView
+        )!
         
     }
     
@@ -144,6 +144,45 @@ public extension UICollapseBarController {
             
         }
         else { collapseView.layoutIfNeeded() }
+        
+    }
+    
+    public final func setBackgroundViewController(_ viewController: UIViewController) {
+        
+        addChildViewController(viewController)
+    
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        collapseView.backgroundView.addSubview(viewController.view)
+        
+        NSLayoutConstraint.activate(
+            [
+                collapseView
+                    .backgroundView
+                    .safeAreaLayoutGuide
+                    .leadingAnchor
+                    .constraint(equalTo: viewController.view.leadingAnchor),
+                collapseView
+                    .backgroundView
+                    .safeAreaLayoutGuide
+                    .topAnchor
+                    .constraint(equalTo: viewController.view.topAnchor),
+                collapseView
+                    .backgroundView
+                    .safeAreaLayoutGuide
+                    .trailingAnchor
+                    .constraint(equalTo: viewController.view.trailingAnchor),
+                collapseView
+                    .backgroundView
+                    .safeAreaLayoutGuide
+                    .bottomAnchor
+                    .constraint(equalTo: viewController.view.bottomAnchor)
+            ]
+        )
+
+        viewController.didMove(toParentViewController: self)
+        
+        backgroundViewController = viewController
         
     }
     
