@@ -27,8 +27,7 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        self.rootCoordinator = UIAuthCoordinator(contentSize: contentSize)
-            .onGrant { accessToken in print(accessToken) }
+        self.rootCoordinator = UIRootCoordinator(contentSize: contentSize)
         
     }
 

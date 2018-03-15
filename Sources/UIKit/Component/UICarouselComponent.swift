@@ -40,22 +40,22 @@ public final class UICarouselComponent: Component {
     
     public final func render() {
         
-        let components = itemComponents.map { component -> Component in
-
-            component.render()
-            
-            var itemComponent = component
-
-            itemComponent.contentMode = .size(
-                width: component.view.bounds.width,
-                height: view.bounds.height
-            )
-
-            return itemComponent
-
-        }
-
-        itemComponents = AnyCollection(components)
+//        let components = itemComponents.map { component -> Component in
+//
+//            component.render()
+//
+//            var itemComponent = component
+//
+//            itemComponent.contentMode = .size(
+//                width: component.view.bounds.width,
+//                height: view.bounds.height
+//            )
+//
+//            return itemComponent
+//
+//        }
+//
+//        itemComponents = AnyCollection(components)
         
         collectionComponent.itemComponents = itemComponents
         

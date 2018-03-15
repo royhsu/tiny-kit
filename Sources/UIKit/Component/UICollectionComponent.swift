@@ -9,9 +9,9 @@
 // MARK: - UICollectionComponent
 
 /// NOTE: The maximum size of an item is limited to the size of the collection.
-internal final class UICollectionComponent: Component {
+public final class UICollectionComponent: Component {
     
-    internal final var itemComponents: ComponentGroup {
+    public final var itemComponents: ComponentGroup {
         
         get { return bridge.componentGroup }
         
@@ -19,13 +19,13 @@ internal final class UICollectionComponent: Component {
         
     }
     
-    internal final let collectionView: UICollectionView
+    public final let collectionView: UICollectionView
     
-    private final let collectionLayout: UICollectionViewFlowLayout
+    public final let collectionLayout: UICollectionViewFlowLayout
     
     private final let bridge: UICollectionViewCollectionComponentBridge
     
-    internal final var scrollDirection: UICollectionViewScrollDirection {
+    public final var scrollDirection: UICollectionViewScrollDirection {
         
         get { return collectionLayout.scrollDirection }
         
@@ -33,7 +33,7 @@ internal final class UICollectionComponent: Component {
         
     }
     
-    internal init(contentMode: ComponentContentMode = .automatic) {
+    public init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
         
@@ -41,7 +41,7 @@ internal final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case .size(let width, let height):
+        case let .size(width, height):
             
             frame = CGRect(
                 x: 0.0,
@@ -76,6 +76,8 @@ internal final class UICollectionComponent: Component {
             collectionViewLayout: collectionLayout
         )
         
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.collectionView = collectionView
         
         self.bridge = UICollectionViewCollectionComponentBridge(collectionView: collectionView)
@@ -84,9 +86,9 @@ internal final class UICollectionComponent: Component {
     
     // MARK: Component
     
-    internal final var contentMode: ComponentContentMode
+    public final var contentMode: ComponentContentMode
     
-    internal final func render() {
+    public final func render() {
         
         collectionView.reloadData()
         
@@ -97,16 +99,14 @@ internal final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case .size(let width, let height):
+        case let .size(width, height):
             
             size = CGSize(
                 width: width,
                 height: height
             )
             
-        case .automatic:
-            
-            size = collectionLayout.collectionViewContentSize
+        case .automatic: size = collectionLayout.collectionViewContentSize
             
         }
         
@@ -116,8 +116,8 @@ internal final class UICollectionComponent: Component {
     
     // MARK: ViewRenderable
 
-    internal final var view: View { return collectionView }
+    public final var view: View { return collectionView }
     
-    internal final var preferredContentSize: CGSize { return collectionView.bounds.size }
+    public final var preferredContentSize: CGSize { return collectionView.bounds.size }
     
 }
