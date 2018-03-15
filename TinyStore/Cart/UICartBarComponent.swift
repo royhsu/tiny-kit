@@ -10,6 +10,11 @@
 
 import TinyUI
 
+// TODO: refactor to view controller.
+
+// TODO: extend bottom edge of bar view while there is not tab bar.
+// safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
+
 public final class UICartBarComponent: Component {
     
     /// The base component.

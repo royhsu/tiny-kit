@@ -16,7 +16,7 @@ import TinyStore
 
 public final class UIRootCoordinator: Coordinator {
     
-    private final let navigationController: UINavigationController
+    private final let rootViewController: UIViewController
     
     private final let rootComponent: Component
     
@@ -138,9 +138,24 @@ public final class UIRootCoordinator: Coordinator {
         
         self.rootComponent = rootComponent
         
-        self.navigationController = UINavigationController(
-            rootViewController: UIComponentViewController(component: rootComponent)
+        let tabBarController = UITabBarController(
+            nibName: nil,
+            bundle: nil
         )
+        
+        let componentViewController = UIComponentViewController(component: rootComponent)
+        
+        componentViewController.tabBarItem = UITabBarItem(
+            tabBarSystemItem: .featured,
+            tag: 0
+        )
+        
+        tabBarController.setViewControllers(
+            [ componentViewController ],
+            animated: true
+        )
+        
+        self.rootViewController = tabBarController
         
     }
     
@@ -152,6 +167,6 @@ public final class UIRootCoordinator: Coordinator {
 
 extension UIRootCoordinator: ViewControllerRepresentable {
     
-    public final var viewController: ViewController { return navigationController }
+    public final var viewController: ViewController { return rootViewController }
     
 }

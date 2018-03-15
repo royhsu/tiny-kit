@@ -39,9 +39,9 @@ public final class UIGridComponent: Component {
         let margin: CGFloat = 30.0
         
         collectionComponent.collectionLayout.sectionInset = UIEdgeInsets(
-            top: 0.0,
+            top: margin,
             left: margin,
-            bottom: 0.0,
+            bottom: margin,
             right: margin
         )
         

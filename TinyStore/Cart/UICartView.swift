@@ -35,11 +35,7 @@ public final class UICartView: UIView {
         
         setUpSafeAreaBottomView(safeAreaBottomView)
         
-    }
-    
-    public final override func layoutSubviews() {
-        
-        safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
+        safeAreaBottomViewHeightConstraint.constant = 0.0
         
     }
     
