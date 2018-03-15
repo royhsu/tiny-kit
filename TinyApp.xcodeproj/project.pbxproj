@@ -75,7 +75,7 @@
 		B04F05C3205A34710050C41C /* UICartItemQuantityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05C2205A34710050C41C /* UICartItemQuantityPickerView.swift */; };
 		B04F05C5205A34D40050C41C /* UICartItemQuantityPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04F05C4205A34D40050C41C /* UICartItemQuantityPickerView.xib */; };
 		B04F05C7205A361D0050C41C /* UICartItemQuantityPickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05C6205A361D0050C41C /* UICartItemQuantityPickerComponent.swift */; };
-		B04F05C9205A3D5F0050C41C /* UICollapseBarContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05C8205A3D5F0050C41C /* UICollapseBarContrller.swift */; };
+		B04F05C9205A3D5F0050C41C /* UICollapseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05C8205A3D5F0050C41C /* UICollapseBarController.swift */; };
 		B04F05CB205A3D7E0050C41C /* UICollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05CA205A3D7E0050C41C /* UICollapseView.swift */; };
 		B04F05CD205A3D9A0050C41C /* UICollapseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04F05CC205A3D9A0050C41C /* UICollapseView.xib */; };
 		B04F05CF205A5F550050C41C /* UICartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05CE205A5F550050C41C /* UICartBar.swift */; };
@@ -263,7 +263,7 @@
 		B04F05C2205A34710050C41C /* UICartItemQuantityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartItemQuantityPickerView.swift; sourceTree = "<group>"; };
 		B04F05C4205A34D40050C41C /* UICartItemQuantityPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICartItemQuantityPickerView.xib; sourceTree = "<group>"; };
 		B04F05C6205A361D0050C41C /* UICartItemQuantityPickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartItemQuantityPickerComponent.swift; sourceTree = "<group>"; };
-		B04F05C8205A3D5F0050C41C /* UICollapseBarContrller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollapseBarContrller.swift; sourceTree = "<group>"; };
+		B04F05C8205A3D5F0050C41C /* UICollapseBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollapseBarController.swift; sourceTree = "<group>"; };
 		B04F05CA205A3D7E0050C41C /* UICollapseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollapseView.swift; sourceTree = "<group>"; };
 		B04F05CC205A3D9A0050C41C /* UICollapseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICollapseView.xib; sourceTree = "<group>"; };
 		B04F05CE205A5F550050C41C /* UICartBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartBar.swift; sourceTree = "<group>"; };
@@ -526,7 +526,7 @@
 				B04F05D4205A61A40050C41C /* UICartBarItem.swift */,
 				B04F05CA205A3D7E0050C41C /* UICollapseView.swift */,
 				B04F05CC205A3D9A0050C41C /* UICollapseView.xib */,
-				B04F05C8205A3D5F0050C41C /* UICollapseBarContrller.swift */,
+				B04F05C8205A3D5F0050C41C /* UICollapseBarController.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -1016,7 +1016,7 @@
 				B03082B420580B9300992255 /* UIProductGallery.swift in Sources */,
 				B024C9052058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift in Sources */,
 				B032B07C2057FC5300AB47C4 /* UIProductDescription.swift in Sources */,
-				B04F05C9205A3D5F0050C41C /* UICollapseBarContrller.swift in Sources */,
+				B04F05C9205A3D5F0050C41C /* UICollapseBarController.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,
 				B04F05CF205A5F550050C41C /* UICartBar.swift in Sources */,
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,

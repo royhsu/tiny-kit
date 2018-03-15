@@ -57,7 +57,7 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-//        let rootComponent = UICollapseBarContrller(
+//        let rootComponent = UICollapseBarController(
 //            contentMode: .size(
 //                width: contentSize.width,
 //                height: contentSize.height
@@ -150,7 +150,7 @@ public final class UIRootCoordinator: Coordinator {
             tag: 0
         )
         
-        let collapseBarController = UICollapseBarContrller()
+        let collapseBarController = UICollapseBarController()
         
         collapseBarController.tabBarItem = UITabBarItem(
             tabBarSystemItem: .featured,

@@ -1,21 +1,19 @@
 //
-//  UICollapseBarContrller.swift
+//  UICollapseBarController.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 15/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICollapseBarContrller
+// MARK: - UICollapseBarController
 
 import TinyUI
-
-// TODO: refactor to view controller.
 
 // TODO: extend bottom edge of bar view while there is not tab bar.
 // safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
 
-public final class UICollapseBarContrller: UIViewController {
+public final class UICollapseBarController: UIViewController {
     
     public final var collapseView: UICollapseView!
     
@@ -102,7 +100,7 @@ public final class UICollapseBarContrller: UIViewController {
     }
 }
 
-public extension UICollapseBarContrller {
+public extension UICollapseBarController {
     
     public final func setCollapsed(
         _ isCollapsed: Bool,
