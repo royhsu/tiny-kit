@@ -20,6 +20,8 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let rootComponent: Component
     
+    private final let cartBarComponent = UICartBarComponent()
+    
     public init(contentSize: CGSize) {
 
         let gridComponent = UIGridComponent().setItems(
@@ -158,7 +160,11 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         collapseBarController.setBackgroundViewController(
-            UITableViewController(style: .plain)
+            componentViewController
+        )
+        
+        collapseBarController.setBarViewController(
+            UIComponentViewController(component: cartBarComponent)
         )
         
         tabBarController.setViewControllers(
@@ -168,11 +174,15 @@ public final class UIRootCoordinator: Coordinator {
         
         self.rootViewController = tabBarController
         
-//        self.rootViewController = collapseBarController
-        
     }
     
-    public final func activate() { rootComponent.render() }
+    public final func activate() {
+        
+        rootComponent.render()
+        
+        cartBarComponent.render()
+        
+    }
     
 }
 

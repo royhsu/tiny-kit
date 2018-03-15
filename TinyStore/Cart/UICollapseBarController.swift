@@ -18,6 +18,8 @@ public final class UICollapseBarController: UIViewController {
     
     private final var backgroundViewController: UIViewController?
     
+    private final var barViewController: UIViewController?
+    
     public final override func loadView() {
         
         let bundle = Bundle(
@@ -41,42 +43,6 @@ public final class UICollapseBarController: UIViewController {
                 action: #selector(toggleContent)
             )
         )
-        
-    }
-    
-    public final func render() {
-        
-//        view.render(with: itemComponent)
-//
-//        itemComponent.render()
-//
-//        let itemView = itemComponent.itemView
-//
-//        itemView.backgroundView.render(with: backgroundComponent)
-//
-//        backgroundComponent.render()
-//
-//        itemView.itemListContainerView.render(with: itemListComponent)
-//
-//        itemListComponent.render()
-//
-//        itemView.barView.render(with: barComponent)
-//
-//        barComponent.setActionButtonItem(
-//            UIPrimaryButtonItem(
-//                title: "Checkout",
-//                titleColor: .white,
-//                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
-//                backgroundColor: UIColor(
-//                    red: 0.35,
-//                    green: 0.56,
-//                    blue: 0.87,
-//                    alpha: 1.0
-//                )
-//            )
-//        )
-//
-//        barComponent.render()
         
     }
     
@@ -183,6 +149,45 @@ public extension UICollapseBarController {
         viewController.didMove(toParentViewController: self)
         
         backgroundViewController = viewController
+        
+    }
+    
+    public final func setBarViewController(_ viewController: UIViewController) {
+        
+        addChildViewController(viewController)
+        
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        collapseView.barView.addSubview(viewController.view)
+        
+        NSLayoutConstraint.activate(
+            [
+                collapseView
+                    .barView
+                    .safeAreaLayoutGuide
+                    .leadingAnchor
+                    .constraint(equalTo: viewController.view.leadingAnchor),
+                collapseView
+                    .barView
+                    .safeAreaLayoutGuide
+                    .topAnchor
+                    .constraint(equalTo: viewController.view.topAnchor),
+                collapseView
+                    .barView
+                    .safeAreaLayoutGuide
+                    .trailingAnchor
+                    .constraint(equalTo: viewController.view.trailingAnchor),
+                collapseView
+                    .barView
+                    .safeAreaLayoutGuide
+                    .bottomAnchor
+                    .constraint(equalTo: viewController.view.bottomAnchor)
+            ]
+        )
+        
+        viewController.didMove(toParentViewController: self)
+        
+        barViewController = viewController
         
     }
     
