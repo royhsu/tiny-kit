@@ -23,7 +23,7 @@ public final class UICartItemView: UIView {
     public fileprivate(set) final weak var priceLabel: UILabel!
     
     @IBOutlet
-    public fileprivate(set) final weak var quantityContainerView: UIView!
+    public fileprivate(set) final weak var quantityPickerContainerView: UIView!
     
     @IBOutlet
     public fileprivate(set) final weak var editButton: UIButton!

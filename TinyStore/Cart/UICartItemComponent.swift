@@ -13,6 +13,8 @@ public final class UICartItemComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartItemView>
     
+    private final let quantityPickerComponent: UICartItemQuantityPickerComponent
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         let bundle = Bundle(
@@ -27,6 +29,8 @@ public final class UICartItemComponent: Component {
             )!
         )
         
+        self.quantityPickerComponent = UICartItemQuantityPickerComponent()
+        
     }
     
     // MARK: Component
@@ -39,7 +43,17 @@ public final class UICartItemComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let itemView = itemComponent.itemView
+        
+        itemView.quantityPickerContainerView.render(with: quantityPickerComponent)
+        
+        quantityPickerComponent.render()
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     

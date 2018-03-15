@@ -97,7 +97,7 @@
                 <outlet property="editButton" destination="OBL-tX-UCQ" id="lG3-ep-coH"/>
                 <outlet property="previewImageView" destination="VfZ-Vv-Gl1" id="2nd-Tt-eU4"/>
                 <outlet property="priceLabel" destination="pud-01-kLN" id="2Sb-Lx-lfK"/>
-                <outlet property="quantityContainerView" destination="SWx-Xz-kce" id="eNR-aW-BWA"/>
+                <outlet property="quantityPickerContainerView" destination="SWx-Xz-kce" id="eNR-aW-BWA"/>
                 <outlet property="selectionContainerView" destination="nNx-fH-OwE" id="INP-sS-q9K"/>
                 <outlet property="separatorView" destination="J7r-H6-Gzj" id="8Yg-dy-AmX"/>
                 <outlet property="titleLabel" destination="HOx-UJ-tXq" id="pdS-Av-ipu"/>
