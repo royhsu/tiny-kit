@@ -6,15 +6,9 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICartMode
-
-public enum UICartMode {
-    
-    case bar, full
-    
-}
-
 // MARK: - UICartComponent
+
+import TinyUI
 
 public final class UICartComponent: Component {
     
@@ -24,6 +18,8 @@ public final class UICartComponent: Component {
     private final var backgroundComponent: Component
     
     private final var itemListComponent: Component
+    
+    private final let barComponent: UICartBarComponent
     
     private final var mode: UICartMode = .bar
     
@@ -50,6 +46,8 @@ public final class UICartComponent: Component {
         self.backgroundComponent = backgroundComponent
         
         self.itemListComponent = itemListComponent
+        
+        self.barComponent = UICartBarComponent()
         
         let itemView = itemComponent.itemView
         
@@ -91,6 +89,24 @@ public final class UICartComponent: Component {
         itemView.itemListContainerView.render(with: itemListComponent)
         
         itemListComponent.render()
+        
+        itemView.barView.render(with: barComponent)
+        
+        barComponent.setActionButtonItem(
+            UIPrimaryButtonItem(
+                title: "Checkout",
+                titleColor: .white,
+                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
+                backgroundColor: UIColor(
+                    red: 0.35,
+                    green: 0.56,
+                    blue: 0.87,
+                    alpha: 1.0
+                )
+            )
+        )
+        
+        barComponent.render()
         
     }
     

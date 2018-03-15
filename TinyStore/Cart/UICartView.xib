@@ -20,17 +20,17 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uV7-Gl-gRI">
-                    <rect key="frame" x="0.0" y="331" width="375" height="0.0"/>
+                    <rect key="frame" x="0.0" y="315" width="375" height="0.0"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" id="htl-9J-Hz7"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-4l-bgb">
-                    <rect key="frame" x="0.0" y="331" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="315" width="375" height="60"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="JMT-BL-v7I"/>
+                        <constraint firstAttribute="height" constant="60" id="JMT-BL-v7I"/>
                     </constraints>
                 </view>
             </subviews>
@@ -41,7 +41,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hsN-4l-bgb" secondAttribute="trailing" id="Hxk-Jm-VcU"/>
                 <constraint firstItem="2WA-tE-O6d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ncp-12-neE"/>
                 <constraint firstItem="uV7-Gl-gRI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Z7s-O5-eGm"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uV7-Gl-gRI" secondAttribute="bottom" constant="44" id="bzg-1Q-zX3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uV7-Gl-gRI" secondAttribute="bottom" constant="60" id="bzg-1Q-zX3"/>
                 <constraint firstItem="uV7-Gl-gRI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fPa-U5-4ad"/>
                 <constraint firstItem="hsN-4l-bgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fgg-lz-GOt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2WA-tE-O6d" secondAttribute="bottom" id="nKW-ht-rYG"/>

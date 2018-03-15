@@ -25,8 +25,4 @@ public final class UICartView: UIView {
     @IBOutlet
     public fileprivate(set) final var itemListContainerViewHeightConstraint: NSLayoutConstraint!
     
-    public final override func awakeFromNib() {
-        
-    }
-    
 }
