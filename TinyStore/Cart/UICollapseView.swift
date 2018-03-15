@@ -13,14 +13,10 @@ public final class UICollapseView: UIView {
     @IBOutlet
     public fileprivate(set) final weak var safeAreaBottomView: UIView!
     
-    @IBOutlet
-    public fileprivate(set) final weak var safeAreaBottomViewHeightConstraint: NSLayoutConstraint!
-    
     /// The view behind the bar.
     @IBOutlet
     public fileprivate(set) final weak var backgroundView: UIView!
     
-    /// The bar.
     @IBOutlet
     public fileprivate(set) final weak var barContainerView: UIView!
     
@@ -34,6 +30,7 @@ public final class UICollapseView: UIView {
     @IBOutlet
     public fileprivate(set) final weak var barContentView: UIView!
     
+    /// The bar.
     @IBOutlet
     public fileprivate(set) final weak var barView: UIView!
     
@@ -47,15 +44,7 @@ public final class UICollapseView: UIView {
 
         setUpSafeAreaBottomView(safeAreaBottomView)
         
-        safeAreaBottomViewHeightConstraint.constant = 0.0
-        
         barContainerViewHeightConstraint.constant = 60.0
-        
-    }
-    
-    public final override func layoutSubviews() {
-        
-        safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
         
     }
     

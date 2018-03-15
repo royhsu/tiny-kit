@@ -20,7 +20,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-4l-bgb">
-                    <rect key="frame" x="0.0" y="265" width="375" height="100"/>
+                    <rect key="frame" x="0.0" y="275" width="375" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRU-rN-Zgc">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
@@ -47,25 +47,23 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2e-ov-kmX">
-                    <rect key="frame" x="0.0" y="365" width="375" height="10"/>
+                    <rect key="frame" x="0.0" y="375" width="375" height="0.0"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="10" id="1cr-2a-b2u"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="M2e-ov-kmX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="7Zc-c5-Q0R"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2WA-tE-O6d" secondAttribute="trailing" id="ApG-s3-wPs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hsN-4l-bgb" secondAttribute="trailing" id="Hxk-Jm-VcU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="M2e-ov-kmX" secondAttribute="bottom" id="Mm0-oG-U3c"/>
+                <constraint firstAttribute="bottom" secondItem="M2e-ov-kmX" secondAttribute="bottom" id="Mm0-oG-U3c"/>
                 <constraint firstItem="2WA-tE-O6d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ncp-12-neE"/>
                 <constraint firstItem="hsN-4l-bgb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="150" id="Ps1-NV-OaO"/>
                 <constraint firstItem="M2e-ov-kmX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="WJu-h0-aRw"/>
                 <constraint firstItem="hsN-4l-bgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fgg-lz-GOt"/>
                 <constraint firstItem="M2e-ov-kmX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hQh-C2-kA6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hsN-4l-bgb" secondAttribute="bottom" id="mhy-rb-rLz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2WA-tE-O6d" secondAttribute="bottom" id="nKW-ht-rYG"/>
-                <constraint firstItem="M2e-ov-kmX" firstAttribute="top" secondItem="hsN-4l-bgb" secondAttribute="bottom" id="vno-Kj-MuT"/>
                 <constraint firstItem="2WA-tE-O6d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wwA-Ye-hC9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -83,7 +81,6 @@
                 <outlet property="barContentView" destination="lRU-rN-Zgc" id="2kg-OE-Bb0"/>
                 <outlet property="barView" destination="eRj-Ln-b2x" id="kGt-pD-oPh"/>
                 <outlet property="safeAreaBottomView" destination="M2e-ov-kmX" id="ruR-KQ-bbz"/>
-                <outlet property="safeAreaBottomViewHeightConstraint" destination="1cr-2a-b2u" id="ZKZ-tU-qBV"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

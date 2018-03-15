@@ -10,9 +10,6 @@
 
 import TinyUI
 
-// TODO: extend bottom edge of bar view while there is not tab bar.
-// safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
-
 public final class UICollapseBarController: UIViewController {
     
     public final var collapseView: UICollapseView!
@@ -47,19 +44,6 @@ public final class UICollapseBarController: UIViewController {
         
     }
     
-    public final override func viewDidLayoutSubviews() {
-        
-        super.viewDidLayoutSubviews()
-        
-        // Extend to the bottom of the safe area.
-        if tabBarController == nil {
-
-            collapseView.safeAreaBottomViewHeightConstraint.constant = view.safeAreaInsets.bottom
-
-        }
-        
-    }
-
     public final func render() {
         
 //        view.render(with: itemComponent)
@@ -107,6 +91,7 @@ public final class UICollapseBarController: UIViewController {
         )
     
     }
+    
 }
 
 public extension UICollapseBarController {

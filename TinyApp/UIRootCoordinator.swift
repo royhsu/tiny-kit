@@ -162,7 +162,9 @@ public final class UIRootCoordinator: Coordinator {
             animated: true
         )
         
-        self.rootViewController = collapseBarController
+        self.rootViewController = tabBarController
+        
+//        self.rootViewController = collapseBarController
         
     }
     
