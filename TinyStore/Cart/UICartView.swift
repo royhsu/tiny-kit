@@ -11,6 +11,12 @@
 public final class UICartView: UIView {
     
     @IBOutlet
+    public fileprivate(set) final weak var safeAreaBottomView: UIView!
+    
+    @IBOutlet
+    public fileprivate(set) final weak var safeAreaBottomViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet
     public fileprivate(set) final weak var backgroundView: UIView!
     
     @IBOutlet
@@ -24,5 +30,25 @@ public final class UICartView: UIView {
     
     @IBOutlet
     public fileprivate(set) final var itemListContainerViewHeightConstraint: NSLayoutConstraint!
+    
+    public final override func awakeFromNib() {
+        
+        setUpSafeAreaBottomView(safeAreaBottomView)
+        
+    }
+    
+    public final override func layoutSubviews() {
+        
+        safeAreaBottomViewHeightConstraint.constant = safeAreaInsets.bottom
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func setUpSafeAreaBottomView(_ view: UIView) {
+        
+        view.backgroundColor = .white
+        
+    }
     
 }

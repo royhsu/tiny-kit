@@ -27,10 +27,17 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-4l-bgb">
-                    <rect key="frame" x="0.0" y="315" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="305" width="375" height="60"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="JMT-BL-v7I"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2e-ov-kmX">
+                    <rect key="frame" x="0.0" y="365" width="375" height="10"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="1cr-2a-b2u"/>
                     </constraints>
                 </view>
             </subviews>
@@ -39,14 +46,17 @@
                 <constraint firstItem="uV7-Gl-gRI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="150" id="7V2-LD-ztC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2WA-tE-O6d" secondAttribute="trailing" id="ApG-s3-wPs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hsN-4l-bgb" secondAttribute="trailing" id="Hxk-Jm-VcU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="M2e-ov-kmX" secondAttribute="bottom" id="Mm0-oG-U3c"/>
                 <constraint firstItem="2WA-tE-O6d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ncp-12-neE"/>
+                <constraint firstItem="M2e-ov-kmX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="WJu-h0-aRw"/>
                 <constraint firstItem="uV7-Gl-gRI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Z7s-O5-eGm"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uV7-Gl-gRI" secondAttribute="bottom" constant="60" id="bzg-1Q-zX3"/>
+                <constraint firstItem="M2e-ov-kmX" firstAttribute="bottom" secondItem="uV7-Gl-gRI" secondAttribute="bottom" constant="60" id="bzg-1Q-zX3"/>
                 <constraint firstItem="uV7-Gl-gRI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fPa-U5-4ad"/>
                 <constraint firstItem="hsN-4l-bgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fgg-lz-GOt"/>
+                <constraint firstItem="M2e-ov-kmX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hQh-C2-kA6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2WA-tE-O6d" secondAttribute="bottom" id="nKW-ht-rYG"/>
+                <constraint firstItem="M2e-ov-kmX" firstAttribute="top" secondItem="hsN-4l-bgb" secondAttribute="bottom" id="vno-Kj-MuT"/>
                 <constraint firstItem="2WA-tE-O6d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wwA-Ye-hC9"/>
-                <constraint firstItem="hsN-4l-bgb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xHg-QR-AbS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -61,6 +71,8 @@
                 <outlet property="itemListContainerView" destination="uV7-Gl-gRI" id="Uz2-by-zmb"/>
                 <outlet property="itemListContainerViewHeightConstraint" destination="htl-9J-Hz7" id="nsX-K3-3jw"/>
                 <outlet property="itemListContainerViewTopConstraint" destination="7V2-LD-ztC" id="gP8-MN-Fcy"/>
+                <outlet property="safeAreaBottomView" destination="M2e-ov-kmX" id="ruR-KQ-bbz"/>
+                <outlet property="safeAreaBottomViewHeightConstraint" destination="1cr-2a-b2u" id="G5r-72-1U4"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
