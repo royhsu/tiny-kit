@@ -44,7 +44,7 @@ public final class UIRootCoordinator: Coordinator {
             UIPrimaryButtonItem(
                 title: "Add to Cart",
                 titleColor: .white,
-                iconImage: nil,
+                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
                 backgroundColor: UIColor(
                     red: 0.35,
                     green: 0.56,
@@ -64,6 +64,11 @@ public final class UIRootCoordinator: Coordinator {
                     pictureImage: #imageLiteral(resourceName: "image-jerry-price"),
                     title: "Jerry Price",
                     content: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                ),
+                UIProductReview(
+                    pictureImage: #imageLiteral(resourceName: "image-danielle-schneider"),
+                    title: "Danielle Schneider",
+                    content: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor."
                 )
             ]
         )
