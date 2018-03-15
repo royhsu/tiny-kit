@@ -40,9 +40,9 @@ public final class UICollapseBarContrller: UIViewController {
         
         super.viewDidLoad()
         
-        disableShadow(for: collapseView.barContentView)
-        
-        enableShadow(for: collapseView.barView)
+//        disableShadow(for: collapseView.barContentView)
+//
+//        enableShadow(for: collapseView.barView)
         
         collapseView.addGestureRecognizer(
             UITapGestureRecognizer(
@@ -100,31 +100,6 @@ public final class UICollapseBarContrller: UIViewController {
         )
     
     }
-    
-    fileprivate final func enableShadow(for view: UIView) {
-        
-        view.layer.shadowColor = UIColor.black.cgColor
-        
-        view.layer.shadowOffset = .zero
-        
-        view.layer.shadowRadius = 10.0
-        
-        view.layer.shadowOpacity = 0.2
-        
-    }
-    
-    fileprivate final func disableShadow(for view: UIView) {
-        
-        view.layer.shadowColor = nil
-        
-        view.layer.shadowOffset = .zero
-        
-        view.layer.shadowRadius = 0.0
-        
-        view.layer.shadowOpacity = 0.0
-        
-    }
-    
 }
 
 public extension UICollapseBarContrller {
@@ -140,29 +115,23 @@ public extension UICollapseBarContrller {
 
         if isCollapsed {
             
-            enableShadow(for: collapseView.barView)
-            
             NSLayoutConstraint.deactivate(
-                [ collapseView.barContentViewTopConstraint ]
+                [ collapseView.barContainerViewTopConstraint ]
             )
 
             NSLayoutConstraint.activate(
-                [ collapseView.barContentViewHeightConstraint ]
+                [ collapseView.barContainerViewHeightConstraint ]
             )
 
         }
         else {
-
-            disableShadow(for: collapseView.barView)
-            
-            enableShadow(for: collapseView.barContentView)
             
             NSLayoutConstraint.deactivate(
-                [ collapseView.barContentViewHeightConstraint ]
+                [ collapseView.barContainerViewHeightConstraint ]
             )
 
             NSLayoutConstraint.activate(
-                [ collapseView.barContentViewTopConstraint ]
+                [ collapseView.barContainerViewTopConstraint ]
             )
 
         }
@@ -178,16 +147,7 @@ public extension UICollapseBarContrller {
                 initialSpringVelocity: 1.0,
                 options: [],
                 animations: { self.collapseView.layoutIfNeeded() },
-                completion: { _ in
-                
-                    if self.isCollapsed {
-                        
-                        
-                        self.disableShadow(for: self.collapseView.barContentView)
-
-                    }
-                    
-                }
+                completion: nil
             )
             
         }

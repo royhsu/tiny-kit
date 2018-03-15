@@ -22,33 +22,50 @@ public final class UICollapseView: UIView {
     
     /// The bar.
     @IBOutlet
-    public fileprivate(set) final weak var barView: UIView!
+    public fileprivate(set) final weak var barContainerView: UIView!
+    
+    @IBOutlet
+    public fileprivate(set) final var barContainerViewTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet
+    public fileprivate(set) final var barContainerViewHeightConstraint: NSLayoutConstraint!
     
     /// The content view of the bar.
     @IBOutlet
     public fileprivate(set) final weak var barContentView: UIView!
     
     @IBOutlet
-    public fileprivate(set) final var barContentViewTopConstraint: NSLayoutConstraint!
-    
-    @IBOutlet
-    public fileprivate(set) final var barContentViewHeightConstraint: NSLayoutConstraint!
+    public fileprivate(set) final weak var barView: UIView!
     
     public final override func awakeFromNib() {
         
+        setUpBarContainer(barContainerView)
+
         setUpBarView(barView)
-        
+
         setUpBarContentView(barContentView)
-        
+
         setUpSafeAreaBottomView(safeAreaBottomView)
         
         safeAreaBottomViewHeightConstraint.constant = 0.0
         
-        barContentViewHeightConstraint.constant = 0.0
+        barContainerViewHeightConstraint.constant = 60.0
         
     }
     
     // MARK: Set Up
+    
+    fileprivate final func setUpBarContainer(_ view: UIView) {
+        
+        view.layer.shadowColor = UIColor.black.cgColor
+        
+        view.layer.shadowOffset = .zero
+        
+        view.layer.shadowRadius = 10.0
+        
+        view.layer.shadowOpacity = 0.2
+        
+    }
     
     fileprivate final func setUpBarView(_ view: UIView) { view.backgroundColor = .white }
     
