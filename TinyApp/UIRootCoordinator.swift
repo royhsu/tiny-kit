@@ -20,6 +20,8 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let rootComponent: Component
     
+    private final let cartItemListComponent = UICartItemListComponent()
+    
     private final let cartBarComponent = UICartBarComponent()
     
     public init(contentSize: CGSize) {
@@ -44,7 +46,7 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let itemListComponent = UICartItemListComponent().setItems(
+        cartItemListComponent.setItems(
             [
                 UICartItem(
                     previewImage: #imageLiteral(resourceName: "image-dessert-3"),
@@ -167,6 +169,10 @@ public final class UIRootCoordinator: Coordinator {
             UIComponentViewController(component: cartBarComponent)
         )
         
+        collapseBarController.setBarContentViewController(
+            UIComponentViewController(component: cartItemListComponent)
+        )
+        
         tabBarController.setViewControllers(
             [ collapseBarController ],
             animated: true
@@ -181,6 +187,8 @@ public final class UIRootCoordinator: Coordinator {
         rootComponent.render()
         
         cartBarComponent.render()
+        
+        cartItemListComponent.render()
         
     }
     

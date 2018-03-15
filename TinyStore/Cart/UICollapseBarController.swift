@@ -16,9 +16,11 @@ public final class UICollapseBarController: UIViewController {
     
     public private(set) var isCollapsed: Bool = true
     
-    private final var backgroundViewController: UIViewController?
+    public private(set) final var backgroundViewController: UIViewController?
     
-    private final var barViewController: UIViewController?
+    public private(set) final var barViewController: UIViewController?
+    
+    public private(set) final var barContentViewController: UIViewController?
     
     public final override func loadView() {
         
@@ -115,6 +117,16 @@ public extension UICollapseBarController {
     
     public final func setBackgroundViewController(_ viewController: UIViewController) {
         
+        if let existingViewController = backgroundViewController {
+            
+            existingViewController.willMove(toParentViewController: nil)
+            
+            existingViewController.view.removeFromSuperview()
+            
+            existingViewController.removeFromParentViewController()
+            
+        }
+        
         addChildViewController(viewController)
     
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -154,6 +166,16 @@ public extension UICollapseBarController {
     
     public final func setBarViewController(_ viewController: UIViewController) {
         
+        if let existingViewController = barViewController {
+            
+            existingViewController.willMove(toParentViewController: nil)
+            
+            existingViewController.view.removeFromSuperview()
+            
+            existingViewController.removeFromParentViewController()
+            
+        }
+        
         addChildViewController(viewController)
         
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -188,6 +210,55 @@ public extension UICollapseBarController {
         viewController.didMove(toParentViewController: self)
         
         barViewController = viewController
+        
+    }
+    
+    public final func setBarContentViewController(_ viewController: UIViewController) {
+        
+        if let existingViewController = barContentViewController {
+            
+            existingViewController.willMove(toParentViewController: nil)
+            
+            existingViewController.view.removeFromSuperview()
+            
+            existingViewController.removeFromParentViewController()
+            
+        }
+        
+        addChildViewController(viewController)
+        
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        collapseView.barContentView.addSubview(viewController.view)
+        
+        NSLayoutConstraint.activate(
+            [
+                collapseView
+                    .barContentView
+                    .safeAreaLayoutGuide
+                    .leadingAnchor
+                    .constraint(equalTo: viewController.view.leadingAnchor),
+                collapseView
+                    .barContentView
+                    .safeAreaLayoutGuide
+                    .topAnchor
+                    .constraint(equalTo: viewController.view.topAnchor),
+                collapseView
+                    .barContentView
+                    .safeAreaLayoutGuide
+                    .trailingAnchor
+                    .constraint(equalTo: viewController.view.trailingAnchor),
+                collapseView
+                    .barContentView
+                    .safeAreaLayoutGuide
+                    .bottomAnchor
+                    .constraint(equalTo: viewController.view.bottomAnchor)
+            ]
+        )
+        
+        viewController.didMove(toParentViewController: self)
+        
+        barContentViewController = viewController
         
     }
     
