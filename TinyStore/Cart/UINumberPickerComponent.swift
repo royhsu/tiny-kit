@@ -15,10 +15,6 @@ public final class UINumberPickerComponent: Component {
     
     private final let numberTextFieldBridge: UITextFieldBridge
     
-    private final let minimumNumber: Int
-
-    private final let maximumNumber: Int
-    
     private final var currentItem: UINumberPickerItem
     
     public typealias DidChagneNumberHandler = (_ number: Int) -> Void
@@ -27,11 +23,7 @@ public final class UINumberPickerComponent: Component {
     
     private final var didFailHandler: DidFailHandler?
     
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        minimumNumber: Int,
-        maximumNumber: Int
-    ) {
+    public init(contentMode: ComponentContentMode = .automatic) {
         
         let bundle = Bundle(
             for: type(of: self)
@@ -48,16 +40,6 @@ public final class UINumberPickerComponent: Component {
         self.itemComponent = itemComponent
         
         self.numberTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
-       
-        self.minimumNumber = minimumNumber
-        
-        self.maximumNumber = maximumNumber
-        
-        if maximumNumber < minimumNumber {
-            
-            fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
-            
-        }
         
         self.currentItem = UINumberPickerItem()
         
@@ -65,10 +47,14 @@ public final class UINumberPickerComponent: Component {
             
             let currentText = textField.text ?? ""
             
+            let min = self.currentItem.minimumNumber
+            
+            let max = self.currentItem.maximumNumber
+            
             guard
                 let quantity = Int(currentText),
-                quantity >= self.minimumNumber,
-                quantity <= self.maximumNumber
+                quantity >= min,
+                quantity <= max
             else  {
                 
                 self.currentItem.number = 1
@@ -77,8 +63,8 @@ public final class UINumberPickerComponent: Component {
                 
                 let error: UINumberPickerError = .invalidNumber(
                     string: currentText,
-                    validMinimum: self.minimumNumber,
-                    validMaximum: self.maximumNumber
+                    validMinimum: min,
+                    validMaximum: max
                 )
                 
                 self.didFailHandler?(error)
@@ -175,7 +161,7 @@ public final class UINumberPickerComponent: Component {
     public final func increaseNumber(_ sender: Any) {
         
         guard
-            currentItem.number < maximumNumber
+            currentItem.number < currentItem.maximumNumber
         else { return }
         
         currentItem.number += 1
@@ -188,7 +174,7 @@ public final class UINumberPickerComponent: Component {
     public final func decreaseNumber(_ sender: Any) {
         
         guard
-            currentItem.number > minimumNumber
+            currentItem.number > currentItem.minimumNumber
         else { return }
         
         currentItem.number -= 1

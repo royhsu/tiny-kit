@@ -47,12 +47,11 @@ public final class UICartItemComponent: Component {
             brightness: 0.0
         )
         
-        self.quantityPickerComponent = UINumberPickerComponent(
-            minimumNumber: 1,
-            maximumNumber: 9
-        )
+        self.quantityPickerComponent = UINumberPickerComponent()
         .setItem(
             UINumberPickerItem(
+                minimumNumber: 1,
+                maximumNumber: 5,
                 increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
                 increaseBackgroundColor: pickerTintColor,
                 increaseTintColor: .white,

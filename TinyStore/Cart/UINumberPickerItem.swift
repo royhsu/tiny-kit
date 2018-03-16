@@ -10,6 +10,34 @@
 
 public struct UINumberPickerItem {
     
+    // TODO: move into validator
+    public var minimumNumber: Int {
+        
+        didSet {
+            
+            validateMinimumNumber(
+                minimumNumber,
+                maximumNumber: maximumNumber
+            )
+            
+        }
+        
+    }
+    
+    // TODO: move into validator
+    public var maximumNumber: Int {
+        
+        didSet {
+            
+            validateMinimumNumber(
+                minimumNumber,
+                maximumNumber: maximumNumber
+            )
+            
+        }
+        
+    }
+    
     public var increaseIconImage: UIImage?
     
     public var increaseBackgroundColor: UIColor
@@ -33,6 +61,8 @@ public struct UINumberPickerItem {
     internal var didChangeNumberHandler: DidChangeNumberHandler?
     
     public init(
+        minimumNumber: Int = 0,
+        maximumNumber: Int = 10,
         increaseIconImage: UIImage? = nil,
         increaseBackgroundColor: UIColor = .lightGray,
         increaseTintColor: UIColor = .white,
@@ -41,6 +71,10 @@ public struct UINumberPickerItem {
         decreaseTintColor: UIColor = .white,
         number: Int = 0
     ) {
+        
+        self.minimumNumber = minimumNumber
+        
+        self.maximumNumber = maximumNumber
         
         self.increaseIconImage = increaseIconImage
         
@@ -55,6 +89,23 @@ public struct UINumberPickerItem {
         self.decreaseTintColor = decreaseTintColor
         
         self.number = number
+        
+        validateMinimumNumber(
+            minimumNumber,
+            maximumNumber: maximumNumber
+        )
+        
+    }
+    
+    // MARK: Validation
+    
+    fileprivate func validateMinimumNumber(_ minimumNumber: Int, maximumNumber: Int) {
+        
+        if maximumNumber < minimumNumber {
+            
+            fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
+            
+        }
         
     }
     
