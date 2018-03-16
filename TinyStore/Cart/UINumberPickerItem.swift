@@ -101,7 +101,7 @@ public struct UINumberPickerItem {
     
     fileprivate func validateNumberRange(minimum: Int, maximum: Int) {
         
-        if minimum < maximum {
+        if minimum > maximum {
             
             fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
             
