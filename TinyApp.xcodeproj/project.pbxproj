@@ -86,6 +86,8 @@
 		B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05D4205A61A40050C41C /* UICartBarItem.swift */; };
 		B04F05D9205B5F370050C41C /* UICheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F05D8205B5F370050C41C /* UICheckbox.swift */; };
 		B04F05DB205B5F530050C41C /* UICheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04F05DA205B5F530050C41C /* UICheckbox.xib */; };
+		B05EB106205B8399007FF319 /* UICartItemQuantityPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */; };
+		B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */; };
 		B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
@@ -278,6 +280,8 @@
 		B04F05D4205A61A40050C41C /* UICartBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartBarItem.swift; sourceTree = "<group>"; };
 		B04F05D8205B5F370050C41C /* UICheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckbox.swift; sourceTree = "<group>"; };
 		B04F05DA205B5F530050C41C /* UICheckbox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICheckbox.xib; sourceTree = "<group>"; };
+		B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartItemQuantityPickerItem.swift; sourceTree = "<group>"; };
+		B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Adjustments.swift"; sourceTree = "<group>"; };
 		B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -522,6 +526,7 @@
 			children = (
 				B04F05C2205A34710050C41C /* UICartItemQuantityPickerView.swift */,
 				B04F05C4205A34D40050C41C /* UICartItemQuantityPickerView.xib */,
+				B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */,
 				B04F05C6205A361D0050C41C /* UICartItemQuantityPickerComponent.swift */,
 				B04F05B8205A2C7E0050C41C /* UICartItemView.swift */,
 				B04F05BA205A2CBD0050C41C /* UICartItemView.xib */,
@@ -619,6 +624,7 @@
 				B04F05B7205A2C320050C41C /* Cart */,
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
+				B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */,
 			);
 			path = TinyStore;
 			sourceTree = "<group>";
@@ -1023,6 +1029,7 @@
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
+				B05EB106205B8399007FF319 /* UICartItemQuantityPickerItem.swift in Sources */,
 				B0117D36205B605400DD9619 /* UICheckboxComponent.swift in Sources */,
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
 				B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */,
@@ -1047,6 +1054,7 @@
 				B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */,
 				B032B0592057A6FE00AB47C4 /* UIProductGalleryView.swift in Sources */,
 				B04F05D9205B5F370050C41C /* UICheckbox.swift in Sources */,
+				B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */,
 				B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */,
 				B04F05BF205A30660050C41C /* UICartItemListComponent.swift in Sources */,
 				B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */,

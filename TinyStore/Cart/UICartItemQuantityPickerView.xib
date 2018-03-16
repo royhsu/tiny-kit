@@ -21,18 +21,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D55-dW-RXN">
                     <rect key="frame" x="0.0" y="25" width="40" height="30"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yy-O4-iqv">
-                            <rect key="frame" x="0.0" y="5" width="40" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lma-Jh-j9u">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
                             <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="6Yy-O4-iqv" firstAttribute="leading" secondItem="D55-dW-RXN" secondAttribute="leading" id="4Os-gA-Gn0"/>
-                        <constraint firstAttribute="trailing" secondItem="6Yy-O4-iqv" secondAttribute="trailing" id="Ski-2D-BtW"/>
-                        <constraint firstItem="6Yy-O4-iqv" firstAttribute="centerY" secondItem="D55-dW-RXN" secondAttribute="centerY" id="uWC-A8-cL4"/>
+                        <constraint firstItem="Lma-Jh-j9u" firstAttribute="leading" secondItem="D55-dW-RXN" secondAttribute="leading" id="RM8-fJ-rPG"/>
+                        <constraint firstItem="Lma-Jh-j9u" firstAttribute="top" secondItem="D55-dW-RXN" secondAttribute="top" id="UEb-W9-Dze"/>
+                        <constraint firstAttribute="bottom" secondItem="Lma-Jh-j9u" secondAttribute="bottom" id="XnZ-fo-Qqx"/>
+                        <constraint firstAttribute="trailing" secondItem="Lma-Jh-j9u" secondAttribute="trailing" id="ZP6-BW-F9W"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-MX-YZk">
@@ -56,6 +57,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="decreaseIconImageView" destination="rYA-MX-YZk" id="Xms-2n-ZmP"/>
+                <outlet property="increaseIconImageView" destination="8rF-59-Sai" id="cZ0-5X-sWb"/>
+                <outlet property="numberContainerView" destination="D55-dW-RXN" id="2iW-Ba-cTx"/>
+                <outlet property="numberTextField" destination="Lma-Jh-j9u" id="VKF-qz-wiW"/>
+            </connections>
         </view>
     </objects>
 </document>

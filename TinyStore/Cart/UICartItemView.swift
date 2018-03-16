@@ -49,6 +49,8 @@ public final class UICartItemView: UIView {
         
         setUpPriceLabel(priceLabel)
         
+        setUpQuantityPickerContainerView(quantityPickerContainerView)
+        
     }
     
     // MARK: Set Up
@@ -94,5 +96,7 @@ public final class UICartItemView: UIView {
         label.textColor = .black
         
     }
+    
+    fileprivate final func setUpQuantityPickerContainerView(_ view: UIView) { view.backgroundColor = nil }
     
 }

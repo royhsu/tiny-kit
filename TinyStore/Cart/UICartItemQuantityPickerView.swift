@@ -8,4 +8,64 @@
 
 // MARK: - UICartItemQuantityPickerView
 
-public final class UICartItemQuantityPickerView: UIView { }
+public final class UICartItemQuantityPickerView: UIView {
+    
+    @IBOutlet
+    public fileprivate(set) final weak var increaseIconImageView: UIImageView!
+    
+    @IBOutlet
+    public fileprivate(set) final weak var decreaseIconImageView: UIImageView!
+    
+    @IBOutlet
+    public fileprivate(set) final weak var numberContainerView: UIView!
+    
+    @IBOutlet
+    public fileprivate(set) final weak var numberTextField: UITextField!
+    
+    public final override func awakeFromNib() {
+        
+        setUpRootView(self)
+        
+        setUpIncreaseIconImageView(increaseIconImageView)
+        
+        setUpDecreaseIconImageView(decreaseIconImageView)
+        
+        setUpNumberContainerView(numberContainerView)
+        
+        setUpNumberTextField(numberTextField)
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func setUpRootView(_ view: UIView) {
+        
+        view.layer.cornerRadius = 2.0
+        
+        view.clipsToBounds = true
+        
+    }
+    
+    fileprivate final func setUpIncreaseIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
+    
+    fileprivate final func setUpDecreaseIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
+    
+    fileprivate final func setUpNumberContainerView(_ view: UIView) { view.backgroundColor = nil }
+    
+    fileprivate final func setUpNumberTextField(_ textField: UITextField) {
+        
+        textField.borderStyle = .none
+        
+        textField.textAlignment = .center
+        
+        textField.font = .systemFont(ofSize: 14.0)
+        
+        textField.textColor = .black
+        
+        textField.text = "0"
+        
+        textField.keyboardType = .numberPad
+        
+    }
+    
+}

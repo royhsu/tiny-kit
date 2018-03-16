@@ -33,7 +33,29 @@ public final class UICartItemComponent: Component {
         
         self.checkboxComponent = UICheckboxComponent().setChecked(true)
         
-        self.quantityPickerComponent = UICartItemQuantityPickerComponent()
+        let pickerTintColor = UIColor(
+            red: 0.35,
+            green: 0.56,
+            blue: 0.87,
+            alpha: 1.0
+        )
+        .modifiedWithAdditionalHue(
+            0.0,
+            saturation: -0.3,
+            brightness: 0.0
+        )
+        
+        self.quantityPickerComponent = UICartItemQuantityPickerComponent().setItem(
+            UICartItemQuantityPickerItem(
+                increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
+                increaseBackgroundColor: pickerTintColor,
+                increaseTintColor: .white,
+                decreaseIconImage: #imageLiteral(resourceName: "icon-minus").withRenderingMode(.alwaysTemplate),
+                decreaseBackgroundColor: pickerTintColor,
+                decreaseTintColor: .white,
+                quantity: 1
+            )
+        )
         
     }
     
