@@ -15,13 +15,27 @@ public final class UINumberPickerComponent: Component {
     
     private final let numberTextFieldBridge: UITextFieldBridge
     
-    private final let validNumberRange: Range<Int>
+    private final let maximumNumber: Int
+    
+    private final let minimumNumber: Int
     
     private final var currentItem: UINumberPickerItem
     
-    public typealias ErrorHandler = (Error) -> Void
+    public typealias DidChagneNumberHandler = (
+        _ component: Component,
+        _ number: Int
+    )
+    -> Void
     
-    private final var errorHandler: ErrorHandler?
+    public final var didChangeNumberHandler: DidChagneNumberHandler?
+    
+    public typealias DidFailHandler = (
+        _ component: Component,
+        _ error: Error
+    )
+    -> Void
+    
+    private final var didFailHandler: DidFailHandler?
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -40,8 +54,16 @@ public final class UINumberPickerComponent: Component {
         self.itemComponent = itemComponent
         
         self.numberTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
+       
+        self.maximumNumber = 9
         
-        self.validNumberRange = 1..<100
+        self.minimumNumber = 1
+        
+        if maximumNumber < minimumNumber {
+            
+            fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
+            
+        }
         
         self.currentItem = UINumberPickerItem()
         
@@ -51,25 +73,30 @@ public final class UINumberPickerComponent: Component {
             
             guard
                 let quantity = Int(currentText),
-                self.validNumberRange.contains(quantity)
+                quantity >= self.minimumNumber,
+                quantity <= self.maximumNumber
             else  {
                 
-                self.currentItem.quantity = 1
+                self.currentItem.number = 1
                 
                 self.setItem(self.currentItem)
                 
                 let error: UINumberPickerError = .invalidNumber(
                     string: currentText,
-                    validRange: self.validNumberRange
+                    validMinimum: self.minimumNumber,
+                    validMaximum: self.maximumNumber
                 )
                 
-                self.errorHandler?(error)
+                self.didFailHandler?(
+                    self,
+                    error
+                )
                 
                 return
                 
             }
             
-            self.currentItem.quantity = quantity
+            self.currentItem.number = quantity
             
             self.setItem(self.currentItem)
             
@@ -157,10 +184,10 @@ public final class UINumberPickerComponent: Component {
     public final func increaseNumber(_ sender: Any) {
         
         guard
-            validNumberRange.contains(currentItem.quantity)
+            currentItem.number < maximumNumber
         else { return }
         
-        currentItem.quantity += 1
+        currentItem.number += 1
         
         setItem(currentItem)
         
@@ -170,10 +197,10 @@ public final class UINumberPickerComponent: Component {
     public final func decreaseNumber(_ sender: Any) {
         
         guard
-            validNumberRange.contains(currentItem.quantity)
+            currentItem.number > minimumNumber
         else { return }
         
-        currentItem.quantity -= 1
+        currentItem.number -= 1
         
         setItem(currentItem)
         
@@ -190,6 +217,15 @@ public extension UINumberPickerComponent {
     public final func setItem(_ item: UINumberPickerItem) -> UINumberPickerComponent {
         
         currentItem = item
+        
+        currentItem.didChangeNumberHandler = { [unowned self] _, number in
+            
+            self.didChangeNumberHandler?(
+                self,
+                number
+            )
+            
+        }
         
         let pickerView = itemComponent.itemView
         
@@ -231,16 +267,25 @@ public extension UINumberPickerComponent {
         
         pickerView.decreaseIconImageView.tintColor = item.decreaseTintColor
         
-        pickerView.numberTextField.text = "\(item.quantity)"
+        pickerView.numberTextField.text = "\(item.number)"
         
         return self
         
     }
     
     @discardableResult
-    public final func onError(handler: ErrorHandler?) -> UINumberPickerComponent {
+    public final func onDidChangeNumber(handler: DidChagneNumberHandler?) -> UINumberPickerComponent {
+
+        didChangeNumberHandler = handler
         
-        errorHandler = handler
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func onDidFail(handler: DidFailHandler?) -> UINumberPickerComponent {
+        
+        didFailHandler = handler
         
         return self
         

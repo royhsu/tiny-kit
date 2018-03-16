@@ -22,7 +22,26 @@ public struct UINumberPickerItem {
     
     public var decreaseTintColor: UIColor
     
-    public var quantity: Int
+    public var number: Int {
+        
+        didSet {
+            
+            didChangeNumberHandler?(
+                self,
+                number
+            )
+            
+        }
+        
+    }
+    
+    public typealias DidChangeNumberHandler = (
+        _ item: UINumberPickerItem,
+        _ number: Int
+    )
+    -> Void
+    
+    public var didChangeNumberHandler: DidChangeNumberHandler?
     
     public init(
         increaseIconImage: UIImage? = nil,
@@ -31,7 +50,7 @@ public struct UINumberPickerItem {
         decreaseIconImage: UIImage? = nil,
         decreaseBackgroundColor: UIColor = .lightGray,
         decreaseTintColor: UIColor = .white,
-        quantity: Int = 0
+        number: Int = 0
     ) {
         
         self.increaseIconImage = increaseIconImage
@@ -46,7 +65,7 @@ public struct UINumberPickerItem {
         
         self.decreaseTintColor = decreaseTintColor
         
-        self.quantity = quantity
+        self.number = number
         
     }
     
