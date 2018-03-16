@@ -526,10 +526,10 @@
 		B04F05B7205A2C320050C41C /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				B05EB124205B9F2D007FF319 /* UITextFieldBridge.swift */,
 				B04F05C2205A34710050C41C /* UICartItemQuantityPickerView.swift */,
 				B04F05C4205A34D40050C41C /* UICartItemQuantityPickerView.xib */,
 				B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */,
-				B05EB124205B9F2D007FF319 /* UITextFieldBridge.swift */,
 				B04F05C6205A361D0050C41C /* UICartItemQuantityPickerComponent.swift */,
 				B04F05B8205A2C7E0050C41C /* UICartItemView.swift */,
 				B04F05BA205A2CBD0050C41C /* UICartItemView.xib */,

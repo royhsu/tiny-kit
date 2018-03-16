@@ -62,7 +62,9 @@ public final class UICartItemQuantityPickerComponent: Component {
                 quantity < 100
             else  {
                 
-                textField.text = "1"
+                self.currentItem.quantity = 1
+                
+                self.setItem(self.currentItem)
                 
                 let error: UICartItemQuantityPickerError = .invalidQuantity(
                     string: currentText,
@@ -74,6 +76,10 @@ public final class UICartItemQuantityPickerComponent: Component {
                 return
                 
             }
+            
+            self.currentItem.quantity = quantity
+            
+            self.setItem(self.currentItem)
             
         }
         
