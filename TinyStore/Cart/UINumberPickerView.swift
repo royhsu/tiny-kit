@@ -1,14 +1,14 @@
 //
-//  UICartItemQuantityPickerView.swift
+//  UINumberPickerView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 15/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICartItemQuantityPickerView
+// MARK: - UINumberPickerView
 
-public final class UICartItemQuantityPickerView: UIView {
+public final class UINumberPickerView: UIView {
     
     @IBOutlet
     public fileprivate(set) final weak var increaseIconImageView: UIImageView!
@@ -27,8 +27,6 @@ public final class UICartItemQuantityPickerView: UIView {
     
     @IBOutlet
     public fileprivate(set) final weak var numberTextField: UITextField!
-    
-    public final let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
     
     public final override func awakeFromNib() {
         

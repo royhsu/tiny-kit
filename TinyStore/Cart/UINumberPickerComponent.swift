@@ -1,32 +1,23 @@
 //
-//  UICartItemQuantityPickerComponent.swift
+//  UINumberPickerComponent.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 15/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICartItemQuantityPickerError
+// MARK: - UINumberPickerComponent
 
-public enum UICartItemQuantityPickerError: Error {
-    
-    case invalidQuantity(
-        string: String,
-        validRange: Range<Int>
-    )
-    
-}
-
-// MARK: - UICartItemQuantityPickerComponent
-
-public final class UICartItemQuantityPickerComponent: Component {
+public final class UINumberPickerComponent: Component {
     
     /// The base component.
-    private final let itemComponent: UIItemComponent<UICartItemQuantityPickerView>
+    private final let itemComponent: UIItemComponent<UINumberPickerView>
     
-    private final let quntityTextFieldBridge: UITextFieldBridge
+    private final let numberTextFieldBridge: UITextFieldBridge
     
-    private final var currentItem: UICartItemQuantityPickerItem
+    private final let validNumberRange: Range<Int>
+    
+    private final var currentItem: UINumberPickerItem
     
     public typealias ErrorHandler = (Error) -> Void
     
@@ -41,34 +32,35 @@ public final class UICartItemQuantityPickerComponent: Component {
         let itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UICartItemQuantityPickerView.self,
+                UINumberPickerView.self,
                 from: bundle
             )!
         )
         
         self.itemComponent = itemComponent
         
-        self.quntityTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
+        self.numberTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
         
-        self.currentItem = UICartItemQuantityPickerItem()
+        self.validNumberRange = 1..<100
         
-        quntityTextFieldBridge.didEndEditing = { [unowned self] textField in
+        self.currentItem = UINumberPickerItem()
+        
+        numberTextFieldBridge.didEndEditing = { [unowned self] textField in
             
             let currentText = textField.text ?? ""
             
             guard
                 let quantity = Int(currentText),
-                quantity > 0,
-                quantity < 100
+                self.validNumberRange.contains(quantity)
             else  {
                 
                 self.currentItem.quantity = 1
                 
                 self.setItem(self.currentItem)
                 
-                let error: UICartItemQuantityPickerError = .invalidQuantity(
+                let error: UINumberPickerError = .invalidNumber(
                     string: currentText,
-                    validRange: 1..<100
+                    validRange: self.validNumberRange
                 )
                 
                 self.errorHandler?(error)
@@ -83,17 +75,39 @@ public final class UICartItemQuantityPickerComponent: Component {
             
         }
         
-        itemComponent.itemView.increaseButton.addTarget(
+        setUpIncreaseButton(itemComponent.itemView.increaseButton)
+        
+        setUpDecreaseButton(itemComponent.itemView.decreaseButton)
+        
+        setUpNumberTextField(itemComponent.itemView.numberTextField)
+        
+        setItem(currentItem)
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func setUpIncreaseButton(_ button: UIButton) {
+        
+        button.addTarget(
             self,
             action: #selector(increaseNumber),
             for: .touchUpInside
         )
         
-        itemComponent.itemView.decreaseButton.addTarget(
+    }
+    
+    fileprivate final func setUpDecreaseButton(_ button: UIButton) {
+        
+        button.addTarget(
             self,
             action: #selector(decreaseNumber),
             for: .touchUpInside
         )
+        
+    }
+    
+    fileprivate final func setUpNumberTextField(_ textField: UITextField) {
         
         let toolBar = UIToolbar()
         
@@ -115,9 +129,7 @@ public final class UICartItemQuantityPickerComponent: Component {
         
         toolBar.sizeToFit()
         
-        itemComponent.itemView.numberTextField.inputAccessoryView = toolBar
-        
-        setItem(currentItem)
+        textField.inputAccessoryView = toolBar
         
     }
     
@@ -144,7 +156,9 @@ public final class UICartItemQuantityPickerComponent: Component {
     @objc
     public final func increaseNumber(_ sender: Any) {
         
-        if currentItem.quantity >= 99 { return }
+        guard
+            validNumberRange.contains(currentItem.quantity)
+        else { return }
         
         currentItem.quantity += 1
         
@@ -155,7 +169,9 @@ public final class UICartItemQuantityPickerComponent: Component {
     @objc
     public final func decreaseNumber(_ sender: Any) {
         
-        if currentItem.quantity <= 0 { return }
+        guard
+            validNumberRange.contains(currentItem.quantity)
+        else { return }
         
         currentItem.quantity -= 1
         
@@ -168,10 +184,10 @@ public final class UICartItemQuantityPickerComponent: Component {
     
 }
 
-public extension UICartItemQuantityPickerComponent {
+public extension UINumberPickerComponent {
     
     @discardableResult
-    public final func setItem(_ item: UICartItemQuantityPickerItem) -> UICartItemQuantityPickerComponent {
+    public final func setItem(_ item: UINumberPickerItem) -> UINumberPickerComponent {
         
         currentItem = item
         
@@ -222,7 +238,7 @@ public extension UICartItemQuantityPickerComponent {
     }
     
     @discardableResult
-    public final func onError(handler: ErrorHandler?) -> UICartItemQuantityPickerComponent {
+    public final func onError(handler: ErrorHandler?) -> UINumberPickerComponent {
         
         errorHandler = handler
         

@@ -15,7 +15,7 @@ public final class UICartItemComponent: Component {
     
     private final let checkboxComponent: UICheckboxComponent
     
-    private final let quantityPickerComponent: UICartItemQuantityPickerComponent
+    private final let quantityPickerComponent: UINumberPickerComponent
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -47,8 +47,8 @@ public final class UICartItemComponent: Component {
             brightness: 0.0
         )
         
-        self.quantityPickerComponent = UICartItemQuantityPickerComponent().setItem(
-            UICartItemQuantityPickerItem(
+        self.quantityPickerComponent = UINumberPickerComponent().setItem(
+            UINumberPickerItem(
                 increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
                 increaseBackgroundColor: pickerTintColor,
                 increaseTintColor: .white,

@@ -1,14 +1,14 @@
 //
-//  UICartItemQuantityPickerItem.swift
+//  UINumberPickerItem.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 16/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UICartItemQuantityPickerItem
+// MARK: - UINumberPickerItem
 
-public struct UICartItemQuantityPickerItem {
+public struct UINumberPickerItem {
     
     public var increaseIconImage: UIImage?
     
