@@ -31,7 +31,7 @@ public final class UICartItemComponent: Component {
             )!
         )
         
-        self.checkboxComponent = UICheckboxComponent()
+        self.checkboxComponent = UICheckboxComponent().setChecked(true)
         
         self.quantityPickerComponent = UICartItemQuantityPickerComponent()
         
@@ -106,12 +106,20 @@ public extension UICartItemComponent {
         
     }
     
-    public typealias ItemSelectionHandler = (_ isSelected: Bool) -> Void
+    public typealias ToggleSelectionHandler = (_ isSelected: Bool) -> Void
     
     @discardableResult
-    public final func onItemSelection(handler: @escaping ItemSelectionHandler) -> UICartItemComponent {
+    public final func onToggleSelection(handler: @escaping ToggleSelectionHandler) -> UICartItemComponent {
         
-        checkboxComponent.onToggleCheckbox(handler: handler)
+        let itemView = itemComponent.itemView
+        
+        checkboxComponent.onToggleCheckbox { isSelected in
+            
+            itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
+            
+            handler(isSelected)
+            
+        }
         
         return self
         

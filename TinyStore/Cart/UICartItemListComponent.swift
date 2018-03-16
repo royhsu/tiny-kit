@@ -53,9 +53,9 @@ public extension UICartItemListComponent {
             
             component
                 .setItem(item)
-                .onItemSelection { isSelected in
+                .onToggleSelection { isSelected in
                     
-                    print(isSelected)
+                    
                     
                 }
             

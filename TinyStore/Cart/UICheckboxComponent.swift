@@ -109,6 +109,22 @@ public final class UICheckboxComponent: Component {
 public extension UICheckboxComponent {
     
     @discardableResult
+    public final func setChecked(_ isChecked: Bool) -> UICheckboxComponent {
+        
+        self.isChecked = isChecked
+        
+        setUpCheckbox(
+            itemComponent.itemView,
+            isChecked: isChecked
+        )
+        
+        toggleCheckboxHandler?(isChecked)
+        
+        return self
+        
+    }
+    
+    @discardableResult
     public final func onToggleCheckbox(
         handler: ToggleCheckboxHandler? = nil
     )

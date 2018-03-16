@@ -14,6 +14,9 @@ public final class UICartItemView: UIView {
     public fileprivate(set) final weak var selectionContainerView: UIView!
     
     @IBOutlet
+    public fileprivate(set) final weak var contentContainer: UIView!
+    
+    @IBOutlet
     public fileprivate(set) final weak var previewImageView: UIImageView!
     
     @IBOutlet
@@ -38,10 +41,58 @@ public final class UICartItemView: UIView {
         
         setUpSelectionContainerView(selectionContainerView)
         
+        setUpContentContainer(contentContainer)
+        
+        setUpPreviewImageView(previewImageView)
+        
+        setUpTitleLabel(titleLabel)
+        
+        setUpPriceLabel(priceLabel)
+        
     }
     
     // MARK: Set Up
     
-    fileprivate final func setUpSelectionContainerView(_ view: UIView) { view.backgroundColor = .white }
+    fileprivate final func setUpSelectionContainerView(_ view: UIView) { view.backgroundColor = nil }
+    
+    fileprivate final func setUpContentContainer(_ view: UIView) { view.backgroundColor = nil }
+    
+    fileprivate final func setUpPreviewImageView(_ imageView: UIImageView) {
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
+        
+        imageView.layer.cornerRadius = 2.0
+        
+    }
+    
+    fileprivate final func setUpTitleLabel(_ label: UILabel) {
+        
+        label.text = nil
+        
+        label.textAlignment = .left
+        
+        label.numberOfLines = 1
+        
+        label.font = .systemFont(ofSize: 14.0)
+        
+        label.textColor = .lightGray
+        
+    }
+    
+    fileprivate final func setUpPriceLabel(_ label: UILabel) {
+        
+        label.text = nil
+        
+        label.textAlignment = .left
+        
+        label.numberOfLines = 1
+        
+        label.font = .systemFont(ofSize: 14.0)
+        
+        label.textColor = .black
+        
+    }
     
 }
