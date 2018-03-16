@@ -70,6 +70,8 @@ public final class UICartItemQuantityPickerComponent: Component {
     @objc
     public final func increaseNumber(_ sender: Any) {
         
+        if currentItem.quantity >= 99 { return }
+        
         currentItem.quantity += 1
         
         setItem(currentItem)
@@ -78,6 +80,8 @@ public final class UICartItemQuantityPickerComponent: Component {
     
     @objc
     public final func decreaseNumber(_ sender: Any) {
+        
+        if currentItem.quantity <= 0 { return }
         
         currentItem.quantity -= 1
         
