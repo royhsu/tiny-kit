@@ -23,13 +23,15 @@ public final class UICartItemComponent: Component {
             for: type(of: self)
         )
         
-        self.itemComponent = UIItemComponent(
+        let itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
                 UICartItemView.self,
                 from: bundle
             )!
         )
+        
+        self.itemComponent = itemComponent
         
         self.checkboxComponent = UICheckboxComponent().setChecked(true)
         
@@ -55,6 +57,32 @@ public final class UICartItemComponent: Component {
                 decreaseTintColor: .white,
                 quantity: 1
             )
+        )
+        
+        itemComponent.itemView.editButton.setTitle(
+            NSLocalizedString(
+                "Edit",
+                comment: ""
+            ),
+            for: .normal
+        )
+        
+        itemComponent.itemView.editButton.setTitleColor(
+            .darkGray,
+            for: .normal
+        )
+        
+        itemComponent.itemView.deleteButton.setTitle(
+            NSLocalizedString(
+                "Delete",
+                comment: ""
+            ),
+            for: .normal
+        )
+        
+        itemComponent.itemView.deleteButton.setTitleColor(
+            .darkGray,
+            for: .normal
         )
         
     }
