@@ -51,7 +51,13 @@ public extension UICartItemListComponent {
             
             let component = UICartItemComponent()
             
-            component.setItem(item)
+            component
+                .setItem(item)
+                .onItemSelection { isSelected in
+                    
+                    print(isSelected)
+                    
+                }
             
             return component
             

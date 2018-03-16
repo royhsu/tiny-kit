@@ -34,4 +34,14 @@ public final class UICartItemView: UIView {
     @IBOutlet
     public fileprivate(set) final weak var separatorView: UIView!
     
+    public final override func awakeFromNib() {
+        
+        setUpSelectionContainerView(selectionContainerView)
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func setUpSelectionContainerView(_ view: UIView) { view.backgroundColor = .white }
+    
 }

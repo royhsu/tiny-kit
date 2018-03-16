@@ -13,6 +13,8 @@ public final class UICartItemComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartItemView>
     
+    private final let checkboxComponent: UICheckboxComponent
+    
     private final let quantityPickerComponent: UICartItemQuantityPickerComponent
     
     public init(contentMode: ComponentContentMode = .automatic) {
@@ -28,6 +30,8 @@ public final class UICartItemComponent: Component {
                 from: bundle
             )!
         )
+        
+        self.checkboxComponent = UICheckboxComponent()
         
         self.quantityPickerComponent = UICartItemQuantityPickerComponent()
         
@@ -46,6 +50,10 @@ public final class UICartItemComponent: Component {
     public final func render() {
         
         let itemView = itemComponent.itemView
+        
+        itemView.selectionContainerView.render(with: checkboxComponent)
+        
+        checkboxComponent.render()
         
         itemView.quantityPickerContainerView.render(with: quantityPickerComponent)
         
@@ -93,6 +101,17 @@ public extension UICartItemComponent {
             
         }
         else { itemView.priceLabel.text = "$" }
+        
+        return self
+        
+    }
+    
+    public typealias ItemSelectionHandler = (_ isSelected: Bool) -> Void
+    
+    @discardableResult
+    public final func onItemSelection(handler: @escaping ItemSelectionHandler) -> UICartItemComponent {
+        
+        checkboxComponent.onToggleCheckbox(handler: handler)
         
         return self
         
