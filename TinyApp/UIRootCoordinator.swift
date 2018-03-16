@@ -139,7 +139,6 @@ public final class UIRootCoordinator: Coordinator {
 //            )
 //        )
         
-        
         self.rootComponent = gridComponent
         
         let tabBarController = UITabBarController(
@@ -163,6 +162,20 @@ public final class UIRootCoordinator: Coordinator {
         
         collapseBarController.setBackgroundViewController(
             componentViewController
+        )
+ 
+        cartBarComponent.setActionButtonItem(
+            UIPrimaryButtonItem(
+                title: "Checkout",
+                titleColor: .white,
+                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
+                backgroundColor: UIColor(
+                    red: 0.35,
+                    green: 0.56,
+                    blue: 0.87,
+                    alpha: 1.0
+                )
+            )
         )
         
         collapseBarController.setBarViewController(
