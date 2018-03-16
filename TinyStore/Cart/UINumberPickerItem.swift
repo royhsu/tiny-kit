@@ -15,9 +15,9 @@ public struct UINumberPickerItem {
         
         didSet {
             
-            validateMinimumNumber(
-                minimumNumber,
-                maximumNumber: maximumNumber
+            validateNumberRange(
+                minimum: minimumNumber,
+                maximum: maximumNumber
             )
             
         }
@@ -29,9 +29,9 @@ public struct UINumberPickerItem {
         
         didSet {
             
-            validateMinimumNumber(
-                minimumNumber,
-                maximumNumber: maximumNumber
+            validateNumberRange(
+                minimum: minimumNumber,
+                maximum: maximumNumber
             )
             
         }
@@ -90,18 +90,18 @@ public struct UINumberPickerItem {
         
         self.number = number
         
-        validateMinimumNumber(
-            minimumNumber,
-            maximumNumber: maximumNumber
+        validateNumberRange(
+            minimum: minimumNumber,
+            maximum: maximumNumber
         )
         
     }
     
     // MARK: Validation
     
-    fileprivate func validateMinimumNumber(_ minimumNumber: Int, maximumNumber: Int) {
+    fileprivate func validateNumberRange(minimum: Int, maximum: Int) {
         
-        if maximumNumber < minimumNumber {
+        if minimum < maximum {
             
             fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
             
