@@ -24,24 +24,13 @@ public struct UINumberPickerItem {
     
     public var number: Int {
         
-        didSet {
-            
-            didChangeNumberHandler?(
-                self,
-                number
-            )
-            
-        }
+        didSet { didChangeNumberHandler?(number) }
         
     }
     
-    public typealias DidChangeNumberHandler = (
-        _ item: UINumberPickerItem,
-        _ number: Int
-    )
-    -> Void
+    public typealias DidChangeNumberHandler = (_ number: Int) -> Void
     
-    public var didChangeNumberHandler: DidChangeNumberHandler?
+    internal var didChangeNumberHandler: DidChangeNumberHandler?
     
     public init(
         increaseIconImage: UIImage? = nil,

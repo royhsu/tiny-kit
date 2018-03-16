@@ -47,29 +47,32 @@ public final class UICartItemComponent: Component {
             brightness: 0.0
         )
         
-        self.quantityPickerComponent = UINumberPickerComponent()
-            .setItem(
-                UINumberPickerItem(
-                    increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
-                    increaseBackgroundColor: pickerTintColor,
-                    increaseTintColor: .white,
-                    decreaseIconImage: #imageLiteral(resourceName: "icon-minus").withRenderingMode(.alwaysTemplate),
-                    decreaseBackgroundColor: pickerTintColor,
-                    decreaseTintColor: .white,
-                    number: 1
-                )
+        self.quantityPickerComponent = UINumberPickerComponent(
+            minimumNumber: 1,
+            maximumNumber: 9
+        )
+        .setItem(
+            UINumberPickerItem(
+                increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
+                increaseBackgroundColor: pickerTintColor,
+                increaseTintColor: .white,
+                decreaseIconImage: #imageLiteral(resourceName: "icon-minus").withRenderingMode(.alwaysTemplate),
+                decreaseBackgroundColor: pickerTintColor,
+                decreaseTintColor: .white,
+                number: 1
             )
-            .onDidChangeNumber { component, number in
-             
-                print("quantity:", number)
-                
-            }
-            .onDidFail { component, error in
-                
-                // TODO: error handling.
-                print("\(error)")
-                
-            }
+        )
+        .onDidChangeNumber { number in
+         
+            print("quantity:", number)
+            
+        }
+        .onDidFail { error in
+            
+            // TODO: error handling.
+            print("\(error)")
+            
+        }
         
         itemComponent.itemView.editButton.setTitle(
             NSLocalizedString(

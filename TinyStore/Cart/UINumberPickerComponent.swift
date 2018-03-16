@@ -15,29 +15,23 @@ public final class UINumberPickerComponent: Component {
     
     private final let numberTextFieldBridge: UITextFieldBridge
     
-    private final let maximumNumber: Int
-    
     private final let minimumNumber: Int
+
+    private final let maximumNumber: Int
     
     private final var currentItem: UINumberPickerItem
     
-    public typealias DidChagneNumberHandler = (
-        _ component: Component,
-        _ number: Int
-    )
-    -> Void
+    public typealias DidChagneNumberHandler = (_ number: Int) -> Void
     
-    public final var didChangeNumberHandler: DidChagneNumberHandler?
-    
-    public typealias DidFailHandler = (
-        _ component: Component,
-        _ error: Error
-    )
-    -> Void
+    public typealias DidFailHandler = (_ error: Error) -> Void
     
     private final var didFailHandler: DidFailHandler?
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        minimumNumber: Int,
+        maximumNumber: Int
+    ) {
         
         let bundle = Bundle(
             for: type(of: self)
@@ -55,9 +49,9 @@ public final class UINumberPickerComponent: Component {
         
         self.numberTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
        
-        self.maximumNumber = 9
+        self.minimumNumber = minimumNumber
         
-        self.minimumNumber = 1
+        self.maximumNumber = maximumNumber
         
         if maximumNumber < minimumNumber {
             
@@ -87,10 +81,7 @@ public final class UINumberPickerComponent: Component {
                     validMaximum: self.maximumNumber
                 )
                 
-                self.didFailHandler?(
-                    self,
-                    error
-                )
+                self.didFailHandler?(error)
                 
                 return
                 
@@ -218,15 +209,6 @@ public extension UINumberPickerComponent {
         
         currentItem = item
         
-        currentItem.didChangeNumberHandler = { [unowned self] _, number in
-            
-            self.didChangeNumberHandler?(
-                self,
-                number
-            )
-            
-        }
-        
         let pickerView = itemComponent.itemView
         
         if let increaseIconImage = item.increaseIconImage {
@@ -276,7 +258,7 @@ public extension UINumberPickerComponent {
     @discardableResult
     public final func onDidChangeNumber(handler: DidChagneNumberHandler?) -> UINumberPickerComponent {
 
-        didChangeNumberHandler = handler
+        currentItem.didChangeNumberHandler = handler
         
         return self
         
