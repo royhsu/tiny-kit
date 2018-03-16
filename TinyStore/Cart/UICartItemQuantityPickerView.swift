@@ -28,6 +28,8 @@ public final class UICartItemQuantityPickerView: UIView {
     @IBOutlet
     public fileprivate(set) final weak var numberTextField: UITextField!
     
+    public final let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    
     public final override func awakeFromNib() {
         
         setUpRootView(self)
@@ -57,6 +59,8 @@ public final class UICartItemQuantityPickerView: UIView {
     fileprivate final func setUpDecreaseIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
     
     fileprivate final func setUpNumberContainerView(_ view: UIView) { view.backgroundColor = nil }
+    
+    let toolBar = UIToolbar()
     
     fileprivate final func setUpNumberTextField(_ textField: UITextField) {
         

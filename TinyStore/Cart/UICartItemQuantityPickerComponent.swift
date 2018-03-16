@@ -6,6 +6,17 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UICartItemQuantityPickerError
+
+public enum UICartItemQuantityPickerError: Error {
+    
+    case invalidQuantity(
+        string: String,
+        validRange: Range<Int>
+    )
+    
+}
+
 // MARK: - UICartItemQuantityPickerComponent
 
 public final class UICartItemQuantityPickerComponent: Component {
@@ -13,7 +24,13 @@ public final class UICartItemQuantityPickerComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartItemQuantityPickerView>
     
+    private final let quntityTextFieldBridge: UITextFieldBridge
+    
     private final var currentItem: UICartItemQuantityPickerItem
+    
+    public typealias ErrorHandler = (Error) -> Void
+    
+    private final var errorHandler: ErrorHandler?
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -21,7 +38,7 @@ public final class UICartItemQuantityPickerComponent: Component {
             for: type(of: self)
         )
         
-        self.itemComponent = UIItemComponent(
+        let itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
                 UICartItemQuantityPickerView.self,
@@ -29,7 +46,36 @@ public final class UICartItemQuantityPickerComponent: Component {
             )!
         )
         
+        self.itemComponent = itemComponent
+        
+        self.quntityTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
+        
         self.currentItem = UICartItemQuantityPickerItem()
+        
+        quntityTextFieldBridge.didEndEditing = { [unowned self] textField in
+            
+            let currentText = textField.text ?? ""
+            
+            guard
+                let quantity = Int(currentText),
+                quantity > 0,
+                quantity < 100
+            else  {
+                
+                textField.text = "1"
+                
+                let error: UICartItemQuantityPickerError = .invalidQuantity(
+                    string: currentText,
+                    validRange: 1..<100
+                )
+                
+                self.errorHandler?(error)
+                
+                return
+                
+            }
+            
+        }
         
         itemComponent.itemView.increaseButton.addTarget(
             self,
@@ -42,6 +88,28 @@ public final class UICartItemQuantityPickerComponent: Component {
             action: #selector(decreaseNumber),
             for: .touchUpInside
         )
+        
+        let toolBar = UIToolbar()
+        
+        toolBar.setItems(
+            [
+                UIBarButtonItem(
+                    barButtonSystemItem: .flexibleSpace,
+                    target: nil,
+                    action: nil
+                ),
+                UIBarButtonItem(
+                    barButtonSystemItem: .done,
+                    target: self,
+                    action: #selector(dismissKeyboard)
+                )
+            ],
+            animated: false
+        )
+        
+        toolBar.sizeToFit()
+        
+        itemComponent.itemView.numberTextField.inputAccessoryView = toolBar
         
         setItem(currentItem)
         
@@ -88,6 +156,9 @@ public final class UICartItemQuantityPickerComponent: Component {
         setItem(currentItem)
         
     }
+    
+    @objc
+    public final func dismissKeyboard(_ sender: Any) { view.endEditing(true) }
     
 }
 
@@ -139,6 +210,15 @@ public extension UICartItemQuantityPickerComponent {
         pickerView.decreaseIconImageView.tintColor = item.decreaseTintColor
         
         pickerView.numberTextField.text = "\(item.quantity)"
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func onError(handler: ErrorHandler?) -> UICartItemQuantityPickerComponent {
+        
+        errorHandler = handler
         
         return self
         

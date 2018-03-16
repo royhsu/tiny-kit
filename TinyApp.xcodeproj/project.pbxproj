@@ -88,6 +88,7 @@
 		B04F05DB205B5F530050C41C /* UICheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04F05DA205B5F530050C41C /* UICheckbox.xib */; };
 		B05EB106205B8399007FF319 /* UICartItemQuantityPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */; };
 		B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */; };
+		B05EB125205B9F2D007FF319 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05EB124205B9F2D007FF319 /* UITextFieldBridge.swift */; };
 		B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
@@ -282,6 +283,7 @@
 		B04F05DA205B5F530050C41C /* UICheckbox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICheckbox.xib; sourceTree = "<group>"; };
 		B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartItemQuantityPickerItem.swift; sourceTree = "<group>"; };
 		B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Adjustments.swift"; sourceTree = "<group>"; };
+		B05EB124205B9F2D007FF319 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
 		B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				B04F05C2205A34710050C41C /* UICartItemQuantityPickerView.swift */,
 				B04F05C4205A34D40050C41C /* UICartItemQuantityPickerView.xib */,
 				B05EB105205B8399007FF319 /* UICartItemQuantityPickerItem.swift */,
+				B05EB124205B9F2D007FF319 /* UITextFieldBridge.swift */,
 				B04F05C6205A361D0050C41C /* UICartItemQuantityPickerComponent.swift */,
 				B04F05B8205A2C7E0050C41C /* UICartItemView.swift */,
 				B04F05BA205A2CBD0050C41C /* UICartItemView.xib */,
@@ -1039,6 +1042,7 @@
 				B032B07C2057FC5300AB47C4 /* UIProductDescription.swift in Sources */,
 				B04F05C9205A3D5F0050C41C /* UICollapseBarController.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,
+				B05EB125205B9F2D007FF319 /* UITextFieldBridge.swift in Sources */,
 				B04F05CF205A5F550050C41C /* UICartBar.swift in Sources */,
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,
 				B032B06E2057C2BD00AB47C4 /* UIProductReviewView.swift in Sources */,
