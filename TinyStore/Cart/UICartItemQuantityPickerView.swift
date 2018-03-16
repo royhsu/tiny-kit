@@ -14,8 +14,14 @@ public final class UICartItemQuantityPickerView: UIView {
     public fileprivate(set) final weak var increaseIconImageView: UIImageView!
     
     @IBOutlet
+    public fileprivate(set) final weak var increaseButton: UIButton!
+    
+    @IBOutlet
     public fileprivate(set) final weak var decreaseIconImageView: UIImageView!
     
+    @IBOutlet
+    public fileprivate(set) final weak var decreaseButton: UIButton!
+
     @IBOutlet
     public fileprivate(set) final weak var numberContainerView: UIView!
     
@@ -55,6 +61,8 @@ public final class UICartItemQuantityPickerView: UIView {
     fileprivate final func setUpNumberTextField(_ textField: UITextField) {
         
         textField.borderStyle = .none
+        
+        textField.backgroundColor = nil
         
         textField.textAlignment = .center
         

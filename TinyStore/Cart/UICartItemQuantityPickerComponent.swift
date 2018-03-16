@@ -13,6 +13,8 @@ public final class UICartItemQuantityPickerComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartItemQuantityPickerView>
     
+    private final var currentItem: UICartItemQuantityPickerItem
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         let bundle = Bundle(
@@ -27,9 +29,21 @@ public final class UICartItemQuantityPickerComponent: Component {
             )!
         )
         
-        self.setItem(
-            UICartItemQuantityPickerItem()
+        self.currentItem = UICartItemQuantityPickerItem()
+        
+        itemComponent.itemView.increaseButton.addTarget(
+            self,
+            action: #selector(increaseNumber),
+            for: .touchUpInside
         )
+        
+        itemComponent.itemView.decreaseButton.addTarget(
+            self,
+            action: #selector(decreaseNumber),
+            for: .touchUpInside
+        )
+        
+        setItem(currentItem)
         
     }
     
@@ -51,12 +65,34 @@ public final class UICartItemQuantityPickerComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Action
+    
+    @objc
+    public final func increaseNumber(_ sender: Any) {
+        
+        currentItem.quantity += 1
+        
+        setItem(currentItem)
+        
+    }
+    
+    @objc
+    public final func decreaseNumber(_ sender: Any) {
+        
+        currentItem.quantity -= 1
+        
+        setItem(currentItem)
+        
+    }
+    
 }
 
 public extension UICartItemQuantityPickerComponent {
     
     @discardableResult
     public final func setItem(_ item: UICartItemQuantityPickerItem) -> UICartItemQuantityPickerComponent {
+        
+        currentItem = item
         
         let pickerView = itemComponent.itemView
         

@@ -13,6 +13,9 @@ public final class UICheckbox: UIView {
     @IBOutlet
     public fileprivate(set) final weak var iconImageView: UIImageView!
     
+    @IBOutlet
+    public fileprivate(set) final weak var actionButton: UIButton!
+    
     public final override func awakeFromNib() {
         
         setUpIconImageView(iconImageView)

@@ -39,11 +39,10 @@ public final class UICheckboxComponent: Component {
         
         self.itemComponent = itemComponent
         
-        self.itemComponent.itemView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(toggleCheckbox)
-            )
+        self.itemComponent.itemView.actionButton.addTarget(
+            self,
+            action: #selector(toggleCheckbox),
+            for: .touchUpInside
         )
         
         self.setUpCheckbox(

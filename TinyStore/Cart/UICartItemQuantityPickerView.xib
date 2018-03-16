@@ -17,7 +17,22 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8rF-59-Sai">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="GRc-uX-pYs"/>
+                    </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46D-fl-2dF">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="25"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-MX-YZk">
+                    <rect key="frame" x="0.0" y="55" width="40" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="nLV-r4-nrH"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7D-1V-Noy">
+                    <rect key="frame" x="0.0" y="55" width="40" height="25"/>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D55-dW-RXN">
                     <rect key="frame" x="0.0" y="25" width="40" height="30"/>
                     <subviews>
@@ -36,29 +51,34 @@
                         <constraint firstAttribute="trailing" secondItem="Lma-Jh-j9u" secondAttribute="trailing" id="ZP6-BW-F9W"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-MX-YZk">
-                    <rect key="frame" x="0.0" y="55" width="40" height="25"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="46D-fl-2dF" firstAttribute="bottom" secondItem="8rF-59-Sai" secondAttribute="bottom" id="5cC-je-dF8"/>
                 <constraint firstItem="D55-dW-RXN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6KP-vU-o6R"/>
-                <constraint firstAttribute="bottom" secondItem="D55-dW-RXN" secondAttribute="bottom" constant="25" id="DeL-xP-IdK"/>
+                <constraint firstItem="L7D-1V-Noy" firstAttribute="leading" secondItem="rYA-MX-YZk" secondAttribute="leading" id="Avs-Po-Whu"/>
+                <constraint firstItem="L7D-1V-Noy" firstAttribute="top" secondItem="rYA-MX-YZk" secondAttribute="top" id="Gdo-q0-4Gt"/>
+                <constraint firstItem="L7D-1V-Noy" firstAttribute="bottom" secondItem="rYA-MX-YZk" secondAttribute="bottom" id="Ggl-jY-aFL"/>
+                <constraint firstItem="46D-fl-2dF" firstAttribute="leading" secondItem="8rF-59-Sai" secondAttribute="leading" id="LX2-Xi-bLq"/>
                 <constraint firstAttribute="trailing" secondItem="8rF-59-Sai" secondAttribute="trailing" id="P2L-hz-JUG"/>
-                <constraint firstItem="D55-dW-RXN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="QeU-4F-Tsm"/>
-                <constraint firstItem="rYA-MX-YZk" firstAttribute="top" secondItem="D55-dW-RXN" secondAttribute="bottom" id="VaH-v7-0F8"/>
+                <constraint firstItem="46D-fl-2dF" firstAttribute="top" secondItem="8rF-59-Sai" secondAttribute="top" id="PAN-rf-Ddq"/>
                 <constraint firstItem="8rF-59-Sai" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="VxC-1L-7Qf"/>
                 <constraint firstItem="rYA-MX-YZk" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Z3j-eB-Oft"/>
                 <constraint firstAttribute="trailing" secondItem="D55-dW-RXN" secondAttribute="trailing" id="dyR-d6-Unu"/>
                 <constraint firstItem="rYA-MX-YZk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fCm-jw-qD9"/>
+                <constraint firstItem="D55-dW-RXN" firstAttribute="top" secondItem="8rF-59-Sai" secondAttribute="bottom" id="lbn-kb-RCd"/>
                 <constraint firstItem="8rF-59-Sai" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ubl-N1-5dg"/>
-                <constraint firstItem="D55-dW-RXN" firstAttribute="top" secondItem="8rF-59-Sai" secondAttribute="bottom" id="vMG-8m-r7r"/>
+                <constraint firstItem="46D-fl-2dF" firstAttribute="trailing" secondItem="8rF-59-Sai" secondAttribute="trailing" id="ucz-5Z-diT"/>
+                <constraint firstItem="L7D-1V-Noy" firstAttribute="trailing" secondItem="rYA-MX-YZk" secondAttribute="trailing" id="vsx-ei-2Ua"/>
+                <constraint firstItem="rYA-MX-YZk" firstAttribute="top" secondItem="D55-dW-RXN" secondAttribute="bottom" id="wpK-RN-daU"/>
                 <constraint firstItem="rYA-MX-YZk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="y6l-Hh-lRM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="decreaseButton" destination="L7D-1V-Noy" id="Yn7-qw-QSB"/>
                 <outlet property="decreaseIconImageView" destination="rYA-MX-YZk" id="Xms-2n-ZmP"/>
+                <outlet property="increaseButton" destination="46D-fl-2dF" id="jrC-A2-djR"/>
                 <outlet property="increaseIconImageView" destination="8rF-59-Sai" id="cZ0-5X-sWb"/>
                 <outlet property="numberContainerView" destination="D55-dW-RXN" id="2iW-Ba-cTx"/>
                 <outlet property="numberTextField" destination="Lma-Jh-j9u" id="VKF-qz-wiW"/>
