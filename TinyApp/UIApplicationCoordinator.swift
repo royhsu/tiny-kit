@@ -12,6 +12,7 @@ import TinyAuth
 
 public final class UIApplicationCoordinator: Coordinator {
 
+    /// The navigator.
     private final let window: UIWindow
 
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
@@ -27,7 +28,7 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        self.rootCoordinator = UIRootCoordinator(contentSize: contentSize)
+        self.rootCoordinator = UIStoreCoordinator()
         
     }
 

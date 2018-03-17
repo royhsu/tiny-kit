@@ -16,13 +16,8 @@ import TinyStore
 
 public final class UIRootCoordinator: Coordinator {
     
-    private final let rootViewController: UIViewController
-    
-    private final let rootComponent: Component
-    
-    private final let cartItemListComponent = UICartItemListComponent()
-    
-    private final let cartBarComponent = UICartBarComponent()
+    /// The navigator.
+//    private final let rootViewController: UIViewController
     
     public init(contentSize: CGSize) {
 
@@ -46,20 +41,20 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        cartItemListComponent.setItems(
-            [
-                UICartItem(
-                    previewImage: #imageLiteral(resourceName: "image-dessert-3"),
-                    title: "Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper.",
-                    price: 150.0
-                ),
-                UICartItem(
-                    previewImage: #imageLiteral(resourceName: "image-dessert-1"),
-                    title: "Cras mattis consectetur purus sit amet fermentum.",
-                    price: 120.0
-                )
-            ]
-        )
+//        cartItemListComponent.setItems(
+//            [
+//                UICartItem(
+//                    previewImage: #imageLiteral(resourceName: "image-dessert-3"),
+//                    title: "Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper.",
+//                    price: 150.0
+//                ),
+//                UICartItem(
+//                    previewImage: #imageLiteral(resourceName: "image-dessert-1"),
+//                    title: "Cras mattis consectetur purus sit amet fermentum.",
+//                    price: 120.0
+//                )
+//            ]
+//        )
         
 //        let rootComponent = UICollapseBarController(
 //            contentMode: .size(
@@ -139,78 +134,67 @@ public final class UIRootCoordinator: Coordinator {
 //            )
 //        )
         
-        self.rootComponent = gridComponent
+//        self.rootComponent = gridComponent
+//
+//        let tabBarController = UITabBarController(
+//            nibName: nil,
+//            bundle: nil
+//        )
         
-        let tabBarController = UITabBarController(
-            nibName: nil,
-            bundle: nil
-        )
+//        let componentViewController = UIComponentViewController(component: rootComponent)
+//
+//        componentViewController.tabBarItem = UITabBarItem(
+//            tabBarSystemItem: .featured,
+//            tag: 0
+//        )
+//
+//        let collapseBarController = UICollapseBarController()
+//
+//        collapseBarController.tabBarItem = UITabBarItem(
+//            tabBarSystemItem: .featured,
+//            tag: 0
+//        )
+//
+//        collapseBarController.setBackgroundViewController(
+//            componentViewController
+//        )
+//
+
+//
+//        collapseBarController.setBarViewController(
+//            UIComponentViewController(component: cartBarComponent)
+//        )
+//
+//        collapseBarController.setBarContentViewController(
+//            UIComponentViewController(component: cartItemListComponent)
+//        )
         
-        let componentViewController = UIComponentViewController(component: rootComponent)
-        
-        componentViewController.tabBarItem = UITabBarItem(
-            tabBarSystemItem: .featured,
-            tag: 0
-        )
-        
-        let collapseBarController = UICollapseBarController()
-        
-        collapseBarController.tabBarItem = UITabBarItem(
-            tabBarSystemItem: .featured,
-            tag: 0
-        )
-        
-        collapseBarController.setBackgroundViewController(
-            componentViewController
-        )
- 
-        cartBarComponent.setActionButtonItem(
-            UIPrimaryButtonItem(
-                title: "Checkout",
-                titleColor: .white,
-                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
-                backgroundColor: UIColor(
-                    red: 0.35,
-                    green: 0.56,
-                    blue: 0.87,
-                    alpha: 1.0
-                )
-            )
-        )
-        
-        collapseBarController.setBarViewController(
-            UIComponentViewController(component: cartBarComponent)
-        )
-        
-        collapseBarController.setBarContentViewController(
-            UIComponentViewController(component: cartItemListComponent)
-        )
-        
-        tabBarController.setViewControllers(
-            [ collapseBarController ],
-            animated: true
-        )
-        
-        self.rootViewController = tabBarController
+//        tabBarController.setViewControllers(
+//            [ collapseBarController ],
+//            animated: true
+//        )
+//
+//        self.rootViewController = tabBarController
         
     }
     
     public final func activate() {
         
-        rootComponent.render()
-        
-        cartBarComponent.render()
-        
-        cartItemListComponent.render()
-        
+//        rootComponent.render()
+//
+//        cartBarComponent.render()
+//
+//        cartItemListComponent.render()
+//
     }
     
 }
 
 // MARK: - ViewRenderable
 
-extension UIRootCoordinator: ViewControllerRepresentable {
-    
-    public final var viewController: ViewController { return rootViewController }
-    
-}
+//extension UIRootCoordinator: ViewControllerRepresentable {
+//    
+//    public final var viewController: ViewController { return rootViewController }
+//    
+//}
+
