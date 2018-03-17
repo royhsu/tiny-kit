@@ -17,13 +17,13 @@ public final class UIStoreCoordinator: Coordinator {
     /// The navigator.
     private final let collapseBarController: UICollapseBarController
     
-    private final let cartBarComponent: UICartBarComponent
+    private final let cartCoordinator: UICartCoordinator
     
     public init() {
         
         self.collapseBarController = UICollapseBarController()
         
-        self.cartBarComponent = UICartBarComponent()
+        self.cartCoordinator = UICartCoordinator()
         
     }
     
@@ -31,26 +31,9 @@ public final class UIStoreCoordinator: Coordinator {
     
     public final func activate() {
         
-        collapseBarController.setBarViewController(
-            UIComponentViewController(component: cartBarComponent)
-        )
+        collapseBarController.setBarViewController(cartCoordinator.viewController)
         
-        // TODO: apply the theme.
-        cartBarComponent.setActionButtonItem(
-            UIPrimaryButtonItem(
-                title: "Checkout",
-                titleColor: .white,
-                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
-                backgroundColor: UIColor(
-                    red: 0.35,
-                    green: 0.56,
-                    blue: 0.87,
-                    alpha: 1.0
-                )
-            )
-        )
-        
-        cartBarComponent.render()
+        cartCoordinator.activate()
         
     }
     
