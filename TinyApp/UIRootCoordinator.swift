@@ -20,26 +20,6 @@ public final class UIRootCoordinator: Coordinator {
 //    private final let rootViewController: UIViewController
     
     public init(contentSize: CGSize) {
-
-        let gridComponent = UIGridComponent().setItems(
-            [
-                UIGridItem(
-                    previewImages: [ #imageLiteral(resourceName: "image-dessert-1") ],
-                    title: "Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.",
-                    subtitle: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
-                ),
-                UIGridItem(
-                    previewImages: [ #imageLiteral(resourceName: "image-dessert-2") ],
-                    title: "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus.",
-                    subtitle: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
-                ),
-                UIGridItem(
-                    previewImages: [ #imageLiteral(resourceName: "image-dessert-3") ],
-                    title: "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.",
-                    subtitle: "Cras mattis consectetur purus sit amet fermentum."
-                )
-            ]
-        )
         
 //        cartItemListComponent.setItems(
 //            [
@@ -55,16 +35,6 @@ public final class UIRootCoordinator: Coordinator {
 //                )
 //            ]
 //        )
-        
-//        let rootComponent = UICollapseBarController(
-//            contentMode: .size(
-//                width: contentSize.width,
-//                height: contentSize.height
-//            ),
-//            backgroundComponent: gridComponent,
-//            itemListComponent: itemListComponent
-//        )
-        
         
 //        let rootComponent = UIProductDetailComponent(
 //            contentMode: .size(

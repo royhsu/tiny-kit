@@ -18,7 +18,7 @@
 		B01EFA12205D2D7900CF9C17 /* UINumberPickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA0C205D2D7800CF9C17 /* UINumberPickerComponent.swift */; };
 		B01EFA13205D2D7900CF9C17 /* UINumberPickerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA0D205D2D7900CF9C17 /* UINumberPickerError.swift */; };
 		B01EFA14205D2D7900CF9C17 /* UINumberPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EFA0E205D2D7900CF9C17 /* UINumberPickerView.xib */; };
-		B01EFA18205D32F300CF9C17 /* UIStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA17205D32F300CF9C17 /* UIStoreCoordinator.swift */; };
+		B01EFA18205D32F300CF9C17 /* UIHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA17205D32F300CF9C17 /* UIHomeCoordinator.swift */; };
 		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -90,6 +90,7 @@
 		B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */; };
 		B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */; };
 		B075A1F8205D399B002FE2B1 /* UICartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075A1F7205D399B002FE2B1 /* UICartCoordinator.swift */; };
+		B075A1FA205D4387002FE2B1 /* UIStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075A1F9205D4387002FE2B1 /* UIStoreCoordinator.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
 		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
@@ -218,7 +219,7 @@
 		B01EFA0C205D2D7800CF9C17 /* UINumberPickerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINumberPickerComponent.swift; sourceTree = "<group>"; };
 		B01EFA0D205D2D7900CF9C17 /* UINumberPickerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINumberPickerError.swift; sourceTree = "<group>"; };
 		B01EFA0E205D2D7900CF9C17 /* UINumberPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UINumberPickerView.xib; sourceTree = "<group>"; };
-		B01EFA17205D32F300CF9C17 /* UIStoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreCoordinator.swift; sourceTree = "<group>"; };
+		B01EFA17205D32F300CF9C17 /* UIHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHomeCoordinator.swift; sourceTree = "<group>"; };
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -285,6 +286,7 @@
 		B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Adjustments.swift"; sourceTree = "<group>"; };
 		B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B075A1F7205D399B002FE2B1 /* UICartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartCoordinator.swift; sourceTree = "<group>"; };
+		B075A1F9205D4387002FE2B1 /* UIStoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreCoordinator.swift; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
 		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -517,7 +519,8 @@
 				B0A629AD204674AA000F97E3 /* AuthCoordinator.swift */,
 				B0A629AF204675D4000F97E3 /* UIAuthCoordinator.swift */,
 				B044A01F2045894A00AAED35 /* UILandingCoordinator.swift */,
-				B01EFA17205D32F300CF9C17 /* UIStoreCoordinator.swift */,
+				B01EFA17205D32F300CF9C17 /* UIHomeCoordinator.swift */,
+				B075A1F9205D4387002FE2B1 /* UIStoreCoordinator.swift */,
 				B075A1F7205D399B002FE2B1 /* UICartCoordinator.swift */,
 				B03C3E6C20457FEC004E318B /* Assets.xcassets */,
 				B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */,
@@ -991,9 +994,10 @@
 				B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
 				B075A1F8205D399B002FE2B1 /* UICartCoordinator.swift in Sources */,
+				B075A1FA205D4387002FE2B1 /* UIStoreCoordinator.swift in Sources */,
 				B0A629B0204675D4000F97E3 /* UIAuthCoordinator.swift in Sources */,
 				B0A629AE204674AA000F97E3 /* AuthCoordinator.swift in Sources */,
-				B01EFA18205D32F300CF9C17 /* UIStoreCoordinator.swift in Sources */,
+				B01EFA18205D32F300CF9C17 /* UIHomeCoordinator.swift in Sources */,
 				B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */,
 				B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */,
 			);
