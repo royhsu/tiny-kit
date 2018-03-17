@@ -10,6 +10,10 @@
 		B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */; };
 		B0117D36205B605400DD9619 /* UICheckboxComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0117D35205B605400DD9619 /* UICheckboxComponent.swift */; };
 		B0117D38205B626800DD9619 /* UICheckboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0117D37205B626800DD9619 /* UICheckboxItem.swift */; };
+		B01EF9DE205CC29A00CF9C17 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9DD205CC29A00CF9C17 /* Observable.swift */; };
+		B01EF9E0205CC36600CF9C17 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9DF205CC36600CF9C17 /* Result.swift */; };
+		B01EF9E2205CC37C00CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E1205CC37C00CF9C17 /* Validator.swift */; };
+		B01EF9E4205CC45500CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E3205CC45500CF9C17 /* Inputable.swift */; };
 		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -211,6 +215,10 @@
 		B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeader.swift; sourceTree = "<group>"; };
 		B0117D35205B605400DD9619 /* UICheckboxComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckboxComponent.swift; sourceTree = "<group>"; };
 		B0117D37205B626800DD9619 /* UICheckboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckboxItem.swift; sourceTree = "<group>"; };
+		B01EF9DD205CC29A00CF9C17 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		B01EF9DF205CC36600CF9C17 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B01EF9E1205CC37C00CF9C17 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		B01EF9E3205CC45500CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -631,6 +639,10 @@
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
 				B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */,
+				B01EF9DD205CC29A00CF9C17 /* Observable.swift */,
+				B01EF9DF205CC36600CF9C17 /* Result.swift */,
+				B01EF9E1205CC37C00CF9C17 /* Validator.swift */,
+				B01EF9E3205CC45500CF9C17 /* Inputable.swift */,
 			);
 			path = TinyStore;
 			sourceTree = "<group>";
@@ -1027,6 +1039,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01EF9DE205CC29A00CF9C17 /* Observable.swift in Sources */,
 				B032B06C2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift in Sources */,
 				B032B0602057A92F00AB47C4 /* UIProductGalleryComponent.swift in Sources */,
 				B032B0682057BE6100AB47C4 /* UIProductSectionHeaderView.swift in Sources */,
@@ -1036,6 +1049,7 @@
 				B05EB127205BD308007FF319 /* UINumberPickerError.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
+				B01EF9E4205CC45500CF9C17 /* Inputable.swift in Sources */,
 				B05EB106205B8399007FF319 /* UINumberPickerItem.swift in Sources */,
 				B0117D36205B605400DD9619 /* UICheckboxComponent.swift in Sources */,
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
@@ -1054,6 +1068,7 @@
 				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
 				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,
 				B032B0762057CA3500AB47C4 /* UIProductReview.swift in Sources */,
+				B01EF9E2205CC37C00CF9C17 /* Validator.swift in Sources */,
 				B032B0722057C4FC00AB47C4 /* UIProductReviewComponent.swift in Sources */,
 				B032B0662057BBB800AB47C4 /* UIProductDescriptionComponent.swift in Sources */,
 				B0117D38205B626800DD9619 /* UICheckboxItem.swift in Sources */,
@@ -1062,6 +1077,7 @@
 				B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */,
 				B032B0592057A6FE00AB47C4 /* UIProductGalleryView.swift in Sources */,
 				B04F05D9205B5F370050C41C /* UICheckbox.swift in Sources */,
+				B01EF9E0205CC36600CF9C17 /* Result.swift in Sources */,
 				B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */,
 				B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */,
 				B04F05BF205A30660050C41C /* UICartItemListComponent.swift in Sources */,
