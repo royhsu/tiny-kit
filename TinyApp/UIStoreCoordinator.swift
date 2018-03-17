@@ -9,8 +9,6 @@
 // MARK: - UIStoreCoordinator
 
 import TinyKit
-import TinyStore
-import TinyUI
 
 public final class UIStoreCoordinator: Coordinator {
     
