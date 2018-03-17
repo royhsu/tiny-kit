@@ -13,6 +13,7 @@ import TinyLanding
 
 public final class UILandingCoordinator: Coordinator {
     
+    /// The navigator.
     private final let navigationController: UINavigationController
     
     private final let landingComponent: UILandingComponent
