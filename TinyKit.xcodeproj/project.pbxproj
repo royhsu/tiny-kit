@@ -36,6 +36,16 @@
 		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FD203BFD580074CD5E /* Coordinator.swift */; };
 		B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */; };
+		B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */; };
+		B01EF9F3205D2C9800CF9C17 /* UICollapseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */; };
+		B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */; };
+		B01EF9F9205D2CD000CF9C17 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */; };
+		B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */; };
+		B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F7205D2CD000CF9C17 /* Result.swift */; };
+		B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F8205D2CD000CF9C17 /* Validator.swift */; };
+		B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FD205D2CF500CF9C17 /* Subscription.swift */; };
+		B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FE205D2CF500CF9C17 /* Observable.swift */; };
+		B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */; };
 		B02B43A62049942500F3D7C0 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A52049942500F3D7C0 /* UICollectionComponent.swift */; };
 		B02B43A92049947B00F3D7C0 /* UICollectionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */; };
 		B02B43AB20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43AA20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift */; };
@@ -107,6 +117,16 @@
 		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B01ED1FD203BFD580074CD5E /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
+		B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseView.swift; sourceTree = "<group>"; };
+		B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICollapseView.xib; sourceTree = "<group>"; };
+		B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseBarController.swift; sourceTree = "<group>"; };
+		B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
+		B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
+		B01EF9F7205D2CD000CF9C17 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B01EF9F8205D2CD000CF9C17 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		B01EF9FD205D2CF500CF9C17 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		B01EF9FE205D2CF500CF9C17 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
 		B02B43A52049942500F3D7C0 /* UICollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
 		B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponentTests.swift; sourceTree = "<group>"; };
 		B02B43AA20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCollectionComponentBridge.swift; sourceTree = "<group>"; };
@@ -171,10 +191,16 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B01EF9ED205D2C4100CF9C17 /* Collapsable Bar */,
+				B01EF9EC205D2B8000CF9C17 /* Observable */,
 				B01ED1FC203BFD260074CD5E /* Coordinator */,
 				B00D961F2030758A00EF0B7A /* Component */,
 				B00D96302030758A00EF0B7A /* View */,
 				B05E677E20394388003E8E0E /* UIKit */,
+				B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */,
+				B01EF9F7205D2CD000CF9C17 /* Result.swift */,
+				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
+				B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
@@ -300,6 +326,25 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		B01EF9EC205D2B8000CF9C17 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				B01EF9FE205D2CF500CF9C17 /* Observable.swift */,
+				B01EF9FD205D2CF500CF9C17 /* Subscription.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		B01EF9ED205D2C4100CF9C17 /* Collapsable Bar */ = {
+			isa = PBXGroup;
+			children = (
+				B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */,
+				B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */,
+				B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */,
+			);
+			path = "Collapsable Bar";
+			sourceTree = "<group>";
+		};
 		B03C3E4A20456E69004E318B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +362,7 @@
 				B00D962E2030758A00EF0B7A /* UIView */,
 				B05E67922039B7B4003E8E0E /* Component */,
 				B05E67912039B77B003E8E0E /* View */,
+				B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -439,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01EF9F3205D2C9800CF9C17 /* UICollapseView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,8 +526,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */,
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */,
+				B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */,
+				B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
 				B02B43AB20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift in Sources */,
 				B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */,
@@ -488,11 +538,16 @@
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
+				B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */,
+				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
+				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
 				B02B43A62049942500F3D7C0 /* UICollectionComponent.swift in Sources */,
+				B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
 				B03C3E4920456E2D004E318B /* ViewController.swift in Sources */,
 				B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */,
+				B01EF9F9205D2CD000CF9C17 /* WeakObject.swift in Sources */,
 				B05E677720386432003E8E0E /* UITableViewListComponentBridge.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
@@ -501,6 +556,7 @@
 				B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */,
 				B0606FA9204A579200091504 /* AnyCollection+ComponentGroup.swift in Sources */,
 				B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */,
+				B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 //
 //  UITextFieldBridge.swift
-//  TinyStore
+//  TinyKit
 //
 //  Created by Roy Hsu on 16/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
@@ -8,24 +8,24 @@
 
 // MARK: - UITextFieldBridge
 
-internal final class UITextFieldBridge: NSObject {
+public final class UITextFieldBridge: NSObject {
     
-    internal final unowned let textField: UITextField
+    public final unowned let textField: UITextField
     
-    internal typealias DidEndEditing = (_ textField: UITextField) -> Void
+    public typealias DidEndEditing = (_ textField: UITextField) -> Void
     
-    internal final var didEndEditing: DidEndEditing?
+    public final var didEndEditing: DidEndEditing?
     
-    internal typealias ShouldChangeCharactersHandler = (
+    public typealias ShouldChangeCharactersHandler = (
         _ textField: UITextField,
         _ range: NSRange,
         _ replacementString: String
     )
     -> Bool
     
-    internal final var shouldChangeCharactersHandler: ShouldChangeCharactersHandler?
+    public final var shouldChangeCharactersHandler: ShouldChangeCharactersHandler?
     
-    internal init(textField: UITextField) {
+    public init(textField: UITextField) {
         
         self.textField = textField
         
@@ -41,9 +41,9 @@ internal final class UITextFieldBridge: NSObject {
 
 extension UITextFieldBridge: UITextFieldDelegate {
     
-    internal final func textFieldDidEndEditing(_ textField: UITextField) { didEndEditing?(textField) }
+    public final func textFieldDidEndEditing(_ textField: UITextField) { didEndEditing?(textField) }
     
-    internal final func textField(
+    public final func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String

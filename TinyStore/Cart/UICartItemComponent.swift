@@ -8,6 +8,8 @@
 
 // MARK: - UICartItemComponent
 
+import TinyUI
+
 public final class UICartItemComponent: Component {
     
     /// The base component.

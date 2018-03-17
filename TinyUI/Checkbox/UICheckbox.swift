@@ -1,6 +1,6 @@
 //
 //  UICheckbox.swift
-//  TinyStore
+//  TinyUI
 //
 //  Created by Roy Hsu on 16/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
@@ -24,10 +24,6 @@ public final class UICheckbox: UIView {
     
     // MARK: Set Up
     
-    fileprivate final func setUpIconImageView(_ imageView: UIImageView) {
-        
-        imageView.contentMode = .center
-        
-    }
+    fileprivate final func setUpIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
     
 }

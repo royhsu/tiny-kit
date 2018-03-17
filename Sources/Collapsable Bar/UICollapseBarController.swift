@@ -1,14 +1,12 @@
 //
 //  UICollapseBarController.swift
-//  TinyStore
+//  TinyKit
 //
 //  Created by Roy Hsu on 15/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
 // MARK: - UICollapseBarController
-
-import TinyUI
 
 public final class UICollapseBarController: UIViewController {
     

@@ -1,17 +1,17 @@
 //
-//  Validator.swift
-//  TinyStore
+//  Inputable.swift
+//  TinyKit
 //
 //  Created by Roy Hsu on 17/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - Validator
+// MARK: - Inputable
 
-public protocol Validator {
+public protocol Inputable {
     
     associatedtype T
     
-    func validate(value: Any) -> Result<T>
+    var input: Observable<T> { get }
     
 }
