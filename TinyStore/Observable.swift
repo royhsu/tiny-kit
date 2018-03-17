@@ -5,6 +5,7 @@
 //  Created by Roy Hsu on 17/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
+
 // MARK: - Observable
 
 public final class Observable<T> {
@@ -15,9 +16,14 @@ public final class Observable<T> {
             
             let newValue = value
             
-            subscriberMap.values.forEach { subscriber in
+            // Clean up the dead objects.
+            weakObjects = weakObjects.filter { $0.reference != nil }
+            
+            weakObjects.forEach { object in
                 
-                subscriber(
+                let subscriber = object.reference?.subscriber
+                
+                subscriber?(
                     oldValue,
                     newValue
                 )
@@ -28,35 +34,33 @@ public final class Observable<T> {
         
     }
     
-    public typealias Subscriber = (
-        _ oldValue: T,
-        _ newValue: T
-    )
-    -> Void
+    public typealias AnySubscription = Subscription<T>
     
-    private final var subscriberMap: [Subscription: Subscriber] = [:]
+    public typealias AnySubscriber = AnySubscription.Subscriber
+    
+    private final var weakObjects: [WeakObject<AnySubscription>] = []
     
     public init(_ value: T) { self.value = value }
     
 }
 
-import Foundation
-
-extension Observable {
+public extension Observable {
     
-    @discardableResult
-    public final func subscribe(with subscriber: @escaping Subscriber) -> Subscription {
-    
+    /// A subscriber must keep the strong reference to the subscription while observing.
+    /// Unsubscribing is easy. Just set the reference of the subscription to nil.
+    public final func subscribe(with subscriber: @escaping AnySubscriber) -> AnySubscription {
+        
         let subscription = Subscription(
-            token: UUID().uuidString
+            token: UUID().uuidString,
+            subscriber: subscriber
         )
-    
-        subscriberMap[subscription] = subscriber
+        
+        weakObjects.append(
+            WeakObject(subscription)
+        )
         
         return subscription
         
     }
-    
-    public final func unsubscribe(for subscription: Subscription) { subscriberMap[subscription] = nil }
     
 }

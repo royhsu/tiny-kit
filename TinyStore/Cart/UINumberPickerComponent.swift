@@ -6,67 +6,6 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UINumberPickerInputValidator
-
-public struct UINumberPickerInputValidator: Validator {
-    
-    public let minimumNumber: Int
-    
-    public let maximumNumber: Int
-    
-    public init(
-        minimumNumber: Int,
-        maximumNumber: Int
-    ) {
-        
-        if minimumNumber > maximumNumber {
-            
-            fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
-            
-        }
-        
-        self.minimumNumber = minimumNumber
-        
-        self.maximumNumber = maximumNumber
-        
-    }
-    
-    public func validate(value: Any) -> Result<Int> {
-
-        let newValue: Int
-        
-        if
-            let stringValue = value as? String,
-            let intValue = Int(stringValue) {
-          
-            newValue = intValue
-            
-        }
-        else if let intValue = value as? Int { newValue = intValue }
-        else { newValue = -1 }
-        
-        guard
-            newValue >= minimumNumber,
-            newValue <= maximumNumber
-        else {
-            
-            let error: UINumberPickerError = .invalidNumber(
-                value: value,
-                validMinimum: minimumNumber,
-                validMaximum: maximumNumber
-            )
-            
-            return .failure(error)
-            
-        }
-
-        return .success(newValue)
-        
-    }
-    
-    
-}
-
 // MARK: - UINumberPickerComponent
 
 public final class UINumberPickerComponent: Component, Inputable {
@@ -76,13 +15,9 @@ public final class UINumberPickerComponent: Component, Inputable {
     
     private final let numberTextFieldBridge: UITextFieldBridge
     
-    public final let input: Observable<Int>
-    
     private final let validator: UINumberPickerInputValidator
     
     private final var currentItem: UINumberPickerItem
-    
-    public typealias DidChagneNumberHandler = (_ number: Int) -> Void
     
     public typealias DidFailHandler = (_ error: Error) -> Void
     
@@ -125,7 +60,7 @@ public final class UINumberPickerComponent: Component, Inputable {
             maximumNumber: maximumNumber
         )
         
-        input.subscribe {_, newValue in numberTextField.text = "\(newValue)" }
+        inputSubscription = input.subscribe {_, newValue in numberTextField.text = "\(newValue)" }
         
         numberTextFieldBridge.didEndEditing = { [unowned self] textField in
             
@@ -204,6 +139,12 @@ public final class UINumberPickerComponent: Component, Inputable {
         textField.inputAccessoryView = toolBar
         
     }
+    
+    // MARK: Inputaable
+    
+    public final let input: Observable<Int>
+    
+    private final var inputSubscription: Subscription<Int>?
     
     // MARK: Component
     

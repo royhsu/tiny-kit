@@ -15,6 +15,8 @@
 		B01EF9E2205CC37C00CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E1205CC37C00CF9C17 /* Validator.swift */; };
 		B01EF9E4205CC45500CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E3205CC45500CF9C17 /* Inputable.swift */; };
 		B01EF9E6205CD63000CF9C17 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E5205CD63000CF9C17 /* Subscription.swift */; };
+		B01EF9E8205CD95900CF9C17 /* UINumberPickerInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E7205CD95900CF9C17 /* UINumberPickerInputValidator.swift */; };
+		B01EF9EA205CF17300CF9C17 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E9205CF17300CF9C17 /* WeakObject.swift */; };
 		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -221,6 +223,8 @@
 		B01EF9E1205CC37C00CF9C17 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		B01EF9E3205CC45500CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
 		B01EF9E5205CD63000CF9C17 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		B01EF9E7205CD95900CF9C17 /* UINumberPickerInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINumberPickerInputValidator.swift; sourceTree = "<group>"; };
+		B01EF9E9205CF17300CF9C17 /* WeakObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 				B04F05C4205A34D40050C41C /* UINumberPickerView.xib */,
 				B05EB126205BD308007FF319 /* UINumberPickerError.swift */,
 				B05EB105205B8399007FF319 /* UINumberPickerItem.swift */,
+				B01EF9E7205CD95900CF9C17 /* UINumberPickerInputValidator.swift */,
 				B04F05C6205A361D0050C41C /* UINumberPickerComponent.swift */,
 				B04F05B8205A2C7E0050C41C /* UICartItemView.swift */,
 				B04F05BA205A2CBD0050C41C /* UICartItemView.xib */,
@@ -642,6 +647,7 @@
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
 				B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */,
 				B01EF9DD205CC29A00CF9C17 /* Observable.swift */,
+				B01EF9E9205CF17300CF9C17 /* WeakObject.swift */,
 				B01EF9E5205CD63000CF9C17 /* Subscription.swift */,
 				B01EF9DF205CC36600CF9C17 /* Result.swift */,
 				B01EF9E1205CC37C00CF9C17 /* Validator.swift */,
@@ -1058,6 +1064,7 @@
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
 				B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */,
 				B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */,
+				B01EF9EA205CF17300CF9C17 /* WeakObject.swift in Sources */,
 				B03082B420580B9300992255 /* UIProductGallery.swift in Sources */,
 				B024C9052058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift in Sources */,
 				B01EF9E6205CD63000CF9C17 /* Subscription.swift in Sources */,
@@ -1078,6 +1085,7 @@
 				B0117D38205B626800DD9619 /* UICheckboxItem.swift in Sources */,
 				B04F05C3205A34710050C41C /* UINumberPickerView.swift in Sources */,
 				B04F05C1205A31300050C41C /* UICartItem.swift in Sources */,
+				B01EF9E8205CD95900CF9C17 /* UINumberPickerInputValidator.swift in Sources */,
 				B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */,
 				B032B0592057A6FE00AB47C4 /* UIProductGalleryView.swift in Sources */,
 				B04F05D9205B5F370050C41C /* UICheckbox.swift in Sources */,

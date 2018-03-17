@@ -17,6 +17,8 @@ public final class UICartItemComponent: Component {
     
     private final let quantityPickerComponent: UINumberPickerComponent
     
+    private final var quantitySubscription: Subscription<Int>?
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         let bundle = Bundle(
@@ -68,7 +70,7 @@ public final class UICartItemComponent: Component {
 
         }
         
-        quantityPickerComponent.input.subscribe { oldValue, newValue in
+        quantitySubscription = quantityPickerComponent.input.subscribe { oldValue, newValue in
             
             print(
                 "old:",

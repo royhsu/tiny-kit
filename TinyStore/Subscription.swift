@@ -8,31 +8,27 @@
 
 // MARK: - Subscription
 
-public struct Subscription {
+public final class Subscription<T> {
+    
+    public typealias Subscriber = (
+        _ oldValue: T,
+        _ newValue: T
+    )
+    -> Void
     
     public let token: String
     
-    public init(token: String) { self.token = token }
+    public let subscriber: Subscriber
+    
+    public init(
+        token: String,
+        subscriber: @escaping Subscriber
+    ) {
+        
+        self.token = token
+        
+        self.subscriber = subscriber
+        
+    }
     
 }
-
-// MARK: - Equatable
-
-extension Subscription: Equatable {
-    
-    public static func == (
-        lhs: Subscription,
-        rhs: Subscription
-    )
-    -> Bool { return lhs.token == rhs.token }
-    
-}
-
-// MARK: - Hashable
-
-extension Subscription: Hashable {
-    
-    public var hashValue: Int { return token.hashValue }
-    
-}
-
