@@ -47,29 +47,35 @@ public final class UICartItemComponent: Component {
             brightness: 0.0
         )
         
-        self.quantityPickerComponent = UINumberPickerComponent()
+        self.quantityPickerComponent = UINumberPickerComponent(
+            minimumNumber: 1,
+            maximumNumber: 99
+        )
         .setItem(
             UINumberPickerItem(
-                minimumNumber: 1,
-                maximumNumber: 5,
                 increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
                 increaseBackgroundColor: pickerTintColor,
                 increaseTintColor: .white,
                 decreaseIconImage: #imageLiteral(resourceName: "icon-minus").withRenderingMode(.alwaysTemplate),
                 decreaseBackgroundColor: pickerTintColor,
-                decreaseTintColor: .white,
-                number: 1
+                decreaseTintColor: .white
             )
         )
-        .onDidChangeNumber { number in
-         
-            print("quantity:", number)
-            
-        }
         .onDidFail { error in
-            
+
             // TODO: error handling.
             print("\(error)")
+
+        }
+        
+        quantityPickerComponent.input.subscribe { oldValue, newValue in
+            
+            print(
+                "old:",
+                oldValue,
+                "new:",
+                newValue
+            )
             
         }
         

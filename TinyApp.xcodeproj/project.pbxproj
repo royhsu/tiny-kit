@@ -14,6 +14,7 @@
 		B01EF9E0205CC36600CF9C17 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9DF205CC36600CF9C17 /* Result.swift */; };
 		B01EF9E2205CC37C00CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E1205CC37C00CF9C17 /* Validator.swift */; };
 		B01EF9E4205CC45500CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E3205CC45500CF9C17 /* Inputable.swift */; };
+		B01EF9E6205CD63000CF9C17 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9E5205CD63000CF9C17 /* Subscription.swift */; };
 		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -219,6 +220,7 @@
 		B01EF9DF205CC36600CF9C17 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B01EF9E1205CC37C00CF9C17 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		B01EF9E3205CC45500CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
+		B01EF9E5205CD63000CF9C17 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
 				B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */,
 				B01EF9DD205CC29A00CF9C17 /* Observable.swift */,
+				B01EF9E5205CD63000CF9C17 /* Subscription.swift */,
 				B01EF9DF205CC36600CF9C17 /* Result.swift */,
 				B01EF9E1205CC37C00CF9C17 /* Validator.swift */,
 				B01EF9E3205CC45500CF9C17 /* Inputable.swift */,
@@ -1057,6 +1060,7 @@
 				B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */,
 				B03082B420580B9300992255 /* UIProductGallery.swift in Sources */,
 				B024C9052058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift in Sources */,
+				B01EF9E6205CD63000CF9C17 /* Subscription.swift in Sources */,
 				B032B07C2057FC5300AB47C4 /* UIProductDescription.swift in Sources */,
 				B04F05C9205A3D5F0050C41C /* UICollapseBarController.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,

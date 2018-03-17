@@ -11,7 +11,7 @@
 public enum UINumberPickerError: Error {
     
     case invalidNumber(
-        string: String,
+        value: Any,
         validMinimum: Int,
         validMaximum: Int
     )

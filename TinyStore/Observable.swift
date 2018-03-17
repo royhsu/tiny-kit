@@ -5,63 +5,58 @@
 //  Created by Roy Hsu on 17/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
-
 // MARK: - Observable
 
 public final class Observable<T> {
     
-    public private(set) final var value: T {
+    public final var value: T {
         
-        didSet { didChangeValueHandler?(oldValue, value) }
+        didSet {
+            
+            let newValue = value
+            
+            subscriberMap.values.forEach { subscriber in
+                
+                subscriber(
+                    oldValue,
+                    newValue
+                )
+                
+            }
+            
+        }
         
     }
     
-    public typealias DidChangeValueHandler = (
+    public typealias Subscriber = (
         _ oldValue: T,
         _ newValue: T
     )
     -> Void
     
-    private final var didChangeValueHandler: DidChangeValueHandler?
+    private final var subscriberMap: [Subscription: Subscriber] = [:]
     
     public init(_ value: T) { self.value = value }
     
 }
 
-extension Observable {
-    
-    @discardableResult
-    public final func onDidChangeValue(handler: DidChangeValueHandler? = nil) -> Self {
-        
-        didChangeValueHandler = handler
-        
-        return self
-        
-    }
-    
-}
+import Foundation
 
 extension Observable {
     
-    public final func input(_ newValue: T) { value = newValue }
+    @discardableResult
+    public final func subscribe(with subscriber: @escaping Subscriber) -> Subscription {
     
-    public final func input<V: Validator>(
-        _ newValue: T,
-        validator: V
-    )
-    throws -> Void
-    where V.T == T {
+        let subscription = Subscription(
+            token: UUID().uuidString
+        )
+    
+        subscriberMap[subscription] = subscriber
         
-        let result = validator.validate(value: newValue)
+        return subscription
         
-        switch result {
-            
-        case .success(let validValue): value = validValue
-            
-        case .failure(let error): throw error
-            
-        }
-            
     }
+    
+    public final func unsubscribe(for subscription: Subscription) { subscriberMap[subscription] = nil }
     
 }

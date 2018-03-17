@@ -6,14 +6,79 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - UINumberPickerInputValidator
+
+public struct UINumberPickerInputValidator: Validator {
+    
+    public let minimumNumber: Int
+    
+    public let maximumNumber: Int
+    
+    public init(
+        minimumNumber: Int,
+        maximumNumber: Int
+    ) {
+        
+        if minimumNumber > maximumNumber {
+            
+            fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
+            
+        }
+        
+        self.minimumNumber = minimumNumber
+        
+        self.maximumNumber = maximumNumber
+        
+    }
+    
+    public func validate(value: Any) -> Result<Int> {
+
+        let newValue: Int
+        
+        if
+            let stringValue = value as? String,
+            let intValue = Int(stringValue) {
+          
+            newValue = intValue
+            
+        }
+        else if let intValue = value as? Int { newValue = intValue }
+        else { newValue = -1 }
+        
+        guard
+            newValue >= minimumNumber,
+            newValue <= maximumNumber
+        else {
+            
+            let error: UINumberPickerError = .invalidNumber(
+                value: value,
+                validMinimum: minimumNumber,
+                validMaximum: maximumNumber
+            )
+            
+            return .failure(error)
+            
+        }
+
+        return .success(newValue)
+        
+    }
+    
+    
+}
+
 // MARK: - UINumberPickerComponent
 
-public final class UINumberPickerComponent: Component {
+public final class UINumberPickerComponent: Component, Inputable {
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UINumberPickerView>
     
     private final let numberTextFieldBridge: UITextFieldBridge
+    
+    public final let input: Observable<Int>
+    
+    private final let validator: UINumberPickerInputValidator
     
     private final var currentItem: UINumberPickerItem
     
@@ -23,7 +88,11 @@ public final class UINumberPickerComponent: Component {
     
     private final var didFailHandler: DidFailHandler?
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        minimumNumber: Int = 0,
+        maximumNumber: Int = 99
+    ) {
         
         let bundle = Bundle(
             for: type(of: self)
@@ -37,45 +106,44 @@ public final class UINumberPickerComponent: Component {
             )!
         )
         
+        let numberTextField = itemComponent.itemView.numberTextField!
+        
+        let defaultNumber = minimumNumber
+        
+        numberTextField.text = "\(defaultNumber)"
+        
         self.itemComponent = itemComponent
         
-        self.numberTextFieldBridge = UITextFieldBridge(textField: itemComponent.itemView.numberTextField)
+        self.numberTextFieldBridge = UITextFieldBridge(textField: numberTextField)
+        
+        self.input = Observable(defaultNumber)
         
         self.currentItem = UINumberPickerItem()
         
+        self.validator = UINumberPickerInputValidator(
+            minimumNumber: minimumNumber,
+            maximumNumber: maximumNumber
+        )
+        
+        input.subscribe {_, newValue in numberTextField.text = "\(newValue)" }
+        
         numberTextFieldBridge.didEndEditing = { [unowned self] textField in
             
-            let currentText = textField.text ?? ""
+            let inputValue = textField.text ?? ""
+
+            let result = self.validator.validate(value: inputValue)
             
-            let min = self.currentItem.minimumNumber
-            
-            let max = self.currentItem.maximumNumber
-            
-            guard
-                let quantity = Int(currentText),
-                quantity >= min,
-                quantity <= max
-            else  {
+            switch result {
+
+            case let .success(validValue): self.input.value = validValue
+
+            case let .failure(error):
                 
-                self.currentItem.number = 1
-                
-                self.setItem(self.currentItem)
-                
-                let error: UINumberPickerError = .invalidNumber(
-                    string: currentText,
-                    validMinimum: min,
-                    validMaximum: max
-                )
+                textField.text = "\(self.validator.minimumNumber)"
                 
                 self.didFailHandler?(error)
-                
-                return
-                
+
             }
-            
-            self.currentItem.number = quantity
-            
-            self.setItem(self.currentItem)
             
         }
         
@@ -161,12 +229,10 @@ public final class UINumberPickerComponent: Component {
     public final func increaseNumber(_ sender: Any) {
         
         guard
-            currentItem.number < currentItem.maximumNumber
+            input.value < validator.maximumNumber
         else { return }
         
-        currentItem.number += 1
-        
-        setItem(currentItem)
+        input.value += 1
         
     }
     
@@ -174,12 +240,10 @@ public final class UINumberPickerComponent: Component {
     public final func decreaseNumber(_ sender: Any) {
         
         guard
-            currentItem.number > currentItem.minimumNumber
+            input.value > validator.minimumNumber
         else { return }
         
-        currentItem.number -= 1
-        
-        setItem(currentItem)
+        input.value -= 1
         
     }
     
@@ -234,17 +298,6 @@ public extension UINumberPickerComponent {
         pickerView.decreaseIconImageView.backgroundColor = item.decreaseBackgroundColor
         
         pickerView.decreaseIconImageView.tintColor = item.decreaseTintColor
-        
-        pickerView.numberTextField.text = "\(item.number)"
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func onDidChangeNumber(handler: DidChagneNumberHandler?) -> UINumberPickerComponent {
-
-        currentItem.didChangeNumberHandler = handler
         
         return self
         
