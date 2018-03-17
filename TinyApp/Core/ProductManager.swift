@@ -8,6 +8,7 @@
 
 // MARK: - ProductManager
 
+import Foundation
 import Hydra
 
 public final class ProductManager {
@@ -20,14 +21,20 @@ public final class ProductManager {
             
             let products = [
                 Product(
+                    id: UUID().uuidString,
+                    imageURLs: [],
                     title: "Cras mattis consectetur purus sit amet fermentum.",
                     price: 40.0
                 ),
                 Product(
+                    id: UUID().uuidString,
+                    imageURLs: [],
                     title: "Aenean eu leo quam.",
                     price: 120.0
                 ),
                 Product(
+                    id: UUID().uuidString,
+                    imageURLs: [],
                     title: "Donec id elit non mi porta gravida at eget metus.",
                     price: 75.0
                 )

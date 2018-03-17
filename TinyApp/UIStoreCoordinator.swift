@@ -20,6 +20,8 @@ public final class UIStoreCoordinator: Coordinator {
     
     private final let productManager: ProductManager
     
+    private final var products: [Product]
+    
     public init() {
         
         let storeComponent = UIGridComponent()
@@ -29,6 +31,8 @@ public final class UIStoreCoordinator: Coordinator {
         self.containerViewController = UIComponentViewController(component: storeComponent)
         
         self.productManager = ProductManager()
+        
+        self.products = []
         
     }
     
@@ -41,6 +45,8 @@ public final class UIStoreCoordinator: Coordinator {
         productManager
             .fetchProducts(in: .background)
             .then(in: .background) { products -> [UIGridItem] in
+                
+                self.products = products
                 
                 return products.map { product in
                     
