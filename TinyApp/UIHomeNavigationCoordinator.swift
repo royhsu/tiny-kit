@@ -9,6 +9,7 @@
 // MARK: - UIHomeNavigationCoordinator
 
 import TinyKit
+import TinyStore
 
 public final class UIHomeNavigationCoordinator: Coordinator {
     
@@ -33,6 +34,24 @@ public final class UIHomeNavigationCoordinator: Coordinator {
         
         homeCoordinator
             .setDidSelectProduct { product in
+                
+                let detailComponent = UIProductDetailComponent()
+                
+                let containerViewControlller = UIComponentViewController(component: detailComponent)
+                
+                detailComponent
+                    .setDescription(
+                        UIProductDescription(
+                            title: product.title,
+                            subtitle: "$\(product.price)"
+                        )
+                    )
+                    .render()
+                
+                self.navigationController.pushViewController(
+                    containerViewControlller,
+                    animated: true
+                )
                 
             }
             .activate()

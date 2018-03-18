@@ -55,13 +55,6 @@ public final class UIStoreCoordinator: Coordinator {
                     return component
                     
                 }
-                .setDidSelectItem { indexPath in
-                 
-                    let selectedProduct = self.products[indexPath.row]
-                    
-                    print(selectedProduct)
-                    
-                }
                 .render()
             
         }
@@ -100,18 +93,22 @@ public final class UIStoreCoordinator: Coordinator {
         
     }
     
-    public typealias DidSelectProductHandler = (Product) -> Void
-
-    private final var didSelectProductHandler: DidSelectProductHandler?
-    
 }
 
 public extension UIStoreCoordinator {
     
+    public typealias DidSelectProductHandler = (Product) -> Void
+    
     @discardableResult
     public final func setDidSelectProduct(_ handler: DidSelectProductHandler?) -> UIStoreCoordinator {
         
-        didSelectProductHandler = handler
+        storeComponent.setDidSelectItem { indexPath in
+            
+            let product = self.products[indexPath.row]
+            
+            handler?(product)
+            
+        }
         
         return self
         
