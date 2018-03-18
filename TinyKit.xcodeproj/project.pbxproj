@@ -46,11 +46,9 @@
 		B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FD205D2CF500CF9C17 /* Subscription.swift */; };
 		B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FE205D2CF500CF9C17 /* Observable.swift */; };
 		B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */; };
-		B02B43A62049942500F3D7C0 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A52049942500F3D7C0 /* UICollectionComponent.swift */; };
 		B02B43A92049947B00F3D7C0 /* UICollectionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */; };
-		B02B43AB20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43AA20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift */; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
-		B037F301205DEBE500CF5F75 /* UINewCollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F300205DEBE500CF5F75 /* UINewCollectionComponent.swift */; };
+		B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */; };
 		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
 		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
 		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
@@ -129,11 +127,9 @@
 		B01EF9FD205D2CF500CF9C17 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		B01EF9FE205D2CF500CF9C17 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
-		B02B43A52049942500F3D7C0 /* UICollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
 		B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponentTests.swift; sourceTree = "<group>"; };
-		B02B43AA20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCollectionComponentBridge.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
-		B037F300205DEBE500CF5F75 /* UINewCollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINewCollectionComponent.swift; sourceTree = "<group>"; };
+		B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
 		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
 		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -367,6 +363,7 @@
 				B05E67922039B7B4003E8E0E /* Component */,
 				B05E67912039B77B003E8E0E /* View */,
 				B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */,
+				B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -386,10 +383,7 @@
 				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
 				B05E677420385ED0003E8E0E /* UIListComponent.swift */,
 				B05E677620386432003E8E0E /* UITableViewListComponentBridge.swift */,
-				B02B43A52049942500F3D7C0 /* UICollectionComponent.swift */,
-				B037F300205DEBE500CF5F75 /* UINewCollectionComponent.swift */,
-				B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */,
-				B02B43AA20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift */,
+				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
 				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
 				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
 			);
@@ -532,7 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B037F301205DEBE500CF5F75 /* UINewCollectionComponent.swift in Sources */,
+				B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */,
 				B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */,
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */,
@@ -540,7 +534,6 @@
 				B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */,
 				B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
-				B02B43AB20499B7100F3D7C0 /* UICollectionViewCollectionComponentBridge.swift in Sources */,
 				B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */,
 				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
@@ -549,7 +542,6 @@
 				B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */,
 				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
-				B02B43A62049942500F3D7C0 /* UICollectionComponent.swift in Sources */,
 				B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,

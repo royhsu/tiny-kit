@@ -2,7 +2,7 @@
 //  UICollectionComponent.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 02/03/2018.
+//  Created by Roy Hsu on 18/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
@@ -11,19 +11,11 @@
 /// NOTE: The maximum size of an item is limited to the size of the collection.
 public final class UICollectionComponent: Component {
     
-    public final var itemComponents: ComponentGroup {
-        
-        get { return bridge.componentGroup }
-        
-        set { bridge.componentGroup = newValue }
-        
-    }
-    
     public final let collectionView: UICollectionView
     
     public final let collectionLayout: UICollectionViewFlowLayout
     
-    private final let bridge: UICollectionViewCollectionComponentBridge
+    private final let bridge: UICollectionViewBridge
     
     public final var scrollDirection: UICollectionViewScrollDirection {
         
@@ -32,6 +24,10 @@ public final class UICollectionComponent: Component {
         set { collectionLayout.scrollDirection = newValue }
         
     }
+    
+    public typealias ComponentForItemHandler = (IndexPath) -> Component?
+    
+    private final var componentForItemHandler: ComponentForItemHandler?
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -80,7 +76,60 @@ public final class UICollectionComponent: Component {
         
         self.collectionView = collectionView
         
-        self.bridge = UICollectionViewCollectionComponentBridge(collectionView: collectionView)
+        self.bridge = UICollectionViewBridge(collectionView: collectionView)
+        
+        bridge.configureCellHandler = { [unowned self] cell, indexPath in
+            
+            guard
+                let component = self.componentForItemHandler?(indexPath)
+            else { return }
+            
+            component.render()
+            
+            cell.contentView.render(with: component)
+            
+        }
+        
+        bridge.sizeForItemHandler = { [unowned self] layout, indexPath in
+
+            var maxWidth = self.collectionView.bounds.width
+                - collectionView.contentInset.left
+                - collectionView.contentInset.right
+                - collectionView.safeAreaInsets.left
+                - collectionView.safeAreaInsets.right
+
+            if maxWidth < 0.0 { maxWidth = 0.0 }
+
+            var maxHeight = self.collectionView.bounds.height
+                - collectionView.contentInset.top
+                - collectionView.contentInset.bottom
+                - collectionView.safeAreaInsets.top
+                - collectionView.safeAreaInsets.bottom
+
+            if maxHeight < 0.0 { maxHeight = 0.0 }
+
+            guard
+                let component = self.componentForItemHandler?(indexPath)
+            else { return .zero }
+
+            component.render()
+
+            let width = (component.preferredContentSize.width < maxWidth)
+                ? component.preferredContentSize.width
+                : maxWidth
+
+            let height = (component.preferredContentSize.height < maxHeight)
+                ? component.preferredContentSize.height
+                : maxHeight
+
+            // TODO: make warnings for item size that's not in a valid range.
+
+            return CGSize(
+                width: width,
+                height: height
+            )
+
+        }
         
     }
     
@@ -115,9 +164,61 @@ public final class UICollectionComponent: Component {
     }
     
     // MARK: ViewRenderable
-
+    
     public final var view: View { return collectionView }
     
     public final var preferredContentSize: CGSize { return collectionView.bounds.size }
+    
+}
+
+public extension UICollectionComponent {
+
+    public typealias NumberOfSectionsHandler = UICollectionViewBridge.NumberOfSectionsHandler
+    
+    @discardableResult
+    public final func setNumberOfSections(_ handler: NumberOfSectionsHandler?) -> UICollectionComponent {
+
+        bridge.numberOfSectionsHandler = handler
+
+        return self
+
+    }
+    
+    public final func numberOfSections() -> Int { return collectionView.numberOfSections }
+    
+    public typealias NumberOfItemsHandler = UICollectionViewBridge.NumberOfItemsHandler
+    
+    @discardableResult
+    public final func setNumberOfItems(_ handler: NumberOfItemsHandler?) -> UICollectionComponent {
+        
+        bridge.numberOfItemsHandler = handler
+        
+        return self
+        
+    }
+    
+    public final func numberOfItems(inSection section: Int) -> Int { return collectionView.numberOfItems(inSection: section) }
+
+    @discardableResult
+    public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UICollectionComponent {
+        
+        componentForItemHandler = handler
+        
+        return self
+        
+    }
+    
+    public final func componentForItem(at indexPath: IndexPath) -> Component? { return componentForItemHandler?(indexPath) }
+    
+    public typealias DidSelectItemHandler = UICollectionViewBridge.DidSelectItemHandler
+    
+    @discardableResult
+    public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> Component {
+        
+        bridge.didSelectItemHandler = handler
+        
+        return self
+        
+    }
     
 }

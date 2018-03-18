@@ -10,7 +10,7 @@
 
 public final class UIGridComponent: Component {
     
-    private final let collectionComponent: UINewCollectionComponent
+    private final let collectionComponent: UICollectionComponent
     
     private final let columns = 2
     
@@ -18,7 +18,7 @@ public final class UIGridComponent: Component {
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        self.collectionComponent = UINewCollectionComponent(contentMode: contentMode)
+        self.collectionComponent = UICollectionComponent(contentMode: contentMode)
         
     }
     
@@ -59,7 +59,7 @@ public final class UIGridComponent: Component {
 
 public extension UIGridComponent {
     
-    public typealias NumberOfSectionsHandler = UINewCollectionComponent.NumberOfSectionsHandler
+    public typealias NumberOfSectionsHandler = UICollectionComponent.NumberOfSectionsHandler
     
     @discardableResult
     public final func setNumberOfSections(_ handler: NumberOfSectionsHandler?) -> UIGridComponent {
@@ -70,7 +70,7 @@ public extension UIGridComponent {
         
     }
     
-    public typealias NumberOfItemsHandler = UINewCollectionComponent.NumberOfItemsHandler
+    public typealias NumberOfItemsHandler = UICollectionComponent.NumberOfItemsHandler
     
     @discardableResult
     public final func setNumberOfItems(_ handler: @escaping NumberOfItemsHandler) -> UIGridComponent {
@@ -81,7 +81,7 @@ public extension UIGridComponent {
         
     }
     
-    public typealias ComponentForItemHandler = UINewCollectionComponent.ComponentForItemHandler
+    public typealias ComponentForItemHandler = UICollectionComponent.ComponentForItemHandler
     
     @discardableResult
     public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UIGridComponent {
@@ -111,7 +111,7 @@ public extension UIGridComponent {
         
     }
     
-    public typealias DidSelectItemHandler = UINewCollectionComponent.DidSelectItemHandler
+    public typealias DidSelectItemHandler = UICollectionComponent.DidSelectItemHandler
     
     @discardableResult
     public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> UIGridComponent {
