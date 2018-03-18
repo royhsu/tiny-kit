@@ -17,7 +17,7 @@ public final class UIGridItemComponent: Component, Stylable {
     
     public init(
         contentMode: ComponentContentMode = .automatic,
-        theme: Theme = .azureSky
+        theme: Theme = .current
     ) {
         
         let bundle = Bundle(
@@ -50,6 +50,11 @@ public final class UIGridItemComponent: Component, Stylable {
         
         let itemView = itemComponent.itemView
         
+        styleItemView(
+            itemView,
+            theme: theme
+        )
+        
         styleTitleLabel(
             itemView.titleLabel,
             theme: theme
@@ -80,6 +85,11 @@ public final class UIGridItemComponent: Component, Stylable {
     // MARK: Stylable
     
     public final var theme: Theme
+    
+    fileprivate final func styleItemView(
+        _ view: UIView,
+        theme: Theme
+    ) { view.backgroundColor = theme.backgroundColor }
     
     fileprivate final func styleTitleLabel(
         _ label: UILabel,

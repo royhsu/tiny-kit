@@ -1,58 +1,12 @@
 //
 //  Stylable.swift
-//  TinyApp
+//  TinyUI
 //
 //  Created by Roy Hsu on 18/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - Theme
-
-import UIKit
-
-public struct Theme {
-    
-    public let primaryColor: UIColor
-    
-    public let secondaryColor: UIColor
-    
-    public let backgroundColor: UIColor
-    
-    public let titleColor: UIColor
-    
-    public let subtitleColor: UIColor
-    
-    public let bodyColor: UIColor
-    
-    public let placeholderColor: UIColor
-    
-    public init(
-        primaryColor: UIColor,
-        secondaryColor: UIColor,
-        backgroundColor: UIColor,
-        titleColor: UIColor,
-        subtitleColor: UIColor,
-        bodyColor: UIColor,
-        placeholderColor: UIColor
-    ) {
-        
-        self.primaryColor = primaryColor
-        
-        self.secondaryColor = secondaryColor
-        
-        self.backgroundColor = backgroundColor
-        
-        self.titleColor = titleColor
-        
-        self.subtitleColor = subtitleColor
-        
-        self.bodyColor = bodyColor
-        
-        self.placeholderColor = placeholderColor
-        
-    }
-    
-}
+// MARK: - Stylable
 
 public protocol Stylable {
     
@@ -62,14 +16,18 @@ public protocol Stylable {
 
 public extension Theme {
     
+    public static var current = { return azureSky }()
+    
+    // TODO: rename to debugging theme.
+    // and create the real azure sky.
     public static let azureSky = Theme(
         primaryColor: .blue,
         secondaryColor: .yellow,
-        backgroundColor: .white,
-        titleColor: .darkGray,
-        subtitleColor: .lightGray,
-        bodyColor: .gray,
-        placeholderColor: .red
+        backgroundColor: .red,
+        titleColor: .blue,
+        subtitleColor: .yellow,
+        bodyColor: .white,
+        placeholderColor: .green
     )
     
 }
