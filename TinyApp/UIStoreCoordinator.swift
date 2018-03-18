@@ -100,6 +100,23 @@ public final class UIStoreCoordinator: Coordinator {
         
     }
     
+    public typealias DidSelectProductHandler = (Product) -> Void
+
+    private final var didSelectProductHandler: DidSelectProductHandler?
+    
+}
+
+public extension UIStoreCoordinator {
+    
+    @discardableResult
+    public final func setDidSelectProduct(_ handler: DidSelectProductHandler?) -> UIStoreCoordinator {
+        
+        didSelectProductHandler = handler
+        
+        return self
+        
+    }
+    
 }
 
 // MARK:  - ViewControllerRepresentable

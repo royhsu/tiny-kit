@@ -28,7 +28,7 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        self.rootCoordinator = UIHomeCoordinator()
+        self.rootCoordinator = UIHomeNavigationCoordinator()
         
     }
 

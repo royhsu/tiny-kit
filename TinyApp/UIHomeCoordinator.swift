@@ -45,6 +45,21 @@ public final class UIHomeCoordinator: Coordinator {
     
 }
 
+public extension UIHomeCoordinator {
+    
+    public typealias DidSelectProductHandler = UIStoreCoordinator.DidSelectProductHandler
+    
+    @discardableResult
+    public final func setDidSelectProduct(_ handler: DidSelectProductHandler?) -> UIHomeCoordinator {
+        
+        storeCoordinator.setDidSelectProduct(handler)
+        
+        return self
+        
+    }
+    
+}
+
 // MARK: - ViewControllerRepresentable
 
 extension UIHomeCoordinator: ViewControllerRepresentable {
