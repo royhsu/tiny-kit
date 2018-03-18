@@ -9,6 +9,7 @@
 // MARK: - UIHomeCoordinator
 
 import TinyKit
+import TinyStore
 
 public final class UIHomeCoordinator: Coordinator {
     
@@ -17,9 +18,13 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let cartCoordinator: UICartCoordinator
     
-    private final let cartContentComponent: UIListComponent
+    private final let cartContentComponent: UINewListComponent
     
     private final let storeCoordinator: UIStoreCoordinator
+    
+    public typealias CartItemDescriptorForItemHandler = (IndexPath) -> CartItemDescriptor
+    
+    private final var cartItemDescriptorForItemHandler: CartItemDescriptorForItemHandler?
     
     public init() {
         
@@ -27,9 +32,15 @@ public final class UIHomeCoordinator: Coordinator {
         
         self.cartCoordinator = UICartCoordinator()
         
-        self.cartContentComponent = UIListComponent()
+        self.cartContentComponent = UINewListComponent()
         
         self.storeCoordinator = UIStoreCoordinator()
+        
+        collapseBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(toggleCartContent)
+        )
         
     }
     
@@ -45,9 +56,59 @@ public final class UIHomeCoordinator: Coordinator {
         
         collapseBarController.setBackgroundViewController(storeCoordinator.viewController)
         
+        cartContentComponent
+            .setNumberOfSections { 1 }
+            .setComponentForItem { /* [unowned self] */ indexPath in
+                
+                guard
+                    let itemDescriptor = self.cartItemDescriptorForItemHandler?(indexPath)
+                else { return nil }
+                
+                var item = UICartItem(
+                    previewImage: nil,
+                    title: itemDescriptor.item.title,
+                    price: itemDescriptor.item.price
+                )
+                
+                let component = UICartItemComponent()
+                    .setItem(item)
+                
+                // TODO: emulate image downloading process.
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//
+//                    item.previewImage = #imageLiteral(resourceName: "image-dessert-1")
+//
+//                    component.setItem(item)
+//
+//                }
+                
+                return component
+                
+            }
+            .render()
+        
         cartCoordinator.activate()
         
         storeCoordinator.activate()
+        
+    }
+    
+    // TODO: temporarily solution.
+    public final func render() {
+        
+        cartCoordinator.activate()
+        
+        cartContentComponent.render()
+        
+    }
+    
+    @objc
+    public final func toggleCartContent(_ sender: Any) {
+        
+        collapseBarController.setCollapsed(
+            !collapseBarController.isCollapsed,
+            animated: true
+        )
         
     }
     
@@ -66,12 +127,26 @@ public extension UIHomeCoordinator {
         
     }
     
-    public typealias NumberOfCartDescriptorsHandler = () -> Void
+    public typealias NumberOfCartItemDescriptorsHandler = () -> Int
     
     @discardableResult
-    public final func setNumberOfCartDescriptors(_ handler: NumberOfCartDescriptorsHandler?) -> UIHomeCoordinator {
+    public final func setNumberOfCartItemDescriptors(_ handler: NumberOfCartItemDescriptorsHandler?) -> UIHomeCoordinator {
         
-        // TODO: feed to list.
+        if let handler = handler {
+         
+            cartContentComponent.setNumberOfItems { _ in handler() }
+            
+        }
+        else { cartContentComponent.setNumberOfItems(nil) }
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setCartItemDescriptorForItem(_ handler: CartItemDescriptorForItemHandler?) -> UIHomeCoordinator {
+        
+        cartItemDescriptorForItemHandler = handler
         
         return self
         

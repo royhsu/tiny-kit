@@ -18,6 +18,7 @@ public final class UICollapseBarController: UIViewController {
     
     public private(set) final var barViewController: UIViewController?
     
+    // TODO: fix the problem that the content will shrink by its child component.
     public private(set) final var barContentViewController: UIViewController?
     
     public final override func loadView() {

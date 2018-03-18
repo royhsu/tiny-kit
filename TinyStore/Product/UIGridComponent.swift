@@ -70,6 +70,19 @@ public extension UIGridComponent {
         
     }
     
+    // TODO: recursive bug.
+//    @discardableResult
+//    public final func setNumberOfSections(
+//        _ handler: @autoclosure () -> Int
+//    )
+//    -> UIGridComponent {
+//
+//        setNumberOfSections(handler)
+//
+//        return self
+//
+//    }
+    
     public typealias NumberOfItemsHandler = UICollectionComponent.NumberOfItemsHandler
     
     @discardableResult
@@ -86,7 +99,7 @@ public extension UIGridComponent {
     @discardableResult
     public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UIGridComponent {
         
-        collectionComponent.setComponentForItem { [unowned self] indexPath -> Component? in
+        collectionComponent.setComponentForItem { /* [unowned self] */ indexPath -> Component? in
             
             guard
                 var component = handler?(indexPath)

@@ -78,7 +78,7 @@ public final class UICollectionComponent: Component {
         
         self.bridge = UICollectionViewBridge(collectionView: collectionView)
         
-        bridge.configureCellHandler = { [unowned self] cell, indexPath in
+        bridge.configureCellHandler = { /* [unowned self] */ cell, indexPath in
             
             guard
                 let component = self.componentForItemHandler?(indexPath)
@@ -90,7 +90,7 @@ public final class UICollectionComponent: Component {
             
         }
         
-        bridge.sizeForItemHandler = { [unowned self] layout, indexPath in
+        bridge.sizeForItemHandler = { /* [unowned self] */layout, indexPath in
 
             var maxWidth = self.collectionView.bounds.width
                 - collectionView.contentInset.left
@@ -183,6 +183,19 @@ public extension UICollectionComponent {
         return self
 
     }
+    
+    // TODO: recursive bug.
+//    @discardableResult
+//    public final func setNumberOfSections(
+//        _ handler: @autoclosure () -> Int
+//    )
+//    -> UICollectionComponent {
+//        
+//        setNumberOfSections(handler)
+//        
+//        return self
+//            
+//    }
     
     public final func numberOfSections() -> Int { return collectionView.numberOfSections }
     

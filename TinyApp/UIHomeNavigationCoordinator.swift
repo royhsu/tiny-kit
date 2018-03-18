@@ -20,6 +20,8 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     
     private final let cartManager: CartManager
     
+    private final var cartSubscription: Subscription<[CartItemDescriptor]>?
+    
     public init() {
         
         let homeCoordinator = UIHomeCoordinator()
@@ -35,6 +37,15 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     // MARK: Coordinator
     
     public final func activate() {
+        
+        cartSubscription = cartManager.cart.subscribe { /* [unowned self] */ _, newDescriptors in
+            
+            self.homeCoordinator
+                .setNumberOfCartItemDescriptors { newDescriptors.count }
+                .setCartItemDescriptorForItem { indexPath in newDescriptors[indexPath.item] }
+                .render()
+            
+        }
         
         homeCoordinator
             .setDidSelectProduct { product in
@@ -71,6 +82,55 @@ public final class UIHomeNavigationCoordinator: Coordinator {
                 
             }
             .activate()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            
+            self.cartManager.cart.value.append(
+                contentsOf: [
+                    CartItemDescriptor(
+                        item: Product(
+                            id: "1",
+                            imageURLs: [],
+                            title: "Test 1",
+                            price: 10.0
+                        ),
+                        quantity: 1,
+                        isSelected: true
+                    ),
+                    CartItemDescriptor(
+                        item: Product(
+                            id: "2",
+                            imageURLs: [],
+                            title: "Test 2",
+                            price: 20.0
+                        ),
+                        quantity: 2,
+                        isSelected: true
+                    ),
+                    CartItemDescriptor(
+                        item: Product(
+                            id: "3",
+                            imageURLs: [],
+                            title: "Test 3",
+                            price: 30.0
+                        ),
+                        quantity: 3,
+                        isSelected: true
+                    ),
+                    CartItemDescriptor(
+                        item: Product(
+                            id: "4",
+                            imageURLs: [],
+                            title: "Test 4",
+                            price: 400
+                        ),
+                        quantity: 4,
+                        isSelected: true
+                    )
+                ]
+            )
+            
+        }
         
         
     }

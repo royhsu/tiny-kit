@@ -8,6 +8,7 @@
 
 // MARK: - Observable
 
+// TODO: should lock on the created thread?
 public final class Observable<T> {
     
     public final var value: T {

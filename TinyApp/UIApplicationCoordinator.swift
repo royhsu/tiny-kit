@@ -13,7 +13,7 @@ import TinyAuth
 public final class UIApplicationCoordinator: Coordinator {
 
     /// The navigator.
-    private final let window: UIWindow
+    private final let window: TestWindow
 
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
 
@@ -21,7 +21,7 @@ public final class UIApplicationCoordinator: Coordinator {
     
     public init(contentSize: CGSize) {
 
-        self.window = UIWindow(
+        self.window = TestWindow(
             frame: CGRect(
                 origin: .zero,
                 size: contentSize
@@ -42,4 +42,25 @@ public final class UIApplicationCoordinator: Coordinator {
 
     }
 
+}
+
+public final class TestWindow: UIWindow {
+    
+    public override func sendEvent(_ event: UIEvent) {
+        
+        event.touches(for: self)?.forEach { touch in
+            
+            let point = touch.location(in: self)
+            
+            let view = hitTest(
+                point,
+                with: event
+            )
+
+        }
+        
+        super.sendEvent(event)
+        
+    }
+    
 }

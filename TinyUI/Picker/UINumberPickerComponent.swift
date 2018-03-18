@@ -62,7 +62,7 @@ public final class UINumberPickerComponent: Component, Inputable {
         
         inputSubscription = input.subscribe {_, newValue in numberTextField.text = "\(newValue)" }
         
-        numberTextFieldBridge.didEndEditing = { [unowned self] textField in
+        numberTextFieldBridge.didEndEditing = { /* [unowned self] */ textField in
             
             let inputValue = textField.text ?? ""
 
