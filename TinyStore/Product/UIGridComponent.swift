@@ -44,36 +44,6 @@ public final class UIGridComponent: Component {
             bottom: margin,
             right: margin
         )
-//
-//        let totalMargins = margin * CGFloat(columns + 1)
-//
-//        let width = (view.bounds.width - totalMargins) / CGFloat(columns)
-        
-//        let sections = collectionComponent.numberOfSections()
-//
-//        for section in 0..<sections {
-//
-//            let items = collectionComponent.numberOfItems(inSection: section)
-//
-//            for item in 0..<items {
-//
-//                let indexPath = IndexPath(
-//                    item: item,
-//                    section: section
-//                )
-//
-//                var itemComponent = collectionComponent.componentForItem(at: indexPath)
-//
-//                let height = width / (4.0 / 3.0)
-//
-//                itemComponent?.contentMode = .size(
-//                    width: width,
-//                    height: height + 63.0 // TODO: remove the magic number.
-//                )
-//
-//            }
-//
-//        }
         
         collectionComponent.render()
         
@@ -140,32 +110,5 @@ public extension UIGridComponent {
         return self
         
     }
-    
-//    @discardableResult
-//    public final func setItems(
-//        _ items: [UIGridItem]
-//    )
-//    -> UIGridComponent {
-//
-//        let components: [Component] = items.map { item in
-//
-//            let component = UIGridItemComponent(
-//                contentMode: .size(
-//                    width: 0.0,
-//                    height: 0.0
-//                ) // Prevent the size of an item greater than the collection view, that will raise an exception.
-//            )
-//
-//            component.setItem(item)
-//
-//            return component
-//
-//        }
-//
-//        collectionComponent.itemComponents = AnyCollection(components)
-//
-//        return self
-//
-//    }
     
 }

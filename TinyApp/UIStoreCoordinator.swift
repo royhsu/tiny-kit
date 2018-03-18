@@ -20,7 +20,36 @@ public final class UIStoreCoordinator: Coordinator {
     
     private final let productManager: ProductManager
     
-    private final var products: [Product]
+    private final var products: [Product] {
+        
+        didSet {
+            
+            storeComponent
+                .setNumberOfSections { 1 }
+                .setNumberOfItems { _ in self.products.count }
+                .setComponentForItem { indexPath in
+                    
+                    let product = self.products[indexPath.row]
+                    
+                    // Prevent the size of an item greater than the collection view, that will raise an exception.
+                    return UIGridItemComponent(
+                        contentMode: .size(
+                            width: 0.0,
+                            height: 0.0
+                        )
+                    )
+                    .setTitle(product.title)
+                    .setSubtitle("$\(product.price)")
+                    .setPreviewImages(
+                        [ #imageLiteral(resourceName: "image-dessert-1") ]
+                    )
+                    
+                }
+                .render()
+            
+        }
+        
+    }
     
     public init() {
         
@@ -40,53 +69,17 @@ public final class UIStoreCoordinator: Coordinator {
     
     public final func activate() {
         
-        storeComponent
-            .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in 3 }
-            .setComponentForItem { indexPath in
+        storeComponent.render()
+        
+        productManager
+            .fetchProducts(in: .background)
+            .then(in: .main) { self.products = $0 }
+            .catch(in: .main) { error in
                 
-                return UIGridItemComponent(
-                    contentMode: .size(
-                        width: 0.0,
-                        height: 0.0
-                    )
-                )
-                .setTitle("Hello")
-                .setSubtitle("World")
-                .setPreviewImages(
-                    [ #imageLiteral(resourceName: "image-dessert-1") ]
-                )
+                // TODO: error handling.
+                print("\(error)")
                 
             }
-            .render()
-        
-//        productManager
-//            .fetchProducts(in: .background)
-//            .then(in: .background) { products -> [UIGridItem] in
-//                
-//                self.products = products
-//                
-//                return products.map { product in
-//                    
-//                    return UIGridItem(
-//                        title: product.title,
-//                        subtitle: "$\(product.price)"
-//                    )
-//                    
-//                }
-//                
-//            }
-//            .then(in: .main) { items in
-//                
-//                self.storeComponent.setItems(items).render()
-//                
-//            }
-//            .catch(in: .main) { error in
-//                
-//                // TODO: error handling.
-//                print("\(error)")
-//                
-//            }
         
     }
     
