@@ -8,12 +8,17 @@
 
 // MARK: - UIGridItemComponent
 
-public final class UIGridItemComponent: Component {
+import TinyUI
+
+public final class UIGridItemComponent: Component, Stylable {
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIGridItemView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .azureSky
+    ) {
         
         let bundle = Bundle(
             for: type(of: self)
@@ -26,6 +31,8 @@ public final class UIGridItemComponent: Component {
                 from: bundle
             )!
         )
+        
+        self.theme = theme
         
     }
     
@@ -41,6 +48,23 @@ public final class UIGridItemComponent: Component {
     
     public final func render() {
         
+        let itemView = itemComponent.itemView
+        
+        styleTitleLabel(
+            itemView.titleLabel,
+            theme: theme
+        )
+        
+        styleSubtitleLabel(
+            itemView.subtitleLabel,
+            theme: theme
+        )
+        
+        stylePreviewImageView(
+            itemView.previewImageView,
+            theme: theme
+        )
+        
         itemComponent.render()
         
         itemComponent.itemView.shadowView.updateShadow()
@@ -53,16 +77,33 @@ public final class UIGridItemComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
+    fileprivate final func styleTitleLabel(
+        _ label: UILabel,
+        theme: Theme
+    ) { label.textColor = theme.titleColor }
+    
+    fileprivate final func styleSubtitleLabel(
+        _ label: UILabel,
+        theme: Theme
+    ) { label.textColor = theme.subtitleColor }
+    
+    fileprivate final func stylePreviewImageView(
+        _ imageView: UIImageView,
+        theme: Theme
+    ) { imageView.backgroundColor = theme.placeholderColor }
+    
 }
 
 public extension UIGridItemComponent {
     
     @discardableResult
     public final func setTitle(_ title: String?) -> UIGridItemComponent {
-        
-        let label = itemComponent.itemView.titleLabel!
     
-       label.text = title
+       itemComponent.itemView.titleLabel.text = title
         
         return self
         
@@ -71,9 +112,7 @@ public extension UIGridItemComponent {
     @discardableResult
     public final func setSubtitle(_ subtitle: String?) -> UIGridItemComponent {
         
-        let label = itemComponent.itemView.subtitleLabel!
-        
-        label.text = subtitle
+        itemComponent.itemView.subtitleLabel.text = subtitle
         
         return self
         
@@ -85,22 +124,9 @@ public extension UIGridItemComponent {
     )
     -> UIGridItemComponent {
         
-        let imageView = itemComponent.itemView.previewImageView!
+        itemComponent.itemView.previewImageView.image = images.first
         
-        if let image = images.first {
-            
-            imageView.image = image
-            
-            imageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            imageView.image = nil
-            
-            imageView.backgroundColor = .lightGray
-            
-        }
+        itemComponent.itemView.shadowView.updateShadow()
         
         return self
         

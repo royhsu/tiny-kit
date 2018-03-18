@@ -19,6 +19,7 @@
 		B01EFA13205D2D7900CF9C17 /* UINumberPickerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA0D205D2D7900CF9C17 /* UINumberPickerError.swift */; };
 		B01EFA14205D2D7900CF9C17 /* UINumberPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EFA0E205D2D7900CF9C17 /* UINumberPickerView.xib */; };
 		B01EFA18205D32F300CF9C17 /* UIHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA17205D32F300CF9C17 /* UIHomeCoordinator.swift */; };
+		B022E25E205E373500DD9170 /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E25D205E373500DD9170 /* Stylable.swift */; };
 		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -222,6 +223,7 @@
 		B01EFA0D205D2D7900CF9C17 /* UINumberPickerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINumberPickerError.swift; sourceTree = "<group>"; };
 		B01EFA0E205D2D7900CF9C17 /* UINumberPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UINumberPickerView.xib; sourceTree = "<group>"; };
 		B01EFA17205D32F300CF9C17 /* UIHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHomeCoordinator.swift; sourceTree = "<group>"; };
+		B022E25D205E373500DD9170 /* Stylable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 				B01EF9EB205D2B6900CF9C17 /* Picker */,
 				B0A6299120465827000F97E3 /* Button */,
 				B0A6299720465828000F97E3 /* Text Input */,
+				B022E25D205E373500DD9170 /* Stylable.swift */,
 				B0A62984204657C9000F97E3 /* TinyUI.h */,
 				B0A62985204657C9000F97E3 /* Info.plist */,
 			);
@@ -1042,6 +1045,7 @@
 				B01EFA11205D2D7900CF9C17 /* UINumberPickerView.swift in Sources */,
 				B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */,
 				B01EFA13205D2D7900CF9C17 /* UINumberPickerError.swift in Sources */,
+				B022E25E205E373500DD9170 /* Stylable.swift in Sources */,
 				B0A629A220465828000F97E3 /* UITextInput.swift in Sources */,
 				B0A629A420465828000F97E3 /* UITextInputItem.swift in Sources */,
 				B01EFA12205D2D7900CF9C17 /* UINumberPickerComponent.swift in Sources */,

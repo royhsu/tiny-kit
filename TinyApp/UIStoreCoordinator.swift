@@ -8,6 +8,7 @@
 
 /// MARK: - UIStoreCoordinator
 
+import Foundation
 import TinyKit
 import TinyStore
 
@@ -32,7 +33,7 @@ public final class UIStoreCoordinator: Coordinator {
                     let product = self.products[indexPath.row]
                     
                     // Prevent the size of an item greater than the collection view, that will raise an exception.
-                    return UIGridItemComponent(
+                    let component = UIGridItemComponent(
                         contentMode: .size(
                             width: 0.0,
                             height: 0.0
@@ -40,9 +41,18 @@ public final class UIStoreCoordinator: Coordinator {
                     )
                     .setTitle(product.title)
                     .setSubtitle("$\(product.price)")
-                    .setPreviewImages(
-                        [ #imageLiteral(resourceName: "image-dessert-1") ]
-                    )
+                    
+                    // Emulate the image downloading process.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        
+                        component
+                            .setPreviewImages(
+                                [ #imageLiteral(resourceName: "image-dessert-1") ]
+                            )
+                        
+                    }
+                    
+                    return component
                     
                 }
                 .render()
