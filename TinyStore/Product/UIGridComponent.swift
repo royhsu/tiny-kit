@@ -10,11 +10,15 @@
 
 public final class UIGridComponent: Component {
     
-    private final let collectionComponent: UICollectionComponent
+    private final let collectionComponent: UINewCollectionComponent
+    
+    private final let columns = 2
+    
+    private final let margin: CGFloat = 30.0
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        self.collectionComponent = UICollectionComponent(contentMode: contentMode)
+        self.collectionComponent = UINewCollectionComponent(contentMode: contentMode)
         
     }
     
@@ -33,47 +37,43 @@ public final class UIGridComponent: Component {
         collectionComponent.view.backgroundColor = .white
         
         collectionComponent.collectionLayout.minimumLineSpacing = 20.0
-        
-        let columns = 2
-        
-        let margin: CGFloat = 30.0
-        
+
         collectionComponent.collectionLayout.sectionInset = UIEdgeInsets(
             top: margin,
             left: margin,
             bottom: margin,
             right: margin
         )
+//
+//        let totalMargins = margin * CGFloat(columns + 1)
+//
+//        let width = (view.bounds.width - totalMargins) / CGFloat(columns)
         
-        let totalMargins = margin * CGFloat(columns + 1)
-        
-        let width = (view.bounds.width - totalMargins) / CGFloat(columns)
-        
-        let sections = collectionComponent.itemComponents.numberOfSections()
-        
-        for section in 0..<sections {
-            
-            let items = collectionComponent.itemComponents.numberOfItems(inSection: section)
-            
-            for item in 0..<items {
-                
-                let indexPath = IndexPath(
-                    item: item,
-                    section: section
-                )
-                
-                var itemComponent = collectionComponent.itemComponents.componentForItem(at: indexPath)
-                
-                let height = width / (4.0 / 3.0)
-                
-                itemComponent.contentMode = .size(
-                    width: width,
-                    height: height + 63.0 // TODO: remove the magic number.
-                )
-                
-            }
-            
-        }
+//        let sections = collectionComponent.numberOfSections()
+//
+//        for section in 0..<sections {
+//
+//            let items = collectionComponent.numberOfItems(inSection: section)
+//
+//            for item in 0..<items {
+//
+//                let indexPath = IndexPath(
+//                    item: item,
+//                    section: section
+//                )
+//
+//                var itemComponent = collectionComponent.componentForItem(at: indexPath)
+//
+//                let height = width / (4.0 / 3.0)
+//
+//                itemComponent?.contentMode = .size(
+//                    width: width,
+//                    height: height + 63.0 // TODO: remove the magic number.
+//                )
+//
+//            }
+//
+//        }
         
         collectionComponent.render()
         
@@ -89,31 +89,83 @@ public final class UIGridComponent: Component {
 
 public extension UIGridComponent {
     
+    public typealias NumberOfSectionsHandler = UINewCollectionComponent.NumberOfSectionsHandler
+    
     @discardableResult
-    public final func setItems(
-        _ items: [UIGridItem]
-    )
-    -> UIGridComponent {
+    public final func setNumberOfSections(_ handler: NumberOfSectionsHandler?) -> UIGridComponent {
+        
+        collectionComponent.setNumberOfSections(handler)
+        
+        return self
+        
+    }
+    
+    public typealias NumberOfItemsHandler = UINewCollectionComponent.NumberOfItemsHandler
+    
+    @discardableResult
+    public final func setNumberOfItems(_ handler: @escaping NumberOfItemsHandler) -> UIGridComponent {
+        
+        collectionComponent.setNumberOfItems(handler)
+        
+        return self
+        
+    }
+    
+    public typealias ComponentForItemHandler = UINewCollectionComponent.ComponentForItemHandler
+    
+    @discardableResult
+    public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UIGridComponent {
+        
+        collectionComponent.setComponentForItem { [unowned self] indexPath -> Component? in
             
-        let components: [Component] = items.map { item in
+            guard
+                var component = handler?(indexPath)
+            else { return nil }
+        
+            let totalMargins = self.margin * CGFloat(self.columns + 1)
             
-            let component = UIGridItemComponent(
-                contentMode: .size(
-                    width: 0.0,
-                    height: 0.0
-                ) // Prevent the size of an item greater than the collection view, that will raise an exception.
+            let width = (self.view.bounds.width - totalMargins) / CGFloat(self.columns)
+            
+            let height = width / (4.0 / 3.0)
+            
+            component.contentMode = .size(
+                width: width,
+                height: height + 63.0 // TODO: remove the magic number.
             )
-            
-            component.setItem(item)
             
             return component
             
         }
         
-        collectionComponent.itemComponents = AnyCollection(components)
-        
         return self
         
     }
+    
+//    @discardableResult
+//    public final func setItems(
+//        _ items: [UIGridItem]
+//    )
+//    -> UIGridComponent {
+//
+//        let components: [Component] = items.map { item in
+//
+//            let component = UIGridItemComponent(
+//                contentMode: .size(
+//                    width: 0.0,
+//                    height: 0.0
+//                ) // Prevent the size of an item greater than the collection view, that will raise an exception.
+//            )
+//
+//            component.setItem(item)
+//
+//            return component
+//
+//        }
+//
+//        collectionComponent.itemComponents = AnyCollection(components)
+//
+//        return self
+//
+//    }
     
 }

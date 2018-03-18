@@ -58,56 +58,51 @@ public final class UIGridItemComponent: Component {
 public extension UIGridItemComponent {
     
     @discardableResult
-    public final func setItem(_ item: UIGridItem) -> UIGridItemComponent {
+    public final func setTitle(_ title: String?) -> UIGridItemComponent {
         
-        let itemView = itemComponent.itemView
-        
-        if let previewImage = item.previewImages.first {
-        
-            itemView.previewImageView.image = previewImage
-            
-            itemView.previewImageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            itemView.previewImageView.image = nil
-            
-            itemView.previewImageView.backgroundColor = .lightGray
-            
-        }
-        
-        itemView.titleLabel.text = item.title
-        
-        itemView.subtitleLabel.text = item.subtitle
+        let label = itemComponent.itemView.titleLabel!
+    
+       label.text = title
         
         return self
         
     }
     
-}
-
-// MARK: - UIGridItem
-
-public struct UIGridItem {
-    
-    public var previewImages: [UIImage]
-    
-    public var title: String?
-    
-    public var subtitle: String?
-    
-    public init(
-        previewImages: [UIImage] = [],
-        title: String? = nil,
-        subtitle: String? = nil
-    ) {
+    @discardableResult
+    public final func setSubtitle(_ subtitle: String?) -> UIGridItemComponent {
         
-        self.previewImages = previewImages
+        let label = itemComponent.itemView.subtitleLabel!
         
-        self.title = title
+        label.text = subtitle
         
-        self.subtitle = subtitle
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setPreviewImages(
+        _ images: [UIImage]
+    )
+    -> UIGridItemComponent {
+        
+        let imageView = itemComponent.itemView.previewImageView!
+        
+        if let image = images.first {
+            
+            imageView.image = image
+            
+            imageView.backgroundColor = nil
+            
+        }
+        else {
+            
+            imageView.image = nil
+            
+            imageView.backgroundColor = .lightGray
+            
+        }
+        
+        return self
         
     }
     

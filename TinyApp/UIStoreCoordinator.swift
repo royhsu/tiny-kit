@@ -26,9 +26,9 @@ public final class UIStoreCoordinator: Coordinator {
         
         let storeComponent = UIGridComponent()
         
-        self.storeComponent = storeComponent
-        
         self.containerViewController = UIComponentViewController(component: storeComponent)
+    
+        self.storeComponent = storeComponent
         
         self.productManager = ProductManager()
         
@@ -40,35 +40,53 @@ public final class UIStoreCoordinator: Coordinator {
     
     public final func activate() {
         
-        storeComponent.render()
-        
-        productManager
-            .fetchProducts(in: .background)
-            .then(in: .background) { products -> [UIGridItem] in
+        storeComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in 3 }
+            .setComponentForItem { indexPath in
                 
-                self.products = products
-                
-                return products.map { product in
-                    
-                    return UIGridItem(
-                        title: product.title,
-                        subtitle: "$\(product.price)"
+                return UIGridItemComponent(
+                    contentMode: .size(
+                        width: 0.0,
+                        height: 0.0
                     )
-                    
-                }
+                )
+                .setTitle("Hello")
+                .setSubtitle("World")
+                .setPreviewImages(
+                    [ #imageLiteral(resourceName: "image-dessert-1") ]
+                )
                 
             }
-            .then(in: .main) { items in
-                
-                self.storeComponent.setItems(items).render()
-                
-            }
-            .catch(in: .main) { error in
-                
-                // TODO: error handling.
-                print("\(error)")
-                
-            }
+            .render()
+        
+//        productManager
+//            .fetchProducts(in: .background)
+//            .then(in: .background) { products -> [UIGridItem] in
+//                
+//                self.products = products
+//                
+//                return products.map { product in
+//                    
+//                    return UIGridItem(
+//                        title: product.title,
+//                        subtitle: "$\(product.price)"
+//                    )
+//                    
+//                }
+//                
+//            }
+//            .then(in: .main) { items in
+//                
+//                self.storeComponent.setItems(items).render()
+//                
+//            }
+//            .catch(in: .main) { error in
+//                
+//                // TODO: error handling.
+//                print("\(error)")
+//                
+//            }
         
     }
     
