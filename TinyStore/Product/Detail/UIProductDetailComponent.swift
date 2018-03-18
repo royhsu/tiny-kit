@@ -159,4 +159,15 @@ public extension UIProductDetailComponent {
         
     }
     
+    public typealias ActionHandler = () -> Void
+    
+    @discardableResult
+    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailComponent {
+        
+        detailHeaderComponent.setAction(handler)
+        
+        return self
+        
+    }
+    
 }

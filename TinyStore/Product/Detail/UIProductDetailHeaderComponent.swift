@@ -147,4 +147,15 @@ public extension UIProductDetailHeaderComponent {
             
     }
     
+    public typealias ActionHandler = () -> Void
+    
+    @discardableResult
+    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailHeaderComponent {
+        
+        descriptionComponent.setDidTap(handler)
+        
+        return self
+        
+    }
+    
 }

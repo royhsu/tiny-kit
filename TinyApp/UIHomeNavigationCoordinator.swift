@@ -46,6 +46,11 @@ public final class UIHomeNavigationCoordinator: Coordinator {
                             subtitle: "$\(product.price)"
                         )
                     )
+                    .setAction {
+                        
+                        // TODO: add to cartMananger.
+                        
+                    }
                     .render()
                 
                 self.navigationController.pushViewController(

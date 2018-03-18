@@ -93,4 +93,15 @@ public extension UIProductDescriptionComponent {
         
     }
     
+    public typealias DidTapHandler = () -> Void
+    
+    @discardableResult
+    public final func setDidTap(_ handler: DidTapHandler?) -> UIProductDescriptionComponent {
+        
+        actionButtonComponent.onTap(handler: handler)
+        
+        return self
+        
+    }
+    
 }
