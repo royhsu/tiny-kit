@@ -104,3 +104,18 @@ public final class UIListComponent: Component {
     public final var preferredContentSize: CGSize { return tableView.bounds.size }
 
 }
+
+public extension UIListComponent {
+    
+    public typealias DidSelectItemHandler = (IndexPath) -> Void
+    
+    @discardableResult
+    public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> UIListComponent {
+        
+        bridge.didSelectRowHandler = handler
+        
+        return self
+        
+    }
+    
+}

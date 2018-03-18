@@ -37,6 +37,10 @@ internal final class UITableViewListComponentBridge: NSObject {
         tableView.delegate = self
 
     }
+    
+    internal typealias DidSelectRowHandler = (IndexPath) -> Void
+    
+    internal final var didSelectRowHandler: DidSelectRowHandler?
 
 }
 
