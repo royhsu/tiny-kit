@@ -17,6 +17,8 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let cartCoordinator: UICartCoordinator
     
+    private final let cartContentComponent: UIListComponent
+    
     private final let storeCoordinator: UIStoreCoordinator
     
     public init() {
@@ -25,6 +27,8 @@ public final class UIHomeCoordinator: Coordinator {
         
         self.cartCoordinator = UICartCoordinator()
         
+        self.cartContentComponent = UIListComponent()
+        
         self.storeCoordinator = UIStoreCoordinator()
         
     }
@@ -32,6 +36,10 @@ public final class UIHomeCoordinator: Coordinator {
     // MARK: Coordinator
     
     public final func activate() {
+        
+        collapseBarController.setBarContentViewController(
+            UIComponentViewController(component: cartContentComponent)
+        )
         
         collapseBarController.setBarViewController(cartCoordinator.viewController)
         
@@ -53,6 +61,17 @@ public extension UIHomeCoordinator {
     public final func setDidSelectProduct(_ handler: DidSelectProductHandler?) -> UIHomeCoordinator {
         
         storeCoordinator.setDidSelectProduct(handler)
+        
+        return self
+        
+    }
+    
+    public typealias NumberOfCartDescriptorsHandler = () -> Void
+    
+    @discardableResult
+    public final func setNumberOfCartDescriptors(_ handler: NumberOfCartDescriptorsHandler?) -> UIHomeCoordinator {
+        
+        // TODO: feed to list.
         
         return self
         

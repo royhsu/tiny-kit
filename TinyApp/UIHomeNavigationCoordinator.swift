@@ -18,6 +18,8 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     
     private final let homeCoordinator: UIHomeCoordinator
     
+    private final let cartManager: CartManager
+    
     public init() {
         
         let homeCoordinator = UIHomeCoordinator()
@@ -25,6 +27,8 @@ public final class UIHomeNavigationCoordinator: Coordinator {
         self.homeCoordinator = homeCoordinator
         
         self.navigationController = UINavigationController(rootViewController: homeCoordinator.viewController)
+        
+        self.cartManager = CartManager()
         
     }
     
@@ -48,7 +52,14 @@ public final class UIHomeNavigationCoordinator: Coordinator {
                     )
                     .setAction {
                         
-                        // TODO: add to cartMananger.
+                        let cartItemDescriptor = CartItemDescriptor(
+                            item: product,
+                            quantity: 1,
+                            isSelected: true
+                        )
+                        
+                        // TODO: prevent adding a duplicate item.
+                        self.cartManager.cart.value.append(cartItemDescriptor)
                         
                     }
                     .render()

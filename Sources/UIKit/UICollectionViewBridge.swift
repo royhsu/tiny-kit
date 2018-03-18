@@ -10,7 +10,7 @@
 
 public final class UICollectionViewBridge: NSObject {
     
-    private unowned final let collectionView: UICollectionView
+    private final unowned let collectionView: UICollectionView
     
     internal init(collectionView: UICollectionView) {
         

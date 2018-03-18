@@ -210,6 +210,7 @@ public extension UICollectionComponent {
     
     public final func componentForItem(at indexPath: IndexPath) -> Component? { return componentForItemHandler?(indexPath) }
     
+    // TODO: maybe it's better to make cell components detect their touching events.
     public typealias DidSelectItemHandler = UICollectionViewBridge.DidSelectItemHandler
     
     @discardableResult
