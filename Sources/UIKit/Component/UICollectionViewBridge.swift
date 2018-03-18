@@ -48,6 +48,10 @@ public final class UICollectionViewBridge: NSObject {
     
     public final var sizeForItemHandler: SizeForItemHandler?
     
+    public typealias DidSelectItemHandler = (IndexPath) -> Void
+    
+    public final var didSelectItemHandler: DidSelectItemHandler?
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -98,6 +102,17 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
         return cell
 
     }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension UICollectionViewBridge: UICollectionViewDelegate {
+    
+    public final func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) { didSelectItemHandler?(indexPath) }
     
 }
 

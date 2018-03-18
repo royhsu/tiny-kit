@@ -55,6 +55,13 @@ public final class UIStoreCoordinator: Coordinator {
                     return component
                     
                 }
+                .setDidSelectItem { indexPath in
+                 
+                    let selectedProduct = self.products[indexPath.row]
+                    
+                    print(selectedProduct)
+                    
+                }
                 .render()
             
         }

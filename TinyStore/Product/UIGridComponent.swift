@@ -111,4 +111,15 @@ public extension UIGridComponent {
         
     }
     
+    public typealias DidSelectItemHandler = UINewCollectionComponent.DidSelectItemHandler
+    
+    @discardableResult
+    public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> UIGridComponent {
+        
+        collectionComponent.setDidSelectItem(handler)
+        
+        return self
+        
+    }
+    
 }

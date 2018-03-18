@@ -210,4 +210,15 @@ public extension UINewCollectionComponent {
     
     public final func componentForItem(at indexPath: IndexPath) -> Component? { return componentForItemHandler?(indexPath) }
     
+    public typealias DidSelectItemHandler = UICollectionViewBridge.DidSelectItemHandler
+    
+    @discardableResult
+    public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> Component {
+        
+        bridge.didSelectItemHandler = handler
+        
+        return self
+        
+    }
+    
 }

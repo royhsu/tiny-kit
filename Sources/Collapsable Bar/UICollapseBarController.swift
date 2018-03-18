@@ -37,12 +37,12 @@ public final class UICollapseBarController: UIViewController {
         
         super.viewDidLoad()
         
-        collapseView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(toggleContent)
-            )
-        )
+//        collapseView.addGestureRecognizer(
+//            UITapGestureRecognizer(
+//                target: self,
+//                action: #selector(toggleContent)
+//            )
+//        )
         
     }
     
