@@ -1,14 +1,14 @@
 //
-//  UIChainableButton.swift
+//  UIOptionButton.swift
 //  TinyUI
 //
 //  Created by Roy Hsu on 19/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIChainableButton
+// MARK: - UIOptionButton
 
-public final class UIChainableButton: UIView {
+public final class UIOptionButton: UIView {
     
     @IBOutlet
     public fileprivate(set) final weak var titleLabel: UILabel!

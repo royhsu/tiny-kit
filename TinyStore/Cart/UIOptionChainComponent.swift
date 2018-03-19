@@ -13,7 +13,7 @@ public final class UIOptionChainComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UIStackView>
     
-    private final var actionComponents: [UIChainableButtonComponet]
+    private final var actionComponents: [UIOptionButtonComponet]
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -52,7 +52,7 @@ public extension UIOptionChainComponent {
         
         actionComponents = descriptors.map { descriptor in
             
-            return UIChainableButtonComponet()
+            return UIOptionButtonComponet()
                 .setTitle(descriptor.title)
                 .setAction(descriptor.handler)
             

@@ -100,8 +100,8 @@
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
 		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
-		B0A3347720600F2800FF5098 /* UIChainableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3347620600F2800FF5098 /* UIChainableButton.swift */; };
-		B0A3347920600F5300FF5098 /* UIChainableButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A3347820600F5300FF5098 /* UIChainableButton.xib */; };
+		B0A3347720600F2800FF5098 /* UIOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3347620600F2800FF5098 /* UIOptionButton.swift */; };
+		B0A3347920600F5300FF5098 /* UIOptionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A3347820600F5300FF5098 /* UIOptionButton.xib */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0A6292F204646DD000F97E3 /* TinyAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A62928204646DD000F97E3 /* TinyAuth.framework */; };
@@ -137,8 +137,8 @@
 		B0A629B420467E43000F97E3 /* UILandingSupplyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */; };
 		B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B520467EAC000F97E3 /* AccessToken.swift */; };
 		B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B720467EBD000F97E3 /* AuthManager.swift */; };
-		B0A7BA01206010A300696022 /* UIChainableButtonComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA00206010A300696022 /* UIChainableButtonComponet.swift */; };
-		B0A7BA032060136300696022 /* UIChainingOptionsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA022060136300696022 /* UIChainingOptionsComponent.swift */; };
+		B0A7BA01206010A300696022 /* UIOptionButtonComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA00206010A300696022 /* UIOptionButtonComponet.swift */; };
+		B0A7BA032060136300696022 /* UIOptionChainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA022060136300696022 /* UIOptionChainComponent.swift */; };
 		B0A7BA0920601C5200696022 /* UIOptionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */; };
 		B0D90E0C2048446F00AC9A0A /* TinyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D90E0A2048446F00AC9A0A /* TinyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; };
@@ -309,8 +309,8 @@
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
 		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
-		B0A3347620600F2800FF5098 /* UIChainableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChainableButton.swift; sourceTree = "<group>"; };
-		B0A3347820600F5300FF5098 /* UIChainableButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIChainableButton.xib; sourceTree = "<group>"; };
+		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
+		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
 		B0A62915204590D4000F97E3 /* UILandingLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILandingLogoView.xib; sourceTree = "<group>"; };
 		B0A62928204646DD000F97E3 /* TinyAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A6292A204646DD000F97E3 /* TinyAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyAuth.h; sourceTree = "<group>"; };
@@ -338,8 +338,8 @@
 		B0A629B320467E43000F97E3 /* UILandingSupplyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILandingSupplyHandler.swift; sourceTree = "<group>"; };
 		B0A629B520467EAC000F97E3 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		B0A629B720467EBD000F97E3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		B0A7BA00206010A300696022 /* UIChainableButtonComponet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChainableButtonComponet.swift; sourceTree = "<group>"; };
-		B0A7BA022060136300696022 /* UIChainingOptionsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChainingOptionsComponent.swift; sourceTree = "<group>"; };
+		B0A7BA00206010A300696022 /* UIOptionButtonComponet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButtonComponet.swift; sourceTree = "<group>"; };
+		B0A7BA022060136300696022 /* UIOptionChainComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionChainComponent.swift; sourceTree = "<group>"; };
 		B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionDescriptor.swift; sourceTree = "<group>"; };
 		B0D90E082048446F00AC9A0A /* TinyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
@@ -582,10 +582,10 @@
 		B04F05B7205A2C320050C41C /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				B0A3347620600F2800FF5098 /* UIChainableButton.swift */,
-				B0A3347820600F5300FF5098 /* UIChainableButton.xib */,
-				B0A7BA00206010A300696022 /* UIChainableButtonComponet.swift */,
-				B0A7BA022060136300696022 /* UIChainingOptionsComponent.swift */,
+				B0A3347620600F2800FF5098 /* UIOptionButton.swift */,
+				B0A3347820600F5300FF5098 /* UIOptionButton.xib */,
+				B0A7BA00206010A300696022 /* UIOptionButtonComponet.swift */,
+				B0A7BA022060136300696022 /* UIOptionChainComponent.swift */,
 				B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */,
 				B04F05B8205A2C7E0050C41C /* UICartItemView.swift */,
 				B04F05BA205A2CBD0050C41C /* UICartItemView.xib */,
@@ -982,7 +982,7 @@
 				B032B00B20564C2400AB47C4 /* UIGridItemView.xib in Resources */,
 				B04F05D1205A5F920050C41C /* UICartBar.xib in Resources */,
 				B032B06A2057BE7B00AB47C4 /* UIProductSectionHeaderView.xib in Resources */,
-				B0A3347920600F5300FF5098 /* UIChainableButton.xib in Resources */,
+				B0A3347920600F5300FF5098 /* UIOptionButton.xib in Resources */,
 				B032B07A2057FBCF00AB47C4 /* UIProductDescriptionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1109,7 +1109,7 @@
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* UIGridItemComponent.swift in Sources */,
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
-				B0A3347720600F2800FF5098 /* UIChainableButton.swift in Sources */,
+				B0A3347720600F2800FF5098 /* UIOptionButton.swift in Sources */,
 				B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */,
 				B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */,
 				B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */,
@@ -1120,13 +1120,13 @@
 				B04F05CF205A5F550050C41C /* UICartBar.swift in Sources */,
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,
 				B032B06E2057C2BD00AB47C4 /* UIProductReviewView.swift in Sources */,
-				B0A7BA032060136300696022 /* UIChainingOptionsComponent.swift in Sources */,
+				B0A7BA032060136300696022 /* UIOptionChainComponent.swift in Sources */,
 				B0D90E19204844CB00AC9A0A /* UIGridComponent.swift in Sources */,
 				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
 				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,
 				B032B0762057CA3500AB47C4 /* UIProductReview.swift in Sources */,
 				B032B0722057C4FC00AB47C4 /* UIProductReviewComponent.swift in Sources */,
-				B0A7BA01206010A300696022 /* UIChainableButtonComponet.swift in Sources */,
+				B0A7BA01206010A300696022 /* UIOptionButtonComponet.swift in Sources */,
 				B032B0662057BBB800AB47C4 /* UIProductDescriptionComponent.swift in Sources */,
 				B04F05C1205A31300050C41C /* UICartItem.swift in Sources */,
 				B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */,

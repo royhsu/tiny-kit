@@ -1,19 +1,19 @@
 //
-//  UIChainableButtonComponet.swift
+//  UIOptionButtonComponet.swift
 //  TinyUI
 //
 //  Created by Roy Hsu on 19/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIChainableButtonComponet
+// MARK: - UIOptionButtonComponet
 
-public final class UIChainableButtonComponet: Component {
+public final class UIOptionButtonComponet: Component {
     
     private final let bundle: Bundle
     
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIChainableButton>
+    private final let itemComponent: UIItemComponent<UIOptionButton>
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -24,7 +24,7 @@ public final class UIChainableButtonComponet: Component {
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UIChainableButton.self,
+                UIOptionButton.self,
                 from: bundle
             )!
         )
@@ -77,10 +77,10 @@ public final class UIChainableButtonComponet: Component {
     
 }
 
-public extension UIChainableButtonComponet {
+public extension UIOptionButtonComponet {
     
     @discardableResult
-    public final func setTitle(_ title: String?) -> UIChainableButtonComponet {
+    public final func setTitle(_ title: String?) -> UIOptionButtonComponet {
         
         itemComponent.itemView.titleLabel.text = title
         
@@ -89,7 +89,7 @@ public extension UIChainableButtonComponet {
     }
     
     @discardableResult
-    public final func setAction(_ handler: ActionHandler?) -> UIChainableButtonComponet {
+    public final func setAction(_ handler: ActionHandler?) -> UIOptionButtonComponet {
         
         actionHandler = handler
         
