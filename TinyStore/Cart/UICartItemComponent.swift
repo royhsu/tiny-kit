@@ -47,8 +47,6 @@ public final class UICartItemComponent: Component, Stylable {
         self.selectionComponent = selectionComponent
         
         self.quantityComponent = quantityComponent
-        
-        self.actionDescriptors = []
 
         self.prepare()
         
@@ -120,10 +118,6 @@ public final class UICartItemComponent: Component, Stylable {
     // MARK: Stylable
     
     public final var theme: Theme
-    
-    // MARK: Action
-    
-    private final var actionDescriptors: [UICartItemActionDescriptor]
 
 }
 
@@ -158,61 +152,8 @@ public extension UICartItemComponent {
         return self
         
     }
-    
-    @discardableResult
-    public final func setActionDescriptors(
-        _ descriptors: [UICartItemActionDescriptor]
-    )
-    -> UICartItemComponent {
-        
-        actionDescriptors = descriptors
-        
-        for index in 0..<descriptors.count {
-            
-            let descriptor = descriptors[index]
-            
-            let titleLabel: UILabel?
-            
-            switch index {
-            
-            case 0: titleLabel = itemComponent.itemView.firstTitleLabel
-             
-            case 1: titleLabel = itemComponent.itemView.secondTitleLabel
-                
-            default: titleLabel = nil
-                
-            }
-            
-            titleLabel?.text = descriptor.title
-            
-        }
-        
-        return self
-        
-    }
-    
+
 }
 
 
-// MARK: - UICartItemActionDescriptor
 
-public struct UICartItemActionDescriptor {
-    
-    public typealias ActionHandler = () -> Void
-    
-    public let title: String
-    
-    public let handler: ActionHandler
-    
-    public init(
-        title: String,
-        handler: @escaping ActionHandler
-    ) {
-        
-        self.title = title
-        
-        self.handler = handler
-        
-    }
-    
-}

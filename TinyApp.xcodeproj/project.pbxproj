@@ -138,6 +138,8 @@
 		B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B520467EAC000F97E3 /* AccessToken.swift */; };
 		B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A629B720467EBD000F97E3 /* AuthManager.swift */; };
 		B0A7BA01206010A300696022 /* UIChainableButtonComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA00206010A300696022 /* UIChainableButtonComponet.swift */; };
+		B0A7BA032060136300696022 /* UIChainingOptionsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA022060136300696022 /* UIChainingOptionsComponent.swift */; };
+		B0A7BA0920601C5200696022 /* UIOptionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */; };
 		B0D90E0C2048446F00AC9A0A /* TinyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D90E0A2048446F00AC9A0A /* TinyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; };
 		B0D90E102048446F00AC9A0A /* TinyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -337,6 +339,8 @@
 		B0A629B520467EAC000F97E3 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		B0A629B720467EBD000F97E3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B0A7BA00206010A300696022 /* UIChainableButtonComponet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChainableButtonComponet.swift; sourceTree = "<group>"; };
+		B0A7BA022060136300696022 /* UIChainingOptionsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChainingOptionsComponent.swift; sourceTree = "<group>"; };
+		B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionDescriptor.swift; sourceTree = "<group>"; };
 		B0D90E082048446F00AC9A0A /* TinyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
 		B0D90E0B2048446F00AC9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -581,6 +585,8 @@
 				B0A3347620600F2800FF5098 /* UIChainableButton.swift */,
 				B0A3347820600F5300FF5098 /* UIChainableButton.xib */,
 				B0A7BA00206010A300696022 /* UIChainableButtonComponet.swift */,
+				B0A7BA022060136300696022 /* UIChainingOptionsComponent.swift */,
+				B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */,
 				B04F05B8205A2C7E0050C41C /* UICartItemView.swift */,
 				B04F05BA205A2CBD0050C41C /* UICartItemView.xib */,
 				B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */,
@@ -1097,6 +1103,7 @@
 				B032B06C2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift in Sources */,
 				B032B0602057A92F00AB47C4 /* UIProductGalleryComponent.swift in Sources */,
 				B032B0682057BE6100AB47C4 /* UIProductSectionHeaderView.swift in Sources */,
+				B0A7BA0920601C5200696022 /* UIOptionDescriptor.swift in Sources */,
 				B04F05BD205A300D0050C41C /* UICartItemComponent.swift in Sources */,
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
@@ -1113,6 +1120,7 @@
 				B04F05CF205A5F550050C41C /* UICartBar.swift in Sources */,
 				B032B00920564C1D00AB47C4 /* UIGridItemView.swift in Sources */,
 				B032B06E2057C2BD00AB47C4 /* UIProductReviewView.swift in Sources */,
+				B0A7BA032060136300696022 /* UIChainingOptionsComponent.swift in Sources */,
 				B0D90E19204844CB00AC9A0A /* UIGridComponent.swift in Sources */,
 				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
 				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,

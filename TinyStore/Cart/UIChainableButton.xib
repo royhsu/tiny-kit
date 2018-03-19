@@ -21,11 +21,12 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="rgr-yH-VjC" firstAttribute="bottom" secondItem="6go-uf-S9U" secondAttribute="bottom" constant="6" id="Cee-Lm-ODE"/>
                 <constraint firstAttribute="trailing" secondItem="6go-uf-S9U" secondAttribute="trailing" id="IwL-kY-gTT"/>
                 <constraint firstItem="6go-uf-S9U" firstAttribute="leading" secondItem="gfb-yE-0YK" secondAttribute="leading" id="TVn-ZQ-dmN"/>
-                <constraint firstItem="6go-uf-S9U" firstAttribute="centerY" secondItem="gfb-yE-0YK" secondAttribute="centerY" id="yPk-M9-6x7"/>
+                <constraint firstItem="6go-uf-S9U" firstAttribute="top" secondItem="rgr-yH-VjC" secondAttribute="top" constant="6" id="WHP-6f-xxa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="rgr-yH-VjC"/>

@@ -17,24 +17,11 @@ import TinyStore
 public final class UIRootCoordinator: Coordinator {
     
     /// The navigator.
-//    private final let rootViewController: UIViewController
+    private final let rootViewController: UIViewController
     
-    public init(contentSize: CGSize) {
-        
-//        cartItemListComponent.setItems(
-//            [
-//                UICartItem(
-//                    previewImage: #imageLiteral(resourceName: "image-dessert-3"),
-//                    title: "Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper.",
-//                    price: 150.0
-//                ),
-//                UICartItem(
-//                    previewImage: #imageLiteral(resourceName: "image-dessert-1"),
-//                    title: "Cras mattis consectetur purus sit amet fermentum.",
-//                    price: 120.0
-//                )
-//            ]
-//        )
+    private final let rootComponent: Component
+    
+    public init() {
         
 //        let rootComponent = UIProductDetailComponent(
 //            contentMode: .size(
@@ -97,74 +84,39 @@ public final class UIRootCoordinator: Coordinator {
 //            ]
 //        )
         
-//        let rootComponent = UIGridComponent(
-//            contentMode: .size(
-//                width: contentSize.width,
-//                height: contentSize.height
-//            )
-//        )
+        self.rootComponent = UIOptionChainComponent().setOptionDescriptors(
+            [
+                UIOptionDescriptor(
+                    title: "First",
+                    handler: { print("1") }
+                ),
+                UIOptionDescriptor(
+                    title: "Second",
+                    handler: { print("1") }
+                )
+            ]
+        )
         
-//        self.rootComponent = gridComponent
-//
-//        let tabBarController = UITabBarController(
-//            nibName: nil,
-//            bundle: nil
-//        )
+//        self.rootComponent = UIChainableButtonComponet()
+//            .setTitle("Say Hello")
+//            .setAction { print("hello") }
         
-//        let componentViewController = UIComponentViewController(component: rootComponent)
-//
-//        componentViewController.tabBarItem = UITabBarItem(
-//            tabBarSystemItem: .featured,
-//            tag: 0
-//        )
-//
-//        let collapseBarController = UICollapseBarController()
-//
-//        collapseBarController.tabBarItem = UITabBarItem(
-//            tabBarSystemItem: .featured,
-//            tag: 0
-//        )
-//
-//        collapseBarController.setBackgroundViewController(
-//            componentViewController
-//        )
-//
-
-//
-//        collapseBarController.setBarViewController(
-//            UIComponentViewController(component: cartBarComponent)
-//        )
-//
-//        collapseBarController.setBarContentViewController(
-//            UIComponentViewController(component: cartItemListComponent)
-//        )
+        let containerViewController = UIComponentViewController(component: rootComponent)
         
-//        tabBarController.setViewControllers(
-//            [ collapseBarController ],
-//            animated: true
-//        )
-//
-//        self.rootViewController = tabBarController
+        containerViewController.view.backgroundColor = .white
+        
+        self.rootViewController = containerViewController
         
     }
     
-    public final func activate() {
-        
-//        rootComponent.render()
-//
-//        cartBarComponent.render()
-//
-//        cartItemListComponent.render()
-//
-    }
+    public final func activate() { rootComponent.render() }
     
 }
 
 // MARK: - ViewRenderable
 
-//extension UIRootCoordinator: ViewControllerRepresentable {
-//    
-//    public final var viewController: ViewController { return rootViewController }
-//    
-//}
-
+extension UIRootCoordinator: ViewControllerRepresentable {
+    
+    public final var viewController: ViewController { return rootViewController }
+    
+}
