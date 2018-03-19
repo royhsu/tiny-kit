@@ -60,8 +60,6 @@ public final class UINewListComponent: Component {
                 let component = self.componentForItemHandler?(indexPath)
             else { return }
             
-            print("configureCellHandler", indexPath)
-            
             component.render()
             
             cell.contentView.render(with: component)
@@ -73,8 +71,6 @@ public final class UINewListComponent: Component {
             guard
                 let component = self.componentForItem(at: indexPath)
             else { return 0.0 }
-            
-            print("heightForRowHandler", indexPath)
             
             switch component.contentMode {
                 
