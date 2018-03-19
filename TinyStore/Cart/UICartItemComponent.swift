@@ -130,7 +130,7 @@ public final class UICartItemComponent: Component {
         selectionSubscription = selectionCheckboxComponent.input.subscribe { _, isSelected in
             
             itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
-                
+            
         }
         
     }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */; };
-		B01EFA05205D2D5100CF9C17 /* UICheckboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA01205D2D5100CF9C17 /* UICheckboxItem.swift */; };
+		B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */; };
 		B01EFA06205D2D5100CF9C17 /* UICheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EFA02205D2D5100CF9C17 /* UICheckbox.xib */; };
 		B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA03205D2D5100CF9C17 /* UICheckbox.swift */; };
 		B01EFA08205D2D5100CF9C17 /* UICheckboxComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA04205D2D5100CF9C17 /* UICheckboxComponent.swift */; };
@@ -216,7 +216,7 @@
 
 /* Begin PBXFileReference section */
 		B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeader.swift; sourceTree = "<group>"; };
-		B01EFA01205D2D5100CF9C17 /* UICheckboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICheckboxItem.swift; sourceTree = "<group>"; };
+		B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICheckbox+Theme.swift"; sourceTree = "<group>"; };
 		B01EFA02205D2D5100CF9C17 /* UICheckbox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICheckbox.xib; sourceTree = "<group>"; };
 		B01EFA03205D2D5100CF9C17 /* UICheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICheckbox.swift; sourceTree = "<group>"; };
 		B01EFA04205D2D5100CF9C17 /* UICheckboxComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICheckboxComponent.swift; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 			children = (
 				B01EFA03205D2D5100CF9C17 /* UICheckbox.swift */,
 				B01EFA02205D2D5100CF9C17 /* UICheckbox.xib */,
-				B01EFA01205D2D5100CF9C17 /* UICheckboxItem.swift */,
+				B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */,
 				B01EFA04205D2D5100CF9C17 /* UICheckboxComponent.swift */,
 			);
 			path = Checkbox;
@@ -1069,7 +1069,7 @@
 				B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */,
 				B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */,
 				B0A629A120465828000F97E3 /* UIPrimaryButtonItem.swift in Sources */,
-				B01EFA05205D2D5100CF9C17 /* UICheckboxItem.swift in Sources */,
+				B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */,
 				B01EFA10205D2D7900CF9C17 /* UINumberPickerItem.swift in Sources */,
 				B0A629A020465828000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */,
 				B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */,

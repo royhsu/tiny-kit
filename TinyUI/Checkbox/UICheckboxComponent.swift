@@ -49,19 +49,17 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
         
         let checkbox = itemComponent.itemView
         
+        setUpCheckboxIconImageView(
+            checkbox.iconImageView,
+            isChecked: input.value
+        )
+        
         inputSubscription = input.subscribe { [unowned self] _, isChecked in
             
-            let imageName =
-                isChecked
-                ? "icon-checkbox-checked"
-                : "icon-checkbox-unchecked"
-            
-            checkbox.iconImageView.image = UIImage(
-                named: imageName,
-                in: self.bundle,
-                compatibleWith: nil
-            )?
-            .withRenderingMode(.alwaysTemplate)
+            self.setUpCheckboxIconImageView(
+                checkbox.iconImageView,
+                isChecked: isChecked
+            )
             
         }
         
@@ -71,10 +69,27 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
             for: .touchUpInside
         )
         
-        applyTheme(
-            theme,
-            for: checkbox
+        checkbox.applyTheme(theme)
+        
+    }
+    
+    fileprivate final func setUpCheckboxIconImageView(
+        _ imageView: UIImageView,
+        isChecked: Bool
+    ) {
+        
+        let imageName =
+            isChecked
+            ? "icon-checkbox-checked"
+            : "icon-checkbox-unchecked"
+        
+        let image = UIImage(
+            named: imageName,
+            in: self.bundle,
+            compatibleWith: nil
         )
+        
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
         
     }
     
@@ -99,17 +114,6 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
     // MARK: Stylable
     
     public final var theme: Theme
-    
-    fileprivate final func applyTheme(
-        _ theme: Theme,
-        for checkbox: UICheckbox
-    ) {
-        
-        checkbox.iconImageView.tintColor = theme.primaryColor
-        
-        checkbox.backgroundColor = theme.backgroundColor
-        
-    }
     
     // MARK: Inputable
     
