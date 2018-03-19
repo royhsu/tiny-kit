@@ -22,9 +22,10 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let storeCoordinator: UIStoreCoordinator
     
+    // TODO:
+    // 1. wishlist cart manager in home
+    // 2. checkout cart manager in checkout process
     private final let cartManager: CartManager
-    
-    private final var cartSubscription: Subscription<[CartItemDescriptor]>?
     
     public typealias ShowProductDetailHandler = (_ viewController: UIViewController) -> Void
     
@@ -53,12 +54,6 @@ public final class UIHomeCoordinator: Coordinator {
     // MARK: Coordinator
     
     public final func activate() {
-        
-        cartSubscription = cartManager.cart.subscribe { [unowned self] _, _ in
-        
-//            self.cartContentComponent.render()
-            
-        }
         
         collapseBarController.setBarContentViewController(
             UIComponentViewController(component: cartContentComponent)
