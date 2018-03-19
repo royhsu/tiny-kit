@@ -47,33 +47,24 @@ public final class UICartItemComponent: Component {
         
         self.selectionCheckboxComponent = UICheckboxComponent()
         
-        let pickerTintColor = UIColor(
-            red: 0.35,
-            green: 0.56,
-            blue: 0.87,
-            alpha: 1.0
-        )
-        .modifiedWithAdditionalHue(
-            0.0,
-            saturation: -0.3,
-            brightness: 0.0
-        )
+//        let pickerTintColor = UIColor(
+//            red: 0.35,
+//            green: 0.56,
+//            blue: 0.87,
+//            alpha: 1.0
+//        )
+//        .modifiedWithAdditionalHue(
+//            0.0,
+//            saturation: -0.3,
+//            brightness: 0.0
+//        )
         
         self.quantityPickerComponent = UINumberPickerComponent(
-            minimumNumber: 1,
-            maximumNumber: 99
+            minimumValue: 1,
+            maximumValue: 99
         )
-        .setItem(
-            UINumberPickerItem(
-                increaseIconImage: #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate),
-                increaseBackgroundColor: pickerTintColor,
-                increaseTintColor: .white,
-                decreaseIconImage: #imageLiteral(resourceName: "icon-minus").withRenderingMode(.alwaysTemplate),
-                decreaseBackgroundColor: pickerTintColor,
-                decreaseTintColor: .white
-            )
-        )
-        .onDidFail { error in
+            
+        quantityPickerComponent.setDidFail { error in
 
             // TODO: error handling.
             print("\(error)")

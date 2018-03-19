@@ -1,14 +1,14 @@
 //
-//  UINumberPickerView.swift
+//  UINumberPicker.swift
 //  TinyUI
 //
 //  Created by Roy Hsu on 15/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UINumberPickerView
+// MARK: - UINumberPicker
 
-public final class UINumberPickerView: UIView {
+public final class UINumberPicker: UIView {
     
     @IBOutlet
     public fileprivate(set) final weak var increaseIconImageView: UIImageView!
@@ -50,15 +50,51 @@ public final class UINumberPickerView: UIView {
         
         view.clipsToBounds = true
         
+        view.backgroundColor = tintColor
+        
     }
     
-    fileprivate final func setUpIncreaseIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
+    fileprivate final func setUpIncreaseIconImageView(_ imageView: UIImageView) {
+        
+        let bundle = Bundle(
+            for: type(of: self)
+        )
+        
+        let image = UIImage(
+            named: "icon-plus",
+            in: bundle,
+            compatibleWith: nil
+        )
+        
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        
+        imageView.tintColor = .white
+        
+        imageView.contentMode = .center
+        
+    }
     
-    fileprivate final func setUpDecreaseIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
+    fileprivate final func setUpDecreaseIconImageView(_ imageView: UIImageView) {
+        
+        let bundle = Bundle(
+            for: type(of: self)
+        )
+        
+        let image = UIImage(
+            named: "icon-minus",
+            in: bundle,
+            compatibleWith: nil
+        )
+        
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        
+        imageView.tintColor = .white
+        
+        imageView.contentMode = .center
+        
+    }
     
-    fileprivate final func setUpNumberContainerView(_ view: UIView) { view.backgroundColor = nil }
-    
-    let toolBar = UIToolbar()
+    fileprivate final func setUpNumberContainerView(_ view: UIView) { view.backgroundColor = .white }
     
     fileprivate final func setUpNumberTextField(_ textField: UITextField) {
         

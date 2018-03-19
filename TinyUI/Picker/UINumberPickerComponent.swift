@@ -8,115 +8,130 @@
 
 // MARK: - UINumberPickerComponent
 
-public final class UINumberPickerComponent: Component, Inputable {
+public final class UINumberPickerComponent: Component, Stylable, Inputable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
-    private final let itemComponent: UIItemComponent<UINumberPickerView>
-    
-    private final let numberTextFieldBridge: UITextFieldBridge
+    private final let itemComponent: UIItemComponent<UINumberPicker>
     
     private final let validator: UINumberPickerInputValidator
     
-    private final var currentItem: UINumberPickerItem
+    private final let numberTextFieldBridge: UITextFieldBridge
     
-    public typealias DidFailHandler = (_ error: Error) -> Void
+    public typealias DidFailHandler = (Error) -> Void
     
     private final var didFailHandler: DidFailHandler?
     
     public init(
         contentMode: ComponentContentMode = .automatic,
-        minimumNumber: Int = 0,
-        maximumNumber: Int = 99
+        theme: Theme = .current,
+        inputValue: Int? = nil,
+        minimumValue: Int = 0,
+        maximumValue: Int = 10
     ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
-        let itemComponent = UIItemComponent(
+        self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UINumberPickerView.self,
+                UINumberPicker.self,
                 from: bundle
             )!
         )
         
-        let numberTextField = itemComponent.itemView.numberTextField!
+        self.theme = theme
         
-        let defaultNumber = minimumNumber
-        
-        numberTextField.text = "\(defaultNumber)"
-        
-        self.itemComponent = itemComponent
-        
-        self.numberTextFieldBridge = UITextFieldBridge(textField: numberTextField)
-        
-        self.input = Observable(defaultNumber)
-        
-        self.currentItem = UINumberPickerItem()
-        
+        let defaultValue = inputValue ?? minimumValue
+
+        self.input = Observable(defaultValue)
+
         self.validator = UINumberPickerInputValidator(
-            minimumNumber: minimumNumber,
-            maximumNumber: maximumNumber
+            minimumValue: minimumValue,
+            maximumValue: maximumValue
         )
         
-        inputSubscription = input.subscribe {_, newValue in numberTextField.text = "\(newValue)" }
+        self.numberTextFieldBridge = UITextFieldBridge(
+            textField: itemComponent.itemView.numberTextField
+        )
         
-        numberTextFieldBridge.didEndEditing = { /* [unowned self] */ textField in
-            
-            let inputValue = textField.text ?? ""
-
-            let result = self.validator.validate(value: inputValue)
-            
-            switch result {
-
-            case let .success(validValue): self.input.value = validValue
-
-            case let .failure(error):
-                
-                textField.text = "\(self.validator.minimumNumber)"
-                
-                self.didFailHandler?(error)
-
-            }
-            
-        }
-        
-        setUpIncreaseButton(itemComponent.itemView.increaseButton)
-        
-        setUpDecreaseButton(itemComponent.itemView.decreaseButton)
-        
-        setUpNumberTextField(itemComponent.itemView.numberTextField)
-        
-        setItem(currentItem)
+        self.prepare()
         
     }
     
     // MARK: Set Up
     
-    fileprivate final func setUpIncreaseButton(_ button: UIButton) {
+    fileprivate final func prepare() {
         
-        button.addTarget(
+        let picker = itemComponent.itemView
+        
+        setUpPickerNumberTextField(
+            picker.numberTextField,
+            value: input.value
+        )
+        
+        setUpPickerNumberTextField(
+            picker.numberTextField,
+            toolBar: UIToolbar()
+        )
+        
+        inputSubscription = input.subscribe { [unowned self] _, value in
+            
+            self.setUpPickerNumberTextField(
+                picker.numberTextField,
+                value: value
+            )
+            
+        }
+
+        numberTextFieldBridge.didEndEditing = { [unowned self] textField in
+
+            let inputValue = textField.text ?? ""
+
+            let result = self.validator.validate(value: inputValue)
+
+            switch result {
+
+            case let .success(validValue): self.input.value = validValue
+
+            case let .failure(error):
+
+                textField.text = "\(self.validator.minimumValue)"
+
+                self.didFailHandler?(error)
+
+            }
+
+        }
+        
+        picker.increaseButton.addTarget(
             self,
-            action: #selector(increaseNumber),
+            action: #selector(increaseValue),
             for: .touchUpInside
         )
         
-    }
-    
-    fileprivate final func setUpDecreaseButton(_ button: UIButton) {
-        
-        button.addTarget(
+        picker.decreaseButton.addTarget(
             self,
-            action: #selector(decreaseNumber),
+            action: #selector(decreaseValue),
             for: .touchUpInside
         )
         
+        picker.applyTheme(theme)
+        
     }
     
-    fileprivate final func setUpNumberTextField(_ textField: UITextField) {
-        
-        let toolBar = UIToolbar()
+    fileprivate final func setUpPickerNumberTextField(
+        _ textField: UITextField,
+        value: Int
+    ) { textField.text = "\(value)" }
+    
+    fileprivate final func setUpPickerNumberTextField(
+        _ textField: UITextField,
+        toolBar: UIToolbar
+    ) {
         
         toolBar.setItems(
             [
@@ -140,12 +155,6 @@ public final class UINumberPickerComponent: Component, Inputable {
         
     }
     
-    // MARK: Inputaable
-    
-    public final let input: Observable<Int>
-    
-    private final var inputSubscription: Subscription<Int>?
-    
     // MARK: Component
     
     public final var contentMode: ComponentContentMode {
@@ -164,13 +173,23 @@ public final class UINumberPickerComponent: Component, Inputable {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
+    // MARK: Inputaable
+    
+    public final let input: Observable<Int>
+    
+    private final var inputSubscription: Subscription<Int>?
+    
     // MARK: Action
     
     @objc
-    public final func increaseNumber(_ sender: Any) {
+    public final func increaseValue(_ sender: Any) {
         
         guard
-            input.value < validator.maximumNumber
+            input.value < validator.maximumValue
         else { return }
         
         input.value += 1
@@ -178,10 +197,10 @@ public final class UINumberPickerComponent: Component, Inputable {
     }
     
     @objc
-    public final func decreaseNumber(_ sender: Any) {
+    public final func decreaseValue(_ sender: Any) {
         
         guard
-            input.value > validator.minimumNumber
+            input.value > validator.minimumValue
         else { return }
         
         input.value -= 1
@@ -196,56 +215,7 @@ public final class UINumberPickerComponent: Component, Inputable {
 public extension UINumberPickerComponent {
     
     @discardableResult
-    public final func setItem(_ item: UINumberPickerItem) -> UINumberPickerComponent {
-        
-        currentItem = item
-        
-        let pickerView = itemComponent.itemView
-        
-        if let increaseIconImage = item.increaseIconImage {
-            
-            pickerView.increaseIconImageView.image = increaseIconImage
-            
-            pickerView.increaseIconImageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            pickerView.increaseIconImageView.image = nil
-            
-            pickerView.increaseIconImageView.backgroundColor = .lightGray
-            
-        }
-        
-        pickerView.increaseIconImageView.backgroundColor = item.increaseBackgroundColor
-        
-        pickerView.increaseIconImageView.tintColor = item.increaseTintColor
-        
-        if let decreaseIconImage = item.decreaseIconImage {
-            
-            pickerView.decreaseIconImageView.image = decreaseIconImage
-            
-            pickerView.decreaseIconImageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            pickerView.decreaseIconImageView.image = nil
-            
-            pickerView.decreaseIconImageView.backgroundColor = .lightGray
-            
-        }
-        
-        pickerView.decreaseIconImageView.backgroundColor = item.decreaseBackgroundColor
-        
-        pickerView.decreaseIconImageView.tintColor = item.decreaseTintColor
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func onDidFail(handler: DidFailHandler?) -> UINumberPickerComponent {
+    public final func setDidFail(_ handler: DidFailHandler?) -> UINumberPickerComponent {
         
         didFailHandler = handler
         

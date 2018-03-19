@@ -32,12 +32,13 @@ public final class UICheckbox: UIView {
             for: type(of: self)
         )
         
-        imageView.image = UIImage(
+        let image = UIImage(
             named: "icon-checkbox-checked",
             in: bundle,
             compatibleWith: nil
-        )?
-        .withRenderingMode(.alwaysTemplate)
+        )
+        
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
         
         imageView.tintColor = tintColor
         

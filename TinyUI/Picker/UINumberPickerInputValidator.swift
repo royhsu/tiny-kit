@@ -10,24 +10,24 @@
 
 public struct UINumberPickerInputValidator: Validator {
     
-    public let minimumNumber: Int
+    public let minimumValue: Int
     
-    public let maximumNumber: Int
+    public let maximumValue: Int
     
     public init(
-        minimumNumber: Int,
-        maximumNumber: Int
+        minimumValue: Int,
+        maximumValue: Int
     ) {
         
-        if minimumNumber > maximumNumber {
+        if minimumValue > maximumValue {
             
             fatalError("You must specify a minimum number that is less than or equal to the maximum number.")
             
         }
         
-        self.minimumNumber = minimumNumber
+        self.minimumValue = minimumValue
         
-        self.maximumNumber = maximumNumber
+        self.maximumValue = maximumValue
         
     }
     
@@ -46,14 +46,14 @@ public struct UINumberPickerInputValidator: Validator {
         else { newValue = -1 }
         
         guard
-            newValue >= minimumNumber,
-            newValue <= maximumNumber
+            newValue >= minimumValue,
+            newValue <= maximumValue
         else {
             
             let error: UINumberPickerError = .invalidNumber(
                 value: value,
-                validMinimum: minimumNumber,
-                validMaximum: maximumNumber
+                validMinimum: minimumValue,
+                validMaximum: maximumValue
             )
             
             return .failure(error)

@@ -24,7 +24,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJI-2b-6JV">
-                    <rect key="frame" x="46" y="12" width="261" height="40"/>
+                    <rect key="frame" x="46" y="12" width="265" height="40"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VfZ-Vv-Gl1">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -34,12 +34,12 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nullam id dolor id nibh ultricies vehicula ut id elit." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pud-01-kLN">
-                            <rect key="frame" x="50" y="23" width="211" height="17"/>
+                            <rect key="frame" x="50" y="23" width="215" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morbi leo risus, porta ac consectetur ac, vestibulum at eros." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOx-UJ-tXq">
-                            <rect key="frame" x="50" y="0.0" width="211" height="17"/>
+                            <rect key="frame" x="50" y="0.0" width="215" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -76,11 +76,11 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWx-Xz-kce">
-                    <rect key="frame" x="319" y="12" width="40" height="76"/>
+                    <rect key="frame" x="323" y="12" width="36" height="76"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="76" id="KHc-nz-8qp"/>
-                        <constraint firstAttribute="width" constant="40" id="dIr-o9-ATo"/>
+                        <constraint firstAttribute="width" constant="36" id="dIr-o9-ATo"/>
                     </constraints>
                 </view>
             </subviews>

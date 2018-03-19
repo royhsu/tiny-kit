@@ -25,15 +25,13 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
             for: type(of: self)
         )
         
-        let itemComponent = UIItemComponent(
+        self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
                 UICheckbox.self,
                 from: bundle
             )!
         )
-        
-        self.itemComponent = itemComponent
         
         self.theme = theme
         
@@ -85,7 +83,7 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
         
         let image = UIImage(
             named: imageName,
-            in: self.bundle,
+            in: bundle,
             compatibleWith: nil
         )
         
