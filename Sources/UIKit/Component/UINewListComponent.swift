@@ -18,6 +18,8 @@ public final class UINewListComponent: Component {
     
     private final var componentForItemHandler: ComponentForItemHandler?
     
+    private final var itemComponents: [Component]
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
@@ -49,6 +51,8 @@ public final class UINewListComponent: Component {
         self.tableView = tableView
         
         self.bridge = UITableViewBridge(tableView: tableView)
+        
+        self.itemComponents = []
         
         bridge.configureCellHandler = { /* [unowned self] */ cell, indexPath in
             
@@ -85,6 +89,8 @@ public final class UINewListComponent: Component {
     public final var contentMode: ComponentContentMode
     
     public final func render() {
+        
+        itemComponents = []
         
         tableView.reloadData()
         
@@ -161,7 +167,18 @@ public extension UINewListComponent {
     @discardableResult
     public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UINewListComponent {
         
-        componentForItemHandler = handler
+        componentForItemHandler = { indexPath in
+            
+            guard
+                let component = handler?(indexPath)
+            else { return nil }
+            
+            // Prevent the presenting child components get deallocated.
+            self.itemComponents.append(component)
+            
+            return component
+            
+        }
         
         return self
         

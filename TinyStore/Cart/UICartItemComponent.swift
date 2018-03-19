@@ -37,7 +37,15 @@ public final class UICartItemComponent: Component {
         
         self.itemComponent = itemComponent
         
-        self.checkboxComponent = UICheckboxComponent().setChecked(true)
+        self.checkboxComponent = UICheckboxComponent()
+            .setChecked(true)
+            .onToggleCheckbox { isSelected in
+                
+                let itemView = itemComponent.itemView
+                
+                itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
+                
+            }
         
         let pickerTintColor = UIColor(
             red: 0.35,

@@ -70,6 +70,7 @@ public final class UIHomeCoordinator: Coordinator {
                     price: itemDescriptor.item.price
                 )
                 
+                // TODO: [bug] the component will be released after ended this function.
                 let component = UICartItemComponent()
                     .setItem(item)
                 

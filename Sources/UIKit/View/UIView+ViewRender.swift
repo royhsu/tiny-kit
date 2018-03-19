@@ -21,6 +21,10 @@ extension UIView: ViewRenderer {
         contentView.removeFromSuperview()
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let bottomConstraint = bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        
+        bottomConstraint.priority = UILayoutPriority(900)
 
         addSubview(contentView)
         
@@ -29,7 +33,7 @@ extension UIView: ViewRenderer {
                 leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 topAnchor.constraint(equalTo: contentView.topAnchor),
                 trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                bottomConstraint
             ]
         )
 
