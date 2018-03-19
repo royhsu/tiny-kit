@@ -73,15 +73,16 @@ public final class UIHomeCoordinator: Coordinator {
                 // TODO: [bug] the component will be released after ended this function.
                 let component = UICartItemComponent()
                     .setItem(item)
+                    .setQuantity(itemDescriptor.quantity)
                 
                 // TODO: emulate image downloading process.
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//
-//                    item.previewImage = #imageLiteral(resourceName: "image-dessert-1")
-//
-//                    component.setItem(item)
-//
-//                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+
+                    item.previewImage = #imageLiteral(resourceName: "image-dessert-1")
+
+                    component.setItem(item)
+
+                }
                 
                 return component
                 
@@ -96,8 +97,6 @@ public final class UIHomeCoordinator: Coordinator {
     
     // TODO: temporarily solution.
     public final func render() {
-        
-//        cartCoordinator.activate()
         
         cartContentComponent.render()
         

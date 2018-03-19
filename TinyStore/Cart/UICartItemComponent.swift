@@ -207,4 +207,13 @@ public extension UICartItemComponent {
         
     }
     
+    @discardableResult
+    public final func setQuantity(_ quantity: Int) -> UICartItemComponent {
+        
+        quantityPickerComponent.input.value = quantity
+        
+        return self
+        
+    }
+    
 }
