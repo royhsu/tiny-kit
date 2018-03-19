@@ -104,12 +104,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="OBL-tX-UCQ"/>
-                    <exclude reference="o0B-Yl-bjf"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="contentContainer" destination="iJI-2b-6JV" id="3tb-if-Dqf"/>
                 <outlet property="deleteButton" destination="o0B-Yl-bjf" id="CMr-AP-P0l"/>
