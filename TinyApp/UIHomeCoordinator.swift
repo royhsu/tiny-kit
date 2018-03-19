@@ -10,6 +10,7 @@
 
 import TinyKit
 import TinyStore
+import TinyUI
 
 public final class UIHomeCoordinator: Coordinator {
     
@@ -30,6 +31,10 @@ public final class UIHomeCoordinator: Coordinator {
     public typealias ShowProductDetailHandler = (_ viewController: UIViewController) -> Void
     
     private final var showProductDetailHandler: ShowProductDetailHandler?
+    
+    private final var selectionSubscription: Subscription<Bool>?
+    
+    private final var quantitySubscription: Subscription<Int>?
     
     public init() {
         
@@ -78,30 +83,29 @@ public final class UIHomeCoordinator: Coordinator {
                     price: itemDescriptor.item.price
                 )
                 
-                let component = UICartItemComponent()
+                let selectionComponent = UICheckboxComponent(inputValue: false)
+                
+                self.selectionSubscription = selectionComponent.input.subscribe { _, isSelected in
                     
-                component
-                    .setQuantity(itemDescriptor.quantity)
-                    .setDidChangeSelection { isSelected in
-                        
-                        cart.value[indexPath.row].isSelected = isSelected
-                        
-                        print(
-                            "onToggleSelection",
-                            cart.value[indexPath.row].isSelected
-                        )
-                        
-                    }
-                    .setDidChagneQuantity { quantiy in
-                     
-                        cart.value[indexPath.row].quantity = quantiy
-                        
-                        print(
-                            "setDidChagneQuantity",
-                            cart.value[indexPath.row].quantity
-                        )
-                        
-                    }
+                    cart.value[indexPath.row].isSelected = isSelected
+                    
+                }
+                
+                let quantityComponent = UINumberPickerComponent(
+                    minimumValue: 3,
+                    maximumValue: 5
+                )
+                
+                self.quantitySubscription = quantityComponent.input.subscribe { _, quantity in
+                    
+                     cart.value[indexPath.row].quantity = quantity
+                    
+                }
+                
+                let component = UICartItemComponent(
+                    selectionComponent: selectionComponent,
+                    quantityComponent: quantityComponent
+                )
                 
                 // TODO: emulate image downloading process.
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

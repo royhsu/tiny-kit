@@ -47,22 +47,22 @@ public extension UICartItemListComponent {
     )
     -> UICartItemListComponent {
             
-        let components: [Component] = items.map { item in
-            
-            let component = UICartItemComponent()
-            
-            component
-                .setDidChangeSelection { isSelected in
-                    
-                    
-                    
-                }
-            
-            return component
-            
-        }
-        
-        listComponent.itemComponents = AnyCollection(components)
+//        let components: [Component] = items.map { item in
+//            
+//            let component = UICartItemComponent()
+//            
+//            component
+//                .setDidChangeSelection { isSelected in
+//                    
+//                    
+//                    
+//                }
+//            
+//            return component
+//            
+//        }
+//        
+//        listComponent.itemComponents = AnyCollection(components)
         
         return self
             

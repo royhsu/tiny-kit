@@ -23,11 +23,11 @@ public final class UICartItemComponent: Component, Stylable {
     
     private final let quantityComponent: UINumberPickerComponent
     
-    private final var quantitySubscription: Subscription<Int>?
-    
     public init(
         contentMode: ComponentContentMode = .automatic,
-        theme: Theme = .current
+        theme: Theme = .current,
+        selectionComponent: UICheckboxComponent,
+        quantityComponent: UINumberPickerComponent
     ) {
         
         self.bundle = Bundle(
@@ -44,9 +44,9 @@ public final class UICartItemComponent: Component, Stylable {
         
         self.theme = theme
         
-        self.selectionComponent = UICheckboxComponent()
+        self.selectionComponent = selectionComponent
         
-        self.quantityComponent = UINumberPickerComponent()
+        self.quantityComponent = quantityComponent
 
         self.prepare()
         
@@ -58,15 +58,7 @@ public final class UICartItemComponent: Component, Stylable {
         
         selectionSubscription = selectionComponent.input.subscribe { _, isSelected in
             
-            self.didChangeSelectionHandler?(isSelected)
-            
             itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
-            
-        }
-        
-        quantitySubscription = quantityComponent.input.subscribe { [unowned self] oldValue, newValue in
-            
-            self.didChangeQuantityHandler?(newValue)
             
         }
         
@@ -111,57 +103,5 @@ public final class UICartItemComponent: Component, Stylable {
     // MARK: Stylable
     
     public final var theme: Theme
-    
-    // MARK: Action
-    
-    public typealias DidChangeSelectionHandler = (_ isSelected: Bool) -> Void
-    
-    private final var didChangeSelectionHandler: DidChangeSelectionHandler?
-    
-    public typealias DidChangeQuantityHandler = (_ qunatity: Int) -> Void
-    
-    private final var didChangeQuantityHandler: DidChangeQuantityHandler?
-    
-}
 
-public extension UICartItemComponent {
-    
-    @discardableResult
-    public final func setQuantity(_ quantity: Int) -> UICartItemComponent {
-        
-        quantityComponent.input.value = quantity
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setDidChangeSelection(_ handler: DidChangeSelectionHandler?) -> UICartItemComponent {
-        
-        didChangeSelectionHandler = handler
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setDidChagneQuantity(_ handler: DidChangeQuantityHandler? = nil) -> UICartItemComponent {
-        
-        didChangeQuantityHandler = handler
-        
-        return self
-        
-    }
-    
-    public typealias DidFailHandler = (Error) -> Void
-    
-    @discardableResult
-    public final func setDidFail(_ handler: DidFailHandler?) -> UICartItemComponent {
-        
-        quantityComponent.setDidFail(handler)
-        
-        return self
-        
-    }
-    
 }
