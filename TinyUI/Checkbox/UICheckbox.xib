@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICheckbox" customModule="TinyStore" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICheckbox" customModule="TinyUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -26,11 +26,11 @@
             <constraints>
                 <constraint firstItem="JdS-KW-jLY" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="JHL-Ic-wcO"/>
                 <constraint firstItem="ihr-Zn-RIS" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="XyU-5a-aRt"/>
-                <constraint firstItem="JdS-KW-jLY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="edU-f1-sjK"/>
+                <constraint firstItem="JdS-KW-jLY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="edU-f1-sjK"/>
                 <constraint firstItem="JdS-KW-jLY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gvo-d5-iPW"/>
                 <constraint firstItem="ihr-Zn-RIS" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="hyB-BX-g5A"/>
                 <constraint firstItem="ihr-Zn-RIS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="m1R-1O-NfW"/>
-                <constraint firstAttribute="trailing" secondItem="JdS-KW-jLY" secondAttribute="trailing" id="qTc-iy-NUT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JdS-KW-jLY" secondAttribute="trailing" id="qTc-iy-NUT"/>
                 <constraint firstItem="ihr-Zn-RIS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="wmR-S9-I4Z"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

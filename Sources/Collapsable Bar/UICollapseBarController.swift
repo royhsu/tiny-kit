@@ -34,31 +34,6 @@ public final class UICollapseBarController: UIViewController {
         
     }
     
-    public final override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-//        collapseView.addGestureRecognizer(
-//            UITapGestureRecognizer(
-//                target: self,
-//                action: #selector(toggleContent)
-//            )
-//        )
-        
-    }
-    
-    // MARK: Action
-    
-    @objc
-    public final func toggleContent(_ sender: Any) {
-        
-        setCollapsed(
-            !isCollapsed,
-            animated: true
-        )
-    
-    }
-    
 }
 
 public extension UICollapseBarController {

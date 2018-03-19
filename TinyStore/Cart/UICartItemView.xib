@@ -58,14 +58,6 @@
                         <constraint firstItem="VfZ-Vv-Gl1" firstAttribute="leading" secondItem="iJI-2b-6JV" secondAttribute="leading" id="t4e-Qh-8Ff"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWx-Xz-kce">
-                    <rect key="frame" x="319" y="12" width="40" height="76"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="76" id="KHc-nz-8qp"/>
-                        <constraint firstAttribute="width" constant="40" id="dIr-o9-ATo"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBL-tX-UCQ">
                     <rect key="frame" x="46" y="76" width="30" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -83,10 +75,18 @@
                         <constraint firstAttribute="height" constant="0.5" id="SNL-4H-K0L"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWx-Xz-kce">
+                    <rect key="frame" x="319" y="12" width="40" height="76"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="76" id="KHc-nz-8qp"/>
+                        <constraint firstAttribute="width" constant="40" id="dIr-o9-ATo"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="J7r-H6-Gzj" firstAttribute="top" secondItem="OBL-tX-UCQ" secondAttribute="bottom" constant="-0.5" id="2sG-pR-0Y6"/>
+                <constraint firstItem="J7r-H6-Gzj" firstAttribute="top" secondItem="OBL-tX-UCQ" secondAttribute="bottom" id="2sG-pR-0Y6"/>
                 <constraint firstItem="iJI-2b-6JV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="40r-AS-uTH"/>
                 <constraint firstItem="SWx-Xz-kce" firstAttribute="leading" secondItem="iJI-2b-6JV" secondAttribute="trailing" constant="12" id="4TK-sF-VjS"/>
                 <constraint firstAttribute="bottom" secondItem="SWx-Xz-kce" secondAttribute="bottom" constant="12" id="520-Kt-rOy"/>
@@ -95,7 +95,7 @@
                 <constraint firstItem="J7r-H6-Gzj" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="BJk-Ts-Jgq"/>
                 <constraint firstItem="OBL-tX-UCQ" firstAttribute="leading" secondItem="J7r-H6-Gzj" secondAttribute="leading" id="Ci2-E6-SRT"/>
                 <constraint firstItem="o0B-Yl-bjf" firstAttribute="leading" secondItem="OBL-tX-UCQ" secondAttribute="trailing" constant="12" id="Gz0-le-zyd"/>
-                <constraint firstItem="J7r-H6-Gzj" firstAttribute="top" secondItem="o0B-Yl-bjf" secondAttribute="bottom" constant="-0.5" id="bKn-EZ-vzR"/>
+                <constraint firstItem="J7r-H6-Gzj" firstAttribute="top" secondItem="o0B-Yl-bjf" secondAttribute="bottom" id="bKn-EZ-vzR"/>
                 <constraint firstItem="J7r-H6-Gzj" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="bPj-tU-6DH"/>
                 <constraint firstItem="nNx-fH-OwE" firstAttribute="centerY" secondItem="iJI-2b-6JV" secondAttribute="centerY" id="fwu-HP-a64"/>
                 <constraint firstItem="iJI-2b-6JV" firstAttribute="leading" secondItem="nNx-fH-OwE" secondAttribute="trailing" constant="12" id="hh4-hv-VhA"/>
@@ -104,6 +104,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="OBL-tX-UCQ"/>
+                    <exclude reference="o0B-Yl-bjf"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="contentContainer" destination="iJI-2b-6JV" id="3tb-if-Dqf"/>
                 <outlet property="deleteButton" destination="o0B-Yl-bjf" id="CMr-AP-P0l"/>

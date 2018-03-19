@@ -24,10 +24,15 @@ public final class Observable<T> {
                 
                 let subscriber = object.reference?.subscriber
                 
-                subscriber?(
-                    oldValue,
-                    newValue
-                )
+                // TODO: temporarily solution.
+                DispatchQueue.main.async {
+                    
+                    subscriber?(
+                        oldValue,
+                        newValue
+                    )
+                    
+                }
                 
             }
             

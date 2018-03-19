@@ -39,7 +39,7 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     public final func activate() {
         
         cartSubscription = cartManager.cart.subscribe { /* [unowned self] */ _, newDescriptors in
-            
+                
             self.homeCoordinator
                 .setNumberOfCartItemDescriptors { newDescriptors.count }
                 .setCartItemDescriptorForItem { indexPath in newDescriptors[indexPath.item] }

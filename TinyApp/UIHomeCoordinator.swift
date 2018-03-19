@@ -96,7 +96,7 @@ public final class UIHomeCoordinator: Coordinator {
     // TODO: temporarily solution.
     public final func render() {
         
-        cartCoordinator.activate()
+//        cartCoordinator.activate()
         
         cartContentComponent.render()
         
