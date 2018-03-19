@@ -21,6 +21,10 @@ public final class UICartItemComponent: Component {
     
     private final var quantitySubscription: Subscription<Int>?
     
+    public typealias DidChangeQuantityHandler = (_ qunatity: Int) -> Void
+    
+    private final var didChangeQuantityHandler: DidChangeQuantityHandler?
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         let bundle = Bundle(
@@ -80,14 +84,16 @@ public final class UICartItemComponent: Component {
 
         }
         
-        quantitySubscription = quantityPickerComponent.input.subscribe { oldValue, newValue in
+        quantitySubscription = quantityPickerComponent.input.subscribe { [unowned self] oldValue, newValue in
             
-            print(
-                "old:",
-                oldValue,
-                "new:",
-                newValue
-            )
+            self.didChangeQuantityHandler?(newValue)
+            
+//            print(
+//                "old:",
+//                oldValue,
+//                "new:",
+//                newValue
+//            )
             
         }
         
@@ -211,6 +217,15 @@ public extension UICartItemComponent {
     public final func setQuantity(_ quantity: Int) -> UICartItemComponent {
         
         quantityPickerComponent.input.value = quantity
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setDidChagneQuantity(_ handler: DidChangeQuantityHandler? = nil) -> UICartItemComponent {
+        
+        didChangeQuantityHandler = handler
         
         return self
         

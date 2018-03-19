@@ -54,11 +54,13 @@ public final class UINewListComponent: Component {
         
         self.itemComponents = []
         
-        bridge.configureCellHandler = { /* [unowned self] */ cell, indexPath in
+        bridge.configureCellHandler = { [unowned self] cell, indexPath in
             
             guard
                 let component = self.componentForItemHandler?(indexPath)
             else { return }
+            
+            print("configureCellHandler", indexPath)
             
             component.render()
             
@@ -66,11 +68,13 @@ public final class UINewListComponent: Component {
             
         }
         
-        bridge.heightForRowHandler = { /* [unowned self] */ indexPath in
+        bridge.heightForRowHandler = { [unowned self] indexPath in
             
             guard
                 let component = self.componentForItem(at: indexPath)
             else { return 0.0 }
+            
+            print("heightForRowHandler", indexPath)
             
             switch component.contentMode {
                 
@@ -135,19 +139,6 @@ public extension UINewListComponent {
         return self
         
     }
-    
-    // TODO: recursive bug.
-//    @discardableResult
-//    public final func setNumberOfSections(
-//        _ handler: @autoclosure () -> Int
-//    )
-//    -> UINewListComponent {
-//
-//        setNumberOfSections(handler)
-//
-//        return self
-//
-//    }
     
     public final func numberOfSections() -> Int { return tableView.numberOfSections }
     

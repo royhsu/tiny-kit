@@ -22,9 +22,13 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let storeCoordinator: UIStoreCoordinator
     
-    public typealias CartItemDescriptorForItemHandler = (IndexPath) -> CartItemDescriptor
+    private final let cartManager: CartManager
     
-    private final var cartItemDescriptorForItemHandler: CartItemDescriptorForItemHandler?
+    private final var cartSubscription: Subscription<[CartItemDescriptor]>?
+    
+    public typealias ShowProductDetailHandler = (_ viewController: UIViewController) -> Void
+    
+    private final var showProductDetailHandler: ShowProductDetailHandler?
     
     public init() {
         
@@ -35,6 +39,8 @@ public final class UIHomeCoordinator: Coordinator {
         self.cartContentComponent = UINewListComponent()
         
         self.storeCoordinator = UIStoreCoordinator()
+        
+        self.cartManager = CartManager()
         
         collapseBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .edit,
@@ -48,6 +54,12 @@ public final class UIHomeCoordinator: Coordinator {
     
     public final func activate() {
         
+        cartSubscription = cartManager.cart.subscribe { [unowned self] _, _ in
+        
+            self.cartContentComponent.render()
+            
+        }
+        
         collapseBarController.setBarContentViewController(
             UIComponentViewController(component: cartContentComponent)
         )
@@ -58,11 +70,10 @@ public final class UIHomeCoordinator: Coordinator {
         
         cartContentComponent
             .setNumberOfSections { 1 }
-            .setComponentForItem { /* [unowned self] */ indexPath in
+            .setNumberOfItems { [unowned self] _ in self.cartManager.cart.value.count }
+            .setComponentForItem { [unowned self] indexPath in
                 
-                guard
-                    let itemDescriptor = self.cartItemDescriptorForItemHandler?(indexPath)
-                else { return nil }
+                let itemDescriptor = self.cartManager.cart.value[indexPath.row]
                 
                 var item = UICartItem(
                     previewImage: nil,
@@ -72,8 +83,15 @@ public final class UIHomeCoordinator: Coordinator {
                 
                 // TODO: [bug] the component will be released after ended this function.
                 let component = UICartItemComponent()
+                    
+                component
                     .setItem(item)
                     .setQuantity(itemDescriptor.quantity)
+                    .setDidChagneQuantity { quantiy in
+                     
+                        // TODO: mutating item in the cart.
+                        
+                    }
                 
                 // TODO: emulate image downloading process.
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -91,14 +109,46 @@ public final class UIHomeCoordinator: Coordinator {
         
         cartCoordinator.activate()
         
-        storeCoordinator.activate()
-        
-    }
-    
-    // TODO: temporarily solution.
-    public final func render() {
-        
-        cartContentComponent.render()
+        storeCoordinator
+            .setDidSelectProduct { [unowned self] product in
+                
+                let itemDescriptor = CartItemDescriptor(
+                    item: product,
+                    quantity: 10,
+                    isSelected: true
+                )
+                
+                self.cartManager.cart.value.append(itemDescriptor)
+                
+//                let detailComponent = UIProductDetailComponent()
+//
+//                let containerViewControlller = UIComponentViewController(component: detailComponent)
+//
+//                detailComponent
+//                    .setDescription(
+//                        UIProductDescription(
+//                            title: product.title,
+//                            subtitle: "$\(product.price)"
+//                        )
+//                    )
+//                    .setAction {
+//
+//                        let cartItemDescriptor = CartItemDescriptor(
+//                            item: product,
+//                            quantity: 10,
+//                            isSelected: true
+//                        )
+//
+//                        // TODO: prevent adding a duplicate item.
+//                        self.cartManager.cart.value.append(cartItemDescriptor)
+//
+//                    }
+//                    .render()
+//
+//                self.showProductDetailHandler?(containerViewControlller)
+                
+            }
+            .activate()
         
     }
     
@@ -116,42 +166,15 @@ public final class UIHomeCoordinator: Coordinator {
 
 public extension UIHomeCoordinator {
     
-    public typealias DidSelectProductHandler = UIStoreCoordinator.DidSelectProductHandler
-    
     @discardableResult
-    public final func setDidSelectProduct(_ handler: DidSelectProductHandler?) -> UIHomeCoordinator {
+    public final func setShowProductDetail(_ handler: ShowProductDetailHandler?) -> UIHomeCoordinator {
         
-        storeCoordinator.setDidSelectProduct(handler)
+        showProductDetailHandler = handler
         
         return self
         
     }
-    
-    public typealias NumberOfCartItemDescriptorsHandler = () -> Int
-    
-    @discardableResult
-    public final func setNumberOfCartItemDescriptors(_ handler: NumberOfCartItemDescriptorsHandler?) -> UIHomeCoordinator {
-        
-        if let handler = handler {
-         
-            cartContentComponent.setNumberOfItems { _ in handler() }
-            
-        }
-        else { cartContentComponent.setNumberOfItems(nil) }
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setCartItemDescriptorForItem(_ handler: CartItemDescriptorForItemHandler?) -> UIHomeCoordinator {
-        
-        cartItemDescriptorForItemHandler = handler
-        
-        return self
-        
-    }
-    
+
 }
 
 // MARK: - ViewControllerRepresentable

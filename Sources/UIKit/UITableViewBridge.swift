@@ -64,6 +64,8 @@ extension UITableViewBridge: UITableViewDataSource {
         
         let sections = numberOfSectionsHandler?()
         
+        print(#function, sections)
+        
         return sections ?? 0
         
     }
@@ -75,6 +77,8 @@ extension UITableViewBridge: UITableViewDataSource {
     -> Int {
         
         let rows = numberOfRowsHandler?(section)
+        
+        print(#function, rows)
         
         return rows ?? 0
         
@@ -91,6 +95,8 @@ extension UITableViewBridge: UITableViewDataSource {
             style: .default,
             reuseIdentifier: nil
         )
+        
+        print(#function, cell)
         
         cell.selectionStyle = .none
         
@@ -118,6 +124,8 @@ extension UITableViewBridge: UITableViewDelegate {
     -> CGFloat {
         
         let height = heightForRowHandler?(indexPath)
+        
+        print(#function, height)
         
         return height ?? 0.0
             
