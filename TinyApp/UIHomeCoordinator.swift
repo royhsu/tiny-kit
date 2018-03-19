@@ -83,7 +83,7 @@ public final class UIHomeCoordinator: Coordinator {
                 component
                     .setItem(item)
                     .setQuantity(itemDescriptor.quantity)
-                    .onToggleSelection { isSelected in
+                    .setDidChangeSelection { isSelected in
                         
                         cart.value[indexPath.row].isSelected = isSelected
                         

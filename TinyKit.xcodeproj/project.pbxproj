@@ -48,6 +48,7 @@
 		B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */; };
 		B022E266205E9E6F00DD9170 /* UINewListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E265205E9E6F00DD9170 /* UINewListComponent.swift */; };
 		B022E268205E9E7E00DD9170 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */; };
+		B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E26B205FA36100DD9170 /* Bool+Toggle.swift */; };
 		B02B43A92049947B00F3D7C0 /* UICollectionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */; };
@@ -131,6 +132,7 @@
 		B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
 		B022E265205E9E6F00DD9170 /* UINewListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINewListComponent.swift; sourceTree = "<group>"; };
 		B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
+		B022E26B205FA36100DD9170 /* Bool+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Toggle.swift"; sourceTree = "<group>"; };
 		B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponentTests.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				B01EF9F7205D2CD000CF9C17 /* Result.swift */,
 				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
 				B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */,
+				B022E26B205FA36100DD9170 /* Bool+Toggle.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
@@ -549,6 +552,7 @@
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */,
 				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
+				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
 				B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,

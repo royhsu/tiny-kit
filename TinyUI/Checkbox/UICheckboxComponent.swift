@@ -8,24 +8,20 @@
 
 // MARK: - UICheckboxComponent
 
-public final class UICheckboxComponent: Component {
+public final class UICheckboxComponent: Component, Stylable, Inputable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UICheckbox>
     
-    public private(set) final var isChecked: Bool
-    
-    public typealias ToggleCheckboxHandler = (_ isChecked: Bool) -> Void
-    
-    private final var toggleCheckboxHandler: ToggleCheckboxHandler?
-    
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current,
+        inputValue: Bool = true
+    ) {
         
-        let isChecked = false
-        
-        self.isChecked = isChecked
-        
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -39,15 +35,45 @@ public final class UICheckboxComponent: Component {
         
         self.itemComponent = itemComponent
         
-        self.itemComponent.itemView.actionButton.addTarget(
+        self.theme = theme
+        
+        self.input = Observable(inputValue)
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let checkbox = itemComponent.itemView
+        
+        inputSubscription = input.subscribe { [unowned self] _, isChecked in
+            
+            let imageName =
+                isChecked
+                ? "icon-checkbox-checked"
+                : "icon-checkbox-unchecked"
+            
+            checkbox.iconImageView.image = UIImage(
+                named: imageName,
+                in: self.bundle,
+                compatibleWith: nil
+            )?
+            .withRenderingMode(.alwaysTemplate)
+            
+        }
+        
+        checkbox.actionButton.addTarget(
             self,
-            action: #selector(toggleCheckbox),
+            action: #selector(toggleValue),
             for: .touchUpInside
         )
         
-        self.setUpCheckbox(
-            itemComponent.itemView,
-            isChecked: isChecked
+        applyTheme(
+            theme,
+            for: checkbox
         )
         
     }
@@ -70,69 +96,30 @@ public final class UICheckboxComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
+    fileprivate final func applyTheme(
+        _ theme: Theme,
+        for checkbox: UICheckbox
+    ) {
+        
+        checkbox.iconImageView.tintColor = theme.primaryColor
+        
+        checkbox.backgroundColor = theme.backgroundColor
+        
+    }
+    
+    // MARK: Inputable
+    
+    public final let input: Observable<Bool>
+    
+    private final var inputSubscription: Subscription<Bool>?
+    
     // MARK: Action
     
     @objc
-    public final func toggleCheckbox(_ sender: Any) {
-        
-        isChecked = !isChecked
-        
-        setUpCheckbox(
-            itemComponent.itemView,
-            isChecked: isChecked
-        )
-        
-        toggleCheckboxHandler?(isChecked)
-        
-    }
-    
-    // MARK: Set Up
-    
-    fileprivate final func setUpCheckbox(
-        _ checkbox: UICheckbox,
-        isChecked: Bool
-    ) {
-        
-        let iconImage = isChecked ? #imageLiteral(resourceName: "icon-checkbox-checked") : #imageLiteral(resourceName: "icon-checkbox-unchecked")
-        
-        let checkbox = itemComponent.itemView
-        
-        checkbox.iconImageView.image = iconImage.withRenderingMode(.alwaysTemplate)
-        
-        checkbox.iconImageView.tintColor = .darkGray
-        
-    }
-    
-}
-
-public extension UICheckboxComponent {
-    
-    @discardableResult
-    public final func setChecked(_ isChecked: Bool) -> UICheckboxComponent {
-        
-        self.isChecked = isChecked
-        
-        setUpCheckbox(
-            itemComponent.itemView,
-            isChecked: isChecked
-        )
-        
-        toggleCheckboxHandler?(isChecked)
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func onToggleCheckbox(
-        handler: ToggleCheckboxHandler? = nil
-    )
-    -> UICheckboxComponent {
-        
-        toggleCheckboxHandler = handler
-        
-        return self
-        
-    }
+    public final func toggleValue(_ sender: Any) { input.value.toggle() }
     
 }

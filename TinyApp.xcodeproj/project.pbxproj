@@ -23,6 +23,7 @@
 		B022E260205E3E5200DD9170 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E25F205E3E5200DD9170 /* Theme.swift */; };
 		B022E262205E51E300DD9170 /* UIHomeNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E261205E51E300DD9170 /* UIHomeNavigationCoordinator.swift */; };
 		B022E264205E6AF600DD9170 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E263205E6AF600DD9170 /* CartManager.swift */; };
+		B022E26A205F9BD800DD9170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B022E269205F9BD800DD9170 /* Assets.xcassets */; };
 		B024C8E92058BDB900CFAE50 /* TinyPost.h in Headers */ = {isa = PBXBuildFile; fileRef = B024C8E72058BDB900CFAE50 /* TinyPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B024C8EC2058BDB900CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C8ED2058BDB900CFAE50 /* TinyPost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -230,6 +231,7 @@
 		B022E25F205E3E5200DD9170 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B022E261205E51E300DD9170 /* UIHomeNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHomeNavigationCoordinator.swift; sourceTree = "<group>"; };
 		B022E263205E6AF600DD9170 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		B022E269205F9BD800DD9170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				B022E25F205E3E5200DD9170 /* Theme.swift */,
 				B0A62984204657C9000F97E3 /* TinyUI.h */,
 				B0A62985204657C9000F97E3 /* Info.plist */,
+				B022E269205F9BD800DD9170 /* Assets.xcassets */,
 			);
 			path = TinyUI;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				B01EFA06205D2D5100CF9C17 /* UICheckbox.xib in Resources */,
 				B0A629A520465828000F97E3 /* UITextInput.xib in Resources */,
 				B01EFA14205D2D7900CF9C17 /* UINumberPickerView.xib in Resources */,
+				B022E26A205F9BD800DD9170 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

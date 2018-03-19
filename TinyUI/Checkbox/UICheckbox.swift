@@ -20,10 +20,38 @@ public final class UICheckbox: UIView {
         
         setUpIconImageView(iconImageView)
         
+        setUpActionButton(actionButton)
+        
     }
     
     // MARK: Set Up
     
-    fileprivate final func setUpIconImageView(_ imageView: UIImageView) { imageView.contentMode = .center }
+    fileprivate final func setUpIconImageView(_ imageView: UIImageView) {
+        
+        let bundle = Bundle(
+            for: type(of: self)
+        )
+        
+        imageView.image = UIImage(
+            named: "icon-checkbox-checked",
+            in: bundle,
+            compatibleWith: nil
+        )?
+        .withRenderingMode(.alwaysTemplate)
+        
+        imageView.tintColor = tintColor
+        
+        imageView.contentMode = .center
+        
+    }
+    
+    fileprivate final func setUpActionButton(_ button: UIButton) {
+        
+        button.setTitle(
+            nil,
+            for: .normal
+        )
+        
+    }
     
 }

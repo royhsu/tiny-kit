@@ -12,10 +12,14 @@ import TinyUI
 
 public final class UICartItemComponent: Component {
     
+    private final let bundle: Bundle
+    
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartItemView>
     
-    private final let checkboxComponent: UICheckboxComponent
+    private final let selectionCheckboxComponent: UICheckboxComponent
+    
+    private final var selectionSubscription: Subscription<Bool>?
     
     private final let quantityPickerComponent: UINumberPickerComponent
     
@@ -27,7 +31,7 @@ public final class UICartItemComponent: Component {
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -41,15 +45,7 @@ public final class UICartItemComponent: Component {
         
         self.itemComponent = itemComponent
         
-        self.checkboxComponent = UICheckboxComponent()
-            .setChecked(true)
-            .onToggleCheckbox { isSelected in
-                
-                let itemView = itemComponent.itemView
-                
-                itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
-                
-            }
+        self.selectionCheckboxComponent = UICheckboxComponent()
         
         let pickerTintColor = UIColor(
             red: 0.35,
@@ -123,6 +119,20 @@ public final class UICartItemComponent: Component {
             for: .normal
         )
         
+        self.prepare()
+        
+    }
+    
+    fileprivate final func prepare() {
+        
+        let itemView = itemComponent.itemView
+        
+        selectionSubscription = selectionCheckboxComponent.input.subscribe { _, isSelected in
+            
+            itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
+                
+        }
+        
     }
     
     // MARK: Component
@@ -139,9 +149,9 @@ public final class UICartItemComponent: Component {
         
         let itemView = itemComponent.itemView
         
-        itemView.selectionContainerView.render(with: checkboxComponent)
+        itemView.selectionContainerView.render(with: selectionCheckboxComponent)
         
-        checkboxComponent.render()
+        selectionCheckboxComponent.render()
         
         itemView.quantityPickerContainerView.render(with: quantityPickerComponent)
         
@@ -156,6 +166,12 @@ public final class UICartItemComponent: Component {
     public final var view: View { return itemComponent.view }
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+    // MARK: Action
+    
+    public typealias DidChangeSelectionHandler = (_ isSelected: Bool) -> Void
+    
+    private final var didChangeSelectionHandler: DidChangeSelectionHandler?
     
 }
 
@@ -194,20 +210,10 @@ public extension UICartItemComponent {
         
     }
     
-    public typealias ToggleSelectionHandler = (_ isSelected: Bool) -> Void
-    
     @discardableResult
-    public final func onToggleSelection(handler: @escaping ToggleSelectionHandler) -> UICartItemComponent {
+    public final func setDidChangeSelection(_ handler: DidChangeSelectionHandler?) -> UICartItemComponent {
         
-        let itemView = itemComponent.itemView
-        
-        checkboxComponent.onToggleCheckbox { isSelected in
-            
-            itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
-            
-            handler(isSelected)
-            
-        }
+        didChangeSelectionHandler = handler
         
         return self
         

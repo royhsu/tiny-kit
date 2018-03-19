@@ -53,7 +53,7 @@ public extension UICartItemListComponent {
             
             component
                 .setItem(item)
-                .onToggleSelection { isSelected in
+                .setDidChangeSelection { isSelected in
                     
                     
                     
