@@ -19,10 +19,6 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
     
     private final let numberTextFieldBridge: UITextFieldBridge
     
-    public typealias DidFailHandler = (Error) -> Void
-    
-    private final var didFailHandler: DidFailHandler?
-    
     public init(
         contentMode: ComponentContentMode = .automatic,
         theme: Theme = .current,
@@ -165,7 +161,13 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        itemComponent.itemView.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -209,6 +211,10 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
     
     @objc
     public final func dismissKeyboard(_ sender: Any) { view.endEditing(true) }
+    
+    public typealias DidFailHandler = (Error) -> Void
+    
+    private final var didFailHandler: DidFailHandler?
     
 }
 

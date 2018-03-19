@@ -81,7 +81,6 @@ public final class UIHomeCoordinator: Coordinator {
                 let component = UICartItemComponent()
                     
                 component
-                    .setItem(item)
                     .setQuantity(itemDescriptor.quantity)
                     .setDidChangeSelection { isSelected in
                         
@@ -108,8 +107,6 @@ public final class UIHomeCoordinator: Coordinator {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
                     item.previewImage = #imageLiteral(resourceName: "image-dessert-1")
-
-                    component.setItem(item)
 
                 }
                 

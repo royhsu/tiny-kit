@@ -52,7 +52,6 @@ public extension UICartItemListComponent {
             let component = UICartItemComponent()
             
             component
-                .setItem(item)
                 .setDidChangeSelection { isSelected in
                     
                     

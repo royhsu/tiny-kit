@@ -101,7 +101,13 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        itemComponent.itemView.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
