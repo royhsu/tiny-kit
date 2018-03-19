@@ -129,15 +129,7 @@ public final class UICartItemView: UIView {
     
     fileprivate final func setUpFirstTitleLabel(_ label: UILabel) {
         
-        label.text = "First"
-        
-        label.textAlignment = .left
-        
-        label.numberOfLines = 1
-        
-        label.font = .systemFont(ofSize: 10.0)
-        
-        label.textColor = tintColor
+       
         
     }
     
