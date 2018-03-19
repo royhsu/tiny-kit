@@ -56,7 +56,7 @@ public final class UIHomeCoordinator: Coordinator {
         
         cartSubscription = cartManager.cart.subscribe { [unowned self] _, _ in
         
-            self.cartContentComponent.render()
+//            self.cartContentComponent.render()
             
         }
         
@@ -73,7 +73,9 @@ public final class UIHomeCoordinator: Coordinator {
             .setNumberOfItems { [unowned self] _ in self.cartManager.cart.value.count }
             .setComponentForItem { [unowned self] indexPath in
                 
-                let itemDescriptor = self.cartManager.cart.value[indexPath.row]
+                let cart = self.cartManager.cart
+                
+                let itemDescriptor = cart.value[indexPath.row]
                 
                 var item = UICartItem(
                     previewImage: nil,
@@ -81,15 +83,29 @@ public final class UIHomeCoordinator: Coordinator {
                     price: itemDescriptor.item.price
                 )
                 
-                // TODO: [bug] the component will be released after ended this function.
                 let component = UICartItemComponent()
                     
                 component
                     .setItem(item)
                     .setQuantity(itemDescriptor.quantity)
+                    .onToggleSelection { isSelected in
+                        
+                        cart.value[indexPath.row].isSelected = isSelected
+                        
+                        print(
+                            "onToggleSelection",
+                            cart.value[indexPath.row].isSelected
+                        )
+                        
+                    }
                     .setDidChagneQuantity { quantiy in
                      
-                        // TODO: mutating item in the cart.
+                        cart.value[indexPath.row].quantity = quantiy
+                        
+                        print(
+                            "setDidChagneQuantity",
+                            cart.value[indexPath.row].quantity
+                        )
                         
                     }
                 
@@ -117,8 +133,10 @@ public final class UIHomeCoordinator: Coordinator {
                     quantity: 10,
                     isSelected: true
                 )
-                
+
                 self.cartManager.cart.value.append(itemDescriptor)
+
+                self.cartContentComponent.render()
                 
 //                let detailComponent = UIProductDetailComponent()
 //
