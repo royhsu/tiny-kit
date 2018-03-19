@@ -14,7 +14,7 @@ public final class UICartItemView: UIView {
     public fileprivate(set) final weak var selectionContainerView: UIView!
     
     @IBOutlet
-    public fileprivate(set) final weak var contentContainer: UIView!
+    public fileprivate(set) final weak var contentContainerView: UIView!
     
     @IBOutlet
     public fileprivate(set) final weak var previewImageView: UIImageView!
@@ -53,7 +53,7 @@ public final class UICartItemView: UIView {
         
         setUpSelectionContainerView(selectionContainerView)
         
-        setUpContentContainer(contentContainer)
+        setUpContentContainerView(contentContainerView)
         
         setUpPreviewImageView(previewImageView)
         
@@ -83,7 +83,7 @@ public final class UICartItemView: UIView {
     
     fileprivate final func setUpSelectionContainerView(_ view: UIView) { view.backgroundColor = nil }
     
-    fileprivate final func setUpContentContainer(_ view: UIView) { view.backgroundColor = nil }
+    fileprivate final func setUpContentContainerView(_ view: UIView) { view.backgroundColor = nil }
     
     fileprivate final func setUpPreviewImageView(_ imageView: UIImageView) {
         

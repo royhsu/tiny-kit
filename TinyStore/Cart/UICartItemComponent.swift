@@ -52,19 +52,34 @@ public final class UICartItemComponent: Component, Stylable {
         
     }
     
+    // MARK: Set Up
+    
     fileprivate final func prepare() {
         
         let itemView = itemComponent.itemView
         
-        selectionSubscription = selectionComponent.input.subscribe { _, isSelected in
+        setUpContentView(
+            itemView.contentContainerView,
+            isSelected: selectionComponent.input.value
+        )
+        
+        selectionSubscription = selectionComponent.input.subscribe { [unowned self] _, isSelected in
             
-            itemView.contentContainer.alpha = (isSelected ? 1.0 : 0.5)
+            self.setUpContentView(
+                itemView.contentContainerView,
+                isSelected: isSelected
+            )
             
         }
         
         itemView.applyTheme(theme)
         
     }
+    
+    fileprivate func setUpContentView(
+        _ view: UIView,
+        isSelected: Bool
+    ) { view.alpha = (isSelected ? 1.0 : 0.5) }
     
     // MARK: Component
     
@@ -104,4 +119,38 @@ public final class UICartItemComponent: Component, Stylable {
     
     public final var theme: Theme
 
+}
+
+public extension UICartItemComponent {
+    
+    @discardableResult
+    public final func setPreviewImages(
+        _ images: [UIImage]
+    )
+    -> UICartItemComponent {
+        
+        itemComponent.itemView.previewImageView.image = images.first
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setTitle(_ title: String?) -> UICartItemComponent {
+        
+        itemComponent.itemView.titleLabel.text = title
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setPrice(_ price: Double) -> UICartItemComponent {
+        
+        itemComponent.itemView.priceLabel.text = "$\(price)"
+        
+        return self
+        
+    }
+    
 }

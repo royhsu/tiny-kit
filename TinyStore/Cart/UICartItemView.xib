@@ -149,7 +149,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="contentContainer" destination="iJI-2b-6JV" id="3tb-if-Dqf"/>
+                <outlet property="contentContainerView" destination="iJI-2b-6JV" id="sPP-ZX-LTC"/>
                 <outlet property="firstButton" destination="OBL-tX-UCQ" id="7qm-U3-2Nk"/>
                 <outlet property="firstContainerView" destination="zCv-ts-L6k" id="cxN-EC-ow9"/>
                 <outlet property="firstTitleLabel" destination="hMG-Sd-8Dx" id="lwC-N4-GcU"/>

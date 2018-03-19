@@ -77,13 +77,9 @@ public final class UIHomeCoordinator: Coordinator {
                 
                 let itemDescriptor = cart.value[indexPath.row]
                 
-                var item = UICartItem(
-                    previewImage: nil,
-                    title: itemDescriptor.item.title,
-                    price: itemDescriptor.item.price
-                )
+                let item = itemDescriptor.item
                 
-                let selectionComponent = UICheckboxComponent(inputValue: false)
+                let selectionComponent = UICheckboxComponent()
                 
                 self.selectionSubscription = selectionComponent.input.subscribe { _, isSelected in
                     
@@ -92,9 +88,16 @@ public final class UIHomeCoordinator: Coordinator {
                 }
                 
                 let quantityComponent = UINumberPickerComponent(
-                    minimumValue: 3,
-                    maximumValue: 5
+                    minimumValue: 1,
+                    maximumValue: 99
                 )
+                
+                quantityComponent.setDidFail { error in
+                    
+                    // TODO: error handling.
+                    print("\(error)")
+                    
+                }
                 
                 self.quantitySubscription = quantityComponent.input.subscribe { _, quantity in
                     
@@ -106,11 +109,15 @@ public final class UIHomeCoordinator: Coordinator {
                     selectionComponent: selectionComponent,
                     quantityComponent: quantityComponent
                 )
+                .setTitle(item.title)
+                .setPrice(item.price)
                 
                 // TODO: emulate image downloading process.
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
-                    item.previewImage = #imageLiteral(resourceName: "image-dessert-1")
+                    component.setPreviewImages(
+                        [ #imageLiteral(resourceName: "image-dessert-1") ]
+                    )
 
                 }
                 
