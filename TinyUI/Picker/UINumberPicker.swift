@@ -14,13 +14,13 @@ public final class UINumberPicker: UIView {
     public fileprivate(set) final weak var increaseIconImageView: UIImageView!
     
     @IBOutlet
-    public fileprivate(set) final weak var increaseButton: UIButton!
+    public fileprivate(set) final weak var increaseContainerView: UIView!
     
     @IBOutlet
     public fileprivate(set) final weak var decreaseIconImageView: UIImageView!
     
     @IBOutlet
-    public fileprivate(set) final weak var decreaseButton: UIButton!
+    public fileprivate(set) final weak var decreaseContainerView: UIView!
 
     @IBOutlet
     public fileprivate(set) final weak var numberContainerView: UIView!
@@ -34,7 +34,11 @@ public final class UINumberPicker: UIView {
         
         setUpIncreaseIconImageView(increaseIconImageView)
         
+        setUpIncreaseContainerView(increaseContainerView)
+        
         setUpDecreaseIconImageView(decreaseIconImageView)
+        
+        setUpDecreaseContainerView(decreaseContainerView)
         
         setUpNumberContainerView(numberContainerView)
         
@@ -74,6 +78,8 @@ public final class UINumberPicker: UIView {
         
     }
     
+    fileprivate final func setUpIncreaseContainerView(_ view: UIView) { view.backgroundColor = nil }
+    
     fileprivate final func setUpDecreaseIconImageView(_ imageView: UIImageView) {
         
         let bundle = Bundle(
@@ -93,6 +99,8 @@ public final class UINumberPicker: UIView {
         imageView.contentMode = .scaleAspectFill
         
     }
+    
+    fileprivate final func setUpDecreaseContainerView(_ view: UIView) { view.backgroundColor = nil }
     
     fileprivate final func setUpNumberContainerView(_ view: UIView) { view.backgroundColor = .white }
     

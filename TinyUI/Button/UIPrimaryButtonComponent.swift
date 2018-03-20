@@ -51,7 +51,7 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
             )
         )
         
-//        button.applyTheme(theme)
+        button.applyTheme(theme)
         
     }
     
@@ -69,7 +69,7 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
         
         let button = itemComponent.itemView
         
-//        button.applyTheme(theme)
+        button.applyTheme(theme)
         
         itemComponent.render()
         

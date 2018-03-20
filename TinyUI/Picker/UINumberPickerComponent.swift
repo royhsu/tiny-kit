@@ -103,16 +103,18 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
 
         }
         
-        picker.increaseButton.addTarget(
-            self,
-            action: #selector(increaseValue),
-            for: .touchUpInside
+        picker.increaseContainerView.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(increaseValue)
+            )
         )
         
-        picker.decreaseButton.addTarget(
-            self,
-            action: #selector(decreaseValue),
-            for: .touchUpInside
+        picker.decreaseContainerView.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(decreaseValue)
+            )
         )
         
         picker.applyTheme(theme)

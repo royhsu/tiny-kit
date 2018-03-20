@@ -99,6 +99,7 @@
 		B0876E052060A22B005EDA9A /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E042060A22B005EDA9A /* CartItem.swift */; };
 		B0876E072060A24E005EDA9A /* CartItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */; };
 		B0876E092060A275005EDA9A /* Product+CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E082060A275005EDA9A /* Product+CartItem.swift */; };
+		B0876E0B2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
 		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
@@ -314,6 +315,7 @@
 		B0876E042060A22B005EDA9A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDescriptor.swift; sourceTree = "<group>"; };
 		B0876E082060A275005EDA9A /* Product+CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CartItem.swift"; sourceTree = "<group>"; };
+		B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPrimaryButton+Theme.swift"; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
 		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 			children = (
 				B0A6299420465827000F97E3 /* UIPrimaryButton.swift */,
 				B0A6299320465827000F97E3 /* UIPrimaryButton.xib */,
+				B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */,
 				B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */,
 				B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */,
 				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
@@ -1096,6 +1099,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0876E0B2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift in Sources */,
 				B0A7BA1520609E1800696022 /* Theme+Debug.swift in Sources */,
 				B01EFA0F205D2D7900CF9C17 /* UINumberPickerInputValidator.swift in Sources */,
 				B0A7BA0F206096A600696022 /* UIOptionDescriptor.swift in Sources */,
