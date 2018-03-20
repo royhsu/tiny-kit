@@ -84,23 +84,6 @@ public final class UIRootCoordinator: Coordinator {
 //            ]
 //        )
         
-        self.rootComponent = UIOptionChainComponent().setOptionDescriptors(
-            [
-                UIOptionDescriptor(
-                    title: "First",
-                    handler: { print("1") }
-                ),
-                UIOptionDescriptor(
-                    title: "Second",
-                    handler: { print("1") }
-                )
-            ]
-        )
-        
-//        self.rootComponent = UIChainableButtonComponet()
-//            .setTitle("Say Hello")
-//            .setAction { print("hello") }
-        
         let containerViewController = UIComponentViewController(component: rootComponent)
         
         containerViewController.view.backgroundColor = .white
