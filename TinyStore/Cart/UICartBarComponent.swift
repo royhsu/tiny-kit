@@ -85,7 +85,7 @@ public extension UICartBarComponent {
     @discardableResult
     public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UICartBarComponent {
         
-        actionButtonComponent.setItem(item)
+        actionButtonComponent.setTitle(item.title)
         
         return self
         

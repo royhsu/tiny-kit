@@ -92,9 +92,9 @@ public extension UILandingComponent {
     -> UILandingComponent {
         
         let component = UIPrimaryButtonComponent()
-            .setItem(item)
-            .onTap(handler: handler)
-        
+            .setTitle(item.title)
+            .setAction(handler)
+            
         buttonComponents.append(component)
         
         return self

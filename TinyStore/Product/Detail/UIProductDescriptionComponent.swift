@@ -87,7 +87,7 @@ public extension UIProductDescriptionComponent {
     @discardableResult
     public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDescriptionComponent {
         
-        actionButtonComponent.setItem(item)
+        actionButtonComponent.setTitle(item.title)
         
         return self
         
@@ -98,7 +98,7 @@ public extension UIProductDescriptionComponent {
     @discardableResult
     public final func setDidTap(_ handler: DidTapHandler?) -> UIProductDescriptionComponent {
         
-        actionButtonComponent.onTap(handler: handler)
+        actionButtonComponent.setAction(handler)
         
         return self
         

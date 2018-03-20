@@ -70,7 +70,7 @@ public final class UINumberPicker: UIView {
         
         imageView.tintColor = .white
         
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
         
     }
     
@@ -90,7 +90,7 @@ public final class UINumberPicker: UIView {
         
         imageView.tintColor = .white
         
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
         
     }
     

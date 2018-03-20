@@ -85,17 +85,13 @@ public final class UISignInComponent: Component {
             .onEdit { self.signIn.password = $0 }
 
         submitComponent
-            .setItem(
-                UIPrimaryButtonItem(
-                    title: NSLocalizedString(
-                        "Sign In",
-                        comment: ""
-                    ),
-                    titleColor: .white,
-                    backgroundColor: .black
+            .setTitle(
+                NSLocalizedString(
+                    "Sign In",
+                    comment: ""
                 )
             )
-            .onTap {
+            .setAction {
                 
                 let email = self.signIn.email ?? "Invalid"
                 

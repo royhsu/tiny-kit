@@ -42,7 +42,7 @@ public final class UICheckbox: UIView {
         
         imageView.tintColor = tintColor
         
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
         
     }
     
