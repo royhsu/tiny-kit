@@ -14,13 +14,35 @@ public final class CartManager {
     
     private final let cart: Observable<[CartItemDescriptor]>
     
+    private final var cartSubscription: Subscription<[CartItemDescriptor]>?
+    
     public init() {
         
         self.cart = Observable(
             []
         )
         
+        self.prepare()
+        
     }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        cartSubscription = cart.subscribe { [unowned self] _, descriptors in
+            
+            self.didChangeCartHandler?(descriptors)
+            
+        }
+        
+    }
+    
+    // MARK: Action
+ 
+    public typealias DidChangeCartHandler = ([CartItemDescriptor]) -> Void
+    
+    private final var didChangeCartHandler: DidChangeCartHandler?
     
 }
 
@@ -66,6 +88,15 @@ public extension CartManager {
         else { return }
         
         cart.value.remove(at: index)
+        
+    }
+ 
+    @discardableResult
+    public final func setDidChangeCart(_ handler: DidChangeCartHandler?) -> CartManager {
+        
+        didChangeCartHandler = handler
+        
+        return self
         
     }
     

@@ -30,10 +30,6 @@ public final class UIHomeCoordinator: Coordinator {
     // 2. checkout cart manager in checkout process
     private final let cartManager: CartManager
     
-    public typealias ShowProductDetailHandler = (_ viewController: UIViewController) -> Void
-    
-    private final var showProductDetailHandler: ShowProductDetailHandler?
-    
     public typealias ItemID = String
     
     private final var selectionSubscriptionMap: [ItemID: Subscription<Bool>]
@@ -72,6 +68,26 @@ public final class UIHomeCoordinator: Coordinator {
             action: #selector(toggleCartContent)
         )
         
+        cartManager.setDidChangeCart { [unowned self] descriptors in
+            
+            let totalAmount = descriptors.reduce(0.0) { currentResult, descriptor in
+             
+                if descriptor.isSelected {
+                    
+                    let quantity = Double(descriptor.quantity)
+                    
+                    return currentResult + (quantity * descriptor.item.price)
+                    
+                }
+                
+                return currentResult
+                
+            }
+            
+            self.cartCoordinator.setAmount(totalAmount)
+            
+        }
+        
     }
     
     // MARK: Coordinator
@@ -106,7 +122,7 @@ public final class UIHomeCoordinator: Coordinator {
                 self.cartManager.setItem(
                     descriptor: CartItemDescriptor(
                         item: product,
-                        quantity: 10,
+                        quantity: 1,
                         isSelected: true
                     )
                 )
@@ -149,13 +165,13 @@ public final class UIHomeCoordinator: Coordinator {
     
     fileprivate final func setUpCartItemComponents() {
 
-        cartItemComponents = cartManager.itemDescriptors().map { itemDescriptor in
+        cartItemComponents = cartManager.itemDescriptors().map { descriptor in
         
             let cartManager = self.cartManager
             
-            let item = itemDescriptor.item
+            let item = descriptor.item
             
-            let selectionComponent = UICheckboxComponent()
+            let selectionComponent = UICheckboxComponent(inputValue: descriptor.isSelected)
             
             self.selectionSubscriptionMap[item.id] = selectionComponent.input.subscribe { _, isSelected in
                 
@@ -170,6 +186,7 @@ public final class UIHomeCoordinator: Coordinator {
             }
             
             let quantityComponent = UINumberPickerComponent(
+                inputValue: descriptor.quantity,
                 minimumValue: 1,
                 maximumValue: 99
             )
@@ -218,9 +235,9 @@ public final class UIHomeCoordinator: Coordinator {
                 selectionComponent: selectionComponent,
                 quantityComponent: quantityComponent,
                 optionChainComponent: optionChainComponent
-                )
-                .setTitle(item.title)
-                .setPrice(item.price)
+            )
+                
+            component.setTitle(item.title).setPrice(item.price)
             
             // Prevent the presenting child components get deallocated.
             self.cartItemComponents.append(component)
@@ -240,6 +257,8 @@ public final class UIHomeCoordinator: Coordinator {
         
     }
     
+    // MARK: Action
+    
     @objc
     public final func toggleCartContent(_ sender: Any) {
         
@@ -249,6 +268,10 @@ public final class UIHomeCoordinator: Coordinator {
         )
         
     }
+    
+    public typealias ShowProductDetailHandler = (_ viewController: UIViewController) -> Void
+    
+    private final var showProductDetailHandler: ShowProductDetailHandler?
     
 }
 

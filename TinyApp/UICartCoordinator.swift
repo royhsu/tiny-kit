@@ -54,6 +54,21 @@ public final class UICartCoordinator: Coordinator {
     
 }
 
+public extension UICartCoordinator {
+    
+    @discardableResult
+    public final func setAmount(_ amount: Double) -> UICartCoordinator {
+        
+        cartBarComponent.setItem(
+            UICartBarItem(amount: amount)
+        )
+        
+        return self
+        
+    }
+    
+}
+
 // MARK: - ViewControllerRepresentable
 
 extension UICartCoordinator: ViewControllerRepresentable {
