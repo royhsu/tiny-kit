@@ -48,6 +48,47 @@ public final class CartManager {
 
 public extension CartManager {
     
+    public struct AmountOptions: OptionSet {
+        
+        public let rawValue: Int
+        
+        public init(rawValue: Int) { self.rawValue = rawValue }
+        
+        public static let selectedOnly: AmountOptions = .init(rawValue: 1 << 0)
+        
+        public static let unselectedOnly: AmountOptions = .init(rawValue: 1 << 1)
+        
+        public static let all: AmountOptions = [ .selectedOnly, .unselectedOnly ]
+        
+    }
+    
+    // Get the total amount of the current cart.
+    public final func amount(options: AmountOptions = .all) -> Double {
+        
+        let descriptors: [CartItemDescriptor]
+        
+        switch options {
+            
+        case .selectedOnly: descriptors = cart.value.filter { $0.isSelected }
+            
+        case .unselectedOnly: descriptors = cart.value.filter { !$0.isSelected }
+            
+        case .all: descriptors = cart.value
+            
+        default: fatalError("Unsupported options for calculation.")
+            
+        }
+        
+        return descriptors.reduce(0.0) { currentAmount, descriptor in
+            
+            let quantity = Double(descriptor.quantity)
+            
+            return currentAmount + (quantity * descriptor.item.price)
+            
+        }
+        
+    }
+    
     public final func itemDescriptors() -> [CartItemDescriptor] { return cart.value }
     
     // Add an item to the cart if the cart doesn't contain it.

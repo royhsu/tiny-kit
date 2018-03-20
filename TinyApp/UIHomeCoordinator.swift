@@ -68,23 +68,11 @@ public final class UIHomeCoordinator: Coordinator {
             action: #selector(toggleCartContent)
         )
         
-        cartManager.setDidChangeCart { [unowned self] descriptors in
+        cartManager.setDidChangeCart { [unowned self] _ in
             
-            let totalAmount = descriptors.reduce(0.0) { currentResult, descriptor in
-             
-                if descriptor.isSelected {
-                    
-                    let quantity = Double(descriptor.quantity)
-                    
-                    return currentResult + (quantity * descriptor.item.price)
-                    
-                }
-                
-                return currentResult
-                
-            }
-            
-            self.cartCoordinator.setAmount(totalAmount)
+            self.cartCoordinator.setAmount(
+                self.cartManager.amount(options: .selectedOnly)
+            )
             
         }
         
