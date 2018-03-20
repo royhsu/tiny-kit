@@ -8,14 +8,17 @@
 
 // MARK: - UIOptionButtonComponet
 
-public final class UIOptionButtonComponet: Component {
+public final class UIOptionButtonComponet: Component, Stylable {
     
     private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIOptionButton>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
         self.bundle = Bundle(
             for: type(of: self)
@@ -28,6 +31,8 @@ public final class UIOptionButtonComponet: Component {
                 from: bundle
             )!
         )
+        
+        self.theme = theme
         
         self.prepare()
         
@@ -46,6 +51,8 @@ public final class UIOptionButtonComponet: Component {
             )
         )
         
+        button.applyTheme(theme)
+        
     }
     
     // MARK: Component
@@ -58,13 +65,25 @@ public final class UIOptionButtonComponet: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let button = itemComponent.itemView
+            
+        button.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
     public final var view: View { return itemComponent.view }
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+    // MARK: Stylable
+    
+    public final var theme: Theme
     
     // MARK: Action
     

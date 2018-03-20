@@ -105,9 +105,31 @@ public final class UIHomeCoordinator: Coordinator {
                     
                 }
                 
+                let optionChainComponent = UIOptionChainComponent()
+                
+                optionChainComponent.setOptionDescriptors(
+                    [
+                        UIOptionDescriptor(
+                            title: NSLocalizedString(
+                                "Edit",
+                                comment: ""
+                            ),
+                            handler: { print("Edit") }
+                        ),
+                        UIOptionDescriptor(
+                            title: NSLocalizedString(
+                                "Delete",
+                                comment: ""
+                            ),
+                            handler: { print("Delete") }
+                        )
+                    ]
+                )
+                
                 let component = UICartItemComponent(
                     selectionComponent: selectionComponent,
-                    quantityComponent: quantityComponent
+                    quantityComponent: quantityComponent,
+                    optionChainComponent: optionChainComponent
                 )
                 .setTitle(item.title)
                 .setPrice(item.price)

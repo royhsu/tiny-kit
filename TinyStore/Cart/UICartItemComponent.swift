@@ -23,11 +23,14 @@ public final class UICartItemComponent: Component, Stylable {
     
     private final let quantityComponent: UINumberPickerComponent
     
+    private final let optionChainComponent: UIOptionChainComponent
+    
     public init(
         contentMode: ComponentContentMode = .automatic,
         theme: Theme = .current,
         selectionComponent: UICheckboxComponent,
-        quantityComponent: UINumberPickerComponent
+        quantityComponent: UINumberPickerComponent,
+        optionChainComponent: UIOptionChainComponent
     ) {
         
         self.bundle = Bundle(
@@ -47,6 +50,8 @@ public final class UICartItemComponent: Component, Stylable {
         self.selectionComponent = selectionComponent
         
         self.quantityComponent = quantityComponent
+        
+        self.optionChainComponent = optionChainComponent
 
         self.prepare()
         
@@ -103,6 +108,10 @@ public final class UICartItemComponent: Component, Stylable {
         
         quantityComponent.render()
         
+        itemView.optionChainContainerView.render(with: optionChainComponent)
+        
+        optionChainComponent.render()
+        
         itemView.applyTheme(theme)
         
         itemComponent.render()
@@ -154,6 +163,3 @@ public extension UICartItemComponent {
     }
 
 }
-
-
-

@@ -38,7 +38,27 @@ public final class UIOptionChainComponent: Component {
         
         stackView.distribution = .fillEqually
         
+        stackView.spacing = 12.0
+        
     }
+    
+    // MARK: Component
+    
+    public final var contentMode: ComponentContentMode {
+        
+        get { return itemComponent.contentMode }
+        
+        set { itemComponent.contentMode = newValue }
+        
+    }
+    
+    public final func render() { itemComponent.render() }
+    
+    // MARK: ViewRenderable
+    
+    public final var view: View { return itemComponent.view }
+    
+    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
 }
 
@@ -73,23 +93,5 @@ public extension UIOptionChainComponent {
         return self
             
     }
-    
-    // MARK: Component
-    
-    public final var contentMode: ComponentContentMode {
-        
-        get { return itemComponent.contentMode }
-        
-        set { itemComponent.contentMode = newValue }
-        
-    }
-    
-    public final func render() { itemComponent.render() }
-    
-    // MARK: ViewRenderable
-    
-    public final var view: View { return itemComponent.view }
-    
-    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
 }

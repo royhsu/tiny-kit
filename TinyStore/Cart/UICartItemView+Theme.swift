@@ -22,10 +22,6 @@ public extension UICartItemView {
         
         priceLabel.textColor = theme.titleColor
         
-        firstTitleLabel.textColor = theme.titleColor
-        
-        secondTitleLabel.textColor = theme.titleColor
-        
     }
     
 }

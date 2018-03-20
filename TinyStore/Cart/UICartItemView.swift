@@ -29,26 +29,11 @@ public final class UICartItemView: UIView {
     public fileprivate(set) final weak var quantityPickerContainerView: UIView!
     
     @IBOutlet
-    public fileprivate(set) final weak var firstContainerView: UIView!
-    
-    @IBOutlet
-    public fileprivate(set) final weak var firstTitleLabel: UILabel!
-    
-    @IBOutlet
-    public fileprivate(set) final weak var firstButton: UIButton!
-    
-    @IBOutlet
-    public fileprivate(set) final weak var secondContainerView: UIView!
-    
-    @IBOutlet
-    public fileprivate(set) final weak var secondTitleLabel: UILabel!
-    
-    @IBOutlet
-    public fileprivate(set) final weak var secondButton: UIButton!
+    public fileprivate(set) final weak var optionChainContainerView: UIView!
     
     @IBOutlet
     public fileprivate(set) final weak var separatorView: UIView!
-    
+
     public final override func awakeFromNib() {
         
         setUpSelectionContainerView(selectionContainerView)
@@ -63,17 +48,7 @@ public final class UICartItemView: UIView {
         
         setUpQuantityPickerContainerView(quantityPickerContainerView)
         
-        setUpFirstContainerView(firstContainerView)
-        
-        setUpFirstTitleLabel(firstTitleLabel)
-        
-        setUpFirstButton(firstButton)
-        
-        setUpSecondContainerView(secondContainerView)
-        
-        setUpSecondTitleLabel(secondTitleLabel)
-        
-        setUpSecondButton(secondButton)
+        setUpOptionChainContainerView(optionChainContainerView)
         
         setUpSeparatorView(separatorView)
         
@@ -125,47 +100,7 @@ public final class UICartItemView: UIView {
     
     fileprivate final func setUpQuantityPickerContainerView(_ view: UIView) { view.backgroundColor = nil }
     
-    fileprivate final func setUpFirstContainerView(_ view: UIView) { view.backgroundColor = nil }
-    
-    fileprivate final func setUpFirstTitleLabel(_ label: UILabel) {
-        
-       
-        
-    }
-    
-    fileprivate final func setUpFirstButton(_ button: UIButton) {
-        
-        button.setTitle(
-            nil,
-            for: .normal
-        )
-        
-    }
- 
-    fileprivate final func setUpSecondContainerView(_ view: UIView) { view.backgroundColor = nil }
-    
-    fileprivate final func setUpSecondTitleLabel(_ label: UILabel) {
-        
-        label.text = "Second"
-        
-        label.textAlignment = .left
-        
-        label.numberOfLines = 1
-        
-        label.font = .systemFont(ofSize: 10.0)
-        
-        label.textColor = tintColor
-        
-    }
-    
-    fileprivate final func setUpSecondButton(_ button: UIButton) {
-        
-        button.setTitle(
-            nil,
-            for: .normal
-        )
-        
-    }
+    fileprivate final func setUpOptionChainContainerView(_ view: UIView) { view.backgroundColor = nil }
     
     fileprivate final func setUpSeparatorView(_ view: UIView) { view.backgroundColor = .lightGray }
     
