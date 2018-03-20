@@ -12,7 +12,7 @@ import TinyKit
 
 public final class CartManager {
     
-    public final let cart: Observable<[CartItemDescriptor]>
+    private final let cart: Observable<[CartItemDescriptor]>
     
     public init() {
         
