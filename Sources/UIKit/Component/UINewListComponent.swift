@@ -18,8 +18,6 @@ public final class UINewListComponent: Component {
     
     private final var componentForItemHandler: ComponentForItemHandler?
     
-    private final var itemComponents: [Component]
-    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
@@ -52,13 +50,19 @@ public final class UINewListComponent: Component {
         
         self.bridge = UITableViewBridge(tableView: tableView)
         
-        self.itemComponents = []
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
         
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
             
             guard
                 let component = self.componentForItemHandler?(indexPath)
-            else { return }
+                else { return }
             
             component.render()
             
@@ -69,7 +73,7 @@ public final class UINewListComponent: Component {
         bridge.heightForRowHandler = { [unowned self] indexPath in
             
             guard
-                let component = self.componentForItem(at: indexPath)
+                let component = self.componentForItemHandler?(indexPath)
             else { return 0.0 }
             
             switch component.contentMode {
@@ -89,8 +93,6 @@ public final class UINewListComponent: Component {
     public final var contentMode: ComponentContentMode
     
     public final func render() {
-        
-        itemComponents = []
         
         tableView.reloadData()
         
@@ -154,24 +156,11 @@ public extension UINewListComponent {
     @discardableResult
     public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UINewListComponent {
         
-        componentForItemHandler = { indexPath in
-            
-            guard
-                let component = handler?(indexPath)
-            else { return nil }
-            
-            // Prevent the presenting child components get deallocated.
-            self.itemComponents.append(component)
-            
-            return component
-            
-        }
+        componentForItemHandler = handler
         
         return self
         
     }
-    
-    public final func componentForItem(at indexPath: IndexPath) -> Component? { return componentForItemHandler?(indexPath) }
     
     // TODO: maybe it's better to make cell components detect their touching events.
     public typealias DidSelectItemHandler = (IndexPath) -> Void

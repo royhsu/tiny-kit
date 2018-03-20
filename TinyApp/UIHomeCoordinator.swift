@@ -21,6 +21,8 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let cartContentComponent: UINewListComponent
     
+    private final var cartItemComponents: [UICartItemComponent]
+    
     private final let storeCoordinator: UIStoreCoordinator
     
     // TODO:
@@ -32,9 +34,11 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final var showProductDetailHandler: ShowProductDetailHandler?
     
-    private final var selectionSubscription: Subscription<Bool>?
+    public typealias ItemID = String
     
-    private final var quantitySubscription: Subscription<Int>?
+    private final var selectionSubscriptionMap: [ItemID: Subscription<Bool>]
+    
+    private final var quantitySubscriptionMap: [ItemID: Subscription<Int>]
     
     public init() {
         
@@ -44,9 +48,23 @@ public final class UIHomeCoordinator: Coordinator {
         
         self.cartContentComponent = UINewListComponent()
         
+        self.cartItemComponents = []
+        
         self.storeCoordinator = UIStoreCoordinator()
         
         self.cartManager = CartManager()
+        
+        self.selectionSubscriptionMap = [:]
+        
+        self.quantitySubscriptionMap = [:]
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
         
         collapseBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .edit,
@@ -60,6 +78,8 @@ public final class UIHomeCoordinator: Coordinator {
     
     public final func activate() {
         
+        setUpCartItemComponents()
+        
         collapseBarController.setBarContentViewController(
             UIComponentViewController(component: cartContentComponent)
         )
@@ -70,80 +90,10 @@ public final class UIHomeCoordinator: Coordinator {
         
         cartContentComponent
             .setNumberOfSections { 1 }
-            .setNumberOfItems { [unowned self] _ in self.cartManager.cart.value.count }
+            .setNumberOfItems { [unowned self] _ in self.cartItemComponents.count }
             .setComponentForItem { [unowned self] indexPath in
                 
-                let cart = self.cartManager.cart
-                
-                let itemDescriptor = cart.value[indexPath.row]
-                
-                let item = itemDescriptor.item
-                
-                let selectionComponent = UICheckboxComponent()
-                
-                self.selectionSubscription = selectionComponent.input.subscribe { _, isSelected in
-                    
-                    cart.value[indexPath.row].isSelected = isSelected
-                    
-                }
-                
-                let quantityComponent = UINumberPickerComponent(
-                    minimumValue: 1,
-                    maximumValue: 99
-                )
-                
-                quantityComponent.setDidFail { error in
-                    
-                    // TODO: error handling.
-                    print("\(error)")
-                    
-                }
-                
-                self.quantitySubscription = quantityComponent.input.subscribe { _, quantity in
-                    
-                     cart.value[indexPath.row].quantity = quantity
-                    
-                }
-                
-                let optionChainComponent = UIOptionChainComponent()
-                
-                optionChainComponent.setOptionDescriptors(
-                    [
-                        UIOptionDescriptor(
-                            title: NSLocalizedString(
-                                "Edit",
-                                comment: ""
-                            ),
-                            handler: { print("Edit") }
-                        ),
-                        UIOptionDescriptor(
-                            title: NSLocalizedString(
-                                "Delete",
-                                comment: ""
-                            ),
-                            handler: { print("Delete") }
-                        )
-                    ]
-                )
-                
-                let component = UICartItemComponent(
-                    selectionComponent: selectionComponent,
-                    quantityComponent: quantityComponent,
-                    optionChainComponent: optionChainComponent
-                )
-                .setTitle(item.title)
-                .setPrice(item.price)
-                
-                // TODO: emulate image downloading process.
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-
-                    component.setPreviewImages(
-                        [ #imageLiteral(resourceName: "image-dessert-1") ]
-                    )
-
-                }
-                
-                return component
+                return self.cartItemComponents[indexPath.row]
                 
             }
             .render()
@@ -153,14 +103,16 @@ public final class UIHomeCoordinator: Coordinator {
         storeCoordinator
             .setDidSelectProduct { [unowned self] product in
                 
-                let itemDescriptor = CartItemDescriptor(
-                    item: product,
-                    quantity: 10,
-                    isSelected: true
+                self.cartManager.setItem(
+                    descriptor: CartItemDescriptor(
+                        item: product,
+                        quantity: 10,
+                        isSelected: true
+                    )
                 )
-
-                self.cartManager.cart.value.append(itemDescriptor)
-
+                
+                self.setUpCartItemComponents()
+                
                 self.cartContentComponent.render()
                 
 //                let detailComponent = UIProductDetailComponent()
@@ -192,6 +144,99 @@ public final class UIHomeCoordinator: Coordinator {
                 
             }
             .activate()
+        
+    }
+    
+    fileprivate final func setUpCartItemComponents() {
+
+        cartItemComponents = cartManager.itemDescriptors().map { itemDescriptor in
+        
+            let cartManager = self.cartManager
+            
+            let item = itemDescriptor.item
+            
+            let selectionComponent = UICheckboxComponent()
+            
+            self.selectionSubscriptionMap[item.id] = selectionComponent.input.subscribe { _, isSelected in
+                
+                guard
+                    var itemDescriptor = cartManager.itemDescriptor(id: item.id)
+                else { return }
+                
+                itemDescriptor.isSelected = isSelected
+                
+                cartManager.setItem(descriptor: itemDescriptor)
+                
+            }
+            
+            let quantityComponent = UINumberPickerComponent(
+                minimumValue: 1,
+                maximumValue: 99
+            )
+            
+            quantityComponent.setDidFail { error in
+                
+                // TODO: error handling.
+                print("\(error)")
+                
+            }
+            
+            self.quantitySubscriptionMap[item.id] = quantityComponent.input.subscribe { _, quantity in
+                
+                guard
+                    var itemDescriptor = cartManager.itemDescriptor(id: item.id)
+                else { return }
+                
+                itemDescriptor.quantity = quantity
+                
+                cartManager.setItem(descriptor: itemDescriptor)
+                
+            }
+            
+            let optionChainComponent = UIOptionChainComponent()
+            
+            optionChainComponent.setOptionDescriptors(
+                [
+                    UIOptionDescriptor(
+                        title: NSLocalizedString(
+                            "Edit",
+                            comment: ""
+                        ),
+                        handler: { print("Edit") }
+                    ),
+                    UIOptionDescriptor(
+                        title: NSLocalizedString(
+                            "Delete",
+                            comment: ""
+                        ),
+                        handler: { print("Delete") }
+                    )
+                ]
+            )
+            
+            let component = UICartItemComponent(
+                selectionComponent: selectionComponent,
+                quantityComponent: quantityComponent,
+                optionChainComponent: optionChainComponent
+                )
+                .setTitle(item.title)
+                .setPrice(item.price)
+            
+            // Prevent the presenting child components get deallocated.
+            self.cartItemComponents.append(component)
+            
+            // TODO: emulate image downloading process.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+                component.setPreviewImages(
+                    [ #imageLiteral(resourceName: "image-dessert-1") ]
+                )
+                
+            }
+            
+            return component
+            
+        }
         
     }
     
