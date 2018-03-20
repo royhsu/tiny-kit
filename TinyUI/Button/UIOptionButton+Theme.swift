@@ -10,11 +10,14 @@
 
 public extension UIOptionButton {
     
-    public final func applyTheme(_ theme: Theme) {
+    @discardableResult
+    public final func applyTheme(_ theme: Theme) -> UIOptionButton {
         
         backgroundColor = theme.backgroundColor
         
         titleLabel.textColor = theme.primaryColor
+        
+        return self
         
     }
     

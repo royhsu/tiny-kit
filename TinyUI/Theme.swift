@@ -51,3 +51,9 @@ public struct Theme {
     }
     
 }
+
+public extension Theme {
+    
+    public static var current = { return azureSky }()
+    
+}

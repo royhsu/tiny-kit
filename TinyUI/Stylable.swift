@@ -13,21 +13,3 @@ public protocol Stylable {
     var theme: Theme { get }
     
 }
-
-public extension Theme {
-    
-    public static var current = { return azureSky }()
-    
-    // TODO: rename to debugging theme.
-    // and create the real azure sky.
-    public static let azureSky = Theme(
-        primaryColor: .blue,
-        secondaryColor: .yellow,
-        backgroundColor: .red,
-        titleColor: .blue,
-        subtitleColor: .yellow,
-        bodyColor: .white,
-        placeholderColor: .green
-    )
-    
-}

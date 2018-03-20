@@ -10,7 +10,8 @@
 
 public extension UINumberPicker {
     
-    public final func applyTheme(_ theme: Theme) {
+    @discardableResult
+    public final func applyTheme(_ theme: Theme) -> UINumberPicker {
         
         backgroundColor = theme.primaryColor
         
@@ -21,6 +22,8 @@ public extension UINumberPicker {
         numberContainerView.backgroundColor = theme.backgroundColor
         
         numberTextField.textColor = theme.titleColor
+        
+        return self
         
     }
     

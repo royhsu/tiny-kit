@@ -12,7 +12,8 @@ import TinyUI
 
 public extension UICartItemView {
     
-    public final func applyTheme(_ theme: Theme) {
+    @discardableResult
+    public final func applyTheme(_ theme: Theme) -> UICartItemView {
         
         backgroundColor = theme.backgroundColor
         
@@ -21,6 +22,8 @@ public extension UICartItemView {
         titleLabel.textColor = theme.subtitleColor
         
         priceLabel.textColor = theme.titleColor
+        
+        return self
         
     }
     

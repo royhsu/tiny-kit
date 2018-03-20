@@ -96,6 +96,9 @@
 		B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */; };
 		B075A1F8205D399B002FE2B1 /* UICartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075A1F7205D399B002FE2B1 /* UICartCoordinator.swift */; };
 		B075A1FA205D4387002FE2B1 /* UIStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075A1F9205D4387002FE2B1 /* UIStoreCoordinator.swift */; };
+		B0876E052060A22B005EDA9A /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E042060A22B005EDA9A /* CartItem.swift */; };
+		B0876E072060A24E005EDA9A /* CartItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */; };
+		B0876E092060A275005EDA9A /* Product+CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E082060A275005EDA9A /* Product+CartItem.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
 		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
@@ -141,6 +144,8 @@
 		B0A7BA0E206096A600696022 /* UIOptionChainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA022060136300696022 /* UIOptionChainComponent.swift */; };
 		B0A7BA0F206096A600696022 /* UIOptionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */; };
 		B0A7BA11206096DF00696022 /* UIOptionButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA10206096DF00696022 /* UIOptionButton+Theme.swift */; };
+		B0A7BA1320609DC900696022 /* Theme+AzureSky.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA1220609DC900696022 /* Theme+AzureSky.swift */; };
+		B0A7BA1520609E1800696022 /* Theme+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA1420609E1800696022 /* Theme+Debug.swift */; };
 		B0D90E0C2048446F00AC9A0A /* TinyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D90E0A2048446F00AC9A0A /* TinyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; };
 		B0D90E102048446F00AC9A0A /* TinyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -306,6 +311,9 @@
 		B0606FAA204A66E100091504 /* UIApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationCoordinator.swift; sourceTree = "<group>"; };
 		B075A1F7205D399B002FE2B1 /* UICartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartCoordinator.swift; sourceTree = "<group>"; };
 		B075A1F9205D4387002FE2B1 /* UIStoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreCoordinator.swift; sourceTree = "<group>"; };
+		B0876E042060A22B005EDA9A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDescriptor.swift; sourceTree = "<group>"; };
+		B0876E082060A275005EDA9A /* Product+CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CartItem.swift"; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
 		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -343,6 +351,8 @@
 		B0A7BA022060136300696022 /* UIOptionChainComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionChainComponent.swift; sourceTree = "<group>"; };
 		B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionDescriptor.swift; sourceTree = "<group>"; };
 		B0A7BA10206096DF00696022 /* UIOptionButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOptionButton+Theme.swift"; sourceTree = "<group>"; };
+		B0A7BA1220609DC900696022 /* Theme+AzureSky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+AzureSky.swift"; sourceTree = "<group>"; };
+		B0A7BA1420609E1800696022 /* Theme+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Debug.swift"; sourceTree = "<group>"; };
 		B0D90E082048446F00AC9A0A /* TinyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
 		B0D90E0B2048446F00AC9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -630,6 +640,8 @@
 				B0A6299720465828000F97E3 /* Text Input */,
 				B022E25D205E373500DD9170 /* Stylable.swift */,
 				B022E25F205E3E5200DD9170 /* Theme.swift */,
+				B0A7BA1220609DC900696022 /* Theme+AzureSky.swift */,
+				B0A7BA1420609E1800696022 /* Theme+Debug.swift */,
 				B0A62984204657C9000F97E3 /* TinyUI.h */,
 				B0A62985204657C9000F97E3 /* Info.plist */,
 				B022E269205F9BD800DD9170 /* Assets.xcassets */,
@@ -675,6 +687,9 @@
 				B0DCD950205D482900D2A4EC /* Product.swift */,
 				B0DCD952205D485100D2A4EC /* ProductManager.swift */,
 				B022E263205E6AF600DD9170 /* CartManager.swift */,
+				B0876E042060A22B005EDA9A /* CartItem.swift */,
+				B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */,
+				B0876E082060A275005EDA9A /* Product+CartItem.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1035,16 +1050,19 @@
 			files = (
 				B04EBD7B204BC8DC00C9235F /* UIRootCoordinator.swift in Sources */,
 				B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */,
+				B0876E052060A22B005EDA9A /* CartItem.swift in Sources */,
 				B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
 				B075A1F8205D399B002FE2B1 /* UICartCoordinator.swift in Sources */,
 				B0DCD951205D482900D2A4EC /* Product.swift in Sources */,
 				B075A1FA205D4387002FE2B1 /* UIStoreCoordinator.swift in Sources */,
+				B0876E092060A275005EDA9A /* Product+CartItem.swift in Sources */,
 				B022E262205E51E300DD9170 /* UIHomeNavigationCoordinator.swift in Sources */,
 				B0A629B0204675D4000F97E3 /* UIAuthCoordinator.swift in Sources */,
 				B0A629AE204674AA000F97E3 /* AuthCoordinator.swift in Sources */,
 				B022E264205E6AF600DD9170 /* CartManager.swift in Sources */,
 				B01EFA18205D32F300CF9C17 /* UIHomeCoordinator.swift in Sources */,
+				B0876E072060A24E005EDA9A /* CartItemDescriptor.swift in Sources */,
 				B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */,
 				B0DCD953205D485100D2A4EC /* ProductManager.swift in Sources */,
 				B0606FAB204A66E100091504 /* UIApplicationCoordinator.swift in Sources */,
@@ -1078,9 +1096,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A7BA1520609E1800696022 /* Theme+Debug.swift in Sources */,
 				B01EFA0F205D2D7900CF9C17 /* UINumberPickerInputValidator.swift in Sources */,
 				B0A7BA0F206096A600696022 /* UIOptionDescriptor.swift in Sources */,
 				B01EFA11205D2D7900CF9C17 /* UINumberPicker.swift in Sources */,
+				B0A7BA1320609DC900696022 /* Theme+AzureSky.swift in Sources */,
 				B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */,
 				B01EFA13205D2D7900CF9C17 /* UINumberPickerError.swift in Sources */,
 				B022E25E205E373500DD9170 /* Stylable.swift in Sources */,
