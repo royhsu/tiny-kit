@@ -138,7 +138,7 @@ public extension UINewListComponent {
         
     }
     
-    public final func numberOfSections() -> Int { return tableView.numberOfSections }
+    public final var numberOfSections: Int { return tableView.numberOfSections }
     
     public typealias NumberOfItemsHandler = UITableViewBridge.NumberOfRowsHandler
     

@@ -79,9 +79,9 @@ public final class UIRootCoordinator: Coordinator {
 //                ]
 //            )
         
-        let detailComponent = UIProductDetailComponent()
+        let postComponent = UIPostComponent()
         
-        self.rootComponent = detailComponent
+        self.rootComponent = postComponent
         
         let containerViewController = UIComponentViewController(component: rootComponent)
         
@@ -89,7 +89,7 @@ public final class UIRootCoordinator: Coordinator {
         
         self.rootViewController = containerViewController
         
-        detailComponent.setPost(
+        postComponent.setPost(
             elements: [
                 .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
                 .image(#imageLiteral(resourceName: "image-product-story-1")),
