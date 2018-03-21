@@ -58,7 +58,6 @@
 		B032B0702057C2C600AB47C4 /* UIProductReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B06F2057C2C600AB47C4 /* UIProductReviewView.xib */; };
 		B032B0722057C4FC00AB47C4 /* UIProductReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0712057C4FC00AB47C4 /* UIProductReviewComponent.swift */; };
 		B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0732057C55000AB47C4 /* UIProductReviewCarouselComponent.swift */; };
-		B032B0762057CA3500AB47C4 /* UIProductReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0752057CA3500AB47C4 /* UIProductReview.swift */; };
 		B032B0792057FBCF00AB47C4 /* UIProductDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B0772057FBCE00AB47C4 /* UIProductDescriptionView.swift */; };
 		B032B07A2057FBCF00AB47C4 /* UIProductDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032B0782057FBCE00AB47C4 /* UIProductDescriptionView.xib */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
@@ -104,6 +103,7 @@
 		B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */; };
 		B0876E1D20624F2F005EDA9A /* UIProductGalleryView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1C20624F2F005EDA9A /* UIProductGalleryView+Theme.swift */; };
 		B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */; };
+		B0876E2120629DC9005EDA9A /* UIProductReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* UIProductReview.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -274,7 +274,6 @@
 		B032B06F2057C2C600AB47C4 /* UIProductReviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIProductReviewView.xib; sourceTree = "<group>"; };
 		B032B0712057C4FC00AB47C4 /* UIProductReviewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductReviewComponent.swift; sourceTree = "<group>"; };
 		B032B0732057C55000AB47C4 /* UIProductReviewCarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductReviewCarouselComponent.swift; sourceTree = "<group>"; };
-		B032B0752057CA3500AB47C4 /* UIProductReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductReview.swift; sourceTree = "<group>"; };
 		B032B0772057FBCE00AB47C4 /* UIProductDescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProductDescriptionView.swift; sourceTree = "<group>"; };
 		B032B0782057FBCE00AB47C4 /* UIProductDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIProductDescriptionView.xib; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +318,7 @@
 		B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostComponent.swift; sourceTree = "<group>"; };
 		B0876E1C20624F2F005EDA9A /* UIProductGalleryView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductGalleryView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
+		B0876E2020629DC8005EDA9A /* UIProductReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProductReview.swift; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -500,8 +500,8 @@
 				B032B06B2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift */,
 				B032B06D2057C2BD00AB47C4 /* UIProductReviewView.swift */,
 				B032B06F2057C2C600AB47C4 /* UIProductReviewView.xib */,
-				B032B0752057CA3500AB47C4 /* UIProductReview.swift */,
 				B032B0712057C4FC00AB47C4 /* UIProductReviewComponent.swift */,
+				B0876E2020629DC8005EDA9A /* UIProductReview.swift */,
 				B032B0732057C55000AB47C4 /* UIProductReviewCarouselComponent.swift */,
 				B024C9042058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift */,
 				B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */,
@@ -1139,6 +1139,7 @@
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
 				B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */,
 				B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */,
+				B0876E2120629DC9005EDA9A /* UIProductReview.swift in Sources */,
 				B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */,
 				B024C9052058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,
@@ -1148,7 +1149,6 @@
 				B0D90E19204844CB00AC9A0A /* UIGridComponent.swift in Sources */,
 				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
 				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,
-				B032B0762057CA3500AB47C4 /* UIProductReview.swift in Sources */,
 				B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */,
 				B032B0722057C4FC00AB47C4 /* UIProductReviewComponent.swift in Sources */,
 				B032B0662057BBB800AB47C4 /* UIProductDescriptionComponent.swift in Sources */,

@@ -13,13 +13,9 @@ public final class UIProductReviewCarouselComponent: Component {
     /// The base component.
     private final let collectionComponent: UICollectionComponent
     
-    private final var reviewComponents: [Component]
-    
     public init(contentMode: ComponentContentMode = .automatic) {
         
         self.collectionComponent = UICollectionComponent(contentMode: contentMode)
-        
-        self.reviewComponents = []
         
         self.prepare()
         
@@ -31,8 +27,20 @@ public final class UIProductReviewCarouselComponent: Component {
         
         collectionComponent
             .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.reviewComponents.count }
-            .setComponentForItem { self.reviewComponents[$0.item] }
+            .setNumberOfItems { _ in
+                
+                let items = self.numberOfReviewsHandler?()
+                
+                return items ?? 0
+                
+            }
+            .setComponentForItem { indexPath in
+                
+                let component = self.reviewComponentForItemHandler?(indexPath.item)
+                
+                return component
+                
+            }
     
     }
     
@@ -48,8 +56,6 @@ public final class UIProductReviewCarouselComponent: Component {
     
     public final func render() {
         
-        collectionComponent.view.backgroundColor = .white
-        
         collectionComponent.scrollDirection = .horizontal
         
         collectionComponent.collectionLayout.minimumLineSpacing = 16.0
@@ -57,9 +63,13 @@ public final class UIProductReviewCarouselComponent: Component {
         collectionComponent.collectionLayout.sectionInset = UIEdgeInsets(
             top: 0.0,
             left: 16.0,
-            bottom: 0.0,
+            bottom: 10.0, // For the shadow.
             right: 16.0
         )
+        
+        collectionComponent.collectionView.backgroundColor = .red
+        
+        collectionComponent.collectionView.clipsToBounds = false
         
         collectionComponent.collectionView.showsHorizontalScrollIndicator = false
         
@@ -75,27 +85,33 @@ public final class UIProductReviewCarouselComponent: Component {
     
     public final var preferredContentSize: CGSize { return collectionComponent.preferredContentSize }
     
+    // MARK: Action
+    
+    public typealias NumberOfReviewsHandler = () -> Int
+    
+    private final var numberOfReviewsHandler: NumberOfReviewsHandler?
+    
+    public typealias ReviewComponentForItemHandler = (_ index: Int) -> UIProductReviewComponent
+    
+    private final var reviewComponentForItemHandler: ReviewComponentForItemHandler?
+    
 }
 
 public extension UIProductReviewCarouselComponent {
-
+    
     @discardableResult
-    public final func setReviews(
-        _ reviews: [UIProductReview]
-    )
-    -> UIProductReviewCarouselComponent {
+    public final func numberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductReviewCarouselComponent {
         
-        reviewComponents = reviews.map { review in
-            
-            return UIProductReviewComponent(
-                contentMode: .size(
-                    width: 250.0,
-                    height: 143.0
-                )
-            )
-            .setReview(review)
-            
-        }
+        numberOfReviewsHandler = handler
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func reviewComponentForItem(_ handler: ReviewComponentForItemHandler?) -> Component {
+        
+        reviewComponentForItemHandler = handler
         
         return self
         

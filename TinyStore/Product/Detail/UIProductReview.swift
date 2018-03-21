@@ -14,19 +14,19 @@ public struct UIProductReview {
     
     public var title: String?
     
-    public var content: String?
+    public var text: String?
     
     public init(
         pictureImage: UIImage? = nil,
         title: String? = nil,
-        content: String? = nil
+        text: String? = nil
     ) {
         
         self.pictureImage = pictureImage
         
         self.title = title
         
-        self.content = content
+        self.text = text
         
     }
     

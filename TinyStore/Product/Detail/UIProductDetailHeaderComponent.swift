@@ -27,7 +27,8 @@ internal final class UIProductDetailHeaderComponent: Component {
     
     internal init(
         contentMode: ComponentContentMode = .automatic,
-        actionButtonComponent: UIPrimaryButtonComponent
+        actionButtonComponent: UIPrimaryButtonComponent,
+        reviewCarouselComponent: UIProductReviewCarouselComponent
     ) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
@@ -38,7 +39,7 @@ internal final class UIProductDetailHeaderComponent: Component {
         
         self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
         
-        self.reviewCarouselComponent = UIProductReviewCarouselComponent()
+        self.reviewCarouselComponent = reviewCarouselComponent
         
         self.prepare()
         
@@ -80,7 +81,7 @@ internal final class UIProductDetailHeaderComponent: Component {
         
         reviewCarouselComponent.contentMode = .size(
             width: reviewWidth,
-            height: 143.0 + 20.0 // Shadow
+            height: 143.0 + 10.0 // 5.0 points for the shadow.
         )
         
         let spacingComponent: (CGFloat) -> Component = { spacing in
@@ -100,13 +101,13 @@ internal final class UIProductDetailHeaderComponent: Component {
             spacingComponent(20.0),
             descriptionComponent,
             spacingComponent(20.0),
-            UIProductSectionHeaderComponent().setHeader(
-                UIProductSectionHeader(
-                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-                    title: "Reviews"
-                )
-            ),
-            spacingComponent(20.0),
+//            UIProductSectionHeaderComponent().setHeader(
+//                UIProductSectionHeader(
+//                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
+//                    title: "Reviews"
+//                )
+//            ),
+//            spacingComponent(20.0),
             reviewCarouselComponent
         ]
         

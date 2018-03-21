@@ -21,9 +21,47 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let rootComponent: Component
     
+    private final var reviewComponents: [UIProductReviewComponent]
+    
     public init() {
         
-        let productComponent = UIProductDetailComponent()
+        
+        
+        self.reviewComponents = [
+            UIProductReviewComponent(
+                contentMode: .size(
+                    width: 250.0,
+                    height: 143.0
+                )
+            )
+            .setPictureImage(#imageLiteral(resourceName: "image-carolyn-simmons"))
+            .setTitle("Carolyn Simmons")
+            .setText("Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."),
+            UIProductReviewComponent(
+                contentMode: .size(
+                    width: 250.0,
+                    height: 143.0
+                )
+            )
+            .setPictureImage(#imageLiteral(resourceName: "image-jerry-price"))
+            .setTitle("Jerry Price")
+            .setText("Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+            UIProductReviewComponent(
+                contentMode: .size(
+                    width: 250.0,
+                    height: 143.0
+                )
+            )
+            .setPictureImage(#imageLiteral(resourceName: "image-danielle-schneider"))
+            .setTitle("Danielle Schneider")
+            .setText("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor.")
+        ]
+        
+        let reviewCarouselComponent = UIProductReviewCarouselComponent()
+        
+        let productComponent = UIProductDetailComponent(
+            reviewCarouselComponent: reviewCarouselComponent
+        )
         
         self.rootComponent = productComponent
         
@@ -32,6 +70,10 @@ public final class UIRootCoordinator: Coordinator {
         containerViewController.view.backgroundColor = .white
         
         self.rootViewController = containerViewController
+        
+        reviewCarouselComponent
+            .numberOfReviews { self.reviewComponents.count }
+            .reviewComponentForItem { self.reviewComponents[$0] }
         
         productComponent.setPost(
             elements: [

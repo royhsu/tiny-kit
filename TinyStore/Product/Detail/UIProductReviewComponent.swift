@@ -10,12 +10,14 @@
 
 public final class UIProductReviewComponent: Component {
     
+    private final let bundle: Bundle
+    
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductReviewView>
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -52,31 +54,30 @@ public final class UIProductReviewComponent: Component {
 public extension UIProductReviewComponent {
     
     @discardableResult
-    public final func setReview(_ review: UIProductReview) -> UIProductReviewComponent {
+    public final func setPictureImage(_ image: UIImage?) -> UIProductReviewComponent {
         
-        let reviewView = itemComponent.itemView
+        itemComponent.itemView.pictureImageView.image = image
         
-        if let pictureImage = review.pictureImage {
+        return self
         
-            reviewView.pictureImageView.image = pictureImage
-            
-            reviewView.pictureImageView.backgroundColor = .clear
-            
-        }
-        else {
-            
-            reviewView.pictureImageView.image = nil
-            
-            reviewView.pictureImageView.backgroundColor = .lightGray
-            
-        }
+    }
+    
+    @discardableResult
+    public final func setTitle(_ title: String?) -> UIProductReviewComponent {
         
-        reviewView.titleLabel.text = review.title
-        
-        reviewView.contentLabel.text = review.content
+        itemComponent.itemView.titleLabel.text = title
         
         return self
             
+    }
+    
+    @discardableResult
+    public final func setText(_ text: String?) -> UIProductReviewComponent {
+        
+        itemComponent.itemView.textLabel.text = text
+        
+        return self
+        
     }
     
 }
