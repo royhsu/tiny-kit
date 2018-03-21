@@ -21,8 +21,6 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let rootComponent: Component
     
-    private final var itemComponents: [Component] = []
-    
     public init() {
         
 //        self.rootComponent = UIProductDetailComponent()
@@ -81,9 +79,9 @@ public final class UIRootCoordinator: Coordinator {
 //                ]
 //            )
         
-        let listComponent = UINewListComponent()
+        let detailComponent = UIProductDetailComponent()
         
-        self.rootComponent = listComponent
+        self.rootComponent = detailComponent
         
         let containerViewController = UIComponentViewController(component: rootComponent)
         
@@ -91,16 +89,16 @@ public final class UIRootCoordinator: Coordinator {
         
         self.rootViewController = containerViewController
         
-        itemComponents = [
-            UIPostParagraphComponent().setText("Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus."),
-            UIPostImageComponent().setImage(#imageLiteral(resourceName: "image-dessert-1")),
-            UIPostParagraphComponent().setText("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum.")
-        ]
-        
-        listComponent
-            .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.itemComponents.count }
-            .setComponentForItem { self.itemComponents[$0.item] }
+        detailComponent.setPost(
+            elements: [
+                .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
+                .image(#imageLiteral(resourceName: "image-product-story-1")),
+                .image(#imageLiteral(resourceName: "image-product-story-2")),
+                .text("Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                .image(#imageLiteral(resourceName: "image-product-story-3")),
+                .image(#imageLiteral(resourceName: "image-product-story-4"))
+            ]
+        )
         
     }
     

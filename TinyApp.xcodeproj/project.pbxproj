@@ -102,6 +102,7 @@
 		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
 		B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */; };
 		B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */; };
+		B0876E1720623094005EDA9A /* PostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1620623094005EDA9A /* PostElement.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -315,6 +316,7 @@
 		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISecondaryButton+Theme.swift"; sourceTree = "<group>"; };
 		B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
+		B0876E1620623094005EDA9A /* PostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostElement.swift; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 		B024C8E62058BDB800CFAE50 /* TinyPost */ = {
 			isa = PBXGroup;
 			children = (
+				B0876E1620623094005EDA9A /* PostElement.swift */,
 				B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */,
 				B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */,
 				B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */,
@@ -1028,6 +1031,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0876E1720623094005EDA9A /* PostElement.swift in Sources */,
 				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
 				B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */,
 				B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */,

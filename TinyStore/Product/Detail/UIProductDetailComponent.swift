@@ -13,15 +13,32 @@ import TinyPost
 public final class UIProductDetailComponent: Component {
     
     /// The base component
-    private final let listComponent: UIListComponent
+    private final let listComponent: UINewListComponent
     
     private final let detailHeaderComponent: UIProductDetailHeaderComponent
     
+    private final var postElementComponents: [Component]
+    
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        self.listComponent = UINewListComponent(contentMode: contentMode)
         
         self.detailHeaderComponent = UIProductDetailHeaderComponent()
+        
+        self.postElementComponents = []
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        listComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in self.postElementComponents.count }
+            .setComponentForItem { self.postElementComponents[$0.item] }
         
     }
     
@@ -37,7 +54,7 @@ public final class UIProductDetailComponent: Component {
     
     public final func render() {
         
-        listComponent.headerComponent = detailHeaderComponent
+//        listComponent.headerComponent = detailHeaderComponent
         
         listComponent.render()
         
@@ -94,11 +111,27 @@ public extension UIProductDetailComponent {
         
     }
     
-//    @discardableResult
-//    public final func setPost(
-//        elements: [UIPostElement]
-//    )
-//    -> UIProductDetailComponent {
+    @discardableResult
+    public final func setPost(
+        elements: [PostElement]
+    )
+    -> UIProductDetailComponent {
+        
+        postElementComponents = elements.map { element in
+            
+            switch element {
+                
+            case let .text(text): return UIPostParagraphComponent().setText(text)
+                
+            case let .image(image): return UIPostImageComponent().setImage(image)
+                
+            }
+            
+        }
+     
+        return self
+        
+    }
 //
 //        // Insert spacings between elements.
 //        let defaultSpacing: CGFloat = 20.0
