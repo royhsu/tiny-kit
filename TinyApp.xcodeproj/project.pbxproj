@@ -103,7 +103,7 @@
 		B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */; };
 		B0876E1D20624F2F005EDA9A /* UIProductGalleryView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1C20624F2F005EDA9A /* UIProductGalleryView+Theme.swift */; };
 		B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */; };
-		B0876E2120629DC9005EDA9A /* UIProductReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* UIProductReview.swift */; };
+		B0876E2120629DC9005EDA9A /* UIProductReviewView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -318,7 +318,7 @@
 		B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostComponent.swift; sourceTree = "<group>"; };
 		B0876E1C20624F2F005EDA9A /* UIProductGalleryView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductGalleryView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
-		B0876E2020629DC8005EDA9A /* UIProductReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProductReview.swift; sourceTree = "<group>"; };
+		B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProductReviewView+Theme.swift"; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -501,7 +501,7 @@
 				B032B06D2057C2BD00AB47C4 /* UIProductReviewView.swift */,
 				B032B06F2057C2C600AB47C4 /* UIProductReviewView.xib */,
 				B032B0712057C4FC00AB47C4 /* UIProductReviewComponent.swift */,
-				B0876E2020629DC8005EDA9A /* UIProductReview.swift */,
+				B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */,
 				B032B0732057C55000AB47C4 /* UIProductReviewCarouselComponent.swift */,
 				B024C9042058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift */,
 				B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */,
@@ -1139,7 +1139,7 @@
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
 				B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */,
 				B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */,
-				B0876E2120629DC9005EDA9A /* UIProductReview.swift in Sources */,
+				B0876E2120629DC9005EDA9A /* UIProductReviewView+Theme.swift in Sources */,
 				B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */,
 				B024C9052058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift in Sources */,
 				B032B04F205670EE00AB47C4 /* UIView+Image.swift in Sources */,

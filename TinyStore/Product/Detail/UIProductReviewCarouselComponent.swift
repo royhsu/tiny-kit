@@ -67,7 +67,7 @@ public final class UIProductReviewCarouselComponent: Component {
             right: 16.0
         )
         
-        collectionComponent.collectionView.backgroundColor = .red
+        collectionComponent.collectionView.backgroundColor = .white
         
         collectionComponent.collectionView.clipsToBounds = false
         

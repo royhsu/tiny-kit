@@ -8,14 +8,19 @@
 
 // MARK: - UIProductReviewComponent
 
-public final class UIProductReviewComponent: Component {
+import TinyUI
+
+public final class UIProductReviewComponent: Component, Stylable {
     
     private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductReviewView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
         self.bundle = Bundle(
             for: type(of: self)
@@ -29,6 +34,20 @@ public final class UIProductReviewComponent: Component {
             )!
         )
         
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let reviewView = itemComponent.itemView
+        
+        reviewView.applyTheme(theme)
+        
     }
     
     // MARK: Component
@@ -41,13 +60,25 @@ public final class UIProductReviewComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let reviewView = itemComponent.itemView
+        
+        reviewView.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
     public final var view: View { return itemComponent.view }
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+    // MARK: Stylable
+    
+    public final var theme: Theme
     
 }
 
