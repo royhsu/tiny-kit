@@ -8,12 +8,17 @@
 
 // MARK: - UIPostImageComponent
 
-public final class UIPostImageComponent: Component {
+import TinyUI
+
+public final class UIPostImageComponent: Component, Stylable {
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIImageView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
         let imageView = UIImageView(frame: .zero)
         
@@ -25,6 +30,20 @@ public final class UIPostImageComponent: Component {
             contentMode: contentMode,
             itemView: imageView
         )
+
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let imageView = itemComponent.itemView
+        
+        imageView.applyTheme(theme)
         
     }
     
@@ -71,6 +90,10 @@ public final class UIPostImageComponent: Component {
             
         }
         
+        let imageView = itemComponent.itemView
+        
+        imageView.applyTheme(theme)
+        
         itemComponent.render()
         
     }
@@ -80,6 +103,10 @@ public final class UIPostImageComponent: Component {
     public final var view: View { return itemComponent.view }
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+    // MARK: Stylable
+    
+    public final var theme: Theme
     
 }
 

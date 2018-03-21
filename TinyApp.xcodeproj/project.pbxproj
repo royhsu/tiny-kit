@@ -104,6 +104,8 @@
 		B0876E1D20624F2F005EDA9A /* UIProductGalleryView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1C20624F2F005EDA9A /* UIProductGalleryView+Theme.swift */; };
 		B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */; };
 		B0876E2120629DC9005EDA9A /* UIProductReviewView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */; };
+		B0876E232062AB7B005EDA9A /* UIPostParagraphView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E222062AB7B005EDA9A /* UIPostParagraphView+Theme.swift */; };
+		B0876E252062AC7C005EDA9A /* UIImageView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E242062AC7C005EDA9A /* UIImageView+Theme.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -319,6 +321,8 @@
 		B0876E1C20624F2F005EDA9A /* UIProductGalleryView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductGalleryView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProductReviewView+Theme.swift"; sourceTree = "<group>"; };
+		B0876E222062AB7B005EDA9A /* UIPostParagraphView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraphView+Theme.swift"; sourceTree = "<group>"; };
+		B0876E242062AC7C005EDA9A /* UIImageView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Theme.swift"; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -461,8 +465,10 @@
 				B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */,
 				B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */,
 				B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */,
+				B0876E222062AB7B005EDA9A /* UIPostParagraphView+Theme.swift */,
 				B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */,
 				B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */,
+				B0876E242062AC7C005EDA9A /* UIImageView+Theme.swift */,
 				B024C8E72058BDB900CFAE50 /* TinyPost.h */,
 				B024C8E82058BDB900CFAE50 /* Info.plist */,
 			);
@@ -1035,10 +1041,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0876E1720623094005EDA9A /* PostElement.swift in Sources */,
+				B0876E232062AB7B005EDA9A /* UIPostParagraphView+Theme.swift in Sources */,
 				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
 				B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */,
 				B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */,
 				B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */,
+				B0876E252062AC7C005EDA9A /* UIImageView+Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

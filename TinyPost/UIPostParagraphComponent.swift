@@ -8,14 +8,19 @@
 
 // MARK: - UIPostParagraphComponent
 
-public final class UIPostParagraphComponent: Component {
+import TinyUI
+
+public final class UIPostParagraphComponent: Component, Stylable {
     
     private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIPostParagraphView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
         self.bundle = Bundle(
             for: type(of: self)
@@ -29,6 +34,20 @@ public final class UIPostParagraphComponent: Component {
             )!
         )
         
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let paragraphView = itemComponent.itemView
+        
+        paragraphView.applyTheme(theme)
+        
     }
     
     // MARK: Component
@@ -41,13 +60,25 @@ public final class UIPostParagraphComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let paragraphView = itemComponent.itemView
+        
+        paragraphView.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
     public final var view: View { return itemComponent.view }
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+    // MARK: Stylable
+    
+    public final var theme: Theme
     
 }
 

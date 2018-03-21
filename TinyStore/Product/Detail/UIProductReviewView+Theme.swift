@@ -21,7 +21,7 @@ public extension UIProductReviewView {
         
         titleLabel.textColor = theme.subtitleColor
         
-        textLabel.textColor = theme.titleColor
+        textLabel.textColor = theme.bodyColor
         
         return self
         
