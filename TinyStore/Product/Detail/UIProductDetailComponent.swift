@@ -9,11 +9,14 @@
 // MARK: - UIProductDetailComponent
 
 import TinyPost
+import TinyUI
 
 public final class UIProductDetailComponent: Component {
     
     /// The base component
     private final let listComponent: UINewListComponent
+    
+    private final let actionButtonComponent: UIPrimaryButtonComponent
     
     private final let detailHeaderComponent: UIProductDetailHeaderComponent
     
@@ -23,7 +26,9 @@ public final class UIProductDetailComponent: Component {
         
         self.listComponent = UINewListComponent(contentMode: contentMode)
         
-        self.detailHeaderComponent = UIProductDetailHeaderComponent()
+        self.actionButtonComponent = UIPrimaryButtonComponent()
+        
+        self.detailHeaderComponent = UIProductDetailHeaderComponent(actionButtonComponent: actionButtonComponent)
         
         self.postComponent = UIPostComponent()
         
@@ -41,16 +46,20 @@ public final class UIProductDetailComponent: Component {
             .setNumberOfItems { _ in self.postComponent.elementComponents.count }
             .setComponentForItem { self.postComponent.elementComponents[$0.item] }
         
+        actionButtonComponent
+            .setTitle("Add to Cart")
+            .setAction { print("Add to the cart.") }
+        
         detailHeaderComponent.galleryComponent.setImages(
             [ #imageLiteral(resourceName: "image-dessert-1") ]
         )
         
-        detailHeaderComponent.descriptionComponent.setDescription(
-            UIProductDescription(
-                title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
-                subtitle: "Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."
+        detailHeaderComponent.descriptionComponent
+            .setTitle(
+                "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis."
+        
             )
-        )
+            .setSubtitle("Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.")
         
         detailHeaderComponent.reviewCarouselComponent.setReviews(
             [

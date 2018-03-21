@@ -1,5 +1,5 @@
 //
-//  UIProductGallery+Theme.swift
+//  UIProductGalleryView+Theme.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 21/03/2018.
@@ -14,6 +14,10 @@ public extension UIProductGalleryView {
     
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIProductGalleryView {
+        
+        backgroundColor = theme.backgroundColor
+        
+        triangleView.triangleColor = theme.backgroundColor
         
         imageView.backgroundColor = theme.placeholderColor
         

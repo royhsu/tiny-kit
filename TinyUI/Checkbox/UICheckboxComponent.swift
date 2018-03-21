@@ -61,10 +61,11 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
             
         }
         
-        checkbox.actionButton.addTarget(
-            self,
-            action: #selector(toggleValue),
-            for: .touchUpInside
+        checkbox.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(toggleValue)
+            )
         )
         
         checkbox.applyTheme(theme)

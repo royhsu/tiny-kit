@@ -8,8 +8,6 @@
 
 // MARK: - UIProductDescriptionView
 
-import TinyUI
-
 public final class UIProductDescriptionView: UIView {
     
     @IBOutlet
@@ -64,10 +62,6 @@ public final class UIProductDescriptionView: UIView {
         
     }
     
-    fileprivate final func setUpActionContainerView(_ view: UIView) {
-        
-        view.backgroundColor = nil
-        
-    }
+    fileprivate final func setUpActionContainerView(_ view: UIView) { view.backgroundColor = nil }
     
 }

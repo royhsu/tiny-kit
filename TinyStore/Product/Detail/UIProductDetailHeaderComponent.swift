@@ -8,6 +8,8 @@
 
 // MARK: - UIProductDetailHeaderComponent
 
+import TinyUI
+
 internal final class UIProductDetailHeaderComponent: Component {
     
     /// The base component.
@@ -23,7 +25,10 @@ internal final class UIProductDetailHeaderComponent: Component {
     
     internal final let reviewCarouselComponent: UIProductReviewCarouselComponent
     
-    internal init(contentMode: ComponentContentMode = .automatic) {
+    internal init(
+        contentMode: ComponentContentMode = .automatic,
+        actionButtonComponent: UIPrimaryButtonComponent
+    ) {
         
         self.listComponent = UINewListComponent(contentMode: contentMode)
         
@@ -31,7 +36,7 @@ internal final class UIProductDetailHeaderComponent: Component {
         
         self.galleryComponent = UIProductGalleryComponent()
         
-        self.descriptionComponent = UIProductDescriptionComponent()
+        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
         
         self.reviewCarouselComponent = UIProductReviewCarouselComponent()
         

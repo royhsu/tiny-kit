@@ -13,14 +13,9 @@ public final class UICheckbox: UIView {
     @IBOutlet
     public fileprivate(set) final weak var iconImageView: UIImageView!
     
-    @IBOutlet
-    public fileprivate(set) final weak var actionButton: UIButton!
-    
     public final override func awakeFromNib() {
         
         setUpIconImageView(iconImageView)
-        
-        setUpActionButton(actionButton)
         
     }
     
@@ -43,15 +38,6 @@ public final class UICheckbox: UIView {
         imageView.tintColor = tintColor
         
         imageView.contentMode = .scaleAspectFill
-        
-    }
-    
-    fileprivate final func setUpActionButton(_ button: UIButton) {
-        
-        button.setTitle(
-            nil,
-            for: .normal
-        )
         
     }
     
