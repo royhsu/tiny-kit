@@ -126,14 +126,14 @@ public extension UIProductDetailHeaderComponent {
         
     }
     
-    @discardableResult
-    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailHeaderComponent {
-    
-        descriptionComponent.setActionButtonItem(item)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailHeaderComponent {
+//    
+//        descriptionComponent.setActionButtonItem(item)
+//        
+//        return self
+//        
+//    }
     
     @discardableResult
     public final func setReviews(
@@ -145,6 +145,17 @@ public extension UIProductDetailHeaderComponent {
         
         return self
             
+    }
+    
+    public typealias ActionHandler = () -> Void
+    
+    @discardableResult
+    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailHeaderComponent {
+        
+        descriptionComponent.setDidTap(handler)
+        
+        return self
+        
     }
     
 }

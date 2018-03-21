@@ -48,29 +48,29 @@ public final class UIProductReviewCarouselComponent: Component {
         
         collectionComponent.collectionView.showsVerticalScrollIndicator = false
         
-        let sections = collectionComponent.itemComponents.numberOfSections()
-        
-        for section in 0..<sections {
-            
-            let items = collectionComponent.itemComponents.numberOfItems(inSection: section)
-            
-            for item in 0..<items {
-                
-                let indexPath = IndexPath(
-                    item: item,
-                    section: section
-                )
-                
-                var itemComponent = collectionComponent.itemComponents.componentForItem(at: indexPath)
-                
-                itemComponent.contentMode = .size(
-                    width: 250.0,
-                    height: 143.0
-                )
-                
-            }
-            
-        }
+//        let sections = collectionComponent.itemComponents.numberOfSections()
+//
+//        for section in 0..<sections {
+//
+//            let items = collectionComponent.itemComponents.numberOfItems(inSection: section)
+//
+//            for item in 0..<items {
+//
+//                let indexPath = IndexPath(
+//                    item: item,
+//                    section: section
+//                )
+//
+//                var itemComponent = collectionComponent.itemComponents.componentForItem(at: indexPath)
+//
+//                itemComponent.contentMode = .size(
+//                    width: 250.0,
+//                    height: 143.0
+//                )
+//
+//            }
+//
+//        }
         
         collectionComponent.render()
         
@@ -92,22 +92,22 @@ public extension UIProductReviewCarouselComponent {
     )
     -> UIProductReviewCarouselComponent {
         
-        let components: [Component] = reviews.map { review in
-            
-            let component = UIProductReviewComponent(
-                contentMode: .size(
-                    width: 0.0,
-                    height: 0.0
-                ) // Prevent the size of an item greater than the collection view, that will raise an exception.
-            )
-            
-            component.setReview(review)
-            
-            return component
-            
-        }
-        
-        collectionComponent.itemComponents = AnyCollection(components)
+//        let components: [Component] = reviews.map { review in
+//            
+//            let component = UIProductReviewComponent(
+//                contentMode: .size(
+//                    width: 0.0,
+//                    height: 0.0
+//                ) // Prevent the size of an item greater than the collection view, that will raise an exception.
+//            )
+//            
+//            component.setReview(review)
+//            
+//            return component
+//            
+//        }
+//        
+//        collectionComponent.itemComponents = AnyCollection(components)
         
         return self
         

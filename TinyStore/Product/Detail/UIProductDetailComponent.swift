@@ -73,14 +73,14 @@ public extension UIProductDetailComponent {
         
     }
     
-    @discardableResult
-    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setActionButtonItem(item)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
+//        
+//        detailHeaderComponent.setActionButtonItem(item)
+//        
+//        return self
+//        
+//    }
     
     @discardableResult
     public final func setReviews(
@@ -154,6 +154,17 @@ public extension UIProductDetailComponent {
         components.append(contentsOf: spacedElementComponents)
         
         listComponent.itemComponents = AnyCollection(components)
+        
+        return self
+        
+    }
+    
+    public typealias ActionHandler = () -> Void
+    
+    @discardableResult
+    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailComponent {
+        
+        detailHeaderComponent.setAction(handler)
         
         return self
         

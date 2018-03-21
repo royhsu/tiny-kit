@@ -30,7 +30,7 @@ public final class UIProductSectionHeaderView: UIView {
     
     fileprivate final func setUpIconImageView(_ imageView: UIImageView) {
         
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         
         imageView.tintColor = .black
         

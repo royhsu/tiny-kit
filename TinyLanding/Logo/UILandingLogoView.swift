@@ -30,7 +30,7 @@ public final class UILandingLogoView: UIView {
 
     fileprivate final func setUpLogoImageView(_ imageView: UIImageView) {
         
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
         
     }
     

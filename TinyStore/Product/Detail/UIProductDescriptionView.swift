@@ -21,8 +21,6 @@ public final class UIProductDescriptionView: UIView {
     @IBOutlet
     public fileprivate(set) final weak var actionContainerView: UIView!
     
-    // MARK: Life Cycle
-    
     public final override func awakeFromNib() {
         
         setUpTitleLabel(titleLabel)

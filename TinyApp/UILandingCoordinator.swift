@@ -13,6 +13,7 @@ import TinyLanding
 
 public final class UILandingCoordinator: Coordinator {
     
+    /// The navigator.
     private final let navigationController: UINavigationController
     
     private final let landingComponent: UILandingComponent
@@ -45,28 +46,28 @@ public final class UILandingCoordinator: Coordinator {
                     backgroundImage: #imageLiteral(resourceName: "image-landing-logo-background")
                 )
             )
-            .addButton(
-                with: UIPrimaryButtonItem(
-                    title: NSLocalizedString(
-                        "Sign Up",
-                        comment: ""
-                    ),
-                    titleColor: .white,
-                    backgroundColor: .red
-                ),
-                action: { print("Go sign up!") }
-            )
-            .addButton(
-                with: UIPrimaryButtonItem(
-                    title: NSLocalizedString(
-                        "Sign In",
-                        comment: ""
-                    ),
-                    titleColor: .white,
-                    backgroundColor: .black
-                ),
-                action: signIn
-            )
+//            .addButton(
+//                with: UIPrimaryButtonItem(
+//                    title: NSLocalizedString(
+//                        "Sign Up",
+//                        comment: ""
+//                    ),
+//                    titleColor: .white,
+//                    backgroundColor: .red
+//                ),
+//                action: { print("Go sign up!") }
+//            )
+//            .addButton(
+//                with: UIPrimaryButtonItem(
+//                    title: NSLocalizedString(
+//                        "Sign In",
+//                        comment: ""
+//                    ),
+//                    titleColor: .white,
+//                    backgroundColor: .black
+//                ),
+//                action: signIn
+//            )
             .render()
         
     }

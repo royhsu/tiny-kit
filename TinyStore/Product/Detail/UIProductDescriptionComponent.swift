@@ -84,10 +84,21 @@ public extension UIProductDescriptionComponent {
         
     }
     
+//    @discardableResult
+//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDescriptionComponent {
+//        
+//        actionButtonComponent.setTitle(item.title)
+//        
+//        return self
+//        
+//    }
+    
+    public typealias DidTapHandler = () -> Void
+    
     @discardableResult
-    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDescriptionComponent {
+    public final func setDidTap(_ handler: DidTapHandler?) -> UIProductDescriptionComponent {
         
-        actionButtonComponent.setItem(item)
+        actionButtonComponent.setAction(handler)
         
         return self
         

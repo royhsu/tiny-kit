@@ -57,7 +57,7 @@ public final class UICarouselComponent: Component {
 //
 //        itemComponents = AnyCollection(components)
         
-        collectionComponent.itemComponents = itemComponents
+//        collectionComponent.itemComponents = itemComponents
         
         collectionComponent.render()
         

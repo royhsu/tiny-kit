@@ -27,6 +27,15 @@ public final class UIComponentViewController: UIViewController {
 
     // MAKR: View Life Cycle
 
-    public final override func loadView() { view = component.view }
+    // TODO: [bug] the controller won't be released.
+//    public final override func loadView() { view = component.view }
+    
+    public final override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        view.render(with: component)
+        
+    }
 
 }
