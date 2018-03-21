@@ -8,7 +8,7 @@
 
 // MARK: - UIProductDetailHeaderComponent
 
-public final class UIProductDetailHeaderComponent: Component {
+internal final class UIProductDetailHeaderComponent: Component {
     
     /// The base component.
     private final let listComponent: UINewListComponent
@@ -23,7 +23,7 @@ public final class UIProductDetailHeaderComponent: Component {
     
     internal final let reviewCarouselComponent: UIProductReviewCarouselComponent
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    internal init(contentMode: ComponentContentMode = .automatic) {
         
         self.listComponent = UINewListComponent(contentMode: contentMode)
         
@@ -52,7 +52,7 @@ public final class UIProductDetailHeaderComponent: Component {
     
     // MARK: Component
     
-    public final var contentMode: ComponentContentMode {
+    internal final var contentMode: ComponentContentMode {
         
         get { return listComponent.contentMode }
         
@@ -60,7 +60,7 @@ public final class UIProductDetailHeaderComponent: Component {
         
     }
     
-    public final func render() {
+    internal final func render() {
         
         let galleryWidth = view.bounds.width
         
@@ -111,8 +111,8 @@ public final class UIProductDetailHeaderComponent: Component {
     
     // MARK: ViewRenderable
     
-    public final var view: View { return listComponent.view }
+    internal final var view: View { return listComponent.view }
     
-    public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
+    internal final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
     
 }
