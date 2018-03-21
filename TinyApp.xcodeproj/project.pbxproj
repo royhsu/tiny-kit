@@ -103,6 +103,7 @@
 		B0876E0D2061F628005EDA9A /* UISecondaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */; };
 		B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */; };
 		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
+		B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
 		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
@@ -320,6 +321,7 @@
 		B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UISecondaryButton.xib; sourceTree = "<group>"; };
 		B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButton.swift; sourceTree = "<group>"; };
 		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
+		B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISecondaryButton+Theme.swift"; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
 		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -660,8 +662,9 @@
 				B0A6299320465827000F97E3 /* UIPrimaryButton.xib */,
 				B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */,
 				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
-				B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */,
 				B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */,
+				B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */,
+				B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */,
 				B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */,
 				B0A3347620600F2800FF5098 /* UIOptionButton.swift */,
 				B0A3347820600F5300FF5098 /* UIOptionButton.xib */,
@@ -1124,6 +1127,7 @@
 				B0A7BA0D206096A600696022 /* UIOptionButtonComponet.swift in Sources */,
 				B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */,
 				B022E260205E3E5200DD9170 /* Theme.swift in Sources */,
+				B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */,
 				B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */,
 				B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */,
 				B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */,
