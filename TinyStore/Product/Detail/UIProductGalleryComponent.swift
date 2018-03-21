@@ -8,14 +8,21 @@
 
 // MARK: - UIProductGalleryComponent
 
-public final class UIProductGalleryComponent: Component {
+import TinyUI
+
+public final class UIProductGalleryComponent: Component, Stylable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductGalleryView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -27,9 +34,19 @@ public final class UIProductGalleryComponent: Component {
             )!
         )
         
-        self.setGallery(
-            UIProductGallery()
-        )
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let galleryView = itemComponent.itemView
+        
+        galleryView.applyTheme(theme)
         
     }
     
@@ -43,7 +60,15 @@ public final class UIProductGalleryComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let galleryView = itemComponent.itemView
+        
+        galleryView.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -51,29 +76,23 @@ public final class UIProductGalleryComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
 }
 
 public extension UIProductGalleryComponent {
     
     @discardableResult
-    public final func setGallery(_ gallery: UIProductGallery) -> UIProductGalleryComponent {
+    public final func setImages(
+        _ images: [UIImage]
+    )
+    -> UIProductGalleryComponent {
         
         let galleryView = itemComponent.itemView
         
-        if let previewImage = gallery.images.first {
-            
-            galleryView.imageView.image = previewImage
-            
-            galleryView.imageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            galleryView.imageView.image = nil
-            
-            galleryView.imageView.backgroundColor = .lightGray
-            
-        }
+        galleryView.imageView.image = images.first
         
         // NOTE: The added image will cover up the triangle view.
         galleryView.bringSubview(toFront: galleryView.triangleView)

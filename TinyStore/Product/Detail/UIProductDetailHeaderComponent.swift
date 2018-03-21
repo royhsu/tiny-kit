@@ -71,10 +71,10 @@ internal final class UIProductDetailHeaderComponent: Component {
             height: galleryHeight
         )
         
-        let reviewCarouselWidth = view.bounds.width
+        let reviewWidth = view.bounds.width
         
         reviewCarouselComponent.contentMode = .size(
-            width: reviewCarouselWidth,
+            width: reviewWidth,
             height: 143.0 + 20.0 // Shadow
         )
         

@@ -41,12 +41,8 @@ public final class UIProductDetailComponent: Component {
             .setNumberOfItems { _ in self.postComponent.elementComponents.count }
             .setComponentForItem { self.postComponent.elementComponents[$0.item] }
         
-        detailHeaderComponent.galleryComponent.setGallery(
-            UIProductGallery(
-                images: [
-                    #imageLiteral(resourceName: "image-dessert-1")
-                ]
-            )
+        detailHeaderComponent.galleryComponent.setImages(
+            [ #imageLiteral(resourceName: "image-dessert-1") ]
         )
         
         detailHeaderComponent.descriptionComponent.setDescription(

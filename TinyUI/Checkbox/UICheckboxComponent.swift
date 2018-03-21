@@ -103,7 +103,9 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
     
     public final func render() {
         
-        itemComponent.itemView.applyTheme(theme)
+        let checkbox = itemComponent.itemView
+        
+        checkbox.applyTheme(theme)
         
         itemComponent.render()
         
