@@ -19,7 +19,7 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let cartCoordinator: UICartCoordinator
     
-    private final let cartContentComponent: UINewListComponent
+    private final let cartContentComponent: UIListComponent
     
     private final var cartItemComponents: [UICartItemComponent]
     
@@ -42,7 +42,7 @@ public final class UIHomeCoordinator: Coordinator {
         
         self.cartCoordinator = UICartCoordinator()
         
-        self.cartContentComponent = UINewListComponent()
+        self.cartContentComponent = UIListComponent()
         
         self.cartItemComponents = []
         

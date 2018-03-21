@@ -11,13 +11,13 @@
 public final class UIPostComponent: Component {
     
     /// The base component
-    private final let listComponent: UINewListComponent
+    private final let listComponent: UIListComponent
     
     public private(set) final var elementComponents: [Component]
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        self.listComponent = UINewListComponent(contentMode: contentMode)
+        self.listComponent = UIListComponent(contentMode: contentMode)
         
         self.elementComponents = []
         

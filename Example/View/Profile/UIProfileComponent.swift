@@ -21,8 +21,6 @@ public final class UIProfileComponent: Component {
 
         let listComponent = UIListComponent(contentMode: contentMode)
 
-        listComponent.headerComponent = headerComponent
-
         self.listComponent = listComponent
 
     }
@@ -69,8 +67,10 @@ public extension UIProfileComponent {
 
         }
 
-        listComponent.itemComponents = AnyCollection(components)
-
+        listComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in components.count }
+            .setComponentForItem { components[$0.item] }
     }
 
 }

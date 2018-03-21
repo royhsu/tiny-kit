@@ -51,21 +51,17 @@ internal final class UIListComponentTests: XCTestCase {
         
         let listComponent = UIListComponent()
 
-        listComponent.headerComponent = headerComponent
-
-        listComponent.footerComponent = footerComponent
-
-        listComponent.itemComponents = UIStubComponentCollection(
-            numberOfSections: { return itemComponents.count },
-            numberOfItemsInSection: { section in return 1 },
-            componentAtItem: { indexPath in itemComponents[indexPath.section] }
-        )
-
-        listComponent.render()
+        let sections = 1
+        
+        listComponent
+            .setHeaderComponent(headerComponent)
+            .setFooterComponent(footerComponent)
+            .setNumberOfSections { sections }
+            .setNumberOfItems { _ in itemComponents.count }
+            .setComponentForItem { itemComponents[$0.section] }
+            .render()
 
         let tableView = listComponent.tableView
-        
-        let numberOfSections = itemComponents.count
 
         XCTAssertEqual(
             tableView.tableHeaderView,
@@ -79,37 +75,38 @@ internal final class UIListComponentTests: XCTestCase {
 
         XCTAssertEqual(
             tableView.numberOfSections,
-            numberOfSections
+            sections
         )
 
-        for section in 0..<numberOfSections {
+        for section in 0..<sections {
 
-            XCTAssertEqual(
-                tableView.numberOfRows(inSection: section),
-                1
-            )
-
-            let indexPath = IndexPath(
-                item: 0,
-                section: section
-            )
-
-            let itemComponent = itemComponents[section]
+            let rows =  tableView.numberOfRows(inSection: section)
             
-            guard
-                let cell = itemComponent.view.superview?.superview as? UITableViewCell
-            else {
-                
-                XCTFail("Must be a UITableViewCell.")
-                
-                return
-                    
-            }
+            for row in 0..<rows {
+            
+                let indexPath = IndexPath(
+                    row: row,
+                    section: section
+                )
 
-            XCTAssertEqual(
-                tableView.cellForRow(at: indexPath),
-                cell
-            )
+                let itemComponent = itemComponents[section]
+                
+                guard
+                    let cell = itemComponent.view.superview?.superview as? UITableViewCell
+                else {
+                    
+                    XCTFail("Must be a UITableViewCell.")
+                    
+                    return
+                    
+                }
+
+                XCTAssertEqual(
+                    tableView.cellForRow(at: indexPath),
+                    cell
+                )
+                
+            }
 
         }
 

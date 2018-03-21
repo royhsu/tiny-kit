@@ -133,9 +133,11 @@ public final class UISignInComponent: Component {
             actionComponent
         ]
 
-        listComponent.itemComponents = AnyCollection(components)
-
-        listComponent.render()
+        listComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in components.count }
+            .setComponentForItem { components[$0.item] }
+            .render()
 
     }
 

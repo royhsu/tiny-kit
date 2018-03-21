@@ -13,7 +13,7 @@ import TinyUI
 internal final class UIProductDetailHeaderComponent: Component {
     
     /// The base component.
-    private final let listComponent: UINewListComponent
+    private final let listComponent: UIListComponent
     
     private final var itemComponents: [Component]
     
@@ -30,7 +30,7 @@ internal final class UIProductDetailHeaderComponent: Component {
         actionButtonComponent: UIPrimaryButtonComponent
     ) {
         
-        self.listComponent = UINewListComponent(contentMode: contentMode)
+        self.listComponent = UIListComponent(contentMode: contentMode)
         
         self.itemComponents = []
         

@@ -100,6 +100,8 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         }
 
+        itemView.frame.size = size
+        
         view.frame.size = size
         
         let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)

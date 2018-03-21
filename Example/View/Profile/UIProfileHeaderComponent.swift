@@ -37,9 +37,11 @@ public final class UIProfileHeaderComponent: Component {
 
         let components: [Component] = [ introductionComponent ]
 
-        listComponent.itemComponents = AnyCollection(components)
-
-        listComponent.render()
+        listComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in components.count }
+            .setComponentForItem { components[$0.item] }
+            .render()
 
     }
 

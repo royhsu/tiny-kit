@@ -57,11 +57,12 @@ public final class UILandingComponent: Component {
             
         }
         
-        listComponent.headerComponent = logoComponent
-        
-        listComponent.itemComponents = AnyCollection(buttonComponents)
-        
-        listComponent.render()
+        listComponent
+            .setHeaderComponent(logoComponent)
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in self.buttonComponents.count }
+            .setComponentForItem { self.buttonComponents[$0.item] }
+            .render()
         
     }
     

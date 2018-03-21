@@ -14,7 +14,7 @@ import TinyUI
 public final class UIProductDetailComponent: Component {
     
     /// The base component
-    private final let listComponent: UINewListComponent
+    private final let listComponent: UIListComponent
     
     private final let actionButtonComponent: UIPrimaryButtonComponent
     
@@ -24,7 +24,7 @@ public final class UIProductDetailComponent: Component {
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        self.listComponent = UINewListComponent(contentMode: contentMode)
+        self.listComponent = UIListComponent(contentMode: contentMode)
         
         self.actionButtonComponent = UIPrimaryButtonComponent()
         
