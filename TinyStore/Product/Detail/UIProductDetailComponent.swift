@@ -17,7 +17,7 @@ public final class UIProductDetailComponent: Component {
     
     private final let detailHeaderComponent: UIProductDetailHeaderComponent
     
-    private final var postElementComponents: [Component]
+    private final let postComponent: UIPostComponent
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -25,7 +25,7 @@ public final class UIProductDetailComponent: Component {
         
         self.detailHeaderComponent = UIProductDetailHeaderComponent()
         
-        self.postElementComponents = []
+        self.postComponent = UIPostComponent()
         
         self.prepare()
         
@@ -37,8 +37,8 @@ public final class UIProductDetailComponent: Component {
         
         listComponent
             .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.postElementComponents.count }
-            .setComponentForItem { self.postElementComponents[$0.item] }
+            .setNumberOfItems { _ in self.postComponent.elementComponents.count }
+            .setComponentForItem { self.postComponent.elementComponents[$0.item] }
         
     }
     
@@ -117,38 +117,7 @@ public extension UIProductDetailComponent {
     )
     -> UIProductDetailComponent {
         
-        let components: [Component] = elements.map { element in
-            
-            switch element {
-                
-            case let .text(text): return UIPostParagraphComponent().setText(text)
-                
-            case let .image(image): return UIPostImageComponent().setImage(image)
-                
-            }
-            
-        }
-        
-        // Insert spacings between elements.
-        let defaultSpacing: CGFloat = 20.0
-
-        let spacingComponent: (CGFloat) -> Component = { spacing in
-
-            return UIItemComponent(
-                contentMode: .size(
-                    width: spacing,
-                    height: spacing
-                ),
-                itemView: UIView()
-            )
-
-        }
-        
-        let spacedComponents = components.joined(
-            separator: spacingComponent(defaultSpacing)
-        )
-        
-        postElementComponents = spacedComponents
+        postComponent.setPost(elements: elements)
      
         return self
         
