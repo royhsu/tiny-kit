@@ -63,6 +63,7 @@
 		B0606FA5204A528600091504 /* UIStubComponentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA3204A520F00091504 /* UIStubComponentCollection.swift */; };
 		B0606FA7204A56DA00091504 /* ComponentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA6204A56DA00091504 /* ComponentGroup.swift */; };
 		B0606FA9204A579200091504 /* AnyCollection+ComponentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0606FA8204A579200091504 /* AnyCollection+ComponentGroup.swift */; };
+		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		B0606FA3204A520F00091504 /* UIStubComponentCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStubComponentCollection.swift; sourceTree = "<group>"; };
 		B0606FA6204A56DA00091504 /* ComponentGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentGroup.swift; sourceTree = "<group>"; };
 		B0606FA8204A579200091504 /* AnyCollection+ComponentGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+ComponentGroup.swift"; sourceTree = "<group>"; };
+		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
 				B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */,
 				B022E26B205FA36100DD9170 /* Bool+Toggle.swift */,
+				B0876E1820623B2F005EDA9A /* Array+Join.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
@@ -537,6 +540,7 @@
 			files = (
 				B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */,
 				B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */,
+				B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */,
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */,
 				B022E268205E9E7E00DD9170 /* UITableViewBridge.swift in Sources */,

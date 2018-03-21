@@ -117,7 +117,7 @@ public extension UIProductDetailComponent {
     )
     -> UIProductDetailComponent {
         
-        postElementComponents = elements.map { element in
+        let components: [Component] = elements.map { element in
             
             switch element {
                 
@@ -128,33 +128,32 @@ public extension UIProductDetailComponent {
             }
             
         }
+        
+        // Insert spacings between elements.
+        let defaultSpacing: CGFloat = 20.0
+
+        let spacingComponent: (CGFloat) -> Component = { spacing in
+
+            return UIItemComponent(
+                contentMode: .size(
+                    width: spacing,
+                    height: spacing
+                ),
+                itemView: UIView()
+            )
+
+        }
+        
+        let spacedComponents = components.joined(
+            separator: spacingComponent(defaultSpacing)
+        )
+        
+        postElementComponents = spacedComponents
      
         return self
         
     }
-//
-//        // Insert spacings between elements.
-//        let defaultSpacing: CGFloat = 20.0
-//
-//        let spacingComponent: (CGFloat) -> Component = { spacing in
-//
-//            return UIItemComponent(
-//                contentMode: .size(
-//                    width: spacing,
-//                    height: spacing
-//                ),
-//                itemView: UIView()
-//            )
-//
-//        }
-//
-//        let spacedElementComponents = elementComponents
-//            .map { [ $0 ] }
-//            .joined(
-//                separator: [ spacingComponent(defaultSpacing) ]
-//            )
-//            .flatMap { $0 }
-//
+    
 //        var components: [Component] = [
 //            spacingComponent(defaultSpacing),
 //            UIProductSectionHeaderComponent().setHeader(
