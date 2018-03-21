@@ -11,25 +11,42 @@
 public final class UIProductDetailHeaderComponent: Component {
     
     /// The base component.
-    private final let listComponent: UIListComponent
+    private final let listComponent: UINewListComponent
     
-    private final let galleryComponent: UIProductGalleryComponent
+    private final var itemComponents: [Component]
+    
+    internal final let galleryComponent: UIProductGalleryComponent
     
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
     
-    private final let descriptionComponent: UIProductDescriptionComponent
+    internal final let descriptionComponent: UIProductDescriptionComponent
     
-    private final let reviewCarouselComponent: UIProductReviewCarouselComponent
+    internal final let reviewCarouselComponent: UIProductReviewCarouselComponent
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        self.listComponent = UINewListComponent(contentMode: contentMode)
+        
+        self.itemComponents = []
         
         self.galleryComponent = UIProductGalleryComponent()
         
         self.descriptionComponent = UIProductDescriptionComponent()
         
         self.reviewCarouselComponent = UIProductReviewCarouselComponent()
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        listComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in self.itemComponents.count }
+            .setComponentForItem { self.itemComponents[$0.item] }
         
     }
     
@@ -61,22 +78,32 @@ public final class UIProductDetailHeaderComponent: Component {
             height: 143.0 + 20.0 // Shadow
         )
         
-        listComponent.itemComponents = AnyCollection(
-            [
-                galleryComponent,
-                makeSpacingComponent(spacing: 20.0),
-                descriptionComponent,
-                makeSpacingComponent(spacing: 20.0),
-                UIProductSectionHeaderComponent().setHeader(
-                    UIProductSectionHeader(
-                        iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-                        title: "Reviews"
-                    )
+        let spacingComponent: (CGFloat) -> Component = { spacing in
+            
+            return UIItemComponent(
+                contentMode: .size(
+                    width: spacing,
+                    height: spacing
                 ),
-                makeSpacingComponent(spacing: 20.0),
-                reviewCarouselComponent
-            ]
-        )
+                itemView: UIView()
+            )
+            
+        }
+        
+        itemComponents = [
+            galleryComponent,
+            spacingComponent(20.0),
+            descriptionComponent,
+            spacingComponent(20.0),
+            UIProductSectionHeaderComponent().setHeader(
+                UIProductSectionHeader(
+                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
+                    title: "Reviews"
+                )
+            ),
+            spacingComponent(20.0),
+            reviewCarouselComponent
+        ]
         
         listComponent.render()
         
@@ -87,75 +114,5 @@ public final class UIProductDetailHeaderComponent: Component {
     public final var view: View { return listComponent.view }
     
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
-    
-    // MARK: Component Factory
-    
-    fileprivate final func makeSpacingComponent(spacing: CGFloat) -> UIItemComponent<UIView> {
-        
-        return UIItemComponent(
-            contentMode: .size(
-                width: spacing,
-                height: spacing
-            ),
-            itemView: UIView()
-        )
-        
-    }
-    
-}
-
-import TinyUI
-
-public extension UIProductDetailHeaderComponent {
-    
-    @discardableResult
-    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailHeaderComponent {
-        
-        galleryComponent.setGallery(gallery)
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailHeaderComponent {
-        
-        descriptionComponent.setDescription(description)
-        
-        return self
-        
-    }
-    
-//    @discardableResult
-//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailHeaderComponent {
-//    
-//        descriptionComponent.setActionButtonItem(item)
-//        
-//        return self
-//        
-//    }
-    
-    @discardableResult
-    public final func setReviews(
-        _ reviews: [UIProductReview]
-    )
-    -> UIProductDetailHeaderComponent {
-        
-        reviewCarouselComponent.setReviews(reviews)
-        
-        return self
-            
-    }
-    
-    public typealias ActionHandler = () -> Void
-    
-    @discardableResult
-    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailHeaderComponent {
-        
-        descriptionComponent.setDidTap(handler)
-        
-        return self
-        
-    }
     
 }

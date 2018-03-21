@@ -14,9 +14,9 @@ public final class UINewListComponent: Component {
     
     private final let bridge: UITableViewBridge
     
-    public typealias ComponentForItemHandler = (IndexPath) -> Component?
+    public private(set) var headerComponent: Component?
     
-    private final var componentForItemHandler: ComponentForItemHandler?
+    public private(set) var footerComponent: Component?
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -94,6 +94,14 @@ public final class UINewListComponent: Component {
     
     public final func render() {
         
+        headerComponent?.render()
+        
+        footerComponent?.render()
+        
+        tableView.tableHeaderView = headerComponent?.view
+        
+        tableView.tableFooterView = footerComponent?.view
+        
         tableView.reloadData()
         
         tableView.layoutIfNeeded()
@@ -123,9 +131,33 @@ public final class UINewListComponent: Component {
     
     public final var preferredContentSize: CGSize { return tableView.bounds.size }
     
+    // MARK: Action
+    
+    public typealias ComponentForItemHandler = (IndexPath) -> Component?
+    
+    private final var componentForItemHandler: ComponentForItemHandler?
+    
 }
 
 public extension UINewListComponent {
+    
+    @discardableResult
+    public func setHeaderComponent(_ component: Component?) -> UINewListComponent {
+        
+        headerComponent = component
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public func setFooterComponent(_ component: Component?) -> UINewListComponent {
+        
+        footerComponent = component
+        
+        return self
+        
+    }
     
     public typealias NumberOfSectionsHandler = UITableViewBridge.NumberOfSectionsHandler
     

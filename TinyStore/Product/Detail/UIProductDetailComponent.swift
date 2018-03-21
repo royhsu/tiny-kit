@@ -36,9 +36,45 @@ public final class UIProductDetailComponent: Component {
     fileprivate final func prepare() {
         
         listComponent
+            .setHeaderComponent(detailHeaderComponent)
             .setNumberOfSections { 1 }
             .setNumberOfItems { _ in self.postComponent.elementComponents.count }
             .setComponentForItem { self.postComponent.elementComponents[$0.item] }
+        
+        detailHeaderComponent.galleryComponent.setGallery(
+            UIProductGallery(
+                images: [
+                    #imageLiteral(resourceName: "image-dessert-1")
+                ]
+            )
+        )
+        
+        detailHeaderComponent.descriptionComponent.setDescription(
+            UIProductDescription(
+                title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
+                subtitle: "Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla."
+            )
+        )
+        
+        detailHeaderComponent.reviewCarouselComponent.setReviews(
+            [
+                UIProductReview(
+                    pictureImage: #imageLiteral(resourceName: "image-carolyn-simmons"),
+                    title: "Carolyn Simmons",
+                    content: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."
+                ),
+                UIProductReview(
+                    pictureImage: #imageLiteral(resourceName: "image-jerry-price"),
+                    title: "Jerry Price",
+                    content: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                ),
+                UIProductReview(
+                    pictureImage: #imageLiteral(resourceName: "image-danielle-schneider"),
+                    title: "Danielle Schneider",
+                    content: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor."
+                )
+            ]
+        )
         
     }
     
@@ -52,13 +88,7 @@ public final class UIProductDetailComponent: Component {
         
     }
     
-    public final func render() {
-        
-//        listComponent.headerComponent = detailHeaderComponent
-        
-        listComponent.render()
-        
-    }
+    public final func render() { listComponent.render() }
     
     // MARK: ViewRenderable
     
@@ -72,23 +102,23 @@ import TinyUI
 
 public extension UIProductDetailComponent {
     
-    @discardableResult
-    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setGallery(gallery)
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setDescription(description)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailComponent {
+//
+//        detailHeaderComponent.setGallery(gallery)
+//
+//        return self
+//
+//    }
+//
+//    @discardableResult
+//    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailComponent {
+//
+//        detailHeaderComponent.setDescription(description)
+//
+//        return self
+//
+//    }
     
 //    @discardableResult
 //    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
@@ -99,17 +129,17 @@ public extension UIProductDetailComponent {
 //        
 //    }
     
-    @discardableResult
-    public final func setReviews(
-        _ reviews: [UIProductReview]
-    )
-    -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setReviews(reviews)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func setReviews(
+//        _ reviews: [UIProductReview]
+//    )
+//    -> UIProductDetailComponent {
+//
+//        detailHeaderComponent.setReviews(reviews)
+//
+//        return self
+//
+//    }
     
     @discardableResult
     public final func setPost(
@@ -142,15 +172,15 @@ public extension UIProductDetailComponent {
 //
 //    }
     
-    public typealias ActionHandler = () -> Void
-    
-    @discardableResult
-    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setAction(handler)
-        
-        return self
-        
-    }
+//    public typealias ActionHandler = () -> Void
+//
+//    @discardableResult
+//    public final func setAction(_ handler: ActionHandler?) -> UIProductDetailComponent {
+//
+//        detailHeaderComponent.setAction(handler)
+//
+//        return self
+//
+//    }
     
 }
