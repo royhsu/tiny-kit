@@ -1,19 +1,19 @@
 //
-//  UIPrimaryButtonComponent.swift
+//  UISecondaryButtonComponent.swift
 //  TinyUI
 //
-//  Created by Roy Hsu on 27/02/2018.
+//  Created by Roy Hsu on 21/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIPrimaryButtonComponent
+// MARK: - UISecondaryButtonComponent
 
-public final class UIPrimaryButtonComponent: Component, Stylable {
+public final class UISecondaryButtonComponent: Component {
     
     private final let bundle: Bundle
     
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIPrimaryButton>
+    private final let itemComponent: UIItemComponent<UISecondaryButton>
     
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -27,7 +27,7 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UIPrimaryButton.self,
+                UISecondaryButton.self,
                 from: bundle
             )!
         )
@@ -51,7 +51,7 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
             )
         )
         
-        button.applyTheme(theme)
+//        button.applyTheme(theme)
         
     }
     
@@ -69,7 +69,7 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
         
         let button = itemComponent.itemView
         
-        button.applyTheme(theme)
+//        button.applyTheme(theme)
         
         itemComponent.render()
         
@@ -96,10 +96,10 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
     
 }
 
-public extension UIPrimaryButtonComponent {
+public extension UISecondaryButtonComponent {
     
     @discardableResult
-    public final func setTitle(_ title: String?) -> UIPrimaryButtonComponent {
+    public final func setTitle(_ title: String?) -> UISecondaryButtonComponent {
         
         itemComponent.itemView.titleLabel.text = title
         
@@ -108,7 +108,7 @@ public extension UIPrimaryButtonComponent {
     }
     
     @discardableResult
-    public final func setAction(_ handler: ActionHandler?) -> UIPrimaryButtonComponent {
+    public final func setAction(_ handler: ActionHandler?) -> UISecondaryButtonComponent {
         
         actionHandler = handler
         

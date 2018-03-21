@@ -34,19 +34,19 @@ public final class UICartCoordinator: Coordinator {
     public final func activate() {
         
         // TODO: apply the theme.
-        cartBarComponent.setActionButtonItem(
-            UIPrimaryButtonItem(
-                title: "Checkout",
-                titleColor: .white,
-                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
-                backgroundColor: UIColor(
-                    red: 0.35,
-                    green: 0.56,
-                    blue: 0.87,
-                    alpha: 1.0
-                )
-            )
-        )
+//        cartBarComponent.setActionButtonItem(
+//            UIPrimaryButtonItem(
+//                title: "Checkout",
+//                titleColor: .white,
+//                iconImage: #imageLiteral(resourceName: "icon-add").withRenderingMode(.alwaysTemplate),
+//                backgroundColor: UIColor(
+//                    red: 0.35,
+//                    green: 0.56,
+//                    blue: 0.87,
+//                    alpha: 1.0
+//                )
+//            )
+//        )
         
         cartBarComponent.render()
         

@@ -73,14 +73,14 @@ public extension UIProductDetailComponent {
         
     }
     
-    @discardableResult
-    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setActionButtonItem(item)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
+//        
+//        detailHeaderComponent.setActionButtonItem(item)
+//        
+//        return self
+//        
+//    }
     
     @discardableResult
     public final func setReviews(

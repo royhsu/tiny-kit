@@ -100,6 +100,9 @@
 		B0876E072060A24E005EDA9A /* CartItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */; };
 		B0876E092060A275005EDA9A /* Product+CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E082060A275005EDA9A /* Product+CartItem.swift */; };
 		B0876E0B2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */; };
+		B0876E0D2061F628005EDA9A /* UISecondaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */; };
+		B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */; };
+		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
 		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
 		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
 		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
@@ -122,8 +125,6 @@
 		B0A6299D20465828000F97E3 /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */; };
 		B0A6299E20465828000F97E3 /* UIPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6299320465827000F97E3 /* UIPrimaryButton.xib */; };
 		B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299420465827000F97E3 /* UIPrimaryButton.swift */; };
-		B0A629A020465828000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */; };
-		B0A629A120465828000F97E3 /* UIPrimaryButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */; };
 		B0A629A220465828000F97E3 /* UITextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299820465828000F97E3 /* UITextInput.swift */; };
 		B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */; };
 		B0A629A420465828000F97E3 /* UITextInputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299A20465828000F97E3 /* UITextInputItem.swift */; };
@@ -316,6 +317,9 @@
 		B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDescriptor.swift; sourceTree = "<group>"; };
 		B0876E082060A275005EDA9A /* Product+CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CartItem.swift"; sourceTree = "<group>"; };
 		B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPrimaryButton+Theme.swift"; sourceTree = "<group>"; };
+		B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UISecondaryButton.xib; sourceTree = "<group>"; };
+		B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButton.swift; sourceTree = "<group>"; };
+		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
 		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
 		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
 		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
@@ -334,8 +338,6 @@
 		B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0A6299320465827000F97E3 /* UIPrimaryButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPrimaryButton.xib; sourceTree = "<group>"; };
 		B0A6299420465827000F97E3 /* UIPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButton.swift; sourceTree = "<group>"; };
-		B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonTapHandler.swift; sourceTree = "<group>"; };
-		B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonItem.swift; sourceTree = "<group>"; };
 		B0A6299820465828000F97E3 /* UITextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInput.swift; sourceTree = "<group>"; };
 		B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputEditHandler.swift; sourceTree = "<group>"; };
 		B0A6299A20465828000F97E3 /* UITextInputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputItem.swift; sourceTree = "<group>"; };
@@ -657,9 +659,10 @@
 				B0A6299420465827000F97E3 /* UIPrimaryButton.swift */,
 				B0A6299320465827000F97E3 /* UIPrimaryButton.xib */,
 				B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */,
-				B0A6299520465827000F97E3 /* UIPrimaryButtonTapHandler.swift */,
-				B0A6299620465827000F97E3 /* UIPrimaryButtonItem.swift */,
 				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
+				B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */,
+				B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */,
+				B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */,
 				B0A3347620600F2800FF5098 /* UIOptionButton.swift */,
 				B0A3347820600F5300FF5098 /* UIOptionButton.xib */,
 				B0A7BA10206096DF00696022 /* UIOptionButton+Theme.swift */,
@@ -988,6 +991,7 @@
 				B0A6299E20465828000F97E3 /* UIPrimaryButton.xib in Resources */,
 				B01EFA06205D2D5100CF9C17 /* UICheckbox.xib in Resources */,
 				B0A629A520465828000F97E3 /* UITextInput.xib in Resources */,
+				B0876E0D2061F628005EDA9A /* UISecondaryButton.xib in Resources */,
 				B01EFA14205D2D7900CF9C17 /* UINumberPicker.xib in Resources */,
 				B022E26A205F9BD800DD9170 /* Assets.xcassets in Resources */,
 			);
@@ -1103,6 +1107,7 @@
 				B0A7BA1520609E1800696022 /* Theme+Debug.swift in Sources */,
 				B01EFA0F205D2D7900CF9C17 /* UINumberPickerInputValidator.swift in Sources */,
 				B0A7BA0F206096A600696022 /* UIOptionDescriptor.swift in Sources */,
+				B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */,
 				B01EFA11205D2D7900CF9C17 /* UINumberPicker.swift in Sources */,
 				B0A7BA1320609DC900696022 /* Theme+AzureSky.swift in Sources */,
 				B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */,
@@ -1117,12 +1122,11 @@
 				B01EFA08205D2D5100CF9C17 /* UICheckboxComponent.swift in Sources */,
 				B0A7BA0E206096A600696022 /* UIOptionChainComponent.swift in Sources */,
 				B0A7BA0D206096A600696022 /* UIOptionButtonComponet.swift in Sources */,
+				B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */,
 				B022E260205E3E5200DD9170 /* Theme.swift in Sources */,
 				B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */,
 				B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */,
-				B0A629A120465828000F97E3 /* UIPrimaryButtonItem.swift in Sources */,
 				B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */,
-				B0A629A020465828000F97E3 /* UIPrimaryButtonTapHandler.swift in Sources */,
 				B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */,
 				B0A6299D20465828000F97E3 /* UIPrimaryButtonComponent.swift in Sources */,
 			);

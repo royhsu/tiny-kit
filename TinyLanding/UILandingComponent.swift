@@ -84,21 +84,21 @@ public extension UILandingComponent {
         
     }
     
-    @discardableResult
-    public final func addButton(
-        with item: UIPrimaryButtonItem,
-        action handler: @escaping () -> Void
-    ) 
-    -> UILandingComponent {
-        
-        let component = UIPrimaryButtonComponent()
-            .setTitle(item.title)
-            .setAction(handler)
-            
-        buttonComponents.append(component)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func addButton(
+//        with item: UIPrimaryButtonItem,
+//        action handler: @escaping () -> Void
+//    ) 
+//    -> UILandingComponent {
+//        
+//        let component = UIPrimaryButtonComponent()
+//            .setTitle(item.title)
+//            .setAction(handler)
+//            
+//        buttonComponents.append(component)
+//        
+//        return self
+//        
+//    }
     
 }

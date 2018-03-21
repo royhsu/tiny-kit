@@ -13,7 +13,7 @@ import TinyAuth
 public final class UIApplicationCoordinator: Coordinator {
 
     /// The navigator.
-    private final let window: TestWindow
+    private final let window: UIWindow
 
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
 
@@ -28,9 +28,9 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        self.rootCoordinator = UIHomeNavigationCoordinator()
+//        self.rootCoordinator = UIHomeNavigationCoordinator()
         
-//        self.rootCoordinator = UIRootCoordinator()
+        self.rootCoordinator = UIRootCoordinator()
         
     }
 
@@ -46,6 +46,7 @@ public final class UIApplicationCoordinator: Coordinator {
 
 }
 
+// For debugging touch events.
 public final class TestWindow: UIWindow {
     
     public override func sendEvent(_ event: UIEvent) {
