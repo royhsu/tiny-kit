@@ -21,7 +21,7 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let rootComponent: Component
     
-    private final let buttonComponent: UISecondaryButtonComponent
+    private final var itemComponents: [Component] = []
     
     public init() {
         
@@ -81,8 +81,6 @@ public final class UIRootCoordinator: Coordinator {
 //                ]
 //            )
         
-        self.buttonComponent = UISecondaryButtonComponent()
-        
         let listComponent = UINewListComponent()
         
         self.rootComponent = listComponent
@@ -93,14 +91,16 @@ public final class UIRootCoordinator: Coordinator {
         
         self.rootViewController = containerViewController
         
-        buttonComponent
-            .setTitle("Sign Up")
-            .setAction { print("Sign up!") }
+        itemComponents = [
+            UIPostParagraphComponent().setText("Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus."),
+            UIPostImageComponent().setImage(#imageLiteral(resourceName: "image-dessert-1")),
+            UIPostParagraphComponent().setText("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum.")
+        ]
         
         listComponent
             .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in 1 }
-            .setComponentForItem { _ in self.buttonComponent }
+            .setNumberOfItems { _ in self.itemComponents.count }
+            .setComponentForItem { self.itemComponents[$0.item] }
         
     }
     

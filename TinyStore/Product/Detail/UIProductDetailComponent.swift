@@ -94,70 +94,52 @@ public extension UIProductDetailComponent {
         
     }
     
-    @discardableResult
-    public final func setPost(
-        elements: [UIPostElement]
-    )
-    -> UIProductDetailComponent {
-        
-        let elementComponents: [Component] = elements.flatMap { element in
-            
-            if let paragraph = element as? UIPostParagraph {
-                
-                return UIPostParagraphComponent().setParagraph(paragraph)
-                
-            }
-            
-            if let image = element as? UIPostImage {
-                
-                return UIPostImageComponent().setImage(image)
-                
-            }
-            
-            return nil
-            
-        }
-        
-        // Insert spacings between elements.
-        let defaultSpacing: CGFloat = 20.0
-        
-        let spacingComponent: (CGFloat) -> Component = { spacing in
-            
-            return UIItemComponent(
-                contentMode: .size(
-                    width: spacing,
-                    height: spacing
-                ),
-                itemView: UIView()
-            )
-            
-        }
-        
-        let spacedElementComponents = elementComponents
-            .map { [ $0 ] }
-            .joined(
-                separator: [ spacingComponent(defaultSpacing) ]
-            )
-            .flatMap { $0 }
-        
-        var components: [Component] = [
-            spacingComponent(defaultSpacing),
-            UIProductSectionHeaderComponent().setHeader(
-                UIProductSectionHeader(
-                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-                    title: "Story"
-                )
-            ),
-            spacingComponent(defaultSpacing)
-        ]
-        
-        components.append(contentsOf: spacedElementComponents)
-        
-        listComponent.itemComponents = AnyCollection(components)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func setPost(
+//        elements: [UIPostElement]
+//    )
+//    -> UIProductDetailComponent {
+//
+//        // Insert spacings between elements.
+//        let defaultSpacing: CGFloat = 20.0
+//
+//        let spacingComponent: (CGFloat) -> Component = { spacing in
+//
+//            return UIItemComponent(
+//                contentMode: .size(
+//                    width: spacing,
+//                    height: spacing
+//                ),
+//                itemView: UIView()
+//            )
+//
+//        }
+//
+//        let spacedElementComponents = elementComponents
+//            .map { [ $0 ] }
+//            .joined(
+//                separator: [ spacingComponent(defaultSpacing) ]
+//            )
+//            .flatMap { $0 }
+//
+//        var components: [Component] = [
+//            spacingComponent(defaultSpacing),
+//            UIProductSectionHeaderComponent().setHeader(
+//                UIProductSectionHeader(
+//                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
+//                    title: "Story"
+//                )
+//            ),
+//            spacingComponent(defaultSpacing)
+//        ]
+//
+//        components.append(contentsOf: spacedElementComponents)
+//
+//        listComponent.itemComponents = AnyCollection(components)
+//
+//        return self
+//
+//    }
     
     public typealias ActionHandler = () -> Void
     

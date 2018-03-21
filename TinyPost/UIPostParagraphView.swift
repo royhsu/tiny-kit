@@ -11,17 +11,17 @@
 public final class UIPostParagraphView: UIView {
     
     @IBOutlet
-    public fileprivate(set) final weak var contentLabel: UILabel!
+    public fileprivate(set) final weak var textLabel: UILabel!
     
     public final override func awakeFromNib() {
         
-        setUpContentLabel(contentLabel)
+        setUpTextLabel(textLabel)
         
     }
     
     // MARK: Set Up
     
-    fileprivate final func setUpContentLabel(_ label: UILabel) {
+    fileprivate final func setUpTextLabel(_ label: UILabel) {
         
         label.text = nil
         

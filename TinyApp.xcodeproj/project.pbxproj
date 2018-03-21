@@ -30,12 +30,9 @@
 		B024C8F12058BDCB00CFAE50 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
 		B024C8F22058BDCB00CFAE50 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B024C8F32058BDCB00CFAE50 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
-		B024C8F52058BE6A00CFAE50 /* UIPostParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8F42058BE6A00CFAE50 /* UIPostParagraph.swift */; };
 		B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */; };
 		B024C8F92058BF8900CFAE50 /* UIPostParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */; };
 		B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */; };
-		B024C8FD2058C89700CFAE50 /* UIPostImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FC2058C89700CFAE50 /* UIPostImage.swift */; };
-		B024C8FF2058C8C400CFAE50 /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FE2058C8C400CFAE50 /* UIPostImageComponent.swift */; };
 		B024C9012058E5D600CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C9032058E62200CFAE50 /* UIProductDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */; };
 		B024C9052058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C9042058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift */; };
@@ -104,9 +101,7 @@
 		B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */; };
 		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
 		B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */; };
-		B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BD205943DA00A60629 /* UIPostElement.swift */; };
-		B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */; };
-		B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */; };
+		B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -250,12 +245,9 @@
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B024C8F42058BE6A00CFAE50 /* UIPostParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraph.swift; sourceTree = "<group>"; };
 		B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraphView.swift; sourceTree = "<group>"; };
 		B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIPostParagraphView.xib; sourceTree = "<group>"; };
 		B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraphComponent.swift; sourceTree = "<group>"; };
-		B024C8FC2058C89700CFAE50 /* UIPostImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostImage.swift; sourceTree = "<group>"; };
-		B024C8FE2058C8C400CFAE50 /* UIPostImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
 		B024C9022058E62200CFAE50 /* UIProductDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductDetailComponent.swift; sourceTree = "<group>"; };
 		B024C9042058EE4800CFAE50 /* UIProductDetailHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductDetailHeaderComponent.swift; sourceTree = "<group>"; };
 		B03082B320580B9300992255 /* UIProductGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductGallery.swift; sourceTree = "<group>"; };
@@ -322,9 +314,7 @@
 		B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButton.swift; sourceTree = "<group>"; };
 		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISecondaryButton+Theme.swift"; sourceTree = "<group>"; };
-		B09218BD205943DA00A60629 /* UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostElement.swift; sourceTree = "<group>"; };
-		B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraph+UIPostElement.swift"; sourceTree = "<group>"; };
-		B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostImage+UIPostElement.swift"; sourceTree = "<group>"; };
+		B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -463,15 +453,10 @@
 		B024C8E62058BDB800CFAE50 /* TinyPost */ = {
 			isa = PBXGroup;
 			children = (
-				B09218BD205943DA00A60629 /* UIPostElement.swift */,
 				B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */,
 				B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */,
-				B024C8F42058BE6A00CFAE50 /* UIPostParagraph.swift */,
-				B09218BF205943EA00A60629 /* UIPostParagraph+UIPostElement.swift */,
 				B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */,
-				B024C8FC2058C89700CFAE50 /* UIPostImage.swift */,
-				B09218C1205943F700A60629 /* UIPostImage+UIPostElement.swift */,
-				B024C8FE2058C8C400CFAE50 /* UIPostImageComponent.swift */,
+				B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */,
 				B024C8E72058BDB900CFAE50 /* TinyPost.h */,
 				B024C8E82058BDB900CFAE50 /* Info.plist */,
 			);
@@ -1043,14 +1028,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B024C8F52058BE6A00CFAE50 /* UIPostParagraph.swift in Sources */,
 				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
-				B09218C2205943F700A60629 /* UIPostImage+UIPostElement.swift in Sources */,
-				B024C8FF2058C8C400CFAE50 /* UIPostImageComponent.swift in Sources */,
-				B09218C0205943EA00A60629 /* UIPostParagraph+UIPostElement.swift in Sources */,
 				B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */,
-				B09218BE205943DA00A60629 /* UIPostElement.swift in Sources */,
-				B024C8FD2058C89700CFAE50 /* UIPostImage.swift in Sources */,
+				B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

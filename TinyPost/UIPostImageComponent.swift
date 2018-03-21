@@ -88,24 +88,11 @@ public final class UIPostImageComponent: Component {
 public extension UIPostImageComponent {
     
     @discardableResult
-    public final func setImage(_ postImage: UIPostImage) -> UIPostImageComponent {
+    public final func setImage(_ image: UIImage?) -> UIPostImageComponent {
         
         let imageView = itemComponent.itemView
         
-        if let image = postImage.image {
-            
-            imageView.image = image
-            
-            imageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            imageView.image = nil
-            
-            imageView.backgroundColor = .lightGray
-            
-        }
+        imageView.image = image
 
         return self
         

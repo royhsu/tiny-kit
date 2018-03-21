@@ -10,12 +10,14 @@
 
 public final class UIPostParagraphComponent: Component {
     
+    private final let bundle: Bundle
+    
     /// The base component.
     private final let itemComponent: UIItemComponent<UIPostParagraphView>
     
     public init(contentMode: ComponentContentMode = .automatic) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -52,11 +54,11 @@ public final class UIPostParagraphComponent: Component {
 public extension UIPostParagraphComponent {
     
     @discardableResult
-    public final func setParagraph(_ paragraph: UIPostParagraph) -> UIPostParagraphComponent {
+    public final func setText(_ text: String?) -> UIPostParagraphComponent {
         
         let paragraphView = itemComponent.itemView
         
-        paragraphView.contentLabel.text = paragraph.content
+        paragraphView.textLabel.text = text
         
         return self
         
