@@ -6,25 +6,46 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ProductDetailCoordinator
+// MARK: - UIProductDetailCoordinator
 
+import TinyUI
 import TinyKit
 
-public final class ProductDetailCoordinator: Coordinator {
+public final class UIProductDetailCoordinator: Coordinator {
     
     public final let storage: Storage
     
-    private final let componentViewController: UIComponentViewController
-    
     private final let component: ProductDetailComponent
     
-    public init(component: ProductDetailComponent) {
+    private final let componentViewController: UIComponentViewController
+    
+    private final let provider: ProductProvider
+    
+    public init(provider: ProductProvider) {
         
         self.storage = Storage()
         
+        self.component = UIProductDetailComponent(
+            galleryComponent: UIProductGalleryComponent(),
+            actionButtonComponent: UIPrimaryButtonComponent()
+                .setTitle("Add to Cart")
+                .setAction { print("Add the item to my cart.") },
+            reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
+                .setIconImage(
+                    #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+                )
+                .setTitle("Reviews"),
+            reviewCarouselComponent: UIProductReviewCarouselComponent(),
+            introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
+                .setIconImage(
+                    #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+                )
+                .setTitle("Introduction")
+        )
+        
         self.componentViewController = UIComponentViewController(component: component)
         
-        self.component = component
+        self.provider = provider
         
         self.reviewComponents = []
         
@@ -41,16 +62,12 @@ public final class ProductDetailCoordinator: Coordinator {
         titleSubscription = storage.title.subscribe { [unowned self] _, title in
                 
             self.component.setTitle(title)
-            
-            DispatchQueue.main.async { self.component.render() }
                 
         }
         
         subtitleSubscription = storage.subtitle.subscribe { [unowned self] _, subtitle in
             
             self.component.setSubtitle(subtitle)
-            
-            DispatchQueue.main.async { self.component.render() }
             
         }
     
@@ -81,15 +98,11 @@ public final class ProductDetailCoordinator: Coordinator {
                 
             }
             
-            DispatchQueue.main.async { self.component.render() }
-            
         }
         
         introductionPostSubscription = storage.introductionPost.subscribe { _, post in
             
             self.component.setIntroductionPost(elements: post.elements)
-            
-            DispatchQueue.main.async { self.component.render() }
             
         }
         
@@ -97,7 +110,66 @@ public final class ProductDetailCoordinator: Coordinator {
     
     // MARK: Coordinator
     
-    public final func activate() { component.render() }
+    public final func activate() {
+        
+        component.render()
+        
+        let productID = "1"
+        
+        provider
+            .fetchDetail(
+                in: .background,
+                productID: productID
+            )
+            .then(in: .main) { [weak self] detail in
+                
+                guard
+                    let weakSelf = self
+                else { return }
+                
+                weakSelf.storage.title.value = detail.title
+                
+                weakSelf.storage.subtitle.value = "$\(detail.price)"
+                
+                DispatchQueue.main.async { weakSelf.component.render() }
+                
+            }
+
+        provider
+            .fetchReviews(
+                in: .background,
+                productID: productID
+            )
+            .then(in: .main) { [weak self] reviews in
+                
+                guard
+                    let weakSelf = self
+                else { return }
+                
+                weakSelf.storage.reviews.value = reviews
+                
+                DispatchQueue.main.async { weakSelf.component.render() }
+                
+            }
+        
+        provider
+            .fetchIntroductionPost(
+                in: .background,
+                productID: productID
+            )
+            .then(in: .main) { [weak self] post in
+                
+                guard
+                    let weakSelf = self
+                    else { return }
+                
+                weakSelf.storage.introductionPost.value = post
+                
+                DispatchQueue.main.async { weakSelf.component.render() }
+                
+            }
+        
+    }
     
     // MARK: Observer
 
@@ -142,15 +214,13 @@ public final class ProductDetailCoordinator: Coordinator {
     
     // MARK: Review
     
-    public typealias Review = (title: String?, text: String?)
-    
     private final var reviewComponents: [UIProductReviewComponent]
     
 }
 
 // MARK: - ViewControllerRepresentable
 
-extension ProductDetailCoordinator: ViewControllerRepresentable {
+extension UIProductDetailCoordinator: ViewControllerRepresentable {
     
     public final var viewController: UIViewController { return componentViewController }
     
@@ -192,3 +262,48 @@ public protocol ProductDetailComponent: Component {
 import TinyStore
 
 extension UIProductDetailComponent: ProductDetailComponent { }
+
+public struct Review {
+ 
+    public let title: String?
+    
+    public let text: String?
+    
+    public init(
+        title: String? = nil,
+        text: String? = nil
+    ) {
+        
+        self.title = title
+        
+        self.text = text
+        
+    }
+    
+}
+
+import Hydra
+
+public protocol ProductProvider {
+    
+    typealias ProductDetail = (title: String?, price: Double)
+    
+    func fetchDetail(
+        in context: Context,
+        productID: String
+    )
+    -> Promise<ProductDetail>
+    
+    func fetchReviews(
+        in context: Context,
+        productID: String
+    )
+    -> Promise<[Review]>
+    
+    func fetchIntroductionPost(
+        in context: Context,
+        productID: String
+    )
+    -> Promise<Post>
+    
+}

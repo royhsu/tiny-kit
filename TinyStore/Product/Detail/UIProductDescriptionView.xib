@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -40,11 +43,11 @@
                 <constraint firstItem="Imx-P8-yrx" firstAttribute="leading" secondItem="6lW-K9-l9e" secondAttribute="trailing" constant="12" id="9QE-7H-bE4"/>
                 <constraint firstItem="Imx-P8-yrx" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="9ZG-Ij-LnV"/>
                 <constraint firstAttribute="trailing" secondItem="Imx-P8-yrx" secondAttribute="trailing" constant="16" id="CbL-cT-801"/>
+                <constraint firstItem="6lW-K9-l9e" firstAttribute="centerY" secondItem="Imx-P8-yrx" secondAttribute="centerY" id="Fu5-FJ-tg2"/>
                 <constraint firstItem="85R-cL-xa0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GFO-2B-uN8"/>
                 <constraint firstItem="Imx-P8-yrx" firstAttribute="top" secondItem="85R-cL-xa0" secondAttribute="bottom" constant="16" id="doe-iy-ADJ"/>
                 <constraint firstAttribute="trailing" secondItem="85R-cL-xa0" secondAttribute="trailing" constant="16" id="exD-UM-C8i"/>
                 <constraint firstItem="85R-cL-xa0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="goz-Rl-nyx"/>
-                <constraint firstItem="6lW-K9-l9e" firstAttribute="bottom" secondItem="Imx-P8-yrx" secondAttribute="bottom" id="xyP-an-Xic"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Foc-zg-n0K"/>
