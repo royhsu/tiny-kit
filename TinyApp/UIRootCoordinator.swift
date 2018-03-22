@@ -21,6 +21,16 @@ public final class UIRootCoordinator: Coordinator {
     
     private final let rootComponent: Component
     
+    private let galleryComponent = UIProductGalleryComponent()
+    
+    private let actionComponent = UIPrimaryButtonComponent()
+    
+    private let reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
+    
+    private let reviewCarouselComponent = UIProductReviewCarouselComponent()
+    
+    private let introductionSectionHeaderComponent = UIProductSectionHeaderComponent()
+    
     private final var reviewComponents: [UIProductReviewComponent]
     
     public init() {
@@ -55,16 +65,12 @@ public final class UIRootCoordinator: Coordinator {
             .setText("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor.")
         ]
         
-        let actionComponent = UIPrimaryButtonComponent()
-        
-        let reviewCarouselComponent = UIProductReviewCarouselComponent()
-        
-        let galleryComponent = UIProductGalleryComponent()
-        
         let productComponent = UIProductDetailComponent(
             galleryComponent: galleryComponent,
             actionButtonComponent: actionComponent,
-            reviewCarouselComponent: reviewCarouselComponent
+            reviewSectionHeaderComponent: reviewSectionHeaderComponent,
+            reviewCarouselComponent: reviewCarouselComponent,
+            introductionSectionHeaderComponent: introductionSectionHeaderComponent
         )
         
         self.rootComponent = productComponent
@@ -81,14 +87,18 @@ public final class UIRootCoordinator: Coordinator {
         
         actionComponent.setTitle("Add to Cart")
         
+        reviewSectionHeaderComponent.setTitle("Reviews")
+        
         reviewCarouselComponent
             .numberOfReviews { self.reviewComponents.count }
             .reviewComponentForItem { self.reviewComponents[$0] }
         
+        introductionSectionHeaderComponent.setTitle("Inroduction")
+        
         productComponent
             .setTitle("Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.")
             .setSubtitle("Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.")
-            .setPost(
+            .setIntroductionPost(
                 elements: [
                     .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
                     .image(#imageLiteral(resourceName: "image-product-story-1")),

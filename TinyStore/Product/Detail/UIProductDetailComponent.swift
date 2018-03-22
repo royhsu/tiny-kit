@@ -24,15 +24,21 @@ public final class UIProductDetailComponent: Component {
     
     internal final let descriptionComponent: UIProductDescriptionComponent
     
+    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
+    
     public final let reviewCarouselComponent: UIProductReviewCarouselComponent
     
-    public final let postComponent: UIPostComponent
+    public final let introductionSectionHeaderComponent: UIProductSectionHeaderComponent
+    
+    public final let introductionComponent: UIPostComponent
     
     public init(
         contentMode: ComponentContentMode = .automatic,
         galleryComponent: UIProductGalleryComponent,
         actionButtonComponent: UIPrimaryButtonComponent,
-        reviewCarouselComponent: UIProductReviewCarouselComponent
+        reviewSectionHeaderComponent: UIProductSectionHeaderComponent,
+        reviewCarouselComponent: UIProductReviewCarouselComponent,
+        introductionSectionHeaderComponent: UIProductSectionHeaderComponent
     ) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
@@ -43,9 +49,13 @@ public final class UIProductDetailComponent: Component {
         
         self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
         
+        self.reviewSectionHeaderComponent = reviewSectionHeaderComponent
+        
         self.reviewCarouselComponent = reviewCarouselComponent
         
-        self.postComponent = UIPostComponent()
+        self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
+        
+        self.introductionComponent = UIPostComponent()
         
         self.prepare()
         
@@ -107,21 +117,21 @@ public final class UIProductDetailComponent: Component {
             spacingComponent(20.0),
             descriptionComponent,
             spacingComponent(10.0),
-            UIProductSectionHeaderComponent().setTitle("Reviews"),
+            reviewSectionHeaderComponent,
             spacingComponent(10.0),
             reviewCarouselComponent
         ]
         
-        if postComponent.elementComponents.isEmpty { listComponent.setFooterComponent(nil) }
+        if introductionComponent.elementComponents.isEmpty { listComponent.setFooterComponent(nil) }
         else {
             
             itemComponents += [
                 spacingComponent(10.0),
-                UIProductSectionHeaderComponent().setTitle("Introduction"),
+                introductionSectionHeaderComponent,
                 spacingComponent(10.0)
             ]
             
-            listComponent.setFooterComponent(postComponent)
+            listComponent.setFooterComponent(introductionComponent)
             
         }
         
@@ -158,12 +168,12 @@ public extension UIProductDetailComponent {
     }
     
     @discardableResult
-    public final func setPost(
+    public final func setIntroductionPost(
         elements: [PostElement]
     )
     -> UIProductDetailComponent {
             
-        postComponent.setPost(elements: elements)
+        introductionComponent.setPost(elements: elements)
         
         return self
         
