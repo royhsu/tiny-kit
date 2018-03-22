@@ -184,19 +184,6 @@ public extension UICollectionComponent {
 
     }
     
-    // TODO: recursive bug.
-//    @discardableResult
-//    public final func setNumberOfSections(
-//        _ handler: @autoclosure () -> Int
-//    )
-//    -> UICollectionComponent {
-//        
-//        setNumberOfSections(handler)
-//        
-//        return self
-//            
-//    }
-    
     public final func numberOfSections() -> Int { return collectionView.numberOfSections }
     
     public typealias NumberOfItemsHandler = UICollectionViewBridge.NumberOfItemsHandler

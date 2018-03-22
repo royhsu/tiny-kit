@@ -36,7 +36,7 @@ public final class UIProductReviewCarouselComponent: Component {
             }
             .setComponentForItem { indexPath in
                 
-                let component = self.reviewComponentForItemHandler?(indexPath.item)
+                let component = self.componentForReviewHandler?(indexPath.item)
                 
                 return component
                 
@@ -91,16 +91,16 @@ public final class UIProductReviewCarouselComponent: Component {
     
     private final var numberOfReviewsHandler: NumberOfReviewsHandler?
     
-    public typealias ReviewComponentForItemHandler = (_ index: Int) -> UIProductReviewComponent
+    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
     
-    private final var reviewComponentForItemHandler: ReviewComponentForItemHandler?
+    private final var componentForReviewHandler: ComponentForReviewHandler?
     
 }
 
 public extension UIProductReviewCarouselComponent {
     
     @discardableResult
-    public final func numberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductReviewCarouselComponent {
+    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductReviewCarouselComponent {
         
         numberOfReviewsHandler = handler
         
@@ -109,9 +109,9 @@ public extension UIProductReviewCarouselComponent {
     }
     
     @discardableResult
-    public final func reviewComponentForItem(_ handler: ReviewComponentForItemHandler?) -> Component {
+    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> Component {
         
-        reviewComponentForItemHandler = handler
+        componentForReviewHandler = handler
         
         return self
         

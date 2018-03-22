@@ -166,6 +166,28 @@ public extension UIProductDetailComponent {
         
     }
     
+    public typealias NumberOfReviewsHandler = UIProductReviewCarouselComponent.NumberOfReviewsHandler
+    
+    @discardableResult
+    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductDetailComponent {
+        
+        reviewCarouselComponent.setNumberOfReviews(handler)
+        
+        return self
+        
+    }
+    
+    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
+    
+    @discardableResult
+    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> UIProductDetailComponent {
+        
+        reviewCarouselComponent.setComponentForReview(handler)
+        
+        return self
+        
+    }
+    
     @discardableResult
     public final func setIntroductionPost(
         elements: [PostElement]

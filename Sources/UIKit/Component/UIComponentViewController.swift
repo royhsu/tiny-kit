@@ -8,9 +8,10 @@
 
 // MARK: - UIComponentViewController
 
+// TODO: [bug] the controller won't be released.
 public final class UIComponentViewController: UIViewController {
 
-    public final let component: Component
+    public final var component: Component
 
     public init(component: Component) {
 
@@ -26,15 +27,25 @@ public final class UIComponentViewController: UIViewController {
     public required init?(coder aDecoder: NSCoder) { fatalError("Not implemented.") }
 
     // MAKR: View Life Cycle
-
-    // TODO: [bug] the controller won't be released.
-//    public final override func loadView() { view = component.view }
     
     public final override func viewDidLoad() {
         
         super.viewDidLoad()
         
         view.render(with: component)
+        
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        component.contentMode = .size(
+            width: view.bounds.width,
+            height: view.bounds.height
+        )
+        
+        component.render()
         
     }
 

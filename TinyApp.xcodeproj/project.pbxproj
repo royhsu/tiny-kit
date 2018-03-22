@@ -157,6 +157,7 @@
 		B0DCD953205D485100D2A4EC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCD952205D485100D2A4EC /* ProductManager.swift */; };
 		B0EE3C7120634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */; };
 		B0EE3C732063881300D99FFD /* UIProductDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C722063881300D99FFD /* UIProductDetailCoordinator.swift */; };
+		B0EE3C7520639E7800D99FFD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C7420639E7800D99FFD /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -363,6 +364,7 @@
 		B0DCD952205D485100D2A4EC /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
 		B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductSectionHeaderView+Theme.swift"; sourceTree = "<group>"; };
 		B0EE3C722063881300D99FFD /* UIProductDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductDetailCoordinator.swift; sourceTree = "<group>"; };
+		B0EE3C7420639E7800D99FFD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				B0876E1620623094005EDA9A /* PostElement.swift */,
+				B0EE3C7420639E7800D99FFD /* Post.swift */,
 				B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */,
 				B024C8F62058BF7000CFAE50 /* UIPostParagraphView.swift */,
 				B024C8F82058BF8900CFAE50 /* UIPostParagraphView.xib */,
@@ -1043,6 +1046,7 @@
 				B0876E1720623094005EDA9A /* PostElement.swift in Sources */,
 				B0876E232062AB7B005EDA9A /* UIPostParagraphView+Theme.swift in Sources */,
 				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
+				B0EE3C7520639E7800D99FFD /* Post.swift in Sources */,
 				B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */,
 				B024C8F72058BF7000CFAE50 /* UIPostParagraphView.swift in Sources */,
 				B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */,
