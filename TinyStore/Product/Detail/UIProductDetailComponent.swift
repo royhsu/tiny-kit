@@ -126,7 +126,6 @@ public final class UIProductDetailComponent: Component {
         else {
             
             itemComponents += [
-                spacingComponent(10.0),
                 introductionSectionHeaderComponent,
                 spacingComponent(10.0)
             ]
