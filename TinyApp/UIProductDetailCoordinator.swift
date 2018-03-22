@@ -248,7 +248,7 @@ public final class UIProductDetailCoordinator: Coordinator {
     
     public struct Storage {
         
-        public var gallery: Observable<[UIImage]>
+        public let gallery: Observable<[UIImage]>
         
         public let title: Observable<String?>
         
