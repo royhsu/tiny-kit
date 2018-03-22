@@ -85,6 +85,15 @@ public final class UIProductSectionHeaderComponent: Component, Stylable {
 public extension UIProductSectionHeaderComponent {
     
     @discardableResult
+    public final func setIconImage(_ image: UIImage?) -> UIProductSectionHeaderComponent {
+        
+        itemComponent.itemView.iconImageView.image = image
+        
+        return self
+        
+    }
+    
+    @discardableResult
     public final func setTitle(_ title: String) -> UIProductSectionHeaderComponent {
         
         itemComponent.itemView.titleLabel.text = title

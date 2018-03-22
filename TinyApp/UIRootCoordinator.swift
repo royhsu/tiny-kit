@@ -19,19 +19,21 @@ public final class UIRootCoordinator: Coordinator {
     /// The navigator.
     private final let rootViewController: UIViewController
     
-    private final let rootComponent: Component
+    private final let containerViewController: UIViewController
     
-    private let galleryComponent = UIProductGalleryComponent()
+    private final let productComponent: UIProductDetailComponent
     
-    private let actionComponent = UIPrimaryButtonComponent()
+    private final let galleryComponent = UIProductGalleryComponent()
     
-    private let reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
+    private final let actionComponent = UIPrimaryButtonComponent()
     
-    private let reviewCarouselComponent = UIProductReviewCarouselComponent()
+    private final let reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
     
-    private let introductionSectionHeaderComponent = UIProductSectionHeaderComponent()
+    private final let reviewCarouselComponent = UIProductReviewCarouselComponent()
     
-    private final var reviewComponents: [UIProductReviewComponent]
+    private final let introductionSectionHeaderComponent = UIProductSectionHeaderComponent()
+    
+    private final let reviewComponents: [UIProductReviewComponent]
     
     public init() {
         
@@ -73,13 +75,21 @@ public final class UIRootCoordinator: Coordinator {
             introductionSectionHeaderComponent: introductionSectionHeaderComponent
         )
         
-        self.rootComponent = productComponent
+        self.productComponent = productComponent
         
-        let containerViewController = UIComponentViewController(component: rootComponent)
+        let containerViewController = UIComponentViewController(component: productComponent)
+        
+        self.containerViewController = containerViewController
         
         containerViewController.view.backgroundColor = .white
         
-        self.rootViewController = containerViewController
+        self.rootViewController = UINavigationController(rootViewController: containerViewController)
+        
+    }
+    
+    // MARK: Coordinator
+    
+    public final func activate() {
         
         galleryComponent.setImages(
             [ #imageLiteral(resourceName: "image-dessert-1") ]
@@ -87,13 +97,21 @@ public final class UIRootCoordinator: Coordinator {
         
         actionComponent.setTitle("Add to Cart")
         
-        reviewSectionHeaderComponent.setTitle("Reviews")
+        reviewSectionHeaderComponent
+            .setIconImage(
+                #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+            )
+            .setTitle("Reviews")
         
         reviewCarouselComponent
             .numberOfReviews { self.reviewComponents.count }
             .reviewComponentForItem { self.reviewComponents[$0] }
         
-        introductionSectionHeaderComponent.setTitle("Inroduction")
+        introductionSectionHeaderComponent
+            .setIconImage(
+                #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+            )
+            .setTitle("Inroduction")
         
         productComponent
             .setTitle("Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.")
@@ -107,11 +125,11 @@ public final class UIRootCoordinator: Coordinator {
                     .image(#imageLiteral(resourceName: "image-product-story-3")),
                     .image(#imageLiteral(resourceName: "image-product-story-4"))
                 ]
-            )
+        )
+        
+        productComponent.render()
         
     }
-    
-    public final func activate() { rootComponent.render() }
     
 }
 
