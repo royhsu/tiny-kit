@@ -21,27 +21,14 @@ public final class UIProductDetailCoordinator: Coordinator {
     
     private final let provider: ProductProvider
     
-    public init(provider: ProductProvider) {
+    public init(
+        component: ProductDetailComponent,
+        provider: ProductProvider
+    ) {
         
         self.storage = Storage()
         
-        self.component = UIProductDetailComponent(
-            galleryComponent: UIProductGalleryComponent(),
-            actionButtonComponent: UIPrimaryButtonComponent()
-                .setTitle("Add to Cart")
-                .setAction { print("Add the item to my cart.") },
-            reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
-                .setIconImage(
-                    #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                )
-                .setTitle("Reviews"),
-            reviewCarouselComponent: UIProductReviewCarouselComponent(),
-            introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
-                .setIconImage(
-                    #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                )
-                .setTitle("Introduction")
-        )
+        self.component = component
         
         self.componentViewController = UIComponentViewController(component: component)
         
