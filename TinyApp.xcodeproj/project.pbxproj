@@ -156,6 +156,7 @@
 		B0DCD951205D482900D2A4EC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCD950205D482900D2A4EC /* Product.swift */; };
 		B0DCD953205D485100D2A4EC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCD952205D485100D2A4EC /* ProductManager.swift */; };
 		B0EE3C7120634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */; };
+		B0EE3C732063881300D99FFD /* UIProductDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C722063881300D99FFD /* UIProductDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,7 @@
 		B0DCD950205D482900D2A4EC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B0DCD952205D485100D2A4EC /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
 		B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductSectionHeaderView+Theme.swift"; sourceTree = "<group>"; };
+		B0EE3C722063881300D99FFD /* UIProductDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductDetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +563,7 @@
 				B022E261205E51E300DD9170 /* UIHomeNavigationCoordinator.swift */,
 				B075A1F9205D4387002FE2B1 /* UIStoreCoordinator.swift */,
 				B075A1F7205D399B002FE2B1 /* UICartCoordinator.swift */,
+				B0EE3C722063881300D99FFD /* UIProductDetailCoordinator.swift */,
 				B03C3E6C20457FEC004E318B /* Assets.xcassets */,
 				B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */,
 				B03C3E7120457FEC004E318B /* Info.plist */,
@@ -1053,6 +1056,7 @@
 			files = (
 				B04EBD7B204BC8DC00C9235F /* UIRootCoordinator.swift in Sources */,
 				B044A0202045894A00AAED35 /* UILandingCoordinator.swift in Sources */,
+				B0EE3C732063881300D99FFD /* UIProductDetailCoordinator.swift in Sources */,
 				B0876E052060A22B005EDA9A /* CartItem.swift in Sources */,
 				B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
