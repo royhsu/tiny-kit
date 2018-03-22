@@ -13,28 +13,37 @@ import TinyUI
 
 public final class UIProductDetailComponent: Component {
     
-    /// The base component
+    /// The base component.
     private final let listComponent: UIListComponent
     
-    private final let actionButtonComponent: UIPrimaryButtonComponent
+    private final var itemComponents: [Component]
     
-    private final let detailHeaderComponent: UIProductDetailHeaderComponent
+    public final let galleryComponent: UIProductGalleryComponent
     
-    private final let postComponent: UIPostComponent
+    private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
+    
+    internal final let descriptionComponent: UIProductDescriptionComponent
+    
+    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
+    
+    public final let postComponent: UIPostComponent
     
     public init(
         contentMode: ComponentContentMode = .automatic,
+        galleryComponent: UIProductGalleryComponent,
+        actionButtonComponent: UIPrimaryButtonComponent,
         reviewCarouselComponent: UIProductReviewCarouselComponent
     ) {
         
         self.listComponent = UIListComponent(contentMode: contentMode)
         
-        self.actionButtonComponent = UIPrimaryButtonComponent()
+        self.itemComponents = []
         
-        self.detailHeaderComponent = UIProductDetailHeaderComponent(
-            actionButtonComponent: actionButtonComponent,
-            reviewCarouselComponent: reviewCarouselComponent
-        )
+        self.galleryComponent = galleryComponent
+        
+        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
+        
+        self.reviewCarouselComponent = reviewCarouselComponent
         
         self.postComponent = UIPostComponent()
         
@@ -47,25 +56,9 @@ public final class UIProductDetailComponent: Component {
     fileprivate final func prepare() {
         
         listComponent
-            .setHeaderComponent(detailHeaderComponent)
             .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.postComponent.elementComponents.count }
-            .setComponentForItem { self.postComponent.elementComponents[$0.item] }
-        
-        actionButtonComponent
-            .setTitle("Add to Cart")
-            .setAction { print("Add to the cart.") }
-        
-        detailHeaderComponent.galleryComponent.setImages(
-            [ #imageLiteral(resourceName: "image-dessert-1") ]
-        )
-        
-        detailHeaderComponent.descriptionComponent
-            .setTitle(
-                "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis."
-        
-            )
-            .setSubtitle("Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.")
+            .setNumberOfItems { _ in self.itemComponents.count }
+            .setComponentForItem { self.itemComponents[$0.item] }
         
     }
     
@@ -79,7 +72,62 @@ public final class UIProductDetailComponent: Component {
         
     }
     
-    public final func render() { listComponent.render() }
+    public final func render() {
+        
+        let galleryWidth = view.bounds.width
+        
+        let galleryHeight = (galleryWidth / galleryAspectRatio)
+        
+        galleryComponent.contentMode = .size(
+            width: galleryWidth,
+            height: galleryHeight
+        )
+        
+        let reviewWidth = view.bounds.width
+        
+        reviewCarouselComponent.contentMode = .size(
+            width: reviewWidth,
+            height: 143.0 + 10.0 // 5.0 points for the shadow.
+        )
+        
+        let spacingComponent: (CGFloat) -> Component = { spacing in
+            
+            return UIItemComponent(
+                contentMode: .size(
+                    width: spacing,
+                    height: spacing
+                ),
+                itemView: UIView()
+            )
+            
+        }
+        
+        itemComponents = [
+            galleryComponent,
+            spacingComponent(20.0),
+            descriptionComponent,
+            spacingComponent(10.0),
+            UIProductSectionHeaderComponent().setTitle("Reviews"),
+            spacingComponent(10.0),
+            reviewCarouselComponent
+        ]
+        
+        if postComponent.elementComponents.isEmpty { listComponent.setFooterComponent(nil) }
+        else {
+            
+            itemComponents += [
+                spacingComponent(10.0),
+                UIProductSectionHeaderComponent().setTitle("Introduction"),
+                spacingComponent(10.0)
+            ]
+            
+            listComponent.setFooterComponent(postComponent)
+            
+        }
+        
+        listComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -89,18 +137,34 @@ public final class UIProductDetailComponent: Component {
     
 }
 
-import TinyUI
-
 public extension UIProductDetailComponent {
+    
+    @discardableResult
+    public final func setTitle(_ title: String?) -> UIProductDetailComponent {
+        
+        descriptionComponent.setTitle(title)
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setSubtitle(_ subtitle: String?) -> UIProductDetailComponent {
+        
+        descriptionComponent.setSubtitle(subtitle)
+        
+        return self
+        
+    }
     
     @discardableResult
     public final func setPost(
         elements: [PostElement]
     )
     -> UIProductDetailComponent {
-    
+            
         postComponent.setPost(elements: elements)
-     
+        
         return self
         
     }

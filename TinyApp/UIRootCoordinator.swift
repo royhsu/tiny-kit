@@ -55,9 +55,15 @@ public final class UIRootCoordinator: Coordinator {
             .setText("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor.")
         ]
         
+        let actionComponent = UIPrimaryButtonComponent()
+        
         let reviewCarouselComponent = UIProductReviewCarouselComponent()
         
+        let galleryComponent = UIProductGalleryComponent()
+        
         let productComponent = UIProductDetailComponent(
+            galleryComponent: galleryComponent,
+            actionButtonComponent: actionComponent,
             reviewCarouselComponent: reviewCarouselComponent
         )
         
@@ -69,20 +75,29 @@ public final class UIRootCoordinator: Coordinator {
         
         self.rootViewController = containerViewController
         
+        galleryComponent.setImages(
+            [ #imageLiteral(resourceName: "image-dessert-1") ]
+        )
+        
+        actionComponent.setTitle("Add to Cart")
+        
         reviewCarouselComponent
             .numberOfReviews { self.reviewComponents.count }
             .reviewComponentForItem { self.reviewComponents[$0] }
         
-        productComponent.setPost(
-            elements: [
-                .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
-                .image(#imageLiteral(resourceName: "image-product-story-1")),
-                .image(#imageLiteral(resourceName: "image-product-story-2")),
-                .text("Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-                .image(#imageLiteral(resourceName: "image-product-story-3")),
-                .image(#imageLiteral(resourceName: "image-product-story-4"))
-            ]
-        )
+        productComponent
+            .setTitle("Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.")
+            .setSubtitle("Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.")
+            .setPost(
+                elements: [
+                    .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
+                    .image(#imageLiteral(resourceName: "image-product-story-1")),
+                    .image(#imageLiteral(resourceName: "image-product-story-2")),
+                    .text("Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                    .image(#imageLiteral(resourceName: "image-product-story-3")),
+                    .image(#imageLiteral(resourceName: "image-product-story-4"))
+                ]
+            )
         
     }
     
