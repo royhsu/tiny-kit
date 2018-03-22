@@ -59,6 +59,12 @@ public final class UIProductDetailCoordinator: Coordinator {
         
         componentViewController.view.backgroundColor = .white
         
+        gallerySubscription = storage.gallery.subscribe { [unowned self] _, gallery in
+            
+            self.component.setGallery(gallery)
+            
+        }
+        
         titleSubscription = storage.title.subscribe { [unowned self] _, title in
                 
             self.component.setTitle(title)
@@ -88,11 +94,29 @@ public final class UIProductDetailCoordinator: Coordinator {
                     
                 component.setTitle(review.title).setText(review.text)
             
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    
-                    component.setPictureImage(#imageLiteral(resourceName: "image-carolyn-simmons"))
+                if let imageProcessing = review.imageProcessing {
+                
+                    switch imageProcessing {
+                        
+                    case let .image(image): component.setPictureImage(image)
+                        
+                    case let .url(url, downloader):
+                        
+                        downloader
+                            .download(
+                                in: .background,
+                                url: url
+                            )
+                            .then(
+                                in: .main,
+                                component.setPictureImage
+                            )
+                        
+                    }
                     
                 }
+                
+                
                 
                 return component
                 
@@ -116,6 +140,8 @@ public final class UIProductDetailCoordinator: Coordinator {
         
         let productID = "1"
         
+        storage.gallery.value = []
+        
         provider
             .fetchDetail(
                 in: .background,
@@ -126,6 +152,41 @@ public final class UIProductDetailCoordinator: Coordinator {
                 guard
                     let weakSelf = self
                 else { return }
+                
+                for index in 0..<detail.imageProcessings.count {
+                    
+                    let processing = detail.imageProcessings[index]
+                    
+                    let image: UIImage
+                    
+                    switch processing {
+                        
+                    case let .image(value): image = value
+                        
+                    case let .url(url, downloader):
+                        
+                        image = UIImage()
+                        
+                        downloader.download(
+                            in: .background,
+                            url: url
+                        )
+                        .then(in: .main) { image in
+                            
+                            // TODO: should use weak object image wrapper to prevent the array manuplitating before all images finished.
+                            if index < weakSelf.storage.gallery.value.count {
+                                
+                                weakSelf.storage.gallery.value[index] = image
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    weakSelf.storage.gallery.value.append(image)
+                    
+                }
                 
                 weakSelf.storage.title.value = detail.title
                 
@@ -172,6 +233,8 @@ public final class UIProductDetailCoordinator: Coordinator {
     }
     
     // MARK: Observer
+    
+    private final var gallerySubscription: Subscription<[UIImage]>?
 
     private final var titleSubscription: Subscription<String?>?
     
@@ -185,6 +248,8 @@ public final class UIProductDetailCoordinator: Coordinator {
     
     public struct Storage {
         
+        public var gallery: Observable<[UIImage]>
+        
         public let title: Observable<String?>
         
         public let subtitle: Observable<String?>
@@ -194,11 +259,14 @@ public final class UIProductDetailCoordinator: Coordinator {
         public let introductionPost: Observable<Post>
         
         public init(
+            gallery: [UIImage] = [],
             title: String? = nil,
             subtitle: String? = nil,
             reviews: [Review] = [],
             introductionPost: Post = Post()
         ) {
+            
+            self.gallery = Observable(gallery)
             
             self.title = Observable(title)
             
@@ -233,6 +301,12 @@ import TinyPost
 public protocol ProductDetailComponent: Component {
     
     @discardableResult
+    func setGallery(
+        _ images: [UIImage]
+    )
+    -> Self
+    
+    @discardableResult
     func setTitle(_ title: String?) -> Self
     
     @discardableResult
@@ -265,14 +339,19 @@ extension UIProductDetailComponent: ProductDetailComponent { }
 
 public struct Review {
  
+    public let imageProcessing: ImageProcessing?
+    
     public let title: String?
     
     public let text: String?
     
     public init(
+        imageProcessing: ImageProcessing? = nil,
         title: String? = nil,
         text: String? = nil
     ) {
+        
+        self.imageProcessing = imageProcessing
         
         self.title = title
         
@@ -286,7 +365,7 @@ import Hydra
 
 public protocol ProductProvider {
     
-    typealias ProductDetail = (title: String?, price: Double)
+    typealias ProductDetail = (imageProcessings: [ImageProcessing], title: String?, price: Double)
     
     func fetchDetail(
         in context: Context,
@@ -305,5 +384,43 @@ public protocol ProductProvider {
         productID: String
     )
     -> Promise<Post>
+    
+}
+
+public enum ImageProcessing {
+    
+    case image(UIImage)
+    
+    case url(URL, ImageDownloader)
+    
+}
+
+public protocol ImageDownloader {
+    
+    func download(
+        in context: Context,
+        url: URL
+    )
+    -> Promise<UIImage>
+    
+}
+
+public final class UIImageDownloader: ImageDownloader {
+    
+    public init() { }
+    
+    public final func download(
+        in context: Context,
+        url: URL
+    )
+    -> Promise<UIImage> {
+        
+        return Promise(in: context) { fulfill, reject, _ in
+            
+            fulfill(#imageLiteral(resourceName: "image-carolyn-simmons"))
+            
+        }
+        
+    }
     
 }

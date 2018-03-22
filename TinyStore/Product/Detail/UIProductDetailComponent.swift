@@ -149,6 +149,18 @@ public final class UIProductDetailComponent: Component {
 public extension UIProductDetailComponent {
     
     @discardableResult
+    public final func setGallery(
+        _ images: [UIImage]
+    )
+    -> UIProductDetailComponent {
+        
+        galleryComponent.setImages(images)
+        
+        return self
+            
+    }
+    
+    @discardableResult
     public final func setTitle(_ title: String?) -> UIProductDetailComponent {
         
         descriptionComponent.setTitle(title)
