@@ -56,9 +56,9 @@ public extension Theme {
     
     public static var current = {
         
-        return debug
+//        return debug
         
-//        return azureSky
+        return azureSky
         
     }()
     

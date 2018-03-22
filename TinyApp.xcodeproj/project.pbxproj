@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */; };
 		B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */; };
 		B01EFA06205D2D5100CF9C17 /* UICheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EFA02205D2D5100CF9C17 /* UICheckbox.xib */; };
 		B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA03205D2D5100CF9C17 /* UICheckbox.swift */; };
@@ -157,6 +156,7 @@
 		B0D90E19204844CB00AC9A0A /* UIGridComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D90E18204844CB00AC9A0A /* UIGridComponent.swift */; };
 		B0DCD951205D482900D2A4EC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCD950205D482900D2A4EC /* Product.swift */; };
 		B0DCD953205D485100D2A4EC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCD952205D485100D2A4EC /* ProductManager.swift */; };
+		B0EE3C7120634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,7 +229,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProductSectionHeader.swift; sourceTree = "<group>"; };
 		B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICheckbox+Theme.swift"; sourceTree = "<group>"; };
 		B01EFA02205D2D5100CF9C17 /* UICheckbox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICheckbox.xib; sourceTree = "<group>"; };
 		B01EFA03205D2D5100CF9C17 /* UICheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICheckbox.swift; sourceTree = "<group>"; };
@@ -363,6 +362,7 @@
 		B0D90E18204844CB00AC9A0A /* UIGridComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridComponent.swift; sourceTree = "<group>"; };
 		B0DCD950205D482900D2A4EC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B0DCD952205D485100D2A4EC /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
+		B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductSectionHeaderView+Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,7 +502,7 @@
 				B032B0652057BBB800AB47C4 /* UIProductDescriptionComponent.swift */,
 				B032B0672057BE6100AB47C4 /* UIProductSectionHeaderView.swift */,
 				B032B0692057BE7B00AB47C4 /* UIProductSectionHeaderView.xib */,
-				B00356F92058023E003D3E94 /* UIProductSectionHeader.swift */,
+				B0EE3C7020634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift */,
 				B032B06B2057BFD700AB47C4 /* UIProductSectionHeaderComponent.swift */,
 				B032B06D2057C2BD00AB47C4 /* UIProductReviewView.swift */,
 				B032B06F2057C2C600AB47C4 /* UIProductReviewView.xib */,
@@ -1159,12 +1159,12 @@
 				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,
 				B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */,
 				B032B0722057C4FC00AB47C4 /* UIProductReviewComponent.swift in Sources */,
+				B0EE3C7120634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift in Sources */,
 				B032B0662057BBB800AB47C4 /* UIProductDescriptionComponent.swift in Sources */,
 				B04F05C1205A31300050C41C /* UICartItem.swift in Sources */,
 				B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */,
 				B032B0592057A6FE00AB47C4 /* UIProductGalleryView.swift in Sources */,
 				B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */,
-				B00356FA2058023E003D3E94 /* UIProductSectionHeader.swift in Sources */,
 				B04F05BF205A30660050C41C /* UICartItemListComponent.swift in Sources */,
 				B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */,
 				B032B051205670EE00AB47C4 /* ShadowView.swift in Sources */,

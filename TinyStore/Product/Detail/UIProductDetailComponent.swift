@@ -93,62 +93,16 @@ import TinyUI
 
 public extension UIProductDetailComponent {
     
-//    @discardableResult
-//    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailComponent {
-//
-//        detailHeaderComponent.setGallery(gallery)
-//
-//        return self
-//
-//    }
-//
-//    @discardableResult
-//    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailComponent {
-//
-//        detailHeaderComponent.setDescription(description)
-//
-//        return self
-//
-//    }
-    
-//    @discardableResult
-//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
-//        
-//        detailHeaderComponent.setActionButtonItem(item)
-//        
-//        return self
-//        
-//    }
-    
     @discardableResult
     public final func setPost(
         elements: [PostElement]
     )
     -> UIProductDetailComponent {
-        
+    
         postComponent.setPost(elements: elements)
      
         return self
         
     }
-    
-//        var components: [Component] = [
-//            spacingComponent(defaultSpacing),
-//            UIProductSectionHeaderComponent().setHeader(
-//                UIProductSectionHeader(
-//                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-//                    title: "Story"
-//                )
-//            ),
-//            spacingComponent(defaultSpacing)
-//        ]
-//
-//        components.append(contentsOf: spacedElementComponents)
-//
-//        listComponent.itemComponents = AnyCollection(components)
-//
-//        return self
-//
-//    }
     
 }

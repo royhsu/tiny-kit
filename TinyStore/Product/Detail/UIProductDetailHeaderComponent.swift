@@ -100,15 +100,13 @@ internal final class UIProductDetailHeaderComponent: Component {
             galleryComponent,
             spacingComponent(20.0),
             descriptionComponent,
-            spacingComponent(20.0),
-//            UIProductSectionHeaderComponent().setHeader(
-//                UIProductSectionHeader(
-//                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-//                    title: "Reviews"
-//                )
-//            ),
-//            spacingComponent(20.0),
-            reviewCarouselComponent
+            spacingComponent(10.0),
+            UIProductSectionHeaderComponent().setTitle("Reviews"),
+            spacingComponent(10.0),
+            reviewCarouselComponent,
+            spacingComponent(10.0),
+            UIProductSectionHeaderComponent().setTitle("Introduction"),
+            spacingComponent(10.0)
         ]
         
         listComponent.render()
@@ -120,5 +118,18 @@ internal final class UIProductDetailHeaderComponent: Component {
     internal final var view: View { return listComponent.view }
     
     internal final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
+    
+}
+
+internal extension UIProductDetailHeaderComponent {
+    
+    @discardableResult
+    internal final func setFooterComponent(_ component: Component?) -> UIProductDetailHeaderComponent {
+        
+        listComponent.setFooterComponent(component)
+        
+        return self
+        
+    }
     
 }

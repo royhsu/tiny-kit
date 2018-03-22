@@ -25,8 +25,6 @@ public final class UIRootCoordinator: Coordinator {
     
     public init() {
         
-        
-        
         self.reviewComponents = [
             UIProductReviewComponent(
                 contentMode: .size(
