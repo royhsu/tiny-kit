@@ -13,13 +13,12 @@ import TinyStore
 import TinyUI
 import TinyKit
 
-public final class UIProductDetailCoordinator: Coordinator {
+// TODO: [Current workaround] inherit from UIViewController for keeping a strong reference while pushed into a navigation controller / presented by another view controller.
+public final class UIProductDetailCoordinator: UIViewController, Coordinator {
     
     public final let storage: Storage
     
     private final let component: ProductDetailComponent
-    
-    private final let componentViewController: UIComponentViewController
     
     private final let provider: ProductProvider
     
@@ -32,21 +31,24 @@ public final class UIProductDetailCoordinator: Coordinator {
         
         self.component = component
         
-        self.componentViewController = UIComponentViewController(component: component)
-        
         self.provider = provider
         
         self.reviewComponents = []
+        
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
         
         self.prepare()
         
     }
     
+    public required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
     // MARK: Set Up
     
     fileprivate final func prepare() {
-        
-        componentViewController.view.backgroundColor = .white
         
         gallerySubscription = storage.gallery.subscribe { [unowned self] _, gallery in
             
@@ -118,6 +120,31 @@ public final class UIProductDetailCoordinator: Coordinator {
             self.component.setIntroductionPost(elements: post.elements)
             
         }
+        
+    }
+    
+    // MAKR: View Life Cycle
+    
+    public final override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.render(with: component)
+        
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        component.contentMode = .size(
+            width: view.bounds.width,
+            height: view.bounds.height
+        )
+        
+        component.render()
         
     }
     
@@ -279,6 +306,6 @@ public final class UIProductDetailCoordinator: Coordinator {
 
 extension UIProductDetailCoordinator: ViewControllerRepresentable {
     
-    public final var viewController: UIViewController { return componentViewController }
+    public final var viewController: UIViewController { return self }
     
 }

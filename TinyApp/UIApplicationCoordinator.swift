@@ -31,33 +31,9 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-//        self.rootCoordinator = UIHomeNavigationCoordinator()
+        self.rootCoordinator = UIHomeNavigationCoordinator()
         
 //        self.rootCoordinator = UIRootCoordinator()
-        
-        let productDetailCoordinator = UIProductDetailCoordinator(
-            component: UIProductDetailComponent(
-                listComponent: UIListComponent(),
-                galleryComponent: UIProductGalleryComponent(),
-                actionButtonComponent: UIPrimaryButtonComponent()
-                    .setTitle("Add to Cart")
-                    .setAction { print("Add the item to my cart.") },
-                reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
-                    .setIconImage(
-                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                    )
-                    .setTitle("Reviews"),
-                reviewCarouselComponent: UIProductReviewCarouselComponent(),
-                introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
-                    .setIconImage(
-                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                    )
-                    .setTitle("Introduction")
-            ),
-            provider: ProductManager()
-        )
-        
-        self.rootCoordinator = productDetailCoordinator
         
     }
 

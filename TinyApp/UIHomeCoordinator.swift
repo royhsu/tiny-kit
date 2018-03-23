@@ -100,45 +100,46 @@ public final class UIHomeCoordinator: Coordinator {
         
         storeCoordinator
             .setDidSelectProduct { [unowned self] product in
-                
-                self.cartManager.setItem(
-                    descriptor: CartItemDescriptor(
-                        item: product,
-                        quantity: 1,
-                        isSelected: true
-                    )
+
+                let productDetailCoordinator = UIProductDetailCoordinator(
+                    component: UIProductDetailComponent(
+                        listComponent: UIListComponent(),
+                        galleryComponent: UIProductGalleryComponent(),
+                        actionButtonComponent: UIPrimaryButtonComponent()
+                            .setTitle("Add to Cart")
+                            .setAction { [weak self] in
+                                
+                                guard
+                                    let weakSelf = self
+                                else { return }
+                                
+                                weakSelf.cartManager.setItem(
+                                    descriptor: CartItemDescriptor(
+                                        item: product,
+                                        quantity: 1,
+                                        isSelected: true
+                                    )
+                                )
+                                
+                            },
+                        reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
+                            .setIconImage(
+                                #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+                            )
+                            .setTitle("Reviews"),
+                        reviewCarouselComponent: UIProductReviewCarouselComponent(),
+                        introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
+                            .setIconImage(
+                                #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+                            )
+                            .setTitle("Introduction")
+                    ),
+                    provider: ProductManager()
                 )
                 
-                self.setUpCartItemComponents()
+                productDetailCoordinator.activate()
                 
-                self.cartContentComponent.render()
-                
-//                let detailComponent = UIProductDetailComponent()
-//
-//                let containerViewControlller = UIComponentViewController(component: detailComponent)
-//
-//                detailComponent
-//                    .setDescription(
-//                        UIProductDescription(
-//                            title: product.title,
-//                            subtitle: "$\(product.price)"
-//                        )
-//                    )
-//                    .setAction {
-//
-//                        let cartItemDescriptor = CartItemDescriptor(
-//                            item: product,
-//                            quantity: 10,
-//                            isSelected: true
-//                        )
-//
-//                        // TODO: prevent adding a duplicate item.
-//                        self.cartManager.cart.value.append(cartItemDescriptor)
-//
-//                    }
-//                    .render()
-//
-//                self.showProductDetailHandler?(containerViewControlller)
+                self.showProductDetailHandler?(productDetailCoordinator)
                 
             }
             .activate()
