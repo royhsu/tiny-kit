@@ -26,14 +26,14 @@ public final class Observable<T> {
                 
                 // TODO: temporarily solution.
                 DispatchQueue.main.async {
-                    
+                
                     subscriber?(
                         oldValue,
                         newValue
                     )
                     
                 }
-                
+            
             }
             
         }

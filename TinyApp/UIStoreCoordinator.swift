@@ -43,14 +43,15 @@ public final class UIStoreCoordinator: Coordinator {
                     .setSubtitle("$\(product.price)")
                     
                     // Emulate the image downloading process.
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                        
-                        component
-                            .setPreviewImages(
-                                [ #imageLiteral(resourceName: "image-dessert-1") ]
-                            )
-                        
-                    }
+                    // This will cause UI unrespondable.
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+//
+//                        component
+//                            .setPreviewImages(
+//                                [ #imageLiteral(resourceName: "image-dessert-1") ]
+//                            )
+//
+//                    }
                     
                     return component
                     
