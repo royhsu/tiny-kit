@@ -21,7 +21,7 @@ public final class UICartCoordinator: Coordinator {
     
     private final let cartContentComponent: ListComponent
     
-    private final let storeCoordinator: UIStoreCoordinator
+    private final let homeCoordinator: UIHomeNavigationCoordinator
     
     // TODO:
     // 1. wishlist cart manager in home
@@ -42,7 +42,7 @@ public final class UICartCoordinator: Coordinator {
         
         self.cartContentComponent = UIListComponent()
         
-        self.storeCoordinator = UIStoreCoordinator()
+        self.homeCoordinator = UIHomeNavigationCoordinator()
         
         self.cartManager = CartManager()
         
@@ -88,59 +88,11 @@ public final class UICartCoordinator: Coordinator {
             UIComponentViewController(component: cartBarComponent)
         )
         
-        collapseBarController.setBackgroundViewController(storeCoordinator.viewController)
+        collapseBarController.setBackgroundViewController(homeCoordinator.viewController)
         
         cartContentComponent.render()
         
-        storeCoordinator
-            .setDidSelectProduct { [unowned self] product in
-
-                let productDetailCoordinator = UIProductDetailCoordinator(
-                    component: UIProductDetailComponent(
-                        listComponent: UIListComponent(),
-                        galleryComponent: UIProductGalleryComponent(),
-                        actionButtonComponent: UIPrimaryButtonComponent()
-                            .setTitle("Add to Cart")
-                            .setAction { [weak self] in
-                                
-                                guard
-                                    let weakSelf = self
-                                else { return }
-                                
-                                weakSelf.cartManager.setItem(
-                                    descriptor: CartItemDescriptor(
-                                        item: product,
-                                        quantity: 1,
-                                        isSelected: true
-                                    )
-                                )
-                                
-                                weakSelf.setUpCartItemComponents()
-                                
-                                weakSelf.cartContentComponent.render()
-                                
-                            },
-                        reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
-                            .setIconImage(
-                                #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                            )
-                            .setTitle("Reviews"),
-                        reviewCarouselComponent: UIProductReviewCarouselComponent(),
-                        introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
-                            .setIconImage(
-                                #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                            )
-                            .setTitle("Introduction")
-                    ),
-                    provider: ProductManager()
-                )
-                
-                productDetailCoordinator.activate()
-                
-                self.showProductDetailHandler?(productDetailCoordinator)
-                
-            }
-            .activate()
+        homeCoordinator.activate()
         
     }
     

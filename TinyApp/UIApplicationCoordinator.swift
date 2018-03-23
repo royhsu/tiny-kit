@@ -31,7 +31,7 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
         
-        self.rootCoordinator = UIHomeNavigationCoordinator()
+        self.rootCoordinator = UICartCoordinator()
         
 //        self.rootCoordinator = UIRootCoordinator()
         

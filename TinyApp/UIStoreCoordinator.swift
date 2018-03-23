@@ -15,7 +15,7 @@ import TinyStore
 public final class UIStoreCoordinator: Coordinator {
     
     /// The navigator.
-    private final let containerViewController: UIComponentViewController
+    private final let componentViewController: UIComponentViewController
     
     private final let storeComponent: UIGridComponent
     
@@ -65,7 +65,7 @@ public final class UIStoreCoordinator: Coordinator {
         
         let storeComponent = UIGridComponent()
         
-        self.containerViewController = UIComponentViewController(component: storeComponent)
+        self.componentViewController = UIComponentViewController(component: storeComponent)
     
         self.storeComponent = storeComponent
         
@@ -120,6 +120,6 @@ public extension UIStoreCoordinator {
 
 extension UIStoreCoordinator: ViewControllerRepresentable {
     
-    public final var viewController: ViewController { return containerViewController }
+    public final var viewController: ViewController { return componentViewController }
     
 }
