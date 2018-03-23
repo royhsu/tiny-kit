@@ -17,12 +17,12 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     /// The navigator.
     private final let navigationController: UINavigationController
     
-    private final let homeCoordinator: UIHomeCoordinator
+    private final let homeCoordinator: UICartCoordinator
     
     
     public init() {
         
-        let homeCoordinator = UIHomeCoordinator()
+        let homeCoordinator = UICartCoordinator()
         
         self.homeCoordinator = homeCoordinator
         

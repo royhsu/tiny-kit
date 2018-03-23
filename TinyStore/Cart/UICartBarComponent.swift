@@ -33,10 +33,6 @@ public final class UICartBarComponent: Component {
         
         self.actionButtonComponent = UIPrimaryButtonComponent()
         
-        self.setItem(
-            UICartBarItem()
-        )
-        
     }
     
     // MARK: Component
@@ -72,23 +68,14 @@ public final class UICartBarComponent: Component {
 public extension UICartBarComponent {
     
     @discardableResult
-    public final func setItem(_ item: UICartBarItem) -> UICartBarComponent {
+    public final func setAmount(_ amount: Double) -> UICartBarComponent {
         
         let barView = itemComponent.itemView
         
-        barView.amountLabel.text = "$ \(item.amount)"
+        barView.amountLabel.text = "$ \(amount)"
         
         return self
         
     }
-    
-//    @discardableResult
-//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UICartBarComponent {
-//        
-//        actionButtonComponent.setTitle(item.title)
-//        
-//        return self
-//        
-//    }
     
 }
