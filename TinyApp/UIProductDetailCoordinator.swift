@@ -8,6 +8,8 @@
 
 // MARK: - UIProductDetailCoordinator
 
+import TinyPost
+import TinyStore
 import TinyUI
 import TinyKit
 
@@ -278,136 +280,5 @@ public final class UIProductDetailCoordinator: Coordinator {
 extension UIProductDetailCoordinator: ViewControllerRepresentable {
     
     public final var viewController: UIViewController { return componentViewController }
-    
-}
-
-// MARK: - ProductDetailComponent
-
-import TinyPost
-
-public protocol ProductDetailComponent: Component {
-    
-    @discardableResult
-    func setGallery(
-        _ images: [UIImage]
-    )
-    -> Self
-    
-    @discardableResult
-    func setTitle(_ title: String?) -> Self
-    
-    @discardableResult
-    func setSubtitle(_ subtitle: String?) -> Self
-    
-    typealias NumberOfReviewsHandler = () -> Int
-    
-    @discardableResult
-    func setNumberOfReviews(
-        _ handler: NumberOfReviewsHandler?
-    )
-    -> Self
-    
-    typealias ComponentForReviewHandler = (_ index: Int) -> Component
-    
-    @discardableResult
-    func setComponentForReview(_ handler: ComponentForReviewHandler?) -> Self
-    
-    @discardableResult
-    func setIntroductionPost(
-        elements: [PostElement]
-    )
-    -> Self
-    
-}
-
-import TinyStore
-
-extension UIProductDetailComponent: ProductDetailComponent { }
-
-public struct Review {
- 
-    public let imageProcessing: ImageProcessing?
-    
-    public let title: String?
-    
-    public let text: String?
-    
-    public init(
-        imageProcessing: ImageProcessing? = nil,
-        title: String? = nil,
-        text: String? = nil
-    ) {
-        
-        self.imageProcessing = imageProcessing
-        
-        self.title = title
-        
-        self.text = text
-        
-    }
-    
-}
-
-import Hydra
-
-public protocol ProductProvider {
-    
-    typealias ProductDetail = (imageProcessings: [ImageProcessing], title: String?, price: Double)
-    
-    func fetchDetail(
-        in context: Context,
-        productID: String
-    )
-    -> Promise<ProductDetail>
-    
-    func fetchReviews(
-        in context: Context,
-        productID: String
-    )
-    -> Promise<[Review]>
-    
-    func fetchIntroductionPost(
-        in context: Context,
-        productID: String
-    )
-    -> Promise<Post>
-    
-}
-
-public enum ImageProcessing {
-    
-    case image(UIImage)
-    
-    case url(URL, ImageDownloader)
-    
-}
-
-public protocol ImageDownloader {
-    
-    func download(
-        in context: Context,
-        url: URL
-    )
-    -> Promise<UIImage>
-    
-}
-
-public final class UIImageDownloader: ImageDownloader {
-    
-    public init() { }
-    
-    public final func download(
-        in context: Context,
-        url: URL
-    )
-    -> Promise<UIImage> {
-        
-        return Promise(in: context) { fulfill, reject, _ in
-            
-            fulfill(#imageLiteral(resourceName: "image-carolyn-simmons"))
-            
-        }
-        
-    }
     
 }
