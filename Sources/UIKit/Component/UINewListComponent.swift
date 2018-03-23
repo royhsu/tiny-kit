@@ -29,31 +29,29 @@ public final class UINewListComponent: ListComponent {
         
         self.contentMode = contentMode
         
-        let size: CGSize
+        let frame: CGRect
         
         switch contentMode {
             
         case let .size(width, height):
             
-            size = CGSize(
+            frame = CGRect(
+                x: 0.0,
+                y: 0.0,
                 width: width,
                 height: height
             )
             
         case .automatic:
             
-            size = CGSize(
-                width: 500.0,
-                height: 500.0
-            )
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            // Removing this will show layout constraint errors for current implementation.
+            frame = UIScreen.main.bounds
             
         }
         
         self.tableView = UITableView(
-            frame: CGRect(
-                origin: .zero,
-                size: size
-            ),
+            frame: frame,
             style: .plain
         )
         
@@ -72,7 +70,15 @@ public final class UINewListComponent: ListComponent {
     // MARK: Set Up
     
     fileprivate final func prepare() {
+        
+        bridge.numberOfSectionsHandler = { [unowned self] in self.itemComponentGroup.numberOfSections }
 
+        bridge.numberOfRowsHandler = { [unowned self] section in
+            
+            self.itemComponentGroup.numberOfElements(inSection: section)
+            
+        }
+        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
             
             let component = self.itemComponentGroup.element(at: indexPath)

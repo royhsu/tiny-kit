@@ -14,9 +14,7 @@ import TinyUI
 public final class UIProductDetailComponent: Component {
     
     /// The base component.
-    private final let listComponent: UIListComponent
-    
-    private final var itemComponents: [Component]
+    private final var listComponent: ListComponent
     
     public final let galleryComponent: UIProductGalleryComponent
     
@@ -34,6 +32,7 @@ public final class UIProductDetailComponent: Component {
     
     public init(
         contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent,
         galleryComponent: UIProductGalleryComponent,
         actionButtonComponent: UIPrimaryButtonComponent,
         reviewSectionHeaderComponent: UIProductSectionHeaderComponent,
@@ -41,9 +40,9 @@ public final class UIProductDetailComponent: Component {
         introductionSectionHeaderComponent: UIProductSectionHeaderComponent
     ) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        self.listComponent = listComponent
         
-        self.itemComponents = []
+        self.listComponent.contentMode = contentMode
         
         self.galleryComponent = galleryComponent
         
@@ -63,14 +62,7 @@ public final class UIProductDetailComponent: Component {
     
     // MARK: Set Up
     
-    fileprivate final func prepare() {
-        
-        listComponent
-            .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.itemComponents.count }
-            .setComponentForItem { self.itemComponents[$0.item] }
-        
-    }
+    fileprivate final func prepare() { }
     
     // MARK: Component
     
@@ -112,7 +104,7 @@ public final class UIProductDetailComponent: Component {
             
         }
         
-        itemComponents = [
+        var itemComponents: [Component] = [
             galleryComponent,
             spacingComponent(20.0),
             descriptionComponent,
@@ -122,7 +114,7 @@ public final class UIProductDetailComponent: Component {
             reviewCarouselComponent
         ]
         
-        if introductionComponent.elementComponents.isEmpty { listComponent.setFooterComponent(nil) }
+        if introductionComponent.elementComponents.isEmpty { listComponent.setFooter(component: nil) }
         else {
             
             itemComponents += [
@@ -130,11 +122,13 @@ public final class UIProductDetailComponent: Component {
                 spacingComponent(10.0)
             ]
             
-            listComponent.setFooterComponent(introductionComponent)
+            listComponent.setFooter(component: introductionComponent)
             
         }
         
-        listComponent.render()
+        listComponent
+            .setItem(components: itemComponents)
+            .render()
         
     }
     

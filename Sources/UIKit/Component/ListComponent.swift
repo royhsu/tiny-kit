@@ -23,6 +23,22 @@ public protocol ListComponent: CollectionComponent {
 
 }
 
+public extension CollectionComponent {
+    
+    @discardableResult
+    public func setItem(
+        components: [Component]
+    )
+    -> Self {
+        
+        return setItemComponentGroup(
+            AnyIndexableGroup(components)
+        )
+        
+    }
+    
+}
+
 // MARK: - IndexableGroup
 
 // Reference: [NSIndex​Set](http://nshipster.com/nsindexset/)

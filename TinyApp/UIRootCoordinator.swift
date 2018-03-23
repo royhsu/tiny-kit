@@ -36,6 +36,7 @@ public final class UIRootCoordinator: Coordinator {
     public init() {
         
         let productComponent = UIProductDetailComponent(
+            listComponent: UINewListComponent(),
             galleryComponent: galleryComponent,
             actionButtonComponent: actionComponent,
             reviewSectionHeaderComponent: reviewSectionHeaderComponent,
