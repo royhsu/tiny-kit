@@ -11,6 +11,7 @@
 import TinyKit
 import TinyStore
 
+// TODO: the navigation should be the child not parent to cart.
 public final class UIHomeNavigationCoordinator: Coordinator {
     
     /// The navigator.
