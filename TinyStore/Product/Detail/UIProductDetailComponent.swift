@@ -14,7 +14,7 @@ import TinyUI
 public final class UIProductDetailComponent: Component {
     
     /// The base component.
-    private final var listComponent: ListComponent
+    private final let listComponent: ListComponent
     
     public final let galleryComponent: UIProductGalleryComponent
     
@@ -40,9 +40,9 @@ public final class UIProductDetailComponent: Component {
         introductionSectionHeaderComponent: UIProductSectionHeaderComponent
     ) {
         
-        self.listComponent = listComponent
+        listComponent.contentMode = contentMode
         
-        self.listComponent.contentMode = contentMode
+        self.listComponent = listComponent
         
         self.galleryComponent = galleryComponent
         
