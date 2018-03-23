@@ -62,7 +62,10 @@
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
 		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
-		B0EE3C772063DE9F00D99FFD /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C762063DE9F00D99FFD /* Group.swift */; };
+		B0C357A22064EEBF0017E1F0 /* AnyIndexableGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357A12064EEBF0017E1F0 /* AnyIndexableGroup.swift */; };
+		B0C357A42064EEE70017E1F0 /* Array+IndexableGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357A32064EEE70017E1F0 /* Array+IndexableGroup.swift */; };
+		B0C357A62064EF090017E1F0 /* CollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357A52064EF090017E1F0 /* CollectionComponent.swift */; };
+		B0EE3C772063DE9F00D99FFD /* IndexableGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE3C762063DE9F00D99FFD /* IndexableGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +150,10 @@
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
 		B097C1E020329F25008DC89C /* URLMatcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLMatcher.framework; path = Carthage/Build/iOS/URLMatcher.framework; sourceTree = "<group>"; };
 		B097C1E120329F25008DC89C /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
-		B0EE3C762063DE9F00D99FFD /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		B0C357A12064EEBF0017E1F0 /* AnyIndexableGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyIndexableGroup.swift; sourceTree = "<group>"; };
+		B0C357A32064EEE70017E1F0 /* Array+IndexableGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+IndexableGroup.swift"; sourceTree = "<group>"; };
+		B0C357A52064EF090017E1F0 /* CollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionComponent.swift; sourceTree = "<group>"; };
+		B0EE3C762063DE9F00D99FFD /* IndexableGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexableGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,7 +395,10 @@
 				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
 				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
 				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
-				B0EE3C762063DE9F00D99FFD /* Group.swift */,
+				B0EE3C762063DE9F00D99FFD /* IndexableGroup.swift */,
+				B0C357A12064EEBF0017E1F0 /* AnyIndexableGroup.swift */,
+				B0C357A32064EEE70017E1F0 /* Array+IndexableGroup.swift */,
+				B0C357A52064EF090017E1F0 /* CollectionComponent.swift */,
 				B0542DDC20648E340078B3CE /* ListComponent.swift */,
 				B0542DDE2064B56E0078B3CE /* UINewListComponent.swift */,
 			);
@@ -532,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0C357A42064EEE70017E1F0 /* Array+IndexableGroup.swift in Sources */,
 				B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */,
 				B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */,
 				B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */,
@@ -552,7 +562,7 @@
 				B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */,
 				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
 				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
-				B0EE3C772063DE9F00D99FFD /* Group.swift in Sources */,
+				B0EE3C772063DE9F00D99FFD /* IndexableGroup.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
 				B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
@@ -562,6 +572,8 @@
 				B01EF9F9205D2CD000CF9C17 /* WeakObject.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
+				B0C357A62064EF090017E1F0 /* CollectionComponent.swift in Sources */,
+				B0C357A22064EEBF0017E1F0 /* AnyIndexableGroup.swift in Sources */,
 				B0542DDF2064B56E0078B3CE /* UINewListComponent.swift in Sources */,
 				B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */,
 				B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */,
