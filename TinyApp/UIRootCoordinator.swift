@@ -19,54 +19,19 @@ public final class UIRootCoordinator: Coordinator {
     /// The navigator.
     private final let rootViewController: UIViewController
     
-    private final let containerViewController: UIViewController
-    
-    private final let productComponent: UIProductDetailComponent
-    
-    private final let galleryComponent = UIProductGalleryComponent()
-    
-    private final let actionComponent = UIPrimaryButtonComponent()
-    
-    private final let reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
-    
-    private final let reviewCarouselComponent = UIProductReviewCarouselComponent()
-    
-    private final let introductionSectionHeaderComponent = UIProductSectionHeaderComponent()
-    
     public init() {
         
-        let productComponent = UIProductDetailComponent(
-            listComponent: UIListComponent(),
-            galleryComponent: galleryComponent,
-            actionButtonComponent: actionComponent,
-            reviewSectionHeaderComponent: reviewSectionHeaderComponent,
-            reviewCarouselComponent: reviewCarouselComponent,
-            introductionSectionHeaderComponent: introductionSectionHeaderComponent
-        )
+        let viewController = UIViewController()
         
-        self.productComponent = productComponent
+        viewController.view.backgroundColor = .white
         
-        let containerViewController = UIComponentViewController(component: productComponent)
-        
-        self.containerViewController = containerViewController
-        
-        containerViewController.view.backgroundColor = .white
-        
-        self.rootViewController = UINavigationController(rootViewController: containerViewController)
+        self.rootViewController = UINavigationController(rootViewController: viewController)
         
     }
     
     // MARK: Coordinator
     
-    public final func activate() {
-        
-        galleryComponent.setImages(
-            [ #imageLiteral(resourceName: "image-dessert-1") ]
-        )
-        
-        productComponent.render()
-        
-    }
+    public final func activate() { }
     
 }
 

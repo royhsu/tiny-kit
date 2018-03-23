@@ -32,6 +32,8 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     
     fileprivate final func prepare() {
         
+//        navigationController.navigationBar.isTranslucent = false
+        
         storeCoordinator.setDidSelectProduct { [weak self] product in
             
             guard

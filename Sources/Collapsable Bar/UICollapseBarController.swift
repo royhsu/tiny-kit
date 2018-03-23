@@ -111,22 +111,22 @@ public extension UICollapseBarController {
             [
                 collapseView
                     .backgroundView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .leadingAnchor
                     .constraint(equalTo: viewController.view.leadingAnchor),
                 collapseView
                     .backgroundView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .topAnchor
                     .constraint(equalTo: viewController.view.topAnchor),
                 collapseView
                     .backgroundView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .trailingAnchor
                     .constraint(equalTo: viewController.view.trailingAnchor),
                 collapseView
                     .backgroundView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .bottomAnchor
                     .constraint(equalTo: viewController.view.bottomAnchor)
             ]
@@ -160,22 +160,22 @@ public extension UICollapseBarController {
             [
                 collapseView
                     .barView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .leadingAnchor
                     .constraint(equalTo: viewController.view.leadingAnchor),
                 collapseView
                     .barView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .topAnchor
                     .constraint(equalTo: viewController.view.topAnchor),
                 collapseView
                     .barView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .trailingAnchor
                     .constraint(equalTo: viewController.view.trailingAnchor),
                 collapseView
                     .barView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .bottomAnchor
                     .constraint(equalTo: viewController.view.bottomAnchor)
             ]
@@ -209,22 +209,22 @@ public extension UICollapseBarController {
             [
                 collapseView
                     .barContentView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .leadingAnchor
                     .constraint(equalTo: viewController.view.leadingAnchor),
                 collapseView
                     .barContentView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .topAnchor
                     .constraint(equalTo: viewController.view.topAnchor),
                 collapseView
                     .barContentView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .trailingAnchor
                     .constraint(equalTo: viewController.view.trailingAnchor),
                 collapseView
                     .barContentView
-                    .safeAreaLayoutGuide
+//                    .safeAreaLayoutGuide
                     .bottomAnchor
                     .constraint(equalTo: viewController.view.bottomAnchor)
             ]
