@@ -16,9 +16,9 @@ public protocol ListComponent: CollectionComponent {
     var footerComponent: Component? { get }
 
     @discardableResult
-    func setHeader(component: Component?) -> Self
+    func setHeaderComponent(_ component: Component?) -> Self
 
     @discardableResult
-    func setFooter(component: Component?) -> Self
+    func setFooterComponent(_ component: Component?) -> Self
 
 }

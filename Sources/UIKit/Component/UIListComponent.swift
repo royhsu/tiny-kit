@@ -108,7 +108,7 @@ public final class UIListComponent: ListComponent {
     // MARK: ListComponent
     
     @discardableResult
-    public func setHeader(component: Component?) -> UIListComponent {
+    public func setHeaderComponent(_ component: Component?) -> UIListComponent {
         
         headerComponent = component
         
@@ -117,7 +117,7 @@ public final class UIListComponent: ListComponent {
     }
     
     @discardableResult
-    public func setFooter(component: Component?) -> UIListComponent {
+    public func setFooterComponent(_ component: Component?) -> UIListComponent {
         
         footerComponent = component
         

@@ -116,7 +116,7 @@ public final class UISignInComponent: Component {
         ]
 
         listComponent
-            .setItem(components: components)
+            .setItemComponents(components)
             .render()
 
     }

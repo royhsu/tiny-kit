@@ -93,7 +93,7 @@ public final class UIHomeCoordinator: Coordinator {
         collapseBarController.setBackgroundViewController(storeCoordinator.viewController)
         
         cartContentComponent
-            .setItem(components: cartItemComponents)
+            .setItemComponents(cartItemComponents)
             .render()
         
         cartCoordinator.activate()

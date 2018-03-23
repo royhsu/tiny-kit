@@ -10,11 +10,15 @@
 
 public struct AnyIndexableGroup<T>: IndexableGroup {
     
-    private let _numberOfSections:  Int
+    private let _numberOfSections: Int
     
-    private let _numberOfElementsHandler: (_ section: Int) -> Int
+    public typealias NumberOfElementsHandler = (_ section: Int) -> Int
     
-    private let _elementHandler: (_ indexPath: IndexPath) -> T
+    private let _numberOfElementsHandler: NumberOfElementsHandler
+    
+    public typealias ElementHandler = (IndexPath) -> T
+    
+    private let _elementHandler: ElementHandler
     
     public init<G: IndexableGroup>(_ base: G) where G.Element == T {
         
@@ -23,6 +27,20 @@ public struct AnyIndexableGroup<T>: IndexableGroup {
         self._numberOfElementsHandler = base.numberOfElements
         
         self._elementHandler = base.element
+        
+    }
+    
+    public init(
+        numberOfSections: Int,
+        numberOfElements numberOfElementsHandler: @escaping NumberOfElementsHandler,
+        element elementHandler: @escaping ElementHandler
+    ) {
+        
+        self._numberOfSections = numberOfSections
+        
+        self._numberOfElementsHandler = numberOfElementsHandler
+        
+        self._elementHandler = elementHandler
         
     }
     

@@ -89,7 +89,7 @@ public extension UIPostComponent {
             separator: spacingComponent(defaultSpacing)
         )
         
-        listComponent.setItem(components: spacedComponents)
+        listComponent.setItemComponents(spacedComponents)
         
         return self
             

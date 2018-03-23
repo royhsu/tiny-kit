@@ -63,8 +63,8 @@ public final class UILandingComponent: Component {
         }
         
         listComponent
-            .setHeader(component: logoComponent)
-            .setItem(components: buttonComponents)
+            .setFooterComponent(logoComponent)
+            .setItemComponents(buttonComponents)
             .render()
         
     }

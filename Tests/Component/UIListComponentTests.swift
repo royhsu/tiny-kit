@@ -56,7 +56,7 @@ internal final class UIListComponentTests: XCTestCase {
         listComponent
             .setHeader(component: headerComponent)
             .setFooter(component: footerComponent)
-            .setItem(components: itemComponents)
+            .setItemComponent(_ components: itemComponents)
             .render()
 
         let tableView = listComponent.tableView

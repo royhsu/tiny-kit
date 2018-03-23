@@ -22,8 +22,8 @@ public protocol CollectionComponent: Component {
 public extension CollectionComponent {
     
     @discardableResult
-    public func setItem(
-        components: [Component]
+    public func setItemComponents(
+        _ components: [Component]
     )
     -> Self {
         
@@ -31,6 +31,28 @@ public extension CollectionComponent {
             AnyIndexableGroup(components)
         )
             
+    }
+    
+    public typealias NumberOfElementsHandler = (_ section: Int) -> Int
+    
+    public typealias ElementHandler = (IndexPath) -> Component
+    
+    @discardableResult
+    public func setItemComponents(
+        numberOfSections: Int,
+        numberOfElements numberOfElementsHandler: @escaping NumberOfElementsHandler,
+        element elementHandler: @escaping ElementHandler
+    )
+    -> Self {
+        
+        return setItemComponentGroup(
+            ComponentGroup(
+                numberOfSections: numberOfSections,
+                numberOfElements: numberOfElementsHandler,
+                element: elementHandler
+            )
+        )
+        
     }
     
 }
