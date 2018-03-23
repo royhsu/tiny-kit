@@ -41,9 +41,15 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
         }
         
+        // TODO: better to find a way to organize background color.
+        itemView.backgroundColor = nil
+        
         let view = View(frame: frame)
         
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // TODO: better to find a way to organize background color.
+        view.backgroundColor = nil
         
         self.view = view
 

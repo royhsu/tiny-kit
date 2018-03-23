@@ -94,6 +94,13 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
         // TODO: there are no visual hints for debugging a cell because there the background color is nil.
         // should find a way to improve the UI debugging process.
         
+        // TODO: should find a better strategy to remove previously added views.
+        cell.contentView.subviews.forEach {
+            
+            $0.removeFromSuperview()
+            
+        }
+        
         configureCellHandler?(
             cell,
             indexPath

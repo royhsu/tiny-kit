@@ -12,6 +12,8 @@ import TinyUI
 
 public final class UIGridItemComponent: Component, Stylable {
     
+    private final let bundle: Bundle
+    
     /// The base component.
     private final let itemComponent: UIItemComponent<UIGridItemView>
     
@@ -20,7 +22,7 @@ public final class UIGridItemComponent: Component, Stylable {
         theme: Theme = .current
     ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -33,6 +35,18 @@ public final class UIGridItemComponent: Component, Stylable {
         )
         
         self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let itemView = itemComponent.itemView
+        
+        itemView.applyTheme(theme)
         
     }
     
@@ -50,25 +64,7 @@ public final class UIGridItemComponent: Component, Stylable {
         
         let itemView = itemComponent.itemView
         
-        styleItemView(
-            itemView,
-            theme: theme
-        )
-        
-        styleTitleLabel(
-            itemView.titleLabel,
-            theme: theme
-        )
-        
-        styleSubtitleLabel(
-            itemView.subtitleLabel,
-            theme: theme
-        )
-        
-        stylePreviewImageView(
-            itemView.previewImageView,
-            theme: theme
-        )
+        itemView.applyTheme(theme)
         
         itemComponent.render()
         
@@ -85,26 +81,6 @@ public final class UIGridItemComponent: Component, Stylable {
     // MARK: Stylable
     
     public final var theme: Theme
-    
-    fileprivate final func styleItemView(
-        _ view: UIView,
-        theme: Theme
-    ) { view.backgroundColor = theme.backgroundColor }
-    
-    fileprivate final func styleTitleLabel(
-        _ label: UILabel,
-        theme: Theme
-    ) { label.textColor = theme.titleColor }
-    
-    fileprivate final func styleSubtitleLabel(
-        _ label: UILabel,
-        theme: Theme
-    ) { label.textColor = theme.subtitleColor }
-    
-    fileprivate final func stylePreviewImageView(
-        _ imageView: UIImageView,
-        theme: Theme
-    ) { imageView.backgroundColor = theme.placeholderColor }
     
 }
 

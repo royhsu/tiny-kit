@@ -74,7 +74,11 @@ public final class UIHomeNavigationCoordinator: Coordinator {
                 provider: ProductManager()
             )
             
-            productDetailCoordinator.activate()
+            DispatchQueue.main.async {
+                
+                productDetailCoordinator.activate()
+                
+            }
             
             // TODO: prevent the bar covering its content.
             productDetailCoordinator.additionalSafeAreaInsets.bottom = 60.0

@@ -152,6 +152,7 @@
 		B0C357B12064FEAC0017E1F0 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357B02064FEAC0017E1F0 /* Review.swift */; };
 		B0C357B32064FEC70017E1F0 /* ProductDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357B22064FEC70017E1F0 /* ProductDetailComponent.swift */; };
 		B0C357B52064FEFA0017E1F0 /* UIProductDetailComponent+ProductDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357B42064FEFA0017E1F0 /* UIProductDetailComponent+ProductDetailComponent.swift */; };
+		B0C357B7206537730017E1F0 /* UIGridItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357B6206537730017E1F0 /* UIGridItemView+Theme.swift */; };
 		B0D90E0C2048446F00AC9A0A /* TinyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D90E0A2048446F00AC9A0A /* TinyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0D90E0F2048446F00AC9A0A /* TinyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; };
 		B0D90E102048446F00AC9A0A /* TinyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -368,6 +369,7 @@
 		B0C357B02064FEAC0017E1F0 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		B0C357B22064FEC70017E1F0 /* ProductDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailComponent.swift; sourceTree = "<group>"; };
 		B0C357B42064FEFA0017E1F0 /* UIProductDetailComponent+ProductDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductDetailComponent+ProductDetailComponent.swift"; sourceTree = "<group>"; };
+		B0C357B6206537730017E1F0 /* UIGridItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGridItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0D90E082048446F00AC9A0A /* TinyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D90E0A2048446F00AC9A0A /* TinyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyStore.h; sourceTree = "<group>"; };
 		B0D90E0B2048446F00AC9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 				B032B00620564BFF00AB47C4 /* UIGridItemComponent.swift */,
 				B032B00820564C1D00AB47C4 /* UIGridItemView.swift */,
 				B032B00A20564C2400AB47C4 /* UIGridItemView.xib */,
+				B0C357B6206537730017E1F0 /* UIGridItemView+Theme.swift */,
 				B0D90E18204844CB00AC9A0A /* UIGridComponent.swift */,
 			);
 			path = Product;
@@ -1195,6 +1198,7 @@
 				B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */,
 				B04F05BF205A30660050C41C /* UICartItemListComponent.swift in Sources */,
 				B032B053205670EE00AB47C4 /* UIView+Shadow.swift in Sources */,
+				B0C357B7206537730017E1F0 /* UIGridItemView+Theme.swift in Sources */,
 				B032B051205670EE00AB47C4 /* ShadowView.swift in Sources */,
 				B032B0792057FBCF00AB47C4 /* UIProductDescriptionView.swift in Sources */,
 				B04F05B9205A2C7E0050C41C /* UICartItemView.swift in Sources */,
