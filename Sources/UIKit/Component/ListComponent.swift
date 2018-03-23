@@ -35,13 +35,13 @@ public protocol IndexableGroup {
 
     func numberOfElements(inSection section: Int) -> Int
 
-    func element(at indexPath: IndexPath) -> Element?
+    func element(at indexPath: IndexPath) -> Element
 
 }
 
 public extension IndexableGroup {
     
-    public subscript(_ indexPath: IndexPath) -> Element? { return element(at: indexPath) }
+    public subscript(_ indexPath: IndexPath) -> Element { return element(at: indexPath) }
     
 }
 
@@ -53,7 +53,7 @@ public struct AnyIndexableGroup<T>: IndexableGroup {
     
     private let _numberOfElementsHandler: (_ section: Int) -> Int
     
-    private let _elementHandler: (_ indexPath: IndexPath) -> T?
+    private let _elementHandler: (_ indexPath: IndexPath) -> T
     
     public init<G: IndexableGroup>(_ base: G) where G.Element == T {
         
@@ -71,7 +71,17 @@ public struct AnyIndexableGroup<T>: IndexableGroup {
     
     public func numberOfElements(inSection section: Int) -> Int { return _numberOfElementsHandler(section) }
     
-    public func element(at indexPath: IndexPath) -> T? { return _elementHandler(indexPath) }
+    public func element(at indexPath: IndexPath) -> T { return _elementHandler(indexPath) }
+    
+}
+
+extension Array: IndexableGroup {
+    
+    public var numberOfSections: Int { return 1 }
+    
+    public func numberOfElements(inSection section: Int) -> Int { return count }
+    
+    public func element(at indexPath: IndexPath) -> Element { return self[indexPath.item] }
     
 }
 

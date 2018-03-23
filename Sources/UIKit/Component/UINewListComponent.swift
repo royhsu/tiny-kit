@@ -75,9 +75,7 @@ public final class UINewListComponent: ListComponent {
 
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
             
-            guard
-                let component = self.itemComponentGroup.element(at: indexPath)
-            else { return }
+            let component = self.itemComponentGroup.element(at: indexPath)
             
             component.render()
             
@@ -87,9 +85,7 @@ public final class UINewListComponent: ListComponent {
         
         bridge.heightForRowHandler = { [unowned self] indexPath in
             
-            guard
-                let component = self.itemComponentGroup.element(at: indexPath)
-            else { return 0.0 }
+            let component = self.itemComponentGroup.element(at: indexPath)
             
             switch component.contentMode {
                 
@@ -174,5 +170,25 @@ public final class UINewListComponent: ListComponent {
     public final var view: View { return tableView }
     
     public final var preferredContentSize: CGSize { return tableView.bounds.size }
+    
+}
+
+public extension UINewListComponent {
+    
+    public convenience init(
+        contentMode: ComponentContentMode = .automatic,
+        headerComponent: Component? = nil,
+        footerComponent: Component? = nil,
+        itemComponents: [Component] = []
+    ) {
+        
+        self.init(
+            contentMode: contentMode,
+            headerComponent: headerComponent,
+            footerComponent: footerComponent,
+            itemComponentGroup: AnyIndexableGroup(itemComponents)
+        )
+        
+    }
     
 }
