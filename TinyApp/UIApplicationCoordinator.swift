@@ -37,7 +37,7 @@ public final class UIApplicationCoordinator: Coordinator {
         
         let productDetailCoordinator = UIProductDetailCoordinator(
             component: UIProductDetailComponent(
-                listComponent: UINewListComponent(),
+                listComponent: UIListComponent(),
                 galleryComponent: UIProductGalleryComponent(),
                 actionButtonComponent: UIPrimaryButtonComponent()
                     .setTitle("Add to Cart")

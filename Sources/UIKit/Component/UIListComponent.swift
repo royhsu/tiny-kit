@@ -2,23 +2,30 @@
 //  UIListComponent.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 18/03/2018.
+//  Created by Roy Hsu on 23/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
 // MARK: - UIListComponent
 
-public final class UIListComponent: Component {
+public final class UIListComponent: ListComponent {
     
     internal final let tableView: UITableView
     
-    private final let bridge: UITableViewBridge
+    fileprivate final let bridge: UITableViewBridge
     
     public private(set) var headerComponent: Component?
     
     public private(set) var footerComponent: Component?
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public private(set) var itemComponentGroup: ComponentGroup
+    
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        headerComponent: Component? = nil,
+        footerComponent: Component? = nil,
+        itemComponentGroup: ComponentGroup
+    ) {
         
         self.contentMode = contentMode
         
@@ -38,17 +45,23 @@ public final class UIListComponent: Component {
         case .automatic:
             
             // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            // Removing this will show layout constraint errors for current implementation.
             frame = UIScreen.main.bounds
             
         }
         
-        let tableView = UITableView(frame: frame)
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.tableView = tableView
+        self.tableView = UITableView(
+            frame: frame,
+            style: .plain
+        )
         
         self.bridge = UITableViewBridge(tableView: tableView)
+        
+        self.headerComponent = headerComponent
+        
+        self.footerComponent = footerComponent
+        
+        self.itemComponentGroup = itemComponentGroup
         
         self.prepare()
         
@@ -58,11 +71,17 @@ public final class UIListComponent: Component {
     
     fileprivate final func prepare() {
         
+        bridge.numberOfSectionsHandler = { [unowned self] in self.itemComponentGroup.numberOfSections }
+
+        bridge.numberOfRowsHandler = { [unowned self] section in
+            
+            self.itemComponentGroup.numberOfElements(inSection: section)
+            
+        }
+        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
             
-            guard
-                let component = self.componentForItemHandler?(indexPath)
-                else { return }
+            let component = self.itemComponentGroup.element(at: indexPath)
             
             component.render()
             
@@ -72,9 +91,7 @@ public final class UIListComponent: Component {
         
         bridge.heightForRowHandler = { [unowned self] indexPath in
             
-            guard
-                let component = self.componentForItemHandler?(indexPath)
-            else { return 0.0 }
+            let component = self.itemComponentGroup.element(at: indexPath)
             
             switch component.contentMode {
                 
@@ -88,7 +105,36 @@ public final class UIListComponent: Component {
         
     }
     
-    // MAKR: Component
+    // MARK: ListComponent
+    
+    @discardableResult
+    public func setHeader(component: Component?) -> UIListComponent {
+        
+        headerComponent = component
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public func setFooter(component: Component?) -> UIListComponent {
+        
+        footerComponent = component
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public func setItemComponentGroup(_ group: CollectionComponent.ComponentGroup) -> UIListComponent {
+        
+        itemComponentGroup = group
+        
+        return self
+        
+    }
+    
+    // MARK: Component
     
     public final var contentMode: ComponentContentMode
     
@@ -131,78 +177,23 @@ public final class UIListComponent: Component {
     
     public final var preferredContentSize: CGSize { return tableView.bounds.size }
     
-    // MARK: Action
-    
-    public typealias ComponentForItemHandler = (IndexPath) -> Component?
-    
-    private final var componentForItemHandler: ComponentForItemHandler?
-    
 }
 
 public extension UIListComponent {
     
-    @discardableResult
-    public func setHeaderComponent(_ component: Component?) -> UIListComponent {
+    public convenience init(
+        contentMode: ComponentContentMode = .automatic,
+        headerComponent: Component? = nil,
+        footerComponent: Component? = nil,
+        itemComponents: [Component] = []
+    ) {
         
-        headerComponent = component
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public func setFooterComponent(_ component: Component?) -> UIListComponent {
-        
-        footerComponent = component
-        
-        return self
-        
-    }
-    
-    public typealias NumberOfSectionsHandler = UITableViewBridge.NumberOfSectionsHandler
-    
-    @discardableResult
-    public final func setNumberOfSections(_ handler: NumberOfSectionsHandler?) -> UIListComponent {
-        
-        bridge.numberOfSectionsHandler = handler
-        
-        return self
-        
-    }
-    
-    public final var numberOfSections: Int { return tableView.numberOfSections }
-    
-    public typealias NumberOfItemsHandler = UITableViewBridge.NumberOfRowsHandler
-    
-    @discardableResult
-    public final func setNumberOfItems(_ handler: NumberOfItemsHandler?) -> UIListComponent {
-        
-        bridge.numberOfRowsHandler = handler
-        
-        return self
-        
-    }
-    
-    public final func numberOfItems(inSection section: Int) -> Int { return tableView.numberOfRows(inSection: section) }
-    
-    @discardableResult
-    public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UIListComponent {
-        
-        componentForItemHandler = handler
-        
-        return self
-        
-    }
-    
-    // TODO: maybe it's better to make cell components detect their touching events.
-    public typealias DidSelectItemHandler = (IndexPath) -> Void
-    
-    @discardableResult
-    public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> UIListComponent {
-        
-        bridge.didSelectRowHandler = handler
-        
-        return self
+        self.init(
+            contentMode: contentMode,
+            headerComponent: headerComponent,
+            footerComponent: footerComponent,
+            itemComponentGroup: AnyIndexableGroup(itemComponents)
+        )
         
     }
     

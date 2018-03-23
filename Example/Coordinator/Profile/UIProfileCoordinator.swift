@@ -112,7 +112,8 @@ public final class UIProfileCoordinator: Coordinator {
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
-            )
+            ),
+            listComponent: UIListComponent()
         )
 
         self.messageComponent = UIMessageComponent(

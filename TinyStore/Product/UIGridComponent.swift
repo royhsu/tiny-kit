@@ -102,7 +102,7 @@ public extension UIGridComponent {
         collectionComponent.setComponentForItem { /* [unowned self] */ indexPath -> Component? in
             
             guard
-                var component = handler?(indexPath)
+                let component = handler?(indexPath)
             else { return nil }
         
             let totalMargins = self.margin * CGFloat(self.columns + 1)

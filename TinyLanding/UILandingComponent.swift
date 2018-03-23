@@ -11,15 +11,20 @@
 public final class UILandingComponent: Component {
     
     /// The base component.
-    private final var listComponent: UIListComponent
+    private final var listComponent: ListComponent
     
     private final let logoComponent: UILandingLogoComponent
     
     private final var buttonComponents: [UIPrimaryButtonComponent] = []
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        listComponent.contentMode = contentMode
+        
+        self.listComponent = listComponent
         
         self.logoComponent = UILandingLogoComponent()
         
@@ -58,10 +63,8 @@ public final class UILandingComponent: Component {
         }
         
         listComponent
-            .setHeaderComponent(logoComponent)
-            .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.buttonComponents.count }
-            .setComponentForItem { self.buttonComponents[$0.item] }
+            .setHeader(component: logoComponent)
+            .setItem(components: buttonComponents)
             .render()
         
     }

@@ -26,6 +26,8 @@ public final class UIProductDetailComponent: Component {
     
     public final let reviewCarouselComponent: UIProductReviewCarouselComponent
     
+    public final var hasIntroductionPost = false
+    
     public final let introductionSectionHeaderComponent: UIProductSectionHeaderComponent
     
     public final let introductionComponent: UIPostComponent
@@ -54,7 +56,9 @@ public final class UIProductDetailComponent: Component {
         
         self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
         
-        self.introductionComponent = UIPostComponent()
+        self.introductionComponent = UIPostComponent(
+            listComponent: UIListComponent()
+        )
         
         self.prepare()
         
@@ -114,8 +118,7 @@ public final class UIProductDetailComponent: Component {
             reviewCarouselComponent
         ]
         
-        if introductionComponent.elementComponents.isEmpty { listComponent.setFooter(component: nil) }
-        else {
+        if hasIntroductionPost {
             
             itemComponents += [
                 introductionSectionHeaderComponent,
@@ -125,6 +128,7 @@ public final class UIProductDetailComponent: Component {
             listComponent.setFooter(component: introductionComponent)
             
         }
+        else { listComponent.setFooter(component: nil)  }
         
         listComponent
             .setItem(components: itemComponents)
@@ -199,6 +203,8 @@ public extension UIProductDetailComponent {
         elements: [PostElement]
     )
     -> UIProductDetailComponent {
+        
+        hasIntroductionPost = !elements.isEmpty
             
         introductionComponent.setPost(elements: elements)
         

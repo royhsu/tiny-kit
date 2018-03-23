@@ -19,7 +19,7 @@ public final class UIHomeCoordinator: Coordinator {
     
     private final let cartCoordinator: UICartCoordinator
     
-    private final let cartContentComponent: UIListComponent
+    private final let cartContentComponent: ListComponent
     
     private final var cartItemComponents: [UICartItemComponent]
     
@@ -93,13 +93,7 @@ public final class UIHomeCoordinator: Coordinator {
         collapseBarController.setBackgroundViewController(storeCoordinator.viewController)
         
         cartContentComponent
-            .setNumberOfSections { 1 }
-            .setNumberOfItems { [unowned self] _ in self.cartItemComponents.count }
-            .setComponentForItem { [unowned self] indexPath in
-                
-                return self.cartItemComponents[indexPath.row]
-                
-            }
+            .setItem(components: cartItemComponents)
             .render()
         
         cartCoordinator.activate()

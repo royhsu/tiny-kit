@@ -11,15 +11,16 @@
 public final class UIPostComponent: Component {
     
     /// The base component
-    private final let listComponent: UIListComponent
+    private final let listComponent: ListComponent
     
-    public private(set) final var elementComponents: [Component]
-    
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        listComponent.contentMode = contentMode
         
-        self.elementComponents = []
+        self.listComponent = listComponent
         
         self.prepare()
         
@@ -27,14 +28,7 @@ public final class UIPostComponent: Component {
     
     // MARK: Set Up
     
-    fileprivate final func prepare() {
-        
-        listComponent
-            .setNumberOfSections { 1 }
-            .setNumberOfItems { _ in self.elementComponents.count }
-            .setComponentForItem { self.elementComponents[$0.item] }
-        
-    }
+    fileprivate final func prepare() { }
     
     // MARK: Component
     
@@ -95,7 +89,7 @@ public extension UIPostComponent {
             separator: spacingComponent(defaultSpacing)
         )
         
-        elementComponents = spacedComponents
+        listComponent.setItem(components: spacedComponents)
         
         return self
             

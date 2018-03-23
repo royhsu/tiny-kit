@@ -26,7 +26,8 @@ public final class UILandingCoordinator: Coordinator {
             contentMode: .size(
                 width: contentSize.width,
                 height: contentSize.height
-            )
+            ),
+            listComponent: UIListComponent()
         )
         
         self.landingComponent = landingComponent
@@ -74,7 +75,10 @@ public final class UILandingCoordinator: Coordinator {
     
     fileprivate final func signIn() {
         
-        let signInComponent = UISignInComponent().onSubmit { [weak self] email, password in
+        let signInComponent = UISignInComponent(
+            listComponent: UIListComponent()
+        )
+        .onSubmit { [weak self] email, password in
             
             self?.supplyHandler?(
                 .basic(
