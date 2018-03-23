@@ -92,9 +92,7 @@ public final class UIHomeCoordinator: Coordinator {
         
         collapseBarController.setBackgroundViewController(storeCoordinator.viewController)
         
-        cartContentComponent
-            .setItemComponents(cartItemComponents)
-            .render()
+        cartContentComponent.render()
         
         cartCoordinator.activate()
         
@@ -120,6 +118,10 @@ public final class UIHomeCoordinator: Coordinator {
                                         isSelected: true
                                     )
                                 )
+                                
+                                weakSelf.setUpCartItemComponents()
+                                
+                                weakSelf.cartContentComponent.render()
                                 
                             },
                         reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
@@ -237,6 +239,8 @@ public final class UIHomeCoordinator: Coordinator {
             return component
             
         }
+        
+        cartContentComponent.setItemComponents(cartItemComponents)
         
     }
     
