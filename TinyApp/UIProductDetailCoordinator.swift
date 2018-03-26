@@ -106,8 +106,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                     }
                     
                 }
-                
-                
+
                 
                 return component
                 

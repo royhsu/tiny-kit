@@ -21,7 +21,7 @@ public final class UICartCoordinator: Coordinator {
     
     private final let cartContentComponent: ListComponent
     
-    private final let homeCoordinator: UIHomeNavigationCoordinator
+    private final let homeCoordinator: UIHomeCoordinator
     
     // TODO:
     // 1. wishlist cart manager in home
@@ -42,7 +42,7 @@ public final class UICartCoordinator: Coordinator {
         
         self.cartContentComponent = UIListComponent()
         
-        self.homeCoordinator = UIHomeNavigationCoordinator()
+        self.homeCoordinator = UIHomeCoordinator()
         
         self.cartManager = CartManager()
         
@@ -63,6 +63,18 @@ public final class UICartCoordinator: Coordinator {
             target: self,
             action: #selector(toggleCartContent)
         )
+        
+        homeCoordinator.setAddToCart { [unowned self] product in
+            
+            self.cartManager.setItem(
+                descriptor: CartItemDescriptor(
+                    item: product,
+                    quantity: 1,
+                    isSelected: true
+                )
+            )
+            
+        }
         
         cartManager.setDidChangeCart { [unowned self] _ in
             

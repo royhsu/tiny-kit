@@ -1,19 +1,18 @@
 //
-//  UIHomeNavigationCoordinator.swift
+//  UIHomeCoordinator.swift
 //  TinyApp
 //
 //  Created by Roy Hsu on 18/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIHomeNavigationCoordinator
+// MARK: - UIHomeCoordinator
 
 import TinyKit
 import TinyStore
 import TinyUI
 
-// TODO: the navigation should be the child not parent to cart.
-public final class UIHomeNavigationCoordinator: Coordinator {
+public final class UIHomeCoordinator: Coordinator {
     
     /// The navigator.
     private final let navigationController: UINavigationController
@@ -30,13 +29,11 @@ public final class UIHomeNavigationCoordinator: Coordinator {
         
     }
     
+    // MARK: Set Up
+    
     fileprivate final func prepare() {
         
-//        navigationController.navigationBar.isTranslucent = false
-        
         storeCoordinator.setDidSelectProduct { [weak self] product in
-            
-            print("Select a product.")
             
             guard
                 let weakSelf = self
@@ -47,7 +44,7 @@ public final class UIHomeNavigationCoordinator: Coordinator {
                 galleryComponent: UIProductGalleryComponent(),
                 actionButtonComponent: UIPrimaryButtonComponent()
                     .setTitle("Add to Cart")
-                    .setAction { },
+                    .setAction { weakSelf.addToCartHandler?(product) },
                 reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
                     .setIconImage(
                         #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
@@ -88,11 +85,30 @@ public final class UIHomeNavigationCoordinator: Coordinator {
     
     public final func activate() { storeCoordinator.activate() }
     
+    // MARK: Action
+    
+    public typealias AddToCartHandler = (Product) -> Void
+    
+    private final var addToCartHandler: AddToCartHandler?
+    
+}
+
+public extension UIHomeCoordinator {
+    
+    @discardableResult
+    public final func setAddToCart(_ handler: AddToCartHandler?) -> UIHomeCoordinator {
+        
+        addToCartHandler = handler
+        
+        return self
+        
+    }
+    
 }
 
 // MARK: - ViewControllerRepresentable
 
-extension UIHomeNavigationCoordinator: ViewControllerRepresentable {
+extension UIHomeCoordinator: ViewControllerRepresentable {
     
     public final var viewController: ViewController { return navigationController }
     
