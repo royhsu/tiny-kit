@@ -19,7 +19,7 @@ public extension Array {
                 separator: [ separator ]
             )
         
-        return sequence.flatMap { $0 }
+        return sequence.compactMap { $0 }
         
     }
     

@@ -43,7 +43,7 @@ public final class UIProfileHeaderComponent: Component {
         let components: [Component] = [ introductionComponent ]
 
         listComponent
-            .setItemComponent(_ components: components)
+            .setItemComponents(components)
             .render()
 
     }

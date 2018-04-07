@@ -36,7 +36,7 @@ public extension UIView {
             withOwner: nil,
             options: nil
         )
-        .flatMap { $0 as? View }
+            .compactMap { $0 as? View }
         .first
 
     }

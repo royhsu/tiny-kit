@@ -72,7 +72,7 @@ public extension UIProfileComponent {
 
         }
 
-        listComponent.setItemComponent(_ components: components)
+        listComponent.setItemComponents(components)
         
     }
 
