@@ -3,7 +3,7 @@
 //  TinyApp
 //
 //  Created by Roy Hsu on 23/03/2018.
-//  Copyright © 2018 TinyWorld. All rights reserved.
+//  Copyright © 2018 TinyWzorld. All rights reserved.
 //
 
 // MARK: - UIImageDownloader
