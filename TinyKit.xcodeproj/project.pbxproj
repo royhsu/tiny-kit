@@ -41,7 +41,6 @@
 		B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */; };
 		B01EF9F9205D2CD000CF9C17 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */; };
 		B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */; };
-		B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F7205D2CD000CF9C17 /* Result.swift */; };
 		B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F8205D2CD000CF9C17 /* Validator.swift */; };
 		B01EF9FF205D2CF500CF9C17 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FD205D2CF500CF9C17 /* Subscription.swift */; };
 		B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FE205D2CF500CF9C17 /* Observable.swift */; };
@@ -126,7 +125,6 @@
 		B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseBarController.swift; sourceTree = "<group>"; };
 		B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
 		B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
-		B01EF9F7205D2CD000CF9C17 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B01EF9F8205D2CD000CF9C17 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		B01EF9FD205D2CF500CF9C17 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		B01EF9FE205D2CF500CF9C17 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				B00D96302030758A00EF0B7A /* View */,
 				B05E677E20394388003E8E0E /* UIKit */,
 				B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */,
-				B01EF9F7205D2CD000CF9C17 /* Result.swift */,
 				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
 				B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */,
 				B022E26B205FA36100DD9170 /* Bool+Toggle.swift */,
@@ -536,7 +533,6 @@
 			files = (
 				B0C357A42064EEE70017E1F0 /* Array+IndexableGroup.swift in Sources */,
 				B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */,
-				B01EF9FB205D2CD000CF9C17 /* Result.swift in Sources */,
 				B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */,
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */,

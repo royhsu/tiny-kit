@@ -1,6 +1,6 @@
 //
 //  Array+Join.swift
-//  TinyKit
+//  TinyCore
 //
 //  Created by Roy Hsu on 21/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
@@ -14,7 +14,9 @@ public extension Array {
         
         typealias Sequence = [Element]
         
-        let sequence: JoinedSequence<Array<Sequence>> = map { [ $0 ] }
+        typealias Sequences = [Sequence]
+        
+        let sequence: JoinedSequence<Sequences> = map { [ $0 ] }
             .joined(
                 separator: [ separator ]
             )

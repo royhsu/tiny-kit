@@ -1,6 +1,6 @@
 //
 //  Observable.swift
-//  TinyKit
+//  TinyCore
 //
 //  Created by Roy Hsu on 17/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
@@ -8,7 +8,6 @@
 
 // MARK: - Observable
 
-// TODO: should lock on the created thread?
 public final class Observable<T> {
     
     public final var value: T {
@@ -22,17 +21,10 @@ public final class Observable<T> {
             
             weakObjects.forEach { object in
                 
-                let subscriber = object.reference?.subscriber
-                
-                // TODO: temporarily solution.
-                DispatchQueue.main.async {
-                
-                    subscriber?(
-                        oldValue,
-                        newValue
-                    )
-                    
-                }
+                object.reference?.subscriber(
+                    oldValue,
+                    newValue
+                )
             
             }
             

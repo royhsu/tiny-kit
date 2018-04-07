@@ -8,6 +8,8 @@
 
 // MARK: - UINumberPickerInputValidator
 
+import TinyCore
+
 public struct UINumberPickerInputValidator: Validator {
     
     public let minimumValue: Int
