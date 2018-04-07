@@ -12,9 +12,11 @@ import TinyKit
 
 public final class CartManager {
     
-    private final let cart: Observable<[CartItemDescriptor]>
+    public typealias Cart = Observable<[CartItemDescriptor]>
     
-    private final var cartSubscription: Subscription<[CartItemDescriptor]>?
+    private final let cart: Cart
+    
+    private final var cartSubscription: Cart.ValueDidChangeSubscription?
     
     public init() {
         
@@ -30,7 +32,7 @@ public final class CartManager {
     
     fileprivate final func prepare() {
         
-        cartSubscription = cart.subscribe { [unowned self] _, descriptors in
+        cartSubscription = cart.observeValueDidChange { [unowned self] _, descriptors in
             
             self.didChangeCartHandler?(descriptors)
             

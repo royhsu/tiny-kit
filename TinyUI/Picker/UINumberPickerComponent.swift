@@ -74,7 +74,7 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
             toolBar: UIToolbar()
         )
         
-        inputSubscription = input.subscribe { [unowned self] _, value in
+        inputSubscription = input.observeValueDidChange { [unowned self] _, value in
             
             self.setUpPickerNumberTextField(
                 picker.numberTextField,
@@ -183,9 +183,11 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
     
     // MARK: Inputaable
     
-    public final let input: Observable<Int>
+    public typealias Input = Observable<Int>
     
-    private final var inputSubscription: Subscription<Int>?
+    public final let input: Input
+    
+    private final var inputSubscription: Input.ValueDidChangeSubscription?
     
     // MARK: Action
     

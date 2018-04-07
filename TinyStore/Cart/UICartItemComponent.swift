@@ -19,7 +19,9 @@ public final class UICartItemComponent: Component, Stylable {
     
     private final let selectionComponent: UICheckboxComponent
     
-    private final var selectionSubscription: Subscription<Bool>?
+    private typealias Selection = Observable<Bool>
+    
+    private final var selectionSubscription: Selection.ValueDidChangeSubscription?
     
     private final let quantityComponent: UINumberPickerComponent
     
@@ -68,7 +70,7 @@ public final class UICartItemComponent: Component, Stylable {
             isSelected: selectionComponent.input.value
         )
         
-        selectionSubscription = selectionComponent.input.subscribe { [unowned self] _, isSelected in
+        selectionSubscription = selectionComponent.input.observeValueDidChange { [unowned self] _, isSelected in
             
             self.setUpContentView(
                 itemView.contentContainerView,

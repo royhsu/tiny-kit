@@ -52,7 +52,7 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
             isChecked: input.value
         )
         
-        inputSubscription = input.subscribe { [unowned self] _, isChecked in
+        inputSubscription = input.observeValueDidChange { [unowned self] _, isChecked in
             
             self.setUpCheckboxIconImageView(
                 checkbox.iconImageView,
@@ -124,9 +124,11 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
     
     // MARK: Inputable
     
-    public final let input: Observable<Bool>
+    public typealias Input = Observable<Bool>
     
-    private final var inputSubscription: Subscription<Bool>?
+    public final let input: Input
+    
+    private final var inputSubscription: Input.ValueDidChangeSubscription?
     
     // MARK: Action
     

@@ -50,19 +50,19 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
     
     fileprivate final func prepare() {
         
-        gallerySubscription = storage.gallery.subscribe { [unowned self] _, gallery in
+        gallerySubscription = storage.gallery.observeValueDidChange { [unowned self] _, gallery in
             
             self.component.setGallery(gallery)
             
         }
         
-        titleSubscription = storage.title.subscribe { [unowned self] _, title in
+        titleSubscription = storage.title.observeValueDidChange { [unowned self] _, title in
                 
             self.component.setTitle(title)
                 
         }
         
-        subtitleSubscription = storage.subtitle.subscribe { [unowned self] _, subtitle in
+        subtitleSubscription = storage.subtitle.observeValueDidChange { [unowned self] _, subtitle in
             
             self.component.setSubtitle(subtitle)
             
@@ -72,8 +72,8 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
             .setNumberOfReviews { [unowned self] in self.reviewComponents.count }
             .setComponentForReview { [unowned self] index in self.reviewComponents[index] }
         
-        reviewsSubscription = storage.reviews.subscribe { [unowned self] _, reviews in
-        
+        reviewsSubscription = storage.reviews.observeValueDidChange { [unowned self] _, reviews in
+            
             self.reviewComponents = reviews.map { review in
                 
                 let component = UIProductReviewComponent(
@@ -82,7 +82,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                         height: 143.0
                     )
                 )
-                    
+                
                 component.setTitle(review.title).setText(review.text)
             
                 if let imageProcessing = review.imageProcessing {
@@ -114,7 +114,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
             
         }
         
-        introductionPostSubscription = storage.introductionPost.subscribe { _, post in
+        introductionPostSubscription = storage.introductionPost.observeValueDidChange { _, post in
             
             self.component.setIntroductionPost(elements: post.elements)
             
@@ -249,27 +249,37 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
     
     // MARK: Observer
     
-    private final var gallerySubscription: Subscription<[UIImage]>?
-
-    private final var titleSubscription: Subscription<String?>?
+    private final var gallerySubscription: Gallery.ValueDidChangeSubscription?
     
-    private final var subtitleSubscription: Subscription<String?>?
+    private final var titleSubscription: Title.ValueDidChangeSubscription?
     
-    private final var reviewsSubscription: Subscription<[Review]>?
+    private final var subtitleSubscription: Subtitle.ValueDidChangeSubscription?
     
-    private final var introductionPostSubscription: Subscription<Post>?
+    private final var reviewsSubscription: Reviews.ValueDidChangeSubscription?
+    
+    private final var introductionPostSubscription: IntroductionPost.ValueDidChangeSubscription?
     
     // MARK: Storage
     
+    public typealias Gallery = Observable<[UIImage]>
+    
+    public typealias Title = Observable<String?>
+
+    public typealias Subtitle = Observable<String?>
+    
+    public typealias Reviews = Observable<[Review]>
+    
+    public typealias IntroductionPost = Observable<Post>
+    
     public struct Storage {
         
-        public let gallery: Observable<[UIImage]>
+        public let gallery: Gallery
         
-        public let title: Observable<String?>
+        public let title: Title
         
-        public let subtitle: Observable<String?>
+        public let subtitle: Subtitle
         
-        public let reviews: Observable<[Review]>
+        public let reviews: Reviews
         
         public let introductionPost: Observable<Post>
         

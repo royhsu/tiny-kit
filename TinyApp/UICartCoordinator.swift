@@ -30,9 +30,13 @@ public final class UICartCoordinator: Coordinator {
     
     public typealias ItemID = String
     
-    private final var selectionSubscriptionMap: [ItemID: Subscription<Bool>]
+    private typealias Selection = Observable<Bool>
     
-    private final var quantitySubscriptionMap: [ItemID: Subscription<Int>]
+    private final var selectionSubscriptionMap: [ItemID: Selection.ValueDidChangeSubscription]
+    
+    private typealias Quantity = Observable<Int>
+    
+    private final var quantitySubscriptionMap: [ItemID: Quantity.ValueDidChangeSubscription]
     
     public init() {
         
@@ -118,7 +122,7 @@ public final class UICartCoordinator: Coordinator {
             
             let selectionComponent = UICheckboxComponent(inputValue: descriptor.isSelected)
             
-            self.selectionSubscriptionMap[item.id] = selectionComponent.input.subscribe { _, isSelected in
+            self.selectionSubscriptionMap[item.id] = selectionComponent.input.observeValueDidChange { _, isSelected in
                 
                 guard
                     var itemDescriptor = cartManager.itemDescriptor(id: item.id)
@@ -143,7 +147,7 @@ public final class UICartCoordinator: Coordinator {
                 
             }
             
-            self.quantitySubscriptionMap[item.id] = quantityComponent.input.subscribe { _, quantity in
+            self.quantitySubscriptionMap[item.id] = quantityComponent.input.observeValueDidChange { _, quantity in
                 
                 guard
                     var itemDescriptor = cartManager.itemDescriptor(id: item.id)

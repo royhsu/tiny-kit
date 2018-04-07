@@ -35,18 +35,6 @@ public final class Observable<T> {
             let newValue = value
             
             // Clean up the dead objects.
-            weakObjects = weakObjects.filter { $0.reference != nil }
-            
-            weakObjects.forEach { object in
-                
-                object.reference?.subscriber(
-                    oldValue,
-                    newValue
-                )
-            
-            }
-            
-            // Clean up the dead objects.
             valueDidChangeObjects = valueDidChangeObjects.filter { $0.reference != nil }
             
             valueDidChangeObjects.forEach { object in
@@ -61,12 +49,6 @@ public final class Observable<T> {
         }
         
     }
-    
-    public typealias AnySubscription = Subscription<T>
-    
-    public typealias AnySubscriber = AnySubscription.Subscriber
-    
-    private final var weakObjects: [WeakObject<AnySubscription>] = []
     
     public init(_ value: T) {
         
@@ -86,7 +68,7 @@ public final class Observable<T> {
             
         }
 
-        // Remove all the intial value subscriptions that will only be notified once.
+        // Remove all the initial value subscriptions that will only be notified once.
         initialValueObjects = []
         
     }
@@ -135,7 +117,7 @@ public final class Observable<T> {
     )
     -> Void
     
-    // MARK: Subscription
+    // MARK: ValueDidChangeSubscription
     
     public final class ValueDidChangeSubscription {
         
@@ -186,20 +168,6 @@ public extension Observable {
             WeakObject(subscription)
         )
 
-        return subscription
-        
-    }
-    
-    public final func subscribe(with subscriber: @escaping AnySubscriber) -> AnySubscription {
-        
-        let subscription = Subscription(
-            subscriber: subscriber
-        )
-        
-        weakObjects.append(
-            WeakObject(subscription)
-        )
-        
         return subscription
         
     }
