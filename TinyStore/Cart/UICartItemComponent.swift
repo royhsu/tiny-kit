@@ -8,6 +8,7 @@
 
 // MARK: - UICartItemComponent
 
+import TinyCore
 import TinyUI
 
 public final class UICartItemComponent: Component, Stylable {

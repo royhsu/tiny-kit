@@ -8,6 +8,8 @@
 
 // MARK: - Inputable
 
+import TinyCore
+
 public protocol Inputable {
     
     associatedtype T

@@ -8,6 +8,7 @@
 
 // MARK: - CartManager
 
+import TinyCore
 import TinyKit
 
 public final class CartManager {

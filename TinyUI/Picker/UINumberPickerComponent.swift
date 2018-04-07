@@ -8,6 +8,8 @@
 
 // MARK: - UINumberPickerComponent
 
+import TinyCore
+
 public final class UINumberPickerComponent: Component, Stylable, Inputable {
     
     private final let bundle: Bundle

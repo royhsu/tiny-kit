@@ -8,6 +8,7 @@
 
 // MARK: - UICartCoordinator
 
+import TinyCore
 import TinyKit
 import TinyStore
 import TinyUI

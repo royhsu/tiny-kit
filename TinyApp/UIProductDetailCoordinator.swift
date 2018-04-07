@@ -8,6 +8,7 @@
 
 // MARK: - UIProductDetailCoordinator
 
+import TinyCore
 import TinyPost
 import TinyStore
 import TinyUI

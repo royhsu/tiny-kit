@@ -39,10 +39,8 @@
 		B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */; };
 		B01EF9F3205D2C9800CF9C17 /* UICollapseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */; };
 		B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */; };
-		B01EF9F9205D2CD000CF9C17 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */; };
 		B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */; };
 		B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F8205D2CD000CF9C17 /* Validator.swift */; };
-		B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9FE205D2CF500CF9C17 /* Observable.swift */; };
 		B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */; };
 		B022E268205E9E7E00DD9170 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */; };
 		B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E26B205FA36100DD9170 /* Bool+Toggle.swift */; };
@@ -122,10 +120,8 @@
 		B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseView.swift; sourceTree = "<group>"; };
 		B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICollapseView.xib; sourceTree = "<group>"; };
 		B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseBarController.swift; sourceTree = "<group>"; };
-		B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
 		B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
 		B01EF9F8205D2CD000CF9C17 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		B01EF9FE205D2CF500CF9C17 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
 		B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
 		B022E26B205FA36100DD9170 /* Bool+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Toggle.swift"; sourceTree = "<group>"; };
@@ -194,14 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				B01EF9ED205D2C4100CF9C17 /* Collapsable Bar */,
-				B01EF9EC205D2B8000CF9C17 /* Observable */,
 				B01ED1FC203BFD260074CD5E /* Coordinator */,
 				B00D961F2030758A00EF0B7A /* Component */,
 				B00D96302030758A00EF0B7A /* View */,
 				B05E677E20394388003E8E0E /* UIKit */,
 				B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */,
 				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
-				B01EF9F5205D2CCF00CF9C17 /* WeakObject.swift */,
 				B022E26B205FA36100DD9170 /* Bool+Toggle.swift */,
 				B0876E1820623B2F005EDA9A /* Array+Join.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
@@ -322,14 +316,6 @@
 				B01ED1FD203BFD580074CD5E /* Coordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		B01EF9EC205D2B8000CF9C17 /* Observable */ = {
-			isa = PBXGroup;
-			children = (
-				B01EF9FE205D2CF500CF9C17 /* Observable.swift */,
-			);
-			path = Observable;
 			sourceTree = "<group>";
 		};
 		B01EF9ED205D2C4100CF9C17 /* Collapsable Bar */ = {
@@ -548,12 +534,10 @@
 				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
 				B0EE3C772063DE9F00D99FFD /* IndexableGroup.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
-				B01EFA00205D2CF500CF9C17 /* Observable.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
 				B03C3E4920456E2D004E318B /* ViewController.swift in Sources */,
 				B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */,
-				B01EF9F9205D2CD000CF9C17 /* WeakObject.swift in Sources */,
 				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
 				B00D96432030758A00EF0B7A /* View.swift in Sources */,
 				B0C357A72064F39D0017E1F0 /* CollectionComponent.swift in Sources */,

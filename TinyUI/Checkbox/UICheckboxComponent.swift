@@ -8,6 +8,8 @@
 
 // MARK: - UICheckboxComponent
 
+import TinyCore
+
 public final class UICheckboxComponent: Component, Stylable, Inputable {
     
     private final let bundle: Bundle
