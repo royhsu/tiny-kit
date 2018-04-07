@@ -16,19 +16,8 @@ public final class Subscription<T> {
     )
     -> Void
     
-    public let token: String
-    
     public let subscriber: Subscriber
     
-    public init(
-        token: String,
-        subscriber: @escaping Subscriber
-    ) {
-        
-        self.token = token
-        
-        self.subscriber = subscriber
-        
-    }
+    public init(subscriber: @escaping Subscriber) { self.subscriber = subscriber }
     
 }
