@@ -8,6 +8,8 @@
 
 // MARK: - UIBoxComponent
 
+/// A part of layout components.
+/// Providing a easy way to wrap a component as the content with the custom padding insets.
 public final class UIBoxComponent: Component {
     
     /// The base component.
