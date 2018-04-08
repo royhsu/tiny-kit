@@ -1,20 +1,19 @@
 //
-//  ImageDownloader.swift
-//  TinyApp
+//  ImageContainer.swift
+//  TinyKit
 //
 //  Created by Roy Hsu on 23/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ImageProcessing
+// MARK: - ImageContainer
 
 import Foundation
-import UIKit
 
-public enum ImageProcessing {
+public enum ImageContainer {
     
     case image(UIImage)
     
-    case url(URL, ImageDownloader)
+    case url(URL, ImageProvider)
     
 }

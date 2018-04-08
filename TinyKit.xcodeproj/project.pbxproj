@@ -50,6 +50,8 @@
 		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
 		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
 		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
+		B04707E3207A025F00331D26 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E1207A025F00331D26 /* ImageContainer.swift */; };
+		B04707E4207A025F00331D26 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E2207A025F00331D26 /* ImageProvider.swift */; };
 		B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */; };
 		B0542DDD20648E340078B3CE /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDC20648E340078B3CE /* ListComponent.swift */; };
 		B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDE2064B56E0078B3CE /* UIListComponent.swift */; };
@@ -128,6 +130,8 @@
 		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
 		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B04707E1207A025F00331D26 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
+		B04707E2207A025F00331D26 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselComponent.swift; sourceTree = "<group>"; };
 		B0542DDC20648E340078B3CE /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B0542DDE2064B56E0078B3CE /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
 				B022E26B205FA36100DD9170 /* Bool+Toggle.swift */,
 				B0876E1820623B2F005EDA9A /* Array+Join.swift */,
+				B04707E5207A026400331D26 /* Image */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
@@ -329,6 +334,15 @@
 				B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B04707E5207A026400331D26 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				B04707E2207A025F00331D26 /* ImageProvider.swift */,
+				B04707E1207A025F00331D26 /* ImageContainer.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		B05E677E20394388003E8E0E /* UIKit */ = {
@@ -519,8 +533,10 @@
 				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
 				B0542DDD20648E340078B3CE /* ListComponent.swift in Sources */,
 				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
+				B04707E4207A025F00331D26 /* ImageProvider.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
+				B04707E3207A025F00331D26 /* ImageContainer.swift in Sources */,
 				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,

@@ -88,16 +88,16 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                 
                 component.setTitle(review.title).setText(review.text)
             
-                if let imageProcessing = review.imageProcessing {
+                if let imageContainer = review.imageContainer {
                 
-                    switch imageProcessing {
+                    switch imageContainer {
                         
                     case let .image(image): component.setPictureImage(image)
                         
-                    case let .url(url, downloader):
+                    case let .url(url, provider):
                         
-                        downloader
-                            .download(
+                        provider
+                            .fetch(
                                 in: .background,
                                 url: url
                             )
@@ -168,21 +168,21 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                     let weakSelf = self
                 else { return }
                 
-                for index in 0..<detail.imageProcessings.count {
+                for index in 0..<detail.imageContainers.count {
                     
-                    let processing = detail.imageProcessings[index]
+                    let imageContainer = detail.imageContainers[index]
                     
                     let image: UIImage
                     
-                    switch processing {
+                    switch imageContainer {
                         
                     case let .image(value): image = value
                         
-                    case let .url(url, downloader):
+                    case let .url(url, provider):
                         
                         image = UIImage()
                         
-                        downloader.download(
+                        provider.fetch(
                             in: .background,
                             url: url
                         )

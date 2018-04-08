@@ -8,21 +8,23 @@
 
 // MARK: - Review
 
+import TinyKit
+
 public struct Review {
     
-    public let imageProcessing: ImageProcessing?
+    public let imageContainer: ImageContainer?
     
     public let title: String?
     
     public let text: String?
     
     public init(
-        imageProcessing: ImageProcessing? = nil,
+        imageContainer: ImageContainer? = nil,
         title: String? = nil,
         text: String? = nil
     ) {
         
-        self.imageProcessing = imageProcessing
+        self.imageContainer = imageContainer
         
         self.title = title
         

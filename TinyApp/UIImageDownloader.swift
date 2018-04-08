@@ -10,13 +10,13 @@
 
 import Foundation
 import Hydra
-import UIKit
+import TinyKit
 
-public final class UIImageDownloader: ImageDownloader {
+public final class UIImageDownloader: ImageProvider {
     
     public init() { }
     
-    public final func download(
+    public final func fetch(
         in context: Context,
         url: URL
     )

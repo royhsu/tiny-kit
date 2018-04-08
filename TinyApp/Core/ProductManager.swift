@@ -56,7 +56,7 @@ public final class ProductManager: ProductProvider {
         return Promise(in: context) { fulfill, reject, _ in
             
             let result = ProductDetail(
-                imageProcessings: [ .image(#imageLiteral(resourceName: "image-dessert-1")) ],
+                imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-1")) ],
                 title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
                 price: 100.0
             )
@@ -78,7 +78,7 @@ public final class ProductManager: ProductProvider {
             fulfill(
                 [
                     Review(
-                        imageProcessing: .url(
+                        imageContainer: .url(
                             URL(string: "https//apple.com")!,
                             UIImageDownloader()
                         ),
@@ -86,12 +86,12 @@ public final class ProductManager: ProductProvider {
                         text: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."
                     ),
                     Review(
-                        imageProcessing: .image(#imageLiteral(resourceName: "image-jerry-price")),
+                        imageContainer: .image(#imageLiteral(resourceName: "image-jerry-price")),
                         title: "Jerry Price",
                         text: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     ),
                     Review(
-                        imageProcessing: .image(#imageLiteral(resourceName: "image-danielle-schneider")),
+                        imageContainer: .image(#imageLiteral(resourceName: "image-danielle-schneider")),
                         title: "Danielle Schneider",
                         text: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor."
                     )

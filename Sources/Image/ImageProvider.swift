@@ -1,20 +1,19 @@
 //
-//  ImageProcessing.swift
-//  TinyApp
+//  ImageProvider.swift
+//  TinyKit
 //
 //  Created by Roy Hsu on 23/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ImageDownloader
+// MARK: - ImageProvider
 
 import Foundation
 import Hydra
-import UIKit
 
-public protocol ImageDownloader {
+public protocol ImageProvider {
     
-    func download(
+    func fetch(
         in context: Context,
         url: URL
     )

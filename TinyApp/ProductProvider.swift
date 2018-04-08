@@ -9,11 +9,12 @@
 // MARK: - ProductProvider
 
 import Hydra
+import TinyKit
 import TinyPost
 
 public protocol ProductProvider {
     
-    typealias ProductDetail = (imageProcessings: [ImageProcessing], title: String?, price: Double)
+    typealias ProductDetail = (imageContainers: [ImageContainer], title: String?, price: Double)
     
     func fetchDetail(
         in context: Context,
