@@ -14,6 +14,9 @@ public final class UIListComponent: ListComponent {
     
     fileprivate final let bridge: UITableViewBridge
     
+    // Using this hack to trigger auto-resizing of the table view while it contains the nested auto-resizing child components. For example, the child component is also a list component.
+    fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
+    
     public private(set) var headerComponent: Component?
     
     public private(set) var footerComponent: Component?
@@ -57,6 +60,14 @@ public final class UIListComponent: ListComponent {
         
         self.bridge = UITableViewBridge(tableView: tableView)
         
+        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(
+            equalToConstant: tableView.bounds.height
+        )
+        
+        NSLayoutConstraint.activate(
+            [ tableViewHeightConstraint ]
+        )
+        
         self.headerComponent = headerComponent
         
         self.footerComponent = footerComponent
@@ -83,9 +94,9 @@ public final class UIListComponent: ListComponent {
             
             let component = self.itemComponentGroup.element(at: indexPath)
             
-            component.render()
-            
             cell.contentView.render(with: component)
+            
+            component.render()
             
         }
         
@@ -163,11 +174,15 @@ public final class UIListComponent: ListComponent {
                 height: height
             )
             
-        case .automatic: size = tableView.contentSize
+        case .automatic:
+            
+            size = tableView.contentSize
             
         }
         
         tableView.frame.size = size
+        
+        tableViewHeightConstraint.constant = size.height
         
     }
     
