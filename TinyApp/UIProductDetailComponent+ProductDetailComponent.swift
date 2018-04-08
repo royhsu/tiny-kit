@@ -11,4 +11,3 @@
 import TinyStore
 
 extension UIProductDetailComponent: ProductDetailComponent { }
-

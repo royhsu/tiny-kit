@@ -12,12 +12,11 @@ import Foundation
 import Hydra
 
 public protocol ImageProvider {
-    
+
     func fetch(
         in context: Context,
         url: URL
     )
     -> Promise<UIImage>
-    
-}
 
+}

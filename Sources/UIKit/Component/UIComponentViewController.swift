@@ -27,23 +27,23 @@ public final class UIComponentViewController: UIViewController {
     public required init?(coder aDecoder: NSCoder) { fatalError("Not implemented.") }
 
     // MAKR: View Life Cycle
-    
+
     public final override func viewDidLoad() {
-        
+
         super.viewDidLoad()
-        
+
         view.render(with: component)
-        
+
     }
-    
+
     public override func viewDidLayoutSubviews() {
-        
+
         super.viewDidLayoutSubviews()
-        
+
         component.contentMode = .size(view.bounds.size)
-        
+
         component.render()
-        
+
     }
 
 }

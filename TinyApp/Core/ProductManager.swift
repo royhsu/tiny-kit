@@ -13,13 +13,13 @@ import Hydra
 import TinyPost
 
 public final class ProductManager: ProductProvider {
-    
+
     public init() { }
-    
+
     public final func fetchProducts(in context: Context) -> Promise<[Product]> {
-        
+
         return Promise(in: context) { fulfill, reject, _ in
-            
+
             let products = [
                 Product(
                     id: UUID().uuidString,
@@ -40,41 +40,41 @@ public final class ProductManager: ProductProvider {
                     price: 75.0
                 )
             ]
-            
+
             fulfill(products)
-            
+
         }
-        
+
     }
-    
+
     public final func fetchDetail(
         in context: Context,
         productID: String
     )
     -> Promise<ProductDetail> {
-        
+
         return Promise(in: context) { fulfill, reject, _ in
-            
+
             let result = ProductDetail(
                 imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-1")) ],
                 title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
                 price: 100.0
             )
-            
+
             fulfill(result)
-            
+
         }
-        
+
     }
-    
+
     public final func fetchReviews(
         in context: Context,
         productID: String
     )
     -> Promise<[Review]> {
-        
+
         return Promise(in: context) { fulfill, reject, _ in
-            
+
             fulfill(
                 [
                     Review(
@@ -97,19 +97,19 @@ public final class ProductManager: ProductProvider {
                     )
                 ]
             )
-            
+
         }
-        
+
     }
-    
+
     public final func fetchIntroductionPost(
         in context: Context,
         productID: String
     )
     -> Promise<Post> {
-        
+
         return Promise(in: context) { fulfill, reject, _ in
-            
+
             fulfill(
                 Post(
                     elements: [
@@ -122,9 +122,9 @@ public final class ProductManager: ProductProvider {
                     ]
                 )
             )
-            
+
         }
-        
+
     }
-    
+
 }

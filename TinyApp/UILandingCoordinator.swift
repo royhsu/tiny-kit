@@ -12,31 +12,31 @@ import TinyAuth
 import TinyLanding
 
 public final class UILandingCoordinator: Coordinator {
-    
+
     /// The navigator.
     private final let navigationController: UINavigationController
-    
+
     private final let landingComponent: UILandingComponent
-    
+
     private final var supplyHandler: UILandingSupplyHandler?
-    
+
     public init(contentSize: CGSize) {
-        
+
         let landingComponent = UILandingComponent(
             contentMode: .size(contentSize),
             listComponent: UIListComponent()
         )
-        
+
         self.landingComponent = landingComponent
-        
+
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: landingComponent)
         )
-        
+
     }
-    
+
     public final func activate() {
-        
+
         landingComponent
             .setLogo(
                 UILandingLogo(
@@ -67,54 +67,54 @@ public final class UILandingCoordinator: Coordinator {
 //                action: signIn
 //            )
             .render()
-        
+
     }
-    
+
     fileprivate final func signIn() {
-        
+
         let signInComponent = UISignInComponent(
             listComponent: UIListComponent()
         )
         .onSubmit { [weak self] email, password in
-            
+
             self?.supplyHandler?(
                 .basic(
                     username: email,
                     password: password
                 )
             )
-            
+
         }
-        
+
         let viewController = UIComponentViewController(component: signInComponent)
-        
+
         signInComponent.render()
-        
+
         navigationController.pushViewController(
             viewController,
             animated: true
         )
-        
+
     }
-    
+
 }
 
 public extension UILandingCoordinator {
-    
+
     public final func onSupply(handler: UILandingSupplyHandler? = nil) -> UILandingCoordinator {
-        
+
         supplyHandler = handler
-        
+
         return self
-            
+
     }
-    
+
 }
 
 // MARK: - ViewControllerRepresentable
 
 extension UILandingCoordinator: ViewControllerRepresentable {
-    
+
     public final var viewController: ViewController { return navigationController }
-    
+
 }

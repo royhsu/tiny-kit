@@ -11,14 +11,14 @@
 import TinyUI
 
 public extension UIImageView {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIImageView {
-        
+
         backgroundColor = theme.placeholderColor
-        
+
         return self
-        
+
     }
-    
+
 }

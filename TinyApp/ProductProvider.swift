@@ -13,25 +13,25 @@ import TinyKit
 import TinyPost
 
 public protocol ProductProvider {
-    
+
     typealias ProductDetail = (imageContainers: [ImageContainer], title: String?, price: Double)
-    
+
     func fetchDetail(
         in context: Context,
         productID: String
     )
     -> Promise<ProductDetail>
-    
+
     func fetchReviews(
         in context: Context,
         productID: String
     )
     -> Promise<[Review]>
-    
+
     func fetchIntroductionPost(
         in context: Context,
         productID: String
     )
     -> Promise<Post>
-    
+
 }

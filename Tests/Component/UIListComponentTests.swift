@@ -48,17 +48,17 @@ internal final class UIListComponentTests: XCTestCase {
                 itemView: RectangleView()
             )
         ]
-        
+
         let listComponent = UIListComponent()
 
         let sections = 1
-        
+
         listComponent.headerComponent = headerComponent
-            
+
         listComponent.footerComponent = footerComponent
-            
+
         listComponent.setItemComponents(itemComponents)
-            
+
         listComponent.render()
 
         let tableView = listComponent.tableView
@@ -81,31 +81,31 @@ internal final class UIListComponentTests: XCTestCase {
         for section in 0..<sections {
 
             let rows =  tableView.numberOfRows(inSection: section)
-            
+
             for row in 0..<rows {
-            
+
                 let indexPath = IndexPath(
                     row: row,
                     section: section
                 )
 
                 let itemComponent = itemComponents[section]
-                
+
                 guard
                     let cell = itemComponent.view.superview?.superview as? UITableViewCell
                 else {
-                    
+
                     XCTFail("Must be a UITableViewCell.")
-                    
+
                     return
-                    
+
                 }
 
                 XCTAssertEqual(
                     tableView.cellForRow(at: indexPath),
                     cell
                 )
-                
+
             }
 
         }

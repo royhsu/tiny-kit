@@ -15,12 +15,12 @@ import TinyPost
 import TinyStore
 
 public final class UIRootCoordinator: Coordinator {
-    
+
     /// The navigator.
     private final let rootViewController: UIViewController
-    
+
     public init() {
-        
+
         let postComponent = UIPostComponent(
             listComponent: UIListComponent()
         )
@@ -30,33 +30,33 @@ public final class UIRootCoordinator: Coordinator {
                 .text("Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.")
             ]
         )
-        
+
         let listComponent = UIListComponent()
-        
+
         listComponent.setItemComponents(
             [ postComponent ]
         )
-        
+
         let viewController = UIComponentViewController(
             component: listComponent
         )
-        
+
         viewController.view.backgroundColor = .white
-        
+
         self.rootViewController = UINavigationController(rootViewController: viewController)
-        
+
     }
-    
+
     // MARK: Coordinator
-    
+
     public final func activate() { }
-    
+
 }
 
 // MARK: - ViewRenderable
 
 extension UIRootCoordinator: ViewControllerRepresentable {
-    
+
     public final var viewController: ViewController { return rootViewController }
-    
+
 }

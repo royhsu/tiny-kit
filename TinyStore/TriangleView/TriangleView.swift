@@ -11,50 +11,50 @@
 import UIKit
 
 open class TriangleView: UIView {
-    
+
     open var triangleColor: UIColor = .white {
-    
+
         didSet { setNeedsDisplay() }
-        
+
     }
-    
+
     // MARK: Draw
-    
+
     open override func draw(_ rect: CGRect) {
-        
+
         guard
             let context = UIGraphicsGetCurrentContext()
         else { return }
-        
+
         context.beginPath()
-        
+
         context.move(
             to: CGPoint(
                 x: rect.minX,
                 y: rect.maxY
             )
         )
-        
+
         context.addLine(
             to: CGPoint(
                 x: rect.maxX,
                 y: rect.maxY
             )
         )
-        
+
         context.addLine(
             to: CGPoint(
                 x: rect.maxX,
                 y: rect.minY
             )
         )
-        
+
         context.closePath()
-        
+
         context.setFillColor(triangleColor.cgColor)
-        
+
         context.fillPath()
-        
+
     }
-    
+
 }

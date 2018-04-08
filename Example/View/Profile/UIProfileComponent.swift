@@ -73,7 +73,7 @@ public extension UIProfileComponent {
         }
 
         listComponent.setItemComponents(components)
-        
+
     }
 
 }

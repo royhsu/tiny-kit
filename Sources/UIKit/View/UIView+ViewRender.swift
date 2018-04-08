@@ -19,13 +19,13 @@ extension UIView: ViewRenderer {
         contentView.removeFromSuperview()
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let bottomConstraint = bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        
+
         bottomConstraint.priority = UILayoutPriority(900.0)
 
         addSubview(contentView)
-        
+
         NSLayoutConstraint.activate(
             [
                 leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

@@ -9,16 +9,16 @@
 // MARK: - Theme
 
 public extension UISecondaryButton {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UISecondaryButton {
-        
+
         backgroundColor = theme.primaryColor
-        
+
         titleLabel.textColor = theme.backgroundColor
-        
+
         return self
-        
+
     }
-    
+
 }

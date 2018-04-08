@@ -9,7 +9,7 @@
 // MARK: - Toggle
 
 public extension Bool {
-    
+
     public mutating func toggle() { self = !self }
-    
+
 }

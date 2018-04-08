@@ -11,15 +11,15 @@
 import TinyUI
 
 public extension UIGridItemView {
-    
+
     public final func applyTheme(_ theme: Theme) {
-        
+
         titleLabel.textColor = theme.titleColor
-    
+
         subtitleLabel.textColor = theme.subtitleColor
-        
+
         previewImageView.backgroundColor = theme.placeholderColor
-        
+
     }
-    
+
 }

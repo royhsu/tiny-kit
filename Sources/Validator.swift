@@ -11,9 +11,9 @@
 import TinyCore
 
 public protocol Validator {
-    
+
     associatedtype T
-    
+
     func validate(value: Any) -> Result<T>
-    
+
 }

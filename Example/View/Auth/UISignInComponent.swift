@@ -49,7 +49,7 @@ public final class UISignInComponent: Component {
         contentMode: ComponentContentMode = .automatic,
         listComponent: ListComponent
     ) {
-        
+
         listComponent.contentMode = contentMode
 
         self.listComponent = listComponent

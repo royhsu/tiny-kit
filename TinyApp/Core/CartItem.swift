@@ -11,13 +11,13 @@
 import Foundation
 
 public protocol CartItem {
-    
+
     var id: String { get }
-    
+
     var imageURLs: [URL] { get }
-    
+
     var title: String { get }
-    
+
     var price: Double { get }
-    
+
 }

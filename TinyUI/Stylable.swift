@@ -9,7 +9,7 @@
 // MARK: - Stylable
 
 public protocol Stylable {
-    
+
     var theme: Theme { get }
-    
+
 }

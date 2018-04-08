@@ -9,9 +9,9 @@
 // MARK: - PostElement
 
 public enum PostElement {
-    
+
     case text(String)
-    
+
     case image(UIImage)
-    
+
 }

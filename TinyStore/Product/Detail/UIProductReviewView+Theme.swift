@@ -14,17 +14,17 @@ public extension UIProductReviewView {
 
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIProductReviewView {
-        
+
         backgroundColor = theme.backgroundColor
-        
+
         pictureImageView.backgroundColor = theme.placeholderColor
-        
+
         titleLabel.textColor = theme.subtitleColor
-        
+
         textLabel.textColor = theme.bodyColor
-        
+
         return self
-        
+
     }
-    
+
 }

@@ -9,11 +9,11 @@
 // MARK: - Post
 
 public struct Post {
-    
+
     public var elements: [PostElement]
-    
+
     public init(
         elements: [PostElement] = []
     ) { self.elements = elements }
-    
+
 }

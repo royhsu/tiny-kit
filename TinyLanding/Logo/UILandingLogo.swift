@@ -9,25 +9,25 @@
 // MARK: - UILandingLogo
 
 public struct UILandingLogo {
-    
+
     public var logoImage: UIImage?
-    
+
     public var backgroundImage: UIImage?
-    
+
     public var backgroundColor: UIColor
-    
+
     public init(
         logoImage: UIImage? = nil,
         backgroundImage: UIImage? = nil,
         backgroundColor: UIColor = .clear
     ) {
-        
+
         self.logoImage = logoImage
-        
+
         self.backgroundImage = backgroundImage
-        
+
         self.backgroundColor = backgroundColor
-        
+
     }
-    
+
 }

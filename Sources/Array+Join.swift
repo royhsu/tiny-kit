@@ -9,20 +9,20 @@
 // MARK: - Join
 
 public extension Array {
-    
+
     public func joined(separator: Element) -> Array<Element> {
-        
+
         typealias Sequence = [Element]
-        
+
         typealias Sequences = [Sequence]
-        
+
         let sequence: JoinedSequence<Sequences> = map { [ $0 ] }
             .joined(
                 separator: [ separator ]
             )
-        
+
         return sequence.compactMap { $0 }
-        
+
     }
-    
+
 }

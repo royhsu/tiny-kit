@@ -183,12 +183,10 @@ public extension UIImage {
 
             var effectInBuffer = createEffectBuffer(effectInContext)
 
-
             UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
 
             guard let effectOutContext = UIGraphicsGetCurrentContext() else { return  nil }
             var effectOutBuffer = createEffectBuffer(effectOutContext)
-
 
             if hasBlur {
                 // A description of how to compute the box kernel width from the Gaussian
@@ -223,10 +221,10 @@ public extension UIImage {
             if hasSaturationChange {
                 let s: CGFloat = saturationDeltaFactor
                 let floatingPointSaturationMatrix: [CGFloat] = [
-                    0.0722 + 0.9278 * s,  0.0722 - 0.0722 * s,  0.0722 - 0.0722 * s,  0,
-                    0.7152 - 0.7152 * s,  0.7152 + 0.2848 * s,  0.7152 - 0.7152 * s,  0,
-                    0.2126 - 0.2126 * s,  0.2126 - 0.2126 * s,  0.2126 + 0.7873 * s,  0,
-                    0,                    0,                    0,  1
+                    0.0722 + 0.9278 * s, 0.0722 - 0.0722 * s, 0.0722 - 0.0722 * s, 0,
+                    0.7152 - 0.7152 * s, 0.7152 + 0.2848 * s, 0.7152 - 0.7152 * s, 0,
+                    0.2126 - 0.2126 * s, 0.2126 - 0.2126 * s, 0.2126 + 0.7873 * s, 0,
+                    0, 0, 0, 1
                 ]
 
                 let divisor: CGFloat = 256
@@ -273,7 +271,7 @@ public extension UIImage {
         if hasBlur {
             outputContext.saveGState()
             if let maskCGImage = maskImage?.cgImage {
-                outputContext.clip(to: imageRect, mask: maskCGImage);
+                outputContext.clip(to: imageRect, mask: maskCGImage)
             }
             outputContext.draw(effectImage.cgImage!, in: imageRect)
             outputContext.restoreGState()
@@ -290,7 +288,7 @@ public extension UIImage {
         // Output image is ready.
         let outputImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return outputImage
     }
 }

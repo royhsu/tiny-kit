@@ -11,9 +11,9 @@
 import TinyCore
 
 public protocol Inputable {
-    
+
     associatedtype T
-    
+
     var input: Observable<T> { get }
-    
+
 }

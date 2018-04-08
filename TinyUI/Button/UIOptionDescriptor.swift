@@ -9,22 +9,22 @@
 // MARK: - UIOptionDescriptor
 
 public struct UIOptionDescriptor {
-    
+
     public typealias ActionHandler = () -> Void
-    
+
     public let title: String
-    
+
     public let handler: ActionHandler
-    
+
     public init(
         title: String,
         handler: @escaping ActionHandler
     ) {
-        
+
         self.title = title
-        
+
         self.handler = handler
-        
+
     }
-    
+
 }

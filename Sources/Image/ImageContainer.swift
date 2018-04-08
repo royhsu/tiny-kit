@@ -11,9 +11,9 @@
 import Foundation
 
 public enum ImageContainer {
-    
+
     case image(UIImage)
-    
+
     case url(URL, ImageProvider)
-    
+
 }

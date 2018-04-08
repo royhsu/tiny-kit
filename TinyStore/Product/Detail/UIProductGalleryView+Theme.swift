@@ -11,18 +11,18 @@
 import TinyUI
 
 public extension UIProductGalleryView {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIProductGalleryView {
-        
+
         backgroundColor = theme.backgroundColor
-        
+
         triangleView.triangleColor = theme.backgroundColor
-        
+
         imageView.backgroundColor = theme.placeholderColor
-        
+
         return self
-        
+
     }
-    
+
 }

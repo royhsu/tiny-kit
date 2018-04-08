@@ -11,12 +11,12 @@
 import TinyKit
 
 public protocol AuthCoordinator: Coordinator, ViewControllerRepresentable {
-    
+
     associatedtype Auth
-    
+
     typealias AuthHandler = (_ auth: Auth) -> Void
-    
+
     @discardableResult
     func onGrant(handler: AuthHandler?) -> Self
-    
+
 }

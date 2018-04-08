@@ -13,15 +13,15 @@ public final class UISignInComponent: Component {
     private final var signIn: UISignIn
 
     private final var emailItem: UITextInputItem
-    
+
     private final let emailComponent: UITextInputComponent
 
     private final var passwordItem: UITextInputItem
-    
+
     private final let passwordComponent: UITextInputComponent
 
     private final let submitComponent: UIPrimaryButtonComponent
-    
+
     private final var submitHandler: UISignInSubmitHandler?
 
     /// The base component.
@@ -33,9 +33,9 @@ public final class UISignInComponent: Component {
     ) {
 
         listComponent.contentMode = contentMode
-        
+
         self.signIn = UISignIn()
-        
+
         self.emailItem = UITextInputItem(
             title: NSLocalizedString(
                 "Email", comment:
@@ -46,9 +46,9 @@ public final class UISignInComponent: Component {
                 comment: ""
             )
         )
-        
+
         self.emailComponent = UITextInputComponent()
-        
+
         self.passwordItem = UITextInputItem(
             title: NSLocalizedString(
                 "Password", comment:
@@ -60,11 +60,11 @@ public final class UISignInComponent: Component {
             ),
             isSecured: true
         )
-        
+
         self.passwordComponent = UITextInputComponent()
-        
+
         self.submitComponent = UIPrimaryButtonComponent()
-        
+
         self.listComponent = listComponent
 
     }
@@ -80,11 +80,11 @@ public final class UISignInComponent: Component {
     }
 
     public final func render() {
-        
+
         emailComponent
             .setItem(emailItem)
             .onEdit { self.signIn.email = $0 }
-        
+
         passwordComponent
             .setItem(passwordItem)
             .onEdit { self.signIn.password = $0 }
@@ -97,16 +97,16 @@ public final class UISignInComponent: Component {
                 )
             )
             .setAction {
-                
+
                 let email = self.signIn.email ?? "Invalid"
-                
+
                 let password = self.signIn.password ?? "Invalid"
-                
+
                 self.submitHandler?(
                     email,
                     password
                 )
-                
+
             }
 
         let components: [Component] = [
@@ -116,7 +116,7 @@ public final class UISignInComponent: Component {
         ]
 
         listComponent.setItemComponents(components)
-            
+
         listComponent.render()
 
     }
@@ -130,25 +130,25 @@ public final class UISignInComponent: Component {
 }
 
 public extension UISignInComponent {
-    
+
     public final func setSignIn(_ signIn: UISignIn) -> UISignInComponent {
-        
+
         self.signIn = signIn
-        
+
         emailItem.text = signIn.email
-        
+
         passwordItem.text = signIn.password
-        
+
         return self
-        
+
     }
-    
+
     public final func onSubmit(handler: UISignInSubmitHandler? = nil) -> UISignInComponent {
-        
+
         submitHandler = handler
-        
+
         return self
-        
+
     }
-    
+
 }

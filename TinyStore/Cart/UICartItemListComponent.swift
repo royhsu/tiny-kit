@@ -9,49 +9,49 @@
 // MARK: - UICartItemListComponent
 
 public final class UICartItemListComponent: Component {
-    
+
     /// The base component.
     private final let listComponent: ListComponent
-    
+
     public init(
         contentMode: ComponentContentMode = .automatic,
         listComponent: ListComponent
     ) {
-        
+
         listComponent.contentMode = contentMode
-        
+
         self.listComponent = listComponent
-        
+
     }
-    
+
     // MARK: Component
-    
+
     public final var contentMode: ComponentContentMode {
-        
+
         get { return listComponent.contentMode }
-        
+
         set { listComponent.contentMode = newValue }
-        
+
     }
-    
+
     public final func render() { listComponent.render() }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return listComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
-    
+
 }
 
 public extension UICartItemListComponent {
-    
+
     @discardableResult
     public final func setItems(
         _ items: [UICartItem]
     )
     -> UICartItemListComponent {
-            
+
 //        let components: [Component] = items.map { item in
 //            
 //            let component = UICartItemComponent()
@@ -68,9 +68,9 @@ public extension UICartItemListComponent {
 //        }
 //        
 //        listComponent.itemComponents = AnyCollection(components)
-        
+
         return self
-            
+
     }
-    
+
 }

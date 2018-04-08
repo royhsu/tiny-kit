@@ -11,16 +11,16 @@
 import TinyUI
 
 public extension UIPostParagraphView {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIPostParagraphView {
-        
+
         backgroundColor = theme.backgroundColor
-        
+
         textLabel.textColor = theme.bodyColor
-        
+
         return self
-        
+
     }
-    
+
 }

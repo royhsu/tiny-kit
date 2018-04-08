@@ -9,16 +9,16 @@
 // MARK: - Theme
 
 public extension UIOptionButton {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIOptionButton {
-        
+
         backgroundColor = theme.backgroundColor
-        
+
         titleLabel.textColor = theme.primaryColor
-        
+
         return self
-        
+
     }
-    
+
 }

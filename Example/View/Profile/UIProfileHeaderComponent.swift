@@ -21,9 +21,9 @@ public final class UIProfileHeaderComponent: Component {
         contentMode: ComponentContentMode = .automatic,
         listComponent: ListComponent
     ) {
-        
+
         listComponent.contentMode = contentMode
-        
+
         self.listComponent = listComponent
 
     }
