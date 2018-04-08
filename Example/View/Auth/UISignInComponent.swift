@@ -138,8 +138,9 @@ public final class UISignInComponent: Component {
             actionComponent
         ]
 
+        listComponent.setItemComponents(components)
+            
         listComponent
-            .setItemComponents(components)
             .render()
 
     }

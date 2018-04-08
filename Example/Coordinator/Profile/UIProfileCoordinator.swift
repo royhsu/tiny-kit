@@ -94,33 +94,21 @@ public final class UIProfileCoordinator: Coordinator {
         self.navigationController = UINavigationController(rootViewController: containerViewController)
 
         self.splashComponent = UIItemComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            ),
+            contentMode: .size(contentSize),
             itemView: UIView()
         )
 
         self.loadingComponent = UILoadingComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
+            contentMode: .size(contentSize)
         )
 
         self.profileComponent = UIProfileComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            ),
+            contentMode: .size(contentSize),
             listComponent: UIListComponent()
         )
 
         self.messageComponent = UIMessageComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
+            contentMode: .size(contentSize)
         )
 
     }

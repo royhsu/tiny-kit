@@ -42,9 +42,9 @@ public final class UIProfileHeaderComponent: Component {
 
         let components: [Component] = [ introductionComponent ]
 
-        listComponent
-            .setItemComponents(components)
-            .render()
+        listComponent.setItemComponents(components)
+            
+        listComponent.render()
 
     }
 
