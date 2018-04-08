@@ -37,13 +37,11 @@ public final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case let .size(width, height):
+        case let .size(size):
             
             frame = CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: width,
-                height: height
+                origin: .zero,
+                size: size
             )
             
         case .automatic:
@@ -148,12 +146,7 @@ public final class UICollectionComponent: Component {
         
         switch contentMode {
             
-        case let .size(width, height):
-            
-            size = CGSize(
-                width: width,
-                height: height
-            )
+        case let .size(value): size = value
             
         case .automatic: size = collectionLayout.collectionViewContentSize
             

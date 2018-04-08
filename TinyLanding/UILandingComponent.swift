@@ -44,20 +44,17 @@ public final class UILandingComponent: Component {
         
         switch contentMode {
             
+        case let .size(size): logoComponent.contentMode = .size(size)
+            
         case .automatic:
             
             let width = listComponent.view.bounds.width
             
             logoComponent.contentMode = .size(
-                width: width,
-                height: width
-            )
-            
-        case let .size(width, _):
-            
-            logoComponent.contentMode = .size(
-                width: width,
-                height: width
+                CGSize(
+                    width: width,
+                    height: width
+                )
             )
             
         }

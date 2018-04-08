@@ -25,13 +25,11 @@ public final class UIListComponent: ListComponent {
         
         switch contentMode {
             
-        case let .size(width, height):
+        case let .size(size):
             
             frame = CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: width,
-                height: height
+                origin: .zero,
+                size: size
             )
             
         case .automatic:
@@ -87,7 +85,7 @@ public final class UIListComponent: ListComponent {
             
             switch component.contentMode {
                 
-            case let .size(_, height): return height
+            case let .size(size): return size.height
                 
             case .automatic: return UITableViewAutomaticDimension
                 
@@ -141,16 +139,9 @@ public final class UIListComponent: ListComponent {
         
         switch contentMode {
             
-        case let .size(width, height):
+        case let .size(value): size = value
             
-            size = CGSize(
-                width: width,
-                height: height
-            )
-            
-        case .automatic:
-            
-            size = tableView.contentSize
+        case .automatic: size = tableView.contentSize
             
         }
         

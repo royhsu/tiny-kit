@@ -23,10 +23,7 @@ public final class UILandingCoordinator: Coordinator {
     public init(contentSize: CGSize) {
         
         let landingComponent = UILandingComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            ),
+            contentMode: .size(contentSize),
             listComponent: UIListComponent()
         )
         

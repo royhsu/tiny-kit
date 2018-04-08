@@ -99,8 +99,10 @@ public extension UIGridComponent {
             let height = width / (4.0 / 3.0)
             
             component.contentMode = .size(
-                width: width,
-                height: height + 63.0 // TODO: remove the magic number.
+                CGSize(
+                    width: width,
+                    height: height + 63.0 // TODO: remove the magic number.
+                )
             )
             
             return component

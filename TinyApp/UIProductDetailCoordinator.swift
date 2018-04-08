@@ -79,8 +79,10 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                 
                 let component = UIProductReviewComponent(
                     contentMode: .size(
-                        width: 250.0,
-                        height: 143.0
+                        CGSize(
+                            width: 250.0,
+                            height: 143.0
+                        )
                     )
                 )
                 
@@ -139,10 +141,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
         
         super.viewDidLayoutSubviews()
         
-        component.contentMode = .size(
-            width: view.bounds.width,
-            height: view.bounds.height
-        )
+        component.contentMode = .size(view.bounds.size)
         
         component.render()
         

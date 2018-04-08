@@ -40,10 +40,7 @@ public final class UIComponentViewController: UIViewController {
         
         super.viewDidLayoutSubviews()
         
-        component.contentMode = .size(
-            width: view.bounds.width,
-            height: view.bounds.height
-        )
+        component.contentMode = .size(view.bounds.size)
         
         component.render()
         

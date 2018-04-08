@@ -34,10 +34,7 @@ public final class UIStoreCoordinator: Coordinator {
                     
                     // Prevent the size of an item greater than the collection view, that will raise an exception.
                     let component = UIGridItemComponent(
-                        contentMode: .size(
-                            width: 0.0,
-                            height: 0.0
-                        )
+                        contentMode: .size(.zero)
                     )
                     .setTitle(product.title)
                     .setSubtitle("$\(product.price)")

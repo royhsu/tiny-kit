@@ -85,23 +85,29 @@ public final class UIProductDetailComponent: Component {
         let galleryHeight = (galleryWidth / galleryAspectRatio)
         
         galleryComponent.contentMode = .size(
-            width: galleryWidth,
-            height: galleryHeight
+            CGSize(
+                width: galleryWidth,
+                height: galleryHeight
+            )
         )
         
         let reviewWidth = view.bounds.width
         
         reviewCarouselComponent.contentMode = .size(
-            width: reviewWidth,
-            height: 143.0 + 10.0 // 5.0 points for the shadow.
+            CGSize(
+                width: reviewWidth,
+                height: 143.0 + 10.0 // 5.0 points for the shadow.
+            )
         )
         
         let spacingComponent: (CGFloat) -> Component = { spacing in
             
             return UIItemComponent(
                 contentMode: .size(
-                    width: spacing,
-                    height: spacing
+                    CGSize(
+                        width: spacing,
+                        height: spacing
+                    )
                 ),
                 itemView: UIView()
             )

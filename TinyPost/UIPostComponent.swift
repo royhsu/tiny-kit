@@ -77,8 +77,10 @@ public extension UIPostComponent {
             
             return UIItemComponent(
                 contentMode: .size(
-                    width: spacing,
-                    height: spacing
+                    CGSize(
+                        width: spacing,
+                        height: spacing
+                    )
                 ),
                 itemView: UIView()
             )

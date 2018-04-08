@@ -25,13 +25,11 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         switch contentMode {
             
-        case let .size(width, height):
+        case let .size(size):
             
             frame = CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: width,
-                height: height
+                origin: .zero,
+                size: size
             )
             
         case .automatic:
@@ -84,17 +82,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         switch contentMode {
 
-        case .size(let width, let height):
+        case let .size(value):
 
-            size = CGSize(
-                width: width,
-                height: height
-            )
+            size = value
     
             NSLayoutConstraint.activate(
                 [
-                    itemView.widthAnchor.constraint(equalToConstant: width),
-                    itemView.heightAnchor.constraint(equalToConstant: height)
+                    itemView.widthAnchor.constraint(equalToConstant: size.width),
+                    itemView.heightAnchor.constraint(equalToConstant: size.height)
                 ]
             )
             

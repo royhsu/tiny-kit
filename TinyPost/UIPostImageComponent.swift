@@ -61,12 +61,7 @@ public final class UIPostImageComponent: Component, Stylable {
         
         switch contentMode {
             
-        case let .size(width, height):
-            
-            itemComponent.contentMode = .size(
-                width: width,
-                height: height
-            )
+        case let .size(size): itemComponent.contentMode = .size(size)
             
         case .automatic:
             
@@ -84,8 +79,10 @@ public final class UIPostImageComponent: Component, Stylable {
             else { height = 0.0 }
             
             itemComponent.contentMode = .size(
-                width: width,
-                height: height
+                CGSize(
+                    width: width,
+                    height: height
+                )
             )
             
         }
