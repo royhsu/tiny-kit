@@ -10,48 +10,29 @@
 
 public protocol CollectionComponent: Component {
     
-    typealias ComponentGroup = AnyIndexableGroup<Component>
+    var numberOfSections: Int { get set }
     
-    var itemComponentGroup: ComponentGroup { get }
+    typealias NumberOfItemComponentsProvider = (_ section: Int) -> Int
     
-    @discardableResult
-    func setItemComponentGroup(_ group: ComponentGroup) -> Self
+    func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider)
+    
+    typealias ItemComponentProvider = (IndexPath) -> Component
+    
+    func setItemComponent(provider: @escaping ItemComponentProvider)
     
 }
 
-public extension CollectionComponent {
+extension CollectionComponent {
     
-    @discardableResult
     public func setItemComponents(
         _ components: [Component]
-    )
-    -> Self {
+    ) {
+    
+        numberOfSections = 1
         
-        return setItemComponentGroup(
-            AnyIndexableGroup(components)
-        )
-            
-    }
-    
-    public typealias NumberOfElementsHandler = (_ section: Int) -> Int
-    
-    public typealias ElementHandler = (IndexPath) -> Component
-    
-    @discardableResult
-    public func setItemComponents(
-        numberOfSections: Int,
-        numberOfElements numberOfElementsHandler: @escaping NumberOfElementsHandler,
-        element elementHandler: @escaping ElementHandler
-    )
-    -> Self {
+        setNumberOfItemComponents { _ in components.count }
         
-        return setItemComponentGroup(
-            ComponentGroup(
-                numberOfSections: numberOfSections,
-                numberOfElements: numberOfElementsHandler,
-                element: elementHandler
-            )
-        )
+        setItemComponent { indexPath in components[indexPath.item] }
         
     }
     

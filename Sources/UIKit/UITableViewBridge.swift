@@ -14,6 +14,12 @@ public final class UITableViewBridge: NSObject {
     
     public init(tableView: UITableView) {
         
+        self.numberOfSections = 0
+        
+        self.numberOfRowsProvider = { _ in 0 }
+        
+        self.heightForRowProvider = { _ in 0.0 }
+        
         self.tableView = tableView
         
         super.init()
@@ -34,21 +40,19 @@ public final class UITableViewBridge: NSObject {
         
     }
     
-    public typealias NumberOfSectionsHandler = () -> Int
+    public final var numberOfSections: Int
     
-    public final var numberOfSectionsHandler: NumberOfSectionsHandler?
+    public typealias NumberOfRowsProvider = (_ section: Int) -> Int
     
-    public typealias NumberOfRowsHandler = (_ section: Int) -> Int
+    public final var numberOfRowsProvider: NumberOfRowsProvider
     
-    public final var numberOfRowsHandler: NumberOfRowsHandler?
+    public typealias HeightForRowProvider = (IndexPath) -> CGFloat
+    
+    public final var heightForRowProvider: HeightForRowProvider
     
     public typealias ConfigureCellHandler = (UITableViewCell, IndexPath) -> ()
     
     public final var configureCellHandler: ConfigureCellHandler?
-    
-    public typealias HeightForRowHandler = (IndexPath) -> CGFloat
-    
-    public final var heightForRowHandler: HeightForRowHandler?
     
     public typealias DidSelectRowHandler = (IndexPath) -> Void
     
@@ -60,25 +64,13 @@ public final class UITableViewBridge: NSObject {
 
 extension UITableViewBridge: UITableViewDataSource {
     
-    public final func numberOfSections(in tableView: UITableView) -> Int {
-        
-        let sections = numberOfSectionsHandler?()
-        
-        return sections ?? 0
-        
-    }
+    public final func numberOfSections(in tableView: UITableView) -> Int { return numberOfSections }
     
     public final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
-    -> Int {
-        
-        let rows = numberOfRowsHandler?(section)
-        
-        return rows ?? 0
-        
-    }
+    -> Int { return numberOfRowsProvider(section) }
     
     public final func tableView(
         _ tableView: UITableView,
@@ -115,12 +107,6 @@ extension UITableViewBridge: UITableViewDelegate {
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     )
-    -> CGFloat {
-        
-        let height = heightForRowHandler?(indexPath)
-        
-        return height ?? 0.0
-            
-    }
+    -> CGFloat { return heightForRowProvider(indexPath) }
     
 }

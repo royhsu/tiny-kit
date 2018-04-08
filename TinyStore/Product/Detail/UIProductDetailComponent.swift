@@ -125,14 +125,14 @@ public final class UIProductDetailComponent: Component {
                 spacingComponent(10.0)
             ]
             
-            listComponent.setFooterComponent(introductionComponent)
+            listComponent.footerComponent = introductionComponent
             
         }
-        else { listComponent.setFooterComponent(nil)  }
+        else { listComponent.footerComponent = nil }
         
-        listComponent
-            .setItemComponents(itemComponents)
-            .render()
+        listComponent.setItemComponents(itemComponents)
+        
+        listComponent.render()
         
     }
     

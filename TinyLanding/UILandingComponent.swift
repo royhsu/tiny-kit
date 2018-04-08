@@ -53,7 +53,7 @@ public final class UILandingComponent: Component {
                 height: width
             )
             
-        case .size(let width, _):
+        case let .size(width, _):
             
             logoComponent.contentMode = .size(
                 width: width,
@@ -62,10 +62,11 @@ public final class UILandingComponent: Component {
             
         }
         
-        listComponent
-            .setFooterComponent(logoComponent)
-            .setItemComponents(buttonComponents)
-            .render()
+        listComponent.footerComponent = logoComponent
+        
+        listComponent.setItemComponents(buttonComponents)
+        
+        listComponent.render()
         
     }
     

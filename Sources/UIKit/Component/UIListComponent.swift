@@ -17,18 +17,7 @@ public final class UIListComponent: ListComponent {
     // Using this hack to trigger auto-resizing of the table view while it contains the nested auto-resizing child components. For example, the child component is also a list component.
     fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
     
-    public private(set) var headerComponent: Component?
-    
-    public private(set) var footerComponent: Component?
-    
-    public private(set) var itemComponentGroup: ComponentGroup
-    
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        headerComponent: Component? = nil,
-        footerComponent: Component? = nil,
-        itemComponentGroup: ComponentGroup
-    ) {
+    public init(contentMode: ComponentContentMode = .automatic) {
         
         self.contentMode = contentMode
         
@@ -68,11 +57,7 @@ public final class UIListComponent: ListComponent {
             [ tableViewHeightConstraint ]
         )
         
-        self.headerComponent = headerComponent
-        
-        self.footerComponent = footerComponent
-        
-        self.itemComponentGroup = itemComponentGroup
+        self.numberOfSections = 0
         
         self.prepare()
         
@@ -82,17 +67,11 @@ public final class UIListComponent: ListComponent {
     
     fileprivate final func prepare() {
         
-        bridge.numberOfSectionsHandler = { [unowned self] in self.itemComponentGroup.numberOfSections }
-
-        bridge.numberOfRowsHandler = { [unowned self] section in
-            
-            self.itemComponentGroup.numberOfElements(inSection: section)
-            
-        }
-        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
             
-            let component = self.itemComponentGroup.element(at: indexPath)
+            guard
+                let component = self.itemComponentProvider?(indexPath)
+            else { return }
             
             cell.contentView.render(with: component)
             
@@ -100,9 +79,11 @@ public final class UIListComponent: ListComponent {
             
         }
         
-        bridge.heightForRowHandler = { [unowned self] indexPath in
+        bridge.heightForRowProvider = { [unowned self] indexPath in
             
-            let component = self.itemComponentGroup.element(at: indexPath)
+            guard
+                let component = self.itemComponentProvider?(indexPath)
+            else { return  0.0 }
             
             switch component.contentMode {
                 
@@ -118,32 +99,25 @@ public final class UIListComponent: ListComponent {
     
     // MARK: ListComponent
     
-    @discardableResult
-    public func setHeaderComponent(_ component: Component?) -> UIListComponent {
+    public final var headerComponent: Component?
+    
+    public final var footerComponent: Component?
+    
+    // MARK: CollectionComponent
+    
+    public final var numberOfSections: Int {
         
-        headerComponent = component
+        get { return bridge.numberOfSections }
         
-        return self
+        set { bridge.numberOfSections = newValue }
         
     }
     
-    @discardableResult
-    public func setFooterComponent(_ component: Component?) -> UIListComponent {
-        
-        footerComponent = component
-        
-        return self
-        
-    }
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { bridge.numberOfRowsProvider = provider }
     
-    @discardableResult
-    public func setItemComponentGroup(_ group: CollectionComponent.ComponentGroup) -> UIListComponent {
-        
-        itemComponentGroup = group
-        
-        return self
-        
-    }
+    private final var itemComponentProvider: ItemComponentProvider?
+    
+    public final func setItemComponent(provider: @escaping ItemComponentProvider) { itemComponentProvider = provider }
     
     // MARK: Component
     
@@ -191,25 +165,5 @@ public final class UIListComponent: ListComponent {
     public final var view: View { return tableView }
     
     public final var preferredContentSize: CGSize { return tableView.bounds.size }
-    
-}
-
-public extension UIListComponent {
-    
-    public convenience init(
-        contentMode: ComponentContentMode = .automatic,
-        headerComponent: Component? = nil,
-        footerComponent: Component? = nil,
-        itemComponents: [Component] = []
-    ) {
-        
-        self.init(
-            contentMode: contentMode,
-            headerComponent: headerComponent,
-            footerComponent: footerComponent,
-            itemComponentGroup: AnyIndexableGroup(itemComponents)
-        )
-        
-    }
     
 }

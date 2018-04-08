@@ -11,14 +11,8 @@
 /// The layout component that renders the group of item components into a list.
 public protocol ListComponent: CollectionComponent {
 
-    var headerComponent: Component? { get }
+    var headerComponent: Component? { get set }
 
-    var footerComponent: Component? { get }
-
-    @discardableResult
-    func setHeaderComponent(_ component: Component?) -> Self
-
-    @discardableResult
-    func setFooterComponent(_ component: Component?) -> Self
+    var footerComponent: Component? { get set }
 
 }
