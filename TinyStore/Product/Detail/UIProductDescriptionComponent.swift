@@ -10,16 +10,22 @@
 
 import TinyUI
 
-public final class UIProductDescriptionComponent: Component {
+internal final class UIProductDescriptionComponent: Component, Stylable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductDescriptionView>
     
     private final let actionButtonComponent: UIPrimaryButtonComponent
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    internal init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current,
+        actionButtonComponent: UIPrimaryButtonComponent
+    ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -31,17 +37,27 @@ public final class UIProductDescriptionComponent: Component {
             )!
         )
         
-        self.actionButtonComponent = UIPrimaryButtonComponent()
+        self.theme = theme
         
-        self.setDescription(
-            UIProductDescription()
-        )
+        self.actionButtonComponent = actionButtonComponent
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let descriptionView = itemComponent.itemView
+        
+        descriptionView.applyTheme(theme)
         
     }
     
     // MARK: Component
     
-    public final var contentMode: ComponentContentMode {
+    internal final var contentMode: ComponentContentMode {
         
         get { return itemComponent.contentMode }
         
@@ -49,11 +65,13 @@ public final class UIProductDescriptionComponent: Component {
         
     }
     
-    public final func render() {
+    internal final func render() {
         
         let descriptionView = itemComponent.itemView
         
         descriptionView.actionContainerView.render(with: actionButtonComponent)
+        
+        descriptionView.applyTheme(theme)
         
         actionButtonComponent.render()
         
@@ -63,31 +81,31 @@ public final class UIProductDescriptionComponent: Component {
     
     // MARK: ViewRenderable
     
-    public final var view: View { return itemComponent.view }
+    internal final var view: View { return itemComponent.view }
     
-    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    internal final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    
+    // MARK: Stylable
+    
+    internal final var theme: Theme
     
 }
 
-public extension UIProductDescriptionComponent {
+internal extension UIProductDescriptionComponent {
     
     @discardableResult
-    public final func setDescription(_ description: UIProductDescription) -> UIProductDescriptionComponent {
+    internal final func setTitle(_ title: String?) -> UIProductDescriptionComponent {
         
-        let descriptionView = itemComponent.itemView
-        
-        descriptionView.titleLabel.text = description.title
-        
-        descriptionView.subtitleLabel.text = description.subtitle
+        itemComponent.itemView.titleLabel.text = title
         
         return self
         
     }
     
     @discardableResult
-    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDescriptionComponent {
+    internal final func setSubtitle(_ subtitle: String?) -> UIProductDescriptionComponent {
         
-        actionButtonComponent.setItem(item)
+        itemComponent.itemView.subtitleLabel.text = subtitle
         
         return self
         

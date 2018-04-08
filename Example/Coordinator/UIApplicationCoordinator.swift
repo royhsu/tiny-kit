@@ -8,7 +8,7 @@
 
 // MARK: - UIApplicationCoordinator
 
-import TinyAuth
+import TinyKit
 
 public final class UIApplicationCoordinator: Coordinator {
 

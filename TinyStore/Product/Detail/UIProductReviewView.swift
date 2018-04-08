@@ -17,7 +17,7 @@ public final class UIProductReviewView: UIView {
     public fileprivate(set) final weak var titleLabel: UILabel!
     
     @IBOutlet
-    public fileprivate(set) final weak var contentLabel: UILabel!
+    public fileprivate(set) final weak var textLabel: UILabel!
     
     // MARK: Life Cycle
     
@@ -26,6 +26,10 @@ public final class UIProductReviewView: UIView {
         setUpRootView(self)
         
         setUpPictureImageView(pictureImageView)
+        
+        setUpTitleLabel(titleLabel)
+        
+        setUpTextLabel(textLabel)
         
     }
     
@@ -57,6 +61,36 @@ public final class UIProductReviewView: UIView {
         imageView.contentMode = .scaleAspectFill
         
         imageView.clipsToBounds = true
+        
+        imageView.backgroundColor = .lightGray
+        
+    }
+    
+    fileprivate final func setUpTitleLabel(_ label: UILabel) {
+        
+        label.textAlignment = .left
+        
+        label.text = nil
+        
+        label.textColor = .lightGray
+        
+        label.numberOfLines = 1
+        
+        label.font = .systemFont(ofSize: 14.0)
+        
+    }
+    
+    fileprivate final func setUpTextLabel(_ label: UILabel) {
+        
+        label.textAlignment = .left
+        
+        label.text = nil
+        
+        label.textColor = .black
+        
+        label.numberOfLines = 0
+        
+        label.font = .systemFont(ofSize: 14.0)
         
     }
     

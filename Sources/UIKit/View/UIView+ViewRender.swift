@@ -14,13 +14,15 @@ extension UIView: ViewRenderer {
 
     public final func render(with renderable: ViewRenderable) {
 
-        frame.size = renderable.preferredContentSize
-
         let contentView = renderable.view
 
         contentView.removeFromSuperview()
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let bottomConstraint = bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        
+        bottomConstraint.priority = UILayoutPriority(900.0)
 
         addSubview(contentView)
         
@@ -29,7 +31,7 @@ extension UIView: ViewRenderer {
                 leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 topAnchor.constraint(equalTo: contentView.topAnchor),
                 trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                bottomConstraint
             ]
         )
 

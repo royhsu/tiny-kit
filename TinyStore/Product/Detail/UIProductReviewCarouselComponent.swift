@@ -17,6 +17,31 @@ public final class UIProductReviewCarouselComponent: Component {
         
         self.collectionComponent = UICollectionComponent(contentMode: contentMode)
         
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        collectionComponent
+            .setNumberOfSections { 1 }
+            .setNumberOfItems { _ in
+                
+                let items = self.numberOfReviewsHandler?()
+                
+                return items ?? 0
+                
+            }
+            .setComponentForItem { indexPath in
+                
+                let component = self.componentForReviewHandler?(indexPath.item)
+                
+                return component
+                
+            }
+    
     }
     
     // MARK: Component
@@ -31,8 +56,6 @@ public final class UIProductReviewCarouselComponent: Component {
     
     public final func render() {
         
-        collectionComponent.view.backgroundColor = .white
-        
         collectionComponent.scrollDirection = .horizontal
         
         collectionComponent.collectionLayout.minimumLineSpacing = 16.0
@@ -40,37 +63,17 @@ public final class UIProductReviewCarouselComponent: Component {
         collectionComponent.collectionLayout.sectionInset = UIEdgeInsets(
             top: 0.0,
             left: 16.0,
-            bottom: 0.0,
+            bottom: 10.0, // For the shadow.
             right: 16.0
         )
+        
+        collectionComponent.collectionView.backgroundColor = .white
+        
+        collectionComponent.collectionView.clipsToBounds = false
         
         collectionComponent.collectionView.showsHorizontalScrollIndicator = false
         
         collectionComponent.collectionView.showsVerticalScrollIndicator = false
-        
-        let sections = collectionComponent.itemComponents.numberOfSections()
-        
-        for section in 0..<sections {
-            
-            let items = collectionComponent.itemComponents.numberOfItems(inSection: section)
-            
-            for item in 0..<items {
-                
-                let indexPath = IndexPath(
-                    item: item,
-                    section: section
-                )
-                
-                var itemComponent = collectionComponent.itemComponents.componentForItem(at: indexPath)
-                
-                itemComponent.contentMode = .size(
-                    width: 250.0,
-                    height: 143.0
-                )
-                
-            }
-            
-        }
         
         collectionComponent.render()
         
@@ -82,32 +85,33 @@ public final class UIProductReviewCarouselComponent: Component {
     
     public final var preferredContentSize: CGSize { return collectionComponent.preferredContentSize }
     
+    // MARK: Action
+    
+    public typealias NumberOfReviewsHandler = () -> Int
+    
+    private final var numberOfReviewsHandler: NumberOfReviewsHandler?
+    
+    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
+    
+    private final var componentForReviewHandler: ComponentForReviewHandler?
+    
 }
 
 public extension UIProductReviewCarouselComponent {
     
     @discardableResult
-    public final func setReviews(
-        _ reviews: [UIProductReview]
-    )
-    -> UIProductReviewCarouselComponent {
+    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductReviewCarouselComponent {
         
-        let components: [Component] = reviews.map { review in
-            
-            let component = UIProductReviewComponent(
-                contentMode: .size(
-                    width: 0.0,
-                    height: 0.0
-                ) // Prevent the size of an item greater than the collection view, that will raise an exception.
-            )
-            
-            component.setReview(review)
-            
-            return component
-            
-        }
+        numberOfReviewsHandler = handler
         
-        collectionComponent.itemComponents = AnyCollection(components)
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> Component {
+        
+        componentForReviewHandler = handler
         
         return self
         

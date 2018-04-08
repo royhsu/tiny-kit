@@ -8,14 +8,21 @@
 
 // MARK: - UIGridItemComponent
 
-public final class UIGridItemComponent: Component {
+import TinyUI
+
+public final class UIGridItemComponent: Component, Stylable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIGridItemView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -26,6 +33,20 @@ public final class UIGridItemComponent: Component {
                 from: bundle
             )!
         )
+        
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let itemView = itemComponent.itemView
+        
+        itemView.applyTheme(theme)
         
     }
     
@@ -41,6 +62,10 @@ public final class UIGridItemComponent: Component {
     
     public final func render() {
         
+        let itemView = itemComponent.itemView
+        
+        itemView.applyTheme(theme)
+        
         itemComponent.render()
         
         itemComponent.itemView.shadowView.updateShadow()
@@ -53,61 +78,43 @@ public final class UIGridItemComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
 }
 
 public extension UIGridItemComponent {
     
     @discardableResult
-    public final func setItem(_ item: UIGridItem) -> UIGridItemComponent {
-        
-        let itemView = itemComponent.itemView
-        
-        if let previewImage = itemView.previewImageView.image {
-        
-            itemView.previewImageView.image = previewImage
-            
-            itemView.previewImageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            itemView.previewImageView.image = nil
-            
-            itemView.previewImageView.backgroundColor = .lightGray
-            
-        }
-        
-        itemView.titleLabel.text = item.title
-        
-        itemView.subtitleLabel.text = item.subtitle
+    public final func setTitle(_ title: String?) -> UIGridItemComponent {
+    
+       itemComponent.itemView.titleLabel.text = title
         
         return self
         
     }
     
-}
-
-// MARK: - UIGridItem
-
-public struct UIGridItem {
-    
-    public var previewImages: [UIImage]
-    
-    public var title: String?
-    
-    public var subtitle: String?
-    
-    public init(
-        previewImages: [UIImage] = [],
-        title: String? = nil,
-        subtitle: String? = nil
-    ) {
+    @discardableResult
+    public final func setSubtitle(_ subtitle: String?) -> UIGridItemComponent {
         
-        self.previewImages = previewImages
+        itemComponent.itemView.subtitleLabel.text = subtitle
         
-        self.title = title
+        return self
         
-        self.subtitle = subtitle
+    }
+    
+    @discardableResult
+    public final func setPreviewImages(
+        _ images: [UIImage]
+    )
+    -> UIGridItemComponent {
+        
+        itemComponent.itemView.previewImageView.image = images.first
+        
+        itemComponent.itemView.shadowView.updateShadow()
+        
+        return self
         
     }
     

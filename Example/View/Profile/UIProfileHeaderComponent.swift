@@ -15,11 +15,16 @@ public final class UIProfileHeaderComponent: Component {
     private final let introductionComponent = UIProfileIntroductionComponent()
 
     /// The base component.
-    private final let listComponent: UIListComponent
+    private final let listComponent: ListComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
-
-        self.listComponent = UIListComponent(contentMode: contentMode)
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
+        
+        listComponent.contentMode = contentMode
+        
+        self.listComponent = listComponent
 
     }
 
@@ -37,9 +42,9 @@ public final class UIProfileHeaderComponent: Component {
 
         let components: [Component] = [ introductionComponent ]
 
-        listComponent.itemComponents = AnyCollection(components)
-
-        listComponent.render()
+        listComponent
+            .setItemComponents(components)
+            .render()
 
     }
 

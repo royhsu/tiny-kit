@@ -25,13 +25,11 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         switch contentMode {
             
-        case let .size(width, height):
+        case let .size(size):
             
             frame = CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: width,
-                height: height
+                origin: .zero,
+                size: size
             )
             
         case .automatic:
@@ -41,9 +39,15 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
         }
         
+        // TODO: better to find a way to organize background color.
+        itemView.backgroundColor = nil
+        
         let view = View(frame: frame)
         
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // TODO: better to find a way to organize background color.
+        view.backgroundColor = nil
         
         self.view = view
 
@@ -64,7 +68,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
         
         // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
-        trailingConstraint.priority = UILayoutPriority(990.0)
+        trailingConstraint.priority = UILayoutPriority(800.0)
 
         NSLayoutConstraint.activate(
             [
@@ -78,17 +82,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         switch contentMode {
 
-        case .size(let width, let height):
+        case let .size(value):
 
-            size = CGSize(
-                width: width,
-                height: height
-            )
+            size = value
     
             NSLayoutConstraint.activate(
                 [
-                    itemView.widthAnchor.constraint(equalToConstant: width),
-                    itemView.heightAnchor.constraint(equalToConstant: height)
+                    itemView.widthAnchor.constraint(equalToConstant: size.width),
+                    itemView.heightAnchor.constraint(equalToConstant: size.height)
                 ]
             )
             
@@ -100,12 +101,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         }
 
+        itemView.frame.size = size
+        
         view.frame.size = size
         
         let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
 
         // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
-        bottomConstraint.priority = UILayoutPriority(990.0)
+        bottomConstraint.priority = UILayoutPriority(800.0)
         
         NSLayoutConstraint.activate(
             [

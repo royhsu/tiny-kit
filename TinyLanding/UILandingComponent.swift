@@ -11,15 +11,20 @@
 public final class UILandingComponent: Component {
     
     /// The base component.
-    private final var listComponent: UIListComponent
+    private final var listComponent: ListComponent
     
     private final let logoComponent: UILandingLogoComponent
     
     private final var buttonComponents: [UIPrimaryButtonComponent] = []
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        listComponent.contentMode = contentMode
+        
+        self.listComponent = listComponent
         
         self.logoComponent = UILandingLogoComponent()
         
@@ -39,27 +44,24 @@ public final class UILandingComponent: Component {
         
         switch contentMode {
             
+        case let .size(size): logoComponent.contentMode = .size(size)
+            
         case .automatic:
             
             let width = listComponent.view.bounds.width
             
             logoComponent.contentMode = .size(
-                width: width,
-                height: width
-            )
-            
-        case .size(let width, _):
-            
-            logoComponent.contentMode = .size(
-                width: width,
-                height: width
+                CGSize(
+                    width: width,
+                    height: width
+                )
             )
             
         }
         
-        listComponent.headerComponent = logoComponent
+        listComponent.footerComponent = logoComponent
         
-        listComponent.itemComponents = AnyCollection(buttonComponents)
+        listComponent.setItemComponents(buttonComponents)
         
         listComponent.render()
         
@@ -84,21 +86,21 @@ public extension UILandingComponent {
         
     }
     
-    @discardableResult
-    public final func addButton(
-        with item: UIPrimaryButtonItem,
-        action handler: @escaping () -> Void
-    ) 
-    -> UILandingComponent {
-        
-        let component = UIPrimaryButtonComponent()
-            .setItem(item)
-            .onTap(handler: handler)
-        
-        buttonComponents.append(component)
-        
-        return self
-        
-    }
+//    @discardableResult
+//    public final func addButton(
+//        with item: UIPrimaryButtonItem,
+//        action handler: @escaping () -> Void
+//    ) 
+//    -> UILandingComponent {
+//        
+//        let component = UIPrimaryButtonComponent()
+//            .setTitle(item.title)
+//            .setAction(handler)
+//            
+//        buttonComponents.append(component)
+//        
+//        return self
+//        
+//    }
     
 }

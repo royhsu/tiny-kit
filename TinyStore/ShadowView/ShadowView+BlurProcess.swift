@@ -8,63 +8,70 @@
 
 import UIKit
 
-extension ShadowView{
+public extension ShadowView {
     
-    internal func addImageView(){
+    public func updateShadow() {
         
-        guard shadowImageView == nil else {
-            return
-        }
-        
-        let imageView = UIImageView()
-        imageView.frame.size = frame.size.scaled(by: shadowScale)
-        imageView.center = CGPoint(x:bounds.midX,y:bounds.midY)
-        imageView.layer.masksToBounds = false
-        shadowImageView = imageView
-        insertSubview(imageView,at:0)
-    }
-    
-    
-    
-    public func updateShadow(){
-        
-        self.shadowImageView.image = nil
-     //   DispatchQueue.global(qos: DispatchQoS.QoSClass.utility).async { [weak self] in
-            self.createLayerImage()
-      //  }
-    }
-    
-    private func createLayerImage(){
-        
-        self.convertToImage { (image) in
+        copyAsImage { [weak self] image in
             
+            guard
+                let weakSelf = self
+            else { return }
+        
             let containerLayer = CALayer()
+            
             let imageSize = image.size
-            containerLayer.frame = CGRect(origin: .zero, size: imageSize.scaled(by:self.scaleImageConstant))
+            
+            containerLayer.frame = CGRect(
+                origin: .zero,
+                size: imageSize.scaled(by: weakSelf.scaleImageConstant)
+            )
+            
             containerLayer.backgroundColor = UIColor.clear.cgColor
-            let blurImageLayer = CALayer()
-            blurImageLayer.frame = CGRect(origin: .zero,size: imageSize)
-            blurImageLayer.position = CGPoint(x:containerLayer.bounds.midX,y:containerLayer.bounds.midY)
-            blurImageLayer.contents = image.applyBlurWithRadius(0, tintColor:self.shadowColor, saturationDeltaFactor: self.shadowSaturation)?.cgImage
             
-            blurImageLayer.masksToBounds = false
-            containerLayer.addSublayer(blurImageLayer)
+            let blurLayer = CALayer()
             
-            let containerImage = containerLayer.asImage
+            blurLayer.frame = CGRect(
+                origin: .zero,
+                size: imageSize
+            )
             
+            blurLayer.position = CGPoint(
+                x: containerLayer.bounds.midX,
+                y: containerLayer.bounds.midY
+            )
             
-            let resizeImageConstant :CGFloat = self.highPerformanceBlur ? 0.3 : 1
-            guard let resizedContainerImage = containerImage.resized(withPercentage: resizeImageConstant),
-                let blurredImage = resizedContainerImage.applyBlur(blurRadius: self.blurRadius)
-                else {
-                    return
+            let blurImage = image.applyBlurWithRadius(
+                0,
+                tintColor: weakSelf.shadowColor,
+                saturationDeltaFactor: weakSelf.shadowSaturation
+            )
+            
+            blurLayer.contents = blurImage?.cgImage
+            
+            blurLayer.masksToBounds = false
+            
+            containerLayer.addSublayer(blurLayer)
+            
+            let containerImage = containerLayer.image(ofSize: containerLayer.frame.size)
+            
+            let resizeImageConstant: CGFloat = weakSelf.highPerformanceBlur ? 0.3 : 1
+            
+            guard
+                let resizedContainerImage = containerImage.resized(withPercentage: resizeImageConstant),
+                let blurredImage = resizedContainerImage.applyBlur(blurRadius: weakSelf.blurRadius)
+            else { return }
+            
+            DispatchQueue.main.async {
+                
+                weakSelf.layer.masksToBounds = false
+                
+                weakSelf.shadowImageView.image = blurredImage
+                
             }
             
-            DispatchQueue.main.async { [weak self] in
-                self?.layer.masksToBounds = false
-                self?.shadowImageView?.image = blurredImage
-            }
         }
         
     }
+    
 }

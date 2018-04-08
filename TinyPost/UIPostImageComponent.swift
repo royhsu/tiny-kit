@@ -8,12 +8,17 @@
 
 // MARK: - UIPostImageComponent
 
-public final class UIPostImageComponent: Component {
+import TinyUI
+
+public final class UIPostImageComponent: Component, Stylable {
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIImageView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
         let imageView = UIImageView(frame: .zero)
         
@@ -25,6 +30,20 @@ public final class UIPostImageComponent: Component {
             contentMode: contentMode,
             itemView: imageView
         )
+
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let imageView = itemComponent.itemView
+        
+        imageView.applyTheme(theme)
         
     }
     
@@ -42,12 +61,7 @@ public final class UIPostImageComponent: Component {
         
         switch contentMode {
             
-        case let .size(width, height):
-            
-            itemComponent.contentMode = .size(
-                width: width,
-                height: height
-            )
+        case let .size(size): itemComponent.contentMode = .size(size)
             
         case .automatic:
             
@@ -65,11 +79,17 @@ public final class UIPostImageComponent: Component {
             else { height = 0.0 }
             
             itemComponent.contentMode = .size(
-                width: width,
-                height: height
+                CGSize(
+                    width: width,
+                    height: height
+                )
             )
             
         }
+        
+        let imageView = itemComponent.itemView
+        
+        imageView.applyTheme(theme)
         
         itemComponent.render()
         
@@ -81,6 +101,10 @@ public final class UIPostImageComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
 }
 
 // MARK: - UIPostImageComponent
@@ -88,24 +112,11 @@ public final class UIPostImageComponent: Component {
 public extension UIPostImageComponent {
     
     @discardableResult
-    public final func setImage(_ postImage: UIPostImage) -> UIPostImageComponent {
+    public final func setImage(_ image: UIImage?) -> UIPostImageComponent {
         
         let imageView = itemComponent.itemView
         
-        if let image = postImage.image {
-            
-            imageView.image = image
-            
-            imageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            imageView.image = nil
-            
-            imageView.backgroundColor = .lightGray
-            
-        }
+        imageView.image = image
 
         return self
         

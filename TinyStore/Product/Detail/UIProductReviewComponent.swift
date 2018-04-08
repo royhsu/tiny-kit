@@ -8,14 +8,21 @@
 
 // MARK: - UIProductReviewComponent
 
-public final class UIProductReviewComponent: Component {
+import TinyUI
+
+public final class UIProductReviewComponent: Component, Stylable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductReviewView>
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -26,6 +33,20 @@ public final class UIProductReviewComponent: Component {
                 from: bundle
             )!
         )
+        
+        self.theme = theme
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        let reviewView = itemComponent.itemView
+        
+        reviewView.applyTheme(theme)
         
     }
     
@@ -39,7 +60,15 @@ public final class UIProductReviewComponent: Component {
         
     }
     
-    public final func render() { itemComponent.render() }
+    public final func render() {
+        
+        let reviewView = itemComponent.itemView
+        
+        reviewView.applyTheme(theme)
+        
+        itemComponent.render()
+        
+    }
     
     // MARK: ViewRenderable
     
@@ -47,36 +76,39 @@ public final class UIProductReviewComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
 }
 
 public extension UIProductReviewComponent {
     
     @discardableResult
-    public final func setReview(_ review: UIProductReview) -> UIProductReviewComponent {
+    public final func setPictureImage(_ image: UIImage?) -> UIProductReviewComponent {
         
-        let reviewView = itemComponent.itemView
+        itemComponent.itemView.pictureImageView.image = image
         
-        if let pictureImage = review.pictureImage {
+        return self
         
-            reviewView.pictureImageView.image = pictureImage
-            
-            reviewView.pictureImageView.backgroundColor = .clear
-            
-        }
-        else {
-            
-            reviewView.pictureImageView.image = nil
-            
-            reviewView.pictureImageView.backgroundColor = .lightGray
-            
-        }
+    }
+    
+    @discardableResult
+    public final func setTitle(_ title: String?) -> UIProductReviewComponent {
         
-        reviewView.titleLabel.text = review.title
-        
-        reviewView.contentLabel.text = review.content
+        itemComponent.itemView.titleLabel.text = title
         
         return self
             
+    }
+    
+    @discardableResult
+    public final func setText(_ text: String?) -> UIProductReviewComponent {
+        
+        itemComponent.itemView.textLabel.text = text
+        
+        return self
+        
     }
     
 }

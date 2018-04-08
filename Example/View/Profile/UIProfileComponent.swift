@@ -12,16 +12,19 @@ import TinyKit
 
 public final class UIProfileComponent: Component {
 
-    private final let headerComponent = UIProfileHeaderComponent()
+    private final let headerComponent = UIProfileHeaderComponent(
+        listComponent: UIListComponent()
+    )
 
     /// The base component.
-    private final let listComponent: UIListComponent
+    private final let listComponent: ListComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
 
-        let listComponent = UIListComponent(contentMode: contentMode)
-
-        listComponent.headerComponent = headerComponent
+        listComponent.contentMode = contentMode
 
         self.listComponent = listComponent
 
@@ -69,8 +72,8 @@ public extension UIProfileComponent {
 
         }
 
-        listComponent.itemComponents = AnyCollection(components)
-
+        listComponent.setItemComponents(components)
+        
     }
 
 }

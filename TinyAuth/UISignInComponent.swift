@@ -25,10 +25,15 @@ public final class UISignInComponent: Component {
     private final var submitHandler: UISignInSubmitHandler?
 
     /// The base component.
-    private final let listComponent: UIListComponent
+    private final let listComponent: ListComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
 
+        listComponent.contentMode = contentMode
+        
         self.signIn = UISignIn()
         
         self.emailItem = UITextInputItem(
@@ -60,7 +65,7 @@ public final class UISignInComponent: Component {
         
         self.submitComponent = UIPrimaryButtonComponent()
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        self.listComponent = listComponent
 
     }
 
@@ -85,17 +90,13 @@ public final class UISignInComponent: Component {
             .onEdit { self.signIn.password = $0 }
 
         submitComponent
-            .setItem(
-                UIPrimaryButtonItem(
-                    title: NSLocalizedString(
-                        "Sign In",
-                        comment: ""
-                    ),
-                    titleColor: .white,
-                    backgroundColor: .black
+            .setTitle(
+                NSLocalizedString(
+                    "Sign In",
+                    comment: ""
                 )
             )
-            .onTap {
+            .setAction {
                 
                 let email = self.signIn.email ?? "Invalid"
                 
@@ -114,8 +115,8 @@ public final class UISignInComponent: Component {
             submitComponent
         ]
 
-        listComponent.itemComponents = AnyCollection(components)
-
+        listComponent.setItemComponents(components)
+            
         listComponent.render()
 
     }

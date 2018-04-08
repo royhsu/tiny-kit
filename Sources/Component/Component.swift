@@ -8,7 +8,7 @@
 
 // MARK: - Component
 
-public protocol Component: ViewRenderable {
+public protocol Component: class, ViewRenderable {
 
     var contentMode: ComponentContentMode { get set }
 

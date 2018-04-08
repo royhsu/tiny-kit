@@ -9,21 +9,64 @@
 // MARK: - UIProductDetailComponent
 
 import TinyPost
+import TinyUI
 
 public final class UIProductDetailComponent: Component {
     
-    /// The base component
-    private final let listComponent: UIListComponent
+    /// The base component.
+    private final let listComponent: ListComponent
     
-    private final let detailHeaderComponent: UIProductDetailHeaderComponent
+    public final let galleryComponent: UIProductGalleryComponent
     
-    public init(contentMode: ComponentContentMode = .automatic) {
+    private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
+    
+    internal final let descriptionComponent: UIProductDescriptionComponent
+    
+    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
+    
+    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
+    
+    public final var hasIntroductionPost = false
+    
+    public final let introductionSectionHeaderComponent: UIProductSectionHeaderComponent
+    
+    public final let introductionComponent: UIPostComponent
+    
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent,
+        galleryComponent: UIProductGalleryComponent,
+        actionButtonComponent: UIPrimaryButtonComponent,
+        reviewSectionHeaderComponent: UIProductSectionHeaderComponent,
+        reviewCarouselComponent: UIProductReviewCarouselComponent,
+        introductionSectionHeaderComponent: UIProductSectionHeaderComponent
+    ) {
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        listComponent.contentMode = contentMode
         
-        self.detailHeaderComponent = UIProductDetailHeaderComponent()
+        self.listComponent = listComponent
+        
+        self.galleryComponent = galleryComponent
+        
+        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
+        
+        self.reviewSectionHeaderComponent = reviewSectionHeaderComponent
+        
+        self.reviewCarouselComponent = reviewCarouselComponent
+        
+        self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
+        
+        self.introductionComponent = UIPostComponent(
+            listComponent: UIListComponent()
+        )
+        
+        self.prepare()
         
     }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() { }
     
     // MARK: Component
     
@@ -37,7 +80,63 @@ public final class UIProductDetailComponent: Component {
     
     public final func render() {
         
-        listComponent.headerComponent = detailHeaderComponent
+        let galleryWidth = view.bounds.width
+        
+        let galleryHeight = (galleryWidth / galleryAspectRatio)
+        
+        galleryComponent.contentMode = .size(
+            CGSize(
+                width: galleryWidth,
+                height: galleryHeight
+            )
+        )
+        
+        let reviewWidth = view.bounds.width
+        
+        reviewCarouselComponent.contentMode = .size(
+            CGSize(
+                width: reviewWidth,
+                height: 143.0 + 10.0 // 5.0 points for the shadow.
+            )
+        )
+        
+        let spacingComponent: (CGFloat) -> Component = { spacing in
+            
+            return UIItemComponent(
+                contentMode: .size(
+                    CGSize(
+                        width: spacing,
+                        height: spacing
+                    )
+                ),
+                itemView: UIView()
+            )
+            
+        }
+        
+        var itemComponents: [Component] = [
+            galleryComponent,
+            spacingComponent(20.0),
+            descriptionComponent,
+            spacingComponent(10.0),
+            reviewSectionHeaderComponent,
+            spacingComponent(10.0),
+            reviewCarouselComponent
+        ]
+        
+        if hasIntroductionPost {
+            
+            itemComponents += [
+                introductionSectionHeaderComponent,
+                spacingComponent(10.0)
+            ]
+            
+            listComponent.footerComponent = introductionComponent
+            
+        }
+        else { listComponent.footerComponent = nil }
+        
+        listComponent.setItemComponents(itemComponents)
         
         listComponent.render()
         
@@ -51,109 +150,69 @@ public final class UIProductDetailComponent: Component {
     
 }
 
-import TinyUI
-
 public extension UIProductDetailComponent {
     
     @discardableResult
-    public final func setGallery(_ gallery: UIProductGallery) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setGallery(gallery)
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setDescription(_ description: UIProductDescription) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setDescription(description)
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDetailComponent {
-        
-        detailHeaderComponent.setActionButtonItem(item)
-        
-        return self
-        
-    }
-    
-    @discardableResult
-    public final func setReviews(
-        _ reviews: [UIProductReview]
+    public final func setGallery(
+        _ images: [UIImage]
     )
     -> UIProductDetailComponent {
         
-        detailHeaderComponent.setReviews(reviews)
+        galleryComponent.setImages(images)
+        
+        return self
+            
+    }
+    
+    @discardableResult
+    public final func setTitle(_ title: String?) -> UIProductDetailComponent {
+        
+        descriptionComponent.setTitle(title)
         
         return self
         
     }
     
     @discardableResult
-    public final func setPost(
-        elements: [UIPostElement]
+    public final func setSubtitle(_ subtitle: String?) -> UIProductDetailComponent {
+        
+        descriptionComponent.setSubtitle(subtitle)
+        
+        return self
+        
+    }
+    
+    public typealias NumberOfReviewsHandler = UIProductReviewCarouselComponent.NumberOfReviewsHandler
+    
+    @discardableResult
+    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductDetailComponent {
+        
+        reviewCarouselComponent.setNumberOfReviews(handler)
+        
+        return self
+        
+    }
+    
+    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
+    
+    @discardableResult
+    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> UIProductDetailComponent {
+        
+        reviewCarouselComponent.setComponentForReview(handler)
+        
+        return self
+        
+    }
+    
+    @discardableResult
+    public final func setIntroductionPost(
+        elements: [PostElement]
     )
     -> UIProductDetailComponent {
         
-        let elementComponents: [Component] = elements.flatMap { element in
+        hasIntroductionPost = !elements.isEmpty
             
-            if let paragraph = element as? UIPostParagraph {
-                
-                return UIPostParagraphComponent().setParagraph(paragraph)
-                
-            }
-            
-            if let image = element as? UIPostImage {
-                
-                return UIPostImageComponent().setImage(image)
-                
-            }
-            
-            return nil
-            
-        }
-        
-        // Insert spacings between elements.
-        let defaultSpacing: CGFloat = 20.0
-        
-        let spacingComponent: (CGFloat) -> Component = { spacing in
-            
-            return UIItemComponent(
-                contentMode: .size(
-                    width: spacing,
-                    height: spacing
-                ),
-                itemView: UIView()
-            )
-            
-        }
-        
-        let spacedElementComponents = elementComponents
-            .map { [ $0 ] }
-            .joined(
-                separator: [ spacingComponent(defaultSpacing) ]
-            )
-            .flatMap { $0 }
-        
-        var components: [Component] = [
-            spacingComponent(defaultSpacing),
-            UIProductSectionHeaderComponent().setHeader(
-                UIProductSectionHeader(
-                    iconImage: #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate),
-                    title: "Story"
-                )
-            ),
-            spacingComponent(defaultSpacing)
-        ]
-        
-        components.append(contentsOf: spacedElementComponents)
-        
-        listComponent.itemComponents = AnyCollection(components)
+        introductionComponent.setPost(elements: elements)
         
         return self
         

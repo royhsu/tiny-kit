@@ -28,26 +28,18 @@
                         <constraint firstAttribute="height" constant="20" id="vef-rk-1MY"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ba7-U7-EpK">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
-                </button>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="DL7-cc-hx8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BGE-PA-isS"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ba7-U7-EpK" secondAttribute="trailing" id="F8X-bH-Yzl"/>
-                <constraint firstItem="Ba7-U7-EpK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JAp-mO-PA0"/>
                 <constraint firstItem="9Jc-Ln-o17" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="LtD-CZ-vTY"/>
-                <constraint firstItem="Ba7-U7-EpK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Mma-I6-nwY"/>
                 <constraint firstItem="9Jc-Ln-o17" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ePS-Nb-QCa"/>
-                <constraint firstItem="DL7-cc-hx8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-16" id="f8s-fZ-ng9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DL7-cc-hx8" secondAttribute="trailing" constant="16" id="f8s-fZ-ng9"/>
                 <constraint firstItem="DL7-cc-hx8" firstAttribute="leading" secondItem="9Jc-Ln-o17" secondAttribute="trailing" constant="8" id="j82-rX-4mH"/>
-                <constraint firstAttribute="bottom" secondItem="Ba7-U7-EpK" secondAttribute="bottom" id="qlC-1c-uph"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="actionButton" destination="Ba7-U7-EpK" id="iL8-21-1JV"/>
                 <outlet property="iconImageView" destination="DL7-cc-hx8" id="1Tl-86-Oe8"/>
                 <outlet property="titleLabel" destination="9Jc-Ln-o17" id="aLM-Pk-Uc6"/>
             </connections>

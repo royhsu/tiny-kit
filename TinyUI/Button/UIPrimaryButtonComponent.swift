@@ -8,16 +8,19 @@
 
 // MARK: - UIPrimaryButtonComponent
 
-public final class UIPrimaryButtonComponent: Component {
+public final class UIPrimaryButtonComponent: Component, Stylable {
+    
+    private final let bundle: Bundle
     
     /// The base component.
     private final let itemComponent: UIItemComponent<UIPrimaryButton>
     
-    private final var tapHandler: UIPrimaryButtonTapHandler?
-    
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
         
-        let bundle = Bundle(
+        self.bundle = Bundle(
             for: type(of: self)
         )
         
@@ -29,16 +32,28 @@ public final class UIPrimaryButtonComponent: Component {
             )!
         )
         
-        self.setItem(
-            UIPrimaryButtonItem()
-        )
+        self.theme = theme
+        
+        self.prepare()
         
     }
     
-    // MARK: Action
+    // MARK: Set Up
     
-    @objc
-    public final func handleTap(_ sender: Any) { tapHandler?() }
+    fileprivate final func prepare() {
+        
+        let button = itemComponent.itemView
+        
+        button.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(performAction)
+            )
+        )
+        
+        button.applyTheme(theme)
+        
+    }
     
     // MARK: Component
     
@@ -52,13 +67,9 @@ public final class UIPrimaryButtonComponent: Component {
     
     public final func render() {
         
-        let buttonView = itemComponent.itemView
+        let button = itemComponent.itemView
         
-        buttonView.actionButton.addTarget(
-            self,
-            action: #selector(handleTap),
-            for: .touchUpInside
-        )
+        button.applyTheme(theme)
         
         itemComponent.render()
         
@@ -70,46 +81,36 @@ public final class UIPrimaryButtonComponent: Component {
     
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
     
+    // MARK: Stylable
+    
+    public final var theme: Theme
+    
+    // MARK: Action
+    
+    @objc
+    public final func performAction(_ sender: Any) { actionHandler?() }
+    
+    public typealias ActionHandler = () -> Void
+    
+    private final var actionHandler: ActionHandler?
+    
 }
 
 public extension UIPrimaryButtonComponent {
     
     @discardableResult
-    public final func setItem(_ item: UIPrimaryButtonItem) -> UIPrimaryButtonComponent {
+    public final func setTitle(_ title: String?) -> UIPrimaryButtonComponent {
         
-        let buttonView = itemComponent.itemView
-        
-        buttonView.titleLabel.text = item.title
-        
-        buttonView.titleLabel.textColor = item.titleColor
-        
-        buttonView.iconImageView.tintColor = item.titleColor
-        
-        if let iconImage = item.iconImage {
-            
-            buttonView.iconImageView.image = iconImage
-            
-            buttonView.iconImageView.backgroundColor = nil
-            
-        }
-        else {
-            
-            buttonView.iconImageView.image = nil
-            
-            buttonView.iconImageView.backgroundColor = .darkGray
-            
-        }
-        
-        buttonView.backgroundColor = item.backgroundColor
+        itemComponent.itemView.titleLabel.text = title
         
         return self
         
     }
     
     @discardableResult
-    public final func onTap(handler: UIPrimaryButtonTapHandler? = nil) -> UIPrimaryButtonComponent {
+    public final func setAction(_ handler: ActionHandler?) -> UIPrimaryButtonComponent {
         
-        tapHandler = handler
+        actionHandler = handler
         
         return self
         
