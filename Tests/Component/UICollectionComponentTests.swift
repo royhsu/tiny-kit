@@ -13,9 +13,9 @@ import XCTest
 @testable import TinyKit
 
 internal final class UICollectionComponentTests: XCTestCase {
-    
+
     internal final func testRenderComponent() {
-        
+
         let itemComponents: [Component] = [
             UIItemComponent(
                 contentMode: .size(
@@ -32,59 +32,56 @@ internal final class UICollectionComponentTests: XCTestCase {
                 itemView: RectangleView()
             )
         ]
-        
-        let collectionComponent = UICollectionComponent(
-            collectionLayout: UICollectionViewFlowLayout()
-        )
-        
-        collectionComponent.itemComponents = UIStubComponentCollection(
-            numberOfSections: { return itemComponents.count },
-            numberOfItemsInSection: { section in return 1 },
-            componentAtItem: { indexPath in itemComponents[indexPath.section] }
-        )
-        
-        collectionComponent.render()
-        
+
+        let collectionComponent = UICollectionComponent()
+
+        let sections = 1
+
+        collectionComponent
+            .setNumberOfSections { sections }
+            .setNumberOfItems { _ in itemComponents.count }
+            .setComponentForItem { itemComponents[$0.section] }
+            .render()
+
         let collectionView = collectionComponent.collectionView
-        
-        let numberOfSections = itemComponents.count
-        
+
         XCTAssertEqual(
             collectionView.numberOfSections,
-            numberOfSections
+            sections
         )
-        
-        for section in 0..<numberOfSections {
-            
-            XCTAssertEqual(
-                collectionView.numberOfItems(inSection: section),
-                1
-            )
-            
-            let indexPath = IndexPath(
-                item: 0,
-                section: section
-            )
-            
-            let itemComponent = itemComponents[section]
-            
-            guard
-                let cell = itemComponent.view.superview?.superview as? UICollectionViewCell
-            else {
-                
-                XCTFail("Must be a UICollectionViewCell.")
-                
-                return
-                
+
+        for section in 0..<sections {
+
+            let items = collectionView.numberOfItems(inSection: section)
+
+            for item in 0..<items {
+
+                let indexPath = IndexPath(
+                    item: item,
+                    section: section
+                )
+
+                let itemComponent = itemComponents[section]
+
+                guard
+                    let cell = itemComponent.view.superview?.superview as? UICollectionViewCell
+                else {
+
+                    XCTFail("Must be a UICollectionViewCell.")
+
+                    return
+
+                }
+
+                XCTAssertEqual(
+                    collectionView.cellForItem(at: indexPath),
+                    cell
+                )
+
             }
-            
-            XCTAssertEqual(
-                collectionView.cellForItem(at: indexPath),
-                cell
-            )
-            
+
         }
-        
+
     }
-    
+
 }

@@ -43,11 +43,16 @@ public final class UISignInComponent: Component {
     )
 
     /// The base component.
-    private final let listComponent: UIListComponent
+    private final let listComponent: ListComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        listComponent: ListComponent
+    ) {
 
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        listComponent.contentMode = contentMode
+
+        self.listComponent = listComponent
 
     }
 
@@ -133,9 +138,10 @@ public final class UISignInComponent: Component {
             actionComponent
         ]
 
-        listComponent.itemComponents = AnyCollection(components)
-
-        listComponent.render()
+        listComponent.setItemComponents(components)
+            
+        listComponent
+            .render()
 
     }
 

@@ -9,18 +9,18 @@
 // MARK: - Theme
 
 public extension UIPrimaryButton {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UIPrimaryButton {
-        
+
         backgroundColor = theme.primaryColor
-        
+
         titleLabel.textColor = theme.backgroundColor
-        
+
         iconImageView.tintColor = theme.backgroundColor
-        
+
         return self
-        
+
     }
-    
+
 }

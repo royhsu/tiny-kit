@@ -9,22 +9,22 @@
 // MARK: - Theme
 
 public extension UINumberPicker {
-    
+
     @discardableResult
     public final func applyTheme(_ theme: Theme) -> UINumberPicker {
-        
+
         backgroundColor = theme.primaryColor
-        
+
         increaseIconImageView.tintColor = theme.backgroundColor
-        
+
         decreaseIconImageView.tintColor = theme.backgroundColor
-        
+
         numberContainerView.backgroundColor = theme.backgroundColor
-        
+
         numberTextField.textColor = theme.titleColor
-        
+
         return self
-        
+
     }
-    
+
 }

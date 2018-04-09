@@ -9,25 +9,25 @@
 // MARK: - CartItemDescriptor
 
 public struct CartItemDescriptor {
-    
+
     public let item: CartItem
-    
+
     public var quantity: Int
-    
+
     public var isSelected: Bool
-    
+
     public init(
         item: CartItem,
         quantity: Int,
         isSelected: Bool
     ) {
-        
+
         self.item = item
-        
+
         self.quantity = quantity
-        
+
         self.isSelected = isSelected
-        
+
     }
-    
+
 }

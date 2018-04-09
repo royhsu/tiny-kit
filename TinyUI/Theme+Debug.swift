@@ -9,7 +9,7 @@
 // MARK: - AzureSky
 
 public extension Theme {
-    
+
     public static let debug = Theme(
         primaryColor: .blue,
         secondaryColor: .yellow,
@@ -19,5 +19,5 @@ public extension Theme {
         bodyColor: .white,
         placeholderColor: .green
     )
-    
+
 }

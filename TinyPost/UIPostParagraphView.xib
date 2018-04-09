@@ -33,7 +33,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="contentLabel" destination="SHd-sL-j5C" id="eKy-Xm-1MK"/>
+                <outlet property="textLabel" destination="SHd-sL-j5C" id="eKy-Xm-1MK"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-220.5"/>
         </view>

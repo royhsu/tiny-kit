@@ -10,36 +10,36 @@
 
 /// All items in a carousel component will be stretch out to fit the height of it.
 public final class UICarouselComponent: Component {
-    
+
     /// The base component.
     private final let collectionComponent: UICollectionComponent
 
     public final var itemComponents: AnyCollection<Component> = AnyCollection(
         []
     )
-    
+
     public init(contentMode: ComponentContentMode = .automatic) {
-        
+
         let collectionComponent = UICollectionComponent(contentMode: contentMode)
-        
+
         collectionComponent.scrollDirection = .horizontal
-        
+
         self.collectionComponent = collectionComponent
-        
+
     }
-    
+
     // MARK: Component
-    
+
     public final var contentMode: ComponentContentMode {
-        
+
         get { return collectionComponent.contentMode }
-        
+
         set { collectionComponent.contentMode = newValue }
-        
+
     }
-    
+
     public final func render() {
-        
+
 //        let components = itemComponents.map { component -> Component in
 //
 //            component.render()
@@ -56,17 +56,17 @@ public final class UICarouselComponent: Component {
 //        }
 //
 //        itemComponents = AnyCollection(components)
-        
+
 //        collectionComponent.itemComponents = itemComponents
-        
+
         collectionComponent.render()
-        
+
     }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return collectionComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return collectionComponent.preferredContentSize }
-    
+
 }

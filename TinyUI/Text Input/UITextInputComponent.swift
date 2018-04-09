@@ -12,7 +12,7 @@ public final class UITextInputComponent: Component {
 
     /// The base component.
     private final let itemComponent: UIItemComponent<UITextInput>
-    
+
     private final var editHandler: UITextInputEditHandler?
 
     public init(contentMode: ComponentContentMode = .automatic) {
@@ -20,7 +20,7 @@ public final class UITextInputComponent: Component {
         let bundle = Bundle(
             for: type(of: self)
         )
-        
+
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
@@ -42,15 +42,15 @@ public final class UITextInputComponent: Component {
     }
 
     public final func render() {
-        
+
         itemComponent.itemView.inputTextField.addTarget(
             self,
             action: #selector(handleEdit),
             for: .editingChanged
         )
-        
+
         itemComponent.render()
-        
+
     }
 
     // MARK: ViewRenderable
@@ -84,24 +84,24 @@ public extension UITextInputComponent {
         let inputView = itemComponent.itemView
 
         inputView.titleLabel.text = item.title
-        
+
         inputView.inputTextField.text = item.text
 
         inputView.inputTextField.placeholder = item.placeholder
 
         inputView.inputTextField.isSecureTextEntry = item.isSecured
-        
+
         return self
 
     }
-    
+
     @discardableResult
     public final func onEdit(handler: UITextInputEditHandler? = nil) -> UITextInputComponent {
-        
+
         editHandler = handler
-        
+
         return self
-        
+
     }
 
 }

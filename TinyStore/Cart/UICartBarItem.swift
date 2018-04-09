@@ -9,9 +9,9 @@
 // MARK: - UICartBarItem
 
 public struct UICartBarItem {
-    
+
     public var amount: Double
-    
+
     public init(amount: Double = 0.0) { self.amount = amount }
-    
+
 }

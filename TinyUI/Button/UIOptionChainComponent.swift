@@ -9,89 +9,89 @@
 // MARK: - UIOptionChainComponent
 
 public final class UIOptionChainComponent: Component {
-    
+
     /// The base component.
     private final let itemComponent: UIItemComponent<UIStackView>
-    
+
     private final var actionComponents: [UIOptionButtonComponet]
-    
+
     public init(contentMode: ComponentContentMode = .automatic) {
-        
+
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIStackView()
         )
-        
+
         self.actionComponents = []
-        
+
         self.prepare()
-        
+
     }
-    
+
     // MARK: Set Up
-    
+
     fileprivate final func prepare() {
-        
+
         let stackView = itemComponent.itemView
-        
+
         stackView.axis = .horizontal
-        
+
         stackView.distribution = .fillEqually
-        
+
         stackView.spacing = 12.0
-        
+
     }
-    
+
     // MARK: Component
-    
+
     public final var contentMode: ComponentContentMode {
-        
+
         get { return itemComponent.contentMode }
-        
+
         set { itemComponent.contentMode = newValue }
-        
+
     }
-    
+
     public final func render() { itemComponent.render() }
-    
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return itemComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
-    
+
 }
 
 public extension UIOptionChainComponent {
-    
+
     @discardableResult
     public final func setOptionDescriptors(
         _ descriptors: [UIOptionDescriptor]
     )
     -> UIOptionChainComponent {
-        
+
         actionComponents = descriptors.map { descriptor in
-            
+
             return UIOptionButtonComponet()
                 .setTitle(descriptor.title)
                 .setAction(descriptor.handler)
-            
+
         }
-        
+
         let stackView = itemComponent.itemView
-        
+
         stackView.arrangedSubviews.forEach(stackView.removeArrangedSubview)
-        
+
         actionComponents.forEach { component in
-            
+
             component.render()
-            
+
             stackView.addArrangedSubview(component.view)
-            
+
         }
-        
+
         return self
-            
+
     }
-    
+
 }

@@ -9,13 +9,13 @@
 // MARK: - Theme
 
 public extension UICheckbox {
-    
+
     public final func applyTheme(_ theme: Theme) {
-        
+
         iconImageView.tintColor = theme.primaryColor
-        
+
         backgroundColor = theme.backgroundColor
-        
+
     }
-    
+
 }

@@ -11,22 +11,22 @@
 import Hydra
 
 public final class AuthManager {
-    
+
     public final func authorize(
         in context: Context,
         username: String,
         password: String
         )
         -> Promise<AccessToken> {
-            
+
             return Promise(in: context) { fulfill, reject, _ in
-                
+
                 let accessToken = AccessToken(value: "helloworld_access_token")
-                
+
                 fulfill(accessToken)
-                
+
             }
-            
+
     }
-    
+
 }

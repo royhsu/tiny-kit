@@ -94,32 +94,21 @@ public final class UIProfileCoordinator: Coordinator {
         self.navigationController = UINavigationController(rootViewController: containerViewController)
 
         self.splashComponent = UIItemComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            ),
+            contentMode: .size(contentSize),
             itemView: UIView()
         )
 
         self.loadingComponent = UILoadingComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
+            contentMode: .size(contentSize)
         )
 
         self.profileComponent = UIProfileComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
+            contentMode: .size(contentSize),
+            listComponent: UIListComponent()
         )
 
         self.messageComponent = UIMessageComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
+            contentMode: .size(contentSize)
         )
 
     }
@@ -136,7 +125,7 @@ public final class UIProfileCoordinator: Coordinator {
 
             splashComponent.render()
 
-            containerView.render(with: splashComponent)
+            containerView.wrapSubview(splashComponent.view)
 
             stateMachine.enter(UIProfileState.loading)
 
@@ -176,7 +165,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             loadingComponent.startAnimating()
 
-            containerView.render(with: loadingComponent)
+            containerView.wrapSubview(loadingComponent.view)
 
             Promise<Void>.zip(
                 userManager.fetchMe(
@@ -236,7 +225,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             profileComponent.render()
 
-            containerView.render(with: profileComponent)
+            containerView.wrapSubview(profileComponent.view)
 
             containerViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: NSLocalizedString(
@@ -262,7 +251,7 @@ extension UIProfileCoordinator: StateMachineDelegate {
 
             messageComponent.render()
 
-            containerView.render(with: messageComponent)
+            containerView.wrapSubview(messageComponent.view)
 
         default: fatalError("Invalid state transition.")
 

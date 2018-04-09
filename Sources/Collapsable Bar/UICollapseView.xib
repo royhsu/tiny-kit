@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICollapseView" customModule="TinyStore" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UICollapseView" customModule="TinyKit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -57,7 +57,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2WA-tE-O6d" secondAttribute="trailing" id="ApG-s3-wPs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hsN-4l-bgb" secondAttribute="trailing" id="Hxk-Jm-VcU"/>
                 <constraint firstAttribute="bottom" secondItem="M2e-ov-kmX" secondAttribute="bottom" id="Mm0-oG-U3c"/>
-                <constraint firstItem="2WA-tE-O6d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ncp-12-neE"/>
+                <constraint firstItem="2WA-tE-O6d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ncp-12-neE"/>
                 <constraint firstItem="hsN-4l-bgb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="150" id="Ps1-NV-OaO"/>
                 <constraint firstItem="M2e-ov-kmX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="WJu-h0-aRw"/>
                 <constraint firstItem="hsN-4l-bgb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fgg-lz-GOt"/>

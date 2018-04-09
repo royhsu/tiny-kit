@@ -9,7 +9,7 @@
 // MARK: - UILandingSupply
 
 public enum UILandingSupply {
-    
+
     case basic(username: String, password: String)
-    
+
 }

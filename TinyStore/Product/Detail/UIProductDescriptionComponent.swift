@@ -10,19 +10,25 @@
 
 import TinyUI
 
-public final class UIProductDescriptionComponent: Component {
-    
+internal final class UIProductDescriptionComponent: Component, Stylable {
+
+    private final let bundle: Bundle
+
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductDescriptionView>
-    
+
     private final let actionButtonComponent: UIPrimaryButtonComponent
-    
-    public init(contentMode: ComponentContentMode = .automatic) {
-        
-        let bundle = Bundle(
+
+    internal init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current,
+        actionButtonComponent: UIPrimaryButtonComponent
+    ) {
+
+        self.bundle = Bundle(
             for: type(of: self)
         )
-        
+
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
@@ -30,78 +36,79 @@ public final class UIProductDescriptionComponent: Component {
                 from: bundle
             )!
         )
-        
-        self.actionButtonComponent = UIPrimaryButtonComponent()
-        
-        self.setDescription(
-            UIProductDescription()
-        )
-        
+
+        self.theme = theme
+
+        self.actionButtonComponent = actionButtonComponent
+
+        self.prepare()
+
     }
-    
-    // MARK: Component
-    
-    public final var contentMode: ComponentContentMode {
-        
-        get { return itemComponent.contentMode }
-        
-        set { itemComponent.contentMode = newValue }
-        
-    }
-    
-    public final func render() {
-        
+
+    // MARK: Set Up
+
+    fileprivate final func prepare() {
+
         let descriptionView = itemComponent.itemView
-        
-        descriptionView.actionContainerView.render(with: actionButtonComponent)
-        
-        actionButtonComponent.render()
-        
-        itemComponent.render()
-        
+
+        descriptionView.applyTheme(theme)
+
     }
-    
+
+    // MARK: Component
+
+    internal final var contentMode: ComponentContentMode {
+
+        get { return itemComponent.contentMode }
+
+        set { itemComponent.contentMode = newValue }
+
+    }
+
+    internal final func render() {
+
+        let descriptionView = itemComponent.itemView
+
+        descriptionView.actionContainerView.wrapSubview(actionButtonComponent.view)
+
+        descriptionView.applyTheme(theme)
+
+        actionButtonComponent.render()
+
+        itemComponent.render()
+
+    }
+
     // MARK: ViewRenderable
-    
-    public final var view: View { return itemComponent.view }
-    
-    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
-    
+
+    internal final var view: View { return itemComponent.view }
+
+    internal final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+
+    // MARK: Stylable
+
+    internal final var theme: Theme
+
 }
 
-public extension UIProductDescriptionComponent {
-    
+internal extension UIProductDescriptionComponent {
+
     @discardableResult
-    public final func setDescription(_ description: UIProductDescription) -> UIProductDescriptionComponent {
-        
-        let descriptionView = itemComponent.itemView
-        
-        descriptionView.titleLabel.text = description.title
-        
-        descriptionView.subtitleLabel.text = description.subtitle
-        
+    internal final func setTitle(_ title: String?) -> UIProductDescriptionComponent {
+
+        itemComponent.itemView.titleLabel.text = title
+
         return self
-        
+
     }
-    
-//    @discardableResult
-//    public final func setActionButtonItem(_ item: UIPrimaryButtonItem) -> UIProductDescriptionComponent {
-//        
-//        actionButtonComponent.setTitle(item.title)
-//        
-//        return self
-//        
-//    }
-    
-    public typealias DidTapHandler = () -> Void
-    
+
     @discardableResult
-    public final func setDidTap(_ handler: DidTapHandler?) -> UIProductDescriptionComponent {
-        
-        actionButtonComponent.setAction(handler)
-        
+    internal final func setSubtitle(_ subtitle: String?) -> UIProductDescriptionComponent {
+
+        itemComponent.itemView.subtitleLabel.text = subtitle
+
         return self
-        
+
     }
-    
+
 }

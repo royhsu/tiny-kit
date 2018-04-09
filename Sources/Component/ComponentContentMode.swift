@@ -10,10 +10,7 @@
 
 public enum ComponentContentMode {
 
-    case size(
-        width: CGFloat,
-        height: CGFloat
-    )
+    case size(CGSize)
 
     case automatic
 

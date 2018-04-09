@@ -8,40 +8,53 @@
 
 import UIKit
 
-extension UIView{
-    
+extension UIView {
+
     ///Returns a UIImage copy of the view
-    internal func convertToImage(completion:@escaping (UIImage) -> Void){
-        
+    internal func copyAsImage(completion: @escaping (UIImage) -> Void) {
+
         DispatchQueue.main.async {
+
             let layer = self.layer
-            let size = layer.frame.size
-            
+
             DispatchQueue.global(qos: .userInteractive).async {
-                let image = layer.getImage(size: size)
+
+                let size = layer.frame.size
+
+                let image = layer.image(ofSize: size)
+
                 completion(image)
+
             }
+
         }
+
     }
+
 }
 
-extension CALayer{
-    
-    func getImage(size:CGSize) -> UIImage{
-        
+extension CALayer {
+
+    func image(ofSize size: CGSize) -> UIImage {
+
         UIGraphicsBeginImageContext(size)
-        guard let currentContext = UIGraphicsGetCurrentContext()else{return UIImage()}
-        render(in:currentContext)
+
+        guard
+            let currentContext = UIGraphicsGetCurrentContext()
+        else { return UIImage() }
+
+        render(in: currentContext)
+
         let image = UIGraphicsGetImageFromCurrentImageContext()
+
         UIGraphicsEndImageContext()
-        
-        guard let cgImage = image?.cgImage else{return UIImage()}
-         return UIImage.init(cgImage: cgImage)
+
+        guard
+            let cgImage = image?.cgImage
+        else { return UIImage() }
+
+        return UIImage(cgImage: cgImage)
+
     }
-    
-    ///Returns a UIImage copy of the layer
-    internal var asImage : UIImage{
-        
-        return self.getImage(size: self.frame.size)
-    }
+
 }

@@ -8,17 +8,24 @@
 
 // MARK: - UIProductSectionHeaderComponent
 
-public final class UIProductSectionHeaderComponent: Component {
-    
+import TinyUI
+
+public final class UIProductSectionHeaderComponent: Component, Stylable {
+
+    private final let bundle: Bundle
+
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProductSectionHeaderView>
-    
-    public init(contentMode: ComponentContentMode = .automatic) {
-        
-        let bundle = Bundle(
+
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        theme: Theme = .current
+    ) {
+
+        self.bundle = Bundle(
             for: type(of: self)
         )
-        
+
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
@@ -26,55 +33,73 @@ public final class UIProductSectionHeaderComponent: Component {
                 from: bundle
             )!
         )
-        
+
+        self.theme = theme
+
+        self.prepare()
+
     }
-    
+
+    // MARK: Set Up
+
+    fileprivate final func prepare() {
+
+        let headerView = itemComponent.itemView
+
+        headerView.applyTheme(theme)
+
+    }
+
     // MARK: Component
-    
+
     public final var contentMode: ComponentContentMode {
-        
+
         get { return itemComponent.contentMode }
-        
+
         set { itemComponent.contentMode = newValue }
-        
+
     }
-    
-    public final func render() { itemComponent.render() }
-    
+
+    public final func render() {
+
+        let headerView = itemComponent.itemView
+
+        headerView.applyTheme(theme)
+
+        itemComponent.render()
+
+    }
+
     // MARK: ViewRenderable
-    
+
     public final var view: View { return itemComponent.view }
-    
+
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
-    
+
+    // MARK: Stylable
+
+    public final var theme: Theme
+
 }
 
 public extension UIProductSectionHeaderComponent {
-    
-    @discardableResult
-    public final func setHeader(_ header: UIProductSectionHeader) -> UIProductSectionHeaderComponent {
 
-        let headerView = itemComponent.itemView
-        
-        if let iconImage = header.iconImage {
-            
-            headerView.iconImageView.image = iconImage
-            
-            headerView.iconImageView.backgroundColor = .clear
-            
-        }
-        else {
-            
-            headerView.iconImageView.image = nil
-            
-            headerView.iconImageView.backgroundColor = .lightGray
-            
-        }
-        
-        headerView.titleLabel.text = header.title
-        
+    @discardableResult
+    public final func setIconImage(_ image: UIImage?) -> UIProductSectionHeaderComponent {
+
+        itemComponent.itemView.iconImageView.image = image
+
         return self
 
     }
-    
+
+    @discardableResult
+    public final func setTitle(_ title: String) -> UIProductSectionHeaderComponent {
+
+        itemComponent.itemView.titleLabel.text = title
+
+        return self
+
+    }
+
 }

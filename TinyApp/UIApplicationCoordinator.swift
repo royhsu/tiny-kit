@@ -8,6 +8,9 @@
 
 // MARK: - UIApplicationCoordinator
 
+import TinyPost
+import TinyStore
+
 import TinyAuth
 
 public final class UIApplicationCoordinator: Coordinator {
@@ -18,7 +21,7 @@ public final class UIApplicationCoordinator: Coordinator {
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
 
     private final var rootCoordinator: RootCoordinator
-    
+
     public init(contentSize: CGSize) {
 
         self.window = TestWindow(
@@ -27,17 +30,17 @@ public final class UIApplicationCoordinator: Coordinator {
                 size: contentSize
             )
         )
-        
-//        self.rootCoordinator = UIHomeNavigationCoordinator()
-        
-        self.rootCoordinator = UIRootCoordinator()
-        
+
+        self.rootCoordinator = UICartCoordinator()
+
+//        self.rootCoordinator = UIRootCoordinator()
+
     }
 
     public final func activate() {
 
         window.rootViewController = rootCoordinator.viewController
-        
+
         window.makeKeyAndVisible()
 
         rootCoordinator.activate()
@@ -48,22 +51,22 @@ public final class UIApplicationCoordinator: Coordinator {
 
 // For debugging touch events.
 public final class TestWindow: UIWindow {
-    
+
     public override func sendEvent(_ event: UIEvent) {
-        
+
         event.touches(for: self)?.forEach { touch in
-            
+
             let point = touch.location(in: self)
-            
+
             let view = hitTest(
                 point,
                 with: event
             )
 
         }
-        
+
         super.sendEvent(event)
-        
+
     }
-    
+
 }

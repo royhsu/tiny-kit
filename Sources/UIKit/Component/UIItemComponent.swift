@@ -8,6 +8,7 @@
 
 // MARK: - UIItemComponent
 
+// Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
 public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final let itemView: ItemView
@@ -20,34 +21,32 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         self.contentMode = contentMode
 
         self.itemView = itemView
-        
+
         let frame: CGRect
-        
+
         switch contentMode {
-            
-        case let .size(width, height):
-            
+
+        case let .size(size):
+
             frame = CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: width,
-                height: height
+                origin: .zero,
+                size: size
             )
-            
+
         case .automatic:
-            
+
             // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
             frame = UIScreen.main.bounds
-            
+
         }
-        
-        let view = View(frame: frame)
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view = view
+
+        self.view = View(frame: frame)
 
     }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() { view.backgroundColor = nil }
 
     // MARK: Component
 
@@ -60,11 +59,10 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         itemView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(itemView)
-        
+
         let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
-        
-        // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
-        trailingConstraint.priority = UILayoutPriority(800.0)
+
+        trailingConstraint.priority = UILayoutPriority(900.0)
 
         NSLayoutConstraint.activate(
             [
@@ -73,46 +71,51 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 trailingConstraint
             ]
         )
+        
+        let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
+        
+        bottomConstraint.priority = UILayoutPriority(900.0)
 
         let size: CGSize
 
         switch contentMode {
 
-        case .size(let width, let height):
+        case let .size(value):
 
-            size = CGSize(
-                width: width,
-                height: height
-            )
-    
+            size = value
+
+            let widthConstraint = itemView.widthAnchor.constraint(equalToConstant: size.width)
+            
+            widthConstraint.priority = UILayoutPriority(750.0)
+            
+            let heightConstraint = itemView.heightAnchor.constraint(equalToConstant: size.height)
+            
+            heightConstraint.priority = UILayoutPriority(750.0)
+            
             NSLayoutConstraint.activate(
                 [
-                    itemView.widthAnchor.constraint(equalToConstant: width),
-                    itemView.heightAnchor.constraint(equalToConstant: height)
+                    widthConstraint,
+                    heightConstraint
                 ]
             )
-            
+
         case .automatic:
             
             itemView.layoutIfNeeded()
 
             size = itemView.bounds.size
-
+            
+            
         }
+
+        itemView.frame.size = size
 
         view.frame.size = size
         
-        let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
-
-        // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
-        bottomConstraint.priority = UILayoutPriority(800.0)
-        
         NSLayoutConstraint.activate(
-            [
-                bottomConstraint
-            ]
+            [ bottomConstraint ]
         )
-        
+
     }
 
     // MARK: ViewRenderable

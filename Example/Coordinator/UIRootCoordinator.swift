@@ -11,71 +11,59 @@
 import TinyKit
 
 public final class UIRootCoordinator: Coordinator {
-    
+
     private final let navigationController: UINavigationController
-    
-    private final let rootComponent: UICarouselComponent
-    
+
+    private final let rootComponent: Component
+
     public init(contentSize: CGSize) {
+
+        let listComponent = UIListComponent()
         
-        let rootComponent = UICarouselComponent(
-            contentMode: .size(
-                width: contentSize.width,
-                height: contentSize.height
-            )
+        let labelComponent = UIItemComponent(
+            itemView: UILabel()
         )
         
-        let post1Component = UIPostComponent()
+        let label = labelComponent.itemView
         
-        post1Component.setPost(
-            UIPost(
-                title: "1111111",
-                content: "😎"
-            )
+        label.text = "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum."
+        
+        label.numberOfLines = 0
+        
+        label.backgroundColor = .red
+        
+        let boxComponent = UIBoxComponent(contentComponent: labelComponent)
+        
+        boxComponent.paddingInsets = UIEdgeInsets(
+            top: 10.0,
+            left: 20.0,
+            bottom: 30.0,
+            right: 40.0
         )
         
-        let post2Component = UIPostComponent()
-            
-        post2Component.setPost(
-            UIPost(
-                title: "22222222222",
-                content: "😎"
-            )
+        boxComponent.view.backgroundColor = .green
+        
+        listComponent.setItemComponents(
+            [ boxComponent ]
         )
         
-        let post3Component = UIPostComponent()
-        
-        post3Component.setPost(
-            UIPost(
-                title: "333333333333333",
-                content: "😎"
-            )
-        )
-        
-        rootComponent.itemComponents = AnyCollection(
-            [
-                post1Component,
-                post2Component,
-                post3Component
-            ]
-        )
-        
-        self.rootComponent = rootComponent
+        self.rootComponent = listComponent
         
         self.navigationController = UINavigationController(
-            rootViewController: UIComponentViewController(component: rootComponent)
+            rootViewController: UIComponentViewController(component: listComponent)
         )
-        
+
     }
-    
+
     public final func activate() { rootComponent.render() }
-    
+
 }
 
 // MARK: - ViewRenderable
 
 extension UIRootCoordinator: ViewControllerRepresentable {
-    
+
     public final var viewController: ViewController { return navigationController }
-    
+
 }
+

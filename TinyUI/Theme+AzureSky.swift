@@ -9,7 +9,7 @@
 // MARK: - AzureSky
 
 public extension Theme {
-    
+
     public static let azureSky = Theme(
         primaryColor: UIColor(
             red: 0.35,
@@ -24,5 +24,5 @@ public extension Theme {
         bodyColor: .gray,
         placeholderColor: .lightGray
     )
-    
+
 }

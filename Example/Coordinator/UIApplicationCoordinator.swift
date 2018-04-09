@@ -8,7 +8,7 @@
 
 // MARK: - UIApplicationCoordinator
 
-import TinyAuth
+import TinyKit
 
 public final class UIApplicationCoordinator: Coordinator {
 
@@ -17,7 +17,7 @@ public final class UIApplicationCoordinator: Coordinator {
     public typealias RootCoordinator = Coordinator & ViewControllerRepresentable
 
     private final var rootCoordinator: RootCoordinator
-    
+
     public init(contentSize: CGSize) {
 
         self.window = UIWindow(
@@ -26,15 +26,15 @@ public final class UIApplicationCoordinator: Coordinator {
                 size: contentSize
             )
         )
-        
+
         self.rootCoordinator = UIRootCoordinator(contentSize: contentSize)
-        
+
     }
 
     public final func activate() {
 
         window.rootViewController = rootCoordinator.viewController
-        
+
         window.makeKeyAndVisible()
 
         rootCoordinator.activate()
