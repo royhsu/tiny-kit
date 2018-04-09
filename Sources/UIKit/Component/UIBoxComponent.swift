@@ -61,9 +61,9 @@ public final class UIBoxComponent: Component {
         
         view.backgroundColor = .clear
         
-//        trailingConstraint.priority = UILayoutPriority(900.0)
+        trailingConstraint.priority = UILayoutPriority(900.0)
         
-//        bottomConstraint.priority = UILayoutPriority(900.0)
+        bottomConstraint.priority = UILayoutPriority(900.0)
         
     }
     
