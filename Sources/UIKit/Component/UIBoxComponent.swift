@@ -61,9 +61,9 @@ public final class UIBoxComponent: Component {
         
         view.backgroundColor = .clear
         
-        trailingConstraint.priority = UILayoutPriority(900.0)
+//        trailingConstraint.priority = UILayoutPriority(900.0)
         
-        bottomConstraint.priority = UILayoutPriority(900.0)
+//        bottomConstraint.priority = UILayoutPriority(900.0)
         
     }
     
@@ -83,9 +83,9 @@ public final class UIBoxComponent: Component {
         
         contentView.removeFromSuperview()
         
-        view.addSubview(contentView)
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(contentView)
         
         topConstraint.constant = -paddingInsets.top
         

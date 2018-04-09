@@ -69,7 +69,7 @@ internal final class UIProductDescriptionComponent: Component, Stylable {
 
         let descriptionView = itemComponent.itemView
 
-        descriptionView.actionContainerView.render(with: actionButtonComponent)
+        descriptionView.actionContainerView.wrapSubview(actionButtonComponent.view)
 
         descriptionView.applyTheme(theme)
 

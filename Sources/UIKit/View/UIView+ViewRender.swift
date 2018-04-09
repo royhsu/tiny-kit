@@ -6,40 +6,9 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ViewRenderer
+// MARK: - Wrapping Subview
 
-import UIKit
-
-extension UIView: ViewRenderer {
-
-    // TODO: deprecating this method.
-    public final func render(with renderable: ViewRenderable) {
-
-        let contentView = renderable.view
-
-        contentView.removeFromSuperview()
-
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        let bottomConstraint = bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
-        bottomConstraint.priority = UILayoutPriority(900.0)
-
-        addSubview(contentView)
-
-        NSLayoutConstraint.activate(
-            [
-                leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                topAnchor.constraint(equalTo: contentView.topAnchor),
-                trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                bottomConstraint
-            ]
-        )
-
-    }
-
-}
-
+// Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
 public extension UIView {
     
     /// A convenient method to add subview and pin it to edges to the parent with Auto Layout.
@@ -48,6 +17,10 @@ public extension UIView {
         view.removeFromSuperview()
         
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let trailingConstraint = trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        
+        trailingConstraint.priority = UILayoutPriority(900.0)
         
         let bottomConstraint = bottomAnchor.constraint(equalTo: view.bottomAnchor)
         
@@ -59,7 +32,7 @@ public extension UIView {
             [
                 leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 topAnchor.constraint(equalTo: view.topAnchor),
-                trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                trailingConstraint,
                 bottomConstraint
             ]
         )

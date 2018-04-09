@@ -50,7 +50,7 @@ public final class UIRootCoordinator: Coordinator {
         self.rootComponent = listComponent
         
         self.navigationController = UINavigationController(
-            rootViewController: UIComponentViewController(component: rootComponent)
+            rootViewController: UIComponentViewController(component: listComponent)
         )
 
     }

@@ -32,7 +32,7 @@ public final class UIComponentViewController: UIViewController {
 
         super.viewDidLoad()
 
-        view.render(with: component)
+        view.wrapSubview(component.view)
 
     }
 

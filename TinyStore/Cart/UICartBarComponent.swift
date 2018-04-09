@@ -49,7 +49,7 @@ public final class UICartBarComponent: Component {
 
         let barView = itemComponent.itemView
 
-        barView.actionContainerView.render(with: actionButtonComponent)
+        barView.actionContainerView.wrapSubview(actionButtonComponent.view)
 
         actionButtonComponent.render()
 

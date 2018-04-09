@@ -84,7 +84,7 @@ public final class UICollectionComponent: Component {
 
             component.render()
 
-            cell.contentView.render(with: component)
+            cell.contentView.wrapSubview(component.view)
 
         }
 

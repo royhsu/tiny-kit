@@ -87,7 +87,7 @@ extension UITableViewBridge: UITableViewDataSource {
         cell.selectionStyle = .none
 
         cell.backgroundColor = .clear
-
+        
         configureCellHandler?(
             cell,
             indexPath

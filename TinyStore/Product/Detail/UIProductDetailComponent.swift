@@ -120,8 +120,8 @@ public final class UIProductDetailComponent: Component {
             descriptionComponent,
             spacingComponent(10.0),
             reviewSectionHeaderComponent,
-            spacingComponent(10.0),
-            reviewCarouselComponent
+//            spacingComponent(10.0),
+//            reviewCarouselComponent
         ]
 
         if hasIntroductionPost {

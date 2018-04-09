@@ -132,7 +132,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
         view.backgroundColor = .white
 
-        view.render(with: component)
+        view.wrapSubview(component.view)
 
     }
 

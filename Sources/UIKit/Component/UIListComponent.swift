@@ -51,10 +51,6 @@ public final class UIListComponent: ListComponent {
             equalToConstant: tableView.bounds.height
         )
 
-        NSLayoutConstraint.activate(
-            [ tableViewHeightConstraint ]
-        )
-
         self.numberOfSections = 0
 
         self.prepare()
@@ -71,17 +67,17 @@ public final class UIListComponent: ListComponent {
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
 
-            cell.contentView.render(with: component)
+            cell.contentView.wrapSubview(component.view)
 
             component.render()
-
+            
         }
 
         bridge.heightForRowProvider = { [unowned self] indexPath in
 
             guard
                 let component = self.itemComponentProvider?(indexPath)
-            else { return  0.0 }
+            else { return 0.0 }
 
             switch component.contentMode {
 
@@ -92,7 +88,13 @@ public final class UIListComponent: ListComponent {
             }
 
         }
-
+        
+        tableViewHeightConstraint.priority = UILayoutPriority(750.0)
+        
+        NSLayoutConstraint.activate(
+            [ tableViewHeightConstraint ]
+        )
+        
     }
 
     // MARK: ListComponent

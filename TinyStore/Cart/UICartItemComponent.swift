@@ -103,15 +103,15 @@ public final class UICartItemComponent: Component, Stylable {
 
         let itemView = itemComponent.itemView
 
-        itemView.selectionContainerView.render(with: selectionComponent)
+        itemView.selectionContainerView.wrapSubview(selectionComponent.view)
 
         selectionComponent.render()
 
-        itemView.quantityPickerContainerView.render(with: quantityComponent)
+        itemView.quantityPickerContainerView.wrapSubview(quantityComponent.view)
 
         quantityComponent.render()
 
-        itemView.optionChainContainerView.render(with: optionChainComponent)
+        itemView.optionChainContainerView.wrapSubview(optionChainComponent.view)
 
         optionChainComponent.render()
 
