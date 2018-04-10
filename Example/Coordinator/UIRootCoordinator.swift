@@ -27,7 +27,11 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
         
-        let collectionComponent: CollectionComponent = listComponent
+        let carouselComponent = UICarouselComponent()
+        
+        carouselComponent.minimumItemWidthProvider = { _ in 200.0 }
+        
+        let collectionComponent: CollectionComponent = carouselComponent
         
         collectionComponent.setItemComponents(
             [

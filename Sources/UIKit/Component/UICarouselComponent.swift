@@ -8,68 +8,87 @@
 
 // MARK: - UICarouselComponent
 
-/// All items in a carousel component will be stretch out to fit the height of it.
-public final class UICarouselComponent: Component {
+/// All items in a carousel component will be stretch out their height to fit the parent.
+public final class UICarouselComponent: CollectionComponent {
 
     /// The base component.
-    private final let collectionComponent: UICollectionComponent
-
-    public final var itemComponents: AnyCollection<Component> = AnyCollection(
-        []
-    )
-
-    public init(contentMode: ComponentContentMode = .automatic) {
-
-        let collectionComponent = UICollectionComponent(
-            contentMode: contentMode,
-            layout: UICollectionViewFlowLayout()
-        )
-
-//        collectionComponent.collectionViewFlowLayout.scrollDirection = .horizontal
-
-        self.collectionComponent = collectionComponent
-
+    private final let gridComponent: UIGridComponent
+    
+    public typealias MinimumItemWidthProvider = (IndexPath) -> CGFloat
+    
+    public final var minimumItemWidthProvider: MinimumItemWidthProvider? {
+        
+        didSet {
+            
+            if let provider = minimumItemWidthProvider {
+                
+                gridComponent.minimumItemSizeProvider = { _, indexPath in
+                    
+                    let width = provider(indexPath)
+                    
+                    return CGSize(
+                        width: width,
+                        height: width
+                    )
+                    
+                }
+                
+            }
+            else { gridComponent.minimumItemSizeProvider = nil }
+            
+        }
+        
     }
 
+    public init(contentMode: ComponentContentMode = .automatic) {
+        
+        self.gridComponent = UIGridComponent(
+            contentMode: contentMode,
+            layout: UIGridLayout(
+                columns: 1,
+                rows: 1,
+                scrollDirection: .horizontal
+            )
+        )
+        
+        self.prepare()
+
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() { }
+
+    // MARK: CollectionComponent
+    
+    public final var numberOfSections: Int {
+        
+        get { return gridComponent.numberOfSections }
+        
+        set { gridComponent.numberOfSections = newValue }
+        
+    }
+    
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { gridComponent.setNumberOfItemComponents(provider: provider) }
+    
+    public final func setItemComponent(provider: @escaping ItemComponentProvider) { gridComponent.setItemComponent(provider: provider) }
+    
     // MARK: Component
 
     public final var contentMode: ComponentContentMode {
 
-        get { return collectionComponent.contentMode }
+        get { return gridComponent.contentMode }
 
-        set { collectionComponent.contentMode = newValue }
-
-    }
-
-    public final func render() {
-
-//        let components = itemComponents.map { component -> Component in
-//
-//            component.render()
-//
-//            var itemComponent = component
-//
-//            itemComponent.contentMode = .size(
-//                width: component.view.bounds.width,
-//                height: view.bounds.height
-//            )
-//
-//            return itemComponent
-//
-//        }
-//
-//        itemComponents = AnyCollection(components)
-
-//        collectionComponent.itemComponents = itemComponents
-
-        collectionComponent.render()
+        set { gridComponent.contentMode = newValue }
 
     }
+
+    public final func render() { gridComponent.render() }
 
     // MARK: ViewRenderable
 
-    public final var view: View { return collectionComponent.view }
+    public final var view: View { return gridComponent.view }
 
-    public final var preferredContentSize: CGSize { return collectionComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return gridComponent.preferredContentSize }
 
 }

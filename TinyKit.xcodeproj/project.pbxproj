@@ -381,16 +381,16 @@
 		B05E67922039B7B4003E8E0E /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
-				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
-				B04707EA207C820200331D26 /* UIGridLayout.swift */,
-				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
-				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
-				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
 				B0C357A52064EF090017E1F0 /* CollectionComponent.swift */,
 				B0542DDC20648E340078B3CE /* ListComponent.swift */,
-				B0542DDE2064B56E0078B3CE /* UIListComponent.swift */,
+				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
 				B04707E6207A58BE00331D26 /* UIBoxComponent.swift */,
+				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
+				B04707EA207C820200331D26 /* UIGridLayout.swift */,
+				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
+				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
+				B0542DDE2064B56E0078B3CE /* UIListComponent.swift */,
+				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
