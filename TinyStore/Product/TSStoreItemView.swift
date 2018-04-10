@@ -1,18 +1,18 @@
 //
-//  UIGridItemView.swift
+//  TSStoreItemView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 12/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+// MARK: - TSStoreItemView
+
 // NOTE: The source code of the included third-party library ShadowView is modified. The rendering priorty gets higher from .utilities to .userinteractive.
 // Beware of this if the library needs to be updated.
 
-// MARK: - UIGridItemView
-
 // TODO: measure the performance impact while rending preview image with a shadow.
-public final class UIGridItemView: UIView {
+public final class TSStoreItemView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var shadowView: ShadowView!

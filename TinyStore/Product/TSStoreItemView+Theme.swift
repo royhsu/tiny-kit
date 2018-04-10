@@ -10,7 +10,7 @@
 
 import TinyUI
 
-public extension UIGridItemView {
+public extension TSStoreItemView {
 
     public final func applyTheme(_ theme: Theme) {
 

@@ -94,8 +94,8 @@ public final class UIStoreCoordinator: Coordinator {
                 weakSelf.storeComponent.setItemComponents(
                     products.map { product in
                         
-                        let itemComponent = UIGridItemComponent()
-                            
+                        let itemComponent = TSStoreItemComponent()
+                        
                         itemComponent.titleLabel.text = product.title
                         
                         itemComponent.subtitleLabel.text = "$\(product.price)"

@@ -1,27 +1,21 @@
 //
-//  UIGridItemComponent.swift
+//  TSStoreItemComponent.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 12/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIGridItemComponent
+// MARK: - TSStoreItemComponent
 
 import TinyUI
 
-public final class UIGridItemComponent: Component, Stylable {
+public final class TSStoreItemComponent: Component, Stylable {
 
     private final let bundle: Bundle
 
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIGridItemView>
-    
-    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel! }
-    
-    public final var subtitleLabel: UILabel { return itemComponent.itemView.subtitleLabel! }
-    
-    public final var previewImageView: UIImageView { return itemComponent.itemView.previewImageView! }
+    private final let itemComponent: UIItemComponent<TSStoreItemView>
 
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -35,7 +29,7 @@ public final class UIGridItemComponent: Component, Stylable {
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UIGridItemView.self,
+                TSStoreItemView.self,
                 from: bundle
             )!
         )
@@ -90,38 +84,12 @@ public final class UIGridItemComponent: Component, Stylable {
 
 }
 
-public extension UIGridItemComponent {
-
-//    @discardableResult
-//    public final func setTitle(_ title: String?) -> UIGridItemComponent {
-//
-//       itemComponent.itemView.titleLabel.text = title
-//
-//        return self
-//
-//    }
-//
-//    @discardableResult
-//    public final func setSubtitle(_ subtitle: String?) -> UIGridItemComponent {
-//
-//        itemComponent.itemView.subtitleLabel.text = subtitle
-//
-//        return self
-//
-//    }
-//
-//    @discardableResult
-//    public final func setPreviewImages(
-//        _ images: [UIImage]
-//    )
-//    -> UIGridItemComponent {
-//
-//        itemComponent.itemView.previewImageView.image = images.first
-//
-//        itemComponent.itemView.shadowView.updateShadow()
-//
-//        return self
-//
-//    }
-
+public extension TSStoreItemComponent {
+    
+    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel! }
+    
+    public final var subtitleLabel: UILabel { return itemComponent.itemView.subtitleLabel! }
+    
+    public final var previewImageView: UIImageView { return itemComponent.itemView.previewImageView! }
+    
 }
