@@ -96,9 +96,15 @@ public final class UIGridComponent: CollectionComponent {
                     indexPath
                 )
                 
+                let minimumItemHeight = minimumItemSize?.height ?? gridSize.height
+                
+                let itemHeight = (minimumItemHeight < gridSize.height)
+                    ? minimumItemHeight
+                    : gridSize.height
+
                 return CGSize(
                     width: gridSize.width,
-                    height: minimumItemSize?.height ?? gridSize.height
+                    height: itemHeight
                 )
                 
             case .horizontal:
@@ -112,8 +118,8 @@ public final class UIGridComponent: CollectionComponent {
                 if spacingOfLines < 0.0 { spacingOfLines = 0.0 }
                 
                 let gridSize = CGSize(
-                    width: safeAreaRect.width / CGFloat(layout.columns),
-                    height: safeAreaRect.height / CGFloat(layout.rows)
+                    width: (safeAreaRect.width - spacingOfLines) / CGFloat(layout.columns),
+                    height: (safeAreaRect.height - spacingOfInteritems) / CGFloat(layout.rows)
                 )
                 
                 let minimumItemSize = self.minimumItemSizeProvider?(
@@ -122,8 +128,14 @@ public final class UIGridComponent: CollectionComponent {
                     indexPath
                 )
                 
+                let minimumItemWidth = minimumItemSize?.width ?? gridSize.width
+                
+                let itemWidth = (minimumItemWidth < gridSize.width)
+                    ? minimumItemWidth
+                    : gridSize.width
+                
                 return CGSize(
-                    width: minimumItemSize?.width ?? gridSize.width,
+                    width: itemWidth,
                     height: gridSize.height
                 )
                 

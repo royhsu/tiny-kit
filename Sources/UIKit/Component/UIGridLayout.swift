@@ -10,8 +10,10 @@
 
 public struct UIGridLayout {
     
+    /// The number of columns must be greater than or equal to 1.
     public var columns: Int
     
+    /// The number of rows must be greater than or equal to 1.
     public var rows: Int
     
     public var interitemSpacing: CGFloat
@@ -27,6 +29,10 @@ public struct UIGridLayout {
         lineSpacing: CGFloat = 0.0,
         scrollDirection: UICollectionViewScrollDirection = .vertical
     ) {
+        
+        if columns < 1 { fatalError("The number of columns must be greater than or equal to 1.") }
+        
+        if rows < 1 { fatalError("The number of rows must be greater than or equal to 1.") }
         
         self.columns = columns
         
