@@ -6,25 +6,6 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-public struct UIGridLayout {
-    
-    public var columns: Int
-    
-    public var rows: Int
-    
-    public init(
-        columns: Int,
-        rows: Int
-    ) {
-      
-        self.columns = columns
-        
-        self.rows = rows
-        
-    }
-    
-}
-
 // MARK: - UIGridComponent
 
 public final class UIGridComponent: CollectionComponent {
@@ -32,14 +13,48 @@ public final class UIGridComponent: CollectionComponent {
     /// The base component.
     private final let collectionComponent: UICollectionComponent
     
-    public final var layout: UIGridLayout
+    private final let collectionViewFlowLayout: UICollectionViewFlowLayout
+    
+    public final var layout: UIGridLayout {
+        
+        didSet { collectionViewFlowLayout.scrollDirection = layout.scrollDirection }
+        
+    }
+    
+    public typealias MinimumItemSizeProvider = (UIGridLayout, IndexPath) -> CGSize
+    
+    /// The provider should return a proper width for columns in vertical scroll direction.
+    /// and height for rows in horizontal scroll direction.
+    /// If any of them are out of valid rect will be ignored.
+    ///
+    /// If this provider is nil, the component will calculate the column-based width and row-based height automatically to fit its safe area rect.
+    public final var minimumItemSizeProvider: MinimumItemSizeProvider?
     
     public init(
         contentMode: ComponentContentMode = .automatic,
         layout: UIGridLayout
     ) {
         
-        self.collectionComponent = UICollectionComponent(contentMode: contentMode)
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        flowLayout.minimumInteritemSpacing = 0.0
+        
+        flowLayout.minimumLineSpacing = 0.0
+        
+        flowLayout.headerReferenceSize = .zero
+        
+        flowLayout.footerReferenceSize = .zero
+        
+        flowLayout.sectionInset = .zero
+        
+        flowLayout.scrollDirection = layout.scrollDirection
+        
+        self.collectionViewFlowLayout = flowLayout
+        
+        self.collectionComponent = UICollectionComponent(
+            contentMode: contentMode,
+            layout: flowLayout
+        )
         
         self.layout = layout
         
@@ -53,48 +68,35 @@ public final class UIGridComponent: CollectionComponent {
         
         collectionComponent.sizeForItemProvider = { [unowned self] _, indexPath in
             
-            let collectionComponent = self.collectionComponent
+            let layout = self.layout
             
-            let collectionView = collectionComponent.collectionView
+            let minimumItemSize = self.minimumItemSizeProvider?(
+                layout,
+                indexPath
+            )
             
-            var maxWidth = collectionView.bounds.width
-                - collectionView.contentInset.left
-                - collectionView.contentInset.right
-                - collectionView.safeAreaInsets.left
-                - collectionView.safeAreaInsets.right
-
-            if maxWidth < 0.0 { maxWidth = 0.0 }
-
-            var maxHeight = collectionView.bounds.height
-                - collectionView.contentInset.top
-                - collectionView.contentInset.bottom
-                - collectionView.safeAreaInsets.top
-                - collectionView.safeAreaInsets.bottom
-
-            if maxHeight < 0.0 { maxHeight = 0.0 }
+            let collectionViewFlowLayout = self.collectionViewFlowLayout
             
-            switch collectionComponent.scrollDirection {
+            let safeAreaRect = self.collectionView.safeAreaRect
+            
+            let gridWidth = safeAreaRect.width / CGFloat(layout.columns)
+            
+            let gridHeight = safeAreaRect.height / CGFloat(layout.rows)
+            
+            switch collectionViewFlowLayout.scrollDirection {
                
             case .vertical:
                 
-                let width = maxWidth / CGFloat(self.layout.columns)
-                
-                let height: CGFloat = 150.0
-                
                 return CGSize(
-                    width: width,
-                    height: height
+                    width: gridWidth,
+                    height: minimumItemSize?.height ?? gridHeight
                 )
                 
             case .horizontal:
                 
-                let width: CGFloat = 150.0
-                
-                let height = maxHeight / CGFloat(self.layout.rows)
-                
                 return CGSize(
-                    width: width,
-                    height: height
+                    width: minimumItemSize?.width ?? gridWidth,
+                    height: gridHeight
                 )
                 
             }
@@ -139,12 +141,6 @@ public final class UIGridComponent: CollectionComponent {
 
 public extension UIGridComponent {
     
-    public final var scrollDirection: UICollectionViewScrollDirection {
-        
-        get { return collectionComponent.scrollDirection }
-        
-        set { collectionComponent.scrollDirection = newValue }
-        
-    }
+    public final var collectionView: UICollectionView { return collectionComponent.collectionView }
     
 }

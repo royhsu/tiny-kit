@@ -51,7 +51,16 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        gridComponent.scrollDirection = .horizontal
+        gridComponent.minimumItemSizeProvider = { _, _ in
+
+            return CGSize(
+                width: 50.0,
+                height: 50.0
+            )
+
+        }
+        
+        gridComponent.layout.scrollDirection = .horizontal
         
         gridComponent.setItemComponents(
             [
@@ -74,7 +83,9 @@ public final class UIRootCoordinator: Coordinator {
     
     fileprivate static func makeCollectionComponent() -> Component {
         
-        let collectionComponent = UICollectionComponent()
+        let collectionComponent = UICollectionComponent(
+            layout: UICollectionViewFlowLayout()
+        )
         
         let colorComponentFactory: (UIColor) -> Component = { color in
         

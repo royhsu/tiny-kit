@@ -20,9 +20,12 @@ public final class UICarouselComponent: Component {
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
-        let collectionComponent = UICollectionComponent(contentMode: contentMode)
+        let collectionComponent = UICollectionComponent(
+            contentMode: contentMode,
+            layout: UICollectionViewFlowLayout()
+        )
 
-        collectionComponent.scrollDirection = .horizontal
+//        collectionComponent.collectionViewFlowLayout.scrollDirection = .horizontal
 
         self.collectionComponent = collectionComponent
 
