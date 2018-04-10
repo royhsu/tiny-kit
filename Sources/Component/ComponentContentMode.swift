@@ -12,6 +12,7 @@ public enum ComponentContentMode {
 
     case size(CGSize)
 
+    // TODO: add associated value preferredInitialWidth to replace UIScreen.main.bounds dependency.
     case automatic
 
 }

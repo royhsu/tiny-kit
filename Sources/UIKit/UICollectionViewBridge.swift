@@ -12,8 +12,14 @@ public final class UICollectionViewBridge: NSObject {
 
     private final unowned let collectionView: UICollectionView
 
-    internal init(collectionView: UICollectionView) {
+    public init(collectionView: UICollectionView) {
 
+        self.numberOfSections = 0
+        
+        self.numberOfItemsProvider = { _ in 0 }
+        
+        self.sizeForItemProvider = { _, _ in .zero }
+        
         self.collectionView = collectionView
 
         super.init()
@@ -21,6 +27,8 @@ public final class UICollectionViewBridge: NSObject {
         setUpCollectionView(collectionView)
 
     }
+    
+    // MARK: Set Up
 
     fileprivate final func setUpCollectionView(_ collectionView: UICollectionView) {
 
@@ -32,25 +40,19 @@ public final class UICollectionViewBridge: NSObject {
 
     }
 
-    public typealias NumberOfSectionsHandler = () -> Int
+    public final var numberOfSections: Int
 
-    public final var numberOfSectionsHandler: NumberOfSectionsHandler?
+    public typealias NumberOfItemsProvider = (_ section: Int) -> Int
 
-    public typealias NumberOfItemsHandler = (_ section: Int) -> Int
-
-    public final var numberOfItemsHandler: NumberOfItemsHandler?
+    public final var numberOfItemsProvider: NumberOfItemsProvider
 
     public typealias ConfigureCellHandler = (UICollectionViewCell, IndexPath) -> Void
 
     public final var configureCellHandler: ConfigureCellHandler?
 
-    public typealias SizeForItemHandler = (UICollectionViewLayout, IndexPath) -> CGSize
+    public typealias SizeForItemProvider = (UICollectionViewLayout, IndexPath) -> CGSize
 
-    public final var sizeForItemHandler: SizeForItemHandler?
-
-    public typealias DidSelectItemHandler = (IndexPath) -> Void
-
-    public final var didSelectItemHandler: DidSelectItemHandler?
+    public final var sizeForItemProvider: SizeForItemProvider
 
 }
 
@@ -58,25 +60,13 @@ public final class UICollectionViewBridge: NSObject {
 
 extension UICollectionViewBridge: UICollectionViewDataSource {
 
-    public final func numberOfSections(in collectionView: UICollectionView) -> Int {
-
-        let sections = numberOfSectionsHandler?()
-
-        return sections ?? 0
-
-    }
+    public final func numberOfSections(in collectionView: UICollectionView) -> Int { return numberOfSections }
 
     public final func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     )
-    -> Int {
-
-        let items = numberOfItemsHandler?(section)
-
-        return items ?? 0
-
-    }
+    -> Int { return numberOfItemsProvider(section) }
 
     public final func collectionView(
         _ collectionView: UICollectionView,
@@ -89,17 +79,13 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
                 UICollectionViewCell.self,
                 for: indexPath
             )
-        else { fatalError("Cannot dequeue a cell from type UICollectionViewCell.") }
+        else { fatalError("CANNOT dequeue a cell with type UICollectionViewCell.") }
 
         // TODO: there are no visual hints for debugging a cell because there the background color is nil.
         // should find a way to improve the UI debugging process.
 
         // TODO: should find a better strategy to remove previously added views.
-        cell.contentView.subviews.forEach {
-
-            $0.removeFromSuperview()
-
-        }
+        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
 
         configureCellHandler?(
             cell,
@@ -109,17 +95,6 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
         return cell
 
     }
-
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension UICollectionViewBridge: UICollectionViewDelegate {
-
-    public final func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath
-    ) { didSelectItemHandler?(indexPath) }
 
 }
 
@@ -133,14 +108,12 @@ extension UICollectionViewBridge: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     )
     -> CGSize {
-
-        let size = sizeForItemHandler?(
+        
+        return sizeForItemProvider(
             collectionViewLayout,
             indexPath
         )
-
-        return size ?? .zero
-
+        
     }
 
 }

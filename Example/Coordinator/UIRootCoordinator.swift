@@ -18,7 +18,7 @@ public final class UIRootCoordinator: Coordinator {
 
     public init(contentSize: CGSize) {
 
-        self.rootComponent = UIRootCoordinator.makeLabelComponent()
+        self.rootComponent = UIRootCoordinator.makeCollectionComponent()
         
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: rootComponent)
@@ -29,6 +29,52 @@ public final class UIRootCoordinator: Coordinator {
     public final func activate() { rootComponent.render() }
 
     // MARK: Example
+    
+    fileprivate static func makeCollectionComponent() -> Component {
+        
+        let collectionComponent = UICollectionComponent()
+        
+        let colorComponentFactory: (UIColor) -> Component = { color in
+        
+            let colorView = UIView()
+            
+            colorView.backgroundColor = color
+            
+            let itemComponent = UIItemComponent(itemView: colorView)
+            
+            return itemComponent
+        
+        }
+        
+//        collectionComponent.scrollDirection = .horizontal
+        
+        collectionComponent.setItemComponents(
+            [
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green)
+            ]
+        )
+        
+        collectionComponent.sizeForItemProvider = { layout, indexPath in
+            
+            return CGSize(
+                width: 150.0,
+                height: 150.0
+            )
+            
+        }
+        
+        return collectionComponent
+        
+    }
     
     fileprivate static func makeLabelComponent() -> Component {
         

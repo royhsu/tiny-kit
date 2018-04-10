@@ -9,25 +9,17 @@
 // MARK: - UICollectionComponent
 
 /// NOTE: The maximum size of an item is limited to the size of the collection.
-public final class UICollectionComponent: Component {
+public final class UICollectionComponent: CollectionComponent {
 
+    // TODO: mark as internal.
     public final let collectionView: UICollectionView
 
+    // TODO: mark as internal.
     public final let collectionLayout: UICollectionViewFlowLayout
 
-    private final let bridge: UICollectionViewBridge
-
-    public final var scrollDirection: UICollectionViewScrollDirection {
-
-        get { return collectionLayout.scrollDirection }
-
-        set { collectionLayout.scrollDirection = newValue }
-
-    }
-
-    public typealias ComponentForItemHandler = (IndexPath) -> Component?
-
-    private final var componentForItemHandler: ComponentForItemHandler?
+    fileprivate final let bridge: UICollectionViewBridge
+    
+    fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
@@ -51,11 +43,16 @@ public final class UICollectionComponent: Component {
 
         }
 
+        // TODO: inject from outside.
         let collectionLayout = UICollectionViewFlowLayout()
 
-        collectionLayout.minimumInteritemSpacing = 0.0
+        collectionLayout.minimumInteritemSpacing = 10.0
 
-        collectionLayout.minimumLineSpacing = 0.0
+        collectionLayout.minimumLineSpacing = 10.0
+        
+//        collectionLayout.minimumInteritemSpacing = 0.0
+//
+//        collectionLayout.minimumLineSpacing = 0.0
 
         collectionLayout.headerReferenceSize = .zero
 
@@ -70,67 +67,93 @@ public final class UICollectionComponent: Component {
             collectionViewLayout: collectionLayout
         )
 
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-
         self.collectionView = collectionView
 
         self.bridge = UICollectionViewBridge(collectionView: collectionView)
+        
+        self.collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.bounds.height)
+        
+        self.numberOfSections = 0
+        
+        self.prepare()
+        
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
 
-        bridge.configureCellHandler = { /* [unowned self] */ cell, indexPath in
+        bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
-                let component = self.componentForItemHandler?(indexPath)
+                let component = self.itemComponentProvider?(indexPath)
             else { return }
 
-            component.render()
-
             cell.contentView.wrapSubview(component.view)
-
-        }
-
-        bridge.sizeForItemHandler = { /* [unowned self] */layout, indexPath in
-
-            var maxWidth = self.collectionView.bounds.width
-                - collectionView.contentInset.left
-                - collectionView.contentInset.right
-                - collectionView.safeAreaInsets.left
-                - collectionView.safeAreaInsets.right
-
-            if maxWidth < 0.0 { maxWidth = 0.0 }
-
-            var maxHeight = self.collectionView.bounds.height
-                - collectionView.contentInset.top
-                - collectionView.contentInset.bottom
-                - collectionView.safeAreaInsets.top
-                - collectionView.safeAreaInsets.bottom
-
-            if maxHeight < 0.0 { maxHeight = 0.0 }
-
-            guard
-                let component = self.componentForItemHandler?(indexPath)
-            else { return .zero }
-
+            
             component.render()
 
-            let width = (component.preferredContentSize.width < maxWidth)
-                ? component.preferredContentSize.width
-                : maxWidth
-
-            let height = (component.preferredContentSize.height < maxHeight)
-                ? component.preferredContentSize.height
-                : maxHeight
-
-            // TODO: make warnings for item size that's not in a valid range.
-
-            return CGSize(
-                width: width,
-                height: height
-            )
-
         }
+
+//        bridge.sizeForItemProvider = { [unowned self] layout, indexPath in
+//
+//            var maxWidth = self.collectionView.bounds.width
+//                - self.collectionView.contentInset.left
+//                - self.collectionView.contentInset.right
+//                - self.collectionView.safeAreaInsets.left
+//                - self.collectionView.safeAreaInsets.right
+//
+//            if maxWidth < 0.0 { maxWidth = 0.0 }
+//
+//            var maxHeight = self.collectionView.bounds.height
+//                - self.collectionView.contentInset.top
+//                - self.collectionView.contentInset.bottom
+//                - self.collectionView.safeAreaInsets.top
+//                - self.collectionView.safeAreaInsets.bottom
+//
+//            if maxHeight < 0.0 { maxHeight = 0.0 }
+//
+//            guard
+//                let component = self.componentForItemHandler?(indexPath)
+//            else { return .zero }
+//
+//            component.render()
+//
+//            let width = (component.preferredContentSize.width < maxWidth)
+//                ? component.preferredContentSize.width
+//                : maxWidth
+//
+//            let height = (component.preferredContentSize.height < maxHeight)
+//                ? component.preferredContentSize.height
+//                : maxHeight
+//
+//            // TODO: make warnings for item size that's not in a valid range.
+//
+//            return CGSize(
+//                width: width,
+//                height: height
+//            )
+//
+//        }
 
     }
 
+    // MARK: CollectionComponent
+    
+    public final var numberOfSections: Int {
+        
+        get { return bridge.numberOfSections }
+        
+        set { bridge.numberOfSections = newValue }
+        
+    }
+    
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { bridge.numberOfItemsProvider = provider }
+    
+    private final var itemComponentProvider: ItemComponentProvider?
+    
+    public final func setItemComponent(provider: @escaping ItemComponentProvider) { itemComponentProvider = provider }
+    
     // MARK: Component
 
     public final var contentMode: ComponentContentMode
@@ -161,58 +184,27 @@ public final class UICollectionComponent: Component {
     public final var view: View { return collectionView }
 
     public final var preferredContentSize: CGSize { return collectionView.bounds.size }
-
+    
 }
 
 public extension UICollectionComponent {
-
-    public typealias NumberOfSectionsHandler = UICollectionViewBridge.NumberOfSectionsHandler
-
-    @discardableResult
-    public final func setNumberOfSections(_ handler: NumberOfSectionsHandler?) -> UICollectionComponent {
-
-        bridge.numberOfSectionsHandler = handler
-
-        return self
-
+    
+    public final var scrollDirection: UICollectionViewScrollDirection {
+        
+        get { return collectionLayout.scrollDirection }
+        
+        set { collectionLayout.scrollDirection = newValue }
+        
     }
-
-    public final func numberOfSections() -> Int { return collectionView.numberOfSections }
-
-    public typealias NumberOfItemsHandler = UICollectionViewBridge.NumberOfItemsHandler
-
-    @discardableResult
-    public final func setNumberOfItems(_ handler: NumberOfItemsHandler?) -> UICollectionComponent {
-
-        bridge.numberOfItemsHandler = handler
-
-        return self
-
-    }
-
-    public final func numberOfItems(inSection section: Int) -> Int { return collectionView.numberOfItems(inSection: section) }
-
-    @discardableResult
-    public final func setComponentForItem(_ handler: ComponentForItemHandler?) -> UICollectionComponent {
-
-        componentForItemHandler = handler
-
-        return self
-
-    }
-
-    public final func componentForItem(at indexPath: IndexPath) -> Component? { return componentForItemHandler?(indexPath) }
-
-    // TODO: maybe it's better to make cell components detect their touching events.
-    public typealias DidSelectItemHandler = UICollectionViewBridge.DidSelectItemHandler
-
-    @discardableResult
-    public final func setDidSelectItem(_ handler: DidSelectItemHandler?) -> Component {
-
-        bridge.didSelectItemHandler = handler
-
-        return self
-
+    
+    public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
+    
+    public final var sizeForItemProvider: SizeForItemProvider {
+        
+        get { return bridge.sizeForItemProvider }
+        
+        set { bridge.sizeForItemProvider = newValue }
+        
     }
 
 }

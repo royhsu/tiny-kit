@@ -54,10 +54,6 @@ public final class UITableViewBridge: NSObject {
 
     public final var configureCellHandler: ConfigureCellHandler?
 
-    public typealias DidSelectRowHandler = (IndexPath) -> Void
-
-    public final var didSelectRowHandler: DidSelectRowHandler?
-
 }
 
 // MARK: - UITableViewDataSource
