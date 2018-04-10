@@ -78,6 +78,12 @@ public final class UICollectionComponent: CollectionComponent {
 
         }
 
+        collectionViewHeightConstraint.priority = UILayoutPriority(750.0)
+        
+        NSLayoutConstraint.activate(
+            [ collectionViewHeightConstraint ]
+        )
+        
     }
 
     // MARK: CollectionComponent
@@ -118,6 +124,8 @@ public final class UICollectionComponent: CollectionComponent {
         }
 
         collectionView.frame.size = size
+        
+        collectionViewHeightConstraint.constant = size.height
 
     }
 
