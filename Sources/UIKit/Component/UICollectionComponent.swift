@@ -46,13 +46,13 @@ public final class UICollectionComponent: CollectionComponent {
         // TODO: inject from outside.
         let collectionLayout = UICollectionViewFlowLayout()
 
-        collectionLayout.minimumInteritemSpacing = 10.0
-
-        collectionLayout.minimumLineSpacing = 10.0
-        
-//        collectionLayout.minimumInteritemSpacing = 0.0
+//        collectionLayout.minimumInteritemSpacing = 10.0
 //
-//        collectionLayout.minimumLineSpacing = 0.0
+//        collectionLayout.minimumLineSpacing = 10.0
+        
+        collectionLayout.minimumInteritemSpacing = 0.0
+
+        collectionLayout.minimumLineSpacing = 0.0
 
         collectionLayout.headerReferenceSize = .zero
 

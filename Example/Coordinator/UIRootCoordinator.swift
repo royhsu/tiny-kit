@@ -18,7 +18,7 @@ public final class UIRootCoordinator: Coordinator {
 
     public init(contentSize: CGSize) {
 
-        self.rootComponent = UIRootCoordinator.makeCollectionComponent()
+        self.rootComponent = UIRootCoordinator.makeGridComponent()
         
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: rootComponent)
@@ -29,6 +29,48 @@ public final class UIRootCoordinator: Coordinator {
     public final func activate() { rootComponent.render() }
 
     // MARK: Example
+    
+    fileprivate static func makeGridComponent() -> Component {
+        
+        let gridComponent = UIGridComponent(
+            layout: UIGridLayout(
+                columns: 2,
+                rows: 3
+            )
+        )
+        
+        let colorComponentFactory: (UIColor) -> Component = { color in
+            
+            let colorView = UIView()
+            
+            colorView.backgroundColor = color
+            
+            let itemComponent = UIItemComponent(itemView: colorView)
+            
+            return itemComponent
+            
+        }
+        
+        gridComponent.scrollDirection = .horizontal
+        
+        gridComponent.setItemComponents(
+            [
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green),
+                colorComponentFactory(.red),
+                colorComponentFactory(.green)
+            ]
+        )
+        
+        return gridComponent
+        
+    }
     
     fileprivate static func makeCollectionComponent() -> Component {
         
