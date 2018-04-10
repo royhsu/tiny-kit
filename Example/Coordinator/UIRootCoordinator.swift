@@ -18,6 +18,20 @@ public final class UIRootCoordinator: Coordinator {
 
     public init(contentSize: CGSize) {
 
+        self.rootComponent = UIRootCoordinator.makeLabelComponent()
+        
+        self.navigationController = UINavigationController(
+            rootViewController: UIComponentViewController(component: rootComponent)
+        )
+
+    }
+
+    public final func activate() { rootComponent.render() }
+
+    // MARK: Example
+    
+    fileprivate static func makeLabelComponent() -> Component {
+        
         let listComponent = UIListComponent()
         
         let labelComponent = UIItemComponent(
@@ -47,16 +61,10 @@ public final class UIRootCoordinator: Coordinator {
             [ boxComponent ]
         )
         
-        self.rootComponent = listComponent
+        return listComponent
         
-        self.navigationController = UINavigationController(
-            rootViewController: UIComponentViewController(component: listComponent)
-        )
-
     }
-
-    public final func activate() { rootComponent.render() }
-
+    
 }
 
 // MARK: - ViewRenderable
@@ -66,4 +74,3 @@ extension UIRootCoordinator: ViewControllerRepresentable {
     public final var viewController: ViewController { return navigationController }
 
 }
-
