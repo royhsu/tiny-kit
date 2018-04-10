@@ -50,7 +50,7 @@ public final class UIHomeCoordinator: Coordinator {
                         #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
                     )
                     .setTitle("Reviews"),
-                reviewCarouselComponent: UIProductReviewCarouselComponent(),
+//                reviewCarouselComponent: UIProductReviewCarouselComponent(),
                 introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
                     .setIconImage(
                         #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)

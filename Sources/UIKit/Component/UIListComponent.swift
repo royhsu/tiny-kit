@@ -10,7 +10,7 @@
 
 public final class UIListComponent: ListComponent {
 
-    public final let tableView: UITableView
+    internal final let tableView: UITableView
 
     fileprivate final let bridge: UITableViewBridge
 
@@ -88,6 +88,10 @@ public final class UIListComponent: ListComponent {
             }
 
         }
+        
+        tableView.backgroundColor = .clear
+        
+        tableView.clipsToBounds = false
         
         tableViewHeightConstraint.priority = UILayoutPriority(750.0)
         

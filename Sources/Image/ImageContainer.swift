@@ -9,11 +9,36 @@
 // MARK: - ImageContainer
 
 import Foundation
+import Hydra
 
 public enum ImageContainer {
 
     case image(UIImage)
 
-    case url(URL, ImageProvider)
+    case url(URL, ImageProvider, Context)
 
+}
+
+// MARK: - UIImageView
+
+public extension ImageContainer {
+    
+    public func setImage(to imageView: UIImageView) {
+        
+        switch self {
+            
+        case let .image(image): imageView.image = image
+            
+        case let .url(url, provider, context):
+            
+            provider.fetch(
+                in: context,
+                url: url
+            )
+            .then(in: .main) { image in imageView.image = image }
+            
+        }
+        
+    }
+    
 }

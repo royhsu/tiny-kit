@@ -16,6 +16,12 @@ public final class UIGridItemComponent: Component, Stylable {
 
     /// The base component.
     private final let itemComponent: UIItemComponent<UIGridItemView>
+    
+    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel! }
+    
+    public final var subtitleLabel: UILabel { return itemComponent.itemView.subtitleLabel! }
+    
+    public final var previewImageView: UIImageView { return itemComponent.itemView.previewImageView! }
 
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -86,36 +92,36 @@ public final class UIGridItemComponent: Component, Stylable {
 
 public extension UIGridItemComponent {
 
-    @discardableResult
-    public final func setTitle(_ title: String?) -> UIGridItemComponent {
-
-       itemComponent.itemView.titleLabel.text = title
-
-        return self
-
-    }
-
-    @discardableResult
-    public final func setSubtitle(_ subtitle: String?) -> UIGridItemComponent {
-
-        itemComponent.itemView.subtitleLabel.text = subtitle
-
-        return self
-
-    }
-
-    @discardableResult
-    public final func setPreviewImages(
-        _ images: [UIImage]
-    )
-    -> UIGridItemComponent {
-
-        itemComponent.itemView.previewImageView.image = images.first
-
-        itemComponent.itemView.shadowView.updateShadow()
-
-        return self
-
-    }
+//    @discardableResult
+//    public final func setTitle(_ title: String?) -> UIGridItemComponent {
+//
+//       itemComponent.itemView.titleLabel.text = title
+//
+//        return self
+//
+//    }
+//
+//    @discardableResult
+//    public final func setSubtitle(_ subtitle: String?) -> UIGridItemComponent {
+//
+//        itemComponent.itemView.subtitleLabel.text = subtitle
+//
+//        return self
+//
+//    }
+//
+//    @discardableResult
+//    public final func setPreviewImages(
+//        _ images: [UIImage]
+//    )
+//    -> UIGridItemComponent {
+//
+//        itemComponent.itemView.previewImageView.image = images.first
+//
+//        itemComponent.itemView.shadowView.updateShadow()
+//
+//        return self
+//
+//    }
 
 }

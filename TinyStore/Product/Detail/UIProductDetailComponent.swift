@@ -24,7 +24,7 @@ public final class UIProductDetailComponent: Component {
 
     public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
 
-    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
+//    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
 
     public final var hasIntroductionPost = false
 
@@ -38,7 +38,7 @@ public final class UIProductDetailComponent: Component {
         galleryComponent: UIProductGalleryComponent,
         actionButtonComponent: UIPrimaryButtonComponent,
         reviewSectionHeaderComponent: UIProductSectionHeaderComponent,
-        reviewCarouselComponent: UIProductReviewCarouselComponent,
+//        reviewCarouselComponent: UIProductReviewCarouselComponent,
         introductionSectionHeaderComponent: UIProductSectionHeaderComponent
     ) {
 
@@ -52,7 +52,7 @@ public final class UIProductDetailComponent: Component {
 
         self.reviewSectionHeaderComponent = reviewSectionHeaderComponent
 
-        self.reviewCarouselComponent = reviewCarouselComponent
+//        self.reviewCarouselComponent = reviewCarouselComponent
 
         self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
 
@@ -93,12 +93,12 @@ public final class UIProductDetailComponent: Component {
 
         let reviewWidth = view.bounds.width
 
-        reviewCarouselComponent.contentMode = .size(
-            CGSize(
-                width: reviewWidth,
-                height: 143.0 + 10.0 // 5.0 points for the shadow.
-            )
-        )
+//        reviewCarouselComponent.contentMode = .size(
+//            CGSize(
+//                width: reviewWidth,
+//                height: 143.0 + 10.0 // 5.0 points for the shadow.
+//            )
+//        )
 
         let spacingComponent: (CGFloat) -> Component = { spacing in
 
@@ -182,27 +182,27 @@ public extension UIProductDetailComponent {
 
     }
 
-    public typealias NumberOfReviewsHandler = UIProductReviewCarouselComponent.NumberOfReviewsHandler
+//    public typealias NumberOfReviewsHandler = UIProductReviewCarouselComponent.NumberOfReviewsHandler
 
-    @discardableResult
-    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductDetailComponent {
+//    @discardableResult
+//    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductDetailComponent {
+//
+//        reviewCarouselComponent.setNumberOfReviews(handler)
+//
+//        return self
+//
+//    }
 
-        reviewCarouselComponent.setNumberOfReviews(handler)
-
-        return self
-
-    }
-
-    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
-
-    @discardableResult
-    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> UIProductDetailComponent {
-
-        reviewCarouselComponent.setComponentForReview(handler)
-
-        return self
-
-    }
+//    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
+//
+//    @discardableResult
+//    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> UIProductDetailComponent {
+//
+//        reviewCarouselComponent.setComponentForReview(handler)
+//
+//        return self
+//
+//    }
 
     @discardableResult
     public final func setIntroductionPost(

@@ -23,19 +23,19 @@ public final class ProductManager: ProductProvider {
             let products = [
                 Product(
                     id: UUID().uuidString,
-                    imageURLs: [],
+                    imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-1")) ],
                     title: "Cras mattis consectetur purus sit amet fermentum.",
                     price: 40.0
                 ),
                 Product(
                     id: UUID().uuidString,
-                    imageURLs: [],
+                    imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-2")) ],
                     title: "Aenean eu leo quam.",
                     price: 120.0
                 ),
                 Product(
                     id: UUID().uuidString,
-                    imageURLs: [],
+                    imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-3")) ],
                     title: "Donec id elit non mi porta gravida at eget metus.",
                     price: 75.0
                 )
@@ -80,7 +80,8 @@ public final class ProductManager: ProductProvider {
                     Review(
                         imageContainer: .url(
                             URL(string: "https//apple.com")!,
-                            UIImageDownloader()
+                            UIImageDownloader(),
+                            .background
                         ),
                         title: "Carolyn Simmons",
                         text: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."

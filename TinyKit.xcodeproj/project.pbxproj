@@ -387,8 +387,8 @@
 				B04707E6207A58BE00331D26 /* UIBoxComponent.swift */,
 				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
 				B04707EA207C820200331D26 /* UIGridLayout.swift */,
-				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
 				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
+				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
 				B0542DDE2064B56E0078B3CE /* UIListComponent.swift */,
 				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
 			);

@@ -13,32 +13,6 @@ public final class UICarouselComponent: CollectionComponent {
 
     /// The base component.
     private final let gridComponent: UIGridComponent
-    
-    public typealias MinimumItemWidthProvider = (IndexPath) -> CGFloat
-    
-    public final var minimumItemWidthProvider: MinimumItemWidthProvider? {
-        
-        didSet {
-            
-            if let provider = minimumItemWidthProvider {
-                
-                gridComponent.minimumItemSizeProvider = { _, indexPath in
-                    
-                    let width = provider(indexPath)
-                    
-                    return CGSize(
-                        width: width,
-                        height: width
-                    )
-                    
-                }
-                
-            }
-            else { gridComponent.minimumItemSizeProvider = nil }
-            
-        }
-        
-    }
 
     public init(contentMode: ComponentContentMode = .automatic) {
         
@@ -90,5 +64,35 @@ public final class UICarouselComponent: CollectionComponent {
     public final var view: View { return gridComponent.view }
 
     public final var preferredContentSize: CGSize { return gridComponent.preferredContentSize }
+    
+    // MARK: Action
+    
+    public typealias MinimumItemWidthProvider = (IndexPath) -> CGFloat
+    
+    private final var minimumItemWidthProvider: MinimumItemWidthProvider? {
+        
+        didSet {
+            
+            if let provider = minimumItemWidthProvider {
+                
+                gridComponent.setMinimumItemSize { _, _, indexPath in
+                    
+                    let width = provider(indexPath)
+                    
+                    return CGSize(
+                        width: width,
+                        height: width
+                    )
+                    
+                }
+                
+            }
+            else { gridComponent.setMinimumItemSize(provider: nil) }
+            
+        }
+        
+    }
+    
+    public final func setMinimumItemWidth(provider: @escaping MinimumItemWidthProvider) { minimumItemWidthProvider = provider }
 
 }

@@ -8,13 +8,13 @@
 
 // MARK: - Product
 
-import Foundation
+import TinyKit
 
 public struct Product {
 
     public let id: String
 
-    public let imageURLs: [URL]
+    public let imageContainers: [ImageContainer]
 
     public let title: String
 
@@ -22,14 +22,14 @@ public struct Product {
 
     public init(
         id: String,
-        imageURLs: [URL],
+        imageContainers: [ImageContainer],
         title: String,
         price: Double
     ) {
 
         self.id = id
 
-        self.imageURLs = imageURLs
+        self.imageContainers = imageContainers
 
         self.title = title
 

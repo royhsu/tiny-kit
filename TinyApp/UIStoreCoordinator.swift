@@ -21,56 +21,58 @@ public final class UIStoreCoordinator: Coordinator {
 
     private final let productManager: ProductManager
 
-    private final var products: [Product] {
-
-        didSet {
-
-            storeComponent
-                .setNumberOfSections { 1 }
-                .setNumberOfItems { _ in self.products.count }
-                .setComponentForItem { indexPath in
-
-                    let product = self.products[indexPath.row]
-
-                    // Prevent the size of an item greater than the collection view, that will raise an exception.
-                    let component = UIGridItemComponent(
-                        contentMode: .size(.zero)
-                    )
-                    .setTitle(product.title)
-                    .setSubtitle("$\(product.price)")
-
-                    // Emulate the image downloading process.
-                    // This will cause UI unrespondable.
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-//
-//                        component
-//                            .setPreviewImages(
-//                                [ #imageLiteral(resourceName: "image-dessert-1") ]
-//                            )
-//
-//                    }
-
-                    return component
-
-                }
-                .render()
-
-        }
-
-    }
+    private final var products: [Product]
 
     public init() {
 
-        let storeComponent = UIGridComponent()
+        self.storeComponent = UIGridComponent(
+            layout: UIGridLayout(
+                columns: 2,
+                rows: 2,
+                interitemSpacing: 30.0,
+                lineSpacing: 30.0
+            )
+        )
+        
+        let boxComponent = UIBoxComponent(contentComponent: storeComponent)
 
-        self.componentViewController = UIComponentViewController(component: storeComponent)
+        boxComponent.paddingInsets = UIEdgeInsets(
+            top: 30.0,
+            left: 30.0,
+            bottom: 30.0,
+            right: 30.0
+        )
 
-        self.storeComponent = storeComponent
-
+        // TODO: the box component is not protected under safe area, so the top and bottom will be cut.
+        self.componentViewController = UIComponentViewController(component: boxComponent)
+        
         self.productManager = ProductManager()
 
         self.products = []
+        
+        self.prepare()
 
+    }
+    
+    // MARK: Set Up
+    
+    fileprivate final func prepare() {
+        
+        storeComponent.setMinimumItemSize { layout, gridSize, indexPath in
+            
+            let itemWidth = gridSize.width
+            
+            let imageAspectRatio: CGFloat = 4.0 / 3.0
+            
+            let itemHeight = (itemWidth / imageAspectRatio)  + 63.0
+            
+            return CGSize(
+                width: itemWidth,
+                height: itemHeight
+            )
+            
+        }
+        
     }
 
     // MARK: Coordinator
@@ -81,7 +83,35 @@ public final class UIStoreCoordinator: Coordinator {
 
         productManager
             .fetchProducts(in: .background)
-            .then(in: .main) { self.products = $0 }
+            .then(in: .main) { [weak self] products in
+                
+                guard
+                    let weakSelf = self
+                else { return }
+                
+                weakSelf.products = products
+            
+                weakSelf.storeComponent.setItemComponents(
+                    products.map { product in
+                        
+                        let itemComponent = UIGridItemComponent()
+                            
+                        itemComponent.titleLabel.text = product.title
+                        
+                        itemComponent.subtitleLabel.text = "$\(product.price)"
+                        
+                        let imageContainer = product.imageContainers.first
+                        
+                        imageContainer?.setImage(to: itemComponent.previewImageView)
+        
+                        return itemComponent
+                        
+                    }
+                )
+                
+                weakSelf.storeComponent.render()
+                
+            }
             .catch(in: .main) { error in
 
                 // TODO: error handling.
@@ -100,13 +130,13 @@ public extension UIStoreCoordinator {
     @discardableResult
     public final func setDidSelectProduct(_ handler: DidSelectProductHandler?) -> UIStoreCoordinator {
 
-        storeComponent.setDidSelectItem { indexPath in
-
-            let product = self.products[indexPath.row]
-
-            handler?(product)
-
-        }
+//        storeComponent.setDidSelectItem { indexPath in
+//
+//            let product = self.products[indexPath.row]
+//
+//            handler?(product)
+//
+//        }
 
         return self
 

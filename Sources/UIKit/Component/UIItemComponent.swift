@@ -46,7 +46,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     
     // MARK: Set Up
     
-    fileprivate final func prepare() { view.backgroundColor = nil }
+    fileprivate final func prepare() { view.backgroundColor = .clear }
 
     // MARK: Component
 

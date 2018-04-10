@@ -17,18 +17,17 @@ public final class UIGridComponent: CollectionComponent {
     
     public final var layout: UIGridLayout {
         
-        didSet { collectionViewFlowLayout.scrollDirection = layout.scrollDirection }
+        didSet {
+            
+            collectionViewFlowLayout.minimumInteritemSpacing = layout.interitemSpacing
+            
+            collectionViewFlowLayout.minimumLineSpacing = layout.lineSpacing
+            
+            collectionViewFlowLayout.scrollDirection = layout.scrollDirection
+            
+        }
         
     }
-    
-    public typealias MinimumItemSizeProvider = (UIGridLayout, IndexPath) -> CGSize
-    
-    /// The provider should return a proper width for columns in vertical scroll direction.
-    /// and height for rows in horizontal scroll direction.
-    /// If any of them are out of valid rect will be ignored.
-    ///
-    /// If this provider is nil, the component will calculate the column-based width and row-based height automatically to fit its safe area rect.
-    public final var minimumItemSizeProvider: MinimumItemSizeProvider?
     
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -37,9 +36,9 @@ public final class UIGridComponent: CollectionComponent {
         
         let flowLayout = UICollectionViewFlowLayout()
         
-        flowLayout.minimumInteritemSpacing = 0.0
+        flowLayout.minimumInteritemSpacing = layout.interitemSpacing
         
-        flowLayout.minimumLineSpacing = 0.0
+        flowLayout.minimumLineSpacing = layout.lineSpacing
         
         flowLayout.headerReferenceSize = .zero
         
@@ -66,37 +65,66 @@ public final class UIGridComponent: CollectionComponent {
     
     fileprivate final func prepare() {
         
-        collectionComponent.sizeForItemProvider = { [unowned self] _, indexPath in
+        collectionComponent.setSizeForItem { [unowned self] _, indexPath in
             
             let layout = self.layout
-            
-            let minimumItemSize = self.minimumItemSizeProvider?(
-                layout,
-                indexPath
-            )
             
             let collectionViewFlowLayout = self.collectionViewFlowLayout
             
             let safeAreaRect = self.collectionView.safeAreaRect
             
-            let gridWidth = safeAreaRect.width / CGFloat(layout.columns)
-            
-            let gridHeight = safeAreaRect.height / CGFloat(layout.rows)
-            
             switch collectionViewFlowLayout.scrollDirection {
                
             case .vertical:
                 
+                var spacingOfInteritems = CGFloat(layout.columns - 1) * layout.interitemSpacing
+                
+                if spacingOfInteritems < 0.0 { spacingOfInteritems = 0.0 }
+                
+                var spacingOfLines = CGFloat(layout.rows - 1) * layout.lineSpacing
+                
+                if spacingOfLines < 0.0 { spacingOfLines = 0.0 }
+                
+                let gridSize = CGSize(
+                    width: (safeAreaRect.width - spacingOfInteritems) / CGFloat(layout.columns),
+                    height: (safeAreaRect.height - spacingOfLines) / CGFloat(layout.rows)
+                )
+                
+                let minimumItemSize = self.minimumItemSizeProvider?(
+                    layout,
+                    gridSize,
+                    indexPath
+                )
+                
                 return CGSize(
-                    width: gridWidth,
-                    height: minimumItemSize?.height ?? gridHeight
+                    width: gridSize.width,
+                    height: minimumItemSize?.height ?? gridSize.height
                 )
                 
             case .horizontal:
                 
+                var spacingOfInteritems = CGFloat(layout.rows - 1) * layout.interitemSpacing
+                
+                if spacingOfInteritems < 0.0 { spacingOfInteritems = 0.0 }
+                
+                var spacingOfLines = CGFloat(layout.columns - 1) * layout.lineSpacing
+                
+                if spacingOfLines < 0.0 { spacingOfLines = 0.0 }
+                
+                let gridSize = CGSize(
+                    width: safeAreaRect.width / CGFloat(layout.columns),
+                    height: safeAreaRect.height / CGFloat(layout.rows)
+                )
+                
+                let minimumItemSize = self.minimumItemSizeProvider?(
+                    layout,
+                    gridSize,
+                    indexPath
+                )
+                
                 return CGSize(
-                    width: minimumItemSize?.width ?? gridWidth,
-                    height: gridHeight
+                    width: minimumItemSize?.width ?? gridSize.width,
+                    height: gridSize.height
                 )
                 
             }
@@ -136,6 +164,20 @@ public final class UIGridComponent: CollectionComponent {
     public final var view: View { return collectionComponent.view }
     
     public final var preferredContentSize: CGSize { return  collectionComponent.preferredContentSize }
+    
+    // MARK: Action
+    
+    // TODO: should find a better api name & variable names.
+    public typealias MinimumItemSizeProvider = (UIGridLayout, _ gridSize: CGSize, IndexPath) -> CGSize
+    
+    /// The provider should return a proper width for columns in vertical scroll direction.
+    /// and height for rows in horizontal scroll direction.
+    /// If any of them are out of valid rect will be ignored.
+    ///
+    /// If this provider is nil, the component will calculate the column-based width and row-based height automatically to fit its safe area rect.
+    private final var minimumItemSizeProvider: MinimumItemSizeProvider?
+    
+    public final func setMinimumItemSize(provider: MinimumItemSizeProvider?) { minimumItemSizeProvider = provider }
     
 }
 

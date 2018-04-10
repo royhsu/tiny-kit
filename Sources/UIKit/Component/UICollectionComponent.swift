@@ -10,9 +10,9 @@
 
 public final class UICollectionComponent: CollectionComponent {
 
-    public final let collectionView: UICollectionView
+    internal final let collectionView: UICollectionView
 
-    public final let collectionViewLayout: UICollectionViewLayout
+    internal final let collectionViewLayout: UICollectionViewLayout
 
     fileprivate final let bridge: UICollectionViewBridge
     
@@ -78,6 +78,10 @@ public final class UICollectionComponent: CollectionComponent {
 
         }
 
+        collectionView.backgroundColor = .clear
+        
+        collectionView.clipsToBounds = false
+        
         collectionViewHeightConstraint.priority = UILayoutPriority(750.0)
         
         NSLayoutConstraint.activate(
@@ -140,13 +144,7 @@ public final class UICollectionComponent: CollectionComponent {
 public extension UICollectionComponent {
     
     public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
-    
-    public final var sizeForItemProvider: SizeForItemProvider {
-        
-        get { return bridge.sizeForItemProvider }
-        
-        set { bridge.sizeForItemProvider = newValue }
-        
-    }
 
+    public final func setSizeForItem(provider: @escaping SizeForItemProvider) { bridge.sizeForItemProvider = provider }
+    
 }

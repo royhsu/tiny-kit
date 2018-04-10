@@ -69,9 +69,9 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
         }
 
-        component
-            .setNumberOfReviews { [unowned self] in self.reviewComponents.count }
-            .setComponentForReview { [unowned self] index in self.reviewComponents[index] }
+//        component
+//            .setNumberOfReviews { [unowned self] in self.reviewComponents.count }
+//            .setComponentForReview { [unowned self] index in self.reviewComponents[index] }
 
         reviewsSubscription = storage.reviews.observeValueDidChange { [unowned self] _, reviews in
 
@@ -90,23 +90,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
                 if let imageContainer = review.imageContainer {
 
-                    switch imageContainer {
-
-                    case let .image(image): component.setPictureImage(image)
-
-                    case let .url(url, provider):
-
-                        provider
-                            .fetch(
-                                in: .background,
-                                url: url
-                            )
-                            .then(
-                                in: .main,
-                                component.setPictureImage
-                            )
-
-                    }
+//                    imageContainer.setImage(to: component.setPictureImage(<#T##image: UIImage?##UIImage?#>))
 
                 }
 
@@ -169,36 +153,36 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
                 for index in 0..<detail.imageContainers.count {
 
-                    let imageContainer = detail.imageContainers[index]
-
-                    let image: UIImage
-
-                    switch imageContainer {
-
-                    case let .image(value): image = value
-
-                    case let .url(url, provider):
-
-                        image = UIImage()
-
-                        provider.fetch(
-                            in: .background,
-                            url: url
-                        )
-                        .then(in: .main) { image in
-
-                            // TODO: should use weak object image wrapper to prevent the array manuplitating before all images finished.
-                            if index < weakSelf.storage.gallery.value.count {
-
-                                weakSelf.storage.gallery.value[index] = image
-
-                            }
-
-                        }
-
-                    }
-
-                    weakSelf.storage.gallery.value.append(image)
+//                    let imageContainer = detail.imageContainers[index]
+//
+//                    let image: UIImage
+//
+//                    switch imageContainer {
+//
+//                    case let .image(value): image = value
+//
+//                    case let .url(url, provider):
+//
+//                        image = UIImage()
+//
+//                        provider.fetch(
+//                            in: .background,
+//                            url: url
+//                        )
+//                        .then(in: .main) { image in
+//
+//                            // TODO: should use weak object image wrapper to prevent the array manuplitating before all images finished.
+//                            if index < weakSelf.storage.gallery.value.count {
+//
+//                                weakSelf.storage.gallery.value[index] = image
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//
+//                    weakSelf.storage.gallery.value.append(image)
 
                 }
 
