@@ -13,6 +13,8 @@
 public final class UIBoxComponent: Component {
     
     /// The base component.
+    private final let containerComponent: UIItemComponent<View>
+    
     private final let contentComponent: Component
     
     private final let leadingConstraint: NSLayoutConstraint
@@ -30,19 +32,24 @@ public final class UIBoxComponent: Component {
         contentComponent: Component
     ) {
         
-        self.contentComponent = contentComponent
+        let containerView = View()
         
-        self.view = View()
+        self.containerComponent = UIItemComponent(
+            contentMode: contentMode,
+            itemView: containerView
+        )
+        
+        self.contentComponent = contentComponent
         
         let contentView = contentComponent.view
         
-        self.leadingConstraint = view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+        self.leadingConstraint = containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         
-        self.topConstraint = view.topAnchor.constraint(equalTo: contentView.topAnchor)
+        self.topConstraint = containerView.topAnchor.constraint(equalTo: contentView.topAnchor)
         
-        self.trailingConstraint = view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        self.trailingConstraint = containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         
-        self.bottomConstraint = view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        self.bottomConstraint = containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         
         self.paddingInsets = UIEdgeInsets(
             top: topConstraint.constant,
@@ -59,7 +66,9 @@ public final class UIBoxComponent: Component {
     
     fileprivate final func prepare() {
         
-        view.backgroundColor = .clear
+        let containerView = containerComponent.view
+        
+        containerView.backgroundColor = .clear
         
         trailingConstraint.priority = UILayoutPriority(900.0)
         
@@ -79,13 +88,19 @@ public final class UIBoxComponent: Component {
     
     public final func render() {
         
+        let containerView = containerComponent.itemView
+        
+        containerComponent.render()
+        
         let contentView = contentComponent.view
         
         contentView.removeFromSuperview()
         
+        contentView.frame = containerView.bounds
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(contentView)
+        containerView.addSubview(contentView)
         
         topConstraint.constant = -paddingInsets.top
         
@@ -99,24 +114,21 @@ public final class UIBoxComponent: Component {
             [
                 leadingConstraint,
                 topConstraint,
-                trailingConstraint
+                trailingConstraint,
+                bottomConstraint
             ]
         )
         
         contentComponent.render()
         
-        view.bounds = contentView.bounds
-        
-        NSLayoutConstraint.activate(
-            [ bottomConstraint ]
-        )
+        containerComponent.render()
         
     }
     
     // MARK: ViewRenderable
     
-    public final let view: View
+    public final var view: View { return containerComponent.view }
     
-    public final var preferredContentSize: CGSize { return view.bounds.size }
+    public final var preferredContentSize: CGSize { return containerComponent.view.bounds.size }
     
 }

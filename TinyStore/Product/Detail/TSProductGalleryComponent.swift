@@ -44,26 +44,10 @@ public final class TSProductGalleryComponent: Component, Stylable {
         carouselComponent.numberOfSections = 1
         
         carouselComponent.setNumberOfItemComponents { [unowned self] _ in self.numberOfImages }
-
-//        carouselComponent.setItemComponent { (indexPath) -> Component in
-//
-//            let label = UILabel()
-//
-//            label.numberOfLines = 0
-//
-//            label.text = "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
-//
-//            let labelComponent = UIItemComponent(itemView: label)
-//
-//            return labelComponent
-//
-//        }
         
         carouselComponent.setItemComponent { [unowned self] indexPath in
 
             let imageView = UIImageView()
-
-            // TODO: add the width and height constraint to the image view.
 
             imageView.contentMode = .scaleAspectFill
 

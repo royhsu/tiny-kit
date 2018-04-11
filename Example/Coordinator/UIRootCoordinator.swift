@@ -29,7 +29,7 @@ public final class UIRootCoordinator: Coordinator {
         
         let carouselComponent = UICarouselComponent()
         
-        carouselComponent.minimumItemWidthProvider = { _ in 200.0 }
+        carouselComponent.setMinimumItemWidth { _ in 200.0 }
         
         let collectionComponent: CollectionComponent = carouselComponent
         
@@ -50,7 +50,7 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        self.rootComponent = collectionComponent
+        self.rootComponent = labelComponentFactory("Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.")
         
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: rootComponent)
@@ -58,7 +58,7 @@ public final class UIRootCoordinator: Coordinator {
 
     }
 
-    public final func activate() { rootComponent.render() }
+    public final func activate() { }
     
 }
 
@@ -94,7 +94,7 @@ public let exampleGridComponentFactory: () -> Component = {
         )
     )
     
-    gridComponent.minimumItemSizeProvider = { _, _ in
+    gridComponent.setMinimumItemSize { _, _, _ in
         
         return CGSize(
             width: 50.0,
@@ -145,7 +145,7 @@ public let exampleCollectionComponentFactory: () -> Component = {
         ]
     )
     
-    collectionComponent.sizeForItemProvider = { layout, indexPath in
+    collectionComponent.setSizeForItem { layout, indexPath in
         
         return CGSize(
             width: 150.0,
