@@ -1,23 +1,21 @@
 //
-//  UIProductGalleryView.swift
+//  TSProductGalleryView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIProductGalleryView
+// MARK: - TSProductGalleryView
 
-public final class UIProductGalleryView: UIView {
+public final class TSProductGalleryView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var imageView: UIImageView!
 
     @IBOutlet
     public fileprivate(set) final weak var triangleView: TriangleView!
-
-    // MARK: Life Cycle
-
+    
     public final override func awakeFromNib() {
 
         setUpImageView(imageView)

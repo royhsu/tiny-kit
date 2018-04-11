@@ -60,13 +60,29 @@ public final class UICollectionViewBridge: NSObject {
 
 extension UICollectionViewBridge: UICollectionViewDataSource {
 
-    public final func numberOfSections(in collectionView: UICollectionView) -> Int { return numberOfSections }
+    public final func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        // TODO: find a better way to log debugging info.
+        print(self, #function, "->", numberOfSections)
+        
+        return numberOfSections
+        
+    }
 
     public final func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     )
-    -> Int { return numberOfItemsProvider(section) }
+    -> Int {
+        
+        let items = numberOfItemsProvider(section)
+        
+        // TODO: find a better way to log debugging info.
+        print(self, #function, section, "->", "items:", items)
+        
+        return items
+        
+    }
 
     public final func collectionView(
         _ collectionView: UICollectionView,
@@ -81,6 +97,9 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
             )
         else { fatalError("CANNOT dequeue a cell with type UICollectionViewCell.") }
 
+        // TODO: find a better way to log debugging info.
+        print(self, #function, indexPath, "->", "cell:", cell)
+        
         // TODO: there are no visual hints for debugging a cell because there the background color is nil.
         // should find a way to improve the UI debugging process.
 
@@ -109,10 +128,15 @@ extension UICollectionViewBridge: UICollectionViewDelegateFlowLayout {
     )
     -> CGSize {
         
-        return sizeForItemProvider(
+        let size = sizeForItemProvider(
             collectionViewLayout,
             indexPath
         )
+        
+        // TODO: find a better way to log debugging info.
+        print(self, #function, indexPath, "->", "size:", size)
+        
+        return size
         
     }
 

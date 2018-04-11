@@ -60,13 +60,29 @@ public final class UITableViewBridge: NSObject {
 
 extension UITableViewBridge: UITableViewDataSource {
 
-    public final func numberOfSections(in tableView: UITableView) -> Int { return numberOfSections }
+    public final func numberOfSections(in tableView: UITableView) -> Int {
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, "->", numberOfSections)
+        
+        return numberOfSections
+        
+    }
 
     public final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
-    -> Int { return numberOfRowsProvider(section) }
+    -> Int {
+        
+        let rows = numberOfRowsProvider(section)
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, section, "->", "rows:", rows)
+        
+        return rows
+        
+    }
 
     public final func tableView(
         _ tableView: UITableView,
@@ -80,6 +96,9 @@ extension UITableViewBridge: UITableViewDataSource {
             reuseIdentifier: nil
         )
 
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, indexPath, "->", "cell:", cell)
+        
         cell.selectionStyle = .none
 
         cell.backgroundColor = .clear
@@ -103,6 +122,16 @@ extension UITableViewBridge: UITableViewDelegate {
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     )
-    -> CGFloat { return heightForRowProvider(indexPath) }
+    -> CGFloat {
+        
+        
+        let height = heightForRowProvider(indexPath)
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, indexPath, "->", "height:", height)
+        
+        return height
+        
+    }
 
 }

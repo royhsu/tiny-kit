@@ -1,5 +1,5 @@
 //
-//  UIGridItemView+Theme.swift
+//  TSStoreItemView+Theme.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 23/03/2018.

@@ -1,5 +1,5 @@
 //
-//  UIProductGalleryView+Theme.swift
+//  TSProductGalleryView+Theme.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 21/03/2018.
@@ -10,10 +10,10 @@
 
 import TinyUI
 
-public extension UIProductGalleryView {
+public extension TSProductGalleryView {
 
     @discardableResult
-    public final func applyTheme(_ theme: Theme) -> UIProductGalleryView {
+    public final func applyTheme(_ theme: Theme) -> TSProductGalleryView {
 
         backgroundColor = theme.backgroundColor
 

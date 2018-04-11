@@ -31,9 +31,9 @@ public final class UIApplicationCoordinator: Coordinator {
             )
         )
 
-        self.rootCoordinator = UICartCoordinator()
+//        self.rootCoordinator = UICartCoordinator()
 
-//        self.rootCoordinator = UIRootCoordinator()
+        self.rootCoordinator = UIRootCoordinator()
 
     }
 

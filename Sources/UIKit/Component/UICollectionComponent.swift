@@ -71,10 +71,10 @@ public final class UICollectionComponent: CollectionComponent {
             guard
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
-
-            cell.contentView.wrapSubview(component.view)
             
             component.render()
+
+            cell.contentView.wrapSubview(component.view)
 
         }
 

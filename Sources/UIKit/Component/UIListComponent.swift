@@ -67,9 +67,11 @@ public final class UIListComponent: ListComponent {
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
 
-            cell.contentView.wrapSubview(component.view)
-
+            // Must render firstly to get the correct constraints from Auto Layout.
+            // This helps table view to dynamically resize cells.
             component.render()
+            
+            cell.contentView.wrapSubview(component.view)
             
         }
 
@@ -78,7 +80,7 @@ public final class UIListComponent: ListComponent {
             guard
                 let component = self.itemComponentProvider?(indexPath)
             else { return 0.0 }
-
+            
             switch component.contentMode {
 
             case let .size(size): return size.height

@@ -26,8 +26,6 @@ public final class TSStoreItemView: UIView {
     @IBOutlet
     public fileprivate(set) final var subtitleLabel: UILabel!
 
-    // MARK: Life Cycle
-
     public final override func awakeFromNib() {
 
         setUpShadowView(shadowView)
