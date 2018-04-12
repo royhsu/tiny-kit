@@ -1,6 +1,6 @@
 //
 //  Theme.swift
-//  TinyUI
+//  TinyKit
 //
 //  Created by Roy Hsu on 18/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.

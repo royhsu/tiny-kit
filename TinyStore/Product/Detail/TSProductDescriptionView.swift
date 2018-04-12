@@ -17,7 +17,7 @@ public final class TSProductDescriptionView: UIView {
     public fileprivate(set) final weak var subtitleLabel: UILabel!
 
     @IBOutlet
-    public fileprivate(set) final weak var actionContainerView: UIView!
+    public fileprivate(set) final weak var buttonContainerView: UIView!
 
     public final override func awakeFromNib() {
 
@@ -25,7 +25,7 @@ public final class TSProductDescriptionView: UIView {
 
         setUpSubtitleLabel(subtitleLabel)
 
-        setUpActionContainerView(actionContainerView)
+        setUpButtonContainerView(buttonContainerView)
 
     }
 
@@ -62,6 +62,6 @@ public final class TSProductDescriptionView: UIView {
 
     }
 
-    fileprivate final func setUpActionContainerView(_ view: UIView) { view.backgroundColor = nil }
+    fileprivate final func setUpButtonContainerView(_ view: UIView) { view.backgroundColor = nil }
 
 }

@@ -18,7 +18,9 @@ public final class UIRootCoordinator: Coordinator {
 
     /// The navigator.
     private final let rootViewController: UIViewController
-
+    
+    private final var listening: NewEventEmitter<UITouchEvent>.Listening?
+    
     public init() {
 
 //        let postComponent = UIPostComponent(
@@ -37,7 +39,23 @@ public final class UIRootCoordinator: Coordinator {
 //            [ postComponent ]
 //        )
         
-        let productDetailComponent = TSProductDetailComponent()
+        let buttonComponent = UIPrimaryButtonComponent()
+        
+        buttonComponent.titleLabel.text = "Add to Cart"
+        
+        buttonComponent.iconImageView.image = #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate)
+        
+        buttonComponent.applyTheme(.current)
+        
+        listening = buttonComponent.eventEmitter.listen(event: .touchUpInside) { event in
+            
+            print("emitted", event)
+            
+        }
+        
+        let productDetailComponent = TSProductDetailComponent(
+            descriptionButtonComponent: buttonComponent
+        )
         
         productDetailComponent.galleryComponent.setImageContainers(
             [
@@ -49,7 +67,7 @@ public final class UIRootCoordinator: Coordinator {
         
         productDetailComponent.descriptionComponent.titleLabel.text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
         
-        productDetailComponent.descriptionComponent.subtitleLabel.text = "$ 12.99"
+        productDetailComponent.descriptionComponent.subtitleLabel.text = "$12.99"
         
         productDetailComponent.descriptionComponent.paddingInsets = UIEdgeInsets(
             top: 16.0,
@@ -60,12 +78,6 @@ public final class UIRootCoordinator: Coordinator {
         
         productDetailComponent.applyTheme(.current)
         
-//        let listComponent = UIListComponent()
-//
-//        listComponent.setItemComponents(
-//            [ boxComponent ]
-//        )
-
         let viewController = UIComponentViewController(component: productDetailComponent)
 
         viewController.view.backgroundColor = .white

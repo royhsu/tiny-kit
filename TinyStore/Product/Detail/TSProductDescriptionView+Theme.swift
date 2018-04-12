@@ -10,18 +10,15 @@
 
 import TinyUI
 
-internal extension TSProductDescriptionView {
+public extension TSProductDescriptionView {
 
-    @discardableResult
-    internal final func applyTheme(_ theme: Theme) -> TSProductDescriptionView {
+    public final func applyTheme(_ theme: Theme) {
 
         backgroundColor = theme.backgroundColor
 
         titleLabel.textColor = theme.titleColor
 
         subtitleLabel.textColor = theme.subtitleColor
-
-        return self
 
     }
 

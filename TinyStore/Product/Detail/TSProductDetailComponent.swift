@@ -36,7 +36,10 @@ public final class TSProductDetailComponent: Component {
 //
 //    public final let introductionComponent: UIPostComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        descriptionButtonComponent: UIButtonComponent
+    ) {
 
         self.bundle = Bundle(
             for: type(of: self)
@@ -53,7 +56,8 @@ public final class TSProductDetailComponent: Component {
         
         self.galleryComponent = UIGalleryComponent()
         
-        self.descriptionComponent = TSProductDescriptionComponent()
+        self.descriptionComponent = TSProductDescriptionComponent(buttonComponent: descriptionButtonComponent)
+    
 //
 //        self.reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
 

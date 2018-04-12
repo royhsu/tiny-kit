@@ -1,21 +1,23 @@
 //
-//  UIPrimaryButton.swift
-//  TinyUI
+//  TSPrimaryButton.swift
+//  TinyStore
 //
 //  Created by Roy Hsu on 27/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIPrimaryButton
+// MARK: - TSPrimaryButton
 
-public final class UIPrimaryButton: UIView {
+public final class TSPrimaryButton: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var titleLabel: UILabel!
 
     @IBOutlet
     public fileprivate(set) final weak var iconImageView: UIImageView!
-
+    
+    @IBOutlet weak var button: UIButton!
+    
     public final override func awakeFromNib() {
 
         setUpRootView(self)
@@ -50,18 +52,6 @@ public final class UIPrimaryButton: UIView {
     }
 
     fileprivate final func setUpIconImageView(_ imageView: UIImageView) {
-
-        let bundle = Bundle(
-            for: type(of: self)
-        )
-
-        let image = UIImage(
-            named: "icon-plus",
-            in: bundle,
-            compatibleWith: nil
-        )
-
-        imageView.image = image?.withRenderingMode(.alwaysTemplate)
 
         imageView.tintColor = .white
 

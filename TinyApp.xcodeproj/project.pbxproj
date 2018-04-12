@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01DB542207F2E2900E511FE /* TSPrimaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0A2060E6B1005EDA9A /* TSPrimaryButton+Theme.swift */; };
+		B01DB543207F2E2900E511FE /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */; };
+		B01DB544207F2E2900E511FE /* TSPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299420465827000F97E3 /* TSPrimaryButton.swift */; };
+		B01DB548207F2E3100E511FE /* TSPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6299320465827000F97E3 /* TSPrimaryButton.xib */; };
 		B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */; };
 		B01EFA06205D2D5100CF9C17 /* UICheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EFA02205D2D5100CF9C17 /* UICheckbox.xib */; };
 		B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA03205D2D5100CF9C17 /* UICheckbox.swift */; };
@@ -17,8 +21,6 @@
 		B01EFA13205D2D7900CF9C17 /* UINumberPickerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA0D205D2D7900CF9C17 /* UINumberPickerError.swift */; };
 		B01EFA14205D2D7900CF9C17 /* UINumberPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EFA0E205D2D7900CF9C17 /* UINumberPicker.xib */; };
 		B01EFA18205D32F300CF9C17 /* UICartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA17205D32F300CF9C17 /* UICartCoordinator.swift */; };
-		B022E25E205E373500DD9170 /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E25D205E373500DD9170 /* Stylable.swift */; };
-		B022E260205E3E5200DD9170 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E25F205E3E5200DD9170 /* Theme.swift */; };
 		B022E262205E51E300DD9170 /* UIHomeNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E261205E51E300DD9170 /* UIHomeNavigationCoordinator.swift */; };
 		B022E264205E6AF600DD9170 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E263205E6AF600DD9170 /* CartManager.swift */; };
 		B022E26A205F9BD800DD9170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B022E269205F9BD800DD9170 /* Assets.xcassets */; };
@@ -91,7 +93,6 @@
 		B0876E052060A22B005EDA9A /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E042060A22B005EDA9A /* CartItem.swift */; };
 		B0876E072060A24E005EDA9A /* CartItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */; };
 		B0876E092060A275005EDA9A /* Product+CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E082060A275005EDA9A /* Product+CartItem.swift */; };
-		B0876E0B2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */; };
 		B0876E0D2061F628005EDA9A /* UISecondaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */; };
 		B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */; };
 		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
@@ -99,7 +100,7 @@
 		B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */; };
 		B0876E1720623094005EDA9A /* PostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1620623094005EDA9A /* PostElement.swift */; };
 		B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */; };
-		B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */; };
+		B0876E1F206252AF005EDA9A /* TSProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */; };
 		B0876E2120629DC9005EDA9A /* UIProductReviewView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */; };
 		B0876E232062AB7B005EDA9A /* UIPostParagraphView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E222062AB7B005EDA9A /* UIPostParagraphView+Theme.swift */; };
 		B0876E252062AC7C005EDA9A /* UIImageView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E242062AC7C005EDA9A /* UIImageView+Theme.swift */; };
@@ -119,9 +120,6 @@
 		B0A6298E204657D9000F97E3 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
 		B0A6298F204657D9000F97E3 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B0A62990204657D9000F97E3 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
-		B0A6299D20465828000F97E3 /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */; };
-		B0A6299E20465828000F97E3 /* UIPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6299320465827000F97E3 /* UIPrimaryButton.xib */; };
-		B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299420465827000F97E3 /* UIPrimaryButton.swift */; };
 		B0A629A220465828000F97E3 /* UITextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299820465828000F97E3 /* UITextInput.swift */; };
 		B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */; };
 		B0A629A420465828000F97E3 /* UITextInputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299A20465828000F97E3 /* UITextInputItem.swift */; };
@@ -143,8 +141,6 @@
 		B0A7BA0E206096A600696022 /* UIOptionChainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA022060136300696022 /* UIOptionChainComponent.swift */; };
 		B0A7BA0F206096A600696022 /* UIOptionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */; };
 		B0A7BA11206096DF00696022 /* UIOptionButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA10206096DF00696022 /* UIOptionButton+Theme.swift */; };
-		B0A7BA1320609DC900696022 /* Theme+AzureSky.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA1220609DC900696022 /* Theme+AzureSky.swift */; };
-		B0A7BA1520609E1800696022 /* Theme+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7BA1420609E1800696022 /* Theme+Debug.swift */; };
 		B0C357AD2064FE340017E1F0 /* UIImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357AC2064FE340017E1F0 /* UIImageDownloader.swift */; };
 		B0C357AF2064FE730017E1F0 /* ProductProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357AE2064FE730017E1F0 /* ProductProvider.swift */; };
 		B0C357B12064FEAC0017E1F0 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357B02064FEAC0017E1F0 /* Review.swift */; };
@@ -243,8 +239,6 @@
 		B01EFA0D205D2D7900CF9C17 /* UINumberPickerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINumberPickerError.swift; sourceTree = "<group>"; };
 		B01EFA0E205D2D7900CF9C17 /* UINumberPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UINumberPicker.xib; sourceTree = "<group>"; };
 		B01EFA17205D32F300CF9C17 /* UICartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICartCoordinator.swift; sourceTree = "<group>"; };
-		B022E25D205E373500DD9170 /* Stylable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
-		B022E25F205E3E5200DD9170 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B022E261205E51E300DD9170 /* UIHomeNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHomeNavigationCoordinator.swift; sourceTree = "<group>"; };
 		B022E263205E6AF600DD9170 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		B022E269205F9BD800DD9170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -312,7 +306,7 @@
 		B0876E042060A22B005EDA9A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		B0876E062060A24E005EDA9A /* CartItemDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDescriptor.swift; sourceTree = "<group>"; };
 		B0876E082060A275005EDA9A /* Product+CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CartItem.swift"; sourceTree = "<group>"; };
-		B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPrimaryButton+Theme.swift"; sourceTree = "<group>"; };
+		B0876E0A2060E6B1005EDA9A /* TSPrimaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSPrimaryButton+Theme.swift"; sourceTree = "<group>"; };
 		B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UISecondaryButton.xib; sourceTree = "<group>"; };
 		B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButton.swift; sourceTree = "<group>"; };
 		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
@@ -320,7 +314,7 @@
 		B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
 		B0876E1620623094005EDA9A /* PostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostElement.swift; sourceTree = "<group>"; };
 		B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostComponent.swift; sourceTree = "<group>"; };
-		B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
+		B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProductReviewView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E222062AB7B005EDA9A /* UIPostParagraphView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPostParagraphView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E242062AC7C005EDA9A /* UIImageView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Theme.swift"; sourceTree = "<group>"; };
@@ -337,8 +331,8 @@
 		B0A62984204657C9000F97E3 /* TinyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyUI.h; sourceTree = "<group>"; };
 		B0A62985204657C9000F97E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonComponent.swift; sourceTree = "<group>"; };
-		B0A6299320465827000F97E3 /* UIPrimaryButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPrimaryButton.xib; sourceTree = "<group>"; };
-		B0A6299420465827000F97E3 /* UIPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButton.swift; sourceTree = "<group>"; };
+		B0A6299320465827000F97E3 /* TSPrimaryButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSPrimaryButton.xib; sourceTree = "<group>"; };
+		B0A6299420465827000F97E3 /* TSPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPrimaryButton.swift; sourceTree = "<group>"; };
 		B0A6299820465828000F97E3 /* UITextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInput.swift; sourceTree = "<group>"; };
 		B0A6299920465828000F97E3 /* UITextInputEditHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputEditHandler.swift; sourceTree = "<group>"; };
 		B0A6299A20465828000F97E3 /* UITextInputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInputItem.swift; sourceTree = "<group>"; };
@@ -356,8 +350,6 @@
 		B0A7BA022060136300696022 /* UIOptionChainComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionChainComponent.swift; sourceTree = "<group>"; };
 		B0A7BA0820601C5200696022 /* UIOptionDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionDescriptor.swift; sourceTree = "<group>"; };
 		B0A7BA10206096DF00696022 /* UIOptionButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOptionButton+Theme.swift"; sourceTree = "<group>"; };
-		B0A7BA1220609DC900696022 /* Theme+AzureSky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+AzureSky.swift"; sourceTree = "<group>"; };
-		B0A7BA1420609E1800696022 /* Theme+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Debug.swift"; sourceTree = "<group>"; };
 		B0C357AC2064FE340017E1F0 /* UIImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageDownloader.swift; sourceTree = "<group>"; };
 		B0C357AE2064FE730017E1F0 /* ProductProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProvider.swift; sourceTree = "<group>"; };
 		B0C357B02064FEAC0017E1F0 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -506,7 +498,7 @@
 				B04707F3207D173900331D26 /* TSProductGalleryView+Theme.swift */,
 				B032B0772057FBCE00AB47C4 /* TSProductDescriptionView.swift */,
 				B032B0782057FBCE00AB47C4 /* TSProductDescriptionView.xib */,
-				B0876E1E206252AF005EDA9A /* UIProductDescriptionView+Theme.swift */,
+				B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */,
 				B032B0652057BBB800AB47C4 /* TSProductDescriptionComponent.swift */,
 				B032B0672057BE6100AB47C4 /* UIProductSectionHeaderView.swift */,
 				B032B0692057BE7B00AB47C4 /* UIProductSectionHeaderView.xib */,
@@ -653,10 +645,6 @@
 				B01EF9EB205D2B6900CF9C17 /* Picker */,
 				B0A6299120465827000F97E3 /* Button */,
 				B0A6299720465828000F97E3 /* Text Input */,
-				B022E25D205E373500DD9170 /* Stylable.swift */,
-				B022E25F205E3E5200DD9170 /* Theme.swift */,
-				B0A7BA1220609DC900696022 /* Theme+AzureSky.swift */,
-				B0A7BA1420609E1800696022 /* Theme+Debug.swift */,
 				B0A62984204657C9000F97E3 /* TinyUI.h */,
 				B0A62985204657C9000F97E3 /* Info.plist */,
 				B022E269205F9BD800DD9170 /* Assets.xcassets */,
@@ -667,10 +655,6 @@
 		B0A6299120465827000F97E3 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				B0A6299420465827000F97E3 /* UIPrimaryButton.swift */,
-				B0A6299320465827000F97E3 /* UIPrimaryButton.xib */,
-				B0876E0A2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift */,
-				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
 				B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */,
 				B0876E0C2061F628005EDA9A /* UISecondaryButton.xib */,
 				B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */,
@@ -720,6 +704,10 @@
 				B0D90E17204844AF00AC9A0A /* Product */,
 				B04F05B7205A2C320050C41C /* Cart */,
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
+				B0A6299420465827000F97E3 /* TSPrimaryButton.swift */,
+				B0A6299320465827000F97E3 /* TSPrimaryButton.xib */,
+				B0876E0A2060E6B1005EDA9A /* TSPrimaryButton+Theme.swift */,
+				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
 				B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */,
 			);
@@ -1000,7 +988,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0A7BA0C206096A600696022 /* UIOptionButton.xib in Resources */,
-				B0A6299E20465828000F97E3 /* UIPrimaryButton.xib in Resources */,
 				B01EFA06205D2D5100CF9C17 /* UICheckbox.xib in Resources */,
 				B0A629A520465828000F97E3 /* UITextInput.xib in Resources */,
 				B0876E0D2061F628005EDA9A /* UISecondaryButton.xib in Resources */,
@@ -1015,6 +1002,7 @@
 			files = (
 				B04F05BB205A2CBD0050C41C /* UICartItemView.xib in Resources */,
 				B032B056205670FC00AB47C4 /* Info.plist in Resources */,
+				B01DB548207F2E3100E511FE /* TSPrimaryButton.xib in Resources */,
 				B04707F0207D153E00331D26 /* TSStoreItemView.xib in Resources */,
 				B032B0702057C2C600AB47C4 /* UIProductReviewView.xib in Resources */,
 				B04707F5207D173900331D26 /* TSProductGalleryView.xib in Resources */,
@@ -1120,16 +1108,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0876E0B2060E6B1005EDA9A /* UIPrimaryButton+Theme.swift in Sources */,
-				B0A7BA1520609E1800696022 /* Theme+Debug.swift in Sources */,
 				B01EFA0F205D2D7900CF9C17 /* UINumberPickerInputValidator.swift in Sources */,
 				B0A7BA0F206096A600696022 /* UIOptionDescriptor.swift in Sources */,
 				B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */,
 				B01EFA11205D2D7900CF9C17 /* UINumberPicker.swift in Sources */,
-				B0A7BA1320609DC900696022 /* Theme+AzureSky.swift in Sources */,
 				B01EFA07205D2D5100CF9C17 /* UICheckbox.swift in Sources */,
 				B01EFA13205D2D7900CF9C17 /* UINumberPickerError.swift in Sources */,
-				B022E25E205E373500DD9170 /* Stylable.swift in Sources */,
 				B0A629A220465828000F97E3 /* UITextInput.swift in Sources */,
 				B0A7BA11206096DF00696022 /* UIOptionButton+Theme.swift in Sources */,
 				B022E26E205FC9BD00DD9170 /* UINumberPicker+Theme.swift in Sources */,
@@ -1140,13 +1124,10 @@
 				B0A7BA0E206096A600696022 /* UIOptionChainComponent.swift in Sources */,
 				B0A7BA0D206096A600696022 /* UIOptionButtonComponet.swift in Sources */,
 				B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */,
-				B022E260205E3E5200DD9170 /* Theme.swift in Sources */,
 				B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */,
-				B0A6299F20465828000F97E3 /* UIPrimaryButton.swift in Sources */,
 				B0A629A620465828000F97E3 /* UITextInputComponent.swift in Sources */,
 				B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */,
 				B0A629A320465828000F97E3 /* UITextInputEditHandler.swift in Sources */,
-				B0A6299D20465828000F97E3 /* UIPrimaryButtonComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1158,6 +1139,7 @@
 				B032B0682057BE6100AB47C4 /* UIProductSectionHeaderView.swift in Sources */,
 				B04F05BD205A300D0050C41C /* UICartItemComponent.swift in Sources */,
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
+				B01DB543207F2E2900E511FE /* UIPrimaryButtonComponent.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* TSStoreItemComponent.swift in Sources */,
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
@@ -1172,13 +1154,15 @@
 				B032B06E2057C2BD00AB47C4 /* UIProductReviewView.swift in Sources */,
 				B032B04E205670EE00AB47C4 /* ShadowView+BlurProcess.swift in Sources */,
 				B032B05E2057A85C00AB47C4 /* TriangleView.swift in Sources */,
-				B0876E1F206252AF005EDA9A /* UIProductDescriptionView+Theme.swift in Sources */,
+				B0876E1F206252AF005EDA9A /* TSProductDescriptionView+Theme.swift in Sources */,
 				B032B0722057C4FC00AB47C4 /* UIProductReviewComponent.swift in Sources */,
 				B0EE3C7120634B4200D99FFD /* UIProductSectionHeaderView+Theme.swift in Sources */,
 				B032B0662057BBB800AB47C4 /* TSProductDescriptionComponent.swift in Sources */,
+				B01DB544207F2E2900E511FE /* TSPrimaryButton.swift in Sources */,
 				B04F05C1205A31300050C41C /* UICartItem.swift in Sources */,
 				B032B0742057C55000AB47C4 /* UIProductReviewCarouselComponent.swift in Sources */,
 				B04707F6207D173900331D26 /* TSProductGalleryView+Theme.swift in Sources */,
+				B01DB542207F2E2900E511FE /* TSPrimaryButton+Theme.swift in Sources */,
 				B032B0592057A6FE00AB47C4 /* TSProductGalleryView.swift in Sources */,
 				B05EB108205B8C50007FF319 /* UIColor+Adjustments.swift in Sources */,
 				B04F05BF205A30660050C41C /* UICartItemListComponent.swift in Sources */,

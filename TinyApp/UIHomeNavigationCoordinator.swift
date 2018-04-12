@@ -40,6 +40,7 @@ public final class UIHomeCoordinator: Coordinator {
             else { return }
 
             let productDetailComponent = TSProductDetailComponent(
+                descriptionButtonComponent: UIPrimaryButtonComponent()
 //                listComponent: UIListComponent(),
 //                galleryComponent: UIGalleryComponent(),
 //                actionButtonComponent: UIPrimaryButtonComponent()

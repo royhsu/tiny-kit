@@ -15,7 +15,7 @@ public final class UILandingComponent: Component {
 
     private final let logoComponent: UILandingLogoComponent
 
-    private final var buttonComponents: [UIPrimaryButtonComponent] = []
+    private final var buttonComponents: [UIButtonComponent] = []
 
     public init(
         contentMode: ComponentContentMode = .automatic,

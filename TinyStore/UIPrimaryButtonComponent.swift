@@ -8,17 +8,16 @@
 
 // MARK: - UIPrimaryButtonComponent
 
-public final class UIPrimaryButtonComponent: Component, Stylable {
+public final class UIPrimaryButtonComponent: UIButtonComponent {
 
     private final let bundle: Bundle
 
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIPrimaryButton>
+    private final let itemComponent: UIItemComponent<TSPrimaryButton>
+    
+    public final let eventEmitter: NewEventEmitter<UITouchEvent>
 
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        theme: Theme = .current
-    ) {
+    public init(contentMode: ComponentContentMode = .automatic) {
 
         self.bundle = Bundle(
             for: type(of: self)
@@ -27,12 +26,12 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIView.load(
-                UIPrimaryButton.self,
+                TSPrimaryButton.self,
                 from: bundle
             )!
         )
 
-        self.theme = theme
+        self.eventEmitter = NewEventEmitter()
 
         self.prepare()
 
@@ -47,12 +46,10 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
         button.addGestureRecognizer(
             UITapGestureRecognizer(
                 target: self,
-                action: #selector(performAction)
+                action: #selector(touchUpInside)
             )
         )
-
-        button.applyTheme(theme)
-
+        
     }
 
     // MARK: Component
@@ -65,15 +62,7 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
 
     }
 
-    public final func render() {
-
-        let button = itemComponent.itemView
-
-        button.applyTheme(theme)
-
-        itemComponent.render()
-
-    }
+    public final func render() { itemComponent.render() }
 
     // MARK: ViewRenderable
 
@@ -81,39 +70,19 @@ public final class UIPrimaryButtonComponent: Component, Stylable {
 
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
 
-    // MARK: Stylable
-
-    public final var theme: Theme
-
     // MARK: Action
 
     @objc
-    public final func performAction(_ sender: Any) { actionHandler?() }
-
-    public typealias ActionHandler = () -> Void
-
-    private final var actionHandler: ActionHandler?
+    public final func touchUpInside(_ sender: Any) { eventEmitter.emit(event: .touchUpInside) }
 
 }
 
 public extension UIPrimaryButtonComponent {
-
-    @discardableResult
-    public final func setTitle(_ title: String?) -> UIPrimaryButtonComponent {
-
-        itemComponent.itemView.titleLabel.text = title
-
-        return self
-
-    }
-
-    @discardableResult
-    public final func setAction(_ handler: ActionHandler?) -> UIPrimaryButtonComponent {
-
-        actionHandler = handler
-
-        return self
-
-    }
+    
+    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel }
+    
+    public final var iconImageView: UIImageView { return itemComponent.itemView.iconImageView }
+    
+    public final func applyTheme(_ theme: Theme) { itemComponent.itemView.applyTheme(theme) }
 
 }

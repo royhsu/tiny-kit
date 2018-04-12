@@ -52,7 +52,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Foc-zg-n0K"/>
             <connections>
-                <outlet property="actionContainerView" destination="Imx-P8-yrx" id="Jc5-z1-6uv"/>
+                <outlet property="buttonContainerView" destination="Imx-P8-yrx" id="Jc5-z1-6uv"/>
                 <outlet property="subtitleLabel" destination="6lW-K9-l9e" id="Kyu-MF-ZSV"/>
                 <outlet property="titleLabel" destination="85R-cL-xa0" id="Cwg-hc-sk0"/>
             </connections>

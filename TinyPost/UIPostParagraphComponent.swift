@@ -8,8 +8,6 @@
 
 // MARK: - UIPostParagraphComponent
 
-import TinyUI
-
 public final class UIPostParagraphComponent: Component, Stylable {
 
     private final let bundle: Bundle

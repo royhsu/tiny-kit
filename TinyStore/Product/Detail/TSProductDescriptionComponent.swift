@@ -18,8 +18,13 @@ public final class TSProductDescriptionComponent: Component {
     private final let boxComponent: UIBoxComponent
     
     private final let itemComponent: UIItemComponent<TSProductDescriptionView>
+    
+    public final let buttonComponent: UIButtonComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        buttonComponent: UIButtonComponent
+    ) {
 
         self.bundle = Bundle(
             for: type(of: self)
@@ -37,13 +42,15 @@ public final class TSProductDescriptionComponent: Component {
             contentComponent: itemComponent
         )
         
+        self.buttonComponent = buttonComponent
+        
         self.prepare()
 
     }
 
     // MARK: Set Up
 
-    fileprivate final func prepare() { }
+    fileprivate final func prepare() { itemComponent.itemView.buttonContainerView.wrapSubview(buttonComponent.view) }
 
     // MARK: Component
 
@@ -55,7 +62,13 @@ public final class TSProductDescriptionComponent: Component {
 
     }
 
-    public final func render() { boxComponent.render() }
+    public final func render() {
+        
+        boxComponent.render()
+        
+        buttonComponent.render()
+        
+    }
 
     // MARK: ViewRenderable
 

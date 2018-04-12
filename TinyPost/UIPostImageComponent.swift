@@ -8,8 +8,6 @@
 
 // MARK: - UIPostImageComponent
 
-import TinyUI
-
 public final class UIPostImageComponent: Component, Stylable {
 
     /// The base component.

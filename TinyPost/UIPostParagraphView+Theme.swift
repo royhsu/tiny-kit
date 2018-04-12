@@ -8,8 +8,6 @@
 
 // MARK: - Theme
 
-import TinyUI
-
 public extension UIPostParagraphView {
 
     @discardableResult
