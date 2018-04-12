@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B01DB542207F2E2900E511FE /* TSPrimaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0A2060E6B1005EDA9A /* TSPrimaryButton+Theme.swift */; };
-		B01DB543207F2E2900E511FE /* UIPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */; };
+		B01DB543207F2E2900E511FE /* TSPrimaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299220465827000F97E3 /* TSPrimaryButtonComponent.swift */; };
 		B01DB544207F2E2900E511FE /* TSPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6299420465827000F97E3 /* TSPrimaryButton.swift */; };
 		B01DB548207F2E3100E511FE /* TSPrimaryButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6299320465827000F97E3 /* TSPrimaryButton.xib */; };
 		B01EFA05205D2D5100CF9C17 /* UICheckbox+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA01205D2D5100CF9C17 /* UICheckbox+Theme.swift */; };
@@ -330,7 +330,7 @@
 		B0A62982204657C9000F97E3 /* TinyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A62984204657C9000F97E3 /* TinyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyUI.h; sourceTree = "<group>"; };
 		B0A62985204657C9000F97E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPrimaryButtonComponent.swift; sourceTree = "<group>"; };
+		B0A6299220465827000F97E3 /* TSPrimaryButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPrimaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0A6299320465827000F97E3 /* TSPrimaryButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSPrimaryButton.xib; sourceTree = "<group>"; };
 		B0A6299420465827000F97E3 /* TSPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPrimaryButton.swift; sourceTree = "<group>"; };
 		B0A6299820465828000F97E3 /* UITextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInput.swift; sourceTree = "<group>"; };
@@ -434,6 +434,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B01DB555207F32AF00E511FE /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				B0A6299420465827000F97E3 /* TSPrimaryButton.swift */,
+				B0A6299320465827000F97E3 /* TSPrimaryButton.xib */,
+				B0876E0A2060E6B1005EDA9A /* TSPrimaryButton+Theme.swift */,
+				B0A6299220465827000F97E3 /* TSPrimaryButtonComponent.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		B01DB556207F32DD00E511FE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B032B05C2057A84B00AB47C4 /* TriangleView */,
+				B032B046205670EE00AB47C4 /* ShadowView */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		B01EF9EB205D2B6900CF9C17 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,15 +719,11 @@
 		B0D90E092048446F00AC9A0A /* TinyStore */ = {
 			isa = PBXGroup;
 			children = (
-				B032B05C2057A84B00AB47C4 /* TriangleView */,
-				B032B046205670EE00AB47C4 /* ShadowView */,
+				B01DB556207F32DD00E511FE /* Library */,
+				B01DB555207F32AF00E511FE /* Button */,
 				B0D90E17204844AF00AC9A0A /* Product */,
 				B04F05B7205A2C320050C41C /* Cart */,
 				B0D90E0A2048446F00AC9A0A /* TinyStore.h */,
-				B0A6299420465827000F97E3 /* TSPrimaryButton.swift */,
-				B0A6299320465827000F97E3 /* TSPrimaryButton.xib */,
-				B0876E0A2060E6B1005EDA9A /* TSPrimaryButton+Theme.swift */,
-				B0A6299220465827000F97E3 /* UIPrimaryButtonComponent.swift */,
 				B0D90E0B2048446F00AC9A0A /* Info.plist */,
 				B05EB107205B8C50007FF319 /* UIColor+Adjustments.swift */,
 			);
@@ -1139,7 +1155,7 @@
 				B032B0682057BE6100AB47C4 /* UIProductSectionHeaderView.swift in Sources */,
 				B04F05BD205A300D0050C41C /* UICartItemComponent.swift in Sources */,
 				B032B052205670EE00AB47C4 /* UIImageEffects.swift in Sources */,
-				B01DB543207F2E2900E511FE /* UIPrimaryButtonComponent.swift in Sources */,
+				B01DB543207F2E2900E511FE /* TSPrimaryButtonComponent.swift in Sources */,
 				B032B050205670EE00AB47C4 /* UIImage+Size.swift in Sources */,
 				B032B00720564BFF00AB47C4 /* TSStoreItemComponent.swift in Sources */,
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,

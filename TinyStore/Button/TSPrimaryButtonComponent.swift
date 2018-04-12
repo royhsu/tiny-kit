@@ -1,14 +1,14 @@
 //
-//  UIPrimaryButtonComponent.swift
-//  TinyUI
+//  TSPrimaryButtonComponent.swift
+//  TinyStore
 //
 //  Created by Roy Hsu on 27/02/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIPrimaryButtonComponent
+// MARK: - TSPrimaryButtonComponent
 
-public final class UIPrimaryButtonComponent: UIButtonComponent {
+public final class TSPrimaryButtonComponent: UIButtonComponent {
 
     private final let bundle: Bundle
 
@@ -41,13 +41,10 @@ public final class UIPrimaryButtonComponent: UIButtonComponent {
 
     fileprivate final func prepare() {
 
-        let button = itemComponent.itemView
-
-        button.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(touchUpInside)
-            )
+        itemComponent.itemView.button.addTarget(
+            self,
+            action: #selector(touchUpInside),
+            for: .touchUpInside
         )
         
     }
@@ -77,7 +74,7 @@ public final class UIPrimaryButtonComponent: UIButtonComponent {
 
 }
 
-public extension UIPrimaryButtonComponent {
+public extension TSPrimaryButtonComponent {
     
     public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel }
     

@@ -39,7 +39,7 @@ public final class UIRootCoordinator: Coordinator {
 //            [ postComponent ]
 //        )
         
-        let buttonComponent = UIPrimaryButtonComponent()
+        let buttonComponent = TSPrimaryButtonComponent()
         
         buttonComponent.titleLabel.text = "Add to Cart"
         

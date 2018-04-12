@@ -15,7 +15,7 @@ public final class UICartBarComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartBar>
 
-    private final let actionButtonComponent: UIPrimaryButtonComponent
+    private final let actionButtonComponent: TSPrimaryButtonComponent
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
@@ -31,7 +31,7 @@ public final class UICartBarComponent: Component {
             )!
         )
 
-        self.actionButtonComponent = UIPrimaryButtonComponent()
+        self.actionButtonComponent = TSPrimaryButtonComponent()
 
     }
 

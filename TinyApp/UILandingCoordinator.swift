@@ -75,7 +75,7 @@ public final class UILandingCoordinator: Coordinator {
 
         let signInComponent = UISignInComponent(
             listComponent: UIListComponent(),
-            submitButtonComponent: UIPrimaryButtonComponent()
+            submitButtonComponent: TSPrimaryButtonComponent()
         )
         .onSubmit { [weak self] email, password in
 

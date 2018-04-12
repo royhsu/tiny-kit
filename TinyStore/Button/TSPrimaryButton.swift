@@ -16,7 +16,8 @@ public final class TSPrimaryButton: UIView {
     @IBOutlet
     public fileprivate(set) final weak var iconImageView: UIImageView!
     
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet
+    public fileprivate(set) final weak var button: UIButton!
     
     public final override func awakeFromNib() {
 

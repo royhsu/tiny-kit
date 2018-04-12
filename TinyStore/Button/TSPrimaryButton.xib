@@ -29,16 +29,15 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghz-X5-MjT">
-                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
-                    <state key="normal" title="Button"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="DL7-cc-hx8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BGE-PA-isS"/>
                 <constraint firstItem="9Jc-Ln-o17" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="LtD-CZ-vTY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ghz-X5-MjT" secondAttribute="bottom" id="M6e-PW-69i"/>
-                <constraint firstAttribute="leading" secondItem="ghz-X5-MjT" secondAttribute="trailing" id="QtS-uo-KQK"/>
+                <constraint firstAttribute="bottom" secondItem="ghz-X5-MjT" secondAttribute="bottom" id="M6e-PW-69i"/>
+                <constraint firstAttribute="trailing" secondItem="ghz-X5-MjT" secondAttribute="trailing" id="QtS-uo-KQK"/>
                 <constraint firstItem="ghz-X5-MjT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e5W-PJ-fbI"/>
                 <constraint firstItem="9Jc-Ln-o17" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ePS-Nb-QCa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DL7-cc-hx8" secondAttribute="trailing" constant="16" id="f8s-fZ-ng9"/>
