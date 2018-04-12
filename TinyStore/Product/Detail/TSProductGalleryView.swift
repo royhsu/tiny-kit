@@ -11,28 +11,14 @@
 public final class TSProductGalleryView: UIView {
 
     @IBOutlet
-    public fileprivate(set) final weak var imageView: UIImageView!
+    public fileprivate(set) final weak var contentView: UIView!
 
     @IBOutlet
     public fileprivate(set) final weak var triangleView: TriangleView!
     
-    public final override func awakeFromNib() {
-
-        setUpImageView(imageView)
-
-        setUpTriangleView(triangleView)
-
-    }
+    public final override func awakeFromNib() { setUpTriangleView(triangleView) }
 
     // MARK: Set Up
-
-    fileprivate final func setUpImageView(_ imageView: UIImageView) {
-
-        imageView.contentMode = .scaleAspectFill
-
-        imageView.clipsToBounds = true
-
-    }
 
     fileprivate final func setUpTriangleView(_ triangleView: TriangleView) {
 

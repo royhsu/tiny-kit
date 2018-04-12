@@ -19,8 +19,6 @@ public extension TSProductGalleryView {
 
         triangleView.triangleColor = theme.backgroundColor
 
-        imageView.backgroundColor = theme.placeholderColor
-
         return self
 
     }

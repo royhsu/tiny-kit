@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,6 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZy-rW-Jc4">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnR-Gi-ced" customClass="TriangleView" customModule="TinyStore" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="241.5" width="375" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -19,17 +26,14 @@
                         <constraint firstAttribute="height" constant="40" id="pn9-uu-FxN"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2f5-85-xuQ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="LnR-Gi-ced" firstAttribute="trailing" secondItem="zdg-2K-2nd" secondAttribute="trailing" id="1Kl-fD-jvg"/>
-                <constraint firstItem="2f5-85-xuQ" firstAttribute="trailing" secondItem="zdg-2K-2nd" secondAttribute="trailing" id="Pxf-ny-cLk"/>
-                <constraint firstItem="2f5-85-xuQ" firstAttribute="bottom" secondItem="zdg-2K-2nd" secondAttribute="bottom" id="ZYW-0w-k5K"/>
-                <constraint firstItem="2f5-85-xuQ" firstAttribute="leading" secondItem="zdg-2K-2nd" secondAttribute="leading" id="cYl-F5-QdN"/>
-                <constraint firstItem="2f5-85-xuQ" firstAttribute="top" secondItem="zdg-2K-2nd" secondAttribute="top" id="mGh-Pw-Un4"/>
+                <constraint firstItem="aZy-rW-Jc4" firstAttribute="top" secondItem="zdg-2K-2nd" secondAttribute="top" id="TDI-gy-McE"/>
+                <constraint firstItem="aZy-rW-Jc4" firstAttribute="leading" secondItem="zdg-2K-2nd" secondAttribute="leading" id="btQ-KV-DLn"/>
+                <constraint firstItem="aZy-rW-Jc4" firstAttribute="bottom" secondItem="zdg-2K-2nd" secondAttribute="bottom" id="hrR-I3-gOW"/>
+                <constraint firstItem="aZy-rW-Jc4" firstAttribute="trailing" secondItem="zdg-2K-2nd" secondAttribute="trailing" id="jaC-uf-C7j"/>
                 <constraint firstItem="LnR-Gi-ced" firstAttribute="leading" secondItem="zdg-2K-2nd" secondAttribute="leading" id="qJN-cu-UNB"/>
                 <constraint firstItem="LnR-Gi-ced" firstAttribute="bottom" secondItem="zdg-2K-2nd" secondAttribute="bottom" id="y5c-eX-5AF"/>
             </constraints>
@@ -37,7 +41,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="zdg-2K-2nd"/>
             <connections>
-                <outlet property="imageView" destination="2f5-85-xuQ" id="XDs-kd-7PL"/>
+                <outlet property="contentView" destination="aZy-rW-Jc4" id="4DF-hu-6pk"/>
                 <outlet property="triangleView" destination="LnR-Gi-ced" id="YQf-7a-nVa"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="-129"/>

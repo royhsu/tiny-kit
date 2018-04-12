@@ -37,7 +37,7 @@ public final class UIRootCoordinator: Coordinator {
 //            [ postComponent ]
 //        )
         
-        let galleyComponent = TSProductGalleryComponent()
+        let galleyComponent = UIGalleryComponent()
         
         galleyComponent.setImageContainer(
             [

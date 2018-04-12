@@ -16,7 +16,7 @@ public final class UIProductDetailComponent: Component {
     /// The base component.
     private final let listComponent: ListComponent
 
-    public final let galleryComponent: TSProductGalleryComponent
+    public final let galleryComponent: UIGalleryComponent
 
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
 
@@ -35,7 +35,7 @@ public final class UIProductDetailComponent: Component {
     public init(
         contentMode: ComponentContentMode = .automatic,
         listComponent: ListComponent,
-        galleryComponent: TSProductGalleryComponent,
+        galleryComponent: UIGalleryComponent,
         actionButtonComponent: UIPrimaryButtonComponent,
         reviewSectionHeaderComponent: UIProductSectionHeaderComponent,
 //        reviewCarouselComponent: UIProductReviewCarouselComponent,

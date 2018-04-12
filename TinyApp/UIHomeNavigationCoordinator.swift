@@ -41,7 +41,7 @@ public final class UIHomeCoordinator: Coordinator {
 
             let productDetailComponent = UIProductDetailComponent(
                 listComponent: UIListComponent(),
-                galleryComponent: TSProductGalleryComponent(),
+                galleryComponent: UIGalleryComponent(),
                 actionButtonComponent: UIPrimaryButtonComponent()
                     .setTitle("Add to Cart")
                     .setAction { weakSelf.addToCartHandler?(product) },

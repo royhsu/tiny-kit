@@ -1,37 +1,25 @@
 //
-//  TSProductGalleryComponent.swift
-//  TinyStore
+//  UIGalleryComponent.swift
+//  TinyKit
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TSProductGalleryComponent
+// MARK: - UIGalleryComponent
 
 import TinyUI
 
-// TODO: make a generic gallery component.
-public final class TSProductGalleryComponent: Component, Stylable {
-
-    private final let bundle: Bundle
+public final class UIGalleryComponent: Component {
 
     /// The base component.
     private final let carouselComponent: UICarouselComponent
 
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        theme: Theme = .current
-    ) {
-
-        self.bundle = Bundle(
-            for: type(of: self)
-        )
+    public init(contentMode: ComponentContentMode = .automatic) {
 
         self.carouselComponent = UICarouselComponent(contentMode: contentMode)
 
         self.numberOfImages = 0
-        
-        self.theme = theme
 
         self.prepare()
 
@@ -40,6 +28,10 @@ public final class TSProductGalleryComponent: Component, Stylable {
     // MARK: Set Up
 
     fileprivate final func prepare() {
+        
+        carouselComponent.collectionView.isPagingEnabled = true
+        
+        carouselComponent.collectionView.clipsToBounds = true
         
         carouselComponent.numberOfSections = 1
         
@@ -83,10 +75,6 @@ public final class TSProductGalleryComponent: Component, Stylable {
 
     public final var preferredContentSize: CGSize { return carouselComponent.preferredContentSize }
 
-    // MARK: Stylable
-
-    public final var theme: Theme
-
     // MARK: Image
     
     public final var numberOfImages: Int
@@ -99,7 +87,7 @@ public final class TSProductGalleryComponent: Component, Stylable {
     
 }
 
-public extension TSProductGalleryComponent {
+public extension UIGalleryComponent {
     
     public final func setImageContainer(
         _ containers: [ImageContainer]
