@@ -40,24 +40,32 @@ public final class UIHomeCoordinator: Coordinator {
             else { return }
 
             let productDetailComponent = UIProductDetailComponent(
-                listComponent: UIListComponent(),
-                galleryComponent: UIGalleryComponent(),
-                actionButtonComponent: UIPrimaryButtonComponent()
-                    .setTitle("Add to Cart")
-                    .setAction { weakSelf.addToCartHandler?(product) },
-                reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
-                    .setIconImage(
-                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                    )
-                    .setTitle("Reviews"),
+//                listComponent: UIListComponent(),
+//                galleryComponent: UIGalleryComponent(),
+//                actionButtonComponent: UIPrimaryButtonComponent()
+//                    .setTitle("Add to Cart")
+//                    .setAction { weakSelf.addToCartHandler?(product) },
+//                reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
+//                    .setIconImage(
+//                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+//                    )
+//                    .setTitle("Reviews"),
 //                reviewCarouselComponent: UIProductReviewCarouselComponent(),
-                introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
-                    .setIconImage(
-                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                    )
-                    .setTitle("Introduction")
+//                introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
+//                    .setIconImage(
+//                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+//                    )
+//                    .setTitle("Introduction")
             )
 
+            productDetailComponent.galleryComponent.setImageContainers(
+                [
+                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
+                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
+                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
+                ]
+            )
+            
             let productDetailCoordinator = UIProductDetailCoordinator(
                 component: productDetailComponent,
                 provider: ProductManager()

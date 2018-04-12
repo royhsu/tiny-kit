@@ -51,11 +51,11 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     fileprivate final func prepare() {
 
-        gallerySubscription = storage.gallery.observeValueDidChange { [unowned self] _, gallery in
-
-            self.component.setGallery(gallery)
-
-        }
+//        gallerySubscription = storage.gallery.observeValueDidChange { [unowned self] _, gallery in
+//
+//            self.component.setGallery(gallery)
+//
+//        }
 
         titleSubscription = storage.title.observeValueDidChange { [unowned self] _, title in
 

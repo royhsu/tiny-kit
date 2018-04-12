@@ -20,45 +20,35 @@ public final class UIProductDetailComponent: Component {
 
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
 
-    internal final let descriptionComponent: UIProductDescriptionComponent
-
-    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
+//    internal final let descriptionComponent: UIProductDescriptionComponent
+//
+//    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
 
 //    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
 
     public final var hasIntroductionPost = false
+//
+//    public final let introductionSectionHeaderComponent: UIProductSectionHeaderComponent
+//
+//    public final let introductionComponent: UIPostComponent
 
-    public final let introductionSectionHeaderComponent: UIProductSectionHeaderComponent
+    public init(contentMode: ComponentContentMode = .automatic) {
 
-    public final let introductionComponent: UIPostComponent
+        self.listComponent = UIListComponent(contentMode: contentMode)
 
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        listComponent: ListComponent,
-        galleryComponent: UIGalleryComponent,
-        actionButtonComponent: UIPrimaryButtonComponent,
-        reviewSectionHeaderComponent: UIProductSectionHeaderComponent,
-//        reviewCarouselComponent: UIProductReviewCarouselComponent,
-        introductionSectionHeaderComponent: UIProductSectionHeaderComponent
-    ) {
+        self.galleryComponent = UIGalleryComponent()
 
-        listComponent.contentMode = contentMode
-
-        self.listComponent = listComponent
-
-        self.galleryComponent = galleryComponent
-
-        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
-
-        self.reviewSectionHeaderComponent = reviewSectionHeaderComponent
+//        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
+//
+//        self.reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
 
 //        self.reviewCarouselComponent = reviewCarouselComponent
 
-        self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
-
-        self.introductionComponent = UIPostComponent(
-            listComponent: UIListComponent()
-        )
+//        self.introductionSectionHeaderComponent = UIProductSectionHeaderComponent()
+//
+//        self.introductionComponent = UIPostComponent(
+//            listComponent: UIListComponent()
+//        )
 
         self.prepare()
 
@@ -90,6 +80,10 @@ public final class UIProductDetailComponent: Component {
                 height: galleryHeight
             )
         )
+        
+        // TODO: find a way to prevent rendering before list renders it.
+        // This is a temporarily fix.
+        galleryComponent.render()
 
         let reviewWidth = view.bounds.width
 
@@ -116,25 +110,25 @@ public final class UIProductDetailComponent: Component {
 
         var itemComponents: [Component] = [
             galleryComponent,
-            spacingComponent(20.0),
-            descriptionComponent,
-            spacingComponent(10.0),
-            reviewSectionHeaderComponent,
+//            spacingComponent(20.0),
+//            descriptionComponent,
+//            spacingComponent(10.0),
+//            reviewSectionHeaderComponent,
 //            spacingComponent(10.0),
 //            reviewCarouselComponent
         ]
 
-        if hasIntroductionPost {
-
-            itemComponents += [
-                introductionSectionHeaderComponent,
-                spacingComponent(10.0)
-            ]
-
-            listComponent.footerComponent = introductionComponent
-
-        }
-        else { listComponent.footerComponent = nil }
+//        if hasIntroductionPost {
+//
+//            itemComponents += [
+//                introductionSectionHeaderComponent,
+//                spacingComponent(10.0)
+//            ]
+//
+//            listComponent.footerComponent = introductionComponent
+//
+//        }
+//        else { listComponent.footerComponent = nil }
 
         listComponent.setItemComponents(itemComponents)
 
@@ -153,21 +147,9 @@ public final class UIProductDetailComponent: Component {
 public extension UIProductDetailComponent {
 
     @discardableResult
-    public final func setGallery(
-        _ images: [UIImage]
-    )
-    -> UIProductDetailComponent {
-
-//        galleryComponent.setImages(images)
-
-        return self
-
-    }
-
-    @discardableResult
     public final func setTitle(_ title: String?) -> UIProductDetailComponent {
 
-        descriptionComponent.setTitle(title)
+//        descriptionComponent.setTitle(title)
 
         return self
 
@@ -176,7 +158,7 @@ public extension UIProductDetailComponent {
     @discardableResult
     public final func setSubtitle(_ subtitle: String?) -> UIProductDetailComponent {
 
-        descriptionComponent.setSubtitle(subtitle)
+//        descriptionComponent.setSubtitle(subtitle)
 
         return self
 
@@ -212,7 +194,7 @@ public extension UIProductDetailComponent {
 
         hasIntroductionPost = !elements.isEmpty
 
-        introductionComponent.setPost(elements: elements)
+//        introductionComponent.setPost(elements: elements)
 
         return self
 

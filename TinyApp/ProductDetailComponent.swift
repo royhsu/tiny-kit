@@ -13,12 +13,6 @@ import TinyPost
 public protocol ProductDetailComponent: Component {
 
     @discardableResult
-    func setGallery(
-        _ images: [UIImage]
-    )
-    -> Self
-
-    @discardableResult
     func setTitle(_ title: String?) -> Self
 
     @discardableResult

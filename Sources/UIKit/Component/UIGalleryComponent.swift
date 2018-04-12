@@ -89,7 +89,7 @@ public final class UIGalleryComponent: Component {
 
 public extension UIGalleryComponent {
     
-    public final func setImageContainer(
+    public final func setImageContainers(
         _ containers: [ImageContainer]
     ) {
         

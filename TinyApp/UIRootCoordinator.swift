@@ -37,9 +37,9 @@ public final class UIRootCoordinator: Coordinator {
 //            [ postComponent ]
 //        )
         
-        let galleyComponent = UIGalleryComponent()
+        let productDetailComponent = UIProductDetailComponent()
         
-        galleyComponent.setImageContainer(
+        productDetailComponent.galleryComponent.setImageContainers(
             [
                 ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
                 ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
@@ -47,32 +47,13 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let boxComponent = UIBoxComponent(
-            contentMode: .size(
-                CGSize(
-                    width: 414.0,
-                    height: 200.0
-                )
-            ),
-            contentComponent: galleyComponent
-        )
-        
-        boxComponent.paddingInsets = UIEdgeInsets(
-            top: 10.0,
-            left: 10.0,
-            bottom: 10.0,
-            right: 10.0
-        )
-        
-        boxComponent.view.backgroundColor = .green
-        
-        let listComponent = UIListComponent()
-        
-        listComponent.setItemComponents(
-            [ boxComponent ]
-        )
+//        let listComponent = UIListComponent()
+//
+//        listComponent.setItemComponents(
+//            [ boxComponent ]
+//        )
 
-        let viewController = UIComponentViewController(component: listComponent)
+        let viewController = UIComponentViewController(component: productDetailComponent)
 
         viewController.view.backgroundColor = .white
 
