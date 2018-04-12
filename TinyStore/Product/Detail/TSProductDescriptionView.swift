@@ -1,14 +1,14 @@
 //
-//  UIProductDescriptionView.swift
+//  TSProductDescriptionView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIProductDescriptionView
+// MARK: - TSProductDescriptionView
 
-public final class UIProductDescriptionView: UIView {
+public final class TSProductDescriptionView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var titleLabel: UILabel!

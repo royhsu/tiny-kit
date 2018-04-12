@@ -1,5 +1,5 @@
 //
-//  UIProductDescriptionView+Theme.swift
+//  TSProductDescriptionView+Theme.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 21/03/2018.
@@ -10,10 +10,10 @@
 
 import TinyUI
 
-internal extension UIProductDescriptionView {
+internal extension TSProductDescriptionView {
 
     @discardableResult
-    internal final func applyTheme(_ theme: Theme) -> UIProductDescriptionView {
+    internal final func applyTheme(_ theme: Theme) -> TSProductDescriptionView {
 
         backgroundColor = theme.backgroundColor
 

@@ -24,7 +24,7 @@ public final class TSProductDetailComponent: Component {
 
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
 
-//    internal final let descriptionComponent: UIProductDescriptionComponent
+    public final let descriptionComponent: TSProductDescriptionComponent
 //
 //    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
 
@@ -53,7 +53,7 @@ public final class TSProductDetailComponent: Component {
         
         self.galleryComponent = UIGalleryComponent()
 
-//        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
+        self.descriptionComponent = TSProductDescriptionComponent()
 //
 //        self.reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
 
@@ -131,8 +131,8 @@ public final class TSProductDetailComponent: Component {
 
         var itemComponents: [Component] = [
             galleryContainerComponent,
-//            spacingComponent(20.0),
-//            descriptionComponent,
+            spacingComponent(20.0),
+            descriptionComponent,
 //            spacingComponent(10.0),
 //            reviewSectionHeaderComponent,
 //            spacingComponent(10.0),
@@ -166,6 +166,14 @@ public final class TSProductDetailComponent: Component {
 }
 
 public extension TSProductDetailComponent {
+    
+    public final func applyTheme(_ theme: Theme) {
+        
+        galleryContainerComponent.itemView.applyTheme(theme)
+        
+        descriptionComponent.applyTheme(theme)
+        
+    }
 
     @discardableResult
     public final func setTitle(_ title: String?) -> TSProductDetailComponent {

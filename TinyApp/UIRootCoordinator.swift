@@ -47,6 +47,12 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
+        productDetailComponent.descriptionComponent.titleLabel.text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
+        
+        productDetailComponent.descriptionComponent.subtitleLabel.text = "$ 12.99"
+        
+        productDetailComponent.applyTheme(.current)
+        
 //        let listComponent = UIListComponent()
 //
 //        listComponent.setItemComponents(
