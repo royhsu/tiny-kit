@@ -37,7 +37,7 @@ public final class UIRootCoordinator: Coordinator {
 //            [ postComponent ]
 //        )
         
-        let productDetailComponent = UIProductDetailComponent()
+        let productDetailComponent = TSProductDetailComponent()
         
         productDetailComponent.galleryComponent.setImageContainers(
             [

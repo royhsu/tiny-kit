@@ -10,4 +10,4 @@
 
 import TinyStore
 
-extension UIProductDetailComponent: ProductDetailComponent { }
+extension TSProductDetailComponent: ProductDetailComponent { }

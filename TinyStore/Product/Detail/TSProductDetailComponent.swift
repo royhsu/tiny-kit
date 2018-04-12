@@ -1,21 +1,25 @@
 //
-//  UIProductDetailComponent.swift
+//  TSProductDetailComponent.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 14/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIProductDetailComponent
+// MARK: - TSProductDetailComponent
 
 import TinyPost
 import TinyUI
 
-public final class UIProductDetailComponent: Component {
+public final class TSProductDetailComponent: Component {
 
+    private final let bundle: Bundle
+    
     /// The base component.
     private final let listComponent: ListComponent
 
+    private final let galleryContainerComponent: UIItemComponent<TSProductGalleryView>
+    
     public final let galleryComponent: UIGalleryComponent
 
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
@@ -34,8 +38,19 @@ public final class UIProductDetailComponent: Component {
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
+        self.bundle = Bundle(
+            for: type(of: self)
+        )
+        
         self.listComponent = UIListComponent(contentMode: contentMode)
 
+        self.galleryContainerComponent = UIItemComponent(
+            itemView: UIView.load(
+                TSProductGalleryView.self,
+                from: bundle
+            )!
+        )
+        
         self.galleryComponent = UIGalleryComponent()
 
 //        self.descriptionComponent = UIProductDescriptionComponent(actionButtonComponent: actionButtonComponent)
@@ -56,7 +71,11 @@ public final class UIProductDetailComponent: Component {
 
     // MARK: Set Up
 
-    fileprivate final func prepare() { }
+    fileprivate final func prepare() {
+        
+        galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view)
+        
+    }
 
     // MARK: Component
 
@@ -74,7 +93,7 @@ public final class UIProductDetailComponent: Component {
 
         let galleryHeight = (galleryWidth / galleryAspectRatio)
 
-        galleryComponent.contentMode = .size(
+        galleryContainerComponent.contentMode = .size(
             CGSize(
                 width: galleryWidth,
                 height: galleryHeight
@@ -83,6 +102,8 @@ public final class UIProductDetailComponent: Component {
         
         // TODO: find a way to prevent rendering before list renders it.
         // This is a temporarily fix.
+        galleryContainerComponent.render()
+        
         galleryComponent.render()
 
         let reviewWidth = view.bounds.width
@@ -109,7 +130,7 @@ public final class UIProductDetailComponent: Component {
         }
 
         var itemComponents: [Component] = [
-            galleryComponent,
+            galleryContainerComponent,
 //            spacingComponent(20.0),
 //            descriptionComponent,
 //            spacingComponent(10.0),
@@ -144,10 +165,10 @@ public final class UIProductDetailComponent: Component {
 
 }
 
-public extension UIProductDetailComponent {
+public extension TSProductDetailComponent {
 
     @discardableResult
-    public final func setTitle(_ title: String?) -> UIProductDetailComponent {
+    public final func setTitle(_ title: String?) -> TSProductDetailComponent {
 
 //        descriptionComponent.setTitle(title)
 
@@ -156,7 +177,7 @@ public extension UIProductDetailComponent {
     }
 
     @discardableResult
-    public final func setSubtitle(_ subtitle: String?) -> UIProductDetailComponent {
+    public final func setSubtitle(_ subtitle: String?) -> TSProductDetailComponent {
 
 //        descriptionComponent.setSubtitle(subtitle)
 
@@ -190,7 +211,7 @@ public extension UIProductDetailComponent {
     public final func setIntroductionPost(
         elements: [PostElement]
     )
-    -> UIProductDetailComponent {
+    -> TSProductDetailComponent {
 
         hasIntroductionPost = !elements.isEmpty
 

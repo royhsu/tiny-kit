@@ -39,7 +39,7 @@ public final class UIHomeCoordinator: Coordinator {
                 let weakSelf = self
             else { return }
 
-            let productDetailComponent = UIProductDetailComponent(
+            let productDetailComponent = TSProductDetailComponent(
 //                listComponent: UIListComponent(),
 //                galleryComponent: UIGalleryComponent(),
 //                actionButtonComponent: UIPrimaryButtonComponent()
