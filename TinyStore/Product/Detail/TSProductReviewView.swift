@@ -1,14 +1,14 @@
 //
-//  UIProductReviewView.swift
+//  TSProductReviewView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIProductReviewView
+// MARK: - TSProductReviewView
 
-public final class UIProductReviewView: UIView {
+public final class TSProductReviewView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var pictureImageView: UIImageView!
@@ -19,11 +19,7 @@ public final class UIProductReviewView: UIView {
     @IBOutlet
     public fileprivate(set) final weak var textLabel: UILabel!
 
-    // MARK: Life Cycle
-
     public final override func awakeFromNib() {
-
-        setUpRootView(self)
 
         setUpPictureImageView(pictureImageView)
 
@@ -40,22 +36,7 @@ public final class UIProductReviewView: UIView {
     }
 
     // MARK: Set Up
-
-    fileprivate final func setUpRootView(_ view: UIView) {
-
-        view.layer.shadowColor = UIColor.black.cgColor
-
-        view.layer.shadowOffset = CGSize(
-            width: 0.0,
-            height: 2.0
-        )
-
-        view.layer.shadowOpacity = 0.15
-
-        view.layer.shadowRadius = 5.0
-
-    }
-
+    
     fileprivate final func setUpPictureImageView(_ imageView: UIImageView) {
 
         imageView.contentMode = .scaleAspectFill

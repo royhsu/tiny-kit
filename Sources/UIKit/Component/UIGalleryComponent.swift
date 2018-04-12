@@ -8,8 +8,6 @@
 
 // MARK: - UIGalleryComponent
 
-//import TinyUI
-
 public final class UIGalleryComponent: Component {
 
     /// The base component.

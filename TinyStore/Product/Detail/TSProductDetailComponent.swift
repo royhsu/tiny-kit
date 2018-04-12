@@ -27,11 +27,13 @@ public final class TSProductDetailComponent: Component {
     public final let descriptionComponent: TSProductDescriptionComponent
     
     public final let reviewSectionHeaderComponent: TSProductSectionHeaderComponent
-
-//    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
+    
+    public final let reviewCarouselComponent: UICarouselComponent
+    
+    public final let reviewAspectRatio: CGFloat = (3.0 / 2.0)
 
     public final var hasIntroductionPost = false
-//
+
 //    public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
 //
 //    public final let introductionComponent: UIPostComponent
@@ -61,7 +63,7 @@ public final class TSProductDetailComponent: Component {
 
         self.reviewSectionHeaderComponent = reviewSectionHeaderComponent
 
-//        self.reviewCarouselComponent = reviewCarouselComponent
+        self.reviewCarouselComponent = UICarouselComponent()
 
 //        self.introductionSectionHeaderComponent = TSProductSectionHeaderComponent()
 //
@@ -75,7 +77,19 @@ public final class TSProductDetailComponent: Component {
 
     // MARK: Set Up
 
-    fileprivate final func prepare() { galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view) }
+    fileprivate final func prepare() {
+        
+        galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view)
+        
+        reviewCarouselComponent.setMinimumItemWidth { [unowned self] _ in
+            
+            return (self.reviewCarouselComponent.view.bounds.width / self.reviewAspectRatio)
+            
+        }
+        
+        reviewCarouselComponent.collectionView.showsHorizontalScrollIndicator = false
+        
+    }
 
     // MARK: Component
 
@@ -105,24 +119,21 @@ public final class TSProductDetailComponent: Component {
         galleryContainerComponent.render()
         
         galleryComponent.render()
-
-        let reviewWidth = view.bounds.width
-
-//        reviewCarouselComponent.contentMode = .size(
-//            CGSize(
-//                width: reviewWidth,
-//                height: 143.0 + 10.0 // 5.0 points for the shadow.
-//            )
-//        )
-
         
+        reviewCarouselComponent.contentMode = .size(
+            CGSize(
+                width: view.bounds.width,
+                height: 148.0
+            )
+        )
 
+        reviewCarouselComponent.render()
+        
         var itemComponents: [Component] = [
             galleryContainerComponent,
             descriptionComponent,
             reviewSectionHeaderComponent,
-//            spacingComponentFactory(10.0),
-//            reviewCarouselComponent
+            reviewCarouselComponent
         ]
 
 //        if hasIntroductionPost {
@@ -162,28 +173,6 @@ public extension TSProductDetailComponent {
         reviewSectionHeaderComponent.applyTheme(theme)
         
     }
-
-//    public typealias NumberOfReviewsHandler = UIProductReviewCarouselComponent.NumberOfReviewsHandler
-
-//    @discardableResult
-//    public final func setNumberOfReviews(_ handler: NumberOfReviewsHandler?) -> UIProductDetailComponent {
-//
-//        reviewCarouselComponent.setNumberOfReviews(handler)
-//
-//        return self
-//
-//    }
-
-//    public typealias ComponentForReviewHandler = (_ index: Int) -> Component
-//
-//    @discardableResult
-//    public final func setComponentForReview(_ handler: ComponentForReviewHandler?) -> UIProductDetailComponent {
-//
-//        reviewCarouselComponent.setComponentForReview(handler)
-//
-//        return self
-//
-//    }
 
     @discardableResult
     public final func setIntroductionPost(

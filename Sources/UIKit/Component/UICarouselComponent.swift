@@ -6,6 +6,14 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
+public struct UICarouselLayout {
+    
+    public var interitemSpacing: CGFloat
+    
+    public init(interitemSpacing: CGFloat = 0.0) { self.interitemSpacing = interitemSpacing }
+    
+}
+
 // MARK: - UICarouselComponent
 
 /// All items in a carousel component will be stretch out their height to fit the parent.
@@ -13,17 +21,29 @@ public final class UICarouselComponent: CollectionComponent {
 
     /// The base component.
     private final let gridComponent: UIGridComponent
+    
+    public final var layout: UICarouselLayout {
+        
+        didSet { gridComponent.layout.lineSpacing = layout.interitemSpacing }
+        
+    }
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic,
+        layout: UICarouselLayout = UICarouselLayout()
+    ) {
         
         self.gridComponent = UIGridComponent(
             contentMode: contentMode,
             layout: UIGridLayout(
                 columns: 1,
                 rows: 1,
+                lineSpacing: layout.interitemSpacing,
                 scrollDirection: .horizontal
             )
         )
+        
+        self.layout = layout
         
         self.prepare()
 
@@ -31,7 +51,7 @@ public final class UICarouselComponent: CollectionComponent {
     
     // MARK: Set Up
     
-    fileprivate final func prepare() { }
+    fileprivate final func prepare() { collectionView.showsVerticalScrollIndicator = false }
 
     // MARK: CollectionComponent
     
@@ -67,7 +87,7 @@ public final class UICarouselComponent: CollectionComponent {
     
     // MARK: Action
     
-    public typealias MinimumItemWidthProvider = (IndexPath) -> CGFloat
+    public typealias MinimumItemWidthProvider = (_ index: Int) -> CGFloat
     
     private final var minimumItemWidthProvider: MinimumItemWidthProvider? {
         
@@ -77,7 +97,7 @@ public final class UICarouselComponent: CollectionComponent {
                 
                 gridComponent.setMinimumItemSize { _, _, indexPath in
                     
-                    let width = provider(indexPath)
+                    let width = provider(indexPath.item)
                     
                     return CGSize(
                         width: width,

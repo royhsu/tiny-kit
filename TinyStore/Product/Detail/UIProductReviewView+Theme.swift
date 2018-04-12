@@ -1,5 +1,5 @@
 //
-//  UIProductReviewView+Theme.swift
+//  TSProductReviewView+Theme.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
@@ -8,12 +8,9 @@
 
 // MARK: - Theme
 
-import TinyUI
+public extension TSProductReviewView {
 
-public extension UIProductReviewView {
-
-    @discardableResult
-    public final func applyTheme(_ theme: Theme) -> UIProductReviewView {
+    public final func applyTheme(_ theme: Theme) {
 
         backgroundColor = theme.backgroundColor
 
@@ -22,9 +19,7 @@ public extension UIProductReviewView {
         titleLabel.textColor = theme.subtitleColor
 
         textLabel.textColor = theme.bodyColor
-
-        return self
-
+        
     }
 
 }

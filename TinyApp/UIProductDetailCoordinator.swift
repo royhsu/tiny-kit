@@ -77,7 +77,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
             self.reviewComponents = reviews.map { review in
 
-                let component = UIProductReviewComponent(
+                let component = TSProductReviewComponent(
                     contentMode: .size(
                         CGSize(
                             width: 250.0,
@@ -86,13 +86,13 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                     )
                 )
 
-                component.setTitle(review.title).setText(review.text)
-
-                if let imageContainer = review.imageContainer {
-
-//                    imageContainer.setImage(to: component.setPictureImage(<#T##image: UIImage?##UIImage?#>))
-
-                }
+//                component.setTitle(review.title).setText(review.text)
+//
+//                if let imageContainer = review.imageContainer {
+//
+////                    imageContainer.setImage(to: component.setPictureImage(<#T##image: UIImage?##UIImage?#>))
+//
+//                }
 
                 return component
 
@@ -290,7 +290,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     // MARK: Review
 
-    private final var reviewComponents: [UIProductReviewComponent]
+    private final var reviewComponents: [TSProductReviewComponent]
 
 }
 
