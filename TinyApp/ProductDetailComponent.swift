@@ -12,12 +12,6 @@ import TinyPost
 
 public protocol ProductDetailComponent: Component {
 
-    @discardableResult
-    func setTitle(_ title: String?) -> Self
-
-    @discardableResult
-    func setSubtitle(_ subtitle: String?) -> Self
-
 //    typealias NumberOfReviewsHandler = () -> Int
 //
 //    @discardableResult

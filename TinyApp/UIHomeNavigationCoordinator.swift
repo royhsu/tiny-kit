@@ -39,52 +39,53 @@ public final class UIHomeCoordinator: Coordinator {
                 let weakSelf = self
             else { return }
 
-            let productDetailComponent = TSProductDetailComponent(
-                descriptionButtonComponent: TSPrimaryButtonComponent()
+//            let productDetailComponent = TSProductDetailComponent(
+//                descriptionButtonComponent: TSPrimaryButtonComponent(),
+//
 //                listComponent: UIListComponent(),
 //                galleryComponent: UIGalleryComponent(),
 //                actionButtonComponent: UIPrimaryButtonComponent()
 //                    .setTitle("Add to Cart")
 //                    .setAction { weakSelf.addToCartHandler?(product) },
-//                reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
+//                reviewSectionHeaderComponent: TSProductSectionHeaderComponent()
 //                    .setIconImage(
 //                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
 //                    )
 //                    .setTitle("Reviews"),
 //                reviewCarouselComponent: UIProductReviewCarouselComponent(),
-//                introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
+//                introductionSectionHeaderComponent: TSProductSectionHeaderComponent()
 //                    .setIconImage(
 //                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
 //                    )
 //                    .setTitle("Introduction")
-            )
-
-            productDetailComponent.galleryComponent.setImageContainers(
-                [
-                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
-                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
-                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
-                ]
-            )
-            
-            let productDetailCoordinator = UIProductDetailCoordinator(
-                component: productDetailComponent,
-                provider: ProductManager()
-            )
-
-            // TODO: prevent the bar covering its content.
-            productDetailCoordinator.additionalSafeAreaInsets.bottom = 60.0
-
-            weakSelf.navigationController.pushViewController(
-                productDetailCoordinator,
-                animated: true
-            )
-
-            DispatchQueue.main.async {
-
-                productDetailCoordinator.activate()
-
-            }
+//            )
+//
+//            productDetailComponent.galleryComponent.setImageContainers(
+//                [
+//                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
+//                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
+//                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
+//                ]
+//            )
+//            
+//            let productDetailCoordinator = UIProductDetailCoordinator(
+//                component: productDetailComponent,
+//                provider: ProductManager()
+//            )
+//
+//            // TODO: prevent the bar covering its content.
+//            productDetailCoordinator.additionalSafeAreaInsets.bottom = 60.0
+//
+//            weakSelf.navigationController.pushViewController(
+//                productDetailCoordinator,
+//                animated: true
+//            )
+//
+//            DispatchQueue.main.async {
+//
+//                productDetailCoordinator.activate()
+//
+//            }
 
         }
 

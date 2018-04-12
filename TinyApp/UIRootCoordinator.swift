@@ -41,7 +41,10 @@ public final class UIRootCoordinator: Coordinator {
         
         let buttonComponent = TSPrimaryButtonComponent()
         
-        buttonComponent.titleLabel.text = "Add to Cart"
+        buttonComponent.titleLabel.text = NSLocalizedString(
+            "Add to Cart",
+            comment: ""
+        )
         
         buttonComponent.iconImageView.image = #imageLiteral(resourceName: "icon-plus").withRenderingMode(.alwaysTemplate)
         
@@ -53,8 +56,25 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
+        let reviewSectionHeaderComponent = TSProductSectionHeaderComponent()
+        
+        reviewSectionHeaderComponent.iconImageView.image = #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+        
+        reviewSectionHeaderComponent.titleLabel.text = NSLocalizedString(
+            "Reviews",
+            comment: ""
+        )
+        
+        reviewSectionHeaderComponent.paddingInsets = UIEdgeInsets(
+            top: 10.0,
+            left: 16.0,
+            bottom: 0.0,
+            right: 16.0
+        )
+        
         let productDetailComponent = TSProductDetailComponent(
-            descriptionButtonComponent: buttonComponent
+            descriptionButtonComponent: buttonComponent,
+            reviewSectionHeaderComponent: reviewSectionHeaderComponent
         )
         
         productDetailComponent.galleryComponent.setImageContainers(
@@ -70,9 +90,9 @@ public final class UIRootCoordinator: Coordinator {
         productDetailComponent.descriptionComponent.subtitleLabel.text = "$12.99"
         
         productDetailComponent.descriptionComponent.paddingInsets = UIEdgeInsets(
-            top: 16.0,
+            top: 20.0,
             left: 16.0,
-            bottom: 16.0,
+            bottom: 0.0,
             right: 16.0
         )
         

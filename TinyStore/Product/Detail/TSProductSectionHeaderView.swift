@@ -1,14 +1,14 @@
 //
-//  UIProductSectionHeaderView.swift
+//  TSProductSectionHeaderView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIProductSectionHeaderView
+// MARK: - TSProductSectionHeaderView
 
-public final class UIProductSectionHeaderView: UIView {
+public final class TSProductSectionHeaderView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var iconImageView: UIImageView!
@@ -40,7 +40,7 @@ public final class UIProductSectionHeaderView: UIView {
 
         label.numberOfLines = 1
 
-        label.font = UIFont.systemFont(
+        label.font = .systemFont(
             ofSize: 10.0,
             weight: .medium
         )

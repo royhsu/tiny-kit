@@ -1,5 +1,5 @@
 //
-//  UIProductSectionHeaderView+Theme.swift
+//  TSProductSectionHeaderView+Theme.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 22/03/2018.
@@ -8,20 +8,15 @@
 
 // MARK: - Theme
 
-import TinyUI
+public extension TSProductSectionHeaderView {
 
-public extension UIProductSectionHeaderView {
-
-    @discardableResult
-    public final func applyTheme(_ theme: Theme) -> UIProductSectionHeaderView {
+    public final func applyTheme(_ theme: Theme) {
 
         backgroundColor = theme.backgroundColor
 
         iconImageView.tintColor = theme.titleColor
 
         titleLabel.textColor = theme.titleColor
-
-        return self
 
     }
 

@@ -1,28 +1,23 @@
 //
-//  TSProductDescriptionComponent.swift
+//  TSProductSectionHeaderComponent.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TSProductDescriptionComponent
+// MARK: - TSProductSectionHeaderComponent
 
-public final class TSProductDescriptionComponent: Component {
+public final class TSProductSectionHeaderComponent: Component {
 
     private final let bundle: Bundle
 
     /// The base component.
     private final let boxComponent: UIBoxComponent
     
-    private final let itemComponent: UIItemComponent<TSProductDescriptionView>
-    
-    public final let buttonComponent: UIButtonComponent
+    private final let itemComponent: UIItemComponent<TSProductSectionHeaderView>
 
-    public init(
-        contentMode: ComponentContentMode = .automatic,
-        buttonComponent: UIButtonComponent
-    ) {
+    public init(contentMode: ComponentContentMode = .automatic) {
 
         self.bundle = Bundle(
             for: type(of: self)
@@ -30,17 +25,15 @@ public final class TSProductDescriptionComponent: Component {
 
         self.itemComponent = UIItemComponent(
             itemView: UIView.load(
-                TSProductDescriptionView.self,
+                TSProductSectionHeaderView.self,
                 from: bundle
             )!
         )
-
+        
         self.boxComponent = UIBoxComponent(
             contentMode: contentMode,
             contentComponent: itemComponent
         )
-        
-        self.buttonComponent = buttonComponent
         
         self.prepare()
 
@@ -48,25 +41,19 @@ public final class TSProductDescriptionComponent: Component {
 
     // MARK: Set Up
 
-    fileprivate final func prepare() { itemComponent.itemView.buttonContainerView.wrapSubview(buttonComponent.view) }
+    fileprivate final func prepare() { }
 
     // MARK: Component
 
     public final var contentMode: ComponentContentMode {
 
-        get { return itemComponent.contentMode }
+        get { return boxComponent.contentMode }
 
-        set { itemComponent.contentMode = newValue }
+        set { boxComponent.contentMode = newValue }
 
     }
 
-    public final func render() {
-        
-        boxComponent.render()
-        
-        buttonComponent.render()
-        
-    }
+    public final func render() { boxComponent.render() }
 
     // MARK: ViewRenderable
 
@@ -76,11 +63,11 @@ public final class TSProductDescriptionComponent: Component {
 
 }
 
-public extension TSProductDescriptionComponent {
+public extension TSProductSectionHeaderComponent {
 
-    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel }
+    public final var iconImageView: UIImageView { return itemComponent.itemView.iconImageView }
     
-    public final var subtitleLabel: UILabel { return itemComponent.itemView.subtitleLabel }
+    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel }
     
     public final var paddingInsets: UIEdgeInsets {
         

@@ -26,19 +26,20 @@ public final class TSProductDetailComponent: Component {
     
     public final let descriptionComponent: TSProductDescriptionComponent
     
-//    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
+    public final let reviewSectionHeaderComponent: TSProductSectionHeaderComponent
 
 //    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
 
     public final var hasIntroductionPost = false
 //
-//    public final let introductionSectionHeaderComponent: UIProductSectionHeaderComponent
+//    public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
 //
 //    public final let introductionComponent: UIPostComponent
 
     public init(
         contentMode: ComponentContentMode = .automatic,
-        descriptionButtonComponent: UIButtonComponent
+        descriptionButtonComponent: UIButtonComponent,
+        reviewSectionHeaderComponent: TSProductSectionHeaderComponent
     ) {
 
         self.bundle = Bundle(
@@ -57,13 +58,12 @@ public final class TSProductDetailComponent: Component {
         self.galleryComponent = UIGalleryComponent()
         
         self.descriptionComponent = TSProductDescriptionComponent(buttonComponent: descriptionButtonComponent)
-    
-//
-//        self.reviewSectionHeaderComponent = UIProductSectionHeaderComponent()
+
+        self.reviewSectionHeaderComponent = reviewSectionHeaderComponent
 
 //        self.reviewCarouselComponent = reviewCarouselComponent
 
-//        self.introductionSectionHeaderComponent = UIProductSectionHeaderComponent()
+//        self.introductionSectionHeaderComponent = TSProductSectionHeaderComponent()
 //
 //        self.introductionComponent = UIPostComponent(
 //            listComponent: UIListComponent()
@@ -75,11 +75,7 @@ public final class TSProductDetailComponent: Component {
 
     // MARK: Set Up
 
-    fileprivate final func prepare() {
-        
-        galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view)
-        
-    }
+    fileprivate final func prepare() { galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view) }
 
     // MARK: Component
 
@@ -119,27 +115,13 @@ public final class TSProductDetailComponent: Component {
 //            )
 //        )
 
-        let spacingComponent: (CGFloat) -> Component = { spacing in
-
-            return UIItemComponent(
-                contentMode: .size(
-                    CGSize(
-                        width: spacing,
-                        height: spacing
-                    )
-                ),
-                itemView: UIView()
-            )
-
-        }
+        
 
         var itemComponents: [Component] = [
             galleryContainerComponent,
-            spacingComponent(20.0),
             descriptionComponent,
-//            spacingComponent(10.0),
-//            reviewSectionHeaderComponent,
-//            spacingComponent(10.0),
+            reviewSectionHeaderComponent,
+//            spacingComponentFactory(10.0),
 //            reviewCarouselComponent
         ]
 
@@ -177,24 +159,8 @@ public extension TSProductDetailComponent {
         
         descriptionComponent.applyTheme(theme)
         
-    }
-
-    @discardableResult
-    public final func setTitle(_ title: String?) -> TSProductDetailComponent {
-
-//        descriptionComponent.setTitle(title)
-
-        return self
-
-    }
-
-    @discardableResult
-    public final func setSubtitle(_ subtitle: String?) -> TSProductDetailComponent {
-
-//        descriptionComponent.setSubtitle(subtitle)
-
-        return self
-
+        reviewSectionHeaderComponent.applyTheme(theme)
+        
     }
 
 //    public typealias NumberOfReviewsHandler = UIProductReviewCarouselComponent.NumberOfReviewsHandler

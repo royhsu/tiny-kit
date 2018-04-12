@@ -57,17 +57,17 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 //
 //        }
 
-        titleSubscription = storage.title.observeValueDidChange { [unowned self] _, title in
-
-            self.component.setTitle(title)
-
-        }
-
-        subtitleSubscription = storage.subtitle.observeValueDidChange { [unowned self] _, subtitle in
-
-            self.component.setSubtitle(subtitle)
-
-        }
+//        titleSubscription = storage.title.observeValueDidChange { [unowned self] _, title in
+//
+//            self.component.setTitle(title)
+//
+//        }
+//
+//        subtitleSubscription = storage.subtitle.observeValueDidChange { [unowned self] _, subtitle in
+//
+//            self.component.setSubtitle(subtitle)
+//
+//        }
 
 //        component
 //            .setNumberOfReviews { [unowned self] in self.reviewComponents.count }
