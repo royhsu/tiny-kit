@@ -10,7 +10,7 @@
 
 public final class UICollectionComponent: CollectionComponent {
 
-    internal final let collectionView: UICollectionView
+    public final let collectionView: UICollectionView
 
     internal final let collectionViewLayout: UICollectionViewLayout
 

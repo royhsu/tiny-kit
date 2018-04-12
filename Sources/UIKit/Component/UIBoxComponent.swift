@@ -90,6 +90,7 @@ public final class UIBoxComponent: Component {
         
         let containerView = containerComponent.itemView
         
+        // Prepare for content to render.
         containerComponent.render()
         
         let contentView = contentComponent.view
@@ -121,6 +122,7 @@ public final class UIBoxComponent: Component {
         
         contentComponent.render()
         
+        // Render to fit the parent.
         containerComponent.render()
         
     }

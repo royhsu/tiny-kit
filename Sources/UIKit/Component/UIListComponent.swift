@@ -10,7 +10,7 @@
 
 public final class UIListComponent: ListComponent {
 
-    internal final let tableView: UITableView
+    public final let tableView: UITableView
 
     fileprivate final let bridge: UITableViewBridge
 

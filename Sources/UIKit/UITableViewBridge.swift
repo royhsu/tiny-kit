@@ -63,7 +63,7 @@ extension UITableViewBridge: UITableViewDataSource {
     public final func numberOfSections(in tableView: UITableView) -> Int {
         
         // TODO: find a better way to log debugging info.
-        print(self, #function, "->", numberOfSections)
+//        print(self, #function, "->", numberOfSections)
         
         return numberOfSections
         
@@ -78,7 +78,7 @@ extension UITableViewBridge: UITableViewDataSource {
         let rows = numberOfRowsProvider(section)
         
         // TODO: find a better way to log debugging info.
-        print(self, #function, section, "->", "rows:", rows)
+//        print(self, #function, section, "->", "rows:", rows)
         
         return rows
         
@@ -97,7 +97,7 @@ extension UITableViewBridge: UITableViewDataSource {
         )
 
         // TODO: find a better way to log debugging info.
-        print(self, #function, indexPath, "->", "cell:", cell)
+//        print(self, #function, indexPath, "->", "cell:", cell)
         
         cell.selectionStyle = .none
 
@@ -127,7 +127,7 @@ extension UITableViewBridge: UITableViewDelegate {
         let height = heightForRowProvider(indexPath)
         
         // TODO: find a better way to log debugging info.
-        print(self, #function, indexPath, "->", "height:", height)
+//        print(self, #function, indexPath, "->", "height:", height)
         
         return height
         

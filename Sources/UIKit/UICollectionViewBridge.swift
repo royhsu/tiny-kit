@@ -63,7 +63,7 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
     public final func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         // TODO: find a better way to log debugging info.
-        print(self, #function, "->", numberOfSections)
+//        print(self, #function, "->", numberOfSections)
         
         return numberOfSections
         
@@ -78,7 +78,7 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
         let items = numberOfItemsProvider(section)
         
         // TODO: find a better way to log debugging info.
-        print(self, #function, section, "->", "items:", items)
+//        print(self, #function, section, "->", "items:", items)
         
         return items
         
@@ -98,7 +98,7 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
         else { fatalError("CANNOT dequeue a cell with type UICollectionViewCell.") }
 
         // TODO: find a better way to log debugging info.
-        print(self, #function, indexPath, "->", "cell:", cell)
+//        print(self, #function, indexPath, "->", "cell:", cell)
 
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
 
@@ -130,7 +130,7 @@ extension UICollectionViewBridge: UICollectionViewDelegateFlowLayout {
         )
         
         // TODO: find a better way to log debugging info.
-        print(self, #function, indexPath, "->", "size:", size)
+//        print(self, #function, indexPath, "->", "size:", size)
         
         return size
         

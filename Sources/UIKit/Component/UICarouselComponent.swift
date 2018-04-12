@@ -96,3 +96,9 @@ public final class UICarouselComponent: CollectionComponent {
     public final func setMinimumItemWidth(provider: @escaping MinimumItemWidthProvider) { minimumItemWidthProvider = provider }
 
 }
+
+public extension UICarouselComponent {
+    
+    public final var collectionView: UICollectionView { return gridComponent.collectionView }
+    
+}
