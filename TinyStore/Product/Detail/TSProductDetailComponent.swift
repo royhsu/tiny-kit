@@ -18,14 +18,14 @@ public final class TSProductDetailComponent: Component {
     /// The base component.
     private final let listComponent: ListComponent
 
-    private final let galleryContainerComponent: UIItemComponent<TSProductGalleryView>
-    
     public final let galleryComponent: UIGalleryComponent
 
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
-
+    
+    private final let galleryContainerComponent: UIItemComponent<TSProductGalleryView>
+    
     public final let descriptionComponent: TSProductDescriptionComponent
-//
+    
 //    public final let reviewSectionHeaderComponent: UIProductSectionHeaderComponent
 
 //    public final let reviewCarouselComponent: UIProductReviewCarouselComponent
@@ -52,7 +52,7 @@ public final class TSProductDetailComponent: Component {
         )
         
         self.galleryComponent = UIGalleryComponent()
-
+        
         self.descriptionComponent = TSProductDescriptionComponent()
 //
 //        self.reviewSectionHeaderComponent = UIProductSectionHeaderComponent()

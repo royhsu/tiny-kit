@@ -39,7 +39,7 @@ public final class TSProductDescriptionView: UIView {
 
         label.numberOfLines = 0
 
-        label.font = UIFont.systemFont(
+        label.font = .systemFont(
             ofSize: 15.0,
             weight: .medium
         )
@@ -56,7 +56,7 @@ public final class TSProductDescriptionView: UIView {
 
         label.numberOfLines = 2
 
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = .systemFont(ofSize: 15.0)
 
         label.textColor = .lightGray
 

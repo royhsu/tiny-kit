@@ -51,6 +51,13 @@ public final class UIRootCoordinator: Coordinator {
         
         productDetailComponent.descriptionComponent.subtitleLabel.text = "$ 12.99"
         
+        productDetailComponent.descriptionComponent.paddingInsets = UIEdgeInsets(
+            top: 16.0,
+            left: 16.0,
+            bottom: 16.0,
+            right: 16.0
+        )
+        
         productDetailComponent.applyTheme(.current)
         
 //        let listComponent = UIListComponent()

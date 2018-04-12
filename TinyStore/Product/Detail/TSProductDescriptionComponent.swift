@@ -15,6 +15,8 @@ public final class TSProductDescriptionComponent: Component {
     private final let bundle: Bundle
 
     /// The base component.
+    private final let boxComponent: UIBoxComponent
+    
     private final let itemComponent: UIItemComponent<TSProductDescriptionView>
 
     public init(contentMode: ComponentContentMode = .automatic) {
@@ -24,13 +26,17 @@ public final class TSProductDescriptionComponent: Component {
         )
 
         self.itemComponent = UIItemComponent(
-            contentMode: contentMode,
             itemView: UIView.load(
                 TSProductDescriptionView.self,
                 from: bundle
             )!
         )
 
+        self.boxComponent = UIBoxComponent(
+            contentMode: contentMode,
+            contentComponent: itemComponent
+        )
+        
         self.prepare()
 
     }
@@ -49,13 +55,13 @@ public final class TSProductDescriptionComponent: Component {
 
     }
 
-    public final func render() { itemComponent.render() }
+    public final func render() { boxComponent.render() }
 
     // MARK: ViewRenderable
 
-    public final var view: View { return itemComponent.view }
+    public final var view: View { return boxComponent.view }
 
-    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return boxComponent.preferredContentSize }
 
 }
 
@@ -64,6 +70,14 @@ public extension TSProductDescriptionComponent {
     public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel }
     
     public final var subtitleLabel: UILabel { return itemComponent.itemView.subtitleLabel }
+    
+    public final var paddingInsets: UIEdgeInsets {
+        
+        get { return boxComponent.paddingInsets }
+        
+        set { boxComponent.paddingInsets = newValue }
+        
+    }
     
     public final func applyTheme(_ theme: Theme) { itemComponent.itemView.applyTheme(theme) }
 
