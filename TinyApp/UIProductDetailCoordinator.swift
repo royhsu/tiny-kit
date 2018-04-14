@@ -99,12 +99,12 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
             }
 
         }
-
-        introductionPostSubscription = storage.introductionPost.observeValueDidChange { _, post in
-
-            self.component.setIntroductionPost(elements: post.elements)
-
-        }
+//
+//        introductionPostSubscription = storage.introductionPost.observeValueDidChange { _, post in
+//
+//            self.component.setIntroductionPost(elements: post.elements)
+//
+//        }
 
     }
 

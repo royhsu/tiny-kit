@@ -1,35 +1,34 @@
 //
-//  UIPostImageComponent.swift
+//  TPPostImageComponent.swift
 //  TinyPost
 //
 //  Created by Roy Hsu on 14/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UIPostImageComponent
+// MARK: - TPPostImageComponent
 
-public final class UIPostImageComponent: Component, Stylable {
+public final class TPPostImageComponent: Component {
 
     /// The base component.
     private final let itemComponent: UIItemComponent<UIImageView>
 
     public init(
         contentMode: ComponentContentMode = .automatic,
-        theme: Theme = .current
+        width: CGFloat
     ) {
-
-        let imageView = UIImageView(frame: .zero)
-
-        imageView.contentMode = .scaleAspectFill
-
-        imageView.clipsToBounds = true
 
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,
-            itemView: imageView
+            itemView: UIImageView(
+                frame: CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: width,
+                    height: 0.0
+                )
+            )
         )
-
-        self.theme = theme
 
         self.prepare()
 
@@ -40,8 +39,10 @@ public final class UIPostImageComponent: Component, Stylable {
     fileprivate final func prepare() {
 
         let imageView = itemComponent.itemView
-
-        imageView.applyTheme(theme)
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
 
     }
 
@@ -56,14 +57,18 @@ public final class UIPostImageComponent: Component, Stylable {
     }
 
     public final func render() {
+        
+        let imageView = itemComponent.itemView
 
+        let size: CGSize
+        
         switch contentMode {
 
-        case let .size(size): itemComponent.contentMode = .size(size)
+        case let .size(value): size = value
 
         case .automatic:
 
-            let width = view.bounds.width
+            let width = imageView.bounds.width
 
             let height: CGFloat
 
@@ -76,19 +81,15 @@ public final class UIPostImageComponent: Component, Stylable {
             }
             else { height = 0.0 }
 
-            itemComponent.contentMode = .size(
-                CGSize(
-                    width: width,
-                    height: height
-                )
+            size = CGSize(
+                width: width,
+                height: height
             )
 
         }
 
-        let imageView = itemComponent.itemView
-
-        imageView.applyTheme(theme)
-
+        itemComponent.contentMode = .size(size)
+        
         itemComponent.render()
 
     }
@@ -99,25 +100,14 @@ public final class UIPostImageComponent: Component, Stylable {
 
     public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
 
-    // MARK: Stylable
-
-    public final var theme: Theme
-
 }
 
 // MARK: - UIPostImageComponent
 
-public extension UIPostImageComponent {
+public extension TPPostImageComponent {
 
-    @discardableResult
-    public final func setImage(_ image: UIImage?) -> UIPostImageComponent {
-
-        let imageView = itemComponent.itemView
-
-        imageView.image = image
-
-        return self
-
-    }
+    public final var imageView: UIImageView { return itemComponent.itemView }
+    
+    public final func applyTheme(_ theme: Theme) { itemComponent.itemView.backgroundColor = theme.placeholderColor }
 
 }

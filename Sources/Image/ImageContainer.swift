@@ -22,7 +22,8 @@ public enum ImageContainer {
 // MARK: - UIImageView
 
 public extension ImageContainer {
-    
+
+    // TODO: add completionHandler.
     public func setImage(to imageView: UIImageView) {
         
         switch self {

@@ -32,16 +32,15 @@ public final class TSProductDetailComponent: Component {
     
     public final let reviewAspectRatio: CGFloat = (3.0 / 2.0)
 
-    public final var hasIntroductionPost = false
+    public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
 
-//    public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
-//
-//    public final let introductionComponent: UIPostComponent
+    public final let introductionComponent: UIListComponent
 
     public init(
         contentMode: ComponentContentMode = .automatic,
         descriptionButtonComponent: UIButtonComponent,
-        reviewSectionHeaderComponent: TSProductSectionHeaderComponent
+        reviewSectionHeaderComponent: TSProductSectionHeaderComponent,
+        introductionSectionHeaderComponent: TSProductSectionHeaderComponent
     ) {
 
         self.bundle = Bundle(
@@ -65,11 +64,9 @@ public final class TSProductDetailComponent: Component {
 
         self.reviewCarouselComponent = UICarouselComponent()
 
-//        self.introductionSectionHeaderComponent = TSProductSectionHeaderComponent()
-//
-//        self.introductionComponent = UIPostComponent(
-//            listComponent: UIListComponent()
-//        )
+        self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
+
+        self.introductionComponent = UIListComponent()
 
         self.prepare()
 
@@ -123,7 +120,7 @@ public final class TSProductDetailComponent: Component {
         reviewCarouselComponent.contentMode = .size(
             CGSize(
                 width: view.bounds.width,
-                height: 148.0
+                height: 167.0
             )
         )
 
@@ -133,20 +130,19 @@ public final class TSProductDetailComponent: Component {
             galleryContainerComponent,
             descriptionComponent,
             reviewSectionHeaderComponent,
-            reviewCarouselComponent
+            reviewCarouselComponent,
         ]
 
-//        if hasIntroductionPost {
-//
-//            itemComponents += [
-//                introductionSectionHeaderComponent,
-//                spacingComponent(10.0)
-//            ]
-//
-//            listComponent.footerComponent = introductionComponent
-//
-//        }
-//        else { listComponent.footerComponent = nil }
+        let hasIntroduction = (introductionComponent.numberOfSections != 0)
+        
+        if hasIntroduction {
+
+            itemComponents += [ introductionSectionHeaderComponent ]
+
+            listComponent.footerComponent = introductionComponent
+
+        }
+        else { listComponent.footerComponent = nil }
 
         listComponent.setItemComponents(itemComponents)
 
@@ -172,20 +168,8 @@ public extension TSProductDetailComponent {
         
         reviewSectionHeaderComponent.applyTheme(theme)
         
-    }
-
-    @discardableResult
-    public final func setIntroductionPost(
-        elements: [PostElement]
-    )
-    -> TSProductDetailComponent {
-
-        hasIntroductionPost = !elements.isEmpty
-
-//        introductionComponent.setPost(elements: elements)
-
-        return self
-
+        introductionSectionHeaderComponent.applyTheme(theme)
+        
     }
 
 }

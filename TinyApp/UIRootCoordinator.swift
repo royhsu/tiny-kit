@@ -23,22 +23,6 @@ public final class UIRootCoordinator: Coordinator {
     
     public init() {
 
-//        let postComponent = UIPostComponent(
-//            listComponent: UIListComponent()
-//        )
-//        .setPost(
-//            elements: [
-//                .text("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."),
-//                .text("Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.")
-//            ]
-//        )
-//
-//        let listComponent = UIListComponent()
-//
-//        listComponent.setItemComponents(
-//            [ postComponent ]
-//        )
-        
         let buttonComponent = TSPrimaryButtonComponent()
         
         buttonComponent.titleLabel.text = NSLocalizedString(
@@ -66,15 +50,32 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         reviewSectionHeaderComponent.paddingInsets = UIEdgeInsets(
-            top: 10.0,
+            top: 8.0,
             left: 16.0,
-            bottom: 0.0,
+            bottom: 8.0,
+            right: 16.0
+        )
+        
+        let introductionSectionHeaderComponent = TSProductSectionHeaderComponent()
+        
+        introductionSectionHeaderComponent.iconImageView.image = #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+        
+        introductionSectionHeaderComponent.titleLabel.text = NSLocalizedString(
+            "Introduction",
+            comment: ""
+        )
+        
+        introductionSectionHeaderComponent.paddingInsets = UIEdgeInsets(
+            top: 8.0,
+            left: 16.0,
+            bottom: 8.0,
             right: 16.0
         )
         
         let productDetailComponent = TSProductDetailComponent(
             descriptionButtonComponent: buttonComponent,
-            reviewSectionHeaderComponent: reviewSectionHeaderComponent
+            reviewSectionHeaderComponent: reviewSectionHeaderComponent,
+            introductionSectionHeaderComponent: introductionSectionHeaderComponent
         )
         
         productDetailComponent.galleryComponent.setImageContainers(
@@ -112,6 +113,7 @@ public final class UIRootCoordinator: Coordinator {
         review1Component.titleLabel.text = "Danielle Schneider"
         
         review1Component.textLabel.text = "Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+        
 //        review1Component.paddingInsets = reviewPaddingInsets
 
         let review2Component = TSProductReviewComponent()
@@ -139,7 +141,7 @@ public final class UIRootCoordinator: Coordinator {
 //        review3Component.paddingInsets = reviewPaddingInsets
         
         productDetailComponent.reviewCarouselComponent.collectionView.contentInset = UIEdgeInsets(
-            top: 20.0,
+            top: 0.0,
             left: 16.0,
             bottom: 0.0,
             right: 16.0
@@ -156,6 +158,59 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         productDetailComponent.applyTheme(.current)
+        
+        let paragraphComponentFactory: (String) -> Component = { paragraph in
+            
+            let paragraphComponent = TPPostParagraphComponent()
+            
+            paragraphComponent.textLabel.text = paragraph
+            
+            paragraphComponent.applyTheme(.current)
+            
+            let boxComponent = UIBoxComponent(contentComponent: paragraphComponent)
+            
+            boxComponent.paddingInsets = UIEdgeInsets(
+                top: 0.0,
+                left: 16.0,
+                bottom: 12.0,
+                right: 16.0
+            )
+            
+            return boxComponent
+            
+        }
+        
+        let imageComponentFactory: (CGFloat, ImageContainer) -> Component = { imageWidth, imageContainer in
+            
+            let imageComponent = TPPostImageComponent(width: imageWidth)
+            
+            imageContainer.setImage(to: imageComponent.imageView)
+            
+            imageComponent.applyTheme(.current)
+            
+            let boxComponent = UIBoxComponent(contentComponent: imageComponent)
+
+            boxComponent.paddingInsets = UIEdgeInsets(
+                top: 0.0,
+                left: 0.0,
+                bottom: 12.0,
+                right: 0.0
+            )
+            
+            return boxComponent
+            
+        }
+        
+        productDetailComponent.introductionComponent.setItemComponents(
+            [
+                imageComponentFactory(
+                    UIScreen.main.bounds.width,
+                    .image(#imageLiteral(resourceName: "image-product-story-1"))
+                ),
+                paragraphComponentFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
+                paragraphComponentFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
+            ]
+        )
         
         let viewController = UIComponentViewController(component: productDetailComponent)
 

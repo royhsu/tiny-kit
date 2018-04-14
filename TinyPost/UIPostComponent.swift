@@ -58,40 +58,40 @@ public extension UIPostComponent {
     )
     -> UIPostComponent {
 
-        let components: [Component] = elements.map { element in
-
-            switch element {
-
-            case let .text(text): return UIPostParagraphComponent().setText(text)
-
-            case let .image(image): return UIPostImageComponent().setImage(image)
-
-            }
-
-        }
-
-        // Insert spacings between elements.
-        let defaultSpacing: CGFloat = 20.0
-
-        let spacingComponent: (CGFloat) -> Component = { spacing in
-
-            return UIItemComponent(
-                contentMode: .size(
-                    CGSize(
-                        width: spacing,
-                        height: spacing
-                    )
-                ),
-                itemView: UIView()
-            )
-
-        }
-
-        let spacedComponents = components.joined(
-            separator: spacingComponent(defaultSpacing)
-        )
-
-        listComponent.setItemComponents(spacedComponents)
+//        let components: [Component] = elements.map { element in
+//
+//            switch element {
+//
+//            case let .text(text): return TPPostParagraphComponent().setText(text)
+//
+//            case let .image(image): return TPPostImageComponent().setImage(image)
+//
+//            }
+//
+//        }
+//
+//        // Insert spacings between elements.
+//        let defaultSpacing: CGFloat = 20.0
+//
+//        let spacingComponent: (CGFloat) -> Component = { spacing in
+//
+//            return UIItemComponent(
+//                contentMode: .size(
+//                    CGSize(
+//                        width: spacing,
+//                        height: spacing
+//                    )
+//                ),
+//                itemView: UIView()
+//            )
+//
+//        }
+//
+//        let spacedComponents = components.joined(
+//            separator: spacingComponent(defaultSpacing)
+//        )
+//
+//        listComponent.setItemComponents(spacedComponents)
 
         return self
 

@@ -77,7 +77,7 @@ public final class UICollectionComponent: CollectionComponent {
             cell.contentView.wrapSubview(component.view)
 
         }
-
+        
         collectionView.backgroundColor = .clear
         
         collectionView.clipsToBounds = false

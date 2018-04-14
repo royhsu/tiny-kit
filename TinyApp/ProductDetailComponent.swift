@@ -12,23 +12,4 @@ import TinyPost
 
 public protocol ProductDetailComponent: Component {
 
-//    typealias NumberOfReviewsHandler = () -> Int
-//
-//    @discardableResult
-//    func setNumberOfReviews(
-//        _ handler: NumberOfReviewsHandler?
-//    )
-//    -> Self
-//
-//    typealias ComponentForReviewHandler = (_ index: Int) -> Component
-//
-//    @discardableResult
-//    func setComponentForReview(_ handler: ComponentForReviewHandler?) -> Self
-
-    @discardableResult
-    func setIntroductionPost(
-        elements: [PostElement]
-    )
-    -> Self
-
 }
