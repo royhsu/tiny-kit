@@ -8,6 +8,7 @@
 
 // MARK: - TPPostImageComponent
 
+// TODO: find a better way to specify the width of image view.
 public final class TPPostImageComponent: Component {
 
     /// The base component.

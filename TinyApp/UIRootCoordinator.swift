@@ -157,52 +157,6 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        productDetailComponent.applyTheme(.current)
-        
-        let paragraphComponentFactory: (String) -> Component = { paragraph in
-            
-            let paragraphComponent = TPPostParagraphComponent()
-            
-            paragraphComponent.textLabel.text = paragraph
-            
-            paragraphComponent.applyTheme(.current)
-            
-            let boxComponent = UIBoxComponent(contentComponent: paragraphComponent)
-            
-            boxComponent.paddingInsets = UIEdgeInsets(
-                top: 0.0,
-                left: 16.0,
-                bottom: 12.0,
-                right: 16.0
-            )
-            
-            return boxComponent
-            
-        }
-        
-        let imageComponentFactory: (CGFloat, ImageContainer) -> Component = { imageWidth, imageContainer in
-            
-            let imageComponent = TPPostImageComponent(width: imageWidth)
-            
-            imageContainer.setImage(to: imageComponent.imageView)
-            
-            imageComponent.applyTheme(.current)
-            
-            let boxComponent = UIBoxComponent(contentComponent: imageComponent)
-
-            boxComponent.paddingInsets = UIEdgeInsets(
-                top: 0.0,
-                left: 0.0,
-                bottom: 12.0,
-                right: 0.0
-            )
-            
-            return boxComponent
-            
-        }
-        
-        productDetailComponent.introductionComponent.numberOfElements = 3
-        
         productDetailComponent.introductionComponent.setElements(
             [
                 .image(
@@ -212,6 +166,8 @@ public final class UIRootCoordinator: Coordinator {
                 .paragraph("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
             ]
         )
+        
+        productDetailComponent.applyTheme(.current)
         
         let viewController = UIComponentViewController(component: productDetailComponent)
 
