@@ -211,22 +211,22 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
             }
 
-        provider
-            .fetchIntroductionPost(
-                in: .background,
-                productID: productID
-            )
-            .then(in: .main) { [weak self] post in
-
-                guard
-                    let weakSelf = self
-                    else { return }
-
-                weakSelf.storage.introductionPost.value = post
-
-                DispatchQueue.main.async { weakSelf.component.render() }
-
-            }
+//        provider
+//            .fetchIntroductionPost(
+//                in: .background,
+//                productID: productID
+//            )
+//            .then(in: .main) { [weak self] post in
+//
+//                guard
+//                    let weakSelf = self
+//                    else { return }
+//
+//                weakSelf.storage.introductionPost.value = post
+//
+//                DispatchQueue.main.async { weakSelf.component.render() }
+//
+//            }
 
     }
 
@@ -240,7 +240,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     private final var reviewsSubscription: Reviews.ValueDidChangeSubscription?
 
-    private final var introductionPostSubscription: IntroductionPost.ValueDidChangeSubscription?
+//    private final var introductionPostSubscription: IntroductionPost.ValueDidChangeSubscription?
 
     // MARK: Storage
 
@@ -252,7 +252,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     public typealias Reviews = Observable<[Review]>
 
-    public typealias IntroductionPost = Observable<Post>
+//    public typealias IntroductionPost = Observable<Post>
 
     public struct Storage {
 
@@ -264,14 +264,14 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
         public let reviews: Reviews
 
-        public let introductionPost: Observable<Post>
+//        public let introductionPost: Observable<Post>
 
         public init(
             gallery: [UIImage] = [],
             title: String? = nil,
             subtitle: String? = nil,
-            reviews: [Review] = [],
-            introductionPost: Post = Post()
+            reviews: [Review] = []
+//            introductionPost: Post = Post()
         ) {
 
             self.gallery = Observable(gallery)
@@ -282,7 +282,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
             self.reviews = Observable(reviews)
 
-            self.introductionPost = Observable(introductionPost)
+//            self.introductionPost = Observable(introductionPost)
 
         }
 

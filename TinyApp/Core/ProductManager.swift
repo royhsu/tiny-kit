@@ -103,29 +103,29 @@ public final class ProductManager: ProductProvider {
 
     }
 
-    public final func fetchIntroductionPost(
-        in context: Context,
-        productID: String
-    )
-    -> Promise<Post> {
-
-        return Promise(in: context) { fulfill, reject, _ in
-
-            fulfill(
-                Post(
-                    elements: [
-                        .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
-                        .image(#imageLiteral(resourceName: "image-product-story-1")),
-                        .image(#imageLiteral(resourceName: "image-product-story-2")),
-                        .text("Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-                        .image(#imageLiteral(resourceName: "image-product-story-3")),
-                        .image(#imageLiteral(resourceName: "image-product-story-4"))
-                    ]
-                )
-            )
-
-        }
-
-    }
+//    public final func fetchIntroductionPost(
+//        in context: Context,
+//        productID: String
+//    )
+//    -> Promise<Post> {
+//
+//        return Promise(in: context) { fulfill, reject, _ in
+//
+//            fulfill(
+//                Post(
+//                    elements: [
+//                        .text("Sed posuere consectetur est at lobortis. Seosuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere elit aliquet. Lorem ipsum dolor sit amet, coctetur adipiscing."),
+//                        .image(#imageLiteral(resourceName: "image-product-story-1")),
+//                        .image(#imageLiteral(resourceName: "image-product-story-2")),
+//                        .text("Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+//                        .image(#imageLiteral(resourceName: "image-product-story-3")),
+//                        .image(#imageLiteral(resourceName: "image-product-story-4"))
+//                    ]
+//                )
+//            )
+//
+//        }
+//
+//    }
 
 }

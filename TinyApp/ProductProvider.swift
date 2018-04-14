@@ -28,10 +28,10 @@ public protocol ProductProvider {
     )
     -> Promise<[Review]>
 
-    func fetchIntroductionPost(
-        in context: Context,
-        productID: String
-    )
-    -> Promise<Post>
+//    func fetchIntroductionPost(
+//        in context: Context,
+//        productID: String
+//    )
+//    -> Promise<Post>
 
 }

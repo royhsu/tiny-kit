@@ -201,14 +201,15 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        productDetailComponent.introductionComponent.setItemComponents(
+        productDetailComponent.introductionComponent.numberOfElements = 3
+        
+        productDetailComponent.introductionComponent.setElements(
             [
-                imageComponentFactory(
-                    UIScreen.main.bounds.width,
-                    .image(#imageLiteral(resourceName: "image-product-story-1"))
+                .image(
+                    container: .image(#imageLiteral(resourceName: "image-product-story-1"))
                 ),
-                paragraphComponentFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
-                paragraphComponentFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
+                .paragraph("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
+                .paragraph("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
             ]
         )
         

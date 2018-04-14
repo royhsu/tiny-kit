@@ -34,7 +34,7 @@ public final class TSProductDetailComponent: Component {
 
     public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
 
-    public final let introductionComponent: UIListComponent
+    public final let introductionComponent: TPPostComponent
 
     public init(
         contentMode: ComponentContentMode = .automatic,
@@ -66,7 +66,7 @@ public final class TSProductDetailComponent: Component {
 
         self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
 
-        self.introductionComponent = UIListComponent()
+        self.introductionComponent = TPPostComponent()
 
         self.prepare()
 
@@ -133,7 +133,7 @@ public final class TSProductDetailComponent: Component {
             reviewCarouselComponent,
         ]
 
-        let hasIntroduction = (introductionComponent.numberOfSections != 0)
+        let hasIntroduction = (introductionComponent.numberOfElements != 0)
         
         if hasIntroduction {
 
