@@ -68,8 +68,9 @@ public final class UIBoxComponent: Component {
         
         let containerView = containerComponent.view
         
-        containerView.backgroundColor = .clear
-        
+        // TODO: sync background doesn't work.
+//        containerView.backgroundColor = contentComponent.view.backgroundColor
+      
         trailingConstraint.priority = UILayoutPriority(900.0)
         
         bottomConstraint.priority = UILayoutPriority(900.0)
@@ -89,6 +90,9 @@ public final class UIBoxComponent: Component {
     public final func render() {
         
         let containerView = containerComponent.itemView
+        
+        // TODO: sync background doesn't work.
+//        containerView.backgroundColor = contentComponent.view.backgroundColor
         
         // Prepare for content to render.
         containerComponent.render()

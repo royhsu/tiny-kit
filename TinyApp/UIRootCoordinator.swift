@@ -101,12 +101,12 @@ public final class UIRootCoordinator: Coordinator {
             right: 16.0
         )
         
-//        let reviewPaddingInsets = UIEdgeInsets(
-//            top: 12.0,
-//            left: 0.0,
-//            bottom: 12.0,
-//            right: 0.0
-//        )
+        let reviewPaddingInsets = UIEdgeInsets(
+            top: 12.0,
+            left: 12.0,
+            bottom: 12.0,
+            right: 12.0
+        )
         
         let review1Component = TSProductReviewComponent()
         
@@ -118,7 +118,7 @@ public final class UIRootCoordinator: Coordinator {
         
         review1Component.textLabel.text = "Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
         
-//        review1Component.paddingInsets = reviewPaddingInsets
+        review1Component.paddingInsets = reviewPaddingInsets
 
         let review2Component = TSProductReviewComponent()
         
@@ -130,7 +130,7 @@ public final class UIRootCoordinator: Coordinator {
         
         review2Component.textLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         
-//        review2Component.paddingInsets = reviewPaddingInsets
+        review2Component.paddingInsets = reviewPaddingInsets
         
         let review3Component = TSProductReviewComponent()
         
@@ -142,12 +142,12 @@ public final class UIRootCoordinator: Coordinator {
         
         review3Component.textLabel.text = "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam."
         
-//        review3Component.paddingInsets = reviewPaddingInsets
+        review3Component.paddingInsets = reviewPaddingInsets
         
         productDetailComponent.reviewCarouselComponent.collectionView.contentInset = UIEdgeInsets(
             top: 0.0,
             left: 16.0,
-            bottom: 0.0,
+            bottom: 8.0,
             right: 16.0
         )
         

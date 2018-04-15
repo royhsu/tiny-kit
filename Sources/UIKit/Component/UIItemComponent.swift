@@ -21,7 +21,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         self.contentMode = contentMode
 
         self.itemView = itemView
-
+        
         let frame: CGRect
 
         switch contentMode {
@@ -46,7 +46,12 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     
     // MARK: Set Up
     
-    fileprivate final func prepare() { view.backgroundColor = .clear }
+    fileprivate final func prepare() {
+        
+        // TODO: sync background doesn't work.
+//        view.backgroundColor = itemView.backgroundColor
+        
+    }
 
     // MARK: Component
 
@@ -54,6 +59,9 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final func render() {
 
+        // TODO: sync background doesn't work.
+//        view.backgroundColor = itemView.backgroundColor
+        
         itemView.removeFromSuperview()
 
         itemView.translatesAutoresizingMaskIntoConstraints = false

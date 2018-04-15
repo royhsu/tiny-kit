@@ -56,6 +56,9 @@ public final class TSProductReviewComponent: Component {
 
     public final func render() {
         
+        // TODO: temporarily fix background color syncing issue with item and box component.
+        boxComponent.view.backgroundColor = .white
+        
         boxComponent.view.layer.shadowColor = UIColor.black.cgColor
         
         boxComponent.view.layer.shadowOffset = CGSize(
