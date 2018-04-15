@@ -62,6 +62,19 @@ public final class UICollectionComponent: CollectionComponent {
         
     }
     
+    public final func sizeForItem(at indexPath: IndexPath) -> CGSize {
+        
+        return bridge.sizeForItemProvider(
+            collectionViewLayout,
+            indexPath
+        )
+        
+    }
+    
+    public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
+    
+    public final func setSizeForItem(provider: @escaping SizeForItemProvider) { bridge.sizeForItemProvider = provider }
+    
     // MARK: Set Up
     
     fileprivate final func prepare() {
@@ -150,13 +163,5 @@ public final class UICollectionComponent: CollectionComponent {
     public final var view: View { return collectionView }
 
     public final var preferredContentSize: CGSize { return collectionView.bounds.size }
-    
-}
-    
-public extension UICollectionComponent {
-    
-    public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
-
-    public final func setSizeForItem(provider: @escaping SizeForItemProvider) { bridge.sizeForItemProvider = provider }
     
 }

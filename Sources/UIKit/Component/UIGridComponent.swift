@@ -61,6 +61,18 @@ public final class UIGridComponent: CollectionComponent {
         
     }
     
+    // TODO: should find a better api name & variable names.
+    public typealias MinimumItemSizeProvider = (UIGridLayout, _ gridSize: CGSize, IndexPath) -> CGSize
+
+    private final var minimumItemSizeProvider: MinimumItemSizeProvider?
+    
+    /// The provider should return a proper width for columns in vertical scroll direction.
+    /// and height for rows in horizontal scroll direction.
+    /// If any of them are out of valid rect will be ignored.
+    ///
+    /// If this provider is nil, the component will calculate the column-based width and row-based height automatically to fit its safe area rect.
+    public final func setMinimumItemSize(provider: MinimumItemSizeProvider?) { minimumItemSizeProvider = provider }
+    
     // MARK: Set Up
     
     fileprivate final func prepare() {
@@ -180,20 +192,6 @@ public final class UIGridComponent: CollectionComponent {
     public final var view: View { return collectionComponent.view }
     
     public final var preferredContentSize: CGSize { return  collectionComponent.preferredContentSize }
-    
-    // MARK: Action
-    
-    // TODO: should find a better api name & variable names.
-    public typealias MinimumItemSizeProvider = (UIGridLayout, _ gridSize: CGSize, IndexPath) -> CGSize
-    
-    /// The provider should return a proper width for columns in vertical scroll direction.
-    /// and height for rows in horizontal scroll direction.
-    /// If any of them are out of valid rect will be ignored.
-    ///
-    /// If this provider is nil, the component will calculate the column-based width and row-based height automatically to fit its safe area rect.
-    private final var minimumItemSizeProvider: MinimumItemSizeProvider?
-    
-    public final func setMinimumItemSize(provider: MinimumItemSizeProvider?) { minimumItemSizeProvider = provider }
     
 }
 

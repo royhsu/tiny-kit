@@ -52,6 +52,7 @@
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */; };
 		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
+		B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C14208337CE005098D3 /* UICarouselLayout.swift */; };
 		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
 		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
 		B04707E3207A025F00331D26 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E1207A025F00331D26 /* ImageContainer.swift */; };
@@ -142,6 +143,7 @@
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
 		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
+		B03A4C14208337CE005098D3 /* UICarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselLayout.swift; sourceTree = "<group>"; };
 		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B04707E1207A025F00331D26 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
 				B04707EA207C820200331D26 /* UIGridLayout.swift */,
 				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
+				B03A4C14208337CE005098D3 /* UICarouselLayout.swift */,
 				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
 				B04707F8207F073F00331D26 /* UIGalleryComponent.swift */,
 				B0542DDE2064B56E0078B3CE /* UIListComponent.swift */,
@@ -590,6 +593,7 @@
 				B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */,
 				B04707EB207C820200331D26 /* UIGridLayout.swift in Sources */,
 				B0D46961207F195A0047AE8F /* ButtonComponent.swift in Sources */,
+				B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
