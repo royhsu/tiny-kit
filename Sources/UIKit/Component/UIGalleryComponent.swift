@@ -22,7 +22,15 @@ public final class UIGalleryComponent: Component {
         self.prepare()
 
     }
-
+    
+    public final var numberOfImages: Int
+    
+    public typealias ImageContainerProvider = (_ index: Int) -> ImageContainer
+    
+    private final var imageContainerProvider: ImageContainerProvider?
+    
+    public final func setImageContainer(provider: @escaping ImageContainerProvider) { imageContainerProvider = provider }
+    
     // MARK: Set Up
 
     fileprivate final func prepare() {
@@ -72,16 +80,6 @@ public final class UIGalleryComponent: Component {
     public final var view: View { return carouselComponent.view }
 
     public final var preferredContentSize: CGSize { return carouselComponent.preferredContentSize }
-
-    // MARK: Image
-    
-    public final var numberOfImages: Int
-    
-    public typealias ImageContainerProvider = (_ index: Int) -> ImageContainer
-    
-    private final var imageContainerProvider: ImageContainerProvider?
-    
-    public final func setImageContainer(provider: @escaping ImageContainerProvider) { imageContainerProvider = provider }
     
 }
 
