@@ -20,6 +20,8 @@ public enum Element {
     
     case paragraph(ParagraphComponent)
     
+    case image(ImageComponent)
+    
 }
 
 public protocol ParagraphComponent: Component {
@@ -29,6 +31,14 @@ public protocol ParagraphComponent: Component {
 }
 
 extension TPPostParagraphComponent: ParagraphComponent { }
+
+public protocol ImageComponent: Component {
+    
+    var imageView: UIImageView { get }
+    
+}
+
+extension TPPostImageComponent: ImageComponent { }
 
 public protocol PostComponent: Component {
     
@@ -98,6 +108,8 @@ public final class TPNewPostComponent: PostComponent {
             switch self.element(at: indexPath.item) {
                 
             case let .paragraph(component): return component
+                
+            case let .image(component): return component
                 
             }
             

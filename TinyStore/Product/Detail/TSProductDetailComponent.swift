@@ -16,7 +16,7 @@ public final class TSProductDetailComponent: Component {
     private final let bundle: Bundle
     
     /// The base component.
-    private final let listComponent: ListComponent
+    private final let baseComponent: ListComponent
 
     public final let galleryComponent: UIGalleryComponent
 
@@ -34,20 +34,21 @@ public final class TSProductDetailComponent: Component {
 
     public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
 
-    public final let introductionComponent: TPPostComponent
+    public final let introductionComponent: PostComponent
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        baseComponent: ListComponent,
         descriptionButtonComponent: UIButtonComponent,
         reviewSectionHeaderComponent: TSProductSectionHeaderComponent,
-        introductionSectionHeaderComponent: TSProductSectionHeaderComponent
+        introductionSectionHeaderComponent: TSProductSectionHeaderComponent,
+        introductionComponent: PostComponent
     ) {
 
         self.bundle = Bundle(
             for: type(of: self)
         )
         
-        self.listComponent = UIListComponent(contentMode: contentMode)
+        self.baseComponent = baseComponent
 
         self.galleryContainerComponent = UIItemComponent(
             itemView: UIView.load(
@@ -66,7 +67,7 @@ public final class TSProductDetailComponent: Component {
 
         self.introductionSectionHeaderComponent = introductionSectionHeaderComponent
 
-        self.introductionComponent = TPPostComponent()
+        self.introductionComponent = introductionComponent
 
         self.prepare()
 
@@ -92,9 +93,9 @@ public final class TSProductDetailComponent: Component {
 
     public final var contentMode: ComponentContentMode {
 
-        get { return listComponent.contentMode }
+        get { return baseComponent.contentMode }
 
-        set { listComponent.contentMode = newValue }
+        set { baseComponent.contentMode = newValue }
 
     }
 
@@ -139,22 +140,22 @@ public final class TSProductDetailComponent: Component {
 
             itemComponents += [ introductionSectionHeaderComponent ]
 
-            listComponent.footerComponent = introductionComponent
+            baseComponent.footerComponent = introductionComponent
 
         }
-        else { listComponent.footerComponent = nil }
+        else { baseComponent.footerComponent = nil }
 
-        listComponent.setItemComponents(itemComponents)
+        baseComponent.setItemComponents(itemComponents)
 
-        listComponent.render()
+        baseComponent.render()
 
     }
 
     // MARK: ViewRenderable
 
-    public final var view: View { return listComponent.view }
+    public final var view: View { return baseComponent.view }
 
-    public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return baseComponent.preferredContentSize }
 
 }
 

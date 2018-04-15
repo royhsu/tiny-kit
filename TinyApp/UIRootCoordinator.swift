@@ -73,9 +73,13 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         let productDetailComponent = TSProductDetailComponent(
+            baseComponent: UIListComponent(),
             descriptionButtonComponent: buttonComponent,
             reviewSectionHeaderComponent: reviewSectionHeaderComponent,
-            introductionSectionHeaderComponent: introductionSectionHeaderComponent
+            introductionSectionHeaderComponent: introductionSectionHeaderComponent,
+            introductionComponent: TPNewPostComponent(
+                listComponent: UIListComponent()
+            )
         )
         
         productDetailComponent.galleryComponent.setImageContainers(
@@ -157,22 +161,6 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        productDetailComponent.introductionComponent.setElements(
-            [
-                .image(
-                    container: .image(#imageLiteral(resourceName: "image-product-story-1"))
-                ),
-                .paragraph("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
-                .paragraph("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
-            ]
-        )
-        
-        productDetailComponent.applyTheme(.current)
-        
-        let postComponent = TPNewPostComponent(
-            listComponent: UIListComponent()
-        )
-        
         let paragraphElementFactory: (String) -> Element = { paragraph in
             
             let paragraphComponent = TPPostParagraphComponent()
@@ -183,13 +171,27 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        postComponent.setElements(
+        let imageElementFactory: (ImageContainer) -> Element = { container in
+            
+            let imageComponent = TPPostImageComponent(width: UIScreen.main.bounds.width)
+            
+            container.setImage(to: imageComponent.imageView)
+            
+            return .image(imageComponent)
+            
+        }
+        
+        productDetailComponent.introductionComponent.setElements(
             [
-                paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.")
+                imageElementFactory(
+                    .image(#imageLiteral(resourceName: "image-product-story-1"))
+                ),
+                paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
+                paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
             ]
         )
         
-        let viewController = UIComponentViewController(component: postComponent)
+        let viewController = UIComponentViewController(component: productDetailComponent)
 
         viewController.view.backgroundColor = .white
 
