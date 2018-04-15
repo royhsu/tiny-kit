@@ -73,12 +73,12 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         let productDetailComponent = TSProductDetailComponent(
-            baseComponent: UIListComponent(),
+            layoutComponent: UIListComponent(),
             descriptionButtonComponent: buttonComponent,
             reviewSectionHeaderComponent: reviewSectionHeaderComponent,
             introductionSectionHeaderComponent: introductionSectionHeaderComponent,
-            introductionComponent: TPNewPostComponent(
-                listComponent: UIListComponent()
+            introductionComponent: TPPostComponent(
+                layoutComponent: UIListComponent()
             )
         )
         
@@ -167,6 +167,15 @@ public final class UIRootCoordinator: Coordinator {
             
             paragraphComponent.textLabel.text = "\(paragraph)"
             
+            paragraphComponent.paddingInsets = UIEdgeInsets(
+                top: 12.0,
+                left: 16.0,
+                bottom: 0.0,
+                right: 16.0
+            )
+            
+            paragraphComponent.applyTheme(.current)
+            
             return .paragraph(paragraphComponent)
             
         }
@@ -174,6 +183,8 @@ public final class UIRootCoordinator: Coordinator {
         let imageElementFactory: (ImageContainer) -> Element = { container in
             
             let imageComponent = TPPostImageComponent(width: UIScreen.main.bounds.width)
+            
+            imageComponent.applyTheme(.current)
             
             container.setImage(to: imageComponent.imageView)
             
@@ -184,9 +195,16 @@ public final class UIRootCoordinator: Coordinator {
         productDetailComponent.introductionComponent.setElements(
             [
                 imageElementFactory(
+                    .image(#imageLiteral(resourceName: "image-product-story-4"))
+                ),
+                imageElementFactory(
                     .image(#imageLiteral(resourceName: "image-product-story-1"))
                 ),
                 paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
+                paragraphElementFactory("Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."),
+                imageElementFactory(
+                    .image(#imageLiteral(resourceName: "image-product-story-3"))
+                ),
                 paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
             ]
         )

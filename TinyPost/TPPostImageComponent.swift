@@ -9,17 +9,17 @@
 // MARK: - TPPostImageComponent
 
 // TODO: find a better way to specify the width of image view.
-public final class TPPostImageComponent: Component {
+public final class TPPostImageComponent: ImageComponent {
 
     /// The base component.
-    private final let itemComponent: UIItemComponent<UIImageView>
+    private final let imageComponent: UIItemComponent<UIImageView>
 
     public init(
         contentMode: ComponentContentMode = .automatic,
         width: CGFloat
     ) {
 
-        self.itemComponent = UIItemComponent(
+        self.imageComponent = UIItemComponent(
             contentMode: contentMode,
             itemView: UIImageView(
                 frame: CGRect(
@@ -39,7 +39,7 @@ public final class TPPostImageComponent: Component {
 
     fileprivate final func prepare() {
 
-        let imageView = itemComponent.itemView
+        let imageView = imageComponent.itemView
         
         imageView.contentMode = .scaleAspectFill
         
@@ -51,15 +51,15 @@ public final class TPPostImageComponent: Component {
 
     public final var contentMode: ComponentContentMode {
 
-        get { return itemComponent.contentMode }
+        get { return imageComponent.contentMode }
 
-        set { itemComponent.contentMode = newValue }
+        set { imageComponent.contentMode = newValue }
 
     }
 
     public final func render() {
         
-        let imageView = itemComponent.itemView
+        let imageView = imageComponent.itemView
 
         let size: CGSize
         
@@ -73,7 +73,7 @@ public final class TPPostImageComponent: Component {
 
             let height: CGFloat
 
-            if let image = itemComponent.itemView.image {
+            if let image = imageComponent.itemView.image {
 
                 let imageAspectRatio = (image.size.width / image.size.height)
 
@@ -89,17 +89,17 @@ public final class TPPostImageComponent: Component {
 
         }
 
-        itemComponent.contentMode = .size(size)
+        imageComponent.contentMode = .size(size)
         
-        itemComponent.render()
+        imageComponent.render()
 
     }
 
     // MARK: ViewRenderable
 
-    public final var view: View { return itemComponent.view }
+    public final var view: View { return imageComponent.view }
 
-    public final var preferredContentSize: CGSize { return itemComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return imageComponent.preferredContentSize }
 
 }
 
@@ -107,8 +107,8 @@ public final class TPPostImageComponent: Component {
 
 public extension TPPostImageComponent {
 
-    public final var imageView: UIImageView { return itemComponent.itemView }
+    public final var imageView: UIImageView { return imageComponent.itemView }
     
-    public final func applyTheme(_ theme: Theme) { itemComponent.itemView.backgroundColor = theme.placeholderColor }
+    public final func applyTheme(_ theme: Theme) { imageComponent.itemView.backgroundColor = theme.placeholderColor }
 
 }

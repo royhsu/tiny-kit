@@ -16,7 +16,7 @@ public final class TSProductDetailComponent: Component {
     private final let bundle: Bundle
     
     /// The base component.
-    private final let baseComponent: ListComponent
+    private final let layoutComponent: ListComponent
 
     public final let galleryComponent: UIGalleryComponent
 
@@ -37,7 +37,7 @@ public final class TSProductDetailComponent: Component {
     public final let introductionComponent: PostComponent
 
     public init(
-        baseComponent: ListComponent,
+        layoutComponent: ListComponent,
         descriptionButtonComponent: UIButtonComponent,
         reviewSectionHeaderComponent: TSProductSectionHeaderComponent,
         introductionSectionHeaderComponent: TSProductSectionHeaderComponent,
@@ -48,7 +48,7 @@ public final class TSProductDetailComponent: Component {
             for: type(of: self)
         )
         
-        self.baseComponent = baseComponent
+        self.layoutComponent = layoutComponent
 
         self.galleryContainerComponent = UIItemComponent(
             itemView: UIView.load(
@@ -93,9 +93,9 @@ public final class TSProductDetailComponent: Component {
 
     public final var contentMode: ComponentContentMode {
 
-        get { return baseComponent.contentMode }
+        get { return layoutComponent.contentMode }
 
-        set { baseComponent.contentMode = newValue }
+        set { layoutComponent.contentMode = newValue }
 
     }
 
@@ -140,22 +140,22 @@ public final class TSProductDetailComponent: Component {
 
             itemComponents += [ introductionSectionHeaderComponent ]
 
-            baseComponent.footerComponent = introductionComponent
+            layoutComponent.footerComponent = introductionComponent
 
         }
-        else { baseComponent.footerComponent = nil }
+        else { layoutComponent.footerComponent = nil }
 
-        baseComponent.setItemComponents(itemComponents)
+        layoutComponent.setItemComponents(itemComponents)
 
-        baseComponent.render()
+        layoutComponent.render()
 
     }
 
     // MARK: ViewRenderable
 
-    public final var view: View { return baseComponent.view }
+    public final var view: View { return layoutComponent.view }
 
-    public final var preferredContentSize: CGSize { return baseComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return layoutComponent.preferredContentSize }
 
 }
 
