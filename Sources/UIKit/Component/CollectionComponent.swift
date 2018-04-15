@@ -12,9 +12,13 @@ public protocol CollectionComponent: Component {
 
     var numberOfSections: Int { get set }
 
+    func numberOfItemComponents(inSection section: Int) -> Int
+    
     typealias NumberOfItemComponentsProvider = (_ section: Int) -> Int
 
     func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider)
+    
+    func itemComponent(at indexPath: IndexPath) -> Component
 
     typealias ItemComponentProvider = (IndexPath) -> Component
 

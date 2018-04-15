@@ -155,7 +155,11 @@ public final class UIGridComponent: CollectionComponent {
         
     }
     
+    public final func numberOfItemComponents(inSection section: Int) -> Int { return collectionComponent.numberOfItemComponents(inSection: section) }
+    
     public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { collectionComponent.setNumberOfItemComponents(provider: provider) }
+    
+    public final func itemComponent(at indexPath: IndexPath) -> Component { return collectionComponent.itemComponent(at: indexPath) }
     
     public final func setItemComponent(provider: @escaping ItemComponentProvider) { collectionComponent.setItemComponent(provider: provider) }
     

@@ -63,7 +63,11 @@ public final class UICarouselComponent: CollectionComponent {
         
     }
     
+    public final func numberOfItemComponents(inSection section: Int) -> Int { return gridComponent.numberOfItemComponents(inSection: section) }
+    
     public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { gridComponent.setNumberOfItemComponents(provider: provider) }
+    
+    public final func itemComponent(at indexPath: IndexPath) -> Component { return gridComponent.itemComponent(at: indexPath) }
     
     public final func setItemComponent(provider: @escaping ItemComponentProvider) { gridComponent.setItemComponent(provider: provider) }
     

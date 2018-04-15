@@ -118,8 +118,20 @@ public final class UIListComponent: ListComponent {
         set { bridge.numberOfSections = newValue }
 
     }
+    
+    public final func numberOfItemComponents(inSection section: Int) -> Int { return bridge.numberOfRowsProvider(section) }
 
     public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { bridge.numberOfRowsProvider = provider }
+    
+    public final func itemComponent(at indexPath: IndexPath) -> Component {
+        
+        guard
+            let provider = itemComponentProvider
+        else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
+        
+        return provider(indexPath)
+        
+    }
 
     private final var itemComponentProvider: ItemComponentProvider?
 

@@ -169,7 +169,27 @@ public final class UIRootCoordinator: Coordinator {
         
         productDetailComponent.applyTheme(.current)
         
-        let viewController = UIComponentViewController(component: productDetailComponent)
+        let postComponent = TPNewPostComponent(
+            listComponent: UIListComponent()
+        )
+        
+        let paragraphElementFactory: (String) -> Element = { paragraph in
+            
+            let paragraphComponent = TPPostParagraphComponent()
+            
+            paragraphComponent.textLabel.text = "\(paragraph)"
+            
+            return .paragraph(paragraphComponent)
+            
+        }
+        
+        postComponent.setElements(
+            [
+                paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.")
+            ]
+        )
+        
+        let viewController = UIComponentViewController(component: postComponent)
 
         viewController.view.backgroundColor = .white
 
