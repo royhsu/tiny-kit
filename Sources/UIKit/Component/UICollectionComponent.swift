@@ -40,6 +40,8 @@ public final class UICollectionComponent: CollectionComponent {
 
             // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
             frame = UIScreen.main.bounds
+            
+        case let .automatic2(width): fatalError()
 
         }
 
@@ -150,6 +152,8 @@ public final class UICollectionComponent: CollectionComponent {
 
         case .automatic: size = collectionViewLayout.collectionViewContentSize
 
+        case let .automatic2(width): fatalError()
+            
         }
 
         collectionView.frame.size = size

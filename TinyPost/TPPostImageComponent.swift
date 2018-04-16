@@ -87,6 +87,8 @@ public final class TPPostImageComponent: ImageComponent {
                 height: height
             )
 
+        case let .automatic2(width): fatalError()
+            
         }
 
         imageComponent.contentMode = .size(size)

@@ -56,6 +56,8 @@ public final class UILandingComponent: Component {
                     height: width
                 )
             )
+            
+        case let .automatic2(width): fatalError()
 
         }
 

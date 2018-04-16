@@ -209,7 +209,88 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let viewController = UIComponentViewController(component: productDetailComponent)
+        let imageComponent = TPPostImageComponent(width: 0.0)
+        
+        imageComponent.view.backgroundColor = .red
+        
+        let listComponent = UIListComponent()
+        
+        listComponent.setItemComponents(
+            [ imageComponent ]
+        )
+        
+        let label = UILabel()
+        
+        label.textColor = .red
+        
+        label.text = "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis. Donec sed odio dui."
+        
+        label.numberOfLines = 0
+        
+        let labelComponent = UIItemComponent(
+            contentMode: .automatic2(
+                estimatedSize: CGSize(
+                    width: 100.0,
+                    height: 50.0
+                )
+            ),
+            itemView: label
+        )
+        
+        labelComponent.render()
+        
+        print("label 1:", labelComponent.view.frame)
+        
+        labelComponent.contentMode = .automatic2(
+            estimatedSize: CGSize(
+                width: 200.0,
+                height: 50.0
+            )
+        )
+        
+        labelComponent.render()
+        
+        print("label 2:", labelComponent.view.frame)
+        
+        let colorComponentFactory: (UIColor, CGSize) -> Component = { color, size in
+            
+            let view = UIView()
+            
+            view.backgroundColor = color
+            
+            let colorComponent = UIItemComponent(
+                contentMode: .automatic2(estimatedSize: size),
+                itemView: view
+            )
+            
+            return colorComponent
+            
+        }
+        
+        let list2Component = UIListComponent(
+            contentMode: .automatic2(estimatedSize: UIScreen.main.bounds.size)
+        )
+        
+        list2Component.setItemComponents(
+            [
+                colorComponentFactory(
+                    .red,
+                    CGSize(
+                        width: 100.0,
+                        height: 100.0
+                    )
+                ),
+                colorComponentFactory(
+                    .green,
+                    CGSize(
+                        width: 150.0,
+                        height: 150.0
+                    )
+                )
+            ]
+        )
+        
+        let viewController = UIComponentViewController(component: list2Component)
 
         viewController.view.backgroundColor = .white
 

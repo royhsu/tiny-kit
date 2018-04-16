@@ -14,43 +14,24 @@ public final class UIListComponent: ListComponent {
 
     fileprivate final let bridge: UITableViewBridge
 
-    // Using this hack to trigger auto-resizing of the table view while it contains the nested auto-resizing child components. For example, the child component is also a list component.
+    fileprivate final let tableViewWidthConstraint: NSLayoutConstraint
+    
     fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
 
     public init(contentMode: ComponentContentMode = .automatic) {
 
         self.contentMode = contentMode
 
-        let frame: CGRect
-
-        switch contentMode {
-
-        case let .size(size):
-
-            frame = CGRect(
-                origin: .zero,
-                size: size
-            )
-
-        case .automatic:
-
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            // Removing this will show layout constraint errors for current implementation.
-            frame = UIScreen.main.bounds
-
-        }
-
         self.tableView = UITableView(
-            frame: frame,
+            frame: .zero,
             style: .plain
         )
 
         self.bridge = UITableViewBridge(tableView: tableView)
 
-        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(
-            equalToConstant: tableView.bounds.height
-        )
-
+        self.tableViewWidthConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
+        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
+        
         self.numberOfSections = 0
 
         self.prepare()
@@ -61,17 +42,39 @@ public final class UIListComponent: ListComponent {
 
     fileprivate final func prepare() {
 
+        let size: CGSize
+        
+        switch contentMode {
+            
+        case let .size(value): size = value
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            // Removing this will show layout constraint errors for current implementation.
+            size = UIScreen.main.bounds.size
+            
+        case let .automatic2(estimatedSize): size = estimatedSize
+            
+        }
+        
+        tableView.frame.size = size
+        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
-
+            
+            let contentView = cell.contentView
+            
+            component.contentMode = .automatic2(estimatedSize: contentView.bounds.size)
+            
             // Must render firstly to get the correct constraints from Auto Layout.
             // This helps table view to dynamically resize cells.
             component.render()
             
-            cell.contentView.wrapSubview(component.view)
+            contentView.wrapSubview(component.view)
             
         }
 
@@ -86,6 +89,8 @@ public final class UIListComponent: ListComponent {
             case let .size(size): return size.height
 
             case .automatic: return UITableViewAutomaticDimension
+                
+            case .automatic2: return UITableViewAutomaticDimension
 
             }
 
@@ -95,10 +100,17 @@ public final class UIListComponent: ListComponent {
         
         tableView.clipsToBounds = false
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableViewWidthConstraint.priority = UILayoutPriority(750.0)
+        
         tableViewHeightConstraint.priority = UILayoutPriority(750.0)
         
         NSLayoutConstraint.activate(
-            [ tableViewHeightConstraint ]
+            [
+                tableViewWidthConstraint,
+                tableViewHeightConstraint
+            ]
         )
         
     }
@@ -162,10 +174,14 @@ public final class UIListComponent: ListComponent {
         case let .size(value): size = value
 
         case .automatic: size = tableView.contentSize
+            
+        case .automatic2: size = tableView.contentSize
 
         }
 
         tableView.frame.size = size
+        
+        tableViewWidthConstraint.constant = size.width
 
         tableViewHeightConstraint.constant = size.height
 
