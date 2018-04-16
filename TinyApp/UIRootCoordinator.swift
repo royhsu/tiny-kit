@@ -271,6 +271,21 @@ public final class UIRootCoordinator: Coordinator {
             contentMode: .automatic2(estimatedSize: UIScreen.main.bounds.size)
         )
         
+        let image2Component = TPPostImageComponent(width: 0.0)
+        
+        image2Component.contentMode = .automatic2(
+            estimatedSize: CGSize(
+                width: 80.0,
+                height: 80.0
+            )
+        )
+        
+//        image2Component.contentMode = .size(CGSize(width: 60.0, height: 60.0))
+        
+        image2Component.view.backgroundColor = .blue
+        
+        image2Component.imageView.image = #imageLiteral(resourceName: "image-product-story-4")
+        
         list2Component.setItemComponents(
             [
                 colorComponentFactory(
@@ -286,7 +301,8 @@ public final class UIRootCoordinator: Coordinator {
                         width: 150.0,
                         height: 150.0
                     )
-                )
+                ),
+                image2Component
             ]
         )
         

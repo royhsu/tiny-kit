@@ -87,7 +87,25 @@ public final class TPPostImageComponent: ImageComponent {
                 height: height
             )
 
-        case let .automatic2(width): fatalError()
+        case let .automatic2(preferredSize):
+            
+            let width = preferredSize.width
+            
+            let height: CGFloat
+            
+            if let image = imageComponent.itemView.image {
+                
+                let imageAspectRatio = (image.size.width / image.size.height)
+                
+                height = (width / imageAspectRatio)
+                
+            }
+            else { height = preferredSize.height }
+            
+            size = CGSize(
+                width: width,
+                height: height
+            )
             
         }
 

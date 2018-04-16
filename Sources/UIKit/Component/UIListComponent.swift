@@ -66,15 +66,30 @@ public final class UIListComponent: ListComponent {
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
             
-            let contentView = cell.contentView
+            let height: CGFloat
             
-            component.contentMode = .automatic2(estimatedSize: contentView.bounds.size)
+            switch component.contentMode {
+             
+            case let .size(size): height = size.height
+                
+            case .automatic: height = 44.0
+                
+            case let .automatic2(estimatedSize): height = estimatedSize.height
+                
+            }
+            
+            component.contentMode = .automatic2(
+                estimatedSize: CGSize(
+                    width: self.tableView.frame.width,
+                    height: height
+                )
+            )
             
             // Must render firstly to get the correct constraints from Auto Layout.
             // This helps table view to dynamically resize cells.
             component.render()
             
-            contentView.wrapSubview(component.view)
+            cell.contentView.wrapSubview(component.view)
             
         }
 
