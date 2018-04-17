@@ -13,103 +13,218 @@ import XCTest
 @testable import TinyKit
 
 internal final class UIListComponentTests: XCTestCase {
+    
+    internal final func testInitialize() {
+        
+        let listComponent = UIListComponent()
+        
+        XCTAssertEqual(
+            listComponent.contentMode,
+            .automatic2(estimatedSize: .zero)
+        )
+        
+        XCTAssertEqual(
+            listComponent.tableView,
+            listComponent.view
+        )
+        
+        XCTAssertEqual(
+            listComponent.tableView.style,
+            .plain
+        )
+        
+        XCTAssertEqual(
+            listComponent.view.frame,
+            .zero
+        )
+        
+        XCTAssertEqual(
+            listComponent.view.backgroundColor,
+            .clear
+        )
+        
+        XCTAssertEqual(
+            listComponent.numberOfSections,
+            0
+        )
+        
+        XCTAssertNil(listComponent.headerComponent)
+        
+        XCTAssertNil(listComponent.footerComponent)
+        
+    }
 
-    internal final func testRenderComponent() {
+    internal final func testRenderWithContentModeSize() {
+        
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let redSize = CGSize(
+            width: 100.0,
+            height: 100.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .size(redSize),
+            itemView: redView
+        )
+        
+        let listSize = CGSize(
+            width: 50.0,
+            height: 50.0
+        )
+        
+        let listComponent = UIListComponent(
+            contentMode: .size(listSize)
+        )
+        
+        listComponent.setItemComponents(
+            [ redComponent ]
+        )
+        
+        listComponent.render()
+        
+        XCTAssertEqual(
+            listComponent.view.frame.size,
+            listSize
+        )
+        
+    }
+    
+    internal final func testRenderWithContentModeAutomatic() {
 
-//        let headerComponent = UIItemComponent(
-//            contentMode: .size(
-//                width: 50.0,
-//                height: 50.0
-//            ),
-//            itemView: RectangleView()
-//        )
-//
-//        let footerComponent = UIItemComponent(
-//            contentMode: .size(
-//                width: 50.0,
-//                height: 50.0
-//            ),
-//            itemView: RectangleView()
-//        )
-//
-//        let itemComponents: [Component] = [
-//            UIItemComponent(
-//                contentMode: .size(
-//                    width: 100.0,
-//                    height: 100.0
-//                ),
-//                itemView: RectangleView()
-//            ),
-//            UIItemComponent(
-//                contentMode: .size(
-//                    width: 200.0,
-//                    height: 200.0
-//                ),
-//                itemView: RectangleView()
-//            )
-//        ]
-//
-//        let listComponent = UIListComponent()
-//
-//        let sections = 1
-//
-//        listComponent.headerComponent = headerComponent
-//
-//        listComponent.footerComponent = footerComponent
-//
-//        listComponent.setItemComponents(itemComponents)
-//
-//        listComponent.render()
-//
-//        let tableView = listComponent.tableView
-//
-//        XCTAssertEqual(
-//            tableView.tableHeaderView,
-//            headerComponent.view
-//        )
-//
-//        XCTAssertEqual(
-//            tableView.tableFooterView,
-//            footerComponent.view
-//        )
-//
-//        XCTAssertEqual(
-//            tableView.numberOfSections,
-//            sections
-//        )
-//
-//        for section in 0..<sections {
-//
-//            let rows =  tableView.numberOfRows(inSection: section)
-//
-//            for row in 0..<rows {
-//
-//                let indexPath = IndexPath(
-//                    row: row,
-//                    section: section
-//                )
-//
-//                let itemComponent = itemComponents[section]
-//
-//                guard
-//                    let cell = itemComponent.view.superview?.superview as? UITableViewCell
-//                else {
-//
-//                    XCTFail("Must be a UITableViewCell.")
-//
-//                    return
-//
-//                }
-//
-//                XCTAssertEqual(
-//                    tableView.cellForRow(at: indexPath),
-//                    cell
-//                )
-//
-//            }
-//
-//        }
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let redSize = CGSize(
+            width: 100.0,
+            height: 100.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .size(redSize),
+            itemView: redView
+        )
+        
+        let label = UILabel()
+        
+        label.numberOfLines = 0
+        
+        label.text = "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper."
+        
+        let estimatedLabelSize = CGSize(
+            width: 200.0,
+            height: 50.0
+        )
+        
+        let expectedLabelSize = label.sizeThatFits(estimatedLabelSize)
+        
+        let labelComponent = UIItemComponent(
+            contentMode: .automatic2(estimatedSize: estimatedLabelSize),
+            itemView: label
+        )
+        
+        let itemComponents: [Component] = [
+            redComponent,
+            labelComponent
+        ]
+        
+        let estimatedListSize = CGSize(
+            width: 200.0,
+            height: 200.0
+        )
+        
+        let listComponent = UIListComponent(
+            contentMode: .automatic2(estimatedSize: estimatedListSize)
+        )
 
+        listComponent.setItemComponents(itemComponents)
+
+        listComponent.render()
+        
+        let tableView = listComponent.tableView
+        
+        XCTAssertEqual(
+            tableView.numberOfSections,
+            1
+        )
+
+        let rows = tableView.numberOfRows(inSection: 0)
+            
+        XCTAssertEqual(
+            rows,
+            itemComponents.count
+        )
+
+        let expectedRedComponent = listComponent.itemComponent(
+            at: IndexPath(
+                row: 0,
+                section: 0
+            )
+        )
+                
+        XCTAssertEqual(
+            .red,
+            expectedRedComponent.view.backgroundColor
+        )
+
+        XCTAssertEqual(
+            CGSize(
+                width: tableView.frame.width,
+                height: redSize.height
+            ),
+            expectedRedComponent.view.frame.size
+        )
+        
+        let expectedLabelComponent = listComponent.itemComponent(
+            at: IndexPath(
+                row: 1,
+                section: 0
+            )
+        ) as? UIItemComponent<UILabel>
+        
+        let expectedLabel = expectedLabelComponent?.itemView
+        
+        XCTAssertEqual(
+            label.text,
+            expectedLabel?.text
+        )
+        
+        XCTAssertEqual(
+            CGSize(
+                width: tableView.frame.width,
+                height: expectedLabelSize.height
+            ),
+            expectedLabelComponent?.view.frame.size
+        )
+        
+        XCTAssertEqual(
+            listComponent.view.frame.size,
+            CGSize(
+                width: tableView.frame.width,
+                height: redSize.height + expectedLabelSize.height
+            )
+        )
+        
+    }
+    
+    internal final func testHeaderComponent() {
+        
+        //
+        //        let tableView = listComponent.tableView
+        //
+        //        XCTAssertEqual(
+        //            tableView.tableHeaderView,
+        //            headerComponent.view
+        //        )
+        //
+        //        XCTAssertEqual(
+        //            tableView.tableFooterView,
+        //            footerComponent.view
+        //        )
+    
     }
 
 }

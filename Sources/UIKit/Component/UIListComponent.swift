@@ -18,7 +18,11 @@ public final class UIListComponent: ListComponent {
     
     fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    /// If providing a dedicated width of the estimatedSize with mode .automatic, the list will be able to use this width to calculate the height dynamically based on the content of each item component.
+    /// Please make sure to call the function render() again if the content of any item components changed.
+    public init(
+        contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero)
+    ) {
 
         self.contentMode = contentMode
 
@@ -30,6 +34,7 @@ public final class UIListComponent: ListComponent {
         self.bridge = UITableViewBridge(tableView: tableView)
 
         self.tableViewWidthConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
+        
         self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
         
         self.numberOfSections = 0
@@ -41,7 +46,15 @@ public final class UIListComponent: ListComponent {
     // MARK: Set Up
 
     fileprivate final func prepare() {
-
+        
+        tableViewWidthConstraint.priority = UILayoutPriority(750.0)
+        
+        tableViewHeightConstraint.priority = UILayoutPriority(750.0)
+        
+        tableView.backgroundColor = .clear
+        
+        tableView.clipsToBounds = false
+        
         let size: CGSize
         
         switch contentMode {
@@ -60,34 +73,13 @@ public final class UIListComponent: ListComponent {
         
         tableView.frame.size = size
         
+        tableView.estimatedRowHeight = 0.0
+        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
-            
-            let height: CGFloat
-            
-            switch component.contentMode {
-             
-            case let .size(size): height = size.height
-                
-            case .automatic: height = 44.0
-                
-            case let .automatic2(estimatedSize): height = estimatedSize.height
-                
-            }
-            
-            component.contentMode = .automatic2(
-                estimatedSize: CGSize(
-                    width: self.tableView.frame.width,
-                    height: height
-                )
-            )
-            
-            // Must render firstly to get the correct constraints from Auto Layout.
-            // This helps table view to dynamically resize cells.
-            component.render()
             
             cell.contentView.wrapSubview(component.view)
             
@@ -101,32 +93,37 @@ public final class UIListComponent: ListComponent {
             
             switch component.contentMode {
 
-            case let .size(size): return size.height
+            case let .size(size):
+                
+                component.contentMode = .size(
+                    CGSize(
+                        width: self.tableView.frame.width,
+                        height: size.height
+                    )
+                )
+                
+                component.render()
+                
+                return size.height
 
             case .automatic: return UITableViewAutomaticDimension
                 
-            case .automatic2: return UITableViewAutomaticDimension
+            case let .automatic2(estimatedSize):
 
+                component.contentMode = .automatic2(
+                    estimatedSize: CGSize(
+                        width: self.tableView.frame.width,
+                        height: estimatedSize.height
+                    )
+                )
+                
+                component.render()
+                
+                return component.view.frame.height
+                
             }
 
         }
-        
-        tableView.backgroundColor = .clear
-        
-        tableView.clipsToBounds = false
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        tableViewWidthConstraint.priority = UILayoutPriority(750.0)
-        
-        tableViewHeightConstraint.priority = UILayoutPriority(750.0)
-        
-        NSLayoutConstraint.activate(
-            [
-                tableViewWidthConstraint,
-                tableViewHeightConstraint
-            ]
-        )
         
     }
 
@@ -169,6 +166,13 @@ public final class UIListComponent: ListComponent {
     public final var contentMode: ComponentContentMode
 
     public final func render() {
+        
+        let tableViewConstraints = [
+            tableViewWidthConstraint,
+            tableViewHeightConstraint
+        ]
+        
+        NSLayoutConstraint.deactivate(tableViewConstraints)
 
         headerComponent?.render()
 
@@ -196,9 +200,11 @@ public final class UIListComponent: ListComponent {
 
         tableView.frame.size = size
         
-        tableViewWidthConstraint.constant = size.width
+        tableViewWidthConstraint.constant = tableView.frame.size.width
 
-        tableViewHeightConstraint.constant = size.height
+        tableViewHeightConstraint.constant = tableView.frame.size.height
+        
+        NSLayoutConstraint.activate(tableViewConstraints)
 
     }
 

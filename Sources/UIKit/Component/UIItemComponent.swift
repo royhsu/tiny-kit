@@ -12,6 +12,18 @@
 public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final let itemView: ItemView
+    
+    private final let itemViewTopConstraint: NSLayoutConstraint
+    
+    private final let itemViewLeadingConstraint: NSLayoutConstraint
+    
+    private final let itemViewBottomConstraint: NSLayoutConstraint
+    
+    private final let itemViewTrailingConstraint: NSLayoutConstraint
+    
+    private final let itemViewWidthConstraint: NSLayoutConstraint
+    
+    private final let itemViewHeightConstraint: NSLayoutConstraint
 
     public init(
         contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero),
@@ -24,6 +36,18 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         self.view = View()
         
+        self.itemViewTopConstraint = view.topAnchor.constraint(equalTo: itemView.topAnchor)
+        
+        self.itemViewLeadingConstraint = view.leadingAnchor.constraint(equalTo: itemView.leadingAnchor)
+        
+        self.itemViewBottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
+        
+        self.itemViewTrailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
+        
+        self.itemViewWidthConstraint = itemView.widthAnchor.constraint(equalToConstant: itemView.frame.width)
+        
+        self.itemViewHeightConstraint = itemView.heightAnchor.constraint(equalToConstant: itemView.frame.size.height)
+        
         self.prepare()
 
     }
@@ -31,6 +55,14 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     // MARK: Set Up
     
     fileprivate final func prepare() {
+        
+        itemViewBottomConstraint.priority = UILayoutPriority(900.0)
+        
+        itemViewTrailingConstraint.priority = UILayoutPriority(900.0)
+        
+        itemViewWidthConstraint.priority = UILayoutPriority(750.0)
+        
+        itemViewHeightConstraint.priority = UILayoutPriority(750.0)
         
         view.backgroundColor = itemView.backgroundColor
         
@@ -51,7 +83,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         view.frame.size = size
         
-        itemView.frame.size = size
+        itemView.frame.size = view.frame.size
         
     }
 
@@ -61,13 +93,22 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final func render() {
 
+        let itemViewConstraints = [
+            itemViewTopConstraint,
+            itemViewLeadingConstraint,
+            itemViewBottomConstraint,
+            itemViewTrailingConstraint,
+            itemViewWidthConstraint,
+            itemViewHeightConstraint
+        ]
+        
         view.backgroundColor = itemView.backgroundColor
         
         itemView.removeFromSuperview()
 
         itemView.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.deactivate(itemView.constraints)
+        NSLayoutConstraint.deactivate(itemViewConstraints)
         
         view.addSubview(itemView)
 
@@ -87,40 +128,15 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
         }
 
-        itemView.frame.size = size
-
         view.frame.size = size
- 
-        let topConstraint = view.topAnchor.constraint(equalTo: itemView.topAnchor)
         
-        let leadingConstraint = view.leadingAnchor.constraint(equalTo: itemView.leadingAnchor)
+        itemView.frame.size = view.frame.size
         
-        let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
-
-        trailingConstraint.priority = UILayoutPriority(900.0)
-
-        let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
+        itemViewWidthConstraint.constant = itemView.frame.size.width
         
-        bottomConstraint.priority = UILayoutPriority(900.0)
+        itemViewWidthConstraint.constant = itemView.frame.size.height
         
-        let widthConstraint = itemView.widthAnchor.constraint(equalToConstant: size.width)
-
-        widthConstraint.priority = UILayoutPriority(750.0)
-
-        let heightConstraint = itemView.heightAnchor.constraint(equalToConstant: size.height)
-
-        heightConstraint.priority = UILayoutPriority(750.0)
-        
-        NSLayoutConstraint.activate(
-            [
-                topConstraint,
-                leadingConstraint,
-                bottomConstraint,
-                trailingConstraint,
-                widthConstraint,
-                heightConstraint
-            ]
-        )
+        NSLayoutConstraint.activate(itemViewConstraints)
 
     }
 

@@ -14,7 +14,7 @@ import XCTest
 
 internal final class UIItemComponentTests: XCTestCase {
 
-    internal final func testInitializeItemComponent() {
+    internal final func testInitialize() {
         
         let redView = UIView()
         
@@ -22,6 +22,16 @@ internal final class UIItemComponentTests: XCTestCase {
         
         let redComponent = UIItemComponent(itemView: redView)
 
+        XCTAssertEqual(
+            redComponent.contentMode,
+            .automatic2(estimatedSize: .zero)
+        )
+        
+        XCTAssertNotEqual(
+            redComponent.itemView,
+            redComponent.view
+        )
+        
         // Before rendering.
         XCTAssertEqual(
             redComponent.itemView.frame,
@@ -77,14 +87,15 @@ internal final class UIItemComponentTests: XCTestCase {
         
         redView.backgroundColor = .red
         
-        let redComponent = UIItemComponent(itemView: redView)
-        
         let size = CGSize(
             width: 100.0,
             height: 50.0
         )
         
-        redComponent.contentMode = .size(size)
+        let redComponent = UIItemComponent(
+            contentMode: .size(size),
+            itemView: redView
+        )
         
         redComponent.render()
 
@@ -119,13 +130,13 @@ internal final class UIItemComponentTests: XCTestCase {
         let expectedSize = label.sizeThatFits(estimatedSize)
         
         XCTAssertNotEqual(
-            expectedSize,
-            .zero
+            .zero,
+            expectedSize
         )
         
         XCTAssertNotEqual(
-            expectedSize,
-            estimatedSize
+            estimatedSize,
+            expectedSize
         )
         
         let labelComponent = UIItemComponent(
