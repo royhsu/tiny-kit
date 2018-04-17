@@ -212,19 +212,94 @@ internal final class UIListComponentTests: XCTestCase {
     
     internal final func testHeaderComponent() {
         
-        //
-        //        let tableView = listComponent.tableView
-        //
-        //        XCTAssertEqual(
-        //            tableView.tableHeaderView,
-        //            headerComponent.view
-        //        )
-        //
-        //        XCTAssertEqual(
-        //            tableView.tableFooterView,
-        //            footerComponent.view
-        //        )
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let redSize = CGSize(
+            width: 100.0,
+            height: 100.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .size(redSize),
+            itemView: redView
+        )
+        
+        let estimatedListSize = CGSize(
+            width: 200.0,
+            height: 200.0
+        )
+        
+        let listComponent = UIListComponent(
+            contentMode: .automatic2(estimatedSize: estimatedListSize)
+        )
+        
+        listComponent.headerComponent = redComponent
+        
+        listComponent.render()
+        
+        let tableView = listComponent.tableView
+
+        XCTAssertEqual(
+            tableView.tableHeaderView,
+            redComponent.view
+        )
+        
+        XCTAssertEqual(
+            tableView.tableHeaderView?.frame.size,
+            CGSize(
+                width: estimatedListSize.width,
+                height: redSize.height
+            )
+        )
+        
+    }
     
+    internal final func testFooterComponent() {
+        
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let redSize = CGSize(
+            width: 100.0,
+            height: 100.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .size(redSize),
+            itemView: redView
+        )
+        
+        let estimatedListSize = CGSize(
+            width: 200.0,
+            height: 200.0
+        )
+        
+        let listComponent = UIListComponent(
+            contentMode: .automatic2(estimatedSize: estimatedListSize)
+        )
+        
+        listComponent.footerComponent = redComponent
+        
+        listComponent.render()
+        
+        let tableView = listComponent.tableView
+        
+        XCTAssertEqual(
+            tableView.tableFooterView,
+            redComponent.view
+        )
+        
+        XCTAssertEqual(
+            tableView.tableFooterView?.frame.size,
+            CGSize(
+                width: estimatedListSize.width,
+                height: redSize.height
+            )
+        )
+        
     }
 
 }
