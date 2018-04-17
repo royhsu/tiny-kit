@@ -11,7 +11,8 @@
 public enum ComponentContentMode {
 
     case size(CGSize)
-
+    
+    // TODO: deprecated.
     case automatic
     
     case automatic2(estimatedSize: CGSize)
