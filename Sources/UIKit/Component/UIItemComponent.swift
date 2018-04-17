@@ -14,7 +14,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     public final let itemView: ItemView
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero),
         itemView: ItemView
     ) {
 
@@ -32,8 +32,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     
     fileprivate final func prepare() {
         
-        // TODO: sync background doesn't work.
-//        view.backgroundColor = itemView.backgroundColor
+        view.backgroundColor = itemView.backgroundColor
         
         let size: CGSize
         
@@ -62,8 +61,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final func render() {
 
-        // TODO: sync background doesn't work.
-//        view.backgroundColor = itemView.backgroundColor
+        view.backgroundColor = itemView.backgroundColor
         
         itemView.removeFromSuperview()
 
@@ -72,18 +70,6 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         NSLayoutConstraint.deactivate(itemView.constraints)
         
         view.addSubview(itemView)
-
-//        let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
-//
-//        trailingConstraint.priority = UILayoutPriority(900.0)
-//
-//        NSLayoutConstraint.activate(
-//            [
-//                view.topAnchor.constraint(equalTo: itemView.topAnchor),
-//                view.leadingAnchor.constraint(equalTo: itemView.leadingAnchor),
-//                trailingConstraint
-//            ]
-//        )
 
         let size: CGSize
 
@@ -97,41 +83,25 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
             size = itemView.bounds.size
             
-        case let .automatic2(estimatedSize):
-            
-//            view.frame.size = estimatedSize
-//
-//            itemView.frame.size = estimatedSize
-            
-//            print("before", view.frame.size, itemView.frame.size)
-//
-//            itemView.layoutIfNeeded()
-//
-//            itemView.sizeToFit()
-//
-//            print("after", view.frame.size, itemView.frame.size)
-            
-//            size = itemView.frame.size
-            
-            size = itemView.sizeThatFits(estimatedSize)
+        case let .automatic2(estimatedSize): size = itemView.sizeThatFits(estimatedSize)
             
         }
 
         itemView.frame.size = size
 
         view.frame.size = size
-
+ 
+        let topConstraint = view.topAnchor.constraint(equalTo: itemView.topAnchor)
+        
+        let leadingConstraint = view.leadingAnchor.constraint(equalTo: itemView.leadingAnchor)
+        
         let trailingConstraint = view.trailingAnchor.constraint(equalTo: itemView.trailingAnchor)
 
         trailingConstraint.priority = UILayoutPriority(900.0)
 
-        NSLayoutConstraint.activate(
-            [
-                view.topAnchor.constraint(equalTo: itemView.topAnchor),
-                view.leadingAnchor.constraint(equalTo: itemView.leadingAnchor),
-                trailingConstraint
-            ]
-        )
+        let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
+        
+        bottomConstraint.priority = UILayoutPriority(900.0)
         
         let widthConstraint = itemView.widthAnchor.constraint(equalToConstant: size.width)
 
@@ -141,25 +111,23 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         heightConstraint.priority = UILayoutPriority(750.0)
         
-        let bottomConstraint = view.bottomAnchor.constraint(equalTo: itemView.bottomAnchor)
-        
-        bottomConstraint.priority = UILayoutPriority(900.0)
-        
         NSLayoutConstraint.activate(
             [
+                topConstraint,
+                leadingConstraint,
+                bottomConstraint,
+                trailingConstraint,
                 widthConstraint,
                 heightConstraint
             ]
-        )
-        
-        NSLayoutConstraint.activate(
-            [ bottomConstraint ]
         )
 
     }
 
     // MARK: ViewRenderable
 
+    /// The view synchronizes its background color with the item view.
+    /// Please make sure to specify the background color on the item view instead of this view.
     public final let view: View
 
     public final var preferredContentSize: CGSize { return view.bounds.size }

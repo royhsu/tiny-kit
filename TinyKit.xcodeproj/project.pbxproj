@@ -66,7 +66,7 @@
 		B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */; };
 		B0542DDD20648E340078B3CE /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDC20648E340078B3CE /* ListComponent.swift */; };
 		B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDE2064B56E0078B3CE /* UIListComponent.swift */; };
-		B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */; };
+		B05E67622036D5B6003E8E0E /* UIItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */; };
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
 		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
@@ -158,7 +158,7 @@
 		B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselComponent.swift; sourceTree = "<group>"; };
 		B0542DDC20648E340078B3CE /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B0542DDE2064B56E0078B3CE /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
-		B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentTests.swift; sourceTree = "<group>"; };
+		B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIItemComponentTests.swift; sourceTree = "<group>"; };
 		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
 		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 		B00D9668203076C500EF0B7A /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				B05E67602036D5B2003E8E0E /* ItemComponentTests.swift */,
+				B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */,
 				B00D966D203076C500EF0B7A /* UIListComponentTests.swift */,
 				B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */,
 				B00D966F203076C500EF0B7A /* RectangleView.swift */,
@@ -610,7 +610,7 @@
 				B00D9670203076C500EF0B7A /* UITableViewExtensionsTests.swift in Sources */,
 				B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */,
 				B00D9673203076C500EF0B7A /* NoNibTableViewCell.swift in Sources */,
-				B05E67622036D5B6003E8E0E /* ItemComponentTests.swift in Sources */,
+				B05E67622036D5B6003E8E0E /* UIItemComponentTests.swift in Sources */,
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
 				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,
