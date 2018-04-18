@@ -71,8 +71,8 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         let listSize = CGSize(
-            width: 50.0,
-            height: 50.0
+            width: 500.0,
+            height: 500.0
         )
         
         let listComponent = UIListComponent(
@@ -84,6 +84,26 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         listComponent.render()
+        
+        let expectedRedComponent = listComponent.itemComponent(
+            at: IndexPath(
+                row: 0,
+                section: 0
+            )
+        )
+        
+        XCTAssertEqual(
+            .red,
+            expectedRedComponent.view.backgroundColor
+        )
+        
+        XCTAssertEqual(
+            CGSize(
+                width: listComponent.view.frame.width,
+                height: redSize.height
+            ),
+            expectedRedComponent.view.frame.size
+        )
         
         XCTAssertEqual(
             listComponent.view.frame.size,
@@ -115,7 +135,7 @@ internal final class UIListComponentTests: XCTestCase {
         label.text = "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper."
         
         let estimatedLabelSize = CGSize(
-            width: 200.0,
+            width: 500.0,
             height: 50.0
         )
         
@@ -132,8 +152,8 @@ internal final class UIListComponentTests: XCTestCase {
         ]
         
         let estimatedListSize = CGSize(
-            width: 200.0,
-            height: 200.0
+            width: 500.0,
+            height: 500.0
         )
         
         let listComponent = UIListComponent(
@@ -144,17 +164,13 @@ internal final class UIListComponentTests: XCTestCase {
 
         listComponent.render()
         
-        let tableView = listComponent.tableView
-        
         XCTAssertEqual(
-            tableView.numberOfSections,
+            listComponent.numberOfSections,
             1
         )
-
-        let rows = tableView.numberOfRows(inSection: 0)
             
         XCTAssertEqual(
-            rows,
+            listComponent.numberOfItemComponents(inSection: 0),
             itemComponents.count
         )
 
@@ -172,7 +188,7 @@ internal final class UIListComponentTests: XCTestCase {
 
         XCTAssertEqual(
             CGSize(
-                width: tableView.frame.width,
+                width: listComponent.view.frame.width,
                 height: redSize.height
             ),
             expectedRedComponent.view.frame.size
@@ -194,7 +210,7 @@ internal final class UIListComponentTests: XCTestCase {
         
         XCTAssertEqual(
             CGSize(
-                width: tableView.frame.width,
+                width: listComponent.view.frame.width,
                 height: expectedLabelSize.height
             ),
             expectedLabelComponent?.view.frame.size
@@ -203,7 +219,7 @@ internal final class UIListComponentTests: XCTestCase {
         XCTAssertEqual(
             listComponent.view.frame.size,
             CGSize(
-                width: tableView.frame.width,
+                width: listComponent.view.frame.width,
                 height: redSize.height + expectedLabelSize.height
             )
         )
@@ -227,8 +243,8 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         let estimatedListSize = CGSize(
-            width: 200.0,
-            height: 200.0
+            width: 500.0,
+            height: 500.0
         )
         
         let listComponent = UIListComponent(
@@ -273,8 +289,8 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         let estimatedListSize = CGSize(
-            width: 200.0,
-            height: 200.0
+            width: 500.0,
+            height: 500.0
         )
         
         let listComponent = UIListComponent(

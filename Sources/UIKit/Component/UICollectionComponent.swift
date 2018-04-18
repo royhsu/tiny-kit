@@ -19,8 +19,6 @@ public final class UICollectionComponent: CollectionComponent {
     fileprivate final let collectionViewWidthConstraint: NSLayoutConstraint
     
     fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
-    
-    fileprivate final var greatestItemHeight: CGFloat
 
     // TODO: shouldn't have a default content mode.
     public init(
@@ -45,8 +43,6 @@ public final class UICollectionComponent: CollectionComponent {
         
         self.collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.bounds.height)
         
-        self.greatestItemHeight = 0.0
-        
         self.numberOfSections = 0
         
         self.prepare()
@@ -64,22 +60,7 @@ public final class UICollectionComponent: CollectionComponent {
     
     public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
     
-    public final func setSizeForItem(provider: @escaping SizeForItemProvider) {
-        
-        bridge.sizeForItemProvider = { [unowned self] layout, indexPath in
-        
-            let itemSize = provider(
-                layout,
-                indexPath
-            )
-            
-            if itemSize.height > self.greatestItemHeight { self.greatestItemHeight = itemSize.height }
-            
-            return itemSize
-        
-        }
-        
-    }
+    public final func setSizeForItem(provider: @escaping SizeForItemProvider) { bridge.sizeForItemProvider = provider }
     
     // MARK: Set Up
     
@@ -110,8 +91,6 @@ public final class UICollectionComponent: CollectionComponent {
         }
         
         collectionView.frame.size = size
-        
-        greatestItemHeight = collectionView.frame.height
 
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
@@ -167,8 +146,6 @@ public final class UICollectionComponent: CollectionComponent {
         ]
         
         NSLayoutConstraint.deactivate(collectionViewConstraints)
-
-        greatestItemHeight = 0.0
         
         collectionView.reloadData()
 

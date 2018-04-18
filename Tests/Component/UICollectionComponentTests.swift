@@ -61,8 +61,8 @@ internal final class UICollectionComponentTests: XCTestCase {
         redView.backgroundColor = .red
         
         let redSize = CGSize(
-            width: 30.0,
-            height: 30.0
+            width: 100.0,
+            height: 100.0
         )
         
         let redComponent = UIItemComponent(
@@ -71,8 +71,8 @@ internal final class UICollectionComponentTests: XCTestCase {
         )
         
         let collectionSize = CGSize(
-            width: 50.0,
-            height: 50.0
+            width: 500.0,
+            height: 500.0
         )
         
         let collectionComponent = UICollectionComponent(
@@ -88,6 +88,23 @@ internal final class UICollectionComponentTests: XCTestCase {
         
         collectionComponent.render()
         
+        let expectedRedComponent = collectionComponent.itemComponent(
+            at: IndexPath(
+                item: 0,
+                section: 0
+            )
+        )
+        
+        XCTAssertEqual(
+            .red,
+            expectedRedComponent.view.backgroundColor
+        )
+        
+        XCTAssertEqual(
+            redSize,
+            expectedRedComponent.view.frame.size
+        )
+        
         XCTAssertEqual(
             collectionComponent.view.frame.size,
             collectionSize
@@ -102,8 +119,8 @@ internal final class UICollectionComponentTests: XCTestCase {
         redView.backgroundColor = .red
         
         let redSize = CGSize(
-            width: 30.0,
-            height: 30.0
+            width: 100.0,
+            height: 100.0
         )
         
         let redComponent = UIItemComponent(
@@ -116,8 +133,8 @@ internal final class UICollectionComponentTests: XCTestCase {
         blueView.backgroundColor = .blue
         
         let blueSize = CGSize(
-            width: 40.0,
-            height: 40.0
+            width: 150.0,
+            height: 150.0
         )
         
         let blueComponent = UIItemComponent(
@@ -126,8 +143,8 @@ internal final class UICollectionComponentTests: XCTestCase {
         )
         
         let estimatedCollectionSize = CGSize(
-            width: 200.0,
-            height: 200.0
+            width: 500.0,
+            height: 500.0
         )
         
         let collectionComponent = UICollectionComponent(
@@ -157,6 +174,40 @@ internal final class UICollectionComponentTests: XCTestCase {
         )
         
         collectionComponent.render()
+        
+        let expectedRedComponent = collectionComponent.itemComponent(
+            at: IndexPath(
+                item: 0,
+                section: 0
+            )
+        )
+        
+        XCTAssertEqual(
+            .red,
+            expectedRedComponent.view.backgroundColor
+        )
+        
+        XCTAssertEqual(
+            redSize,
+            expectedRedComponent.view.frame.size
+        )
+        
+        let expectedBlueComponent = collectionComponent.itemComponent(
+            at: IndexPath(
+                item: 1,
+                section: 0
+            )
+        )
+        
+        XCTAssertEqual(
+            .blue,
+            expectedBlueComponent.view.backgroundColor
+        )
+        
+        XCTAssertEqual(
+            blueSize,
+            expectedBlueComponent.view.frame.size
+        )
         
         XCTAssertNotEqual(
             collectionComponent.view.frame.size,
