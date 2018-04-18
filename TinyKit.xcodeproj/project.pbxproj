@@ -28,12 +28,6 @@
 		B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */; };
 		B00D967E203076C500EF0B7A /* UIListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966D203076C500EF0B7A /* UIListComponentTests.swift */; };
 		B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966F203076C500EF0B7A /* RectangleView.swift */; };
-		B00D96842030779000EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; };
-		B00D96852030779000EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; };
-		B00D968A203078DB00EF0B7A /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; };
-		B00D968B203078DB00EF0B7A /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; };
-		B00D968D2030790200EF0B7A /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96822030779000EF0B7A /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B00D96832030779000EF0B7A /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B01DB551207F2F1300E511FE /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB549207F2EB300E511FE /* Stylable.swift */; };
 		B01DB552207F2F1300E511FE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54B207F2EB400E511FE /* Theme.swift */; };
 		B01DB553207F2F1300E511FE /* Theme+AzureSky.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */; };
@@ -70,6 +64,10 @@
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
 		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
+		B0B474182086FC0F000A49E6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B474162086FC0F000A49E6 /* Hydra.framework */; };
+		B0B474192086FC0F000A49E6 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B474172086FC0F000A49E6 /* TinyCore.framework */; };
+		B0B4741A2086FC7A000A49E6 /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B0B474162086FC0F000A49E6 /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0B4741B2086FC7A000A49E6 /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B0B474172086FC0F000A49E6 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0C357A72064F39D0017E1F0 /* CollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357A52064EF090017E1F0 /* CollectionComponent.swift */; };
 		B0D46961207F195A0047AE8F /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D46960207F195A0047AE8F /* ButtonComponent.swift */; };
 /* End PBXBuildFile section */
@@ -91,8 +89,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B00D968D2030790200EF0B7A /* Hydra.framework in Carthage */,
-				B00D968E2030790200EF0B7A /* TinyCore.framework in Carthage */,
+				B0B4741A2086FC7A000A49E6 /* Hydra.framework in Carthage */,
+				B0B4741B2086FC7A000A49E6 /* TinyCore.framework in Carthage */,
 			);
 			name = Carthage;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,8 +122,6 @@
 		B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
 		B00D966D203076C500EF0B7A /* UIListComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIListComponentTests.swift; sourceTree = "<group>"; };
 		B00D966F203076C500EF0B7A /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
-		B00D96822030779000EF0B7A /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
-		B00D96832030779000EF0B7A /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B01DB549207F2EB300E511FE /* Stylable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
 		B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+AzureSky.swift"; sourceTree = "<group>"; };
 		B01DB54B207F2EB400E511FE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -162,6 +158,8 @@
 		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
 		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
+		B0B474162086FC0F000A49E6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
+		B0B474172086FC0F000A49E6 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0C357A52064EF090017E1F0 /* CollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionComponent.swift; sourceTree = "<group>"; };
 		B0D46960207F195A0047AE8F /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,8 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00D96842030779000EF0B7A /* Hydra.framework in Frameworks */,
-				B00D96852030779000EF0B7A /* TinyCore.framework in Frameworks */,
+				B0B474182086FC0F000A49E6 /* Hydra.framework in Frameworks */,
+				B0B474192086FC0F000A49E6 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +178,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00D968A203078DB00EF0B7A /* Hydra.framework in Frameworks */,
-				B00D968B203078DB00EF0B7A /* TinyCore.framework in Frameworks */,
 				B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +328,8 @@
 		B00D96812030778F00EF0B7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B00D96822030779000EF0B7A /* Hydra.framework */,
-				B00D96832030779000EF0B7A /* TinyCore.framework */,
+				B0B474162086FC0F000A49E6 /* Hydra.framework */,
+				B0B474172086FC0F000A49E6 /* TinyCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
