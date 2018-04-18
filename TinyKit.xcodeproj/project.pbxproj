@@ -27,7 +27,6 @@
 		B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */; };
 		B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */; };
 		B00D967E203076C500EF0B7A /* UIListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966D203076C500EF0B7A /* UIListComponentTests.swift */; };
-		B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966F203076C500EF0B7A /* RectangleView.swift */; };
 		B01DB551207F2F1300E511FE /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB549207F2EB300E511FE /* Stylable.swift */; };
 		B01DB552207F2F1300E511FE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54B207F2EB400E511FE /* Theme.swift */; };
 		B01DB553207F2F1300E511FE /* Theme+AzureSky.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */; };
@@ -42,9 +41,7 @@
 		B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */; };
 		B022E268205E9E7E00DD9170 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */; };
 		B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E26B205FA36100DD9170 /* Bool+Toggle.swift */; };
-		B02B43A92049947B00F3D7C0 /* UICollectionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */; };
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
-		B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */; };
 		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
 		B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C14208337CE005098D3 /* UICarouselLayout.swift */; };
 		B03A4C17208363BE005098D3 /* TCItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C16208363BE005098D3 /* TCItemComponent.swift */; };
@@ -64,10 +61,10 @@
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
 		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
-		B0B474182086FC0F000A49E6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B474162086FC0F000A49E6 /* Hydra.framework */; };
-		B0B474192086FC0F000A49E6 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B474172086FC0F000A49E6 /* TinyCore.framework */; };
-		B0B4741A2086FC7A000A49E6 /* Hydra.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B0B474162086FC0F000A49E6 /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B0B4741B2086FC7A000A49E6 /* TinyCore.framework in Carthage */ = {isa = PBXBuildFile; fileRef = B0B474172086FC0F000A49E6 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0B4741E208700C8000A49E6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741C208700C8000A49E6 /* Hydra.framework */; };
+		B0B4741F208700C8000A49E6 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741D208700C8000A49E6 /* TinyCore.framework */; };
+		B0B4742120870132000A49E6 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4742020870132000A49E6 /* UICollectionComponent.swift */; };
+		B0B474242087015D000A49E6 /* UICollectionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */; };
 		B0C357A72064F39D0017E1F0 /* CollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357A52064EF090017E1F0 /* CollectionComponent.swift */; };
 		B0D46961207F195A0047AE8F /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D46960207F195A0047AE8F /* ButtonComponent.swift */; };
 /* End PBXBuildFile section */
@@ -89,8 +86,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B0B4741A2086FC7A000A49E6 /* Hydra.framework in Carthage */,
-				B0B4741B2086FC7A000A49E6 /* TinyCore.framework in Carthage */,
 			);
 			name = Carthage;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +116,6 @@
 		B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
 		B00D966D203076C500EF0B7A /* UIListComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIListComponentTests.swift; sourceTree = "<group>"; };
-		B00D966F203076C500EF0B7A /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		B01DB549207F2EB300E511FE /* Stylable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
 		B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+AzureSky.swift"; sourceTree = "<group>"; };
 		B01DB54B207F2EB400E511FE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -136,9 +130,7 @@
 		B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
 		B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
 		B022E26B205FA36100DD9170 /* Bool+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Toggle.swift"; sourceTree = "<group>"; };
-		B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponentTests.swift; sourceTree = "<group>"; };
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
-		B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
 		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
 		B03A4C14208337CE005098D3 /* UICarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselLayout.swift; sourceTree = "<group>"; };
 		B03A4C16208363BE005098D3 /* TCItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCItemComponent.swift; sourceTree = "<group>"; };
@@ -158,8 +150,10 @@
 		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
 		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
-		B0B474162086FC0F000A49E6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
-		B0B474172086FC0F000A49E6 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0B4741C208700C8000A49E6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
+		B0B4741D208700C8000A49E6 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
+		B0B4742020870132000A49E6 /* UICollectionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
+		B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionComponentTests.swift; sourceTree = "<group>"; };
 		B0C357A52064EF090017E1F0 /* CollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionComponent.swift; sourceTree = "<group>"; };
 		B0D46960207F195A0047AE8F /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,8 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0B474182086FC0F000A49E6 /* Hydra.framework in Frameworks */,
-				B0B474192086FC0F000A49E6 /* TinyCore.framework in Frameworks */,
+				B0B4741E208700C8000A49E6 /* Hydra.framework in Frameworks */,
+				B0B4741F208700C8000A49E6 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,8 +313,7 @@
 			children = (
 				B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */,
 				B00D966D203076C500EF0B7A /* UIListComponentTests.swift */,
-				B02B43A72049943D00F3D7C0 /* UICollectionComponentTests.swift */,
-				B00D966F203076C500EF0B7A /* RectangleView.swift */,
+				B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -328,8 +321,8 @@
 		B00D96812030778F00EF0B7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B0B474162086FC0F000A49E6 /* Hydra.framework */,
-				B0B474172086FC0F000A49E6 /* TinyCore.framework */,
+				B0B4741C208700C8000A49E6 /* Hydra.framework */,
+				B0B4741D208700C8000A49E6 /* TinyCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -402,7 +395,7 @@
 				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
 				B03A4C16208363BE005098D3 /* TCItemComponent.swift */,
 				B04707E6207A58BE00331D26 /* UIBoxComponent.swift */,
-				B037F300205DEBE500CF5F75 /* UICollectionComponent.swift */,
+				B0B4742020870132000A49E6 /* UICollectionComponent.swift */,
 				B04707EA207C820200331D26 /* UIGridLayout.swift */,
 				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
 				B03A4C14208337CE005098D3 /* UICarouselLayout.swift */,
@@ -551,7 +544,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B037F301205DEBE500CF5F75 /* UICollectionComponent.swift in Sources */,
 				B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */,
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
 				B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */,
@@ -593,6 +585,7 @@
 				B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */,
 				B04707EB207C820200331D26 /* UIGridLayout.swift in Sources */,
 				B0D46961207F195A0047AE8F /* ButtonComponent.swift in Sources */,
+				B0B4742120870132000A49E6 /* UICollectionComponent.swift in Sources */,
 				B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B474242087015D000A49E6 /* UICollectionComponentTests.swift in Sources */,
 				B00D9674203076C500EF0B7A /* UICollectionViewExtensionsTests.swift in Sources */,
 				B00D967E203076C500EF0B7A /* UIListComponentTests.swift in Sources */,
 				B00D9670203076C500EF0B7A /* UITableViewExtensionsTests.swift in Sources */,
@@ -610,8 +604,6 @@
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
 				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,
-				B02B43A92049947B00F3D7C0 /* UICollectionComponentTests.swift in Sources */,
-				B00D9680203076C500EF0B7A /* RectangleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

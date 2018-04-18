@@ -19,7 +19,10 @@ public final class UICollectionComponent: CollectionComponent {
     fileprivate final let collectionViewWidthConstraint: NSLayoutConstraint
     
     fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
+    
+    fileprivate final var greatestItemHeight: CGFloat
 
+    // TODO: shouldn't have a default content mode.
     public init(
         contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero),
         layout: UICollectionViewLayout
@@ -42,6 +45,8 @@ public final class UICollectionComponent: CollectionComponent {
         
         self.collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.bounds.height)
         
+        self.greatestItemHeight = 0.0
+        
         self.numberOfSections = 0
         
         self.prepare()
@@ -59,7 +64,22 @@ public final class UICollectionComponent: CollectionComponent {
     
     public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
     
-    public final func setSizeForItem(provider: @escaping SizeForItemProvider) { bridge.sizeForItemProvider = provider }
+    public final func setSizeForItem(provider: @escaping SizeForItemProvider) {
+        
+        bridge.sizeForItemProvider = { [unowned self] layout, indexPath in
+        
+            let itemSize = provider(
+                layout,
+                indexPath
+            )
+            
+            if itemSize.height > self.greatestItemHeight { self.greatestItemHeight = itemSize.height }
+            
+            return itemSize
+        
+        }
+        
+    }
     
     // MARK: Set Up
     
@@ -90,6 +110,8 @@ public final class UICollectionComponent: CollectionComponent {
         }
         
         collectionView.frame.size = size
+        
+        greatestItemHeight = collectionView.frame.height
 
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
@@ -138,7 +160,16 @@ public final class UICollectionComponent: CollectionComponent {
     public final var contentMode: ComponentContentMode
 
     public final func render() {
+        
+        let collectionViewConstraints = [
+            collectionViewWidthConstraint,
+            collectionViewHeightConstraint
+        ]
+        
+        NSLayoutConstraint.deactivate(collectionViewConstraints)
 
+        greatestItemHeight = 0.0
+        
         collectionView.reloadData()
 
         /// Reference: https://stackoverflow.com/questions/22861804/uicollectionview-cellforitematindexpath-is-nil
@@ -152,13 +183,17 @@ public final class UICollectionComponent: CollectionComponent {
 
         case .automatic: size = collectionViewLayout.collectionViewContentSize
 
-        case let .automatic2(width): fatalError()
+        case .automatic2: size = collectionViewLayout.collectionViewContentSize
             
         }
 
         collectionView.frame.size = size
         
-        collectionViewHeightConstraint.constant = size.height
+        collectionViewWidthConstraint.constant = collectionView.frame.width
+        
+        collectionViewHeightConstraint.constant = collectionView.frame.height
+        
+        NSLayoutConstraint.activate(collectionViewConstraints)
 
     }
 

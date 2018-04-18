@@ -54,74 +54,123 @@ internal final class UICollectionComponentTests: XCTestCase {
         
     }
     
-    internal final func testRenderComponent() {
+    internal final func testRenderWithContentModeSize() {
 
-//        let itemComponents: [Component] = [
-//            UIItemComponent(
-//                contentMode: .size(
-//                    width: 100.0,
-//                    height: 100.0
-//                ),
-//                itemView: RectangleView()
-//            ),
-//            UIItemComponent(
-//                contentMode: .size(
-//                    width: 200.0,
-//                    height: 200.0
-//                ),
-//                itemView: RectangleView()
-//            )
-//        ]
-//
-//        let collectionComponent = UICollectionComponent()
-//
-//        let sections = 1
-//
-//        collectionComponent
-//            .setNumberOfSections { sections }
-//            .setNumberOfItems { _ in itemComponents.count }
-//            .setComponentForItem { itemComponents[$0.section] }
-//            .render()
-//
-//        let collectionView = collectionComponent.collectionView
-//
-//        XCTAssertEqual(
-//            collectionView.numberOfSections,
-//            sections
-//        )
-//
-//        for section in 0..<sections {
-//
-//            let items = collectionView.numberOfItems(inSection: section)
-//
-//            for item in 0..<items {
-//
-//                let indexPath = IndexPath(
-//                    item: item,
-//                    section: section
-//                )
-//
-//                let itemComponent = itemComponents[section]
-//
-//                guard
-//                    let cell = itemComponent.view.superview?.superview as? UICollectionViewCell
-//                else {
-//
-//                    XCTFail("Must be a UICollectionViewCell.")
-//
-//                    return
-//
-//                }
-//
-//                XCTAssertEqual(
-//                    collectionView.cellForItem(at: indexPath),
-//                    cell
-//                )
-//
-//            }
-//
-//        }
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let redSize = CGSize(
+            width: 30.0,
+            height: 30.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .size(redSize),
+            itemView: redView
+        )
+        
+        let collectionSize = CGSize(
+            width: 50.0,
+            height: 50.0
+        )
+        
+        let collectionComponent = UICollectionComponent(
+            contentMode: .size(collectionSize),
+            layout: UICollectionViewFlowLayout()
+        )
+        
+        collectionComponent.setSizeForItem { _, _ in redSize }
+        
+        collectionComponent.setItemComponents(
+            [ redComponent ]
+        )
+        
+        collectionComponent.render()
+        
+        XCTAssertEqual(
+            collectionComponent.view.frame.size,
+            collectionSize
+        )
 
+    }
+    
+    internal final func testRenderWithContentModeAutomatic() {
+        
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let redSize = CGSize(
+            width: 30.0,
+            height: 30.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .size(redSize),
+            itemView: redView
+        )
+        
+        let blueView = UIView()
+        
+        blueView.backgroundColor = .blue
+        
+        let blueSize = CGSize(
+            width: 40.0,
+            height: 40.0
+        )
+        
+        let blueComponent = UIItemComponent(
+            contentMode: .size(blueSize),
+            itemView: blueView
+        )
+        
+        let estimatedCollectionSize = CGSize(
+            width: 200.0,
+            height: 200.0
+        )
+        
+        let collectionComponent = UICollectionComponent(
+            contentMode: .automatic2(estimatedSize: estimatedCollectionSize),
+            layout: UICollectionViewFlowLayout()
+        )
+        
+        collectionComponent.setSizeForItem { _, indexPath in
+            
+            switch indexPath.item {
+                
+            case 0: return redSize
+                
+            case 1: return blueSize
+                
+            default: XCTFail("Undefined item.") ; return .zero
+                
+            }
+            
+        }
+        
+        collectionComponent.setItemComponents(
+            [
+                redComponent,
+                blueComponent
+            ]
+        )
+        
+        collectionComponent.render()
+        
+        XCTAssertNotEqual(
+            collectionComponent.view.frame.size,
+            estimatedCollectionSize
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.view.frame.size,
+            CGSize(
+                width: estimatedCollectionSize.width,
+                height: blueSize.height
+            )
+        )
+        
     }
 
 }
