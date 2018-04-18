@@ -12,49 +12,33 @@ public final class UICollectionComponent: CollectionComponent {
 
     public final let collectionView: UICollectionView
 
-    internal final let collectionViewLayout: UICollectionViewLayout
+    public final let collectionViewLayout: UICollectionViewLayout
 
     fileprivate final let bridge: UICollectionViewBridge
+    
+    fileprivate final let collectionViewWidthConstraint: NSLayoutConstraint
     
     fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero),
         layout: UICollectionViewLayout
     ) {
 
         self.contentMode = contentMode
 
-        let frame: CGRect
-
-        switch contentMode {
-
-        case let .size(size):
-
-            frame = CGRect(
-                origin: .zero,
-                size: size
-            )
-
-        case .automatic:
-
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            frame = UIScreen.main.bounds
-            
-        case let .automatic2(width): fatalError()
-
-        }
-
         self.collectionViewLayout = layout
 
         let collectionView = UICollectionView(
-            frame: frame,
+            frame: .zero,
             collectionViewLayout: collectionViewLayout
         )
 
         self.collectionView = collectionView
 
         self.bridge = UICollectionViewBridge(collectionView: collectionView)
+        
+        self.collectionViewWidthConstraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.bounds.width)
         
         self.collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.bounds.height)
         
@@ -80,6 +64,32 @@ public final class UICollectionComponent: CollectionComponent {
     // MARK: Set Up
     
     fileprivate final func prepare() {
+        
+        collectionViewWidthConstraint.priority = UILayoutPriority(750.0)
+        
+        collectionViewHeightConstraint.priority = UILayoutPriority(750.0)
+        
+        collectionView.backgroundColor = .clear
+        
+        collectionView.clipsToBounds = false
+        
+        let size: CGSize
+        
+        switch contentMode {
+            
+        case let .size(value): size = value
+            
+        case .automatic:
+            
+            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
+            // Removing this will show layout constraint errors for current implementation.
+            size = UIScreen.main.bounds.size
+            
+        case let .automatic2(estimatedSize): size = estimatedSize
+            
+        }
+        
+        collectionView.frame.size = size
 
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
@@ -92,16 +102,6 @@ public final class UICollectionComponent: CollectionComponent {
             cell.contentView.wrapSubview(component.view)
 
         }
-        
-        collectionView.backgroundColor = .clear
-        
-        collectionView.clipsToBounds = false
-        
-        collectionViewHeightConstraint.priority = UILayoutPriority(750.0)
-        
-        NSLayoutConstraint.activate(
-            [ collectionViewHeightConstraint ]
-        )
         
     }
 

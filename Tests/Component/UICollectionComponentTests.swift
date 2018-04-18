@@ -14,6 +14,46 @@ import XCTest
 
 internal final class UICollectionComponentTests: XCTestCase {
 
+    internal final func testInitialize() {
+        
+        let layout = UICollectionViewFlowLayout()
+        
+        let collectionComponent = UICollectionComponent(
+            layout: layout
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.contentMode,
+            .automatic2(estimatedSize: .zero)
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.collectionView,
+            collectionComponent.view
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.collectionViewLayout,
+            layout
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.view.frame,
+            .zero
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.view.backgroundColor,
+            .clear
+        )
+        
+        XCTAssertEqual(
+            collectionComponent.numberOfSections,
+            0
+        )
+        
+    }
+    
     internal final func testRenderComponent() {
 
 //        let itemComponents: [Component] = [
