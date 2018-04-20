@@ -17,7 +17,9 @@ public final class TSPrimaryButtonComponent: UIButtonComponent {
     
     public final let eventEmitter: NewEventEmitter<UITouchEvent>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+        ) {
 
         self.bundle = Bundle(
             for: type(of: self)

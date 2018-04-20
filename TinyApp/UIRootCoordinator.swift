@@ -228,7 +228,7 @@ public final class UIRootCoordinator: Coordinator {
         label.numberOfLines = 0
         
         let labelComponent = UIItemComponent(
-            contentMode: .automatic2(
+            contentMode: .automatic(
                 estimatedSize: CGSize(
                     width: 100.0,
                     height: 50.0
@@ -241,7 +241,7 @@ public final class UIRootCoordinator: Coordinator {
         
         print("label 1:", labelComponent.view.frame)
         
-        labelComponent.contentMode = .automatic2(
+        labelComponent.contentMode = .automatic(
             estimatedSize: CGSize(
                 width: 200.0,
                 height: 50.0
@@ -259,7 +259,7 @@ public final class UIRootCoordinator: Coordinator {
             view.backgroundColor = color
             
             let colorComponent = UIItemComponent(
-                contentMode: .automatic2(estimatedSize: size),
+                contentMode: .automatic(estimatedSize: size),
                 itemView: view
             )
             
@@ -268,12 +268,12 @@ public final class UIRootCoordinator: Coordinator {
         }
         
         let list2Component = UIListComponent(
-            contentMode: .automatic2(estimatedSize: UIScreen.main.bounds.size)
+            contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
         )
         
         let image2Component = TPPostImageComponent(width: 0.0)
         
-        image2Component.contentMode = .automatic2(
+        image2Component.contentMode = .automatic(
             estimatedSize: CGSize(
                 width: 80.0,
                 height: 80.0

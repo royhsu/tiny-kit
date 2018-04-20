@@ -18,7 +18,9 @@ public final class TSProductReviewComponent: Component {
     
     private final let itemComponent: UIItemComponent<TSProductReviewView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.bundle = Bundle(
             for: type(of: self)

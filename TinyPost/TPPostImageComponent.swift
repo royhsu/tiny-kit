@@ -15,7 +15,7 @@ public final class TPPostImageComponent: ImageComponent {
     private final let imageComponent: UIItemComponent<UIImageView>
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         width: CGFloat
     ) {
 
@@ -58,8 +58,6 @@ public final class TPPostImageComponent: ImageComponent {
     }
 
     public final func render() {
-        
-        let imageView = imageComponent.itemView
 
         let size: CGSize
         
@@ -67,27 +65,7 @@ public final class TPPostImageComponent: ImageComponent {
 
         case let .size(value): size = value
 
-        case .automatic:
-
-            let width = imageView.bounds.width
-
-            let height: CGFloat
-
-            if let image = imageComponent.itemView.image {
-
-                let imageAspectRatio = (image.size.width / image.size.height)
-
-                height = (width / imageAspectRatio)
-
-            }
-            else { height = 0.0 }
-
-            size = CGSize(
-                width: width,
-                height: height
-            )
-
-        case let .automatic2(preferredSize):
+        case let .automatic(preferredSize):
             
             let width = preferredSize.width
             

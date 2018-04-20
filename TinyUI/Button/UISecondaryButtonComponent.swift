@@ -16,7 +16,7 @@ public final class UISecondaryButtonComponent: Component {
     private final let itemComponent: UIItemComponent<UISecondaryButton>
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         theme: Theme = .current
     ) {
 

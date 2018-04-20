@@ -17,7 +17,9 @@ public final class TSProductSectionHeaderComponent: Component {
     
     private final let itemComponent: UIItemComponent<TSProductSectionHeaderView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.bundle = Bundle(
             for: type(of: self)

@@ -15,7 +15,9 @@ public final class TPPostParagraphComponent: ParagraphComponent {
     
     private final let labelComponent: UIItemComponent<UILabel>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.labelComponent = UIItemComponent(
             itemView: UILabel()

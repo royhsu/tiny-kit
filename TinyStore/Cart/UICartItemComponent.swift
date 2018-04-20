@@ -29,7 +29,7 @@ public final class UICartItemComponent: Component, Stylable {
     private final let optionChainComponent: UIOptionChainComponent
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         theme: Theme = .current,
         selectionComponent: UICheckboxComponent,
         quantityComponent: UINumberPickerComponent,

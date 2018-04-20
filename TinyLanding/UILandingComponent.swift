@@ -18,7 +18,7 @@ public final class UILandingComponent: Component {
     private final var buttonComponents: [UIButtonComponent] = []
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         listComponent: ListComponent
     ) {
 
@@ -45,19 +45,17 @@ public final class UILandingComponent: Component {
         switch contentMode {
 
         case let .size(size): logoComponent.contentMode = .size(size)
-
+            
         case .automatic:
-
+            
             let width = listComponent.view.bounds.width
-
+            
             logoComponent.contentMode = .size(
                 CGSize(
                     width: width,
                     height: width
                 )
             )
-            
-        case let .automatic2(width): fatalError()
 
         }
 

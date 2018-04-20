@@ -20,7 +20,7 @@ public final class TSProductDescriptionComponent: Component {
     public final let buttonComponent: UIButtonComponent
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         buttonComponent: UIButtonComponent
     ) {
 
