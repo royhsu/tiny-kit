@@ -166,35 +166,39 @@ public final class UIListComponent: ListComponent {
         
         NSLayoutConstraint.deactivate(tableViewConstraints)
 
-        headerComponent?.render()
-
-        footerComponent?.render()
-
-        tableView.tableHeaderView = headerComponent?.view
-
-        tableView.tableFooterView = footerComponent?.view
-
-        tableView.reloadData()
-
-        tableView.layoutIfNeeded()
-
-        let size: CGSize
-
         switch contentMode {
 
-        case let .size(value): size = value
+        case let .size(size):
             
-        case .automatic: size = tableView.contentSize
-
+            tableView.frame.size = size
+            
+            tableView.reloadData()
+            
+        case let .automatic(estimatedSize):
+            
+            tableView.frame.size = estimatedSize
+            
+            tableView.reloadData()
+            
+            tableView.layoutIfNeeded()
+            
+            tableView.frame.size.height = tableView.contentSize.height
+            
         }
-
-        tableView.frame.size = size
         
         tableViewWidthConstraint.constant = tableView.frame.size.width
 
         tableViewHeightConstraint.constant = tableView.frame.size.height
         
         NSLayoutConstraint.activate(tableViewConstraints)
+        
+        headerComponent?.render()
+        
+        footerComponent?.render()
+        
+        tableView.tableHeaderView = headerComponent?.view
+        
+        tableView.tableFooterView = footerComponent?.view
 
     }
 

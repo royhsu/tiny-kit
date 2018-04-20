@@ -30,7 +30,7 @@ public final class UIGridComponent: CollectionComponent {
     }
     
     public init(
-        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
+        contentMode: ComponentContentMode,
         layout: UIGridLayout
     ) {
         

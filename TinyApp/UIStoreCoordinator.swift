@@ -26,6 +26,7 @@ public final class UIStoreCoordinator: Coordinator {
     public init() {
 
         self.storeComponent = UIGridComponent(
+            contentMode: .size(UIScreen.main.bounds.size),
             layout: UIGridLayout(
                 columns: 2,
                 rows: 2,

@@ -107,17 +107,13 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         view.addSubview(itemView)
 
-        let size: CGSize
-
         switch contentMode {
 
-        case let .size(value): size = value
+        case let .size(size): itemView.frame.size = size
             
-        case let .automatic(estimatedSize): size = itemView.sizeThatFits(estimatedSize)
+        case let .automatic(estimatedSize): itemView.frame.size = itemView.sizeThatFits(estimatedSize)
             
         }
-
-        view.frame.size = size
         
         itemView.frame.size = view.frame.size
         

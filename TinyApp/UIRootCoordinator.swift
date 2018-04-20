@@ -72,38 +72,38 @@ public final class UIRootCoordinator: Coordinator {
             right: 16.0
         )
         
-        let productDetailComponent = TSProductDetailComponent(
-            layoutComponent: UIListComponent(
-                contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
-            ),
-            descriptionButtonComponent: buttonComponent,
-            reviewSectionHeaderComponent: reviewSectionHeaderComponent,
-            introductionSectionHeaderComponent: introductionSectionHeaderComponent,
-            introductionComponent: TPPostComponent(
-                layoutComponent: UIListComponent(
-                    contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
-                )
-            )
-        )
-        
-        productDetailComponent.galleryComponent.setImageContainers(
-            [
-                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
-                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
-                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
-            ]
-        )
-        
-        productDetailComponent.descriptionComponent.titleLabel.text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
-        
-        productDetailComponent.descriptionComponent.subtitleLabel.text = "$12.99"
-        
-        productDetailComponent.descriptionComponent.paddingInsets = UIEdgeInsets(
-            top: 20.0,
-            left: 16.0,
-            bottom: 0.0,
-            right: 16.0
-        )
+//        let productDetailComponent = TSProductDetailComponent(
+//            layoutComponent: UIListComponent(
+//                contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
+//            ),
+//            descriptionButtonComponent: buttonComponent,
+//            reviewSectionHeaderComponent: reviewSectionHeaderComponent,
+//            introductionSectionHeaderComponent: introductionSectionHeaderComponent,
+//            introductionComponent: TPPostComponent(
+//                layoutComponent: UIListComponent(
+//                    contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
+//                )
+//            )
+//        )
+//
+//        productDetailComponent.galleryComponent.setImageContainers(
+//            [
+//                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
+//                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
+//                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
+//            ]
+//        )
+//
+//        productDetailComponent.descriptionComponent.titleLabel.text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
+//
+//        productDetailComponent.descriptionComponent.subtitleLabel.text = "$12.99"
+//
+//        productDetailComponent.descriptionComponent.paddingInsets = UIEdgeInsets(
+//            top: 20.0,
+//            left: 16.0,
+//            bottom: 0.0,
+//            right: 16.0
+//        )
         
         let reviewPaddingInsets = UIEdgeInsets(
             top: 12.0,
@@ -148,22 +148,22 @@ public final class UIRootCoordinator: Coordinator {
         
 //        review3Component.paddingInsets = reviewPaddingInsets
         
-        productDetailComponent.reviewCarouselComponent.collectionView.contentInset = UIEdgeInsets(
-            top: 0.0,
-            left: 16.0,
-            bottom: 8.0,
-            right: 16.0
-        )
-        
-        productDetailComponent.reviewCarouselComponent.layout.interitemSpacing = 16.0
-        
-        productDetailComponent.reviewCarouselComponent.setItemComponents(
-            [
-                review1Component,
-                review2Component,
-                review3Component
-            ]
-        )
+//        productDetailComponent.reviewCarouselComponent.collectionView.contentInset = UIEdgeInsets(
+//            top: 0.0,
+//            left: 16.0,
+//            bottom: 8.0,
+//            right: 16.0
+//        )
+//        
+//        productDetailComponent.reviewCarouselComponent.layout.interitemSpacing = 16.0
+//        
+//        productDetailComponent.reviewCarouselComponent.setItemComponents(
+//            [
+//                review1Component,
+//                review2Component,
+//                review3Component
+//            ]
+//        )
         
         let paragraphElementFactory: (String) -> Element = { paragraph in
             
@@ -226,6 +226,16 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
         
+        carouselComponent.setItemComponents(
+            [
+                review1Component,
+                review2Component,
+                review3Component
+            ]
+        )
+        
+        carouselComponent.setMinimumItemWidth { index in carouselComponent.view.frame.size.width * CGFloat(2.0 / 3.0) }
+        
         let r1 = UIItemComponent<TSProductReviewView>(
             itemView: UIView.load(
                 TSProductReviewView.self,
@@ -265,23 +275,13 @@ public final class UIRootCoordinator: Coordinator {
         
         r3.itemView.pictureImageView.image = #imageLiteral(resourceName: "image-danielle-schneider")
         
-//        carouselComponent.setItemComponents(
-//            [
-//                r1,
-//                r2
-//                review1Component,
-//                review2Component,
-//                review3Component
-//            ]
-//        )
-        
-//        let list2Component = UIListComponent()
-        
-//        list2Component.setItemComponents(
-//            [ carouselComponent ]
-//        )
-        
         let gridComponent = UIGridComponent(
+            contentMode: .size(
+                CGSize(
+                    width: 200.0,
+                    height: 200.0
+                )
+            ),
             layout: UIGridLayout(
                 columns: 2,
                 rows: 2
@@ -296,7 +296,16 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let viewController = UIComponentViewController(component: gridComponent)
+        let list2Component = UIListComponent()
+        
+        list2Component.setItemComponents(
+            [
+                gridComponent,
+                carouselComponent
+            ]
+        )
+        
+        let viewController = UIComponentViewController(component: list2Component)
 
         viewController.view.backgroundColor = .white
 

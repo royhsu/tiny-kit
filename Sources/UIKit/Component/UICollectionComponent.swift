@@ -20,9 +20,8 @@ public final class UICollectionComponent: CollectionComponent {
     
     fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
 
-    // TODO: shouldn't have a default content mode.
     public init(
-        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
+        contentMode: ComponentContentMode,
         layout: UICollectionViewLayout
     ) {
 
@@ -158,22 +157,26 @@ public final class UICollectionComponent: CollectionComponent {
         
         NSLayoutConstraint.deactivate(collectionViewConstraints)
         
-        collectionView.reloadData()
-
-        /// Reference: https://stackoverflow.com/questions/22861804/uicollectionview-cellforitematindexpath-is-nil
-        collectionView.layoutIfNeeded()
-
-        let size: CGSize
-
         switch contentMode {
 
-        case let .size(value): size = value
+        case let .size(size):
+            
+            collectionView.frame.size = size
+            
+            collectionView.reloadData()
 
-        case .automatic: size = collectionViewLayout.collectionViewContentSize
+        case let .automatic(estimatedSize):
+            
+            collectionView.frame.size = estimatedSize
+            
+            collectionView.reloadData()
+            
+            /// Reference: https://stackoverflow.com/questions/22861804/uicollectionview-cellforitematindexpath-is-nil
+            collectionView.layoutIfNeeded()
+            
+            collectionView.frame.size.height = collectionViewLayout.collectionViewContentSize.height
             
         }
-
-        collectionView.frame.size = size
         
         collectionViewWidthConstraint.constant = collectionView.frame.width
         
