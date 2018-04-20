@@ -101,53 +101,60 @@ public final class TSProductDetailComponent: Component {
 
     public final func render() {
 
-        let galleryWidth = view.bounds.width
-
-        let galleryHeight = (galleryWidth / galleryAspectRatio)
-
-        galleryContainerComponent.contentMode = .size(
-            CGSize(
-                width: galleryWidth,
-                height: galleryHeight
-            )
-        )
+//        let galleryWidth = view.bounds.width
+//
+//        let galleryHeight = (galleryWidth / galleryAspectRatio)
+//
+//        galleryContainerComponent.contentMode = .size(
+//            CGSize(
+//                width: galleryWidth,
+//                height: galleryHeight
+//            )
+//        )
         
         // TODO: find a way to prevent rendering before list renders it.
         // This is a temporarily fix.
-        galleryContainerComponent.render()
+//        galleryContainerComponent.render()
         
-        galleryComponent.render()
-        
-        reviewCarouselComponent.contentMode = .size(
-            CGSize(
-                width: view.bounds.width,
-                height: 167.0
+//        galleryComponent.render()
+       
+        descriptionComponent.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: view.frame.width,
+                height: 100.0
             )
         )
+        
+//        reviewCarouselComponent.contentMode = .size(
+//            CGSize(
+//                width: view.bounds.width,
+//                height: 167.0
+//            )
+//        )
 
-        reviewCarouselComponent.render()
+//        reviewCarouselComponent.render()
         
         var itemComponents: [Component] = [
-            galleryContainerComponent,
+//            galleryContainerComponent,
             descriptionComponent,
-            reviewSectionHeaderComponent,
-//            reviewCarouselComponent,
+//            reviewSectionHeaderComponent,
+//            reviewCarouselComponent
         ]
 
-        let hasIntroduction = (introductionComponent.numberOfElements != 0)
+//        let hasIntroduction = (introductionComponent.numberOfElements != 0)
+//
+//        if hasIntroduction {
+//
+//            let components: [Component] = [ introductionSectionHeaderComponent, introductionComponent ]
+//
+//            itemComponents += components
         
-        if hasIntroduction {
-
-            let components: [Component] = [ introductionSectionHeaderComponent, introductionComponent ]
-            
-            itemComponents += components
-            
 //            itemComponents += [ introductionSectionHeaderComponent ]
 
 //            layoutComponent.footerComponent = introductionComponent
 
-        }
-        else { layoutComponent.footerComponent = nil }
+//        }
+//        else { layoutComponent.footerComponent = nil }
 
         layoutComponent.setItemComponents(itemComponents)
 

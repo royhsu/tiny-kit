@@ -9,6 +9,7 @@
 // MARK: - UIItemComponent
 
 // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
+/// Note: If the content mode of the item is set to .automatic, please make sure to assign a non-zero estimated size for rendering correctly based on the item content.
 public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final let itemView: ItemView
@@ -111,11 +112,15 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
         case let .size(size): itemView.frame.size = size
             
-        case let .automatic(estimatedSize): itemView.frame.size = itemView.sizeThatFits(estimatedSize)
+        case let .automatic(estimatedSize):
+            
+            itemView.frame.size = estimatedSize
+            
+            itemView.frame.size = itemView.sizeThatFits(estimatedSize)
             
         }
         
-        itemView.frame.size = view.frame.size
+        view.frame.size = itemView.frame.size
         
         itemViewWidthConstraint.constant = itemView.frame.size.width
         

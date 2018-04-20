@@ -48,15 +48,15 @@ public final class TSProductDescriptionComponent: Component {
 
     // MARK: Set Up
 
-    fileprivate final func prepare() { itemComponent.itemView.buttonContainerView.wrapSubview(buttonComponent.view) }
+    fileprivate final func prepare() { descriptionView.buttonContainerView.wrapSubview(button) }
 
     // MARK: Component
 
     public final var contentMode: ComponentContentMode {
 
-        get { return itemComponent.contentMode }
+        get { return boxComponent.contentMode }
 
-        set { itemComponent.contentMode = newValue }
+        set { boxComponent.contentMode = newValue }
 
     }
 
@@ -76,11 +76,19 @@ public final class TSProductDescriptionComponent: Component {
 
 }
 
+fileprivate extension TSProductDescriptionComponent {
+    
+    fileprivate final var descriptionView: TSProductDescriptionView { return itemComponent.itemView }
+    
+    fileprivate final var button: UIView { return buttonComponent.view }
+    
+}
+
 public extension TSProductDescriptionComponent {
 
-    public final var titleLabel: UILabel { return itemComponent.itemView.titleLabel }
+    public final var titleLabel: UILabel { return descriptionView.titleLabel }
     
-    public final var subtitleLabel: UILabel { return itemComponent.itemView.subtitleLabel }
+    public final var subtitleLabel: UILabel { return descriptionView.subtitleLabel }
     
     public final var paddingInsets: UIEdgeInsets {
         
@@ -90,6 +98,6 @@ public extension TSProductDescriptionComponent {
         
     }
     
-    public final func applyTheme(_ theme: Theme) { itemComponent.itemView.applyTheme(theme) }
+    public final func applyTheme(_ theme: Theme) { descriptionView.applyTheme(theme) }
 
 }
