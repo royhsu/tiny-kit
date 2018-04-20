@@ -21,7 +21,7 @@ public final class UIListComponent: ListComponent {
     /// If providing a dedicated width of the estimatedSize with mode .automatic, the list will be able to use this width to calculate the height dynamically based on the content of each item component.
     /// Please make sure to call the function render() again if the content of any item components changed.
     public init(
-        contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero)
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
     ) {
 
         self.contentMode = contentMode
@@ -61,13 +61,7 @@ public final class UIListComponent: ListComponent {
             
         case let .size(value): size = value
             
-        case .automatic:
-            
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            // Removing this will show layout constraint errors for current implementation.
-            size = UIScreen.main.bounds.size
-            
-        case let .automatic2(estimatedSize): size = estimatedSize
+        case let .automatic(estimatedSize): size = estimatedSize
             
         }
         
@@ -105,12 +99,10 @@ public final class UIListComponent: ListComponent {
                 component.render()
                 
                 return size.height
-
-            case .automatic: return UITableViewAutomaticDimension
                 
-            case let .automatic2(estimatedSize):
+            case let .automatic(estimatedSize):
 
-                component.contentMode = .automatic2(
+                component.contentMode = .automatic(
                     estimatedSize: CGSize(
                         width: self.tableView.frame.width,
                         height: estimatedSize.height
@@ -191,10 +183,8 @@ public final class UIListComponent: ListComponent {
         switch contentMode {
 
         case let .size(value): size = value
-
-        case .automatic: size = tableView.contentSize
             
-        case .automatic2: size = tableView.contentSize
+        case .automatic: size = tableView.contentSize
 
         }
 

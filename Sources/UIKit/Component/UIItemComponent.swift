@@ -26,7 +26,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     private final let itemViewHeightConstraint: NSLayoutConstraint
 
     public init(
-        contentMode: ComponentContentMode = .automatic2(estimatedSize: .zero),
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         itemView: ItemView
     ) {
 
@@ -72,12 +72,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
         case let .size(value): size = value
             
-        case .automatic:
-            
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            size = UIScreen.main.bounds.size
-            
-        case let .automatic2(estimatedSize): size = estimatedSize
+        case let .automatic(estimatedSize): size = estimatedSize
             
         }
         
@@ -117,14 +112,8 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         switch contentMode {
 
         case let .size(value): size = value
-
-        case .automatic:
             
-            itemView.layoutIfNeeded()
-
-            size = itemView.bounds.size
-            
-        case let .automatic2(estimatedSize): size = itemView.sizeThatFits(estimatedSize)
+        case let .automatic(estimatedSize): size = itemView.sizeThatFits(estimatedSize)
             
         }
 

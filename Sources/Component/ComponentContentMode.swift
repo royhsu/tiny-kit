@@ -12,10 +12,7 @@ public enum ComponentContentMode {
 
     case size(CGSize)
     
-    // TODO: deprecated.
-    case automatic
-    
-    case automatic2(estimatedSize: CGSize)
+    case automatic(estimatedSize: CGSize)
 
 }
 
@@ -35,8 +32,8 @@ extension ComponentContentMode: Equatable {
         ): return lhsSize == rhsSize
             
         case let (
-            .automatic2(lhsSize),
-            .automatic2(rhsSize)
+            .automatic(lhsSize),
+            .automatic(rhsSize)
         ): return lhsSize == rhsSize
             
         default: return false

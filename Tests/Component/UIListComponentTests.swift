@@ -20,7 +20,7 @@ internal final class UIListComponentTests: XCTestCase {
         
         XCTAssertEqual(
             listComponent.contentMode,
-            .automatic2(estimatedSize: .zero)
+            .automatic(estimatedSize: .zero)
         )
         
         XCTAssertEqual(
@@ -142,7 +142,7 @@ internal final class UIListComponentTests: XCTestCase {
         let expectedLabelSize = label.sizeThatFits(estimatedLabelSize)
         
         let labelComponent = UIItemComponent(
-            contentMode: .automatic2(estimatedSize: estimatedLabelSize),
+            contentMode: .automatic(estimatedSize: estimatedLabelSize),
             itemView: label
         )
         
@@ -157,7 +157,7 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         let listComponent = UIListComponent(
-            contentMode: .automatic2(estimatedSize: estimatedListSize)
+            contentMode: .automatic(estimatedSize: estimatedListSize)
         )
 
         listComponent.setItemComponents(itemComponents)
@@ -248,7 +248,7 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         let listComponent = UIListComponent(
-            contentMode: .automatic2(estimatedSize: estimatedListSize)
+            contentMode: .automatic(estimatedSize: estimatedListSize)
         )
         
         listComponent.headerComponent = redComponent
@@ -294,7 +294,7 @@ internal final class UIListComponentTests: XCTestCase {
         )
         
         let listComponent = UIListComponent(
-            contentMode: .automatic2(estimatedSize: estimatedListSize)
+            contentMode: .automatic(estimatedSize: estimatedListSize)
         )
         
         listComponent.footerComponent = redComponent

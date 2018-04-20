@@ -21,7 +21,7 @@ public final class UICarouselComponent: CollectionComponent {
     }
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         layout: UICarouselLayout = UICarouselLayout()
     ) {
         

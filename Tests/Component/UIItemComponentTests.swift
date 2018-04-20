@@ -24,7 +24,7 @@ internal final class UIItemComponentTests: XCTestCase {
 
         XCTAssertEqual(
             redComponent.contentMode,
-            .automatic2(estimatedSize: .zero)
+            .automatic(estimatedSize: .zero)
         )
         
         XCTAssertNotEqual(
@@ -135,7 +135,7 @@ internal final class UIItemComponentTests: XCTestCase {
         )
         
         let labelComponent = UIItemComponent(
-            contentMode: .automatic2(estimatedSize: estimatedSize),
+            contentMode: .automatic(estimatedSize: estimatedSize),
             itemView: label
         )
         

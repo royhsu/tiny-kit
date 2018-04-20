@@ -13,7 +13,9 @@ public final class UIGalleryComponent: Component {
     /// The base component.
     private final let carouselComponent: UICarouselComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.carouselComponent = UICarouselComponent(contentMode: contentMode)
 

@@ -28,7 +28,7 @@ public final class UIBoxComponent: Component {
     public final var paddingInsets: UIEdgeInsets
     
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         contentComponent: Component
     ) {
         

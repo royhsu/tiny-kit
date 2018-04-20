@@ -22,7 +22,7 @@ internal final class UICollectionComponentTests: XCTestCase {
         
         XCTAssertEqual(
             collectionComponent.contentMode,
-            .automatic2(estimatedSize: .zero)
+            .automatic(estimatedSize: .zero)
         )
         
         XCTAssertEqual(
@@ -146,7 +146,7 @@ internal final class UICollectionComponentTests: XCTestCase {
         )
         
         let collectionComponent = UICollectionComponent(
-            contentMode: .automatic2(estimatedSize: estimatedCollectionSize),
+            contentMode: .automatic(estimatedSize: estimatedCollectionSize),
             layout: UICollectionViewFlowLayout()
         )
         
