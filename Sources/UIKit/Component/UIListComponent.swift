@@ -72,7 +72,10 @@ public final class UIListComponent: ListComponent {
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
-                let component = self.itemComponentProvider?(indexPath)
+                let component = self.itemComponentProvider?(
+                    self,
+                    indexPath
+                )
             else { return }
             
             cell.contentView.wrapSubview(component.view)
@@ -82,7 +85,10 @@ public final class UIListComponent: ListComponent {
         bridge.heightForRowProvider = { [unowned self] indexPath in
 
             guard
-                let component = self.itemComponentProvider?(indexPath)
+                let component = self.itemComponentProvider?(
+                    self,
+                    indexPath
+                )
             else { return 0.0 }
             
             switch component.contentMode {
@@ -137,7 +143,18 @@ public final class UIListComponent: ListComponent {
     
     public final func numberOfItemComponents(inSection section: Int) -> Int { return bridge.numberOfRowsProvider(section) }
 
-    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { bridge.numberOfRowsProvider = provider }
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) {
+        
+        bridge.numberOfRowsProvider = { [unowned self] section in
+            
+            return provider(
+                self,
+                section
+            )
+            
+        }
+        
+    }
     
     public final func itemComponent(at indexPath: IndexPath) -> Component {
         
@@ -145,7 +162,10 @@ public final class UIListComponent: ListComponent {
             let provider = itemComponentProvider
         else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
         
-        return provider(indexPath)
+        return provider(
+            self,
+            indexPath
+        )
         
     }
 

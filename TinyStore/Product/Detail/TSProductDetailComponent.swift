@@ -79,9 +79,9 @@ public final class TSProductDetailComponent: Component {
         
         galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view)
         
-        reviewCarouselComponent.setMinimumItemWidth { [unowned self] _ in
+        reviewCarouselComponent.setMinimumItemWidth { [unowned self] component, _ in
             
-            return (self.reviewCarouselComponent.view.bounds.width / self.reviewAspectRatio)
+            return (component.view.bounds.width / self.reviewAspectRatio)
             
         }
         

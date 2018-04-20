@@ -107,7 +107,10 @@ public final class UICollectionComponent: CollectionComponent {
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
-                let component = self.itemComponentProvider?(indexPath)
+                let component = self.itemComponentProvider?(
+                    self,
+                    indexPath
+                )
             else { return }
 
             cell.contentView.wrapSubview(component.view)
@@ -128,7 +131,18 @@ public final class UICollectionComponent: CollectionComponent {
     
     public final func numberOfItemComponents(inSection section: Int) -> Int { return bridge.numberOfItemsProvider(section) }
     
-    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { bridge.numberOfItemsProvider = provider }
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) {
+        
+        bridge.numberOfItemsProvider = { [unowned self] section in
+        
+            return provider(
+                self,
+                section
+            )
+        
+        }
+        
+    }
     
     public final func itemComponent(at indexPath: IndexPath) -> Component {
         
@@ -136,7 +150,10 @@ public final class UICollectionComponent: CollectionComponent {
             let provider = itemComponentProvider
         else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
         
-        return provider(indexPath)
+        return provider(
+            self,
+            indexPath
+        )
         
     }
     

@@ -30,7 +30,10 @@ public final class TPPostComponent: PostComponent {
     public final func element(at index: Int) -> Element {
         
         guard
-            let element = elementProvider?(index)
+            let element = elementProvider?(
+                self,
+                index
+            )
         else { fatalError("Please make sure to set the element provider with function setElement(provider:) firstly.") }
         
         return element
@@ -45,9 +48,9 @@ public final class TPPostComponent: PostComponent {
     
     fileprivate final func prepare() {
         
-        layoutComponent.setNumberOfItemComponents { [unowned self] _ in self.numberOfElements }
+        layoutComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfElements }
         
-        layoutComponent.setItemComponent { [unowned self] indexPath in
+        layoutComponent.setItemComponent { [unowned self] _, indexPath in
             
             switch self.element(at: indexPath.item) {
                 

@@ -43,9 +43,9 @@ public final class UIGalleryComponent: Component {
         
         carouselComponent.numberOfSections = 1
         
-        carouselComponent.setNumberOfItemComponents { [unowned self] _ in self.numberOfImages }
+        carouselComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfImages }
         
-        carouselComponent.setItemComponent { [unowned self] indexPath in
+        carouselComponent.setItemComponent { [unowned self] _, indexPath in
 
             let imageView = UIImageView()
 

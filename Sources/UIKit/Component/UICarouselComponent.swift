@@ -41,7 +41,11 @@ public final class UICarouselComponent: CollectionComponent {
 
     }
 
-    public typealias MinimumItemWidthProvider = (_ index: Int) -> CGFloat
+    public typealias MinimumItemWidthProvider = (
+        _ component: Component,
+        _ index: Int
+    )
+    -> CGFloat
     
     private final var minimumItemWidthProvider: MinimumItemWidthProvider? {
         
@@ -49,9 +53,12 @@ public final class UICarouselComponent: CollectionComponent {
             
             if let provider = minimumItemWidthProvider {
                 
-                gridComponent.setMinimumItemSize { _, _, indexPath in
+                gridComponent.setMinimumItemSize { _, _, _, indexPath in
                     
-                    let width = provider(indexPath.item)
+                    let width = provider(
+                        self,
+                        indexPath.item
+                    )
                     
                     return CGSize(
                         width: width,

@@ -62,7 +62,13 @@ public final class UIGridComponent: CollectionComponent {
     }
     
     // TODO: should find a better api name & variable names.
-    public typealias MinimumItemSizeProvider = (UIGridLayout, _ gridSize: CGSize, IndexPath) -> CGSize
+    public typealias MinimumItemSizeProvider = (
+        _ component: Component,
+        _ layout: UIGridLayout,
+        _ gridSize: CGSize,
+        _ indexPath: IndexPath
+    )
+    -> CGSize
 
     private final var minimumItemSizeProvider: MinimumItemSizeProvider?
     
@@ -103,6 +109,7 @@ public final class UIGridComponent: CollectionComponent {
                 )
                 
                 let minimumItemSize = self.minimumItemSizeProvider?(
+                    self,
                     layout,
                     gridSize,
                     indexPath
@@ -135,6 +142,7 @@ public final class UIGridComponent: CollectionComponent {
                 )
                 
                 let minimumItemSize = self.minimumItemSizeProvider?(
+                    self,
                     layout,
                     gridSize,
                     indexPath

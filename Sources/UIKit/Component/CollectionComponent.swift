@@ -14,13 +14,21 @@ public protocol CollectionComponent: Component {
 
     func numberOfItemComponents(inSection section: Int) -> Int
     
-    typealias NumberOfItemComponentsProvider = (_ section: Int) -> Int
+    typealias NumberOfItemComponentsProvider = (
+        _ component: Component,
+        _ section: Int
+    )
+    -> Int
 
     func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider)
     
     func itemComponent(at indexPath: IndexPath) -> Component
 
-    typealias ItemComponentProvider = (IndexPath) -> Component
+    typealias ItemComponentProvider = (
+        _ component: Component,
+        _ indexPath: IndexPath
+    )
+    -> Component
 
     func setItemComponent(provider: @escaping ItemComponentProvider)
 
@@ -34,9 +42,9 @@ extension CollectionComponent {
 
         numberOfSections = 1
 
-        setNumberOfItemComponents { _ in components.count }
+        setNumberOfItemComponents { _, _ in components.count }
 
-        setItemComponent { indexPath in components[indexPath.item] }
+        setItemComponent { _, indexPath in components[indexPath.item] }
 
     }
 

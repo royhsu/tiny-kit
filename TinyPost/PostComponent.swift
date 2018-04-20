@@ -14,7 +14,11 @@ public protocol PostComponent: Component {
     
     func element(at index: Int) -> Element
     
-    typealias ElementProvider = (_ index: Int) -> Element
+    typealias ElementProvider = (
+        _ postComponent: PostComponent,
+        _ index: Int
+    )
+    -> Element
     
     func setElement(provider: @escaping ElementProvider)
     
@@ -28,7 +32,7 @@ public extension PostComponent {
         
         numberOfElements = elements.count
         
-        setElement { index in elements[index] }
+        setElement { _, index in elements[index] }
         
     }
     
