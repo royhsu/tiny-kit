@@ -172,9 +172,9 @@ public final class UIRootCoordinator: Coordinator {
             paragraphComponent.textLabel.text = "\(paragraph)"
             
             paragraphComponent.paddingInsets = UIEdgeInsets(
-                top: 12.0,
+                top: 8.0,
                 left: 16.0,
-                bottom: 0.0,
+                bottom: 8.0,
                 right: 16.0
             )
             
@@ -196,7 +196,11 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        productDetailComponent.introductionComponent.setElements(
+        let postComponent = TPPostComponent(
+            layoutComponent: UIListComponent()
+        )
+        
+        postComponent.setElements(
             [
                 imageElementFactory(
                     .image(#imageLiteral(resourceName: "image-product-story-4"))
@@ -210,113 +214,6 @@ public final class UIRootCoordinator: Coordinator {
                     .image(#imageLiteral(resourceName: "image-product-story-3"))
                 ),
                 paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
-            ]
-        )
-        
-        let imageComponent = TPPostImageComponent()
-        
-        imageComponent.view.backgroundColor = .red
-        
-        let listComponent = UIListComponent()
-        
-        listComponent.setItemComponents(
-            [ imageComponent ]
-        )
-        
-        let label = UILabel()
-        
-        label.textColor = .red
-        
-        label.text = "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis. Donec sed odio dui."
-        
-        label.numberOfLines = 0
-        
-        let labelComponent = UIItemComponent(
-            contentMode: .automatic(
-                estimatedSize: CGSize(
-                    width: 100.0,
-                    height: 50.0
-                )
-            ),
-            itemView: label
-        )
-        
-        labelComponent.render()
-        
-        print("label 1:", labelComponent.view.frame)
-        
-        labelComponent.contentMode = .automatic(
-            estimatedSize: CGSize(
-                width: 200.0,
-                height: 50.0
-            )
-        )
-        
-        labelComponent.render()
-        
-        print("label 2:", labelComponent.view.frame)
-        
-        let colorComponentFactory: (UIColor, CGSize) -> Component = { color, size in
-            
-            let view = UIView()
-            
-            view.backgroundColor = color
-            
-            let colorComponent = UIItemComponent(
-                contentMode: .automatic(estimatedSize: size),
-                itemView: view
-            )
-            
-            return colorComponent
-            
-        }
-        
-//        let list2Component = UIListComponent(
-//            contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
-//        )
-//
-//        let image2Component = TPPostImageComponent()
-//
-//        image2Component.contentMode = .automatic(
-//            estimatedSize: CGSize(
-//                width: 80.0,
-//                height: 80.0
-//            )
-//        )
-//
-//        image2Component.view.backgroundColor = .blue
-//
-//        image2Component.imageView.image = #imageLiteral(resourceName: "image-product-story-4")
-//
-//        list2Component.setItemComponents(
-//            [
-//                colorComponentFactory(
-//                    .red,
-//                    CGSize(
-//                        width: 100.0,
-//                        height: 100.0
-//                    )
-//                ),
-//                colorComponentFactory(
-//                    .green,
-//                    CGSize(
-//                        width: 150.0,
-//                        height: 150.0
-//                    )
-//                ),
-//                image2Component
-//            ]
-//        )
-//
-        let postComponent = TPPostComponent(
-            layoutComponent: UIListComponent(
-                contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
-            )
-        )
-        
-        postComponent.setElements(
-            [
-                paragraphElementFactory("Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.")
             ]
         )
         

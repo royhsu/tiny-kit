@@ -131,16 +131,20 @@ public final class TSProductDetailComponent: Component {
             galleryContainerComponent,
             descriptionComponent,
             reviewSectionHeaderComponent,
-            reviewCarouselComponent,
+//            reviewCarouselComponent,
         ]
 
         let hasIntroduction = (introductionComponent.numberOfElements != 0)
         
         if hasIntroduction {
 
-            itemComponents += [ introductionSectionHeaderComponent ]
+            let components: [Component] = [ introductionSectionHeaderComponent, introductionComponent ]
+            
+            itemComponents += components
+            
+//            itemComponents += [ introductionSectionHeaderComponent ]
 
-            layoutComponent.footerComponent = introductionComponent
+//            layoutComponent.footerComponent = introductionComponent
 
         }
         else { layoutComponent.footerComponent = nil }
