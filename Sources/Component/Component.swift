@@ -10,6 +10,7 @@
 
 public protocol Component: class, ViewRenderable {
 
+    /// The parent component may override the content mode of its child components.
     var contentMode: ComponentContentMode { get set }
     
     /// A component should render at least once for showing its content.

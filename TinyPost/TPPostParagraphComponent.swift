@@ -36,7 +36,17 @@ public final class TPPostParagraphComponent: ParagraphComponent {
 
     fileprivate final func prepare() {
         
-        let textLabel = labelComponent.itemView
+        let size: CGSize
+        
+        switch contentMode {
+            
+        case let .size(value): size = value
+            
+        case let .automatic(estimatedSize): size = estimatedSize
+            
+        }
+        
+        view.frame.size = size
         
         textLabel.text = nil
         

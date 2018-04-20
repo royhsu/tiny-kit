@@ -56,6 +56,8 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     
     fileprivate final func prepare() {
         
+        view.backgroundColor = itemView.backgroundColor
+        
         itemViewBottomConstraint.priority = UILayoutPriority(900.0)
         
         itemViewTrailingConstraint.priority = UILayoutPriority(900.0)
@@ -63,8 +65,6 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         itemViewWidthConstraint.priority = UILayoutPriority(750.0)
         
         itemViewHeightConstraint.priority = UILayoutPriority(750.0)
-        
-        view.backgroundColor = itemView.backgroundColor
         
         let size: CGSize
         
@@ -87,7 +87,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     public final var contentMode: ComponentContentMode
 
     public final func render() {
-
+        
         let itemViewConstraints = [
             itemViewTopConstraint,
             itemViewLeadingConstraint,
@@ -97,13 +97,13 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             itemViewHeightConstraint
         ]
         
-        view.backgroundColor = itemView.backgroundColor
-        
         itemView.removeFromSuperview()
 
         itemView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.deactivate(itemViewConstraints)
+                
+        view.backgroundColor = itemView.backgroundColor
         
         view.addSubview(itemView)
 

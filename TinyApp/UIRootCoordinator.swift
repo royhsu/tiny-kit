@@ -73,12 +73,16 @@ public final class UIRootCoordinator: Coordinator {
         )
         
         let productDetailComponent = TSProductDetailComponent(
-            layoutComponent: UIListComponent(),
+            layoutComponent: UIListComponent(
+                contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
+            ),
             descriptionButtonComponent: buttonComponent,
             reviewSectionHeaderComponent: reviewSectionHeaderComponent,
             introductionSectionHeaderComponent: introductionSectionHeaderComponent,
             introductionComponent: TPPostComponent(
-                layoutComponent: UIListComponent()
+                layoutComponent: UIListComponent(
+                    contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
+                )
             )
         )
         
@@ -182,7 +186,7 @@ public final class UIRootCoordinator: Coordinator {
         
         let imageElementFactory: (ImageContainer) -> Element = { container in
             
-            let imageComponent = TPPostImageComponent(width: UIScreen.main.bounds.width)
+            let imageComponent = TPPostImageComponent()
             
             imageComponent.applyTheme(.current)
             
@@ -209,7 +213,7 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let imageComponent = TPPostImageComponent(width: 0.0)
+        let imageComponent = TPPostImageComponent()
         
         imageComponent.view.backgroundColor = .red
         
@@ -267,46 +271,56 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        let list2Component = UIListComponent(
-            contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
-        )
-        
-        let image2Component = TPPostImageComponent(width: 0.0)
-        
-        image2Component.contentMode = .automatic(
-            estimatedSize: CGSize(
-                width: 80.0,
-                height: 80.0
+//        let list2Component = UIListComponent(
+//            contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
+//        )
+//
+//        let image2Component = TPPostImageComponent()
+//
+//        image2Component.contentMode = .automatic(
+//            estimatedSize: CGSize(
+//                width: 80.0,
+//                height: 80.0
+//            )
+//        )
+//
+//        image2Component.view.backgroundColor = .blue
+//
+//        image2Component.imageView.image = #imageLiteral(resourceName: "image-product-story-4")
+//
+//        list2Component.setItemComponents(
+//            [
+//                colorComponentFactory(
+//                    .red,
+//                    CGSize(
+//                        width: 100.0,
+//                        height: 100.0
+//                    )
+//                ),
+//                colorComponentFactory(
+//                    .green,
+//                    CGSize(
+//                        width: 150.0,
+//                        height: 150.0
+//                    )
+//                ),
+//                image2Component
+//            ]
+//        )
+//
+        let postComponent = TPPostComponent(
+            layoutComponent: UIListComponent(
+                contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
             )
         )
         
-//        image2Component.contentMode = .size(CGSize(width: 60.0, height: 60.0))
-        
-        image2Component.view.backgroundColor = .blue
-        
-        image2Component.imageView.image = #imageLiteral(resourceName: "image-product-story-4")
-        
-        list2Component.setItemComponents(
+        postComponent.setElements(
             [
-                colorComponentFactory(
-                    .red,
-                    CGSize(
-                        width: 100.0,
-                        height: 100.0
-                    )
-                ),
-                colorComponentFactory(
-                    .green,
-                    CGSize(
-                        width: 150.0,
-                        height: 150.0
-                    )
-                ),
-                image2Component
+                paragraphElementFactory("Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.")
             ]
         )
         
-        let viewController = UIComponentViewController(component: list2Component)
+        let viewController = UIComponentViewController(component: postComponent)
 
         viewController.view.backgroundColor = .white
 

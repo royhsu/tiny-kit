@@ -15,20 +15,12 @@ public final class TPPostImageComponent: ImageComponent {
     private final let imageComponent: UIItemComponent<UIImageView>
 
     public init(
-        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
-        width: CGFloat
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
     ) {
 
         self.imageComponent = UIItemComponent(
             contentMode: contentMode,
-            itemView: UIImageView(
-                frame: CGRect(
-                    x: 0.0,
-                    y: 0.0,
-                    width: width,
-                    height: 0.0
-                )
-            )
+            itemView: UIImageView()
         )
 
         self.prepare()
@@ -39,11 +31,21 @@ public final class TPPostImageComponent: ImageComponent {
 
     fileprivate final func prepare() {
 
-        let imageView = imageComponent.itemView
-        
         imageView.contentMode = .scaleAspectFill
         
         imageView.clipsToBounds = true
+        
+        let size: CGSize
+        
+        switch contentMode {
+            
+        case let .size(value): size = value
+            
+        case let .automatic(estimatedSize): size = estimatedSize
+            
+        }
+        
+        imageView.frame.size = size
 
     }
 
@@ -58,7 +60,7 @@ public final class TPPostImageComponent: ImageComponent {
     }
 
     public final func render() {
-
+        
         let size: CGSize
         
         switch contentMode {
@@ -86,6 +88,8 @@ public final class TPPostImageComponent: ImageComponent {
             )
             
         }
+        
+        imageView.frame.size = size
 
         imageComponent.contentMode = .size(size)
         
