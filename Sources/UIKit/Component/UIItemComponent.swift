@@ -28,7 +28,6 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     /// - Parameters:
     ///   - contentMode: Make sure to assign a non-zero estimated size for rendering correctly based on the item content if set to .automatic. The default is set to .automatic with zero value of estimated size.
     ///   - itemView: The item view to wrap with.
-    ///
     public init(
         contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         itemView: ItemView
