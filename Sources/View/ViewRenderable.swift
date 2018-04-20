@@ -12,7 +12,6 @@ public protocol ViewRenderable {
 
     var view: View { get }
 
-    // TODO: drop this property. not be used so much.
     var preferredContentSize: CGSize { get }
 
 }
