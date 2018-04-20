@@ -18,9 +18,7 @@ internal final class UICollectionComponentTests: XCTestCase {
         
         let layout = UICollectionViewFlowLayout()
         
-        let collectionComponent = UICollectionComponent(
-            layout: layout
-        )
+        let collectionComponent = UICollectionComponent(layout: layout)
         
         XCTAssertEqual(
             collectionComponent.contentMode,

@@ -34,7 +34,7 @@ internal final class UIItemComponentTests: XCTestCase {
         
         // Before rendering.
         XCTAssertEqual(
-            redComponent.itemView.frame,
+            redComponent.view.frame,
             .zero
         )
         
@@ -60,18 +60,13 @@ internal final class UIItemComponentTests: XCTestCase {
         
         // After rendering.
         XCTAssertEqual(
-            redComponent.itemView.frame,
+            redComponent.view.frame,
             .zero
         )
         
         XCTAssertEqual(
             redComponent.view.frame,
             redComponent.itemView.frame
-        )
-        
-        XCTAssertEqual(
-            redComponent.itemView.backgroundColor,
-            .red
         )
         
         XCTAssertEqual(
