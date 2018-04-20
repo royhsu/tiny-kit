@@ -122,7 +122,7 @@ public final class UIRootCoordinator: Coordinator {
         
         review1Component.textLabel.text = "Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
         
-        review1Component.paddingInsets = reviewPaddingInsets
+//        review1Component.paddingInsets = reviewPaddingInsets
 
         let review2Component = TSProductReviewComponent()
         
@@ -134,7 +134,7 @@ public final class UIRootCoordinator: Coordinator {
         
         review2Component.textLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         
-        review2Component.paddingInsets = reviewPaddingInsets
+//        review2Component.paddingInsets = reviewPaddingInsets
         
         let review3Component = TSProductReviewComponent()
         
@@ -146,7 +146,7 @@ public final class UIRootCoordinator: Coordinator {
         
         review3Component.textLabel.text = "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam."
         
-        review3Component.paddingInsets = reviewPaddingInsets
+//        review3Component.paddingInsets = reviewPaddingInsets
         
         productDetailComponent.reviewCarouselComponent.collectionView.contentInset = UIEdgeInsets(
             top: 0.0,
@@ -217,7 +217,86 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let viewController = UIComponentViewController(component: postComponent)
+        let carouselComponent = UICarouselComponent(
+            contentMode: .size(
+                CGSize(
+                    width: 167.0,
+                    height: 167.0
+                )
+            )
+        )
+        
+        let r1 = UIItemComponent<TSProductReviewView>(
+            itemView: UIView.load(
+                TSProductReviewView.self,
+                from: Bundle(for: TSProductReviewView.self)
+            )!
+        )
+        
+        r1.itemView.textLabel.text = "Donec sed odio dui. Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        
+        r1.itemView.titleLabel.text = "Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis."
+        
+        r1.itemView.pictureImageView.image = #imageLiteral(resourceName: "image-jerry-price")
+        
+        let r2 = UIItemComponent<TSProductReviewView>(
+            itemView: UIView.load(
+                TSProductReviewView.self,
+                from: Bundle(for: TSProductReviewView.self)
+            )!
+        )
+        
+        r2.itemView.textLabel.text = "Donec sed odio dui. Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        
+        r2.itemView.titleLabel.text = "Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis."
+        
+        r2.itemView.pictureImageView.image = #imageLiteral(resourceName: "image-carolyn-simmons")
+        
+        let r3 = UIItemComponent<TSProductReviewView>(
+            itemView: UIView.load(
+                TSProductReviewView.self,
+                from: Bundle(for: TSProductReviewView.self)
+            )!
+        )
+        
+        r3.itemView.textLabel.text = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."
+        
+        r3.itemView.titleLabel.text = "Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis."
+        
+        r3.itemView.pictureImageView.image = #imageLiteral(resourceName: "image-danielle-schneider")
+        
+//        carouselComponent.setItemComponents(
+//            [
+//                r1,
+//                r2
+//                review1Component,
+//                review2Component,
+//                review3Component
+//            ]
+//        )
+        
+//        let list2Component = UIListComponent()
+        
+//        list2Component.setItemComponents(
+//            [ carouselComponent ]
+//        )
+        
+        let gridComponent = UIGridComponent(
+            layout: UIGridLayout(
+                columns: 2,
+                rows: 2
+            )
+        )
+        
+        gridComponent.setItemComponents(
+            [
+                r1,
+                r2,
+                r3
+            ]
+        )
+        
+        let viewController = UIComponentViewController(component: gridComponent)
 
         viewController.view.backgroundColor = .white
 

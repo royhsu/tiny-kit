@@ -8,7 +8,6 @@
 
 // MARK: - TSProductReviewComponent
 
-// TODO: The padding of box didn't behave what I expected.
 public final class TSProductReviewComponent: Component {
 
     private final let bundle: Bundle
@@ -58,7 +57,6 @@ public final class TSProductReviewComponent: Component {
 
     public final func render() {
         
-        // TODO: temporarily fix background color syncing issue with item and box component.
         boxComponent.view.backgroundColor = .white
         
         boxComponent.view.layer.shadowColor = UIColor.black.cgColor

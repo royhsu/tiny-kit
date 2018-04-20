@@ -60,7 +60,26 @@ public final class UICollectionComponent: CollectionComponent {
     
     public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
     
-    public final func setSizeForItem(provider: @escaping SizeForItemProvider) { bridge.sizeForItemProvider = provider }
+    public final func setSizeForItem(provider: @escaping SizeForItemProvider) {
+        
+        bridge.sizeForItemProvider = { layout, indexPath in
+            
+            let size = provider(
+                layout,
+                indexPath
+            )
+            
+            let component = self.itemComponent(at: indexPath)
+            
+            component.contentMode = .size(size)
+            
+            component.render()
+            
+            return size
+            
+        }
+        
+    }
     
     // MARK: Set Up
     
@@ -91,8 +110,6 @@ public final class UICollectionComponent: CollectionComponent {
             guard
                 let component = self.itemComponentProvider?(indexPath)
             else { return }
-            
-            component.render()
 
             cell.contentView.wrapSubview(component.view)
 
