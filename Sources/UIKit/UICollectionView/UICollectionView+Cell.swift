@@ -14,7 +14,7 @@ public extension UICollectionView {
 
     /// Register a cell by its type.
     ///
-    /// - parameter type: The subclass of target UICollectionViewCell.
+    /// - Parameter type: The subclass of target UICollectionViewCell.
     ///
     public final func registerCell<Cell: UICollectionViewCell>(_ type: Cell.Type) {
 
@@ -30,8 +30,8 @@ public extension UICollectionView {
     /// Register a cell with the corresponding nib file.
     /// Please make sure that the file name mathes its type name.
     ///
-    /// - parameter type: The subclass of target UICollectionViewCell.
-    /// - parameter bundle: The bundle contains the nib file for the cell.
+    /// - Parameter type: The subclass of target UICollectionViewCell.
+    /// - Parameter bundle: The bundle contains the nib file for the cell.
     ///
     public final func registerCell<Cell: UICollectionViewCell>(
         _ type: Cell.Type,
@@ -54,8 +54,8 @@ public extension UICollectionView {
 
     /// Dequeue cell by the given indexPath.
     ///
-    /// - parameter type: The subclass of target UICollectionViewCell.
-    /// - parameter indexPath: The indexPath of the cell.
+    /// - Parameter type: The subclass of target UICollectionViewCell.
+    /// - Parameter indexPath: The indexPath of the cell.
     ///
     /// - Returns: The target cell or nil.
     ///
