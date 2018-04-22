@@ -47,26 +47,12 @@ public final class UIListComponent: ListComponent {
 
     fileprivate final func prepare() {
         
-        tableViewWidthConstraint.priority = UILayoutPriority(750.0)
-        
-        tableViewHeightConstraint.priority = UILayoutPriority(750.0)
+        prepareLayout()
         
         tableView.backgroundColor = .clear
         
         tableView.clipsToBounds = false
-        
-        let size: CGSize
-        
-        switch contentMode {
             
-        case let .size(value): size = value
-            
-        case let .automatic(estimatedSize): size = estimatedSize
-            
-        }
-        
-        tableView.frame.size = size
-        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
@@ -127,36 +113,16 @@ public final class UIListComponent: ListComponent {
         
     }
     
-    fileprivate final func prerenderComponent(
-        _ component: Component?,
-        size: CGSize
-    ) {
+    fileprivate final func prepareLayout() {
         
-        guard
-            let component = component
-        else { return }
-            
-        let height: CGFloat
+        tableViewWidthConstraint.priority = UILayoutPriority(750.0)
         
-        switch component.contentMode {
-            
-        case let .size(size): height = size.height
-            
-        case let .automatic(estimatedSize): height = estimatedSize.height
-            
-        }
+        tableViewHeightConstraint.priority = UILayoutPriority(750.0)
         
-        component.contentMode = .automatic(
-            estimatedSize: CGSize(
-                width: size.width,
-                height: height
-            )
-        )
-        
-        component.render()
+        tableView.frame.size = contentMode.initialSize
         
     }
-
+    
     // MARK: ListComponent
 
     public final var headerComponent: Component?
@@ -226,43 +192,31 @@ public final class UIListComponent: ListComponent {
             
             tableView.frame.size = size
             
-            tableView.reloadData()
+            renderHeaderComponent(size: size)
             
-            prerenderComponent(
-                headerComponent,
-                size: size
-            )
-            
-            prerenderComponent(
-                footerComponent,
-                size: size
-            )
+            renderFooterComponent(size: size)
             
             tableView.tableHeaderView = headerComponent?.view
             
             tableView.tableFooterView = footerComponent?.view
+            
+            tableView.reloadData()
             
         case let .automatic(estimatedSize):
             
             tableView.frame.size = estimatedSize
             
-            tableView.reloadData()
+            renderHeaderComponent(size: estimatedSize)
             
-            tableView.layoutIfNeeded()
-            
-            prerenderComponent(
-                headerComponent,
-                size: estimatedSize
-            )
-            
-            prerenderComponent(
-                footerComponent,
-                size: estimatedSize
-            )
+            renderFooterComponent(size: estimatedSize)
             
             tableView.tableHeaderView = headerComponent?.view
             
             tableView.tableFooterView = footerComponent?.view
+            
+            tableView.reloadData()
+            
+            tableView.layoutIfNeeded()
             
             tableView.frame.size = tableView.contentSize
             
@@ -274,6 +228,64 @@ public final class UIListComponent: ListComponent {
         
         NSLayoutConstraint.activate(tableViewConstraints)
     
+    }
+    
+    fileprivate final func renderHeaderComponent(size: CGSize) {
+        
+        guard
+            let component = headerComponent
+        else { return }
+        
+        let height: CGFloat
+        
+        switch component.contentMode {
+            
+        case let .size(size): height = size.height
+            
+        case let .automatic(estimatedSize): height = estimatedSize.height
+            
+        }
+        
+        component.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: size.width,
+                height: height
+            )
+        )
+        
+        component.render()
+        
+        print(#function, component.view)
+        
+    }
+    
+    fileprivate final func renderFooterComponent(size: CGSize) {
+        
+        guard
+            let component = footerComponent
+        else { return }
+        
+        let height: CGFloat
+        
+        switch component.contentMode {
+            
+        case let .size(size): height = size.height
+            
+        case let .automatic(estimatedSize): height = estimatedSize.height
+            
+        }
+        
+        component.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: size.width,
+                height: height
+            )
+        )
+        
+        component.render()
+        
+        print(#function, component.view)
+        
     }
 
     // MARK: ViewRenderable

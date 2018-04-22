@@ -161,17 +161,35 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 [
                     itemViewTopConstraint,
                     itemViewLeadingConstraint,
-                    itemViewTrailingConstraint,
+                    itemViewTrailingConstraint
                 ]
             )
             
             itemView.layoutIfNeeded()
             
+            // Avoid the item view rendering 0.0 width without a width constraint.
+            if
+                itemView.frame.width == 0.0
+                && estimatedSize.width >= 0.0 {
+                
+                itemView.frame.size.width = estimatedSize.width
+                
+            }
+            
+            // Avoid the item view rendering 0.0 height without a height constraint.
+            if
+                itemView.frame.height == 0.0
+                && estimatedSize.height >= 0.0 {
+                
+                itemView.frame.size.height = estimatedSize.height
+                
+            }
+            
             view.frame.size = itemView.frame.size
             
-            itemViewWidthConstraint.constant = itemView.frame.size.width
+            itemViewWidthConstraint.constant = itemView.frame.width
             
-            itemViewHeightConstraint.constant = itemView.frame.size.height
+            itemViewHeightConstraint.constant = itemView.frame.height
             
             NSLayoutConstraint.activate(
                 [
