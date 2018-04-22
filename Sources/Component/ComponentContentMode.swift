@@ -16,6 +16,23 @@ public enum ComponentContentMode {
 
 }
 
+public extension ComponentContentMode {
+    
+    /// A convenience initial size for calculating the self-resizing content.
+    public var initialSize: CGSize {
+        
+        switch self {
+            
+        case let .size(size): return size
+            
+        case let .automatic(estimatedSize): return estimatedSize
+            
+        }
+        
+    }
+    
+}
+
 extension ComponentContentMode: Equatable {
     
     public static func == (

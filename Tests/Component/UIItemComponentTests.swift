@@ -103,7 +103,7 @@ internal final class UIItemComponentTests: XCTestCase {
         )
 
         XCTAssertEqual(
-            redComponent.view.frame,
+            redComponent.view.bounds,
             redComponent.itemView.frame
         )
 

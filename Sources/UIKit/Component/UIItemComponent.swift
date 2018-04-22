@@ -59,7 +59,13 @@ public final class UIItemComponent<ItemView: UIView>: Component {
     
     fileprivate final func prepare() {
         
+        prepareLayout()
+        
         view.backgroundColor = itemView.backgroundColor
+        
+    }
+    
+    fileprivate final func prepareLayout() {
         
         itemViewBottomConstraint.priority = UILayoutPriority(900.0)
         
@@ -69,19 +75,12 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         
         itemViewHeightConstraint.priority = UILayoutPriority(750.0)
         
-        let size: CGSize
+        view.frame.size = contentMode.initialSize
         
-        switch contentMode {
-            
-        case let .size(value): size = value
-            
-        case let .automatic(estimatedSize): size = estimatedSize
-            
-        }
-        
-        view.frame.size = size
-        
-        itemView.frame.size = view.frame.size
+        itemView.frame = CGRect(
+            origin: .zero,
+            size: view.frame.size
+        )
         
     }
 
@@ -91,47 +90,99 @@ public final class UIItemComponent<ItemView: UIView>: Component {
 
     public final func render() {
         
-        let itemViewConstraints = [
-            itemViewTopConstraint,
-            itemViewLeadingConstraint,
-            itemViewBottomConstraint,
-            itemViewTrailingConstraint,
-            itemViewWidthConstraint,
-            itemViewHeightConstraint
-        ]
-        
-        itemView.removeFromSuperview()
-
-        itemView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.deactivate(itemViewConstraints)
-
-        switch contentMode {
-
-        case let .size(size): itemView.frame.size = size
-            
-        case let .automatic(estimatedSize):
-            
-            itemView.frame.size = estimatedSize
-            
-            itemView.frame.size = itemView.sizeThatFits(estimatedSize)
-            
-            itemView.layoutIfNeeded()
-            
-        }
-        
-        view.frame.size = itemView.frame.size
+        renderLayout()
         
         view.backgroundColor = itemView.backgroundColor
+
+    }
+    
+    fileprivate final func renderLayout() {
+        
+        itemView.removeFromSuperview()
+        
+        itemView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.deactivate(
+            [
+                itemViewTopConstraint,
+                itemViewLeadingConstraint,
+                itemViewBottomConstraint,
+                itemViewTrailingConstraint,
+                itemViewWidthConstraint,
+                itemViewHeightConstraint
+            ]
+        )
         
         view.addSubview(itemView)
         
-        itemViewWidthConstraint.constant = itemView.frame.size.width
+        switch contentMode {
+            
+        case let .size(size):
+            
+            view.frame.size = size
+            
+            itemView.frame = CGRect(
+                origin: .zero,
+                size: view.frame.size
+            )
+            
+            itemViewWidthConstraint.constant = size.width
+            
+            itemViewHeightConstraint.constant = size.height
+            
+            NSLayoutConstraint.activate(
+                [
+                    itemViewTopConstraint,
+                    itemViewLeadingConstraint,
+                    itemViewTrailingConstraint,
+                    itemViewWidthConstraint,
+                    itemViewHeightConstraint
+                ]
+            )
+            
+            itemView.layoutIfNeeded()
+            
+            view.frame.size = itemView.frame.size
+            
+            NSLayoutConstraint.activate(
+                [ itemViewBottomConstraint ]
+            )
+            
+        case let .automatic(estimatedSize):
+            
+            view.frame.size = estimatedSize
+            
+            itemView.frame = CGRect(
+                origin: .zero,
+                size: view.frame.size
+            )
+            
+            NSLayoutConstraint.activate(
+                [
+                    itemViewTopConstraint,
+                    itemViewLeadingConstraint,
+                    itemViewTrailingConstraint,
+                ]
+            )
+            
+            itemView.layoutIfNeeded()
+            
+            view.frame.size = itemView.frame.size
+            
+            itemViewWidthConstraint.constant = itemView.frame.size.width
+            
+            itemViewHeightConstraint.constant = itemView.frame.size.height
+            
+            NSLayoutConstraint.activate(
+                [
+                    itemViewBottomConstraint,
+                    itemViewWidthConstraint,
+                    itemViewHeightConstraint
+                ]
+            )
+            
+        }
         
-        itemViewWidthConstraint.constant = itemView.frame.size.height
-        
-        NSLayoutConstraint.activate(itemViewConstraints)
-
     }
 
     // MARK: ViewRenderable
