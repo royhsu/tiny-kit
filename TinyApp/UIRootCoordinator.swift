@@ -196,43 +196,21 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-//        let postComponent = TPPostComponent(
-//            layoutComponent: UIListComponent()
-//        )
-//
-//        postComponent.setElements(
-//            [
-//                imageElementFactory(
-//                    .image(#imageLiteral(resourceName: "image-product-story-4"))
-//                ),
-//                imageElementFactory(
-//                    .image(#imageLiteral(resourceName: "image-product-story-1"))
-//                ),
-//                paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
-//                paragraphElementFactory("Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."),
-//                imageElementFactory(
-//                    .image(#imageLiteral(resourceName: "image-product-story-3"))
-//                ),
-//                paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
-//            ]
-//        )
-        
-        let descriptionComponent = TSProductDescriptionComponent(
-            contentMode: .automatic(
-                estimatedSize: CGSize(
-                    width: UIScreen.main.bounds.width,
-                    height: 100.0
-                )
-            ),
-            buttonComponent: TSPrimaryButtonComponent()
-        )
-        
-        descriptionComponent.titleLabel.text = "Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        
-        let list2Component = UIListComponent()
-
-        list2Component.setItemComponents(
-            [ descriptionComponent ]
+        productDetailComponent.introductionComponent.setElements(
+            [
+                imageElementFactory(
+                    .image(#imageLiteral(resourceName: "image-product-story-4"))
+                ),
+                imageElementFactory(
+                    .image(#imageLiteral(resourceName: "image-product-story-1"))
+                ),
+                paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
+                paragraphElementFactory("Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."),
+                imageElementFactory(
+                    .image(#imageLiteral(resourceName: "image-product-story-3"))
+                ),
+                paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
+            ]
         )
         
         let viewController = UIComponentViewController(component: productDetailComponent)

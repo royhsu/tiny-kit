@@ -63,7 +63,7 @@ extension UITableViewBridge: UITableViewDataSource {
     public final func numberOfSections(in tableView: UITableView) -> Int {
         
         // TODO: find a better way to log debugging info.
-//        print(self, #function, "->", numberOfSections)
+        print(self, #function, "->", numberOfSections)
         
         return numberOfSections
         
@@ -78,7 +78,7 @@ extension UITableViewBridge: UITableViewDataSource {
         let rows = numberOfRowsProvider(section)
         
         // TODO: find a better way to log debugging info.
-//        print(self, #function, section, "->", "rows:", rows)
+        print(self, #function, section, "->", "rows:", rows)
         
         return rows
         
@@ -95,9 +95,6 @@ extension UITableViewBridge: UITableViewDataSource {
             style: .default,
             reuseIdentifier: nil
         )
-
-        // TODO: find a better way to log debugging info.
-//        print(self, #function, indexPath, "->", "cell:", cell)
         
         cell.selectionStyle = .none
 
@@ -107,6 +104,9 @@ extension UITableViewBridge: UITableViewDataSource {
             cell,
             indexPath
         )
+        
+        // TODO: find a better way to log debugging info.
+        print(self, #function, indexPath, "->", "cell:", cell)
 
         return cell
 
@@ -117,16 +117,6 @@ extension UITableViewBridge: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension UITableViewBridge: UITableViewDelegate {
-
-    public final func tableView(
-        _ tableView: UITableView,
-        estimatedHeightForRowAt indexPath: IndexPath
-    )
-    -> CGFloat {
-    
-        return 0.0
-        
-    }
     
     public final func tableView(
         _ tableView: UITableView,
@@ -137,7 +127,7 @@ extension UITableViewBridge: UITableViewDelegate {
         let height = heightForRowProvider(indexPath)
         
         // TODO: find a better way to log debugging info.
-//        print(self, #function, indexPath, "->", "height:", height)
+        print(self, #function, indexPath, "->", "height:", height)
         
         return height
         

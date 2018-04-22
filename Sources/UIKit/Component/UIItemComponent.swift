@@ -105,10 +105,6 @@ public final class UIItemComponent<ItemView: UIView>: Component {
         itemView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.deactivate(itemViewConstraints)
-                
-        view.backgroundColor = itemView.backgroundColor
-        
-        view.addSubview(itemView)
 
         switch contentMode {
 
@@ -120,9 +116,15 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
             itemView.frame.size = itemView.sizeThatFits(estimatedSize)
             
+            itemView.layoutIfNeeded()
+            
         }
         
         view.frame.size = itemView.frame.size
+        
+        view.backgroundColor = itemView.backgroundColor
+        
+        view.addSubview(itemView)
         
         itemViewWidthConstraint.constant = itemView.frame.size.width
         

@@ -67,8 +67,6 @@ public final class UIListComponent: ListComponent {
         
         tableView.frame.size = size
         
-        tableView.estimatedRowHeight = 0.0
-        
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
             guard
@@ -77,6 +75,10 @@ public final class UIListComponent: ListComponent {
                     indexPath
                 )
             else { return }
+            
+            cell.contentView.frame.size = component.preferredContentSize
+            
+            cell.frame.size = cell.contentView.frame.size
             
             cell.contentView.wrapSubview(component.view)
             
@@ -122,6 +124,36 @@ public final class UIListComponent: ListComponent {
             }
 
         }
+        
+    }
+    
+    fileprivate final func prerenderComponent(
+        _ component: Component?,
+        size: CGSize
+    ) {
+        
+        guard
+            let component = component
+        else { return }
+            
+        let height: CGFloat
+        
+        switch component.contentMode {
+            
+        case let .size(size): height = size.height
+            
+        case let .automatic(estimatedSize): height = estimatedSize.height
+            
+        }
+        
+        component.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: size.width,
+                height: height
+            )
+        )
+        
+        component.render()
         
     }
 
@@ -176,7 +208,7 @@ public final class UIListComponent: ListComponent {
     // MARK: Component
 
     public final var contentMode: ComponentContentMode
-
+    
     public final func render() {
         
         let tableViewConstraints = [
@@ -185,7 +217,9 @@ public final class UIListComponent: ListComponent {
         ]
         
         NSLayoutConstraint.deactivate(tableViewConstraints)
-
+        
+        tableView.estimatedRowHeight = 0.0
+        
         switch contentMode {
 
         case let .size(size):
@@ -193,6 +227,20 @@ public final class UIListComponent: ListComponent {
             tableView.frame.size = size
             
             tableView.reloadData()
+            
+            prerenderComponent(
+                headerComponent,
+                size: size
+            )
+            
+            prerenderComponent(
+                footerComponent,
+                size: size
+            )
+            
+            tableView.tableHeaderView = headerComponent?.view
+            
+            tableView.tableFooterView = footerComponent?.view
             
         case let .automatic(estimatedSize):
             
@@ -202,24 +250,30 @@ public final class UIListComponent: ListComponent {
             
             tableView.layoutIfNeeded()
             
-            tableView.frame.size.height = tableView.contentSize.height
+            prerenderComponent(
+                headerComponent,
+                size: estimatedSize
+            )
+            
+            prerenderComponent(
+                footerComponent,
+                size: estimatedSize
+            )
+            
+            tableView.tableHeaderView = headerComponent?.view
+            
+            tableView.tableFooterView = footerComponent?.view
+            
+            tableView.frame.size = tableView.contentSize
             
         }
-        
-        tableViewWidthConstraint.constant = tableView.frame.size.width
 
-        tableViewHeightConstraint.constant = tableView.frame.size.height
+        tableViewWidthConstraint.constant = tableView.frame.width
+        
+        tableViewHeightConstraint.constant = tableView.frame.height
         
         NSLayoutConstraint.activate(tableViewConstraints)
-        
-        headerComponent?.render()
-        
-        footerComponent?.render()
-        
-        tableView.tableHeaderView = headerComponent?.view
-        
-        tableView.tableFooterView = footerComponent?.view
-
+    
     }
 
     // MARK: ViewRenderable

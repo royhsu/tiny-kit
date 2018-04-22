@@ -100,6 +100,16 @@ public final class TSProductDetailComponent: Component {
     }
 
     public final func render() {
+        
+        let estimatedWidth: CGFloat
+        
+        switch contentMode {
+            
+        case let .size(size): estimatedWidth = size.width
+           
+        case let .automatic(estimatedSize): estimatedWidth = estimatedSize.width
+            
+        }
 
 //        let galleryWidth = view.bounds.width
 //
@@ -120,7 +130,7 @@ public final class TSProductDetailComponent: Component {
        
         descriptionComponent.contentMode = .automatic(
             estimatedSize: CGSize(
-                width: view.frame.width,
+                width: estimatedWidth,
                 height: 100.0
             )
         )
@@ -137,24 +147,27 @@ public final class TSProductDetailComponent: Component {
         var itemComponents: [Component] = [
 //            galleryContainerComponent,
             descriptionComponent,
-//            reviewSectionHeaderComponent,
+            reviewSectionHeaderComponent,
 //            reviewCarouselComponent
         ]
 
-//        let hasIntroduction = (introductionComponent.numberOfElements != 0)
-//
-//        if hasIntroduction {
-//
-//            let components: [Component] = [ introductionSectionHeaderComponent, introductionComponent ]
-//
-//            itemComponents += components
-        
-//            itemComponents += [ introductionSectionHeaderComponent ]
+        let hasIntroduction = (introductionComponent.numberOfElements != 0)
 
-//            layoutComponent.footerComponent = introductionComponent
+        if hasIntroduction {
 
-//        }
-//        else { layoutComponent.footerComponent = nil }
+            itemComponents += [ introductionSectionHeaderComponent ]
+            
+            introductionComponent.contentMode = .automatic(
+                estimatedSize: CGSize(
+                    width: estimatedWidth,
+                    height: 100.0
+                )
+            )
+            
+            layoutComponent.footerComponent = introductionComponent
+
+        }
+        else { layoutComponent.footerComponent = nil }
 
         layoutComponent.setItemComponents(itemComponents)
 
