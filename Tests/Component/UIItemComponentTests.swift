@@ -14,7 +14,7 @@ import XCTest
 
 internal final class UIItemComponentTests: XCTestCase {
 
-    internal final func testInitialize() {
+    internal final func testRender() {
         
         let redView = UIView()
         
@@ -70,13 +70,18 @@ internal final class UIItemComponentTests: XCTestCase {
         )
         
         XCTAssertEqual(
+            redComponent.itemView.backgroundColor,
+            .red
+        )
+        
+        XCTAssertEqual(
             redComponent.view.backgroundColor,
             redComponent.itemView.backgroundColor
         )
         
     }
     
-    internal final func testRenderWithContentModeSize() {
+    internal final func testRenderLayoutForNonIntrinsicContentWithModeSize() {
 
         let redView = UIView()
         
@@ -109,7 +114,84 @@ internal final class UIItemComponentTests: XCTestCase {
 
     }
     
-    internal final func testRenderWithContentModeAutomatic() {
+    internal final func testRenderLayoutForNonIntrinsicContentWithModeAutomatic() {
+        
+        let redView = UIView()
+        
+        redView.backgroundColor = .red
+        
+        let size = CGSize(
+            width: 100.0,
+            height: 50.0
+        )
+        
+        let redComponent = UIItemComponent(
+            contentMode: .automatic(estimatedSize: size),
+            itemView: redView
+        )
+        
+        redComponent.render()
+        
+        XCTAssertEqual(
+            redComponent.itemView.frame,
+            CGRect(
+                origin: .zero,
+                size: size
+            )
+        )
+        
+        XCTAssertEqual(
+            redComponent.view.bounds,
+            redComponent.itemView.frame
+        )
+        
+    }
+    
+    internal final func testRenderLayoutForIntrinsicContentWithModeSize() {
+        
+        let label = UILabel()
+        
+        label.numberOfLines = 0
+        
+        label.text = "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper."
+        
+        let estimatedSize = CGSize(
+            width: 50.0,
+            height: 50.0
+        )
+        
+        let expectedSize = label.sizeThatFits(estimatedSize)
+        
+        XCTAssertNotEqual(
+            .zero,
+            expectedSize
+        )
+        
+        XCTAssertNotEqual(
+            estimatedSize,
+            expectedSize
+        )
+        
+        let labelComponent = UIItemComponent(
+            contentMode: .size(estimatedSize),
+            itemView: label
+        )
+        
+        labelComponent.render()
+        
+        XCTAssertEqual(
+            labelComponent.view.frame.size,
+            estimatedSize
+        )
+        
+        XCTAssertNotEqual(
+            labelComponent.view.frame.size,
+            expectedSize
+        )
+        
+    }
+    
+    internal final func testRenderLayoutForIntrinsicContentWithModeAutomatic() {
         
         let label = UILabel()
         

@@ -44,6 +44,7 @@
 		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
 		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
 		B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C14208337CE005098D3 /* UICarouselLayout.swift */; };
+		B03BEE18208D801400CF46FC /* UIBoxComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */; };
 		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
 		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
 		B04707E3207A025F00331D26 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E1207A025F00331D26 /* ImageContainer.swift */; };
@@ -132,6 +133,7 @@
 		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
 		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
 		B03A4C14208337CE005098D3 /* UICarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselLayout.swift; sourceTree = "<group>"; };
+		B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBoxComponentTests.swift; sourceTree = "<group>"; };
 		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B04707E1207A025F00331D26 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */,
+				B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */,
 				B00D966D203076C500EF0B7A /* UIListComponentTests.swift */,
 				B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */,
 			);
@@ -596,6 +599,7 @@
 				B00D9670203076C500EF0B7A /* UITableViewExtensionsTests.swift in Sources */,
 				B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */,
 				B00D9673203076C500EF0B7A /* NoNibTableViewCell.swift in Sources */,
+				B03BEE18208D801400CF46FC /* UIBoxComponentTests.swift in Sources */,
 				B05E67622036D5B6003E8E0E /* UIItemComponentTests.swift in Sources */,
 				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
 				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,

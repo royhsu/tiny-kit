@@ -121,14 +121,11 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
             view.frame.size = size
             
-            itemView.frame = CGRect(
-                origin: .zero,
-                size: view.frame.size
-            )
+            itemView.frame.size = view.frame.size
             
-            itemViewWidthConstraint.constant = size.width
+            itemViewWidthConstraint.constant = itemView.frame.width
             
-            itemViewHeightConstraint.constant = size.height
+            itemViewHeightConstraint.constant = itemView.frame.height
             
             NSLayoutConstraint.activate(
                 [
@@ -142,6 +139,8 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
             itemView.layoutIfNeeded()
             
+            itemView.frame.origin = .zero
+            
             view.frame.size = itemView.frame.size
             
             NSLayoutConstraint.activate(
@@ -152,10 +151,7 @@ public final class UIItemComponent<ItemView: UIView>: Component {
             
             view.frame.size = estimatedSize
             
-            itemView.frame = CGRect(
-                origin: .zero,
-                size: view.frame.size
-            )
+            itemView.frame.size = view.frame.size
             
             NSLayoutConstraint.activate(
                 [
@@ -184,6 +180,8 @@ public final class UIItemComponent<ItemView: UIView>: Component {
                 itemView.frame.size.height = estimatedSize.height
                 
             }
+            
+            itemView.frame.origin = .zero
             
             view.frame.size = itemView.frame.size
             
