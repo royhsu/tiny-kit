@@ -15,9 +15,11 @@ public final class UICartBarComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UICartBar>
 
-    private final let actionButtonComponent: UIPrimaryButtonComponent
+    private final let actionButtonComponent: TSPrimaryButtonComponent
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         let bundle = Bundle(
             for: type(of: self)
@@ -31,7 +33,7 @@ public final class UICartBarComponent: Component {
             )!
         )
 
-        self.actionButtonComponent = UIPrimaryButtonComponent()
+        self.actionButtonComponent = TSPrimaryButtonComponent()
 
     }
 

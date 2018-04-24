@@ -10,47 +10,33 @@
 
 public final class UIListComponent: ListComponent {
 
-    internal final let tableView: UITableView
+    public final let tableView: UITableView
 
     fileprivate final let bridge: UITableViewBridge
 
-    // Using this hack to trigger auto-resizing of the table view while it contains the nested auto-resizing child components. For example, the child component is also a list component.
+    fileprivate final let tableViewWidthConstraint: NSLayoutConstraint
+    
     fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    /// If providing a dedicated width of the estimatedSize with mode .automatic, the list will be able to use this width to calculate the height dynamically based on the content of each item component.
+    /// Please make sure to call the function render() again if the content of any item components changed.
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.contentMode = contentMode
 
-        let frame: CGRect
-
-        switch contentMode {
-
-        case let .size(size):
-
-            frame = CGRect(
-                origin: .zero,
-                size: size
-            )
-
-        case .automatic:
-
-            // TODO: UIScreen is a hard dependency here. It's better to find alternative in the future.
-            // Removing this will show layout constraint errors for current implementation.
-            frame = UIScreen.main.bounds
-
-        }
-
         self.tableView = UITableView(
-            frame: frame,
+            frame: .zero,
             style: .plain
         )
 
         self.bridge = UITableViewBridge(tableView: tableView)
 
-        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(
-            equalToConstant: tableView.bounds.height
-        )
-
+        self.tableViewWidthConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
+        
+        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
+        
         self.numberOfSections = 0
 
         self.prepare()
@@ -60,43 +46,73 @@ public final class UIListComponent: ListComponent {
     // MARK: Set Up
 
     fileprivate final func prepare() {
-
+        
+        prepareLayout()
+        
+        tableView.backgroundColor = .clear
+        
+        tableView.clipsToBounds = false
+            
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
-
-            guard
-                let component = self.itemComponentProvider?(indexPath)
-            else { return }
-
+                    
+            let component = self.itemComponent(at: indexPath)
+            
+            cell.contentView.frame.size = component.preferredContentSize
+            
+            cell.frame.size = cell.contentView.frame.size
+            
             cell.contentView.wrapSubview(component.view)
-
-            component.render()
             
         }
 
         bridge.heightForRowProvider = { [unowned self] indexPath in
 
-            guard
-                let component = self.itemComponentProvider?(indexPath)
-            else { return 0.0 }
-
+            let component = self.itemComponent(at: indexPath)
+            
             switch component.contentMode {
 
-            case let .size(size): return size.height
+            case let .size(size):
+                
+                component.contentMode = .size(
+                    CGSize(
+                        width: self.tableView.frame.width,
+                        height: size.height
+                    )
+                )
+                
+                component.render()
+                
+                return size.height
+                
+            case let .automatic(estimatedSize):
 
-            case .automatic: return UITableViewAutomaticDimension
-
+                component.contentMode = .automatic(
+                    estimatedSize: CGSize(
+                        width: self.tableView.frame.width,
+                        height: estimatedSize.height
+                    )
+                )
+                
+                component.render()
+                
+                return component.view.frame.height
+                
             }
 
         }
         
+    }
+    
+    fileprivate final func prepareLayout() {
+        
+        tableViewWidthConstraint.priority = UILayoutPriority(750.0)
+        
         tableViewHeightConstraint.priority = UILayoutPriority(750.0)
         
-        NSLayoutConstraint.activate(
-            [ tableViewHeightConstraint ]
-        )
+        tableView.frame.size = contentMode.initialSize
         
     }
-
+    
     // MARK: ListComponent
 
     public final var headerComponent: Component?
@@ -112,8 +128,34 @@ public final class UIListComponent: ListComponent {
         set { bridge.numberOfSections = newValue }
 
     }
+    
+    public final func numberOfItemComponents(inSection section: Int) -> Int { return bridge.numberOfRowsProvider(section) }
 
-    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { bridge.numberOfRowsProvider = provider }
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) {
+        
+        bridge.numberOfRowsProvider = { [unowned self] section in
+            
+            return provider(
+                self,
+                section
+            )
+            
+        }
+        
+    }
+    
+    public final func itemComponent(at indexPath: IndexPath) -> Component {
+        
+        guard
+            let provider = itemComponentProvider
+        else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
+        
+        return provider(
+            self,
+            indexPath
+        )
+        
+    }
 
     private final var itemComponentProvider: ItemComponentProvider?
 
@@ -122,35 +164,118 @@ public final class UIListComponent: ListComponent {
     // MARK: Component
 
     public final var contentMode: ComponentContentMode
-
+    
     public final func render() {
-
-        headerComponent?.render()
-
-        footerComponent?.render()
-
-        tableView.tableHeaderView = headerComponent?.view
-
-        tableView.tableFooterView = footerComponent?.view
-
-        tableView.reloadData()
-
-        tableView.layoutIfNeeded()
-
-        let size: CGSize
-
+        
+        let tableViewConstraints = [
+            tableViewWidthConstraint,
+            tableViewHeightConstraint
+        ]
+        
+        NSLayoutConstraint.deactivate(tableViewConstraints)
+        
+        tableView.estimatedRowHeight = 0.0
+        
         switch contentMode {
 
-        case let .size(value): size = value
-
-        case .automatic: size = tableView.contentSize
-
+        case let .size(size):
+            
+            tableView.frame.size = size
+            
+            renderHeaderComponent(size: size)
+            
+            renderFooterComponent(size: size)
+            
+            tableView.tableHeaderView = headerComponent?.view
+            
+            tableView.tableFooterView = footerComponent?.view
+            
+            tableView.reloadData()
+            
+        case let .automatic(estimatedSize):
+            
+            tableView.frame.size = estimatedSize
+            
+            renderHeaderComponent(size: estimatedSize)
+            
+            renderFooterComponent(size: estimatedSize)
+            
+            tableView.tableHeaderView = headerComponent?.view
+            
+            tableView.tableFooterView = footerComponent?.view
+            
+            tableView.reloadData()
+            
+            tableView.layoutIfNeeded()
+            
+            tableView.frame.size = tableView.contentSize
+            
         }
 
-        tableView.frame.size = size
-
-        tableViewHeightConstraint.constant = size.height
-
+        tableViewWidthConstraint.constant = tableView.frame.width
+        
+        tableViewHeightConstraint.constant = tableView.frame.height
+        
+        NSLayoutConstraint.activate(tableViewConstraints)
+    
+    }
+    
+    fileprivate final func renderHeaderComponent(size: CGSize) {
+        
+        guard
+            let component = headerComponent
+        else { return }
+        
+        let height: CGFloat
+        
+        switch component.contentMode {
+            
+        case let .size(size): height = size.height
+            
+        case let .automatic(estimatedSize): height = estimatedSize.height
+            
+        }
+        
+        component.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: size.width,
+                height: height
+            )
+        )
+        
+        component.render()
+        
+        print(#function, component.view)
+        
+    }
+    
+    fileprivate final func renderFooterComponent(size: CGSize) {
+        
+        guard
+            let component = footerComponent
+        else { return }
+        
+        let height: CGFloat
+        
+        switch component.contentMode {
+            
+        case let .size(size): height = size.height
+            
+        case let .automatic(estimatedSize): height = estimatedSize.height
+            
+        }
+        
+        component.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: size.width,
+                height: height
+            )
+        )
+        
+        component.render()
+        
+        print(#function, component.view)
+        
     }
 
     // MARK: ViewRenderable

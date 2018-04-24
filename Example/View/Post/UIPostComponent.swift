@@ -15,7 +15,9 @@ public final class UIPostComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UIPostView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,

@@ -13,7 +13,9 @@ public final class UILandingLogoComponent: Component {
     /// The base component.
     public final let itemComponent: UIItemComponent<UILandingLogoView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         let bundle = Bundle(
             for: type(of: self)

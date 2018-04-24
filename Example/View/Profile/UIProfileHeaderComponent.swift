@@ -18,7 +18,7 @@ public final class UIProfileHeaderComponent: Component {
     private final let listComponent: ListComponent
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         listComponent: ListComponent
     ) {
 

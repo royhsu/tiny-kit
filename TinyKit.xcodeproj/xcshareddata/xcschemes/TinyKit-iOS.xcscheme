@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B05D4F631F1E0D9D00929006"
+               BuildableName = "TinyCore.framework"
+               BlueprintName = "TinyCore"
+               ReferencedContainer = "container:Carthage/Checkouts/tiny-core/TinyCore.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B00D96062030753600EF0B7A"
                BuildableName = "TinyKit.framework"
                BlueprintName = "TinyKit"

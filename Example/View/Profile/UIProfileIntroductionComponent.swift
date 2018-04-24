@@ -15,7 +15,9 @@ public final class UIProfileIntroductionComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UIProfileIntroductionView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,

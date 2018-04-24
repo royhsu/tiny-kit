@@ -15,7 +15,9 @@ public final class UITextInputComponent: Component {
 
     private final var editHandler: UITextInputEditHandler?
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         let bundle = Bundle(
             for: type(of: self)

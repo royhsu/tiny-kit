@@ -8,8 +8,6 @@
 
 // MARK: - ViewRenderable
 
-import UIKit
-
 public protocol ViewRenderable {
 
     var view: View { get }

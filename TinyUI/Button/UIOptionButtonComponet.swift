@@ -16,7 +16,7 @@ public final class UIOptionButtonComponet: Component, Stylable {
     private final let itemComponent: UIItemComponent<UIOptionButton>
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         theme: Theme = .current
     ) {
 

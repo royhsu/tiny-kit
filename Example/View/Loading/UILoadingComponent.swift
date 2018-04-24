@@ -15,7 +15,9 @@ public final class UILoadingComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UILoadingView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,

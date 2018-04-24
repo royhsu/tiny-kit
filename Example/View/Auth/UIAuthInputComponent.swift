@@ -47,7 +47,9 @@ public final class UIAuthInputComponent: Component {
     /// The base component.
     private final let itemComponent: UIItemComponent<UIAuthInputView>
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,

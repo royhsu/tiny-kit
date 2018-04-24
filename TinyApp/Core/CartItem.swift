@@ -8,13 +8,13 @@
 
 // MARK: - CartItem
 
-import Foundation
+import TinyKit
 
 public protocol CartItem {
 
     var id: String { get }
 
-    var imageURLs: [URL] { get }
+    var imageContainers: [UIImageContainer] { get }
 
     var title: String { get }
 

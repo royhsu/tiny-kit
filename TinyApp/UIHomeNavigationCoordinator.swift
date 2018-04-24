@@ -39,43 +39,53 @@ public final class UIHomeCoordinator: Coordinator {
                 let weakSelf = self
             else { return }
 
-            let productDetailComponent = UIProductDetailComponent(
-                listComponent: UIListComponent(),
-                galleryComponent: UIProductGalleryComponent(),
-                actionButtonComponent: UIPrimaryButtonComponent()
-                    .setTitle("Add to Cart")
-                    .setAction { weakSelf.addToCartHandler?(product) },
-                reviewSectionHeaderComponent: UIProductSectionHeaderComponent()
-                    .setIconImage(
-                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                    )
-                    .setTitle("Reviews"),
-                reviewCarouselComponent: UIProductReviewCarouselComponent(),
-                introductionSectionHeaderComponent: UIProductSectionHeaderComponent()
-                    .setIconImage(
-                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
-                    )
-                    .setTitle("Introduction")
-            )
-
-            let productDetailCoordinator = UIProductDetailCoordinator(
-                component: productDetailComponent,
-                provider: ProductManager()
-            )
-
-            // TODO: prevent the bar covering its content.
-            productDetailCoordinator.additionalSafeAreaInsets.bottom = 60.0
-
-            weakSelf.navigationController.pushViewController(
-                productDetailCoordinator,
-                animated: true
-            )
-
-            DispatchQueue.main.async {
-
-                productDetailCoordinator.activate()
-
-            }
+//            let productDetailComponent = TSProductDetailComponent(
+//                descriptionButtonComponent: TSPrimaryButtonComponent(),
+//
+//                listComponent: UIListComponent(),
+//                galleryComponent: UIGalleryComponent(),
+//                actionButtonComponent: UIPrimaryButtonComponent()
+//                    .setTitle("Add to Cart")
+//                    .setAction { weakSelf.addToCartHandler?(product) },
+//                reviewSectionHeaderComponent: TSProductSectionHeaderComponent()
+//                    .setIconImage(
+//                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+//                    )
+//                    .setTitle("Reviews"),
+//                reviewCarouselComponent: UIProductReviewCarouselComponent(),
+//                introductionSectionHeaderComponent: TSProductSectionHeaderComponent()
+//                    .setIconImage(
+//                        #imageLiteral(resourceName: "icon-digest").withRenderingMode(.alwaysTemplate)
+//                    )
+//                    .setTitle("Introduction")
+//            )
+//
+//            productDetailComponent.galleryComponent.setImageComponents(
+//                [
+//                    UIImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
+//                    UIImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
+//                    UIImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
+//                ]
+//            )
+//            
+//            let productDetailCoordinator = UIProductDetailCoordinator(
+//                component: productDetailComponent,
+//                provider: ProductManager()
+//            )
+//
+//            // TODO: prevent the bar covering its content.
+//            productDetailCoordinator.additionalSafeAreaInsets.bottom = 60.0
+//
+//            weakSelf.navigationController.pushViewController(
+//                productDetailCoordinator,
+//                animated: true
+//            )
+//
+//            DispatchQueue.main.async {
+//
+//                productDetailCoordinator.activate()
+//
+//            }
 
         }
 

@@ -54,23 +54,35 @@ public final class UITableViewBridge: NSObject {
 
     public final var configureCellHandler: ConfigureCellHandler?
 
-    public typealias DidSelectRowHandler = (IndexPath) -> Void
-
-    public final var didSelectRowHandler: DidSelectRowHandler?
-
 }
 
 // MARK: - UITableViewDataSource
 
 extension UITableViewBridge: UITableViewDataSource {
 
-    public final func numberOfSections(in tableView: UITableView) -> Int { return numberOfSections }
+    public final func numberOfSections(in tableView: UITableView) -> Int {
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, "->", numberOfSections)
+        
+        return numberOfSections
+        
+    }
 
     public final func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
-    -> Int { return numberOfRowsProvider(section) }
+    -> Int {
+        
+        let rows = numberOfRowsProvider(section)
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, section, "->", "rows:", rows)
+        
+        return rows
+        
+    }
 
     public final func tableView(
         _ tableView: UITableView,
@@ -83,7 +95,7 @@ extension UITableViewBridge: UITableViewDataSource {
             style: .default,
             reuseIdentifier: nil
         )
-
+        
         cell.selectionStyle = .none
 
         cell.backgroundColor = .clear
@@ -92,6 +104,9 @@ extension UITableViewBridge: UITableViewDataSource {
             cell,
             indexPath
         )
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, indexPath, "->", "cell:", cell)
 
         return cell
 
@@ -102,11 +117,20 @@ extension UITableViewBridge: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension UITableViewBridge: UITableViewDelegate {
-
+    
     public final func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     )
-    -> CGFloat { return heightForRowProvider(indexPath) }
+    -> CGFloat {
+        
+        let height = heightForRowProvider(indexPath)
+        
+        // TODO: find a better way to log debugging info.
+//        print(self, #function, indexPath, "->", "height:", height)
+        
+        return height
+        
+    }
 
 }

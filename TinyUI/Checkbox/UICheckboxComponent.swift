@@ -18,7 +18,7 @@ public final class UICheckboxComponent: Component, Stylable, Inputable {
     private final let itemComponent: UIItemComponent<UICheckbox>
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         theme: Theme = .current,
         inputValue: Bool = true
     ) {

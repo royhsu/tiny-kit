@@ -20,7 +20,7 @@ public final class UISignInComponent: Component {
 
     private final let passwordComponent: UITextInputComponent
 
-    private final let submitComponent: UIPrimaryButtonComponent
+    private final let submitComponent: UIButtonComponent
 
     private final var submitHandler: UISignInSubmitHandler?
 
@@ -28,8 +28,9 @@ public final class UISignInComponent: Component {
     private final let listComponent: ListComponent
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
-        listComponent: ListComponent
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
+        listComponent: ListComponent,
+        submitButtonComponent: UIButtonComponent
     ) {
 
         listComponent.contentMode = contentMode
@@ -63,7 +64,7 @@ public final class UISignInComponent: Component {
 
         self.passwordComponent = UITextInputComponent()
 
-        self.submitComponent = UIPrimaryButtonComponent()
+        self.submitComponent = submitButtonComponent
 
         self.listComponent = listComponent
 
@@ -89,25 +90,25 @@ public final class UISignInComponent: Component {
             .setItem(passwordItem)
             .onEdit { self.signIn.password = $0 }
 
-        submitComponent
-            .setTitle(
-                NSLocalizedString(
-                    "Sign In",
-                    comment: ""
-                )
-            )
-            .setAction {
-
-                let email = self.signIn.email ?? "Invalid"
-
-                let password = self.signIn.password ?? "Invalid"
-
-                self.submitHandler?(
-                    email,
-                    password
-                )
-
-            }
+//        submitComponent
+//            .setTitle(
+//                NSLocalizedString(
+//                    "Sign In",
+//                    comment: ""
+//                )
+//            )
+//            .setAction {
+//
+//                let email = self.signIn.email ?? "Invalid"
+//
+//                let password = self.signIn.password ?? "Invalid"
+//
+//                self.submitHandler?(
+//                    email,
+//                    password
+//                )
+//
+//            }
 
         let components: [Component] = [
             emailComponent,

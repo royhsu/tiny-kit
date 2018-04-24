@@ -13,42 +13,49 @@
 public final class UIBoxComponent: Component {
     
     /// The base component.
-    private final let contentComponent: Component
+    internal final let containerComponent: UIItemComponent<UIView>
     
-    private final let leadingConstraint: NSLayoutConstraint
+    internal final let contentComponent: Component
     
-    private final let topConstraint: NSLayoutConstraint
+    private final let contentViewTopConstraint: NSLayoutConstraint
     
-    private final let trailingConstraint: NSLayoutConstraint
+    private final let contentViewLeadingConstraint: NSLayoutConstraint
     
-    private final let bottomConstraint: NSLayoutConstraint
+    private final let contentViewBottomConstraint: NSLayoutConstraint
     
+    private final let contentViewTrailingConstraint: NSLayoutConstraint
+
     public final var paddingInsets: UIEdgeInsets
     
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         contentComponent: Component
     ) {
         
+        self.containerComponent = UIItemComponent(
+            contentMode: contentMode,
+            itemView: UIView()
+        )
+        
         self.contentComponent = contentComponent
         
-        self.view = View()
+        let containerView = containerComponent.itemView
         
         let contentView = contentComponent.view
         
-        self.leadingConstraint = view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+        self.contentViewTopConstraint = containerView.topAnchor.constraint(equalTo: contentView.topAnchor)
         
-        self.topConstraint = view.topAnchor.constraint(equalTo: contentView.topAnchor)
+        self.contentViewLeadingConstraint = containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         
-        self.trailingConstraint = view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        self.contentViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         
-        self.bottomConstraint = view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        self.contentViewTrailingConstraint = containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         
         self.paddingInsets = UIEdgeInsets(
-            top: topConstraint.constant,
-            left: leadingConstraint.constant,
-            bottom: bottomConstraint.constant,
-            right: trailingConstraint.constant
+            top: contentViewTopConstraint.constant,
+            left: contentViewLeadingConstraint.constant,
+            bottom: contentViewBottomConstraint.constant,
+            right: contentViewTrailingConstraint.constant
         )
         
         self.prepare()
@@ -59,64 +66,98 @@ public final class UIBoxComponent: Component {
     
     fileprivate final func prepare() {
         
-        view.backgroundColor = .clear
+        prepareLayout()
         
-        trailingConstraint.priority = UILayoutPriority(900.0)
+        containerView.backgroundColor = contentView.backgroundColor
+      
+    }
+    
+    fileprivate final func prepareLayout() {
         
-        bottomConstraint.priority = UILayoutPriority(900.0)
+        contentViewBottomConstraint.priority = UILayoutPriority(900.0)
+        
+        contentViewTrailingConstraint.priority = UILayoutPriority(900.0)
+        
+        contentView.frame.size = CGSize(
+            width: containerView.frame.width - paddingInsets.left - paddingInsets.right,
+            height: containerView.frame.height - paddingInsets.top - paddingInsets.bottom
+        )
+        
+        contentView.center = view.center
         
     }
     
     // MARK: Component
     
-    public var contentMode: ComponentContentMode {
+    public final var contentMode: ComponentContentMode {
         
-        get { return contentComponent.contentMode }
+        get { return containerComponent.contentMode }
         
-        set { contentComponent.contentMode = newValue }
+        set { containerComponent.contentMode = newValue }
         
     }
     
     public final func render() {
         
-        let contentView = contentComponent.view
+        renderLayout()
         
+        containerView.backgroundColor = contentView.backgroundColor
+        
+    }
+    
+    fileprivate final func renderLayout() {
+        
+        let contentViewConstraints = [
+            contentViewTopConstraint,
+            contentViewLeadingConstraint,
+            contentViewBottomConstraint,
+            contentViewTrailingConstraint
+        ]
+
         contentView.removeFromSuperview()
-        
+
         contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.deactivate(contentViewConstraints)
+
+        containerView.addSubview(contentView)
         
-        view.addSubview(contentView)
+        contentViewTopConstraint.constant = -paddingInsets.top
         
-        topConstraint.constant = -paddingInsets.top
+        contentViewLeadingConstraint.constant = -paddingInsets.left
         
-        leadingConstraint.constant = -paddingInsets.left
+        contentViewBottomConstraint.constant = paddingInsets.bottom
         
-        bottomConstraint.constant = paddingInsets.bottom
+        contentViewTrailingConstraint.constant = paddingInsets.right
         
-        trailingConstraint.constant = paddingInsets.right
+        NSLayoutConstraint.activate(contentViewConstraints)
         
-        NSLayoutConstraint.activate(
-            [
-                leadingConstraint,
-                topConstraint,
-                trailingConstraint
-            ]
+        containerComponent.render()
+        
+        contentComponent.contentMode = .automatic(
+            estimatedSize: CGSize(
+                width: containerView.frame.width - paddingInsets.left - paddingInsets.right,
+                height: containerView.frame.height - paddingInsets.top - paddingInsets.bottom
+            )
         )
         
         contentComponent.render()
-        
-        view.bounds = contentView.bounds
-        
-        NSLayoutConstraint.activate(
-            [ bottomConstraint ]
-        )
         
     }
     
     // MARK: ViewRenderable
     
-    public final let view: View
+    public final var view: View { return containerComponent.view }
     
     public final var preferredContentSize: CGSize { return view.bounds.size }
+    
+}
+
+fileprivate extension UIBoxComponent {
+    
+    // The container view is equal to the item view but not the view of the container component due to the underlying implementation.
+    fileprivate final var containerView: UIView { return containerComponent.itemView }
+    
+    fileprivate final var contentView: UIView { return contentComponent.view }
     
 }

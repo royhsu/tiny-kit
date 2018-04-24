@@ -8,6 +8,7 @@
 
 // MARK: - UILandingCoordinator
 
+import TinyStore
 import TinyAuth
 import TinyLanding
 
@@ -73,7 +74,8 @@ public final class UILandingCoordinator: Coordinator {
     fileprivate final func signIn() {
 
         let signInComponent = UISignInComponent(
-            listComponent: UIListComponent()
+            listComponent: UIListComponent(),
+            submitButtonComponent: TSPrimaryButtonComponent()
         )
         .onSubmit { [weak self] email, password in
 

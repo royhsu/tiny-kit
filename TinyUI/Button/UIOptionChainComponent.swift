@@ -15,7 +15,9 @@ public final class UIOptionChainComponent: Component {
 
     private final var actionComponents: [UIOptionButtonComponet]
 
-    public init(contentMode: ComponentContentMode = .automatic) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
 
         self.itemComponent = UIItemComponent(
             contentMode: contentMode,

@@ -12,35 +12,4 @@ import TinyPost
 
 public protocol ProductDetailComponent: Component {
 
-    @discardableResult
-    func setGallery(
-        _ images: [UIImage]
-    )
-    -> Self
-
-    @discardableResult
-    func setTitle(_ title: String?) -> Self
-
-    @discardableResult
-    func setSubtitle(_ subtitle: String?) -> Self
-
-    typealias NumberOfReviewsHandler = () -> Int
-
-    @discardableResult
-    func setNumberOfReviews(
-        _ handler: NumberOfReviewsHandler?
-    )
-    -> Self
-
-    typealias ComponentForReviewHandler = (_ index: Int) -> Component
-
-    @discardableResult
-    func setComponentForReview(_ handler: ComponentForReviewHandler?) -> Self
-
-    @discardableResult
-    func setIntroductionPost(
-        elements: [PostElement]
-    )
-    -> Self
-
 }

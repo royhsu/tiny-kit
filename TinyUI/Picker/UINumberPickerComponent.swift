@@ -22,7 +22,7 @@ public final class UINumberPickerComponent: Component, Stylable, Inputable {
     private final let numberTextFieldBridge: UITextFieldBridge
 
     public init(
-        contentMode: ComponentContentMode = .automatic,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         theme: Theme = .current,
         inputValue: Int? = nil,
         minimumValue: Int = 0,

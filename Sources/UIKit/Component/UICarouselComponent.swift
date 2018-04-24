@@ -8,65 +8,118 @@
 
 // MARK: - UICarouselComponent
 
-/// All items in a carousel component will be stretch out to fit the height of it.
-public final class UICarouselComponent: Component {
+/// All items in a carousel component will be stretch out their height to fit the parent.
+public final class UICarouselComponent: CollectionComponent {
 
     /// The base component.
-    private final let collectionComponent: UICollectionComponent
+    private final let gridComponent: UIGridComponent
+    
+    public final var layout: UICarouselLayout {
+        
+        didSet { gridComponent.layout.lineSpacing = layout.interitemSpacing }
+        
+    }
 
-    public final var itemComponents: AnyCollection<Component> = AnyCollection(
-        []
-    )
-
-    public init(contentMode: ComponentContentMode = .automatic) {
-
-        let collectionComponent = UICollectionComponent(contentMode: contentMode)
-
-        collectionComponent.scrollDirection = .horizontal
-
-        self.collectionComponent = collectionComponent
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
+        layout: UICarouselLayout = UICarouselLayout()
+    ) {
+        
+        self.layout = layout
+        
+        self.gridComponent = UIGridComponent(
+            contentMode: contentMode,
+            layout: UIGridLayout(
+                columns: 1,
+                rows: 1,
+                lineSpacing: layout.interitemSpacing,
+                scrollDirection: .horizontal
+            )
+        )
+        
+        self.prepare()
 
     }
 
+    public typealias MinimumItemWidthProvider = (
+        _ component: Component,
+        _ index: Int
+    )
+    -> CGFloat
+    
+    private final var minimumItemWidthProvider: MinimumItemWidthProvider? {
+        
+        didSet {
+            
+            if let provider = minimumItemWidthProvider {
+                
+                gridComponent.setMinimumItemSize { _, _, _, indexPath in
+                    
+                    let width = provider(
+                        self,
+                        indexPath.item
+                    )
+                    
+                    return CGSize(
+                        width: width,
+                        height: width
+                    )
+                    
+                }
+                
+            }
+            else { gridComponent.setMinimumItemSize(provider: nil) }
+            
+        }
+        
+    }
+    
+    public final func setMinimumItemWidth(provider: @escaping MinimumItemWidthProvider) { minimumItemWidthProvider = provider }
+
+    // MARK: Set Up
+    
+    fileprivate final func prepare() { collectionView.showsVerticalScrollIndicator = false }
+
+    // MARK: CollectionComponent
+    
+    public final var numberOfSections: Int {
+        
+        get { return gridComponent.numberOfSections }
+        
+        set { gridComponent.numberOfSections = newValue }
+        
+    }
+    
+    public final func numberOfItemComponents(inSection section: Int) -> Int { return gridComponent.numberOfItemComponents(inSection: section) }
+    
+    public final func setNumberOfItemComponents(provider: @escaping NumberOfItemComponentsProvider) { gridComponent.setNumberOfItemComponents(provider: provider) }
+    
+    public final func itemComponent(at indexPath: IndexPath) -> Component { return gridComponent.itemComponent(at: indexPath) }
+    
+    public final func setItemComponent(provider: @escaping ItemComponentProvider) { gridComponent.setItemComponent(provider: provider) }
+    
     // MARK: Component
 
     public final var contentMode: ComponentContentMode {
 
-        get { return collectionComponent.contentMode }
+        get { return gridComponent.contentMode }
 
-        set { collectionComponent.contentMode = newValue }
-
-    }
-
-    public final func render() {
-
-//        let components = itemComponents.map { component -> Component in
-//
-//            component.render()
-//
-//            var itemComponent = component
-//
-//            itemComponent.contentMode = .size(
-//                width: component.view.bounds.width,
-//                height: view.bounds.height
-//            )
-//
-//            return itemComponent
-//
-//        }
-//
-//        itemComponents = AnyCollection(components)
-
-//        collectionComponent.itemComponents = itemComponents
-
-        collectionComponent.render()
+        set { gridComponent.contentMode = newValue }
 
     }
+
+    public final func render() { gridComponent.render() }
 
     // MARK: ViewRenderable
 
-    public final var view: View { return collectionComponent.view }
+    public final var view: View { return gridComponent.view }
 
-    public final var preferredContentSize: CGSize { return collectionComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return gridComponent.preferredContentSize }
 
+}
+
+public extension UICarouselComponent {
+    
+    public final var collectionView: UICollectionView { return gridComponent.collectionView }
+    
 }

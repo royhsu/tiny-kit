@@ -51,33 +51,33 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     fileprivate final func prepare() {
 
-        gallerySubscription = storage.gallery.observeValueDidChange { [unowned self] _, gallery in
+//        gallerySubscription = storage.gallery.observeValueDidChange { [unowned self] _, gallery in
+//
+//            self.component.setGallery(gallery)
+//
+//        }
 
-            self.component.setGallery(gallery)
+//        titleSubscription = storage.title.observeValueDidChange { [unowned self] _, title in
+//
+//            self.component.setTitle(title)
+//
+//        }
+//
+//        subtitleSubscription = storage.subtitle.observeValueDidChange { [unowned self] _, subtitle in
+//
+//            self.component.setSubtitle(subtitle)
+//
+//        }
 
-        }
-
-        titleSubscription = storage.title.observeValueDidChange { [unowned self] _, title in
-
-            self.component.setTitle(title)
-
-        }
-
-        subtitleSubscription = storage.subtitle.observeValueDidChange { [unowned self] _, subtitle in
-
-            self.component.setSubtitle(subtitle)
-
-        }
-
-        component
-            .setNumberOfReviews { [unowned self] in self.reviewComponents.count }
-            .setComponentForReview { [unowned self] index in self.reviewComponents[index] }
+//        component
+//            .setNumberOfReviews { [unowned self] in self.reviewComponents.count }
+//            .setComponentForReview { [unowned self] index in self.reviewComponents[index] }
 
         reviewsSubscription = storage.reviews.observeValueDidChange { [unowned self] _, reviews in
 
             self.reviewComponents = reviews.map { review in
 
-                let component = UIProductReviewComponent(
+                let component = TSProductReviewComponent(
                     contentMode: .size(
                         CGSize(
                             width: 250.0,
@@ -86,41 +86,25 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
                     )
                 )
 
-                component.setTitle(review.title).setText(review.text)
-
-                if let imageContainer = review.imageContainer {
-
-                    switch imageContainer {
-
-                    case let .image(image): component.setPictureImage(image)
-
-                    case let .url(url, provider):
-
-                        provider
-                            .fetch(
-                                in: .background,
-                                url: url
-                            )
-                            .then(
-                                in: .main,
-                                component.setPictureImage
-                            )
-
-                    }
-
-                }
+//                component.setTitle(review.title).setText(review.text)
+//
+//                if let imageContainer = review.imageContainer {
+//
+////                    imageContainer.setImage(to: component.setPictureImage(<#T##image: UIImage?##UIImage?#>))
+//
+//                }
 
                 return component
 
             }
 
         }
-
-        introductionPostSubscription = storage.introductionPost.observeValueDidChange { _, post in
-
-            self.component.setIntroductionPost(elements: post.elements)
-
-        }
+//
+//        introductionPostSubscription = storage.introductionPost.observeValueDidChange { _, post in
+//
+//            self.component.setIntroductionPost(elements: post.elements)
+//
+//        }
 
     }
 
@@ -169,36 +153,36 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
                 for index in 0..<detail.imageContainers.count {
 
-                    let imageContainer = detail.imageContainers[index]
-
-                    let image: UIImage
-
-                    switch imageContainer {
-
-                    case let .image(value): image = value
-
-                    case let .url(url, provider):
-
-                        image = UIImage()
-
-                        provider.fetch(
-                            in: .background,
-                            url: url
-                        )
-                        .then(in: .main) { image in
-
-                            // TODO: should use weak object image wrapper to prevent the array manuplitating before all images finished.
-                            if index < weakSelf.storage.gallery.value.count {
-
-                                weakSelf.storage.gallery.value[index] = image
-
-                            }
-
-                        }
-
-                    }
-
-                    weakSelf.storage.gallery.value.append(image)
+//                    let imageContainer = detail.imageContainers[index]
+//
+//                    let image: UIImage
+//
+//                    switch imageContainer {
+//
+//                    case let .image(value): image = value
+//
+//                    case let .url(url, provider):
+//
+//                        image = UIImage()
+//
+//                        provider.fetch(
+//                            in: .background,
+//                            url: url
+//                        )
+//                        .then(in: .main) { image in
+//
+//                            // TODO: should use weak object image wrapper to prevent the array manuplitating before all images finished.
+//                            if index < weakSelf.storage.gallery.value.count {
+//
+//                                weakSelf.storage.gallery.value[index] = image
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//
+//                    weakSelf.storage.gallery.value.append(image)
 
                 }
 
@@ -227,22 +211,22 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
             }
 
-        provider
-            .fetchIntroductionPost(
-                in: .background,
-                productID: productID
-            )
-            .then(in: .main) { [weak self] post in
-
-                guard
-                    let weakSelf = self
-                    else { return }
-
-                weakSelf.storage.introductionPost.value = post
-
-                DispatchQueue.main.async { weakSelf.component.render() }
-
-            }
+//        provider
+//            .fetchIntroductionPost(
+//                in: .background,
+//                productID: productID
+//            )
+//            .then(in: .main) { [weak self] post in
+//
+//                guard
+//                    let weakSelf = self
+//                    else { return }
+//
+//                weakSelf.storage.introductionPost.value = post
+//
+//                DispatchQueue.main.async { weakSelf.component.render() }
+//
+//            }
 
     }
 
@@ -256,7 +240,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     private final var reviewsSubscription: Reviews.ValueDidChangeSubscription?
 
-    private final var introductionPostSubscription: IntroductionPost.ValueDidChangeSubscription?
+//    private final var introductionPostSubscription: IntroductionPost.ValueDidChangeSubscription?
 
     // MARK: Storage
 
@@ -268,7 +252,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     public typealias Reviews = Observable<[Review]>
 
-    public typealias IntroductionPost = Observable<Post>
+//    public typealias IntroductionPost = Observable<Post>
 
     public struct Storage {
 
@@ -280,14 +264,14 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
         public let reviews: Reviews
 
-        public let introductionPost: Observable<Post>
+//        public let introductionPost: Observable<Post>
 
         public init(
             gallery: [UIImage] = [],
             title: String? = nil,
             subtitle: String? = nil,
-            reviews: [Review] = [],
-            introductionPost: Post = Post()
+            reviews: [Review] = []
+//            introductionPost: Post = Post()
         ) {
 
             self.gallery = Observable(gallery)
@@ -298,7 +282,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
             self.reviews = Observable(reviews)
 
-            self.introductionPost = Observable(introductionPost)
+//            self.introductionPost = Observable(introductionPost)
 
         }
 
@@ -306,7 +290,7 @@ public final class UIProductDetailCoordinator: UIViewController, Coordinator {
 
     // MARK: Review
 
-    private final var reviewComponents: [UIProductReviewComponent]
+    private final var reviewComponents: [TSProductReviewComponent]
 
 }
 
