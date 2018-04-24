@@ -106,7 +106,7 @@ public extension UIGalleryComponent {
         _ component: Component,
         _ index: Int
     )
-    -> UIImageContainer
+    -> ImageResource
     
     public final func setImageContainer(provider: @escaping ImageContainerProvider) {
         
@@ -134,7 +134,7 @@ public extension UIGalleryComponent {
     }
     
     public final func setImageContainers(
-        _ containers: [UIImageContainer]
+        _ containers: [ImageResource]
     ) {
         
         numberOfImageComponents = containers.count

@@ -10,6 +10,6 @@
 
 public protocol ParagraphComponent: Component {
     
-    var textLabel: UILabel { get }
+    var text: String? { get set }
     
 }

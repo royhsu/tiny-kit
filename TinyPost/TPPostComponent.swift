@@ -17,7 +17,7 @@ public final class TPPostComponent: PostComponent {
         
         self.layoutComponent = layoutComponent
         
-        self.numberOfElements = 0
+        self.numberOfElementComponents = 0
         
         self.prepare()
         
@@ -25,34 +25,34 @@ public final class TPPostComponent: PostComponent {
     
     // MARK: PostComponent
     
-    public final var numberOfElements: Int
+    public final var numberOfElementComponents: Int
     
-    public final func element(at index: Int) -> Element {
+    public final func elementComponent(at index: Int) -> ElementComponent {
         
         guard
-            let element = elementProvider?(
+            let element = elementComponentProvider?(
                 self,
                 index
             )
-        else { fatalError("Please make sure to set the element provider with function setElement(provider:) firstly.") }
+        else { fatalError("Please make sure to set the element provider with function setElementComponent(provider:) firstly.") }
         
         return element
         
     }
     
-    private final var elementProvider: ElementProvider?
+    private final var elementComponentProvider: ElementComponentProvider?
     
-    public final func setElement(provider: @escaping ElementProvider) { elementProvider = provider }
+    public final func setElementComponent(provider: @escaping ElementComponentProvider) { elementComponentProvider = provider }
     
     // MARK: Set Up
     
     fileprivate final func prepare() {
         
-        layoutComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfElements }
+        layoutComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfElementComponents }
         
         layoutComponent.setItemComponent { [unowned self] _, indexPath in
             
-            switch self.element(at: indexPath.item) {
+            switch self.elementComponent(at: indexPath.item) {
                 
             case let .paragraph(component): return component
                 
@@ -76,7 +76,7 @@ public final class TPPostComponent: PostComponent {
     
     public final func render() {
         
-        layoutComponent.numberOfSections = (numberOfElements == 0) ? 0 : 1
+        layoutComponent.numberOfSections = (numberOfElementComponents == 0) ? 0 : 1
         
         layoutComponent.render()
         

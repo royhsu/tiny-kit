@@ -14,7 +14,7 @@ import TinyPost
 
 public protocol ProductProvider {
 
-    typealias ProductDetail = (imageContainers: [UIImageContainer], title: String?, price: Double)
+    typealias ProductDetail = (imageContainers: [ImageResource], title: String?, price: Double)
 
     func fetchDetail(
         in context: Context,

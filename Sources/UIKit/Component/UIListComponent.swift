@@ -17,6 +17,8 @@ public final class UIListComponent: ListComponent {
     fileprivate final let tableViewWidthConstraint: NSLayoutConstraint
     
     fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
+    
+    fileprivate final var itemComponentMap: [IndexPath: Component]
 
     /// If providing a dedicated width of the estimatedSize with mode .automatic, the list will be able to use this width to calculate the height dynamically based on the content of each item component.
     /// Please make sure to call the function render() again if the content of any item components changed.
@@ -37,8 +39,8 @@ public final class UIListComponent: ListComponent {
         
         self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableView.bounds.height)
         
-        self.numberOfSections = 0
-
+        self.itemComponentMap = [:]
+    
         self.prepare()
 
     }
@@ -144,16 +146,26 @@ public final class UIListComponent: ListComponent {
         
     }
     
+    // TODO: should find a mechanism to ensure the item component cached correctly and clean up completely.
     public final func itemComponent(at indexPath: IndexPath) -> Component {
         
-        guard
-            let provider = itemComponentProvider
-        else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
+        if let provider = itemComponentMap[indexPath] { return provider }
+        else {
+            
+            guard
+                let provider = itemComponentProvider
+            else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
         
-        return provider(
-            self,
-            indexPath
-        )
+            let itemComponent = provider(
+                self,
+                indexPath
+            )
+        
+            itemComponentMap[indexPath] = itemComponent
+            
+            return itemComponent
+            
+        }
         
     }
 
@@ -166,6 +178,8 @@ public final class UIListComponent: ListComponent {
     public final var contentMode: ComponentContentMode
     
     public final func render() {
+        
+        itemComponentMap = [:]
         
         let tableViewConstraints = [
             tableViewWidthConstraint,

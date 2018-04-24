@@ -14,7 +14,7 @@ public struct Product {
 
     public let id: String
 
-    public let imageContainers: [UIImageContainer]
+    public let imageContainers: [ImageResource]
 
     public let title: String
 
@@ -22,7 +22,7 @@ public struct Product {
 
     public init(
         id: String,
-        imageContainers: [UIImageContainer],
+        imageContainers: [ImageResource],
         title: String,
         price: Double
     ) {

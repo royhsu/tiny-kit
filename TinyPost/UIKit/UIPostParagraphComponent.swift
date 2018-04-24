@@ -1,15 +1,15 @@
 //
-//  TPPostParagraphComponent.swift
+//  UIPostParagraphComponent.swift
 //  TinyPost
 //
 //  Created by Roy Hsu on 14/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TPPostParagraphComponent
+// MARK: - UIPostParagraphComponent
 
-public final class TPPostParagraphComponent: ParagraphComponent {
-
+public final class UIPostParagraphComponent: ParagraphComponent {
+    
     /// The base component.
     private final let boxComponent: UIBoxComponent
     
@@ -60,6 +60,16 @@ public final class TPPostParagraphComponent: ParagraphComponent {
 
     }
 
+    // MARK: ParagraphComponent
+    
+    public final var text: String? {
+        
+        get { return textLabel.text }
+        
+        set { textLabel.text = newValue }
+        
+    }
+    
     // MARK: Component
 
     public final var contentMode: ComponentContentMode {
@@ -80,7 +90,7 @@ public final class TPPostParagraphComponent: ParagraphComponent {
 
 }
 
-public extension TPPostParagraphComponent {
+public extension UIPostParagraphComponent {
 
     public final var textLabel: UILabel { return labelComponent.itemView }
     

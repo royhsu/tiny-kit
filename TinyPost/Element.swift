@@ -2,16 +2,22 @@
 //  Element.swift
 //  TinyPost
 //
-//  Created by Roy Hsu on 21/03/2018.
+//  Created by Roy Hsu on 2018/4/24.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - Element 
+// MARK: - Element
 
 public enum Element {
     
-    case paragraph(ParagraphComponent)
+    case paragraph(
+        text: String,
+        factory: () -> ParagraphComponent
+    )
     
-    case image(ImageComponent)
+    case image(
+        resource: ImageResource,
+        factory: () -> ImageComponent
+    )
     
 }
