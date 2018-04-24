@@ -18,22 +18,11 @@ public final class UIRootCoordinator: Coordinator {
 
     public init(contentSize: CGSize) {
         
-        let listComponent = UIListComponent()
-        
-        let gridComponent = UIGridComponent(
-            layout: UIGridLayout(
-                columns: 2,
-                rows: 3
-            )
-        )
-        
         let carouselComponent = UICarouselComponent()
         
-        carouselComponent.setMinimumItemWidth { _ in 200.0 }
+        carouselComponent.setMinimumItemWidth { _, _ in 200.0 }
         
-        let collectionComponent: CollectionComponent = carouselComponent
-        
-        collectionComponent.setItemComponents(
+        carouselComponent.setItemComponents(
             [
                 labelComponentFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum."),
                 labelComponentFactory("Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
@@ -50,7 +39,7 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        self.rootComponent = labelComponentFactory("Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.")
+        self.rootComponent = carouselComponent
         
         self.navigationController = UINavigationController(
             rootViewController: UIComponentViewController(component: rootComponent)
@@ -94,7 +83,7 @@ public let exampleGridComponentFactory: () -> Component = {
         )
     )
     
-    gridComponent.setMinimumItemSize { _, _, _ in
+    gridComponent.setMinimumItemSize { _, _, _, _ in
         
         return CGSize(
             width: 50.0,
@@ -145,7 +134,7 @@ public let exampleCollectionComponentFactory: () -> Component = {
         ]
     )
     
-    collectionComponent.setSizeForItem { layout, indexPath in
+    collectionComponent.setSizeForItem { _, _, indexPath in
         
         return CGSize(
             width: 150.0,

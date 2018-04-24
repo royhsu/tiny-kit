@@ -21,7 +21,7 @@ public final class UICollectionComponent: CollectionComponent {
     fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
 
     public init(
-        contentMode: ComponentContentMode,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         layout: UICollectionViewLayout
     ) {
 
