@@ -30,7 +30,7 @@ public final class UIGridComponent: CollectionComponent {
     }
     
     public init(
-        contentMode: ComponentContentMode,
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         layout: UIGridLayout
     ) {
         
@@ -83,7 +83,7 @@ public final class UIGridComponent: CollectionComponent {
     
     fileprivate final func prepare() {
         
-        collectionComponent.setSizeForItem { [unowned self] _, indexPath in
+        collectionComponent.setSizeForItem { [unowned self] _, _, indexPath in
             
             let layout = self.layout
             

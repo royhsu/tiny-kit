@@ -18,19 +18,17 @@ public final class TSProductDetailComponent: Component {
     /// The base component.
     private final let layoutComponent: ListComponent
 
-    public final let galleryComponent: UIGalleryComponent
-
     private final let galleryAspectRatio: CGFloat = (16.0 / 9.0)
     
-    private final let galleryContainerComponent: UIItemComponent<TSProductGalleryView>
+    public final let galleryComponent: TSProductGalleryComponent
     
     public final let descriptionComponent: TSProductDescriptionComponent
     
     public final let reviewSectionHeaderComponent: TSProductSectionHeaderComponent
     
-    public final let reviewCarouselComponent: UICarouselComponent
-    
     public final let reviewAspectRatio: CGFloat = (3.0 / 2.0)
+    
+    public final let reviewCarouselComponent: UICarouselComponent
 
     public final let introductionSectionHeaderComponent: TSProductSectionHeaderComponent
 
@@ -50,14 +48,7 @@ public final class TSProductDetailComponent: Component {
         
         self.layoutComponent = layoutComponent
 
-        self.galleryContainerComponent = UIItemComponent(
-            itemView: UIView.load(
-                TSProductGalleryView.self,
-                from: bundle
-            )!
-        )
-        
-        self.galleryComponent = UIGalleryComponent()
+        self.galleryComponent = TSProductGalleryComponent()
         
         self.descriptionComponent = TSProductDescriptionComponent(buttonComponent: descriptionButtonComponent)
 
@@ -76,8 +67,6 @@ public final class TSProductDetailComponent: Component {
     // MARK: Set Up
 
     fileprivate final func prepare() {
-        
-        galleryContainerComponent.itemView.contentView.wrapSubview(galleryComponent.view)
         
         reviewCarouselComponent.setMinimumItemWidth { [unowned self] component, _ in
             
@@ -101,36 +90,18 @@ public final class TSProductDetailComponent: Component {
 
     public final func render() {
         
-        let estimatedWidth: CGFloat
-        
-        switch contentMode {
-            
-        case let .size(size): estimatedWidth = size.width
-           
-        case let .automatic(estimatedSize): estimatedWidth = estimatedSize.width
-            
-        }
+        let width = contentMode.initialSize.width
 
-//        let galleryWidth = view.bounds.width
-//
-//        let galleryHeight = (galleryWidth / galleryAspectRatio)
-//
-//        galleryContainerComponent.contentMode = .size(
-//            CGSize(
-//                width: galleryWidth,
-//                height: galleryHeight
-//            )
-//        )
-        
-        // TODO: find a way to prevent rendering before list renders it.
-        // This is a temporarily fix.
-//        galleryContainerComponent.render()
-        
-//        galleryComponent.render()
+        galleryComponent.contentMode = .size(
+            CGSize(
+                width: width,
+                height: (width / galleryAspectRatio)
+            )
+        )
        
         descriptionComponent.contentMode = .automatic(
             estimatedSize: CGSize(
-                width: estimatedWidth,
+                width: width,
                 height: 100.0
             )
         )
@@ -145,7 +116,7 @@ public final class TSProductDetailComponent: Component {
 //        reviewCarouselComponent.render()
         
         var itemComponents: [Component] = [
-//            galleryContainerComponent,
+            galleryComponent,
             descriptionComponent,
             reviewSectionHeaderComponent,
 //            reviewCarouselComponent
@@ -159,7 +130,7 @@ public final class TSProductDetailComponent: Component {
             
             introductionComponent.contentMode = .automatic(
                 estimatedSize: CGSize(
-                    width: estimatedWidth,
+                    width: width,
                     height: 100.0
                 )
             )
@@ -187,7 +158,7 @@ public extension TSProductDetailComponent {
     
     public final func applyTheme(_ theme: Theme) {
         
-        galleryContainerComponent.itemView.applyTheme(theme)
+        galleryComponent.applyTheme(theme)
         
         descriptionComponent.applyTheme(theme)
         

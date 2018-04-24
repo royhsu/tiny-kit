@@ -54,13 +54,8 @@ public final class UIListComponent: ListComponent {
         tableView.clipsToBounds = false
             
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
-
-            guard
-                let component = self.itemComponentProvider?(
-                    self,
-                    indexPath
-                )
-            else { return }
+                    
+            let component = self.itemComponent(at: indexPath)
             
             cell.contentView.frame.size = component.preferredContentSize
             
@@ -72,12 +67,7 @@ public final class UIListComponent: ListComponent {
 
         bridge.heightForRowProvider = { [unowned self] indexPath in
 
-            guard
-                let component = self.itemComponentProvider?(
-                    self,
-                    indexPath
-                )
-            else { return 0.0 }
+            let component = self.itemComponent(at: indexPath)
             
             switch component.contentMode {
 

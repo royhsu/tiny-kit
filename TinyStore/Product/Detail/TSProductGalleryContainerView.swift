@@ -1,14 +1,14 @@
 //
-//  TSProductGalleryView.swift
+//  TSProductGalleryContainerView.swift
 //  TinyStore
 //
 //  Created by Roy Hsu on 13/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TSProductGalleryView
+// MARK: - TSProductGalleryContainerView
 
-public final class TSProductGalleryView: UIView {
+public final class TSProductGalleryContainerView: UIView {
 
     @IBOutlet
     public fileprivate(set) final weak var contentView: UIView!

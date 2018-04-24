@@ -57,24 +57,22 @@ public final class UICollectionComponent: CollectionComponent {
         
     }
     
-    public typealias SizeForItemProvider = UICollectionViewBridge.SizeForItemProvider
+    public typealias SizeForItemProvider = (
+        _ component: Component,
+        _ layout: UICollectionViewLayout,
+        _ indexPath: IndexPath
+    )
+    -> CGSize
     
     public final func setSizeForItem(provider: @escaping SizeForItemProvider) {
         
         bridge.sizeForItemProvider = { layout, indexPath in
             
-            let size = provider(
+            return provider(
+                self,
                 layout,
                 indexPath
             )
-            
-            let component = self.itemComponent(at: indexPath)
-            
-            component.contentMode = .size(size)
-            
-            component.render()
-            
-            return size
             
         }
         
@@ -92,28 +90,21 @@ public final class UICollectionComponent: CollectionComponent {
         
         collectionView.clipsToBounds = false
         
-        let size: CGSize
-        
-        switch contentMode {
-            
-        case let .size(value): size = value
-            
-        case let .automatic(estimatedSize): size = estimatedSize
-            
-        }
-        
-        collectionView.frame.size = size
+        collectionView.frame.size = contentMode.initialSize
 
         bridge.configureCellHandler = { [unowned self] cell, indexPath in
 
-            guard
-                let component = self.itemComponentProvider?(
-                    self,
-                    indexPath
-                )
-            else { return }
+            let component = self.itemComponent(at: indexPath)
+            
+            let size = self.sizeForItem(at: indexPath)
 
+            cell.contentView.frame.size = size
+            
+            cell.frame.size = cell.contentView.frame.size
+            
             cell.contentView.wrapSubview(component.view)
+            
+            component.render()
 
         }
         

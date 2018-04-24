@@ -38,13 +38,13 @@ public final class UIGalleryComponent: Component {
     fileprivate final func prepare() {
         
         carouselComponent.collectionView.isPagingEnabled = true
-        
+
         carouselComponent.collectionView.clipsToBounds = true
-        
+
         carouselComponent.numberOfSections = 1
-        
+
         carouselComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfImages }
-        
+
         carouselComponent.setItemComponent { [unowned self] _, indexPath in
 
             let imageView = UIImageView()
@@ -52,6 +52,8 @@ public final class UIGalleryComponent: Component {
             imageView.contentMode = .scaleAspectFill
 
             imageView.clipsToBounds = true
+
+            imageView.image = #imageLiteral(resourceName: "image-dessert-1")
 
             let itemComponent = UIItemComponent(itemView: imageView)
 

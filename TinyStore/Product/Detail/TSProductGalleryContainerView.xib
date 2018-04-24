@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="cXZ-NS-dxj" customClass="TSProductGalleryView" customModule="TinyStore" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="cXZ-NS-dxj" customClass="TSProductGalleryContainerView" customModule="TinyStore" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>

@@ -10,7 +10,7 @@
 
 import TinyUI
 
-public extension TSProductGalleryView {
+public extension TSProductGalleryContainerView {
 
     public final func applyTheme(_ theme: Theme) {
 

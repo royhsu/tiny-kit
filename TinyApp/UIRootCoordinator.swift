@@ -213,6 +213,71 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
+//        let gridComponent = UIGridComponent(
+//            layout: UIGridLayout(
+//                columns: 2,
+//                rows: 2
+//            )
+//        )
+//
+//        gridComponent.setItemComponents(
+//            [
+//                UIItemComponent(itemView: label)
+//            ]
+//        )
+        
+        let labelComponentFactory: (String) -> Component = { text in
+            
+            let label = UILabel()
+            
+            label.text = text
+            
+            label.numberOfLines = 0
+            
+            return UIItemComponent(itemView: label)
+            
+        }
+        
+        let imageComponentFactory: (UIImage) -> Component = { image in
+            
+            let imageView = UIImageView()
+            
+            imageView.contentMode = .scaleAspectFill
+            
+            imageView.clipsToBounds = true
+            
+            imageView.image = image
+            
+            return UIItemComponent(itemView: imageView)
+            
+        }
+        
+        let carouselComponent = UICarouselComponent()
+       
+        let itemComponents: [Component] = [
+            imageComponentFactory(#imageLiteral(resourceName: "image-product-story-4")),
+            labelComponentFactory(
+                "Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            ),
+            labelComponentFactory(
+                "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."
+            )
+        ]
+        
+        carouselComponent.numberOfSections = 1
+        
+        carouselComponent.setItemComponent { _, indexPath in
+            
+            return itemComponents[indexPath.item]
+            
+        }
+        
+        carouselComponent.setNumberOfItemComponents { _, section in
+            
+            return itemComponents.count
+            
+        }
+        
         let viewController = UIComponentViewController(component: productDetailComponent)
 
         viewController.view.backgroundColor = .white
