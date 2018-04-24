@@ -1,17 +1,17 @@
 //
-//  ImageContainer.swift
+//  UIImageContainer.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 23/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ImageContainer
+// MARK: - UIImageContainer
 
 import Foundation
 import Hydra
 
-public enum ImageContainer {
+public enum UIImageContainer {
 
     case image(UIImage)
 
@@ -21,7 +21,7 @@ public enum ImageContainer {
 
 // MARK: - UIImageView
 
-public extension ImageContainer {
+public extension UIImageContainer {
 
     // TODO: add completionHandler.
     public func setImage(to imageView: UIImageView) {

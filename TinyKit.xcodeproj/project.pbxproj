@@ -49,7 +49,7 @@
 		B03BEE1E208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */; };
 		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
 		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
-		B04707E3207A025F00331D26 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E1207A025F00331D26 /* ImageContainer.swift */; };
+		B04707E3207A025F00331D26 /* UIImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E1207A025F00331D26 /* UIImageContainer.swift */; };
 		B04707E4207A025F00331D26 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E2207A025F00331D26 /* ImageProvider.swift */; };
 		B04707E7207A58BE00331D26 /* UIBoxComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E6207A58BE00331D26 /* UIBoxComponent.swift */; };
 		B04707E9207C6C1300331D26 /* UIGridComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E8207C6C1300331D26 /* UIGridComponent.swift */; };
@@ -140,7 +140,7 @@
 		B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIItemComponent+UIImageComponent.swift"; sourceTree = "<group>"; };
 		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B04707E1207A025F00331D26 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
+		B04707E1207A025F00331D26 /* UIImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageContainer.swift; sourceTree = "<group>"; };
 		B04707E2207A025F00331D26 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		B04707E6207A58BE00331D26 /* UIBoxComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBoxComponent.swift; sourceTree = "<group>"; };
 		B04707E8207C6C1300331D26 /* UIGridComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridComponent.swift; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				B04707E2207A025F00331D26 /* ImageProvider.swift */,
-				B04707E1207A025F00331D26 /* ImageContainer.swift */,
+				B04707E1207A025F00331D26 /* UIImageContainer.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -571,7 +571,7 @@
 				B04707E4207A025F00331D26 /* ImageProvider.swift in Sources */,
 				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
 				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
-				B04707E3207A025F00331D26 /* ImageContainer.swift in Sources */,
+				B04707E3207A025F00331D26 /* UIImageContainer.swift in Sources */,
 				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,

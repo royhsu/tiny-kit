@@ -14,7 +14,7 @@ public protocol CartItem {
 
     var id: String { get }
 
-    var imageContainers: [ImageContainer] { get }
+    var imageContainers: [UIImageContainer] { get }
 
     var title: String { get }
 

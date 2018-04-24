@@ -112,11 +112,19 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
 
-        productDetailComponent.galleryComponent.setImageComponents(
+//        productDetailComponent.galleryComponent.setImageComponents(
+//            [
+//                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-1")),
+//                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-2")),
+//                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-3"))
+//            ]
+//        )
+        
+        productDetailComponent.galleryComponent.setImageContainers(
             [
-                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-1")),
-                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-2")),
-                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-3"))
+                .image(#imageLiteral(resourceName: "image-dessert-1")),
+                .image(#imageLiteral(resourceName: "image-dessert-2")),
+                .image(#imageLiteral(resourceName: "image-dessert-3"))
             ]
         )
 
@@ -210,7 +218,7 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        let imageElementFactory: (ImageContainer) -> Element = { container in
+        let imageElementFactory: (UIImageContainer) -> Element = { container in
             
             let imageComponent = TPPostImageComponent()
             

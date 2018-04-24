@@ -62,9 +62,9 @@ public final class UIHomeCoordinator: Coordinator {
 //
 //            productDetailComponent.galleryComponent.setImageComponents(
 //                [
-//                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
-//                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
-//                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
+//                    UIImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
+//                    UIImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
+//                    UIImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
 //                ]
 //            )
 //            

@@ -102,4 +102,45 @@ public extension UIGalleryComponent {
         
     }
     
+    public typealias ImageContainerProvider = (
+        _ component: Component,
+        _ index: Int
+    )
+    -> UIImageContainer
+    
+    public final func setImageContainer(provider: @escaping ImageContainerProvider) {
+        
+        setImageComponent { component, index in
+            
+            let imageView = UIImageView()
+            
+            imageView.contentMode = .scaleAspectFill
+            
+            imageView.clipsToBounds = true
+            
+            let imageComponent = UIItemComponent(itemView: imageView)
+            
+            let imageContainer = provider(
+                component,
+                index
+            )
+            
+            imageContainer.setImage(to: imageView)
+            
+            return imageComponent
+            
+        }
+        
+    }
+    
+    public final func setImageContainers(
+        _ containers: [UIImageContainer]
+    ) {
+        
+        numberOfImageComponents = containers.count
+        
+        setImageContainer { _, index in containers[index] }
+        
+    }
+    
 }
