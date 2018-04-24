@@ -17,6 +17,6 @@ public protocol ImageProvider {
         in context: Context,
         url: URL
     )
-    -> Promise<UIImage>
+    -> Promise<Image>
 
 }

@@ -12,14 +12,14 @@ import TinyKit
 
 public struct Review {
 
-    public let imageContainer: UIImageContainer?
+    public let imageContainer: ImageResource?
 
     public let title: String?
 
     public let text: String?
 
     public init(
-        imageContainer: UIImageContainer? = nil,
+        imageContainer: ImageResource? = nil,
         title: String? = nil,
         text: String? = nil
     ) {

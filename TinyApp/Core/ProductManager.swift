@@ -23,19 +23,19 @@ public final class ProductManager: ProductProvider {
             let products = [
                 Product(
                     id: UUID().uuidString,
-                    imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-1")) ],
+                    imageContainers: [ .memory(#imageLiteral(resourceName: "image-dessert-1")) ],
                     title: "Cras mattis consectetur purus sit amet fermentum.",
                     price: 40.0
                 ),
                 Product(
                     id: UUID().uuidString,
-                    imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-2")) ],
+                    imageContainers: [ .memory(#imageLiteral(resourceName: "image-dessert-2")) ],
                     title: "Aenean eu leo quam.",
                     price: 120.0
                 ),
                 Product(
                     id: UUID().uuidString,
-                    imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-3")) ],
+                    imageContainers: [ .memory(#imageLiteral(resourceName: "image-dessert-3")) ],
                     title: "Donec id elit non mi porta gravida at eget metus.",
                     price: 75.0
                 )
@@ -56,7 +56,7 @@ public final class ProductManager: ProductProvider {
         return Promise(in: context) { fulfill, reject, _ in
 
             let result = ProductDetail(
-                imageContainers: [ .image(#imageLiteral(resourceName: "image-dessert-1")) ],
+                imageContainers: [ .memory(#imageLiteral(resourceName: "image-dessert-1")) ],
                 title: "Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
                 price: 100.0
             )
@@ -78,7 +78,7 @@ public final class ProductManager: ProductProvider {
             fulfill(
                 [
                     Review(
-                        imageContainer: .url(
+                        imageContainer: .remote(
                             URL(string: "https//apple.com")!,
                             UIImageDownloader(),
                             .background
@@ -87,12 +87,12 @@ public final class ProductManager: ProductProvider {
                         text: "Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui."
                     ),
                     Review(
-                        imageContainer: .image(#imageLiteral(resourceName: "image-jerry-price")),
+                        imageContainer: .memory(#imageLiteral(resourceName: "image-jerry-price")),
                         title: "Jerry Price",
                         text: "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     ),
                     Review(
-                        imageContainer: .image(#imageLiteral(resourceName: "image-danielle-schneider")),
+                        imageContainer: .memory(#imageLiteral(resourceName: "image-danielle-schneider")),
                         title: "Danielle Schneider",
                         text: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor."
                     )

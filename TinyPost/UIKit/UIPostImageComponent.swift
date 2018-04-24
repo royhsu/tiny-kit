@@ -1,14 +1,14 @@
 //
-//  TPPostImageComponent.swift
+//  UIPostImageComponent.swift
 //  TinyPost
 //
 //  Created by Roy Hsu on 14/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TPPostImageComponent
+// MARK: - UIPostImageComponent
 
-public final class TPPostImageComponent: ImageComponent {
+public final class UIPostImageComponent: ImageComponent {
 
     /// The base component.
     private final let imageComponent: UIItemComponent<UIImageView>
@@ -46,6 +46,16 @@ public final class TPPostImageComponent: ImageComponent {
         
         imageView.frame.size = size
 
+    }
+    
+    // MARK: ImageComponent
+    
+    public final var image: UIImage? {
+        
+        get { return imageView.image }
+        
+        set { imageView.image = newValue }
+        
     }
 
     // MARK: Component
@@ -106,7 +116,7 @@ public final class TPPostImageComponent: ImageComponent {
 
 // MARK: - UIPostImageComponent
 
-public extension TPPostImageComponent {
+public extension UIPostImageComponent {
 
     public final var imageView: UIImageView { return imageComponent.itemView }
     

@@ -10,6 +10,6 @@
 
 public protocol UIImageComponent: Component {
     
-    var imageView: UIImageView { get }
+    var image: UIImage? { get set }
     
 }

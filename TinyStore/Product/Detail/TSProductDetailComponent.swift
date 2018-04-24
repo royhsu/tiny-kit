@@ -120,7 +120,7 @@ public final class TSProductDetailComponent: Component {
             reviewCarouselComponent
         ]
 
-        let hasIntroduction = (introductionComponent.numberOfElements != 0)
+        let hasIntroduction = (introductionComponent.numberOfElementComponents != 0)
 
         if hasIntroduction {
 

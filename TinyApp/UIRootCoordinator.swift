@@ -122,9 +122,9 @@ public final class UIRootCoordinator: Coordinator {
         
         productDetailComponent.galleryComponent.setImageContainers(
             [
-                .image(#imageLiteral(resourceName: "image-dessert-1")),
-                .image(#imageLiteral(resourceName: "image-dessert-2")),
-                .image(#imageLiteral(resourceName: "image-dessert-3"))
+                .memory(#imageLiteral(resourceName: "image-dessert-1")),
+                .memory(#imageLiteral(resourceName: "image-dessert-2")),
+                .memory(#imageLiteral(resourceName: "image-dessert-3"))
             ]
         )
 
@@ -139,7 +139,7 @@ public final class UIRootCoordinator: Coordinator {
             right: 16.0
         )
         
-        let reviewComponentFactory: (UIImageContainer, String, String) -> Component = { pictureImageContainer, title, text in
+        let reviewComponentFactory: (ImageResource, String, String) -> Component = { pictureImageContainer, title, text in
             
             let reviewComponent = TSProductReviewComponent()
     
@@ -174,26 +174,26 @@ public final class UIRootCoordinator: Coordinator {
         productDetailComponent.reviewCarouselComponent.setItemComponents(
             [
                 reviewComponentFactory(
-                    .image(#imageLiteral(resourceName: "image-danielle-schneider")),
+                    .memory(#imageLiteral(resourceName: "image-danielle-schneider")),
                     "Danielle Schneider",
                     "Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
                 ),
                 reviewComponentFactory(
-                    .image(#imageLiteral(resourceName: "image-jerry-price")),
+                    .memory(#imageLiteral(resourceName: "image-jerry-price")),
                     "Jerry Price",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 ),
                 reviewComponentFactory(
-                    .image(#imageLiteral(resourceName: "image-carolyn-simmons")),
+                    .memory(#imageLiteral(resourceName: "image-carolyn-simmons")),
                     "Carolyn Simmons",
                     "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam."
                 )
             ]
         )
         
-        let paragraphElementFactory: (String) -> Element = { paragraph in
+        let paragraphElementFactory: (String) -> ElementComponent = { paragraph in
             
-            let paragraphComponent = TPPostParagraphComponent()
+            let paragraphComponent = UIPostParagraphComponent()
             
             paragraphComponent.textLabel.text = "\(paragraph)"
             
@@ -210,9 +210,9 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        let imageElementFactory: (UIImageContainer) -> Element = { container in
+        let imageElementFactory: (ImageResource) -> ElementComponent = { container in
             
-            let imageComponent = TPPostImageComponent()
+            let imageComponent = UIPostImageComponent()
             
             imageComponent.applyTheme(.current)
             
@@ -222,18 +222,18 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        productDetailComponent.introductionComponent.setElements(
+        productDetailComponent.introductionComponent.setElementComponents(
             [
                 imageElementFactory(
-                    .image(#imageLiteral(resourceName: "image-product-story-4"))
+                    .memory(#imageLiteral(resourceName: "image-product-story-4"))
                 ),
                 imageElementFactory(
-                    .image(#imageLiteral(resourceName: "image-product-story-1"))
+                    .memory(#imageLiteral(resourceName: "image-product-story-1"))
                 ),
                 paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
                 paragraphElementFactory("Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."),
                 imageElementFactory(
-                    .image(#imageLiteral(resourceName: "image-product-story-3"))
+                    .memory(#imageLiteral(resourceName: "image-product-story-3"))
                 ),
                 paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
             ]
@@ -278,7 +278,30 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        let viewController = UIComponentViewController(component: productDetailComponent)
+        let postComponent: TPPostComponent = [
+            .image(
+                resource: .memory(#imageLiteral(resourceName: "image-product-story-4")),
+                factory: { UIPostImageComponent() }
+            ),
+            .image(
+                resource: .memory(#imageLiteral(resourceName: "image-product-story-1")),
+                factory: { UIPostImageComponent() }
+            ),
+            .paragraph(
+                text: "Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                factory: { UIPostParagraphComponent() }
+            ),
+            .image(
+                resource: .memory(#imageLiteral(resourceName: "image-product-story-3")),
+                factory: { UIPostImageComponent() }
+            ),
+            .paragraph(
+                text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.",
+                factory: { UIPostParagraphComponent() }
+            )
+        ]
+        
+        let viewController = UIComponentViewController(component: postComponent)
 
         viewController.view.backgroundColor = .white
 

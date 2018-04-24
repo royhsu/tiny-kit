@@ -10,27 +10,94 @@
 
 public protocol PostComponent: Component {
     
-    var numberOfElements: Int { get set }
+    var numberOfElementComponents: Int { get set }
     
-    func element(at index: Int) -> Element
+    func elementComponent(at index: Int) -> ElementComponent
     
-    typealias ElementProvider = (
-        _ postComponent: PostComponent,
+    typealias ElementComponentProvider = (
+        _ component: PostComponent,
         _ index: Int
     )
-    -> Element
+    -> ElementComponent
     
-    func setElement(provider: @escaping ElementProvider)
+    func setElementComponent(provider: @escaping ElementComponentProvider)
     
 }
 
 public extension PostComponent {
     
+    public func setElementComponents(
+        _ components: [ElementComponent]
+    ) {
+        
+        numberOfElementComponents = components.count
+        
+        setElementComponent { _, index in components[index] }
+        
+    }
+    
+}
+
+public extension PostComponent {
+    
+    public typealias ElementProvider = (
+        _ component: PostComponent,
+        _ index: Int
+    )
+    -> Element
+    
+    public func setElement(
+        provider: @escaping ElementProvider
+    ) {
+        
+        setElementComponent { component, index in
+            
+            let element = provider(
+                component,
+                index
+            )
+            
+            switch element {
+                
+            case let .paragraph(text, factory):
+                
+                let paragraphComponent = factory()
+                
+                paragraphComponent.text = text
+                
+                return .paragraph(paragraphComponent)
+                
+            case let .image(resource, factory):
+                
+                let imageComponent = factory()
+                
+                switch resource {
+                    
+                case let .memory(image): imageComponent.image = image
+                   
+                case let .remote(url, provider, context):
+                    
+                    provider.fetch(
+                        in: context,
+                        url: url
+                    )
+                    .then(in: .main) { image in imageComponent.image = image }
+                    
+                }
+                
+                return .image(imageComponent)
+                
+            }
+            
+        }
+        
+    }
+    
     public func setElements(
         _ elements: [Element]
     ) {
         
-        numberOfElements = elements.count
+        numberOfElementComponents = elements.count
         
         setElement { _, index in elements[index] }
         

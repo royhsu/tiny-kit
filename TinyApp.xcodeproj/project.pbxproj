@@ -31,7 +31,7 @@
 		B024C8F12058BDCB00CFAE50 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9220458438004E318B /* Hydra.framework */; };
 		B024C8F22058BDCB00CFAE50 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9320458438004E318B /* TinyCore.framework */; };
 		B024C8F32058BDCB00CFAE50 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03C3E9120458279004E318B /* TinyKit.framework */; };
-		B024C8FB2058C0A100CFAE50 /* TPPostParagraphComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FA2058C0A100CFAE50 /* TPPostParagraphComponent.swift */; };
+		B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */; };
 		B024C9012058E5D600CFAE50 /* TinyPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B024C8E52058BDB800CFAE50 /* TinyPost.framework */; };
 		B024C9052058EE4800CFAE50 /* TSProductDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024C9042058EE4800CFAE50 /* TSProductDetailComponent.swift */; };
 		B032B00720564BFF00AB47C4 /* TSStoreItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032B00620564BFF00AB47C4 /* TSStoreItemComponent.swift */; };
@@ -58,6 +58,8 @@
 		B03A4C112083132B005098D3 /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C102083132B005098D3 /* ImageComponent.swift */; };
 		B03A4C1320831358005098D3 /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C1220831358005098D3 /* PostComponent.swift */; };
 		B03BEE1A208ECE7100CF46FC /* TSProductGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE19208ECE7100CF46FC /* TSProductGalleryComponent.swift */; };
+		B03BEE33208F7F1F00CF46FC /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE32208F7F1F00CF46FC /* Element.swift */; };
+		B03BEE35208F8B3400CF46FC /* TPPostComponent+UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE34208F8B3400CF46FC /* TPPostComponent+UIListComponent.swift */; };
 		B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E6820457FEC004E318B /* AppDelegate.swift */; };
 		B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6C20457FEC004E318B /* Assets.xcassets */; };
 		B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */; };
@@ -98,8 +100,8 @@
 		B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */; };
 		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
 		B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */; };
-		B0876E1520622C55005EDA9A /* TPPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1420622C55005EDA9A /* TPPostImageComponent.swift */; };
-		B0876E1720623094005EDA9A /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1620623094005EDA9A /* Element.swift */; };
+		B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */; };
+		B0876E1720623094005EDA9A /* ElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1620623094005EDA9A /* ElementComponent.swift */; };
 		B0876E1B20623DC3005EDA9A /* TPPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1A20623DC3005EDA9A /* TPPostComponent.swift */; };
 		B0876E1F206252AF005EDA9A /* TSProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */; };
 		B0876E2120629DC9005EDA9A /* TSProductReviewView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* TSProductReviewView+Theme.swift */; };
@@ -244,7 +246,7 @@
 		B024C8E52058BDB800CFAE50 /* TinyPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B024C8E72058BDB900CFAE50 /* TinyPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyPost.h; sourceTree = "<group>"; };
 		B024C8E82058BDB900CFAE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B024C8FA2058C0A100CFAE50 /* TPPostParagraphComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPPostParagraphComponent.swift; sourceTree = "<group>"; };
+		B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostParagraphComponent.swift; sourceTree = "<group>"; };
 		B024C9042058EE4800CFAE50 /* TSProductDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSProductDetailComponent.swift; sourceTree = "<group>"; };
 		B032B00620564BFF00AB47C4 /* TSStoreItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSStoreItemComponent.swift; sourceTree = "<group>"; };
 		B032B00820564C1D00AB47C4 /* TSStoreItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSStoreItemView.swift; sourceTree = "<group>"; };
@@ -270,6 +272,8 @@
 		B03A4C102083132B005098D3 /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
 		B03A4C1220831358005098D3 /* PostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
 		B03BEE19208ECE7100CF46FC /* TSProductGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSProductGalleryComponent.swift; sourceTree = "<group>"; };
+		B03BEE32208F7F1F00CF46FC /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		B03BEE34208F8B3400CF46FC /* TPPostComponent+UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPPostComponent+UIListComponent.swift"; sourceTree = "<group>"; };
 		B03C3E6520457FEC004E318B /* TinyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C3E6820457FEC004E318B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B03C3E6C20457FEC004E318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -310,8 +314,8 @@
 		B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButton.swift; sourceTree = "<group>"; };
 		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISecondaryButton+Theme.swift"; sourceTree = "<group>"; };
-		B0876E1420622C55005EDA9A /* TPPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPPostImageComponent.swift; sourceTree = "<group>"; };
-		B0876E1620623094005EDA9A /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
+		B0876E1620623094005EDA9A /* ElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementComponent.swift; sourceTree = "<group>"; };
 		B0876E1A20623DC3005EDA9A /* TPPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPPostComponent.swift; sourceTree = "<group>"; };
 		B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
 		B0876E2020629DC8005EDA9A /* TSProductReviewView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TSProductReviewView+Theme.swift"; sourceTree = "<group>"; };
@@ -477,13 +481,13 @@
 		B024C8E62058BDB800CFAE50 /* TinyPost */ = {
 			isa = PBXGroup;
 			children = (
+				B03BEE28208F384100CF46FC /* UIKit */,
 				B03A4C0E2083130F005098D3 /* ParagraphComponent.swift */,
 				B03A4C102083132B005098D3 /* ImageComponent.swift */,
-				B0876E1620623094005EDA9A /* Element.swift */,
+				B0876E1620623094005EDA9A /* ElementComponent.swift */,
+				B03BEE32208F7F1F00CF46FC /* Element.swift */,
 				B03A4C1220831358005098D3 /* PostComponent.swift */,
 				B0876E1A20623DC3005EDA9A /* TPPostComponent.swift */,
-				B024C8FA2058C0A100CFAE50 /* TPPostParagraphComponent.swift */,
-				B0876E1420622C55005EDA9A /* TPPostImageComponent.swift */,
 				B024C8E72058BDB900CFAE50 /* TinyPost.h */,
 				B024C8E82058BDB900CFAE50 /* Info.plist */,
 			);
@@ -534,6 +538,16 @@
 				B032B05D2057A85C00AB47C4 /* TriangleView.swift */,
 			);
 			path = TriangleView;
+			sourceTree = "<group>";
+		};
+		B03BEE28208F384100CF46FC /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */,
+				B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */,
+				B03BEE34208F8B3400CF46FC /* TPPostComponent+UIListComponent.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		B03C3E5C20457FEC004E318B = {
@@ -1050,12 +1064,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B03A4C1320831358005098D3 /* PostComponent.swift in Sources */,
-				B0876E1720623094005EDA9A /* Element.swift in Sources */,
+				B0876E1720623094005EDA9A /* ElementComponent.swift in Sources */,
+				B03BEE35208F8B3400CF46FC /* TPPostComponent+UIListComponent.swift in Sources */,
+				B03BEE33208F7F1F00CF46FC /* Element.swift in Sources */,
 				B03A4C0F2083130F005098D3 /* ParagraphComponent.swift in Sources */,
-				B024C8FB2058C0A100CFAE50 /* TPPostParagraphComponent.swift in Sources */,
+				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
 				B03A4C112083132B005098D3 /* ImageComponent.swift in Sources */,
 				B0876E1B20623DC3005EDA9A /* TPPostComponent.swift in Sources */,
-				B0876E1520622C55005EDA9A /* TPPostImageComponent.swift in Sources */,
+				B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
