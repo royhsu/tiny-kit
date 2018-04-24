@@ -8,18 +8,18 @@
 
 // MARK: - UIRootCoordinator
 
+import TinyCore
 import TinyKit
-
-import TinyUI
 import TinyPost
 import TinyStore
+import TinyUI
 
 public final class UIRootCoordinator: Coordinator {
 
     /// The navigator.
     private final let rootViewController: UIViewController
     
-    private final var listening: NewEventEmitter<UITouchEvent>.Listening?
+    private final var listening: EventEmitter<UIButtonEvent>.Listening?
     
     public init() {
         
@@ -60,7 +60,7 @@ public final class UIRootCoordinator: Coordinator {
         
         buttonComponent.applyTheme(.current)
         
-        listening = buttonComponent.eventEmitter.listen(event: .touchUpInside) { event in
+        listening = buttonComponent.eventEmitter.listen(event: .touchUpInside) { _, event in
             
             print("emitted", event)
             

@@ -8,6 +8,8 @@
 
 // MARK: - TSPrimaryButtonComponent
 
+import TinyCore
+
 public final class TSPrimaryButtonComponent: UIButtonComponent {
 
     private final let bundle: Bundle
@@ -15,7 +17,7 @@ public final class TSPrimaryButtonComponent: UIButtonComponent {
     /// The base component.
     private final let itemComponent: UIItemComponent<TSPrimaryButton>
     
-    public final let eventEmitter: NewEventEmitter<UITouchEvent>
+    public final let eventEmitter: EventEmitter<UIButtonEvent>
 
     public init(
         contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
@@ -33,7 +35,7 @@ public final class TSPrimaryButtonComponent: UIButtonComponent {
             )!
         )
 
-        self.eventEmitter = NewEventEmitter()
+        self.eventEmitter = EventEmitter()
 
         self.prepare()
 
