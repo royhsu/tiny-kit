@@ -60,7 +60,7 @@ public final class UIHomeCoordinator: Coordinator {
 //                    .setTitle("Introduction")
 //            )
 //
-//            productDetailComponent.galleryComponent.setImageContainers(
+//            productDetailComponent.galleryComponent.setImageComponents(
 //                [
 //                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
 //                    ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),

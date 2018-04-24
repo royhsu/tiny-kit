@@ -19,19 +19,36 @@ public final class UIGalleryComponent: Component {
 
         self.carouselComponent = UICarouselComponent(contentMode: contentMode)
 
-        self.numberOfImages = 0
+        self.numberOfImageComponents = 0
 
         self.prepare()
 
     }
     
-    public final var numberOfImages: Int
+    public final var numberOfImageComponents: Int
     
-    public typealias ImageContainerProvider = (_ index: Int) -> ImageContainer
+    public final func imageComponent(at index: Int) -> UIImageComponent {
+        
+        guard
+            let provider = imageComponentProvider
+        else { fatalError("Please make sure to set the provider with setImageComponent(provider:) firstly.") }
+        
+        return provider(
+            self,
+            index
+        )
+        
+    }
     
-    private final var imageContainerProvider: ImageContainerProvider?
+    public typealias ImageComponentProvider = (
+        _ component: Component,
+        _ index: Int
+    )
+    -> UIImageComponent
     
-    public final func setImageContainer(provider: @escaping ImageContainerProvider) { imageContainerProvider = provider }
+    private final var imageComponentProvider: ImageComponentProvider?
+    
+    public final func setImageComponent(provider: @escaping ImageComponentProvider) { imageComponentProvider = provider }
     
     // MARK: Set Up
 
@@ -43,25 +60,11 @@ public final class UIGalleryComponent: Component {
 
         carouselComponent.numberOfSections = 1
 
-        carouselComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfImages }
+        carouselComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfImageComponents }
 
         carouselComponent.setItemComponent { [unowned self] _, indexPath in
 
-            let imageView = UIImageView()
-
-            imageView.contentMode = .scaleAspectFill
-
-            imageView.clipsToBounds = true
-
-            imageView.image = #imageLiteral(resourceName: "image-dessert-1")
-
-            let itemComponent = UIItemComponent(itemView: imageView)
-
-            let imageContainer = self.imageContainerProvider?(indexPath.item)
-
-            imageContainer?.setImage(to: imageView)
-
-            return itemComponent
+            return self.imageComponent(at: indexPath.item)
 
         }
 
@@ -89,13 +92,13 @@ public final class UIGalleryComponent: Component {
 
 public extension UIGalleryComponent {
     
-    public final func setImageContainers(
-        _ containers: [ImageContainer]
+    public final func setImageComponents(
+        _ components: [UIImageComponent]
     ) {
         
-        numberOfImages = containers.count
+        numberOfImageComponents = components.count
         
-        setImageContainer { index in containers[index] }
+        setImageComponent { _, index in components[index] }
         
     }
     

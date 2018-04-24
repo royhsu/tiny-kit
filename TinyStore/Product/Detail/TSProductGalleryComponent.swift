@@ -47,17 +47,17 @@ public final class TSProductGalleryComponent: Component {
     
     // MARK: GalleryComponent
     
-    public final var numberOfImages: Int {
+    public final var numberOfImageComponents: Int {
         
-        get { return galleryComponent.numberOfImages }
+        get { return galleryComponent.numberOfImageComponents }
 
-        set { galleryComponent.numberOfImages = newValue }
+        set { galleryComponent.numberOfImageComponents = newValue }
         
     }
     
-    public typealias ImageContainerProvider = UIGalleryComponent.ImageContainerProvider
+    public typealias ImageComponentProvider = UIGalleryComponent.ImageComponentProvider
     
-    public final func setImageContainer(provider: @escaping ImageContainerProvider) { galleryComponent.setImageContainer(provider: provider) }
+    public final func setImageComponent(provider: @escaping ImageComponentProvider) { galleryComponent.setImageComponent(provider: provider) }
     
     // MARK: Component
     
@@ -97,13 +97,13 @@ public extension TSProductGalleryComponent {
     
     public final func applyTheme(_ theme: Theme) { containerView.applyTheme(theme) }
     
-    public final func setImageContainers(
-        _ containers: [ImageContainer]
+    public final func setImageComponents(
+        _ components: [UIImageComponent]
     ) {
         
-        numberOfImages = containers.count
+        numberOfImageComponents = components.count
         
-        setImageContainer { index in containers[index] }
+        setImageComponent { _, index in components[index] }
         
     }
     

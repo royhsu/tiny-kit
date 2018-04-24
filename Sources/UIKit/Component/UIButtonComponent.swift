@@ -26,6 +26,7 @@ public protocol UIButtonComponent: Component {
 
 import TinyCore
 
+// TODO: move into TinyCore.
 public final class NewEventEmitter<Event> where Event: Hashable {
     
     public typealias Listener = (_ event: Event) -> Void

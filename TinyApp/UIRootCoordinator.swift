@@ -22,6 +22,32 @@ public final class UIRootCoordinator: Coordinator {
     private final var listening: NewEventEmitter<UITouchEvent>.Listening?
     
     public init() {
+        
+        let labelComponentFactory: (String) -> Component = { text in
+        
+            let label = UILabel()
+            
+            label.text = text
+            
+            label.numberOfLines = 0
+            
+            return UIItemComponent(itemView: label)
+        
+        }
+        
+        let imageComponentFactory: (UIImage) -> UIImageComponent = { image in
+            
+            let imageView = UIImageView()
+            
+            imageView.contentMode = .scaleAspectFill
+            
+            imageView.clipsToBounds = true
+            
+            imageView.image = image
+            
+            return UIItemComponent<UIImageView>(itemView: imageView)
+            
+        }
 
         let buttonComponent = TSPrimaryButtonComponent()
         
@@ -86,11 +112,11 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
 
-        productDetailComponent.galleryComponent.setImageContainers(
+        productDetailComponent.galleryComponent.setImageComponents(
             [
-                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-1")),
-                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-2")),
-                ImageContainer.image(#imageLiteral(resourceName: "image-dessert-3"))
+                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-1")),
+                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-2")),
+                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-3"))
             ]
         )
 
@@ -225,32 +251,6 @@ public final class UIRootCoordinator: Coordinator {
 //                UIItemComponent(itemView: label)
 //            ]
 //        )
-        
-        let labelComponentFactory: (String) -> Component = { text in
-            
-            let label = UILabel()
-            
-            label.text = text
-            
-            label.numberOfLines = 0
-            
-            return UIItemComponent(itemView: label)
-            
-        }
-        
-        let imageComponentFactory: (UIImage) -> Component = { image in
-            
-            let imageView = UIImageView()
-            
-            imageView.contentMode = .scaleAspectFill
-            
-            imageView.clipsToBounds = true
-            
-            imageView.image = image
-            
-            return UIItemComponent(itemView: imageView)
-            
-        }
         
         let carouselComponent = UICarouselComponent()
        
