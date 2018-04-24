@@ -102,7 +102,7 @@
 		B0876E1720623094005EDA9A /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1620623094005EDA9A /* Element.swift */; };
 		B0876E1B20623DC3005EDA9A /* TPPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1A20623DC3005EDA9A /* TPPostComponent.swift */; };
 		B0876E1F206252AF005EDA9A /* TSProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */; };
-		B0876E2120629DC9005EDA9A /* UIProductReviewView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */; };
+		B0876E2120629DC9005EDA9A /* TSProductReviewView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E2020629DC8005EDA9A /* TSProductReviewView+Theme.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -314,7 +314,7 @@
 		B0876E1620623094005EDA9A /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		B0876E1A20623DC3005EDA9A /* TPPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPPostComponent.swift; sourceTree = "<group>"; };
 		B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
-		B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProductReviewView+Theme.swift"; sourceTree = "<group>"; };
+		B0876E2020629DC8005EDA9A /* TSProductReviewView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TSProductReviewView+Theme.swift"; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -521,7 +521,7 @@
 				B032B06B2057BFD700AB47C4 /* TSProductSectionHeaderComponent.swift */,
 				B032B06D2057C2BD00AB47C4 /* TSProductReviewView.swift */,
 				B032B06F2057C2C600AB47C4 /* TSProductReviewView.xib */,
-				B0876E2020629DC8005EDA9A /* UIProductReviewView+Theme.swift */,
+				B0876E2020629DC8005EDA9A /* TSProductReviewView+Theme.swift */,
 				B032B0712057C4FC00AB47C4 /* TSProductReviewComponent.swift */,
 				B024C9042058EE4800CFAE50 /* TSProductDetailComponent.swift */,
 			);
@@ -1153,7 +1153,7 @@
 				B04F05D3205A60B50050C41C /* UICartBarComponent.swift in Sources */,
 				B04707F1207D153E00331D26 /* TSStoreItemView+Theme.swift in Sources */,
 				B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */,
-				B0876E2120629DC9005EDA9A /* UIProductReviewView+Theme.swift in Sources */,
+				B0876E2120629DC9005EDA9A /* TSProductReviewView+Theme.swift in Sources */,
 				B03BEE1A208ECE7100CF46FC /* TSProductGalleryComponent.swift in Sources */,
 				B04F05D5205A61A40050C41C /* UICartBarItem.swift in Sources */,
 				B024C9052058EE4800CFAE50 /* TSProductDetailComponent.swift in Sources */,

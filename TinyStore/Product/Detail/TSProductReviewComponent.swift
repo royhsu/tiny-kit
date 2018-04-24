@@ -57,6 +57,8 @@ public final class TSProductReviewComponent: Component {
 
     public final func render() {
         
+        boxComponent.render()
+        
         boxComponent.view.backgroundColor = .white
         
         boxComponent.view.layer.shadowColor = UIColor.black.cgColor
@@ -69,8 +71,6 @@ public final class TSProductReviewComponent: Component {
         boxComponent.view.layer.shadowOpacity = 0.15
         
         boxComponent.view.layer.shadowRadius = 5.0
-        
-        boxComponent.render()
         
     }
 

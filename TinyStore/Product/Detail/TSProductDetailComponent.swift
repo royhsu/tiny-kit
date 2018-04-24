@@ -106,20 +106,18 @@ public final class TSProductDetailComponent: Component {
             )
         )
         
-//        reviewCarouselComponent.contentMode = .size(
-//            CGSize(
-//                width: view.bounds.width,
-//                height: 167.0
-//            )
-//        )
-
-//        reviewCarouselComponent.render()
+        reviewCarouselComponent.contentMode = .size(
+            CGSize(
+                width: width,
+                height: 167.0
+            )
+        )
         
         var itemComponents: [Component] = [
             galleryComponent,
             descriptionComponent,
             reviewSectionHeaderComponent,
-//            reviewCarouselComponent
+            reviewCarouselComponent
         ]
 
         let hasIntroduction = (introductionComponent.numberOfElements != 0)
