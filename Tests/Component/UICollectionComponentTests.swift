@@ -81,7 +81,7 @@ internal final class UICollectionComponentTests: XCTestCase {
             layout: UICollectionViewFlowLayout()
         )
         
-        collectionComponent.setSizeForItem { _, _ in redSize }
+        collectionComponent.setSizeForItem { _, _, _ in redSize }
         
         collectionComponent.setItemComponents(
             [ redComponent ]
@@ -153,7 +153,7 @@ internal final class UICollectionComponentTests: XCTestCase {
             layout: UICollectionViewFlowLayout()
         )
         
-        collectionComponent.setSizeForItem { _, indexPath in
+        collectionComponent.setSizeForItem { _, _, indexPath in
             
             switch indexPath.item {
                 

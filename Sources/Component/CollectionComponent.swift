@@ -8,6 +8,7 @@
 
 // MARK: - CollectionComponent
 
+/// Grouping a bunch of item components by indexes.
 public protocol CollectionComponent: Component {
 
     var numberOfSections: Int { get set }
@@ -36,6 +37,7 @@ public protocol CollectionComponent: Component {
 
 extension CollectionComponent {
 
+    // TODO: add unit tests.
     public func setItemComponents(
         _ components: [Component]
     ) {

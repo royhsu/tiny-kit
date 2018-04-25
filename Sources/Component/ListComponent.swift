@@ -8,7 +8,7 @@
 
 // MARK: - ListComponent
 
-/// The layout component that renders the group of item components into a list.
+/// The list layout component.
 public protocol ListComponent: CollectionComponent {
 
     var headerComponent: Component? { get set }

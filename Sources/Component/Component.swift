@@ -13,7 +13,7 @@ public protocol Component: class, ViewRenderable {
     /// The parent component may override the content mode of its child components.
     var contentMode: ComponentContentMode { get set }
     
-    /// A component should render at least once for showing its content.
+    /// A component should render at least once for showing its content as same as the content changed.
     /// The rendering should only happen on the main thread.
     func render()
 

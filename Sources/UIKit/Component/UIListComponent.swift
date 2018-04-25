@@ -8,6 +8,12 @@
 
 // MARK: - UIListComponent
 
+/// Grouping a collection of item components in a list.
+///
+/// The list component uses the width specified in the content mode to calculate the rect of each associated components including the item, header and footer components.
+/// That means the list overrides their content mode to fit the width during the rendering.
+///
+/// Please make sure to give a non-zero size for the list to properly render its content.
 public final class UIListComponent: ListComponent {
 
     public final let tableView: UITableView
@@ -18,10 +24,9 @@ public final class UIListComponent: ListComponent {
     
     fileprivate final let tableViewHeightConstraint: NSLayoutConstraint
     
-    fileprivate final var itemComponentMap: [IndexPath: Component]
+    // DO NOT get an item component from the map directly, please use itemComponent(at:) instead.
+    internal final var itemComponentMap: [IndexPath: Component]
 
-    /// If providing a dedicated width of the estimatedSize with mode .automatic, the list will be able to use this width to calculate the height dynamically based on the content of each item component.
-    /// Please make sure to call the function render() again if the content of any item components changed.
     public init(
         contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
     ) {
@@ -146,7 +151,6 @@ public final class UIListComponent: ListComponent {
         
     }
     
-    // TODO: should find a mechanism to ensure the item component cached correctly and clean up completely.
     public final func itemComponent(at indexPath: IndexPath) -> Component {
         
         if let provider = itemComponentMap[indexPath] { return provider }
@@ -259,8 +263,6 @@ public final class UIListComponent: ListComponent {
         
         component.render()
         
-        print(#function, component.view)
-        
     }
     
     fileprivate final func renderFooterComponent(size: CGSize) {
@@ -287,8 +289,6 @@ public final class UIListComponent: ListComponent {
         )
         
         component.render()
-        
-        print(#function, component.view)
         
     }
 

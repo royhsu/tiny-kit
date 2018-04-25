@@ -56,27 +56,173 @@ internal final class UIListComponentTests: XCTestCase {
 
     internal final func testRenderWithContentModeSize() {
         
-        let redView = UIView()
+        let listComponent = UIListComponent(
+            contentMode: .size(
+                CGSize(
+                    width: 500.0,
+                    height: 500.0
+                )
+            )
+        )
+    
+        listComponent.render()
         
-        redView.backgroundColor = .red
-        
-        let redSize = CGSize(
-            width: 100.0,
-            height: 100.0
+        XCTAssertEqual(
+            listComponent.view.frame.size,
+            CGSize(
+                width: 500.0,
+                height: 500.0
+            )
         )
         
-        let redComponent = UIItemComponent(
-            contentMode: .size(redSize),
-            itemView: redView
+    }
+    
+    internal final func testRenderWithContentModeAutomatic() {
+
+        let listComponent = UIListComponent(
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
+        )
+
+        listComponent.setItemComponents(
+            [
+                UIItemComponent(
+                    contentMode: .size(
+                        CGSize(
+                            width: 100.0,
+                            height: 100.0
+                        )
+                    ),
+                    itemView: UIView()
+                )
+            ]
+        )
+
+        listComponent.render()
+        
+        XCTAssertEqual(
+            listComponent.view.frame.size,
+            CGSize(
+                width: 500.0,
+                height: 100.0
+            )
         )
         
-        let listSize = CGSize(
-            width: 500.0,
-            height: 500.0
+    }
+    
+    internal final func testRenderHeaderComponent() {
+        
+        let squareComponent = UIItemComponent(
+            contentMode: .size(
+                CGSize(
+                    width: 100.0,
+                    height: 100.0
+                )
+            ),
+            itemView: UIView()
         )
         
         let listComponent = UIListComponent(
-            contentMode: .size(listSize)
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
+        )
+        
+        listComponent.headerComponent = squareComponent
+        
+        listComponent.render()
+    
+        XCTAssertEqual(
+            listComponent.tableView.tableHeaderView,
+            squareComponent.view
+        )
+        
+        XCTAssertEqual(
+            listComponent.headerComponent?.view.frame.size,
+            CGSize(
+                width: 500.0,
+                height: 100.0
+            )
+        )
+        
+    }
+    
+    internal final func testRenderFooterComponent() {
+        
+        let squareComponent = UIItemComponent(
+            contentMode: .size(
+                CGSize(
+                    width: 100.0,
+                    height: 100.0
+                )
+            ),
+            itemView: UIView()
+        )
+        
+        let listComponent = UIListComponent(
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
+        )
+        
+        listComponent.footerComponent = squareComponent
+        
+        listComponent.render()
+        
+        XCTAssertEqual(
+            listComponent.tableView.tableFooterView,
+            squareComponent.view
+        )
+        
+        XCTAssertEqual(
+            listComponent.footerComponent?.view.frame.size,
+            CGSize(
+                width: 500.0,
+                height: 100.0
+            )
+        )
+        
+    }
+    
+    internal final func testRenderingKeepsStrongReferencesToItemComponents() {
+        
+        let colorComponentFactory: (UIColor) -> Component = { color in
+            
+            let component = UIItemComponent(
+                contentMode: .size(
+                    CGSize(
+                        width: 100.0,
+                        height: 100.0
+                    )
+                ),
+                itemView: UIView()
+            )
+            
+            component.view.backgroundColor = color
+            
+            return component
+            
+        }
+        
+        let redComponent = colorComponentFactory(.red)
+        
+        let listComponent = UIListComponent(
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
         )
         
         listComponent.setItemComponents(
@@ -85,237 +231,78 @@ internal final class UIListComponentTests: XCTestCase {
         
         listComponent.render()
         
-        let expectedRedComponent = listComponent.itemComponent(
-            at: IndexPath(
-                row: 0,
-                section: 0
-            )
-        )
-        
         XCTAssertEqual(
-            .red,
-            expectedRedComponent.view.backgroundColor
-        )
-        
-        XCTAssertEqual(
-            CGSize(
-                width: listComponent.view.frame.width,
-                height: redSize.height
-            ),
-            expectedRedComponent.view.frame.size
-        )
-        
-        XCTAssertEqual(
-            listComponent.view.frame.size,
-            listSize
-        )
-        
-    }
-    
-    internal final func testRenderWithContentModeAutomatic() {
-
-        let redView = UIView()
-        
-        redView.backgroundColor = .red
-        
-        let redSize = CGSize(
-            width: 100.0,
-            height: 100.0
-        )
-        
-        let redComponent = UIItemComponent(
-            contentMode: .size(redSize),
-            itemView: redView
-        )
-        
-        let label = UILabel()
-        
-        label.numberOfLines = 0
-        
-        label.text = "Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper."
-        
-        let estimatedLabelSize = CGSize(
-            width: 500.0,
-            height: 50.0
-        )
-        
-        let expectedLabelSize = label.sizeThatFits(estimatedLabelSize)
-        
-        let labelComponent = UIItemComponent(
-            contentMode: .automatic(estimatedSize: estimatedLabelSize),
-            itemView: label
-        )
-        
-        let itemComponents: [Component] = [
-            redComponent,
-            labelComponent
-        ]
-        
-        let estimatedListSize = CGSize(
-            width: 500.0,
-            height: 500.0
-        )
-        
-        let listComponent = UIListComponent(
-            contentMode: .automatic(estimatedSize: estimatedListSize)
-        )
-
-        listComponent.setItemComponents(itemComponents)
-
-        listComponent.render()
-        
-        XCTAssertEqual(
-            listComponent.numberOfSections,
+            listComponent.itemComponentMap.count,
             1
         )
-            
-        XCTAssertEqual(
-            listComponent.numberOfItemComponents(inSection: 0),
-            itemComponents.count
-        )
-
-        let expectedRedComponent = listComponent.itemComponent(
-            at: IndexPath(
-                row: 0,
-                section: 0
-            )
-        )
-                
-        XCTAssertEqual(
-            .red,
-            expectedRedComponent.view.backgroundColor
-        )
-
-        XCTAssertEqual(
-            CGSize(
-                width: listComponent.view.frame.width,
-                height: redSize.height
-            ),
-            expectedRedComponent.view.frame.size
+        
+        let firstItemIndexPath = IndexPath(
+            item: 0,
+            section: 0
         )
         
-        let expectedLabelComponent = listComponent.itemComponent(
-            at: IndexPath(
-                row: 1,
-                section: 0
-            )
-        ) as? UIItemComponent<UILabel>
-        
-        let expectedLabel = expectedLabelComponent?.itemView
-        
-        XCTAssertEqual(
-            label.text,
-            expectedLabel?.text
+        XCTAssert(
+            listComponent.itemComponentMap[firstItemIndexPath]
+            === redComponent
         )
         
-        XCTAssertEqual(
-            CGSize(
-                width: listComponent.view.frame.width,
-                height: expectedLabelSize.height
-            ),
-            expectedLabelComponent?.view.frame.size
+        let blueComponent = colorComponentFactory(.blue)
+        
+        listComponent.setItemComponents(
+            [ blueComponent ]
         )
         
+        listComponent.render()
+        
         XCTAssertEqual(
-            listComponent.view.frame.size,
-            CGSize(
-                width: listComponent.view.frame.width,
-                height: redSize.height + expectedLabelSize.height
-            )
+            listComponent.itemComponentMap.count,
+            1
+        )
+        
+        XCTAssert(
+            listComponent.itemComponentMap[firstItemIndexPath]
+            === blueComponent
         )
         
     }
     
-    internal final func testHeaderComponent() {
+    internal final func testGetItemComponentByIndexPath() {
         
-        let redView = UIView()
-        
-        redView.backgroundColor = .red
-        
-        let redSize = CGSize(
-            width: 100.0,
-            height: 100.0
-        )
-        
-        let redComponent = UIItemComponent(
-            contentMode: .size(redSize),
-            itemView: redView
-        )
-        
-        let estimatedListSize = CGSize(
-            width: 500.0,
-            height: 500.0
+        let squareComponent = UIItemComponent(
+            contentMode: .size(
+                CGSize(
+                    width: 100.0,
+                    height: 100.0
+                )
+            ),
+            itemView: UIView()
         )
         
         let listComponent = UIListComponent(
-            contentMode: .automatic(estimatedSize: estimatedListSize)
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
         )
         
-        listComponent.headerComponent = redComponent
+        listComponent.setItemComponents(
+            [ squareComponent ]
+        )
         
         listComponent.render()
         
-        let tableView = listComponent.tableView
-
-        XCTAssertEqual(
-            tableView.tableHeaderView,
-            redComponent.view
+        let firstItemIndexPath = IndexPath(
+            item: 0,
+            section: 0
         )
         
-        XCTAssertEqual(
-            tableView.tableHeaderView?.frame.size,
-            CGSize(
-                width: estimatedListSize.width,
-                height: redSize.height
-            )
+        XCTAssert(
+            listComponent.itemComponent(at: firstItemIndexPath)
+            === squareComponent
         )
         
     }
     
-    internal final func testFooterComponent() {
-        
-        let redView = UIView()
-        
-        redView.backgroundColor = .red
-        
-        let redSize = CGSize(
-            width: 100.0,
-            height: 100.0
-        )
-        
-        let redComponent = UIItemComponent(
-            contentMode: .size(redSize),
-            itemView: redView
-        )
-        
-        let estimatedListSize = CGSize(
-            width: 500.0,
-            height: 500.0
-        )
-        
-        let listComponent = UIListComponent(
-            contentMode: .automatic(estimatedSize: estimatedListSize)
-        )
-        
-        listComponent.footerComponent = redComponent
-        
-        listComponent.render()
-        
-        let tableView = listComponent.tableView
-        
-        XCTAssertEqual(
-            tableView.tableFooterView,
-            redComponent.view
-        )
-        
-        XCTAssertEqual(
-            tableView.tableFooterView?.frame.size,
-            CGSize(
-                width: estimatedListSize.width,
-                height: redSize.height
-            )
-        )
-        
-    }
-
 }
