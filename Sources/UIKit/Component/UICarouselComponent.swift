@@ -41,19 +41,19 @@ public final class UICarouselComponent: CollectionComponent {
 
     }
 
-    public typealias MinimumItemWidthProvider = (
+    public typealias MaximumItemWidthProvider = (
         _ component: Component,
         _ index: Int
     )
     -> CGFloat
     
-    private final var minimumItemWidthProvider: MinimumItemWidthProvider? {
+    private final var maximumItemWidthProvider: MaximumItemWidthProvider? {
         
         didSet {
             
-            if let provider = minimumItemWidthProvider {
+            if let provider = maximumItemWidthProvider {
                 
-                gridComponent.setMinimumItemSize { _, _, _, indexPath in
+                gridComponent.setMaximumItemSize { _, _, _, indexPath in
                     
                     let width = provider(
                         self,
@@ -68,13 +68,13 @@ public final class UICarouselComponent: CollectionComponent {
                 }
                 
             }
-            else { gridComponent.setMinimumItemSize(provider: nil) }
+            else { gridComponent.setMaximumItemSize(provider: nil) }
             
         }
         
     }
     
-    public final func setMinimumItemWidth(provider: @escaping MinimumItemWidthProvider) { minimumItemWidthProvider = provider }
+    public final func setMaximumItemWidth(provider: @escaping MaximumItemWidthProvider) { maximumItemWidthProvider = provider }
 
     // MARK: Set Up
     

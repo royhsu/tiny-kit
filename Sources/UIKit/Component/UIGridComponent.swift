@@ -61,8 +61,13 @@ public final class UIGridComponent: CollectionComponent {
         
     }
     
-    // TODO: should find a better api name & variable names.
-    public typealias MinimumItemSizeProvider = (
+    /// - Parameter component: The collection component.
+    /// - Parameter layout: The layout object for rendering.
+    /// - Parameter gridSize: A grid contains an item and its interitem spacings for vertical direction and line spacings for horizontal direction.
+    /// - Parameter indexPath: The index path for the item.
+    ///
+    /// - Returns: The maximum item size.
+    public typealias MaximumItemSizeProvider = (
         _ component: Component,
         _ layout: UIGridLayout,
         _ gridSize: CGSize,
@@ -70,14 +75,14 @@ public final class UIGridComponent: CollectionComponent {
     )
     -> CGSize
 
-    private final var minimumItemSizeProvider: MinimumItemSizeProvider?
+    private final var maximumItemSizeProvider: MaximumItemSizeProvider?
     
     /// The provider should return a proper width for columns in vertical scroll direction.
     /// and height for rows in horizontal scroll direction.
-    /// If any of them are out of valid rect will be ignored.
+    /// If any of them are out of the safe area rect will be ignored.
     ///
     /// If this provider is nil, the component will calculate the column-based width and row-based height automatically to fit its safe area rect.
-    public final func setMinimumItemSize(provider: MinimumItemSizeProvider?) { minimumItemSizeProvider = provider }
+    public final func setMaximumItemSize(provider: MaximumItemSizeProvider?) { maximumItemSizeProvider = provider }
     
     // MARK: Set Up
     
@@ -108,7 +113,7 @@ public final class UIGridComponent: CollectionComponent {
                     height: (safeAreaRect.height - spacingOfLines) / CGFloat(layout.rows)
                 )
                 
-                let minimumItemSize = self.minimumItemSizeProvider?(
+                let minimumItemSize = self.maximumItemSizeProvider?(
                     self,
                     layout,
                     gridSize,
@@ -141,7 +146,7 @@ public final class UIGridComponent: CollectionComponent {
                     height: (safeAreaRect.height - spacingOfInteritems) / CGFloat(layout.rows)
                 )
                 
-                let minimumItemSize = self.minimumItemSizeProvider?(
+                let minimumItemSize = self.maximumItemSizeProvider?(
                     self,
                     layout,
                     gridSize,
