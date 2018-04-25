@@ -131,17 +131,17 @@ public final class UIGridComponent: CollectionComponent {
                     height: (safeAreaRect.height - spacingOfLines) / CGFloat(layout.rows)
                 )
                 
-                let minimumItemSize = self.maximumItemSizeProvider?(
+                let maximumItemSize = self.maximumItemSizeProvider?(
                     self,
                     layout,
                     gridSize,
                     indexPath
                 )
                 
-                let minimumItemHeight = minimumItemSize?.height ?? gridSize.height
+                let maximumItemHeight = maximumItemSize?.height ?? gridSize.height
                 
-                let itemHeight = (minimumItemHeight < gridSize.height)
-                    ? minimumItemHeight
+                let itemHeight = (maximumItemHeight < gridSize.height)
+                    ? maximumItemHeight
                     : gridSize.height
 
                 return CGSize(
@@ -164,17 +164,17 @@ public final class UIGridComponent: CollectionComponent {
                     height: (safeAreaRect.height - spacingOfInteritems) / CGFloat(layout.rows)
                 )
                 
-                let minimumItemSize = self.maximumItemSizeProvider?(
+                let maximumItemSize = self.maximumItemSizeProvider?(
                     self,
                     layout,
                     gridSize,
                     indexPath
                 )
                 
-                let minimumItemWidth = minimumItemSize?.width ?? gridSize.width
+                let maximumItemWidth = maximumItemSize?.width ?? gridSize.width
                 
-                let itemWidth = (minimumItemWidth < gridSize.width)
-                    ? minimumItemWidth
+                let itemWidth = (maximumItemWidth < gridSize.width)
+                    ? maximumItemWidth
                     : gridSize.width
                 
                 return CGSize(
