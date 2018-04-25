@@ -185,6 +185,12 @@ public final class UIListComponent: ListComponent {
         
         itemComponentMap = [:]
         
+        renderLayout()
+    
+    }
+    
+    fileprivate final func renderLayout() {
+        
         let tableViewConstraints = [
             tableViewWidthConstraint,
             tableViewHeightConstraint
@@ -195,7 +201,7 @@ public final class UIListComponent: ListComponent {
         tableView.estimatedRowHeight = 0.0
         
         switch contentMode {
-
+            
         case let .size(size):
             
             tableView.frame.size = size
@@ -229,13 +235,13 @@ public final class UIListComponent: ListComponent {
             tableView.frame.size = tableView.contentSize
             
         }
-
+        
         tableViewWidthConstraint.constant = tableView.frame.width
         
         tableViewHeightConstraint.constant = tableView.frame.height
         
         NSLayoutConstraint.activate(tableViewConstraints)
-    
+        
     }
     
     fileprivate final func renderHeaderComponent(size: CGSize) {

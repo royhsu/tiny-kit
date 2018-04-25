@@ -18,10 +18,7 @@ internal final class UICollectionComponentTests: XCTestCase {
         
         let layout = UICollectionViewFlowLayout()
         
-        let collectionComponent = UICollectionComponent(
-            contentMode: .automatic(estimatedSize: .zero),
-            layout: layout
-        )
+        let collectionComponent = UICollectionComponent(layout: layout)
         
         XCTAssertEqual(
             collectionComponent.contentMode,
@@ -56,32 +53,94 @@ internal final class UICollectionComponentTests: XCTestCase {
     }
     
     internal final func testRenderWithContentModeSize() {
-
-        let redView = UIView()
-        
-        redView.backgroundColor = .red
-        
-        let redSize = CGSize(
-            width: 100.0,
-            height: 100.0
-        )
-        
-        let redComponent = UIItemComponent(
-            contentMode: .size(redSize),
-            itemView: redView
-        )
-        
-        let collectionSize = CGSize(
-            width: 500.0,
-            height: 500.0
-        )
         
         let collectionComponent = UICollectionComponent(
-            contentMode: .size(collectionSize),
+            contentMode: .size(
+                CGSize(
+                    width: 500.0,
+                    height: 500.0
+                )
+            ),
             layout: UICollectionViewFlowLayout()
         )
         
-        collectionComponent.setSizeForItem { _, _, _ in redSize }
+        collectionComponent.render()
+        
+        XCTAssertEqual(
+            collectionComponent.view.frame.size,
+            CGSize(
+                width: 500.0,
+                height: 500.0
+            )
+        )
+
+    }
+    
+    internal final func testRenderWithContentModeAutomatic() {
+       
+        let collectionComponent = UICollectionComponent(
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            ),
+            layout: UICollectionViewFlowLayout()
+        )
+        
+        collectionComponent.setSizeForItem { _, _, _ in
+            
+            return CGSize(
+                width: 100.0,
+                height: 100.0
+            )
+            
+        }
+        
+        collectionComponent.setItemComponents(
+            [
+                UIItemComponent(
+                    itemView: UIView()
+                )
+            ]
+        )
+        
+        collectionComponent.render()
+        
+        XCTAssertEqual(
+            collectionComponent.view.frame.size,
+            CGSize(
+                width: 500.0,
+                height: 100.0
+            )
+        )
+        
+    }
+
+    internal final func testKeepsStrongReferencesToItemComponentsWhileRendering() {
+        
+        let colorComponentFactory: (UIColor) -> Component = { color in
+            
+            let component = UIItemComponent(
+                itemView: UIView()
+            )
+            
+            component.view.backgroundColor = color
+            
+            return component
+            
+        }
+        
+        let redComponent = colorComponentFactory(.red)
+        
+        let collectionComponent = UIListComponent(
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
+        )
         
         collectionComponent.setItemComponents(
             [ redComponent ]
@@ -89,140 +148,72 @@ internal final class UICollectionComponentTests: XCTestCase {
         
         collectionComponent.render()
         
-        let expectedRedComponent = collectionComponent.itemComponent(
-            at: IndexPath(
-                item: 0,
-                section: 0
-            )
-        )
-        
         XCTAssertEqual(
-            .red,
-            expectedRedComponent.view.backgroundColor
+            collectionComponent.itemComponentMap.count,
+            1
         )
         
-        XCTAssertEqual(
-            redSize,
-            expectedRedComponent.view.frame.size
+        let firstItemIndexPath = IndexPath(
+            item: 0,
+            section: 0
         )
         
-        XCTAssertEqual(
-            collectionComponent.view.frame.size,
-            collectionSize
-        )
-
-    }
-    
-    internal final func testRenderWithContentModeAutomatic() {
-        
-        let redView = UIView()
-        
-        redView.backgroundColor = .red
-        
-        let redSize = CGSize(
-            width: 100.0,
-            height: 100.0
+        XCTAssert(
+            collectionComponent.itemComponentMap[firstItemIndexPath]
+            === redComponent
         )
         
-        let redComponent = UIItemComponent(
-            contentMode: .size(redSize),
-            itemView: redView
-        )
-        
-        let blueView = UIView()
-        
-        blueView.backgroundColor = .blue
-        
-        let blueSize = CGSize(
-            width: 150.0,
-            height: 150.0
-        )
-        
-        let blueComponent = UIItemComponent(
-            contentMode: .size(blueSize),
-            itemView: blueView
-        )
-        
-        let estimatedCollectionSize = CGSize(
-            width: 500.0,
-            height: 500.0
-        )
-        
-        let collectionComponent = UICollectionComponent(
-            contentMode: .automatic(estimatedSize: estimatedCollectionSize),
-            layout: UICollectionViewFlowLayout()
-        )
-        
-        collectionComponent.setSizeForItem { _, _, indexPath in
-            
-            switch indexPath.item {
-                
-            case 0: return redSize
-                
-            case 1: return blueSize
-                
-            default: XCTFail("Undefined item.") ; return .zero
-                
-            }
-            
-        }
+        let blueComponent = colorComponentFactory(.blue)
         
         collectionComponent.setItemComponents(
-            [
-                redComponent,
-                blueComponent
-            ]
+            [ blueComponent ]
         )
         
         collectionComponent.render()
         
-        let expectedRedComponent = collectionComponent.itemComponent(
-            at: IndexPath(
-                item: 0,
-                section: 0
-            )
-        )
-        
         XCTAssertEqual(
-            .red,
-            expectedRedComponent.view.backgroundColor
+            collectionComponent.itemComponentMap.count,
+            1
         )
         
-        XCTAssertEqual(
-            redSize,
-            expectedRedComponent.view.frame.size
-        )
-        
-        let expectedBlueComponent = collectionComponent.itemComponent(
-            at: IndexPath(
-                item: 1,
-                section: 0
-            )
-        )
-        
-        XCTAssertEqual(
-            .blue,
-            expectedBlueComponent.view.backgroundColor
-        )
-        
-        XCTAssertEqual(
-            blueSize,
-            expectedBlueComponent.view.frame.size
-        )
-        
-        XCTAssertNotEqual(
-            collectionComponent.view.frame.size,
-            estimatedCollectionSize
-        )
-        
-        XCTAssertEqual(
-            collectionComponent.view.frame.size,
-            CGSize(
-                width: estimatedCollectionSize.width,
-                height: blueSize.height
-            )
+        XCTAssert(
+            collectionComponent.itemComponentMap[firstItemIndexPath]
+            === blueComponent
         )
         
     }
-
+    
+    internal final func testGetItemComponentByIndexPath() {
+        
+        let squareComponent = UIItemComponent(
+            itemView: UIView()
+        )
+        
+        let collectionComponent = UIListComponent(
+            contentMode: .automatic(
+                estimatedSize: CGSize(
+                    width: 500.0,
+                    height: 50.0
+                )
+            )
+        )
+        
+        collectionComponent.setItemComponents(
+            [ squareComponent ]
+        )
+        
+        collectionComponent.render()
+        
+        let firstItemIndexPath = IndexPath(
+            item: 0,
+            section: 0
+        )
+        
+        XCTAssert(
+            collectionComponent.itemComponent(at: firstItemIndexPath)
+            === squareComponent
+        )
+        
+    }
+    
 }

@@ -194,7 +194,7 @@ internal final class UIListComponentTests: XCTestCase {
         
     }
     
-    internal final func testRenderingKeepsStrongReferencesToItemComponents() {
+    internal final func testKeepsStrongReferencesToItemComponentsWhileRendering() {
         
         let colorComponentFactory: (UIColor) -> Component = { color in
             

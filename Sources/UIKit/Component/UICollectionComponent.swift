@@ -8,6 +8,12 @@
 
 // MARK: - UICollectionComponent
 
+/// Grouping a collection of item components.
+///
+/// The collection component needs a dedicated layout to render the item components.
+/// The collection component overrides the content mode for each item component to fit the size calculated by the layout during the rendering.
+///
+/// Please make sure to give a non-zero size for the list to properly render its content.
 public final class UICollectionComponent: CollectionComponent {
 
     public final let collectionView: UICollectionView
@@ -20,6 +26,9 @@ public final class UICollectionComponent: CollectionComponent {
     
     fileprivate final let collectionViewHeightConstraint: NSLayoutConstraint
 
+    // DO NOT get an item component from the map directly, please use itemComponent(at:) instead.
+    internal final var itemComponentMap: [IndexPath: Component]
+    
     public init(
         contentMode: ComponentContentMode = .automatic(estimatedSize: .zero),
         layout: UICollectionViewLayout
@@ -42,7 +51,7 @@ public final class UICollectionComponent: CollectionComponent {
         
         self.collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.bounds.height)
         
-        self.numberOfSections = 0
+        self.itemComponentMap = [:]
         
         self.prepare()
         
@@ -137,14 +146,23 @@ public final class UICollectionComponent: CollectionComponent {
     
     public final func itemComponent(at indexPath: IndexPath) -> Component {
         
-        guard
-            let provider = itemComponentProvider
-        else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
-        
-        return provider(
-            self,
-            indexPath
-        )
+        if let provider = itemComponentMap[indexPath] { return provider }
+        else {
+            
+            guard
+                let provider = itemComponentProvider
+                else { fatalError("Please make sure to set the provider with setItemComponent(provider:) firstly.") }
+            
+            let itemComponent = provider(
+                self,
+                indexPath
+            )
+            
+            itemComponentMap[indexPath] = itemComponent
+            
+            return itemComponent
+            
+        }
         
     }
     
@@ -158,6 +176,14 @@ public final class UICollectionComponent: CollectionComponent {
 
     public final func render() {
         
+        itemComponentMap = [:]
+        
+        renderLayout()
+        
+    }
+    
+    fileprivate final func renderLayout() {
+        
         let collectionViewConstraints = [
             collectionViewWidthConstraint,
             collectionViewHeightConstraint
@@ -165,14 +191,16 @@ public final class UICollectionComponent: CollectionComponent {
         
         NSLayoutConstraint.deactivate(collectionViewConstraints)
         
+        collectionViewLayout.invalidateLayout()
+        
         switch contentMode {
-
+            
         case let .size(size):
             
             collectionView.frame.size = size
             
             collectionView.reloadData()
-
+            
         case let .automatic(estimatedSize):
             
             collectionView.frame.size = estimatedSize
@@ -191,7 +219,7 @@ public final class UICollectionComponent: CollectionComponent {
         collectionViewHeightConstraint.constant = collectionView.frame.height
         
         NSLayoutConstraint.activate(collectionViewConstraints)
-
+        
     }
 
     // MARK: ViewRenderable
