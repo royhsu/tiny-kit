@@ -59,7 +59,7 @@ public final class UIStoreCoordinator: Coordinator {
     
     fileprivate final func prepare() {
         
-        storeComponent.setMinimumItemSize { _, layout, gridSize, indexPath in
+        storeComponent.setMaximumItemSize { _, layout, gridSize, indexPath in
             
             let itemWidth = gridSize.width
             

@@ -68,7 +68,7 @@ public final class TSProductDetailComponent: Component {
 
     fileprivate final func prepare() {
         
-        reviewCarouselComponent.setMinimumItemWidth { [unowned self] component, _ in
+        reviewCarouselComponent.setMaximumItemWidth { [unowned self] component, _ in
             
             return (component.view.bounds.width / self.reviewAspectRatio)
             

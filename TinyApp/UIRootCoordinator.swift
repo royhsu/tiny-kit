@@ -22,33 +22,7 @@ public final class UIRootCoordinator: Coordinator {
     private final var listening: EventEmitter<UIButtonEvent>.Listening?
     
     public init() {
-        
-        let labelComponentFactory: (String) -> Component = { text in
-        
-            let label = UILabel()
-            
-            label.text = text
-            
-            label.numberOfLines = 0
-            
-            return UIItemComponent(itemView: label)
-        
-        }
-        
-        let imageComponentFactory: (UIImage) -> UIImageComponent = { image in
-            
-            let imageView = UIImageView()
-            
-            imageView.contentMode = .scaleAspectFill
-            
-            imageView.clipsToBounds = true
-            
-            imageView.image = image
-            
-            return UIItemComponent<UIImageView>(itemView: imageView)
-            
-        }
-
+    
         let buttonComponent = TSPrimaryButtonComponent()
         
         buttonComponent.titleLabel.text = NSLocalizedString(
@@ -112,14 +86,6 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
 
-//        productDetailComponent.galleryComponent.setImageComponents(
-//            [
-//                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-1")),
-//                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-2")),
-//                imageComponentFactory(#imageLiteral(resourceName: "image-dessert-3"))
-//            ]
-//        )
-        
         productDetailComponent.galleryComponent.setImageContainers(
             [
                 .memory(#imageLiteral(resourceName: "image-dessert-1")),
@@ -191,11 +157,9 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let paragraphElementFactory: (String) -> ElementComponent = { paragraph in
+        let paragraphComponentFactory: () -> ParagraphComponent = {
             
             let paragraphComponent = UIPostParagraphComponent()
-            
-            paragraphComponent.textLabel.text = "\(paragraph)"
             
             paragraphComponent.paddingInsets = UIEdgeInsets(
                 top: 8.0,
@@ -206,102 +170,50 @@ public final class UIRootCoordinator: Coordinator {
             
             paragraphComponent.applyTheme(.current)
             
-            return .paragraph(paragraphComponent)
+            return paragraphComponent
             
         }
         
-        let imageElementFactory: (ImageResource) -> ElementComponent = { container in
+        let imageComponentFactory: () -> ImageComponent = {
             
             let imageComponent = UIPostImageComponent()
             
             imageComponent.applyTheme(.current)
             
-            container.setImage(to: imageComponent.imageView)
-            
-            return .image(imageComponent)
+            return imageComponent
             
         }
         
-        productDetailComponent.introductionComponent.setElementComponents(
+        productDetailComponent.introductionComponent.setElements(
             [
-                imageElementFactory(
-                    .memory(#imageLiteral(resourceName: "image-product-story-4"))
+                .image(
+                    resource: .memory(#imageLiteral(resourceName: "image-product-story-4")),
+                    factory: imageComponentFactory
                 ),
-                imageElementFactory(
-                    .memory(#imageLiteral(resourceName: "image-product-story-1"))
+                .image(
+                    resource: .memory(#imageLiteral(resourceName: "image-product-story-1")),
+                    factory: imageComponentFactory
                 ),
-                paragraphElementFactory("Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue."),
-                paragraphElementFactory("Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."),
-                imageElementFactory(
-                    .memory(#imageLiteral(resourceName: "image-product-story-3"))
+                .paragraph(
+                    text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.",
+                    factory: paragraphComponentFactory
                 ),
-                paragraphElementFactory("Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.")
+                .paragraph(
+                    text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.",
+                    factory: paragraphComponentFactory
+                ),
+                .image(
+                    resource: .memory(#imageLiteral(resourceName: "image-product-story-3")),
+                    factory: imageComponentFactory
+                ),
+                .paragraph(
+                    text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
+                    factory: paragraphComponentFactory
+                )
             ]
         )
         
-//        let gridComponent = UIGridComponent(
-//            layout: UIGridLayout(
-//                columns: 2,
-//                rows: 2
-//            )
-//        )
-//
-//        gridComponent.setItemComponents(
-//            [
-//                UIItemComponent(itemView: label)
-//            ]
-//        )
-        
-        let carouselComponent = UICarouselComponent()
-       
-        let itemComponents: [Component] = [
-            imageComponentFactory(#imageLiteral(resourceName: "image-product-story-4")),
-            labelComponentFactory(
-                "Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            ),
-            labelComponentFactory(
-                "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper."
-            )
-        ]
-        
-        carouselComponent.numberOfSections = 1
-        
-        carouselComponent.setItemComponent { _, indexPath in
-            
-            return itemComponents[indexPath.item]
-            
-        }
-        
-        carouselComponent.setNumberOfItemComponents { _, section in
-            
-            return itemComponents.count
-            
-        }
-        
-        let postComponent: TPPostComponent = [
-            .image(
-                resource: .memory(#imageLiteral(resourceName: "image-product-story-4")),
-                factory: { UIPostImageComponent() }
-            ),
-            .image(
-                resource: .memory(#imageLiteral(resourceName: "image-product-story-1")),
-                factory: { UIPostImageComponent() }
-            ),
-            .paragraph(
-                text: "Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                factory: { UIPostParagraphComponent() }
-            ),
-            .image(
-                resource: .memory(#imageLiteral(resourceName: "image-product-story-3")),
-                factory: { UIPostImageComponent() }
-            ),
-            .paragraph(
-                text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.",
-                factory: { UIPostParagraphComponent() }
-            )
-        ]
-        
-        let viewController = UIComponentViewController(component: postComponent)
+        let viewController = UIComponentViewController(component: productDetailComponent)
 
         viewController.view.backgroundColor = .white
 
