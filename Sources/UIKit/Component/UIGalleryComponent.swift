@@ -102,13 +102,13 @@ public extension UIGalleryComponent {
         
     }
     
-    public typealias ImageContainerProvider = (
+    public typealias ImageResourceProvider = (
         _ component: Component,
         _ index: Int
     )
     -> ImageResource
     
-    public final func setImageContainer(provider: @escaping ImageContainerProvider) {
+    public final func setImageResource(provider: @escaping ImageResourceProvider) {
         
         setImageComponent { component, index in
             
@@ -120,12 +120,12 @@ public extension UIGalleryComponent {
             
             let imageComponent = UIItemComponent(itemView: imageView)
             
-            let imageContainer = provider(
+            let imageResource = provider(
                 component,
                 index
             )
             
-            imageContainer.setImage(to: imageView)
+            imageResource.setImage(to: imageView)
             
             return imageComponent
             
@@ -133,13 +133,13 @@ public extension UIGalleryComponent {
         
     }
     
-    public final func setImageContainers(
-        _ containers: [ImageResource]
+    public final func setImageResources(
+        _ resources: [ImageResource]
     ) {
         
-        numberOfImageComponents = containers.count
+        numberOfImageComponents = resources.count
         
-        setImageContainer { _, index in containers[index] }
+        setImageResource { _, index in resources[index] }
         
     }
     

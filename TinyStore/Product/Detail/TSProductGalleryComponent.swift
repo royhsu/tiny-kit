@@ -107,12 +107,12 @@ public extension TSProductGalleryComponent {
         
     }
     
-    public typealias ImageContainerProvider = UIGalleryComponent.ImageContainerProvider
+    public typealias ImageContainerProvider = UIGalleryComponent.ImageResourceProvider
     
-    public final func setImageContainer(provider: @escaping ImageContainerProvider) { galleryComponent.setImageContainer(provider: provider) }
+    public final func setImageContainer(provider: @escaping ImageContainerProvider) { galleryComponent.setImageResource(provider: provider) }
     
-    public final func setImageContainers(
-        _ containers: [ImageResource]
-    ) { galleryComponent.setImageContainers(containers) }
+    public final func setImageResources(
+        _ resources: [ImageResource]
+    ) { galleryComponent.setImageResources(resources) }
     
 }

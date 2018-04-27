@@ -24,24 +24,16 @@ public enum Layout<Item> where Item: ComponentRepresentable {
         factory: () -> ListComponent
     )
     
+    case carousel(
+        name: String,
+        items: [Item],
+        factory: () -> UICarouselComponent
+    )
+    
     case custom(
         name: String,
         item: Item
     )
-//    public static func list<Item>(
-//        name: String,
-//        items: [Item],
-//        factory: () -> ListComponent
-//    )
-//    where Item: ComponentRepresentable {
-//
-//        let listComponent = factory()
-//
-//        listComponent.setItemComponents(
-//            items.map { $0.component }
-//        )
-//
-//    }
     
 }
 
@@ -64,6 +56,20 @@ extension Layout: ComponentRepresentable {
             )
                 
             return listComponent
+            
+        case let .carousel(
+            name,
+            items,
+            factory
+        ):
+            
+            let carouselComponent = factory()
+            
+            carouselComponent.setItemComponents(
+                items.map { $0.component }
+            )
+            
+            return carouselComponent
             
         case let .custom(
             name,

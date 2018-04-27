@@ -86,7 +86,7 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
 
-        productDetailComponent.galleryComponent.setImageContainers(
+        productDetailComponent.galleryComponent.setImageResources(
             [
                 .memory(#imageLiteral(resourceName: "image-dessert-1")),
                 .memory(#imageLiteral(resourceName: "image-dessert-2")),
@@ -245,6 +245,11 @@ public final class UIRootCoordinator: Coordinator {
         
         enum ProductDetail: ComponentRepresentable {
             
+            case gallery(
+                resources: [ImageResource],
+                factory: () -> UIGalleryComponent
+            )
+            
             case introduction(
                 elements: [Element],
                 factory: () -> PostComponent
@@ -253,6 +258,17 @@ public final class UIRootCoordinator: Coordinator {
             var component: Component {
                 
                 switch self {
+                    
+                case let .gallery(
+                    resources,
+                    factory
+                ):
+                    
+                    let galleryComponent = factory()
+                    
+                    galleryComponent.setImageResources(resources)
+                    
+                    return galleryComponent
                     
                 case let .introduction(
                     elements,
@@ -275,6 +291,25 @@ public final class UIRootCoordinator: Coordinator {
             name: "Product Detail",
             item: .productDetail(
                 elements: [
+                    .gallery(
+                        resources: [
+                            .memory(#imageLiteral(resourceName: "image-dessert-1")),
+                            .memory(#imageLiteral(resourceName: "image-dessert-2")),
+                            .memory(#imageLiteral(resourceName: "image-dessert-3"))
+                        ],
+                        factory: {
+                            
+                            UIGalleryComponent(
+                                contentMode: .size(
+                                    CGSize(
+                                        width: 150.0,
+                                        height: 150.0
+                                    )
+                                )
+                            )
+                            
+                        }
+                    ),
                     .introduction(
                         elements: [
                             .image(
@@ -323,7 +358,7 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
         
-        let viewController = UIComponentViewController(component: layout.component)
+        let viewController = UIComponentViewController(component: productDetail.component)
 
         viewController.view.backgroundColor = .white
 
