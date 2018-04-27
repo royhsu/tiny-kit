@@ -66,6 +66,7 @@
 		B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDE2064B56E0078B3CE /* UIListComponent.swift */; };
 		B05E67622036D5B6003E8E0E /* UIItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */; };
 		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
+		B07E04B92093619500903275 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E04B82093619500903275 /* Layout.swift */; };
 		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
 		B0B4741E208700C8000A49E6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741C208700C8000A49E6 /* Hydra.framework */; };
@@ -162,6 +163,7 @@
 		B0542DDE2064B56E0078B3CE /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
 		B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIItemComponentTests.swift; sourceTree = "<group>"; };
 		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
+		B07E04B82093619500903275 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
 		B0B4741C208700C8000A49E6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				B00D96252030758A00EF0B7A /* Component.swift */,
 				B0C357A52064EF090017E1F0 /* CollectionComponent.swift */,
 				B0542DDC20648E340078B3CE /* ListComponent.swift */,
+				B07E04B82093619500903275 /* Layout.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
 				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
 				B03BEE2C208F7A7A00CF46FC /* Image.swift in Sources */,
+				B07E04B92093619500903275 /* Layout.swift in Sources */,
 				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
 				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
 				B01DB551207F2F1300E511FE /* Stylable.swift in Sources */,

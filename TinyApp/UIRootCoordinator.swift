@@ -22,7 +22,7 @@ public final class UIRootCoordinator: Coordinator {
     private final var listening: EventEmitter<UIButtonEvent>.Listening?
     
     public init() {
-    
+        
         let buttonComponent = TSPrimaryButtonComponent()
         
         buttonComponent.titleLabel.text = NSLocalizedString(
@@ -213,7 +213,117 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let viewController = UIComponentViewController(component: productDetailComponent)
+        enum App: ComponentRepresentable {
+            
+            case productDetail(
+                elements: [ProductDetail],
+                factory: () -> ListComponent
+            )
+            
+            var component: Component {
+                
+                switch self {
+                    
+                case let .productDetail(
+                    elements,
+                    factory
+                ):
+                    
+                    let listComponent = factory()
+                    
+                    listComponent.setItemComponents(
+                        elements.map { $0.component }
+                    )
+                    
+                    return listComponent
+                    
+                }
+                
+            }
+            
+        }
+        
+        enum ProductDetail: ComponentRepresentable {
+            
+            case introduction(
+                elements: [Element],
+                factory: () -> PostComponent
+            )
+            
+            var component: Component {
+                
+                switch self {
+                    
+                case let .introduction(
+                    elements,
+                    factory
+                ):
+                    
+                    let postComponent = factory()
+                    
+                    postComponent.setElements(elements)
+                    
+                    return postComponent
+                    
+                }
+                
+            }
+            
+        }
+        
+        let productDetail: Layout<App> = .custom(
+            name: "Product Detail",
+            item: .productDetail(
+                elements: [
+                    .introduction(
+                        elements: [
+                            .image(
+                                resource: .memory(#imageLiteral(resourceName: "image-product-story-4")),
+                                factory: imageComponentFactory
+                            ),
+                            .image(
+                                resource: .memory(#imageLiteral(resourceName: "image-product-story-1")),
+                                factory: imageComponentFactory
+                            ),
+                            .paragraph(
+                                text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.",
+                                factory: paragraphComponentFactory
+                            ),
+                            .paragraph(
+                                text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.",
+                                factory: paragraphComponentFactory
+                            ),
+                            .image(
+                                resource: .memory(#imageLiteral(resourceName: "image-product-story-3")),
+                                factory: imageComponentFactory
+                            ),
+                            .paragraph(
+                                text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
+                                factory: paragraphComponentFactory
+                            )
+                        ],
+                        factory: { TPPostComponent() }
+                    )
+                ],
+                factory: { UIListComponent() }
+            )
+        )
+        
+        let layout: Layout = .custom(
+            name: "Custom",
+            item: Layout<Element>.list(
+                name: "List",
+                items: [
+                    .paragraph(
+                        text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
+                        factory: paragraphComponentFactory
+                    )
+                ],
+                factory: { UIListComponent() }
+            )
+        )
+        
+        let viewController = UIComponentViewController(component: layout.component)
 
         viewController.view.backgroundColor = .white
 

@@ -21,3 +21,49 @@ public enum Element {
     )
     
 }
+
+extension Element: ComponentRepresentable {
+    
+    public var component: Component {
+        
+        switch self {
+            
+        case let .paragraph(
+            text,
+            factory
+        ):
+            
+            let paragraphComponent = factory()
+            
+            paragraphComponent.text = text
+            
+            return paragraphComponent
+            
+        case let .image(
+            resource,
+            factory
+        ):
+            
+            let imageComponent = factory()
+            
+            switch resource {
+                
+            case let .memory(image): imageComponent.image = image
+                
+            case let .remote(url, provider, context):
+                
+                provider.fetch(
+                    in: context,
+                    url: url
+                )
+                .then(in: .main) { image in imageComponent.image = image }
+                
+            }
+            
+            return imageComponent
+            
+        }
+        
+    }
+    
+}
