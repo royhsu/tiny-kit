@@ -1,21 +1,21 @@
 //
-//  PostComponent.swift
-//  TinyPost
+//  SlideComponent.swift
+//  TinySlide
 //
-//  Created by Roy Hsu on 2018/4/15.
+//  Created by Roy Hsu on 2018/5/4.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostComponent
+// MARK: - SlideComponent
 
-public protocol PostComponent: Component {
+public protocol SlideComponent: Component {
     
     var numberOfElementComponents: Int { get set }
     
     func elementComponent(at index: Int) -> ElementComponent
     
     typealias ElementComponentProvider = (
-        _ component: PostComponent,
+        _ component: Component,
         _ index: Int
     )
     -> ElementComponent
@@ -24,9 +24,9 @@ public protocol PostComponent: Component {
     
 }
 
-public extension PostComponent {
+public extension SlideComponent {
     
-    public func setElementComponents(
+    public func setElementsComponents(
         _ components: [ElementComponent]
     ) {
         
@@ -38,17 +38,15 @@ public extension PostComponent {
     
 }
 
-public extension PostComponent {
+public extension SlideComponent {
     
     public typealias ElementProvider = (
-        _ component: PostComponent,
+        _ component: Component,
         _ index: Int
     )
     -> Element
     
-    public func setElement(
-        provider: @escaping ElementProvider
-    ) {
+    public func setElement(provider: @escaping ElementProvider) {
         
         setElementComponent { component, index in
             
@@ -58,17 +56,6 @@ public extension PostComponent {
             )
             
             switch element {
-                
-            case let .paragraph(
-                text,
-                factory
-            ):
-                
-                let paragraphComponent = factory()
-                
-                paragraphComponent.text = text
-                
-                return .paragraph(paragraphComponent)
                 
             case let .image(
                 resource,

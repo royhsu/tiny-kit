@@ -8,16 +8,16 @@
 
 // MARK: - UIImageComponent
 
-extension UIItemComponent: UIImageComponent where ItemView == UIImageView {
-    
-    public final var imageView: UIImageView { return itemView }
-    
-    public final var image: UIImage? {
-        
-        get { return imageView.image }
-        
-        set { imageView.image = newValue }
-        
-    }
-    
-}
+//extension UIItemComponent: UIImageComponent where ItemView == UIImageView {
+//    
+//    public final var imageView: UIImageView { return itemView }
+//    
+//    public final var image: UIImage? {
+//        
+//        get { return imageView.image }
+//        
+//        set { imageView.image = newValue }
+//        
+//    }
+//    
+//}

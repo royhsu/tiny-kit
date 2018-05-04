@@ -8,6 +8,7 @@
 
 // MARK: - UIRootCoordinator
 
+import TinyGallery
 import TinyCore
 import TinyKit
 import TinyPost
@@ -22,6 +23,33 @@ public final class UIRootCoordinator: Coordinator {
     private final var listening: EventEmitter<UIButtonEvent>.Listening?
     
     public init() {
+        
+        let paragraphComponentFactory: () -> ParagraphComponent = {
+            
+            let paragraphComponent = UIPostParagraphComponent()
+            
+            paragraphComponent.paddingInsets = UIEdgeInsets(
+                top: 8.0,
+                left: 16.0,
+                bottom: 8.0,
+                right: 16.0
+            )
+            
+            paragraphComponent.applyTheme(.current)
+            
+            return paragraphComponent
+            
+        }
+        
+        let imageComponentFactory: () -> ImageComponent = {
+            
+            let imageComponent = UIPostImageComponent()
+            
+            imageComponent.applyTheme(.current)
+            
+            return imageComponent
+            
+        }
         
         let buttonComponent = TSPrimaryButtonComponent()
         
@@ -84,11 +112,16 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
 
-        productDetailComponent.galleryComponent.setImageResources(
+        productDetailComponent.galleryComponent.setElements(
             [
-                .memory(#imageLiteral(resourceName: "image-dessert-1")),
-                .memory(#imageLiteral(resourceName: "image-dessert-2")),
-                .memory(#imageLiteral(resourceName: "image-dessert-3"))
+                .image(
+                    resource: .memory(#imageLiteral(resourceName: "image-dessert-1")),
+                    factory: imageComponentFactory
+                ),
+                .image(
+                    resource: .memory(#imageLiteral(resourceName: "image-dessert-2")),
+                    factory: imageComponentFactory
+                )
             ]
         )
 
@@ -155,33 +188,6 @@ public final class UIRootCoordinator: Coordinator {
             ]
         )
         
-        let paragraphComponentFactory: () -> ParagraphComponent = {
-            
-            let paragraphComponent = UIPostParagraphComponent()
-            
-            paragraphComponent.paddingInsets = UIEdgeInsets(
-                top: 8.0,
-                left: 16.0,
-                bottom: 8.0,
-                right: 16.0
-            )
-            
-            paragraphComponent.applyTheme(.current)
-            
-            return paragraphComponent
-            
-        }
-        
-        let imageComponentFactory: () -> ImageComponent = {
-            
-            let imageComponent = UIPostImageComponent()
-            
-            imageComponent.applyTheme(.current)
-            
-            return imageComponent
-            
-        }
-        
         productDetailComponent.introductionComponent.setElements(
             [
                 .image(
@@ -244,12 +250,12 @@ public final class UIRootCoordinator: Coordinator {
         enum ProductDetail: ComponentRepresentable {
             
             case gallery(
-                resources: [ImageResource],
-                factory: () -> UIGalleryComponent
+                elements: [TinyGallery.Element],
+                factory: () -> SlideComponent
             )
             
             case introduction(
-                elements: [Element],
+                elements: [TinyPost.Element],
                 factory: () -> PostComponent
             )
             
@@ -258,13 +264,13 @@ public final class UIRootCoordinator: Coordinator {
                 switch self {
                     
                 case let .gallery(
-                    resources,
+                    elements,
                     factory
                 ):
                     
                     let galleryComponent = factory()
                     
-                    galleryComponent.setImageResources(resources)
+                    galleryComponent.setElements(elements)
                     
                     return galleryComponent
                     
@@ -285,78 +291,78 @@ public final class UIRootCoordinator: Coordinator {
             
         }
         
-        let productDetail: Layout<App> = .custom(
-            name: "Product Detail",
-            item: .productDetail(
-                elements: [
-                    .gallery(
-                        resources: [
-                            .memory(#imageLiteral(resourceName: "image-dessert-1")),
-                            .memory(#imageLiteral(resourceName: "image-dessert-2")),
-                            .memory(#imageLiteral(resourceName: "image-dessert-3"))
-                        ],
-                        factory: {
-                            
-                            UIGalleryComponent(
-                                contentMode: .size(
-                                    CGSize(
-                                        width: 150.0,
-                                        height: 150.0
-                                    )
-                                )
-                            )
-                            
-                        }
-                    ),
-                    .introduction(
-                        elements: [
-                            .image(
-                                resource: .memory(#imageLiteral(resourceName: "image-product-story-4")),
-                                factory: imageComponentFactory
-                            ),
-                            .image(
-                                resource: .memory(#imageLiteral(resourceName: "image-product-story-1")),
-                                factory: imageComponentFactory
-                            ),
-                            .paragraph(
-                                text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.",
-                                factory: paragraphComponentFactory
-                            ),
-                            .paragraph(
-                                text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.",
-                                factory: paragraphComponentFactory
-                            ),
-                            .image(
-                                resource: .memory(#imageLiteral(resourceName: "image-product-story-3")),
-                                factory: imageComponentFactory
-                            ),
-                            .paragraph(
-                                text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
-                                factory: paragraphComponentFactory
-                            )
-                        ],
-                        factory: { UIPostComponent() }
-                    )
-                ],
-                factory: { UIListComponent() }
-            )
-        )
-        
-        let layout: Layout = .custom(
-            name: "Custom",
-            item: Layout<Element>.list(
-                name: "List",
-                items: [
-                    .paragraph(
-                        text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
-                        factory: paragraphComponentFactory
-                    )
-                ],
-                factory: { UIListComponent() }
-            )
-        )
-        
-        let viewController = UIComponentViewController(component: productDetail.component)
+//        let productDetail: Layout<App> = .custom(
+//            name: "Product Detail",
+//            item: .productDetail(
+//                elements: [
+//                    .gallery(
+//                        resources: [
+//                            .memory(#imageLiteral(resourceName: "image-dessert-1")),
+//                            .memory(#imageLiteral(resourceName: "image-dessert-2")),
+//                            .memory(#imageLiteral(resourceName: "image-dessert-3"))
+//                        ],
+//                        factory: {
+//
+//                            UIGalleryComponent(
+//                                contentMode: .size(
+//                                    CGSize(
+//                                        width: 150.0,
+//                                        height: 150.0
+//                                    )
+//                                )
+//                            )
+//
+//                        }
+//                    ),
+//                    .introduction(
+//                        elements: [
+//                            .image(
+//                                resource: .memory(#imageLiteral(resourceName: "image-product-story-4")),
+//                                factory: imageComponentFactory
+//                            ),
+//                            .image(
+//                                resource: .memory(#imageLiteral(resourceName: "image-product-story-1")),
+//                                factory: imageComponentFactory
+//                            ),
+//                            .paragraph(
+//                                text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.",
+//                                factory: paragraphComponentFactory
+//                            ),
+//                            .paragraph(
+//                                text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.",
+//                                factory: paragraphComponentFactory
+//                            ),
+//                            .image(
+//                                resource: .memory(#imageLiteral(resourceName: "image-product-story-3")),
+//                                factory: imageComponentFactory
+//                            ),
+//                            .paragraph(
+//                                text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
+//                                factory: paragraphComponentFactory
+//                            )
+//                        ],
+//                        factory: { UIPostComponent() }
+//                    )
+//                ],
+//                factory: { UIListComponent() }
+//            )
+//        )
+//
+//        let layout: Layout = .custom(
+//            name: "Custom",
+//            item: Layout<Element>.list(
+//                name: "List",
+//                items: [
+//                    .paragraph(
+//                        text: "Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.",
+//                        factory: paragraphComponentFactory
+//                    )
+//                ],
+//                factory: { UIListComponent() }
+//            )
+//        )
+//
+        let viewController = UIComponentViewController(component: productDetailComponent)
 
         viewController.view.backgroundColor = .white
 

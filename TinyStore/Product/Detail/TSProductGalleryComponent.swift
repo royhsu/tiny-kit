@@ -8,14 +8,16 @@
 
 // MARK: - TSProductGalleryComponent
 
-public final class TSProductGalleryComponent: Component {
+import TinyGallery
+
+public final class TSProductGalleryComponent: SlideComponent {
     
     private final let bundle: Bundle
     
     /// The base component.
     private final let containerComponent: UIItemComponent<TSProductGalleryContainerView>
     
-    private final let galleryComponent: UIGalleryComponent
+    private final let galleryComponent: SlideComponent
     
     public init(
         contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
@@ -45,19 +47,19 @@ public final class TSProductGalleryComponent: Component {
     
     fileprivate final func prepareLayout() { containerView.contentView.wrapSubview(galleryComponent.view) }
     
-    // MARK: GalleryComponent
+    // MARK: SlideComponent
     
-    public final var numberOfImageComponents: Int {
+    public final var numberOfElementComponents: Int {
         
-        get { return galleryComponent.numberOfImageComponents }
+        get { return galleryComponent.numberOfElementComponents }
 
-        set { galleryComponent.numberOfImageComponents = newValue }
+        set { galleryComponent.numberOfElementComponents = newValue }
         
     }
-    
-    public typealias ImageComponentProvider = UIGalleryComponent.ImageComponentProvider
-    
-    public final func setImageComponent(provider: @escaping ImageComponentProvider) { galleryComponent.setImageComponent(provider: provider) }
+
+    public final func elementComponent(at index: Int) -> ElementComponent { return galleryComponent.elementComponent(at: index) }
+
+    public final func setElementComponent(provider: @escaping ElementComponentProvider) { galleryComponent.setElementComponent(provider: provider) }
     
     // MARK: Component
     
@@ -96,23 +98,5 @@ fileprivate extension TSProductGalleryComponent {
 public extension TSProductGalleryComponent {
     
     public final func applyTheme(_ theme: Theme) { containerView.applyTheme(theme) }
-    
-    public final func setImageComponents(
-        _ components: [UIImageComponent]
-    ) {
-        
-        numberOfImageComponents = components.count
-        
-        setImageComponent { _, index in components[index] }
-        
-    }
-    
-    public typealias ImageContainerProvider = UIGalleryComponent.ImageResourceProvider
-    
-    public final func setImageContainer(provider: @escaping ImageContainerProvider) { galleryComponent.setImageResource(provider: provider) }
-    
-    public final func setImageResources(
-        _ resources: [ImageResource]
-    ) { galleryComponent.setImageResources(resources) }
-    
+
 }

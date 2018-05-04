@@ -45,7 +45,6 @@
 		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
 		B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C14208337CE005098D3 /* UICarouselLayout.swift */; };
 		B03BEE18208D801400CF46FC /* UIBoxComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */; };
-		B03BEE1C208EE42700CF46FC /* UIImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1B208EE42700CF46FC /* UIImageComponent.swift */; };
 		B03BEE1E208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */; };
 		B03BEE20208F0EDD00CF46FC /* UIButtonEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1F208F0EDD00CF46FC /* UIButtonEvent.swift */; };
 		B03BEE22208F2FEF00CF46FC /* UILabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE21208F2FEF00CF46FC /* UILabelComponent.swift */; };
@@ -60,7 +59,6 @@
 		B04707E9207C6C1300331D26 /* UIGridComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E8207C6C1300331D26 /* UIGridComponent.swift */; };
 		B04707EB207C820200331D26 /* UIGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707EA207C820200331D26 /* UIGridLayout.swift */; };
 		B04707ED207C844700331D26 /* UICollectionView+SafeAreaRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707EC207C844700331D26 /* UICollectionView+SafeAreaRect.swift */; };
-		B04707F9207F073F00331D26 /* UIGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707F8207F073F00331D26 /* UIGalleryComponent.swift */; };
 		B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */; };
 		B0542DDD20648E340078B3CE /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDC20648E340078B3CE /* ListComponent.swift */; };
 		B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDE2064B56E0078B3CE /* UIListComponent.swift */; };
@@ -69,6 +67,7 @@
 		B07E04B92093619500903275 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E04B82093619500903275 /* Layout.swift */; };
 		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
 		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
+		B09B71A1209C44D300EAD65C /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B71A0209C44D300EAD65C /* ImageComponent.swift */; };
 		B0B4741E208700C8000A49E6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741C208700C8000A49E6 /* Hydra.framework */; };
 		B0B4741F208700C8000A49E6 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741D208700C8000A49E6 /* TinyCore.framework */; };
 		B0B4742120870132000A49E6 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4742020870132000A49E6 /* UICollectionComponent.swift */; };
@@ -142,7 +141,6 @@
 		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
 		B03A4C14208337CE005098D3 /* UICarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselLayout.swift; sourceTree = "<group>"; };
 		B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBoxComponentTests.swift; sourceTree = "<group>"; };
-		B03BEE1B208EE42700CF46FC /* UIImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageComponent.swift; sourceTree = "<group>"; };
 		B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIItemComponent+UIImageComponent.swift"; sourceTree = "<group>"; };
 		B03BEE1F208F0EDD00CF46FC /* UIButtonEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEvent.swift; sourceTree = "<group>"; };
 		B03BEE21208F2FEF00CF46FC /* UILabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelComponent.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 		B04707E8207C6C1300331D26 /* UIGridComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridComponent.swift; sourceTree = "<group>"; };
 		B04707EA207C820200331D26 /* UIGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridLayout.swift; sourceTree = "<group>"; };
 		B04707EC207C844700331D26 /* UICollectionView+SafeAreaRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+SafeAreaRect.swift"; sourceTree = "<group>"; };
-		B04707F8207F073F00331D26 /* UIGalleryComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGalleryComponent.swift; sourceTree = "<group>"; };
 		B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselComponent.swift; sourceTree = "<group>"; };
 		B0542DDC20648E340078B3CE /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		B0542DDE2064B56E0078B3CE /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
@@ -166,6 +163,7 @@
 		B07E04B82093619500903275 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
 		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
+		B09B71A0209C44D300EAD65C /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
 		B0B4741C208700C8000A49E6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		B0B4741D208700C8000A49E6 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
 		B0B4742020870132000A49E6 /* UICollectionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
@@ -243,6 +241,7 @@
 				B00D96252030758A00EF0B7A /* Component.swift */,
 				B0C357A52064EF090017E1F0 /* CollectionComponent.swift */,
 				B0542DDC20648E340078B3CE /* ListComponent.swift */,
+				B09B71A0209C44D300EAD65C /* ImageComponent.swift */,
 				B07E04B82093619500903275 /* Layout.swift */,
 			);
 			path = Component;
@@ -427,9 +426,7 @@
 				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
 				B03A4C14208337CE005098D3 /* UICarouselLayout.swift */,
 				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
-				B04707F8207F073F00331D26 /* UIGalleryComponent.swift */,
 				B0542DDE2064B56E0078B3CE /* UIListComponent.swift */,
-				B03BEE1B208EE42700CF46FC /* UIImageComponent.swift */,
 				B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */,
 				B03BEE21208F2FEF00CF46FC /* UILabelComponent.swift */,
 				B03BEE23208F303200CF46FC /* UIItemComponent+UILabelComponent.swift */,
@@ -576,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09B71A1209C44D300EAD65C /* ImageComponent.swift in Sources */,
 				B03BEE1E208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift in Sources */,
 				B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */,
 				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
@@ -584,7 +582,6 @@
 				B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */,
 				B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */,
 				B01DB554207F2F1300E511FE /* Theme+Debug.swift in Sources */,
-				B03BEE1C208EE42700CF46FC /* UIImageComponent.swift in Sources */,
 				B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */,
 				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
 				B04707E7207A58BE00331D26 /* UIBoxComponent.swift in Sources */,
@@ -618,7 +615,6 @@
 				B0C357A72064F39D0017E1F0 /* CollectionComponent.swift in Sources */,
 				B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */,
 				B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */,
-				B04707F9207F073F00331D26 /* UIGalleryComponent.swift in Sources */,
 				B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */,
 				B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */,
 				B04707EB207C820200331D26 /* UIGridLayout.swift in Sources */,
