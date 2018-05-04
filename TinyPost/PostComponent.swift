@@ -59,7 +59,10 @@ public extension PostComponent {
             
             switch element {
                 
-            case let .paragraph(text, factory):
+            case let .paragraph(
+                text,
+                factory
+            ):
                 
                 let paragraphComponent = factory()
                 
@@ -67,7 +70,10 @@ public extension PostComponent {
                 
                 return .paragraph(paragraphComponent)
                 
-            case let .image(resource, factory):
+            case let .image(
+                resource,
+                factory
+            ):
                 
                 let imageComponent = factory()
                 
