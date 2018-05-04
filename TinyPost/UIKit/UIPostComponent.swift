@@ -91,3 +91,17 @@ public final class UIPostComponent: PostComponent {
     public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
     
 }
+
+// MARK: - ExpressibleByArrayLiteral
+
+extension UIPostComponent: ExpressibleByArrayLiteral {
+    
+    public convenience init(arrayLiteral elements: Element...) {
+        
+        self.init()
+        
+        self.setElements(elements)
+        
+    }
+    
+}

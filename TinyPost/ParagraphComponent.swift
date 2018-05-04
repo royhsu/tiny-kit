@@ -8,8 +8,4 @@
 
 // MARK: - ParagraphComponent
 
-public protocol ParagraphComponent: Component {
-    
-    var text: String? { get set }
-    
-}
+public typealias ParagraphComponent = TextComponent

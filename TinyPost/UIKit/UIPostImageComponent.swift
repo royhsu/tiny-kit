@@ -114,12 +114,12 @@ public final class UIPostImageComponent: ImageComponent {
 
 }
 
-// MARK: - UIPostImageComponent
+// MARK: - UIImageComponent
 
 public extension UIPostImageComponent {
 
     public final var imageView: UIImageView { return imageComponent.itemView }
     
     public final func applyTheme(_ theme: Theme) { imageComponent.itemView.backgroundColor = theme.placeholderColor }
-
+    
 }

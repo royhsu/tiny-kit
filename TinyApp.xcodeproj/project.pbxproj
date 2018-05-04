@@ -96,7 +96,6 @@
 		B0876E0F2061F752005EDA9A /* UISecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */; };
 		B0876E112061F94F005EDA9A /* UISecondaryButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */; };
 		B0876E132061FD07005EDA9A /* UISecondaryButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */; };
-		B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */; };
 		B0876E1720623094005EDA9A /* ElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1620623094005EDA9A /* ElementComponent.swift */; };
 		B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */; };
 		B0876E1F206252AF005EDA9A /* TSProductDescriptionView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */; };
@@ -114,6 +113,7 @@
 		B09B71DF209C56E600EAD65C /* UISlideComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B71DE209C56E600EAD65C /* UISlideComponent.swift */; };
 		B09B71E1209C57BA00EAD65C /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09B71E0209C57BA00EAD65C /* TinyKit.framework */; };
 		B09B71E2209C57D300EAD65C /* TinySlide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09B71C9209C566B00EAD65C /* TinySlide.framework */; };
+		B09B71E6209C634500EAD65C /* UIPostImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B71E5209C634500EAD65C /* UIPostImageComponent.swift */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -337,7 +337,6 @@
 		B0876E0E2061F752005EDA9A /* UISecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButton.swift; sourceTree = "<group>"; };
 		B0876E102061F94F005EDA9A /* UISecondaryButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISecondaryButtonComponent.swift; sourceTree = "<group>"; };
 		B0876E122061FD07005EDA9A /* UISecondaryButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISecondaryButton+Theme.swift"; sourceTree = "<group>"; };
-		B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
 		B0876E1620623094005EDA9A /* ElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementComponent.swift; sourceTree = "<group>"; };
 		B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPostComponent.swift; sourceTree = "<group>"; };
 		B0876E1E206252AF005EDA9A /* TSProductDescriptionView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSProductDescriptionView+Theme.swift"; sourceTree = "<group>"; };
@@ -355,6 +354,7 @@
 		B09B71D8209C56B100EAD65C /* TinySlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinySlide.h; sourceTree = "<group>"; };
 		B09B71DE209C56E600EAD65C /* UISlideComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISlideComponent.swift; sourceTree = "<group>"; };
 		B09B71E0209C57BA00EAD65C /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09B71E5209C634500EAD65C /* UIPostImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPostImageComponent.swift; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -595,7 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				B024C8FA2058C0A100CFAE50 /* UIPostParagraphComponent.swift */,
-				B0876E1420622C55005EDA9A /* UIPostImageComponent.swift */,
+				B09B71E5209C634500EAD65C /* UIPostImageComponent.swift */,
 				B0876E1A20623DC3005EDA9A /* UIPostComponent.swift */,
 			);
 			path = UIKit;
@@ -1237,7 +1237,7 @@
 				B03A4C0F2083130F005098D3 /* ParagraphComponent.swift in Sources */,
 				B024C8FB2058C0A100CFAE50 /* UIPostParagraphComponent.swift in Sources */,
 				B0876E1B20623DC3005EDA9A /* UIPostComponent.swift in Sources */,
-				B0876E1520622C55005EDA9A /* UIPostImageComponent.swift in Sources */,
+				B09B71E6209C634500EAD65C /* UIPostImageComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  UIItemComponent+UILabelComponent.swift
+//  UIItemComponent+LabelComponent.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/4/24.
@@ -8,7 +8,7 @@
 
 // MARK: - UILabelComponent
 
-extension UIItemComponent: UILabelComponent where ItemView == UILabel {
+extension UIItemComponent: TextComponent where ItemView == UILabel {
     
     public final var label: UILabel { return itemView }
     
