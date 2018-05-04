@@ -79,10 +79,8 @@ public final class UIRootCoordinator: Coordinator {
             descriptionButtonComponent: buttonComponent,
             reviewSectionHeaderComponent: reviewSectionHeaderComponent,
             introductionSectionHeaderComponent: introductionSectionHeaderComponent,
-            introductionComponent: TPPostComponent(
-                layoutComponent: UIListComponent(
-                    contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
-                )
+            introductionComponent: UIPostComponent(
+                contentMode: .automatic(estimatedSize: UIScreen.main.bounds.size)
             )
         )
 
@@ -337,7 +335,7 @@ public final class UIRootCoordinator: Coordinator {
                                 factory: paragraphComponentFactory
                             )
                         ],
-                        factory: { TPPostComponent() }
+                        factory: { UIPostComponent() }
                     )
                 ],
                 factory: { UIListComponent() }

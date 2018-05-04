@@ -1,21 +1,23 @@
 //
-//  TPPostComponent.swift
+//  UIPostComponent.swift
 //  TinyPost
 //
 //  Created by Roy Hsu on 21/03/2018.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TPPostComponent
+// MARK: - UIPostComponent
 
-public final class TPPostComponent: PostComponent {
+public final class UIPostComponent: PostComponent {
     
     /// The base component.
-    private final let layoutComponent: ListComponent
+    private final let listComponent: UIListComponent
     
-    public init(layoutComponent: ListComponent) {
+    public init(
+        contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
+    ) {
         
-        self.layoutComponent = layoutComponent
+        self.listComponent = UIListComponent(contentMode: contentMode)
         
         self.numberOfElementComponents = 0
         
@@ -48,9 +50,9 @@ public final class TPPostComponent: PostComponent {
     
     fileprivate final func prepare() {
         
-        layoutComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfElementComponents }
+        listComponent.setNumberOfItemComponents { [unowned self] _, _ in self.numberOfElementComponents }
         
-        layoutComponent.setItemComponent { [unowned self] _, indexPath in
+        listComponent.setItemComponent { [unowned self] _, indexPath in
             
             switch self.elementComponent(at: indexPath.item) {
                 
@@ -68,24 +70,24 @@ public final class TPPostComponent: PostComponent {
     
     public final var contentMode: ComponentContentMode {
         
-        get { return layoutComponent.contentMode }
+        get { return listComponent.contentMode }
         
-        set { layoutComponent.contentMode = newValue }
+        set { listComponent.contentMode = newValue }
         
     }
     
     public final func render() {
         
-        layoutComponent.numberOfSections = (numberOfElementComponents == 0) ? 0 : 1
+        listComponent.numberOfSections = (numberOfElementComponents == 0) ? 0 : 1
         
-        layoutComponent.render()
+        listComponent.render()
         
     }
     
     // MARK: ViewRenderable
     
-    public final var view: View { return layoutComponent.view }
+    public final var view: View { return listComponent.view }
     
-    public final var preferredContentSize: CGSize { return layoutComponent.preferredContentSize }
+    public final var preferredContentSize: CGSize { return listComponent.preferredContentSize }
     
 }

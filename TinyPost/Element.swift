@@ -22,6 +22,8 @@ public enum Element {
     
 }
 
+// MARK: - ComponentRepresentable
+
 extension Element: ComponentRepresentable {
     
     public var component: Component {
