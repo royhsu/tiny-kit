@@ -8,6 +8,8 @@
 
 // MARK: - SlideComponent
 
+// TODO: This component is almost identical to the collection component. It seems like it loses its weight.
+// The problem is to find a correct way to make a view from a model that isn't the anti-pattern.
 public protocol SlideComponent: Component {
     
     var numberOfElementComponents: Int { get set }
