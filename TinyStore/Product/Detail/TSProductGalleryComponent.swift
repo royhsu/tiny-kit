@@ -10,14 +10,14 @@
 
 import TinyGallery
 
-public final class TSProductGalleryComponent: SlideComponent {
+public final class TSProductGalleryComponent: GalleryComponent {
     
     private final let bundle: Bundle
     
     /// The base component.
     private final let containerComponent: UIItemComponent<TSProductGalleryContainerView>
     
-    private final let galleryComponent: SlideComponent
+    private final let galleryComponent: GalleryComponent
     
     public init(
         contentMode: ComponentContentMode = .automatic(estimatedSize: .zero)
@@ -47,19 +47,19 @@ public final class TSProductGalleryComponent: SlideComponent {
     
     fileprivate final func prepareLayout() { containerView.contentView.wrapSubview(galleryComponent.view) }
     
-    // MARK: SlideComponent
+    // MARK: GalleryComponent
     
-    public final var numberOfElementComponents: Int {
+    public final var numberOfImageComponents: Int {
         
-        get { return galleryComponent.numberOfElementComponents }
+        get { return galleryComponent.numberOfImageComponents }
 
-        set { galleryComponent.numberOfElementComponents = newValue }
+        set { galleryComponent.numberOfImageComponents = newValue }
         
     }
+    
+    public final func imageComponent(at index: Int) -> ImageComponent { return galleryComponent.imageComponent(at: index) }
 
-    public final func elementComponent(at index: Int) -> ElementComponent { return galleryComponent.elementComponent(at: index) }
-
-    public final func setElementComponent(provider: @escaping ElementComponentProvider) { galleryComponent.setElementComponent(provider: provider) }
+    public final func setImageComponent(provider: @escaping ImageComponentProvider) { galleryComponent.setImageComponent(provider: provider) }
     
     // MARK: Component
     

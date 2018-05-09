@@ -112,13 +112,13 @@ public final class UIRootCoordinator: Coordinator {
             )
         )
 
-        productDetailComponent.galleryComponent.setElements(
+        productDetailComponent.galleryComponent.setImageItems(
             [
-                .image(
+                ImageItem(
                     resource: .memory(#imageLiteral(resourceName: "image-dessert-1")),
                     factory: imageComponentFactory
                 ),
-                .image(
+                ImageItem(
                     resource: .memory(#imageLiteral(resourceName: "image-dessert-2")),
                     factory: imageComponentFactory
                 )
