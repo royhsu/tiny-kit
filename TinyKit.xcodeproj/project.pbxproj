@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9022146489E00B19F6A /* ReusableCell.swift */; };
-		B009B9082146493F00B19F6A /* SimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9062146491400B19F6A /* SimpleTableViewCell.swift */; };
+		B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9062146491400B19F6A /* ClassTableViewCell.swift */; };
 		B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B904214648F500B19F6A /* ReusableCellTests.swift */; };
 		B009B90C21464AF500B19F6A /* NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90B21464AF400B19F6A /* NibCell.swift */; };
 		B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */; };
 		B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90F21464B9800B19F6A /* NibTableViewCell.swift */; };
 		B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B009B91221464BBA00B19F6A /* NibTableViewCell.xib */; };
+		B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91421464CEF00B19F6A /* UITableView+Register.swift */; };
+		B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91721464DDF00B19F6A /* XCTSuccess.swift */; };
+		B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9192146503800B19F6A /* Bundle+Testing.swift */; };
+		B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */; };
+		B009B91F2146544600B19F6A /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
 /* End PBXBuildFile section */
@@ -31,11 +36,16 @@
 /* Begin PBXFileReference section */
 		B009B9022146489E00B19F6A /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		B009B904214648F500B19F6A /* ReusableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellTests.swift; sourceTree = "<group>"; };
-		B009B9062146491400B19F6A /* SimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewCell.swift; sourceTree = "<group>"; };
+		B009B9062146491400B19F6A /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		B009B90B21464AF400B19F6A /* NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCell.swift; sourceTree = "<group>"; };
 		B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+NibCell.swift"; sourceTree = "<group>"; };
 		B009B90F21464B9800B19F6A /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		B009B91221464BBA00B19F6A /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
+		B009B91421464CEF00B19F6A /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
+		B009B91721464DDF00B19F6A /* XCTSuccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTSuccess.swift; sourceTree = "<group>"; };
+		B009B9192146503800B19F6A /* Bundle+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Testing.swift"; sourceTree = "<group>"; };
+		B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
+		B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDataSourceController.swift; sourceTree = "<group>"; };
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,13 +75,22 @@
 		B009B9012146449200B19F6A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B009B90B21464AF400B19F6A /* NibCell.swift */,
-				B009B9022146489E00B19F6A /* ReusableCell.swift */,
-				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
+				B009B91421464CEF00B19F6A /* UITableView+Register.swift */,
+				B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		B009B91621464DDF00B19F6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B009B91721464DDF00B19F6A /* XCTSuccess.swift */,
+				B009B9192146503800B19F6A /* Bundle+Testing.swift */,
+				B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		B00D95FD2030753600EF0B7A = {
@@ -96,6 +115,9 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B009B90B21464AF400B19F6A /* NibCell.swift */,
+				B009B9022146489E00B19F6A /* ReusableCell.swift */,
+				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
 				B009B9012146449200B19F6A /* iOS */,
 			);
 			path = Sources;
@@ -104,8 +126,9 @@
 		B00D96572030766600EF0B7A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B009B91621464DDF00B19F6A /* Helpers */,
 				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
-				B009B9062146491400B19F6A /* SimpleTableViewCell.swift */,
+				B009B9062146491400B19F6A /* ClassTableViewCell.swift */,
 				B009B90F21464B9800B19F6A /* NibTableViewCell.swift */,
 				B009B91221464BBA00B19F6A /* NibTableViewCell.xib */,
 				B00D96582030766600EF0B7A /* Info.plist */,
@@ -234,6 +257,8 @@
 			files = (
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
+				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
+				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,8 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
+				B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
-				B009B9082146493F00B19F6A /* SimpleTableViewCell.swift in Sources */,
+				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
+				B009B91F2146544600B19F6A /* UITableViewDataSourceController.swift in Sources */,
+				B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

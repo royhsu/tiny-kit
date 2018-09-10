@@ -1,18 +1,18 @@
 //
-//  SimpleTableViewCell.swift
+//  ClassTableViewCell.swift
 //  TinyKit Tests
 //
 //  Created by Roy Hsu on 2018/9/10.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - SimpleTableViewCell
+// MARK: - ClassTableViewCell
 
 import UIKit
 import TinyKit
 
-internal final class SimpleTableViewCell: UITableViewCell { }
+internal final class ClassTableViewCell: UITableViewCell { }
 
 // MARK: - ReusableCell
 
-extension SimpleTableViewCell: ReusableCell { }
+extension ClassTableViewCell: ReusableCell { }

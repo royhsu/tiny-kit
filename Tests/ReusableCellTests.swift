@@ -8,6 +8,7 @@
 
 // MARK: - ReusableCellTests
 
+import UIKit
 import XCTest
 
 internal final class ReusableCellTests: XCTestCase {
@@ -15,8 +16,8 @@ internal final class ReusableCellTests: XCTestCase {
     internal final func testIdentifier() {
         
         XCTAssertEqual(
-            SimpleTableViewCell.identifier,
-            "SimpleTableViewCell"
+            ClassTableViewCell.identifier,
+            "ClassTableViewCell"
         )
         
     }
