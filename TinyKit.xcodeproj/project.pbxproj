@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9022146489E00B19F6A /* ReusableCell.swift */; };
+		B009B9082146493F00B19F6A /* SimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9062146491400B19F6A /* SimpleTableViewCell.swift */; };
+		B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B904214648F500B19F6A /* ReusableCellTests.swift */; };
+		B009B90C21464AF500B19F6A /* NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90B21464AF400B19F6A /* NibCell.swift */; };
+		B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */; };
+		B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90F21464B9800B19F6A /* NibTableViewCell.swift */; };
+		B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B009B91221464BBA00B19F6A /* NibTableViewCell.xib */; };
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
 /* End PBXBuildFile section */
@@ -22,6 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B009B9022146489E00B19F6A /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
+		B009B904214648F500B19F6A /* ReusableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellTests.swift; sourceTree = "<group>"; };
+		B009B9062146491400B19F6A /* SimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewCell.swift; sourceTree = "<group>"; };
+		B009B90B21464AF400B19F6A /* NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCell.swift; sourceTree = "<group>"; };
+		B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+NibCell.swift"; sourceTree = "<group>"; };
+		B009B90F21464B9800B19F6A /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
+		B009B91221464BBA00B19F6A /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +65,9 @@
 		B009B9012146449200B19F6A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B009B90B21464AF400B19F6A /* NibCell.swift */,
+				B009B9022146489E00B19F6A /* ReusableCell.swift */,
+				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
 			);
@@ -87,6 +104,10 @@
 		B00D96572030766600EF0B7A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
+				B009B9062146491400B19F6A /* SimpleTableViewCell.swift */,
+				B009B90F21464B9800B19F6A /* NibTableViewCell.swift */,
+				B009B91221464BBA00B19F6A /* NibTableViewCell.xib */,
 				B00D96582030766600EF0B7A /* Info.plist */,
 			);
 			path = Tests;
@@ -161,6 +182,7 @@
 				TargetAttributes = {
 					B00D96062030753600EF0B7A = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					B00D964B2030764E00EF0B7A = {
@@ -192,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
+				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
+				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
+				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
+				B009B9082146493F00B19F6A /* SimpleTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +385,7 @@
 		B00D96102030753600EF0B7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -374,6 +404,7 @@
 				PRODUCT_MODULE_NAME = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,6 +413,7 @@
 		B00D96112030753600EF0B7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -408,6 +440,7 @@
 		B00D96552030764E00EF0B7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5CE6946X84;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -427,6 +460,7 @@
 		B00D96562030764E00EF0B7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5CE6946X84;
 				FRAMEWORK_SEARCH_PATHS = (
