@@ -11,19 +11,19 @@
 import UIKit
 
 public extension UITableView {
-    
+
     public final func register<Cell>(_ cellType: Cell.Type)
     where
         Cell: UITableViewCell,
         Cell: ReusableCell {
-            
+
         register(
             cellType,
             forCellReuseIdentifier: cellType.identifier
         )
-            
+
     }
-    
+
     public final func register<Cell>(
         _ cellType: Cell.Type,
         bundle: Bundle?
@@ -32,17 +32,17 @@ public extension UITableView {
         Cell: UITableViewCell,
         Cell: ReusableCell,
         Cell: NibCell {
-        
+
         let nib = UINib(
             nibName: cellType.nibName,
             bundle: bundle
         )
-        
+
         register(
             nib,
             forCellReuseIdentifier: cellType.identifier
         )
-            
+
     }
 
 }

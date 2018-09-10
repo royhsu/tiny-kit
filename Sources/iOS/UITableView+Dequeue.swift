@@ -11,7 +11,7 @@
 import UIKit
 
 public extension UITableView {
-    
+
     public final func dequeueReusableCell<Cell>(
         _ cellType: Cell.Type,
         for indexPath: IndexPath
@@ -20,16 +20,16 @@ public extension UITableView {
     where
         Cell: UITableViewCell,
         Cell: ReusableCell {
-        
+
         guard
             let cell = dequeueReusableCell(
                 withIdentifier: cellType.identifier,
                 for: indexPath
             ) as? Cell
         else { fatalError("Please make sure to register \(cellType) before dequeuing one.") }
-        
+
         return cell
-            
+
     }
-    
+
 }

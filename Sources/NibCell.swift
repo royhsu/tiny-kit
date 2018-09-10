@@ -9,7 +9,7 @@
 // MARK: - NibCell
 
 public protocol NibCell {
-    
+
     static var nibName: String { get }
-    
+
 }

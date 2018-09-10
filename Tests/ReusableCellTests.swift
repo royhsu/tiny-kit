@@ -12,23 +12,23 @@ import UIKit
 import XCTest
 
 internal final class ReusableCellTests: XCTestCase {
-    
+
     internal final func testIdentifier() {
-        
+
         XCTAssertEqual(
             ClassTableViewCell.identifier,
             "ClassTableViewCell"
         )
-        
+
     }
-    
+
     internal final func testNibName() {
-        
+
         XCTAssertEqual(
             NibTableViewCell.nibName,
             "NibTableViewCell"
         )
-        
+
     }
-    
+
 }

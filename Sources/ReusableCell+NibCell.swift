@@ -9,7 +9,7 @@
 // MARK: - NibCell
 
 extension ReusableCell where Self: NibCell {
-    
+
     public static var nibName: String { return identifier }
-    
+
 }

@@ -9,15 +9,15 @@
 // MARK: - ReusableCell
 
 public protocol ReusableCell {
-    
+
     static var identifier: String { get }
-    
+
 }
 
 // MARK: - Default Implementation
 
 public extension ReusableCell {
-    
+
     public static var identifier: String { return String(describing: self) }
-    
+
 }

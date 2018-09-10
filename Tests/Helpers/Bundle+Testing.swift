@@ -11,7 +11,7 @@
 import Foundation
 
 public extension Bundle {
-    
+
     public static var test: Bundle { return Bundle(for: self) }
-    
+
 }
