@@ -8,72 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B00D963B2030758A00EF0B7A /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96252030758A00EF0B7A /* Component.swift */; };
-		B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96272030758A00EF0B7A /* ComponentContentMode.swift */; };
-		B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D962D2030758A00EF0B7A /* UICollectionView+Cell.swift */; };
-		B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D962F2030758A00EF0B7A /* UIView+UINib.swift */; };
-		B00D96432030758A00EF0B7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96312030758A00EF0B7A /* View.swift */; };
-		B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96322030758A00EF0B7A /* ViewRenderable.swift */; };
-		B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96332030758A00EF0B7A /* ViewRenderer.swift */; };
-		B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D96352030758A00EF0B7A /* UITableView+Cell.swift */; };
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
-		B00D9670203076C500EF0B7A /* UITableViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D965B203076C500EF0B7A /* UITableViewExtensionsTests.swift */; };
-		B00D9671203076C500EF0B7A /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D965C203076C500EF0B7A /* NibTableViewCell.xib */; };
-		B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D965D203076C500EF0B7A /* NibTableViewCell.swift */; };
-		B00D9673203076C500EF0B7A /* NoNibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D965E203076C500EF0B7A /* NoNibTableViewCell.swift */; };
-		B00D9674203076C500EF0B7A /* UICollectionViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9660203076C500EF0B7A /* UICollectionViewExtensionsTests.swift */; };
-		B00D9675203076C500EF0B7A /* NibCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D9661203076C500EF0B7A /* NibCollectionViewCell.xib */; };
-		B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9662203076C500EF0B7A /* NoNibCollectionViewCell.swift */; };
-		B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */; };
-		B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */; };
-		B00D967E203076C500EF0B7A /* UIListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D966D203076C500EF0B7A /* UIListComponentTests.swift */; };
-		B01DB551207F2F1300E511FE /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB549207F2EB300E511FE /* Stylable.swift */; };
-		B01DB552207F2F1300E511FE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54B207F2EB400E511FE /* Theme.swift */; };
-		B01DB553207F2F1300E511FE /* Theme+AzureSky.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */; };
-		B01DB554207F2F1300E511FE /* Theme+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DB54C207F2EB400E511FE /* Theme+Debug.swift */; };
-		B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FD203BFD580074CD5E /* Coordinator.swift */; };
-		B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */; };
-		B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */; };
-		B01EF9F3205D2C9800CF9C17 /* UICollapseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */; };
-		B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */; };
-		B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */; };
-		B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EF9F8205D2CD000CF9C17 /* Validator.swift */; };
-		B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */; };
-		B022E268205E9E7E00DD9170 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */; };
-		B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022E26B205FA36100DD9170 /* Bool+Toggle.swift */; };
-		B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */; };
-		B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */; };
-		B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A4C14208337CE005098D3 /* UICarouselLayout.swift */; };
-		B03BEE18208D801400CF46FC /* UIBoxComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */; };
-		B03BEE1C208EE42700CF46FC /* UIImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1B208EE42700CF46FC /* UIImageComponent.swift */; };
-		B03BEE1E208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */; };
-		B03BEE20208F0EDD00CF46FC /* UIButtonEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE1F208F0EDD00CF46FC /* UIButtonEvent.swift */; };
-		B03BEE22208F2FEF00CF46FC /* UILabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE21208F2FEF00CF46FC /* UILabelComponent.swift */; };
-		B03BEE24208F303200CF46FC /* UIItemComponent+UILabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE23208F303200CF46FC /* UIItemComponent+UILabelComponent.swift */; };
-		B03BEE2C208F7A7A00CF46FC /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE2B208F7A7A00CF46FC /* Image.swift */; };
-		B03BEE2E208F7C2D00CF46FC /* ImageResource+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BEE2D208F7C2D00CF46FC /* ImageResource+UIImageView.swift */; };
-		B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */; };
-		B03C3E4920456E2D004E318B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C3E4720456E2D004E318B /* ViewController.swift */; };
-		B04707E3207A025F00331D26 /* ImageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E1207A025F00331D26 /* ImageResource.swift */; };
-		B04707E4207A025F00331D26 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E2207A025F00331D26 /* ImageProvider.swift */; };
-		B04707E7207A58BE00331D26 /* UIBoxComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E6207A58BE00331D26 /* UIBoxComponent.swift */; };
-		B04707E9207C6C1300331D26 /* UIGridComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707E8207C6C1300331D26 /* UIGridComponent.swift */; };
-		B04707EB207C820200331D26 /* UIGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707EA207C820200331D26 /* UIGridLayout.swift */; };
-		B04707ED207C844700331D26 /* UICollectionView+SafeAreaRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707EC207C844700331D26 /* UICollectionView+SafeAreaRect.swift */; };
-		B04707F9207F073F00331D26 /* UIGalleryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04707F8207F073F00331D26 /* UIGalleryComponent.swift */; };
-		B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */; };
-		B0542DDD20648E340078B3CE /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDC20648E340078B3CE /* ListComponent.swift */; };
-		B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0542DDE2064B56E0078B3CE /* UIListComponent.swift */; };
-		B05E67622036D5B6003E8E0E /* UIItemComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */; };
-		B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E67662036EDE5003E8E0E /* UIItemComponent.swift */; };
-		B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E1820623B2F005EDA9A /* Array+Join.swift */; };
-		B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */; };
-		B0B4741E208700C8000A49E6 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741C208700C8000A49E6 /* Hydra.framework */; };
-		B0B4741F208700C8000A49E6 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4741D208700C8000A49E6 /* TinyCore.framework */; };
-		B0B4742120870132000A49E6 /* UICollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4742020870132000A49E6 /* UICollectionComponent.swift */; };
-		B0B474242087015D000A49E6 /* UICollectionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */; };
-		B0C357A72064F39D0017E1F0 /* CollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C357A52064EF090017E1F0 /* CollectionComponent.swift */; };
-		B0D46961207F195A0047AE8F /* UIButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D46960207F195A0047AE8F /* UIButtonComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,90 +21,12 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		B00D968C203078F700EF0B7A /* Carthage */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = Carthage;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B00D96252030758A00EF0B7A /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		B00D96272030758A00EF0B7A /* ComponentContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentContentMode.swift; sourceTree = "<group>"; };
-		B00D962D2030758A00EF0B7A /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
-		B00D962F2030758A00EF0B7A /* UIView+UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
-		B00D96312030758A00EF0B7A /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		B00D96322030758A00EF0B7A /* ViewRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRenderable.swift; sourceTree = "<group>"; };
-		B00D96332030758A00EF0B7A /* ViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRenderer.swift; sourceTree = "<group>"; };
-		B00D96352030758A00EF0B7A /* UITableView+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Cell.swift"; sourceTree = "<group>"; };
-		B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyKit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B00D965B203076C500EF0B7A /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B00D965C203076C500EF0B7A /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
-		B00D965D203076C500EF0B7A /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
-		B00D965E203076C500EF0B7A /* NoNibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibTableViewCell.swift; sourceTree = "<group>"; };
-		B00D9660203076C500EF0B7A /* UICollectionViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B00D9661203076C500EF0B7A /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionViewCell.xib; sourceTree = "<group>"; };
-		B00D9662203076C500EF0B7A /* NoNibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNibCollectionViewCell.swift; sourceTree = "<group>"; };
-		B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
-		B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
-		B00D966D203076C500EF0B7A /* UIListComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIListComponentTests.swift; sourceTree = "<group>"; };
-		B01DB549207F2EB300E511FE /* Stylable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
-		B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+AzureSky.swift"; sourceTree = "<group>"; };
-		B01DB54B207F2EB400E511FE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		B01DB54C207F2EB400E511FE /* Theme+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Debug.swift"; sourceTree = "<group>"; };
-		B01ED1FD203BFD580074CD5E /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewRendererController.swift; sourceTree = "<group>"; };
-		B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseView.swift; sourceTree = "<group>"; };
-		B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICollapseView.xib; sourceTree = "<group>"; };
-		B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollapseBarController.swift; sourceTree = "<group>"; };
-		B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
-		B01EF9F8205D2CD000CF9C17 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldBridge.swift; sourceTree = "<group>"; };
-		B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
-		B022E26B205FA36100DD9170 /* Bool+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Toggle.swift"; sourceTree = "<group>"; };
-		B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewRender.swift"; sourceTree = "<group>"; };
-		B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
-		B03A4C14208337CE005098D3 /* UICarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselLayout.swift; sourceTree = "<group>"; };
-		B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBoxComponentTests.swift; sourceTree = "<group>"; };
-		B03BEE1B208EE42700CF46FC /* UIImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageComponent.swift; sourceTree = "<group>"; };
-		B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIItemComponent+UIImageComponent.swift"; sourceTree = "<group>"; };
-		B03BEE1F208F0EDD00CF46FC /* UIButtonEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEvent.swift; sourceTree = "<group>"; };
-		B03BEE21208F2FEF00CF46FC /* UILabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelComponent.swift; sourceTree = "<group>"; };
-		B03BEE23208F303200CF46FC /* UIItemComponent+UILabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIItemComponent+UILabelComponent.swift"; sourceTree = "<group>"; };
-		B03BEE2B208F7A7A00CF46FC /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		B03BEE2D208F7C2D00CF46FC /* ImageResource+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+UIImageView.swift"; sourceTree = "<group>"; };
-		B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
-		B03C3E4720456E2D004E318B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B04707E1207A025F00331D26 /* ImageResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResource.swift; sourceTree = "<group>"; };
-		B04707E2207A025F00331D26 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
-		B04707E6207A58BE00331D26 /* UIBoxComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBoxComponent.swift; sourceTree = "<group>"; };
-		B04707E8207C6C1300331D26 /* UIGridComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridComponent.swift; sourceTree = "<group>"; };
-		B04707EA207C820200331D26 /* UIGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridLayout.swift; sourceTree = "<group>"; };
-		B04707EC207C844700331D26 /* UICollectionView+SafeAreaRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+SafeAreaRect.swift"; sourceTree = "<group>"; };
-		B04707F8207F073F00331D26 /* UIGalleryComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGalleryComponent.swift; sourceTree = "<group>"; };
-		B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICarouselComponent.swift; sourceTree = "<group>"; };
-		B0542DDC20648E340078B3CE /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
-		B0542DDE2064B56E0078B3CE /* UIListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListComponent.swift; sourceTree = "<group>"; };
-		B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIItemComponentTests.swift; sourceTree = "<group>"; };
-		B05E67662036EDE5003E8E0E /* UIItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIItemComponent.swift; sourceTree = "<group>"; };
-		B0876E1820623B2F005EDA9A /* Array+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Join.swift"; sourceTree = "<group>"; };
-		B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentViewController.swift; sourceTree = "<group>"; };
-		B0B4741C208700C8000A49E6 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
-		B0B4741D208700C8000A49E6 /* TinyCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyCore.framework; path = Carthage/Build/iOS/TinyCore.framework; sourceTree = "<group>"; };
-		B0B4742020870132000A49E6 /* UICollectionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionComponent.swift; sourceTree = "<group>"; };
-		B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionComponentTests.swift; sourceTree = "<group>"; };
-		B0C357A52064EF090017E1F0 /* CollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionComponent.swift; sourceTree = "<group>"; };
-		B0D46960207F195A0047AE8F /* UIButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,8 +34,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0B4741E208700C8000A49E6 /* Hydra.framework in Frameworks */,
-				B0B4741F208700C8000A49E6 /* TinyCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B009B9012146449200B19F6A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B00D960A2030753600EF0B7A /* TinyKit.h */,
+				B00D960B2030753600EF0B7A /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		B00D95FD2030753600EF0B7A = {
 			isa = PBXGroup;
 			children = (
@@ -207,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				B00D96072030753600EF0B7A /* TinyKit.framework */,
-				B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */,
+				B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,226 +79,24 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B00D961F2030758A00EF0B7A /* Component */,
-				B01ED1FC203BFD260074CD5E /* Coordinator */,
-				B04707E5207A026400331D26 /* Image */,
-				B05E677E20394388003E8E0E /* UIKit */,
-				B00D96302030758A00EF0B7A /* View */,
-				B01EF9F6205D2CCF00CF9C17 /* Inputable.swift */,
-				B01EF9F8205D2CD000CF9C17 /* Validator.swift */,
-				B022E26B205FA36100DD9170 /* Bool+Toggle.swift */,
-				B0876E1820623B2F005EDA9A /* Array+Join.swift */,
-				B01DB549207F2EB300E511FE /* Stylable.swift */,
-				B01DB54B207F2EB400E511FE /* Theme.swift */,
-				B01DB54A207F2EB300E511FE /* Theme+AzureSky.swift */,
-				B01DB54C207F2EB400E511FE /* Theme+Debug.swift */,
-				B00D960A2030753600EF0B7A /* TinyKit.h */,
-				B00D960B2030753600EF0B7A /* Info.plist */,
+				B009B9012146449200B19F6A /* iOS */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		B00D961F2030758A00EF0B7A /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				B00D96272030758A00EF0B7A /* ComponentContentMode.swift */,
-				B00D96252030758A00EF0B7A /* Component.swift */,
-				B0C357A52064EF090017E1F0 /* CollectionComponent.swift */,
-				B0542DDC20648E340078B3CE /* ListComponent.swift */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
-		B00D962C2030758A00EF0B7A /* UICollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				B00D962D2030758A00EF0B7A /* UICollectionView+Cell.swift */,
-				B04707EC207C844700331D26 /* UICollectionView+SafeAreaRect.swift */,
-			);
-			path = UICollectionView;
-			sourceTree = "<group>";
-		};
-		B00D962E2030758A00EF0B7A /* UIView */ = {
-			isa = PBXGroup;
-			children = (
-				B00D962F2030758A00EF0B7A /* UIView+UINib.swift */,
-			);
-			path = UIView;
-			sourceTree = "<group>";
-		};
-		B00D96302030758A00EF0B7A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B03C3E4A20456E69004E318B /* Controller */,
-				B00D96312030758A00EF0B7A /* View.swift */,
-				B00D96322030758A00EF0B7A /* ViewRenderable.swift */,
-				B00D96332030758A00EF0B7A /* ViewRenderer.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B00D96342030758A00EF0B7A /* UITableView */ = {
-			isa = PBXGroup;
-			children = (
-				B00D96352030758A00EF0B7A /* UITableView+Cell.swift */,
-			);
-			path = UITableView;
 			sourceTree = "<group>";
 		};
 		B00D96572030766600EF0B7A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B00D9668203076C500EF0B7A /* Component */,
-				B00D965F203076C500EF0B7A /* UICollectionView */,
-				B00D965A203076C500EF0B7A /* UITableView */,
-				B00D9666203076C500EF0B7A /* UIView */,
 				B00D96582030766600EF0B7A /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		B00D965A203076C500EF0B7A /* UITableView */ = {
-			isa = PBXGroup;
-			children = (
-				B00D965B203076C500EF0B7A /* UITableViewExtensionsTests.swift */,
-				B00D965C203076C500EF0B7A /* NibTableViewCell.xib */,
-				B00D965D203076C500EF0B7A /* NibTableViewCell.swift */,
-				B00D965E203076C500EF0B7A /* NoNibTableViewCell.swift */,
-			);
-			path = UITableView;
-			sourceTree = "<group>";
-		};
-		B00D965F203076C500EF0B7A /* UICollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				B00D9660203076C500EF0B7A /* UICollectionViewExtensionsTests.swift */,
-				B00D9661203076C500EF0B7A /* NibCollectionViewCell.xib */,
-				B00D9662203076C500EF0B7A /* NoNibCollectionViewCell.swift */,
-				B00D9663203076C500EF0B7A /* NibCollectionViewCell.swift */,
-			);
-			path = UICollectionView;
-			sourceTree = "<group>";
-		};
-		B00D9666203076C500EF0B7A /* UIView */ = {
-			isa = PBXGroup;
-			children = (
-				B00D9667203076C500EF0B7A /* UIViewExtensionsTests.swift */,
-			);
-			path = UIView;
-			sourceTree = "<group>";
-		};
-		B00D9668203076C500EF0B7A /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				B05E67602036D5B2003E8E0E /* UIItemComponentTests.swift */,
-				B03BEE16208D7FFA00CF46FC /* UIBoxComponentTests.swift */,
-				B00D966D203076C500EF0B7A /* UIListComponentTests.swift */,
-				B0B4742220870152000A49E6 /* UICollectionComponentTests.swift */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
 		B00D96812030778F00EF0B7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B0B4741C208700C8000A49E6 /* Hydra.framework */,
-				B0B4741D208700C8000A49E6 /* TinyCore.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B01ED1FC203BFD260074CD5E /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				B01ED1FD203BFD580074CD5E /* Coordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		B01EF9ED205D2C4100CF9C17 /* Collapsable Bar */ = {
-			isa = PBXGroup;
-			children = (
-				B01EF9F1205D2C9800CF9C17 /* UICollapseBarController.swift */,
-				B01EF9EF205D2C9800CF9C17 /* UICollapseView.swift */,
-				B01EF9F0205D2C9800CF9C17 /* UICollapseView.xib */,
-			);
-			path = "Collapsable Bar";
-			sourceTree = "<group>";
-		};
-		B03BEE31208F7D2600CF46FC /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				B03BEE2D208F7C2D00CF46FC /* ImageResource+UIImageView.swift */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		B03C3E4A20456E69004E318B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				B03C3E4720456E2D004E318B /* ViewController.swift */,
-				B03C3E4620456E2D004E318B /* ViewControllerRepresentable.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		B04707E5207A026400331D26 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				B03BEE2B208F7A7A00CF46FC /* Image.swift */,
-				B04707E2207A025F00331D26 /* ImageProvider.swift */,
-				B04707E1207A025F00331D26 /* ImageResource.swift */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		B05E677E20394388003E8E0E /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				B01EF9ED205D2C4100CF9C17 /* Collapsable Bar */,
-				B00D962C2030758A00EF0B7A /* UICollectionView */,
-				B00D96342030758A00EF0B7A /* UITableView */,
-				B00D962E2030758A00EF0B7A /* UIView */,
-				B05E67922039B7B4003E8E0E /* Component */,
-				B05E67912039B77B003E8E0E /* View */,
-				B03BEE31208F7D2600CF46FC /* Image */,
-				B01EFA15205D2DD500CF9C17 /* UITextFieldBridge.swift */,
-				B022E267205E9E7E00DD9170 /* UITableViewBridge.swift */,
-				B037F302205DF59600CF5F75 /* UICollectionViewBridge.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
-		B05E67912039B77B003E8E0E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B0354DC12031617B002A4B71 /* UIView+ViewRender.swift */,
-				B01ED1FF203BFE620074CD5E /* UIViewRendererController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B05E67922039B7B4003E8E0E /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				B05E67662036EDE5003E8E0E /* UIItemComponent.swift */,
-				B04707E6207A58BE00331D26 /* UIBoxComponent.swift */,
-				B0B4742020870132000A49E6 /* UICollectionComponent.swift */,
-				B04707EA207C820200331D26 /* UIGridLayout.swift */,
-				B04707E8207C6C1300331D26 /* UIGridComponent.swift */,
-				B03A4C14208337CE005098D3 /* UICarouselLayout.swift */,
-				B04EBD78204AB8D300C9235F /* UICarouselComponent.swift */,
-				B04707F8207F073F00331D26 /* UIGalleryComponent.swift */,
-				B0542DDE2064B56E0078B3CE /* UIListComponent.swift */,
-				B03BEE1B208EE42700CF46FC /* UIImageComponent.swift */,
-				B03BEE1D208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift */,
-				B03BEE21208F2FEF00CF46FC /* UILabelComponent.swift */,
-				B03BEE23208F303200CF46FC /* UIItemComponent+UILabelComponent.swift */,
-				B03BEE1F208F0EDD00CF46FC /* UIButtonEvent.swift */,
-				B0D46960207F195A0047AE8F /* UIButtonComponent.swift */,
-				B0876EBC2035B8300003CC59 /* UIComponentViewController.swift */,
-			);
-			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,42 +113,40 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B00D96062030753600EF0B7A /* TinyKit */ = {
+		B00D96062030753600EF0B7A /* TinyKit iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B00D960F2030753600EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit" */;
+			buildConfigurationList = B00D960F2030753600EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit iOS" */;
 			buildPhases = (
 				B00D96022030753600EF0B7A /* Sources */,
 				B00D96032030753600EF0B7A /* Frameworks */,
 				B00D96042030753600EF0B7A /* Headers */,
 				B00D96052030753600EF0B7A /* Resources */,
-				B00D96862030779600EF0B7A /* Carthage */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TinyKit;
+			name = "TinyKit iOS";
 			productName = TinyKit;
 			productReference = B00D96072030753600EF0B7A /* TinyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B00D964B2030764E00EF0B7A /* TinyKitTests */ = {
+		B00D964B2030764E00EF0B7A /* TinyKit iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKitTests" */;
+			buildConfigurationList = B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit iOS Tests" */;
 			buildPhases = (
 				B00D96482030764E00EF0B7A /* Sources */,
 				B00D96492030764E00EF0B7A /* Frameworks */,
 				B00D964A2030764E00EF0B7A /* Resources */,
-				B00D968C203078F700EF0B7A /* Carthage */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				B00D96532030764E00EF0B7A /* PBXTargetDependency */,
 			);
-			name = TinyKitTests;
+			name = "TinyKit iOS Tests";
 			productName = TinyKitTests;
-			productReference = B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */;
+			productReference = B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -521,8 +181,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B00D96062030753600EF0B7A /* TinyKit */,
-				B00D964B2030764E00EF0B7A /* TinyKitTests */,
+				B00D96062030753600EF0B7A /* TinyKit iOS */,
+				B00D964B2030764E00EF0B7A /* TinyKit iOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -532,7 +192,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B01EF9F3205D2C9800CF9C17 /* UICollapseView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,88 +199,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00D9675203076C500EF0B7A /* NibCollectionViewCell.xib in Resources */,
-				B00D9671203076C500EF0B7A /* NibTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B00D96862030779600EF0B7A /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/TinyCore.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinyCore.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B00D96022030753600EF0B7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B03BEE1E208EE81800CF46FC /* UIItemComponent+UIImageComponent.swift in Sources */,
-				B0876E1920623B2F005EDA9A /* Array+Join.swift in Sources */,
-				B00D963D2030758A00EF0B7A /* ComponentContentMode.swift in Sources */,
-				B037F303205DF59600CF5F75 /* UICollectionViewBridge.swift in Sources */,
-				B022E268205E9E7E00DD9170 /* UITableViewBridge.swift in Sources */,
-				B05E67672036EDE5003E8E0E /* UIItemComponent.swift in Sources */,
-				B01EF9F4205D2C9800CF9C17 /* UICollapseBarController.swift in Sources */,
-				B01DB554207F2F1300E511FE /* Theme+Debug.swift in Sources */,
-				B03BEE1C208EE42700CF46FC /* UIImageComponent.swift in Sources */,
-				B01EF9FC205D2CD000CF9C17 /* Validator.swift in Sources */,
-				B00D96422030758A00EF0B7A /* UIView+UINib.swift in Sources */,
-				B04707E7207A58BE00331D26 /* UIBoxComponent.swift in Sources */,
-				B03C3E4820456E2D004E318B /* ViewControllerRepresentable.swift in Sources */,
-				B01DB553207F2F1300E511FE /* Theme+AzureSky.swift in Sources */,
-				B00D963B2030758A00EF0B7A /* Component.swift in Sources */,
-				B0354DC22031617C002A4B71 /* UIView+ViewRender.swift in Sources */,
-				B0542DDD20648E340078B3CE /* ListComponent.swift in Sources */,
-				B00D96452030758A00EF0B7A /* ViewRenderer.swift in Sources */,
-				B04707E4207A025F00331D26 /* ImageProvider.swift in Sources */,
-				B00D96412030758A00EF0B7A /* UICollectionView+Cell.swift in Sources */,
-				B01EF9FA205D2CD000CF9C17 /* Inputable.swift in Sources */,
-				B03BEE2E208F7C2D00CF46FC /* ImageResource+UIImageView.swift in Sources */,
-				B04707E3207A025F00331D26 /* ImageResource.swift in Sources */,
-				B03BEE24208F303200CF46FC /* UIItemComponent+UILabelComponent.swift in Sources */,
-				B022E26C205FA36100DD9170 /* Bool+Toggle.swift in Sources */,
-				B01EF9F2205D2C9800CF9C17 /* UICollapseView.swift in Sources */,
-				B03BEE2C208F7A7A00CF46FC /* Image.swift in Sources */,
-				B00D96462030758A00EF0B7A /* UITableView+Cell.swift in Sources */,
-				B0876EBD2035B8300003CC59 /* UIComponentViewController.swift in Sources */,
-				B01DB551207F2F1300E511FE /* Stylable.swift in Sources */,
-				B03C3E4920456E2D004E318B /* ViewController.swift in Sources */,
-				B01ED1FE203BFD580074CD5E /* Coordinator.swift in Sources */,
-				B00D96442030758A00EF0B7A /* ViewRenderable.swift in Sources */,
-				B04707E9207C6C1300331D26 /* UIGridComponent.swift in Sources */,
-				B00D96432030758A00EF0B7A /* View.swift in Sources */,
-				B04707ED207C844700331D26 /* UICollectionView+SafeAreaRect.swift in Sources */,
-				B01DB552207F2F1300E511FE /* Theme.swift in Sources */,
-				B03BEE22208F2FEF00CF46FC /* UILabelComponent.swift in Sources */,
-				B0C357A72064F39D0017E1F0 /* CollectionComponent.swift in Sources */,
-				B0542DDF2064B56E0078B3CE /* UIListComponent.swift in Sources */,
-				B04EBD79204AB8D300C9235F /* UICarouselComponent.swift in Sources */,
-				B04707F9207F073F00331D26 /* UIGalleryComponent.swift in Sources */,
-				B01ED200203BFE620074CD5E /* UIViewRendererController.swift in Sources */,
-				B01EFA16205D2DD500CF9C17 /* UITextFieldBridge.swift in Sources */,
-				B04707EB207C820200331D26 /* UIGridLayout.swift in Sources */,
-				B0D46961207F195A0047AE8F /* UIButtonComponent.swift in Sources */,
-				B0B4742120870132000A49E6 /* UICollectionComponent.swift in Sources */,
-				B03BEE20208F0EDD00CF46FC /* UIButtonEvent.swift in Sources */,
-				B03A4C15208337CE005098D3 /* UICarouselLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,17 +216,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0B474242087015D000A49E6 /* UICollectionComponentTests.swift in Sources */,
-				B00D9674203076C500EF0B7A /* UICollectionViewExtensionsTests.swift in Sources */,
-				B00D967E203076C500EF0B7A /* UIListComponentTests.swift in Sources */,
-				B00D9670203076C500EF0B7A /* UITableViewExtensionsTests.swift in Sources */,
-				B00D9679203076C500EF0B7A /* UIViewExtensionsTests.swift in Sources */,
-				B00D9673203076C500EF0B7A /* NoNibTableViewCell.swift in Sources */,
-				B03BEE18208D801400CF46FC /* UIBoxComponentTests.swift in Sources */,
-				B05E67622036D5B6003E8E0E /* UIItemComponentTests.swift in Sources */,
-				B00D9676203076C500EF0B7A /* NoNibCollectionViewCell.swift in Sources */,
-				B00D9677203076C500EF0B7A /* NibCollectionViewCell.swift in Sources */,
-				B00D9672203076C500EF0B7A /* NibTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,7 +224,7 @@
 /* Begin PBXTargetDependency section */
 		B00D96532030764E00EF0B7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B00D96062030753600EF0B7A /* TinyKit */;
+			target = B00D96062030753600EF0B7A /* TinyKit iOS */;
 			targetProxy = B00D96522030764E00EF0B7A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -705,9 +281,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tinyworld.$(PROJECT_NAME)";
+				PRODUCT_MODULE_NAME = "$(PROJECT_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -761,8 +340,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tinyworld.$(PROJECT_NAME)";
+				PRODUCT_MODULE_NAME = "$(PROJECT_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -785,11 +367,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_MODULE_NAME = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -810,11 +393,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_MODULE_NAME = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -832,8 +416,9 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)-Tests";
+				PRODUCT_MODULE_NAME = "$(inherited)_Tests";
+				PRODUCT_NAME = "$(inherited) Tests";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -850,8 +435,9 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)-Tests";
+				PRODUCT_MODULE_NAME = "$(inherited)_Tests";
+				PRODUCT_NAME = "$(inherited) Tests";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -869,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B00D960F2030753600EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit" */ = {
+		B00D960F2030753600EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B00D96102030753600EF0B7A /* Debug */,
@@ -878,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKitTests" */ = {
+		B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B00D96552030764E00EF0B7A /* Debug */,
