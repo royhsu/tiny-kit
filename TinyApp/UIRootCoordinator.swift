@@ -22,6 +22,8 @@ public final class UIRootCoordinator: Coordinator {
     
     private final var listening: EventEmitter<UIButtonEvent>.Listening?
     
+    private final var inputSubscription: Observable<String>.ValueDidChangeSubscription?
+    
     public init() {
         
         let paragraphComponentFactory: () -> ParagraphComponent = {
@@ -216,8 +218,22 @@ public final class UIRootCoordinator: Coordinator {
                 )
             ]
         )
-    
-        let viewController = UIComponentViewController(component: productDetailComponent)
+        
+        let textFieldComponent = TNTextFieldComponent()
+        
+        inputSubscription = textFieldComponent.input.observeValueDidChange { old, new in
+            
+            print(new)
+            
+        }
+        
+        let listComponent = UIListComponent()
+        
+        listComponent.setItemComponents(
+            [ textFieldComponent ]
+        )
+        
+        let viewController = UIComponentViewController(component: listComponent)
 
         viewController.view.backgroundColor = .white
 

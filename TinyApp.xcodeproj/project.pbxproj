@@ -115,6 +115,10 @@
 		B09B721E20A2E29100EAD65C /* TinyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0D90E082048446F00AC9A0A /* TinyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B09B722120A2E29100EAD65C /* TinyProduct.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09B7190209C432800EAD65C /* TinyProduct.framework */; };
 		B09B722220A2E29100EAD65C /* TinyProduct.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B09B7190209C432800EAD65C /* TinyProduct.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B09B722920A419E000EAD65C /* TNTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B722820A419E000EAD65C /* TNTextFieldComponent.swift */; };
+		B09B722B20A42CDB00EAD65C /* CreditCardInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B722A20A42CDB00EAD65C /* CreditCardInputComponent.swift */; };
+		B09B722D20A4334900EAD65C /* TNInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B722C20A4334900EAD65C /* TNInputView.swift */; };
+		B09B722F20A4338400EAD65C /* TNInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09B722E20A4338400EAD65C /* TNInputView.xib */; };
 		B0A33475205FD73200FF5098 /* UICartItemView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */; };
 		B0A62916204590D4000F97E3 /* UILandingLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A62915204590D4000F97E3 /* UILandingLogoView.xib */; };
 		B0A6292C204646DD000F97E3 /* TinyAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A6292A204646DD000F97E3 /* TinyAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -323,6 +327,10 @@
 		B09B720820A2DDDA00EAD65C /* UIGalleryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGalleryComponent.swift; sourceTree = "<group>"; };
 		B09B720A20A2E13400EAD65C /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		B09B720C20A2E29100EAD65C /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09B722820A419E000EAD65C /* TNTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNTextFieldComponent.swift; sourceTree = "<group>"; };
+		B09B722A20A42CDB00EAD65C /* CreditCardInputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardInputComponent.swift; sourceTree = "<group>"; };
+		B09B722C20A4334900EAD65C /* TNInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNInputView.swift; sourceTree = "<group>"; };
+		B09B722E20A4338400EAD65C /* TNInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TNInputView.xib; sourceTree = "<group>"; };
 		B0A33474205FD73200FF5098 /* UICartItemView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICartItemView+Theme.swift"; sourceTree = "<group>"; };
 		B0A3347620600F2800FF5098 /* UIOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOptionButton.swift; sourceTree = "<group>"; };
 		B0A3347820600F5300FF5098 /* UIOptionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIOptionButton.xib; sourceTree = "<group>"; };
@@ -619,6 +627,10 @@
 				B0C357B02064FEAC0017E1F0 /* Review.swift */,
 				B0C357B22064FEC70017E1F0 /* ProductDetailComponent.swift */,
 				B0C357B42064FEFA0017E1F0 /* UIProductDetailComponent+ProductDetailComponent.swift */,
+				B09B722820A419E000EAD65C /* TNTextFieldComponent.swift */,
+				B09B722A20A42CDB00EAD65C /* CreditCardInputComponent.swift */,
+				B09B722C20A4334900EAD65C /* TNInputView.swift */,
+				B09B722E20A4338400EAD65C /* TNInputView.xib */,
 				B03C3E6C20457FEC004E318B /* Assets.xcassets */,
 				B03C3E6E20457FEC004E318B /* LaunchScreen.storyboard */,
 				B03C3E7120457FEC004E318B /* Info.plist */,
@@ -1104,6 +1116,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09B722F20A4338400EAD65C /* TNInputView.xib in Resources */,
 				B03C3E6D20457FEC004E318B /* Assets.xcassets in Resources */,
 				B03C3E7020457FEC004E318B /* LaunchScreen.storyboard in Resources */,
 			);
@@ -1216,6 +1229,8 @@
 				B0A629B820467EBD000F97E3 /* AuthManager.swift in Sources */,
 				B03C3E6920457FEC004E318B /* AppDelegate.swift in Sources */,
 				B0DCD951205D482900D2A4EC /* Product.swift in Sources */,
+				B09B722D20A4334900EAD65C /* TNInputView.swift in Sources */,
+				B09B722B20A42CDB00EAD65C /* CreditCardInputComponent.swift in Sources */,
 				B0C357B52064FEFA0017E1F0 /* UIProductDetailComponent+ProductDetailComponent.swift in Sources */,
 				B075A1FA205D4387002FE2B1 /* UIStoreCoordinator.swift in Sources */,
 				B0C357AD2064FE340017E1F0 /* UIImageDownloader.swift in Sources */,
@@ -1228,6 +1243,7 @@
 				B0C357B12064FEAC0017E1F0 /* Review.swift in Sources */,
 				B01EFA18205D32F300CF9C17 /* UICartCoordinator.swift in Sources */,
 				B0C357B32064FEC70017E1F0 /* ProductDetailComponent.swift in Sources */,
+				B09B722920A419E000EAD65C /* TNTextFieldComponent.swift in Sources */,
 				B0876E072060A24E005EDA9A /* CartItemDescriptor.swift in Sources */,
 				B0A629B620467EAC000F97E3 /* AccessToken.swift in Sources */,
 				B0DCD953205D485100D2A4EC /* ProductManager.swift in Sources */,
