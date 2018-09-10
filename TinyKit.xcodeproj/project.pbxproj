@@ -214,6 +214,7 @@
 					};
 					B00D964B2030764E00EF0B7A = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -455,7 +456,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -482,7 +483,7 @@
 				PRODUCT_MODULE_NAME = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -502,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)-Tests";
 				PRODUCT_MODULE_NAME = "$(inherited)_Tests";
 				PRODUCT_NAME = "$(inherited) Tests";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -522,7 +523,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)-Tests";
 				PRODUCT_MODULE_NAME = "$(inherited)_Tests";
 				PRODUCT_NAME = "$(inherited) Tests";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
