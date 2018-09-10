@@ -6,6 +6,7 @@ disabled_rules:
 excluded:
   - Carthage
   - Pods
+  - Examples/iOS/Library
 identifier_name:
   excluded:
     - id
