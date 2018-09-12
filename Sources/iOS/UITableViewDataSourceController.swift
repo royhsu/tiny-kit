@@ -14,9 +14,16 @@ public final class UITableViewDataSourceController: NSObject {
 
     public typealias NumberOfSectionsProvider = (UITableView) -> Int
 
-    public typealias NumberOfRowsProvider = (UITableView, _ section: Int) -> Int
+    public typealias NumberOfRowsProvider = (
+        UITableView,
+        _ section: Int
+    )
+    -> Int
 
-    public typealias CellForRowProvider = (UITableView, IndexPath) -> UITableViewCell
+    public typealias CellForRowProvider = (
+        UITableView, IndexPath
+    )
+    -> UITableViewCell
 
     private final var numberOfSectionsProvider: NumberOfSectionsProvider?
 
@@ -53,7 +60,7 @@ extension UITableViewDataSourceController: UITableViewDataSource {
     public final func numberOfSections(in tableView: UITableView) -> Int {
         
         let sections = numberOfSectionsProvider?(tableView)
-            
+        
         return sections ?? 1
         
     }
