@@ -18,11 +18,11 @@
 		B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91721464DDF00B19F6A /* XCTSuccess.swift */; };
 		B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9192146503800B19F6A /* Bundle+Testing.swift */; };
 		B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */; };
-		B009B91F2146544600B19F6A /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
 		B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B92021465E0F00B19F6A /* UIView+Subview.swift */; };
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
 		B0652DB52148AB67009F8757 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0652DB42148AB67009F8757 /* TinyCore.framework */; };
+		B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +55,7 @@
 		B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyKit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0652DB42148AB67009F8757 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0652DB72148B118009F8757 /* Storage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Storage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 		B009B9012146449200B19F6A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */,
 				B009B91421464CEF00B19F6A /* UITableView+Register.swift */,
 				B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */,
 				B009B92021465E0F00B19F6A /* UIView+Subview.swift */,
@@ -94,7 +96,6 @@
 			children = (
 				B009B91721464DDF00B19F6A /* XCTSuccess.swift */,
 				B009B9192146503800B19F6A /* Bundle+Testing.swift */,
-				B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -121,6 +122,7 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B0652DB62148B0FF009F8757 /* Storage */,
 				B009B90B21464AF400B19F6A /* NibCell.swift */,
 				B009B9022146489E00B19F6A /* ReusableCell.swift */,
 				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
@@ -148,6 +150,14 @@
 				B0652DB42148AB67009F8757 /* TinyCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0652DB62148B0FF009F8757 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B0652DB72148B118009F8757 /* Storage.playground */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +276,7 @@
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
+				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
@@ -280,7 +291,6 @@
 				B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
-				B009B91F2146544600B19F6A /* UITableViewDataSourceController.swift in Sources */,
 				B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
