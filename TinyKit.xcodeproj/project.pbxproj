@@ -26,6 +26,7 @@
 		B0652DBA2149244D009F8757 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
 		B0652DBF2149297A009F8757 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */; };
 		B0652DC121492994009F8757 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC021492994009F8757 /* MemoryCache.swift */; };
+		B0652DC3214966CC009F8757 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		B0652DB92149244D009F8757 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
 		B0652DC021492994009F8757 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
+		B0652DC2214966CC009F8757 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		B009B9012146449200B19F6A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B0652DC2214966CC009F8757 /* TableViewController.swift */,
 				B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */,
 				B009B91421464CEF00B19F6A /* UITableView+Register.swift */,
 				B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */,
@@ -293,6 +296,7 @@
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B0652DC121492994009F8757 /* MemoryCache.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
+				B0652DC3214966CC009F8757 /* TableViewController.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
