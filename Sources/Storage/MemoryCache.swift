@@ -13,7 +13,9 @@ where
     Key: Hashable,
     Key: Comparable {
     
-    private var _storage: [Key: Value] = [:]
+    public typealias KeyValuePairs = [Key: Value]
+    
+    private var _storage: KeyValuePairs = [:]
     
     public init() { }
     
@@ -47,7 +49,7 @@ public extension MemoryCache {
     }
     
     public final func setKeyValuePairs(
-        _ pairs: [Key: Value]
+        _ pairs: KeyValuePairs
     ) {
         
         _storage = pairs
