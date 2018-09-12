@@ -1,0 +1,3 @@
+[submodule "tiny-core"]
+	path = tiny-core
+	url = https://github.com/royhsu/tiny-core.git

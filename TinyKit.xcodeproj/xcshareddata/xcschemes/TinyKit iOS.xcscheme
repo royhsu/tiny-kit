@@ -20,6 +20,20 @@
                ReferencedContainer = "container:TinyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B05D4F631F1E0D9D00929006"
+               BuildableName = "TinyCore.framework"
+               BlueprintName = "TinyCore iOS"
+               ReferencedContainer = "container:tiny-core/TinyCore.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
