@@ -23,6 +23,10 @@
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
 		B0652DB52148AB67009F8757 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0652DB42148AB67009F8757 /* TinyCore.framework */; };
 		B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
+		B0652DBA2149244D009F8757 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
+		B0652DBC21492561009F8757 /* IndexDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DBB21492561009F8757 /* IndexDiff.swift */; };
+		B0652DBF2149297A009F8757 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */; };
+		B0652DC121492994009F8757 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC021492994009F8757 /* MemoryCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0652DB42148AB67009F8757 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0652DB72148B118009F8757 /* Storage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Storage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B0652DB92149244D009F8757 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		B0652DBB21492561009F8757 /* IndexDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexDiff.swift; sourceTree = "<group>"; };
+		B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
+		B0652DC021492994009F8757 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,7 @@
 		B00D96572030766600EF0B7A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B0652DBD21492966009F8757 /* Storage */,
 				B009B91621464DDF00B19F6A /* Helpers */,
 				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
 				B009B9062146491400B19F6A /* ClassTableViewCell.swift */,
@@ -155,7 +164,18 @@
 		B0652DB62148B0FF009F8757 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				B0652DB92149244D009F8757 /* Storage.swift */,
+				B0652DBB21492561009F8757 /* IndexDiff.swift */,
+				B0652DC021492994009F8757 /* MemoryCache.swift */,
 				B0652DB72148B118009F8757 /* Storage.playground */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		B0652DBD21492966009F8757 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -274,10 +294,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
+				B0652DC121492994009F8757 /* MemoryCache.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
+				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
+				B0652DBC21492561009F8757 /* IndexDiff.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
 			);
@@ -288,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
+				B0652DBF2149297A009F8757 /* MemoryCacheTests.swift in Sources */,
 				B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
