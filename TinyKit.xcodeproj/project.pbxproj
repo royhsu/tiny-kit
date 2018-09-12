@@ -24,7 +24,6 @@
 		B0652DB52148AB67009F8757 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0652DB42148AB67009F8757 /* TinyCore.framework */; };
 		B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
 		B0652DBA2149244D009F8757 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
-		B0652DBC21492561009F8757 /* IndexDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DBB21492561009F8757 /* IndexDiff.swift */; };
 		B0652DBF2149297A009F8757 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */; };
 		B0652DC121492994009F8757 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC021492994009F8757 /* MemoryCache.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		B0652DB42148AB67009F8757 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0652DB72148B118009F8757 /* Storage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Storage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DB92149244D009F8757 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		B0652DBB21492561009F8757 /* IndexDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexDiff.swift; sourceTree = "<group>"; };
 		B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
 		B0652DC021492994009F8757 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				B0652DB92149244D009F8757 /* Storage.swift */,
-				B0652DBB21492561009F8757 /* IndexDiff.swift */,
 				B0652DC021492994009F8757 /* MemoryCache.swift */,
 				B0652DB72148B118009F8757 /* Storage.playground */,
 			);
@@ -300,7 +297,6 @@
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
-				B0652DBC21492561009F8757 /* IndexDiff.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
 			);

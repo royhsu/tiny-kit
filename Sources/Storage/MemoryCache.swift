@@ -8,7 +8,10 @@
 
 // MARK: - MemoryCache
 
-public final class MemoryCache<Key, Value>: Storage where Key: Hashable, Key: Comparable {
+public final class MemoryCache<Key, Value>: Storage
+where
+    Key: Hashable,
+    Key: Comparable {
     
     private var _storage: [Key: Value] = [:]
     
