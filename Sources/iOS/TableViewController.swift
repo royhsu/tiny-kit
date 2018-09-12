@@ -25,7 +25,7 @@ open class TableViewController<S: Storage>: UIViewController where S.Key == Int 
             
             guard
                 let storage = storage
-                else { return }
+            else { return }
             
             let subscription = storage.keyDiff.subscribe { _ in
                 
@@ -56,7 +56,7 @@ open class TableViewController<S: Storage>: UIViewController where S.Key == Int 
             
             guard
                 let maxKey = self?.storage?.maxKey
-                else { return 0 }
+            else { return 0 }
             
             return maxKey + 1
             
