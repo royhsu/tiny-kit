@@ -22,22 +22,27 @@ internal final class MemoryCacheTests: XCTestCase {
         let cache = MemoryCache<Int, String>()
         
         XCTAssertEqual(
-            cache.count,
-            0
+            cache.maxKey,
+            nil
         )
         
-        cache.setValue(
-            "Hello",
-            forKey: 0
+        cache[2] = "Hello"
+        
+        XCTAssertEqual(
+            cache.maxKey,
+            2
+        )
+        
+        XCTAssertNil(
+            cache[0]
+        )
+        
+        XCTAssertNil(
+            cache[1]
         )
         
         XCTAssertEqual(
-            cache.count,
-            1
-        )
-        
-        XCTAssertEqual(
-            cache.value(forKey: 0),
+            cache[2],
             "Hello"
         )
         
