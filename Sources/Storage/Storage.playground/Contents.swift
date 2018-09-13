@@ -259,20 +259,62 @@ extension PostResource: Resource {
 //
 //}
 
-class PostListViewController: TableViewController<Post> {
+struct PostListBuilder: SectionBuilder {
     
-    override func configureCell(
-        _ cell: UITableViewCell,
-        with post: Post
-    ) {
+    enum Layout: Row {
         
-        cell.textLabel?.text = post.title
+        case title(label: UILabel)
+        
+        func configure(with post: Post) {
+            
+            switch self {
+                
+            case let .title(label): label.text = post.title
+                
+            }
+            
+        }
+        
+        var view: View {
+         
+            switch self {
+                
+            case let .title(label):
+                
+                label.numberOfLines = 0
+                
+                return label
+                
+            }
+            
+        }
+        
+    }
+    
+    func section(
+        from value: Post
+    )
+    -> Section<Post> {
+        
+        let layout: [Layout] = [
+            .title(
+                label: UILabel()
+            )
+        ]
+        
+        return Section(
+            layout.map(AnyRow.init)
+        )
         
     }
     
 }
 
+class PostListViewController: TableViewController<PostListBuilder> { }
+
 let viewController = PostListViewController()
+
+viewController.sectionBuilder = PostListBuilder()
 
 let manager = APIManager(
     resource: PostResource(client: URLSession.shared)
