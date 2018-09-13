@@ -274,15 +274,15 @@ class PostListViewController: TableViewController<Post> {
 
 let viewController = PostListViewController()
 
-let apiStorage = APIStorage(
+let manager = APIManager(
     resource: PostResource(client: URLSession.shared)
 )
 
-viewController.storage = AnyStorage(apiStorage)
+viewController.storage = AnyStorage(manager)
 
 PlaygroundPage.current.liveView = viewController
 
-apiStorage.load()
+manager.load()
 
 print("End")
 
