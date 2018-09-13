@@ -72,24 +72,27 @@ open class TableViewController<Value>: UIViewController {
             
             let cell = UITableViewCell()
             
-            let element = self?.storage?[indexPath.section]
+            if
+                let self = self,
+                let value = self.storage?[indexPath.section] {
             
-            cell.textLabel?.text = "\(indexPath)"
+                self.configureCell(
+                    cell,
+                    with: value
+                )
+                
+            }
             
             return cell
             
         }
         
-        // Trigger fetching manually.
-        // TODO: add a fetchController to interpolate storage.
-        storage?[0]
-        
-//        if let lazyStorage = storage as? LazyStorage {
-//
-//            lazyStorage.load()
-//
-//        }
-        
     }
+    
+    // CellDescriptor.
+    open func configureCell(
+        _ cell: UITableViewCell,
+        with value: Value
+    ) { }
     
 }

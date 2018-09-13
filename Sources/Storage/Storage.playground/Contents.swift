@@ -11,7 +11,7 @@ struct Post: Codable {
     
 }
 
-class APIService {
+class PostResource {
     
     let client: HTTPClient
     
@@ -48,7 +48,7 @@ class APIService {
     
 }
 
-extension APIService: Resource {
+extension PostResource: Resource {
     
     func fetchItems(
         page: Page,
@@ -259,10 +259,23 @@ extension APIService: Resource {
 //
 //}
 
-let viewController = TableViewController<Post>()
+class PostListViewController: TableViewController<Post> {
+    
+    override func configureCell(
+        _ cell: UITableViewCell,
+        with post: Post
+    ) {
+        
+        cell.textLabel?.text = post.title
+        
+    }
+    
+}
+
+let viewController = PostListViewController()
 
 let apiStorage = APIStorage(
-    resource: APIService(client: URLSession.shared)
+    resource: PostResource(client: URLSession.shared)
 )
 
 viewController.storage = AnyStorage(apiStorage)
