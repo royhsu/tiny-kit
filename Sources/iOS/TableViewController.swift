@@ -53,7 +53,7 @@ open class TableViewController<S: Storage>: UIViewController where S.Key == Int 
         tableView.dataSource = dataSourceController
         
         dataSourceController.setNumberOfSections { [weak self] _ in
-            
+            print("setNumberOfSections:", self?.storage?.maxKey)
             guard
                 let maxKey = self?.storage?.maxKey
             else { return 0 }
@@ -63,13 +63,13 @@ open class TableViewController<S: Storage>: UIViewController where S.Key == Int 
         }
         
         dataSourceController.setNumberOfRows { _, _ in
-            
+            print("setNumberOfRows:", self.storage)
             return 1
             
         }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
-            
+            print("setCellForRow:", self?.storage)
             let cell = UITableViewCell()
             
             let element = self?.storage?[indexPath.section]
@@ -79,6 +79,10 @@ open class TableViewController<S: Storage>: UIViewController where S.Key == Int 
             return cell
             
         }
+        
+        // Trigger fetching manually.
+        // TODO: add a fetchController to interpolate storage.
+        storage?[0]
         
     }
     

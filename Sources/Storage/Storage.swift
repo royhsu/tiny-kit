@@ -12,9 +12,9 @@ import TinyCore
 
 public protocol Storage {
     
-    associatedtype T
-    
     associatedtype Key: Hashable, Comparable
+    
+    associatedtype Value
     
     typealias KeyDiff = Observable<[Key]>
     
@@ -22,6 +22,6 @@ public protocol Storage {
     
     var maxKey: Key? { get }
     
-    subscript(_ key: Key) -> T? { get }
+    subscript(_ key: Key) -> Value? { get }
     
 }

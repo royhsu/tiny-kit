@@ -3,6 +3,192 @@ import TinyKit
 import UIKit
 import PlaygroundSupport
 
+struct Post: Codable {
+    
+    let id: Int
+    
+    let title: String
+    
+}
+
+class APIService {
+    
+    let client: HTTPClient
+    
+    init(client: HTTPClient) { self.client = client }
+    
+    func fetchPost(
+        id: String,
+        completionHandler: @escaping (Result<Post>) -> Void
+    ) {
+        
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!
+        
+        client.request(
+            URLRequest(url: url),
+            decoder: JSONDecoder(),
+            completionHandler: completionHandler
+        )
+        
+    }
+    
+    func fetchPosts(
+        completionHandler: @escaping (Result<[Post]>) -> Void
+    ) {
+        
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        
+        client.request(
+            URLRequest(url: url),
+            decoder: JSONDecoder(),
+            completionHandler: completionHandler
+        )
+        
+    }
+    
+}
+
+protocol Remote {
+    
+    func fetchItems<Item: Decodable>(
+        completionHandler: @escaping (Result<[Item]>) -> Void
+    )
+    
+}
+
+//struct AnyStorage<Key, Value> where Key: Hashable & Comparable {
+//
+//    var keyDiff: Observable<[Key]>
+//
+//    var maxKey: Key?
+//
+//    init<S: Storage>(_ storage: S) where S.Key == Key, S.Value == Value {
+//
+//        self.keyDiff = storage.keyDiff
+//
+//        self.maxKey = storage.maxKey
+//
+//    }
+//
+//}
+
+extension APIService: Remote {
+    
+    func fetchItems<Item>(
+        completionHandler: @escaping (Result<[Item]>) -> Void
+    )
+    where Item: Decodable {
+        
+        fetchPosts { result in
+            
+            do {
+            
+                let items: [Item] = try result.resolve().map { $0 as! Item }
+                
+                completionHandler(
+                    .success(items)
+                )
+                
+            }
+            catch {
+                
+                completionHandler(
+                    .failure(error)
+                )
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+class APICache<Value>: Storage where Value: Decodable {
+
+    typealias Index = Int
+
+    typealias Indices = [Index]
+
+    let remote: Remote
+    
+    private var fetchingIndices = Set<Index>()
+
+    private let _memoryCache = MemoryCache<Index, Value>()
+
+    init(remote: Remote) { self.remote = remote }
+
+    var keyDiff: Observable<Indices> { return _memoryCache.keyDiff }
+
+    var maxKey: Index? { return _memoryCache.maxKey }
+
+    subscript(_ index: Index) -> Value? {
+        
+        if let cachedValue = _memoryCache[index] { return cachedValue }
+    
+        if fetchingIndices.contains(index) { return nil }
+        
+        fetchingIndices.insert(index)
+        
+        remote.fetchItems { [weak self] (result: Result<[Value]>) in
+            print("After fetching...")
+            self?.fetchingIndices.remove(index)
+            
+            guard
+                let self = self,
+                let values = try? result.resolve()
+            else { return }
+            
+            let keyValuePairs = values.enumerated().map { ($0.offset, $0.element) }
+            
+            let dictionary = Dictionary(
+                keyValuePairs,
+                uniquingKeysWith: { first, _ in first }
+            )
+            
+            dictionary.keys.forEach { index in
+             
+                self.fetchingIndices.remove(index)
+                
+            }
+            
+            self._memoryCache.setKeyValuePairs(dictionary)
+            
+            guard
+                let fetchingLastIndex = self.fetchingIndices.max(),
+                let fetchedLastIndex = self.maxKey
+            else { return }
+            
+            let shouldFetchMoreItems = (fetchingLastIndex > fetchedLastIndex)
+            
+            if shouldFetchMoreItems {
+                
+                print("Still have some unfetched.", self.fetchingIndices)
+                
+            }
+            
+        }
+        
+        return nil
+    
+    }
+    
+}
+
+let service = APIService(client: URLSession.shared)
+
+//service.fetchPost(id: "1") { result in
+//
+//    print(result)
+//
+//}
+
+//service.fetchPosts { result in
+//
+//    print(result)
+//
+//}
+
 //class Cache: Storage {
 //
 //    typealias Index = Int
@@ -153,13 +339,25 @@ import PlaygroundSupport
 //
 //}
 
-typealias Cache = MemoryCache<Int, String>
+//typealias Cache = MemoryCache<Int, String>
 
-let viewController = TableViewController<Cache>()
+let viewController = TableViewController<APICache<Post>>()
 
-let cache = Cache()
+let apiCache = APICache<Post>(
+    remote: APIService(client: URLSession.shared)
+)
 
-viewController.storage = cache
+viewController.storage = apiCache
+//
+//let _ = apiCache.keyDiff.subscribe { event in
+//
+//    print("API Cache:", event.currentValue)
+//
+//}
+//
+//let first = apiCache[0]
+//
+//print(first)
 
 //let coordinator = StorageCoordinator()
 
@@ -176,13 +374,13 @@ PlaygroundPage.current.liveView = viewController
 
 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
-    cache.setKeyValuePairs(
-        [
-            0: "Hello",
-            1: "World",
-            7: "QQ"
-        ]
-    )
+//    cache.setKeyValuePairs(
+//        [
+//            0: "Hello",
+//            1: "World",
+//            7: "QQ"
+//        ]
+//    )
 
 }
 
