@@ -3,7 +3,7 @@ import TinyKit
 import UIKit
 import PlaygroundSupport
 
-struct Post: Codable {
+public struct Post: Codable, Equatable {
     
     let id: Int
     
@@ -259,31 +259,55 @@ extension PostResource: Resource {
 //
 //}
 
-struct PostListBuilder: SectionBuilder {
+extension UILabel: Updatable {
     
-    enum Layout: Row {
+    public func update(with post: Post?) { text = post?.title }
+    
+}
+
+class MyLabel: UILabel {
+    
+    override init(frame: CGRect) {
         
-        case title(label: UILabel)
+        super.init(frame: frame)
         
-        func configure(with post: Post) {
-            
+        self.prepare()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        self.prepare()
+        
+    }
+    
+    fileprivate func prepare() {
+        
+        numberOfLines = 0
+        
+        font = UIFont.preferredFont(forTextStyle: .title1)
+        
+    }
+    
+}
+
+struct PostListTemplate: Template {
+    
+    enum Element: TemplateElement {
+        
+        case title
+        
+        func makeView() -> AnyUpdatableView<Post> {
+        
             switch self {
+             
+            case .title:
                 
-            case let .title(label): label.text = post.title
+                let label = MyLabel()
                 
-            }
-            
-        }
-        
-        var view: View {
-         
-            switch self {
-                
-            case let .title(label):
-                
-                label.numberOfLines = 0
-                
-                return label
+                return AnyUpdatableView(label)
                 
             }
             
@@ -291,30 +315,19 @@ struct PostListBuilder: SectionBuilder {
         
     }
     
-    func section(
-        from value: Post
-    )
-    -> Section<Post> {
-        
-        let layout: [Layout] = [
-            .title(
-                label: UILabel()
-            )
-        ]
-        
-        return Section(
-            layout.map(AnyRow.init)
+    static var elements: AnyCollection<Element> {
+     
+        return AnyCollection(
+            [ .title ]
         )
         
     }
     
 }
 
-class PostListViewController: TableViewController<PostListBuilder> { }
+class PostListViewController: TableViewController<PostListTemplate> { }
 
 let viewController = PostListViewController()
-
-viewController.sectionBuilder = PostListBuilder()
 
 let manager = APIManager(
     resource: PostResource(client: URLSession.shared)

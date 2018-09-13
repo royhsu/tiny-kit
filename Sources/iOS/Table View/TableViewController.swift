@@ -62,6 +62,92 @@ public protocol SectionBuilder {
     
 }
 
+public protocol Updatable {
+    
+    associatedtype Value
+    
+    func update(with value: Value?)
+    
+}
+
+public struct AnyUpdatable<Value>: Updatable where Value: Equatable {
+    
+    private let _updater: (Value?) -> Void
+    
+    public init<U: Updatable>(_ updatable: U) where U.Value == Value {
+        
+        self._updater = updatable.update
+        
+    }
+    
+    public func update(with value: Value?) { return _updater(value) }
+    
+}
+
+public typealias UpdatableView = Updatable & View
+
+public final class AnyUpdatableView<Value>: UIView, Updatable where Value: Equatable {
+   
+    private final let _updater: (Value?) -> Void
+    
+    public init<V: UpdatableView>(_ view: V) where V.Value == Value {
+        
+        self._updater = view.update
+        
+        super.init(frame: .zero)
+        
+    }
+    
+    internal required init?(coder aDecoder: NSCoder) { fatalError("AnyUpdatableView is a type erasure.") }
+    
+    public final func update(with value: Value?) { _updater(value) }
+
+}
+
+// MARK: - TemplateElement
+
+public protocol TemplateElement {
+    
+    associatedtype Value: Equatable
+    
+    func makeView() -> AnyUpdatableView<Value>
+    
+}
+
+// MARK: - AnyTemplateElement
+
+public struct AnyTemplateElement<Value>: TemplateElement where Value: Equatable {
+    
+    public let _makeViewFactory: () -> AnyUpdatableView<Value>
+    
+    public init<E: TemplateElement>(_ element: E) where E.Value == Value {
+        
+        self._makeViewFactory = element.makeView
+        
+    }
+    
+    public func makeView() -> AnyUpdatableView<Value> { return _makeViewFactory() }
+    
+}
+
+public protocol Template {
+    
+    associatedtype Element: TemplateElement
+    
+    static var elements: AnyCollection<Element> { get }
+    
+}
+
+//public typealias Template<> = AnyCollection< AnyTemplateElement<> >
+
+//public protocol TemplateBuilder {
+//
+//    associatedtype T: Template
+//
+//    static func build(_ value: Value) -> T
+//
+//}
+
 // TODO: add SectionBuilderExpressible after use static type.
 // Example:
 // [Design 1]
@@ -96,14 +182,13 @@ public protocol SectionBuilder {
 //  ]
 //)
 
-open class TableViewController<Builder: SectionBuilder>: UIViewController {
+open class TableViewController<T: Template>: UIViewController {
     
-    public typealias Value = Builder.Value
+    public typealias Value = T.Element.Value
+    
+    private final class Cell: UITableViewCell, ReusableCell { }
     
     private final let tableView = UITableView()
-    
-    // TODO: delete this and use static type instead.
-    public final var sectionBuilder: Builder?
     
     private final let dataSourceController = UITableViewDataSourceController()
     
@@ -139,6 +224,8 @@ open class TableViewController<Builder: SectionBuilder>: UIViewController {
         
         super.viewDidLoad()
         
+        tableView.register(Cell.self)
+        
         tableView.dataSource = dataSourceController
         
         dataSourceController.setNumberOfSections { [weak self] _ in
@@ -151,35 +238,32 @@ open class TableViewController<Builder: SectionBuilder>: UIViewController {
             
         }
         
-        dataSourceController.setNumberOfRows { [weak self] _, section in
-            
-            guard
-                let self = self,
-                let value = self.storage?[section],
-                let section = self.sectionBuilder?.section(from: value)
-            else { return 0 }
-            
-            return section.count
-            
-        }
+        dataSourceController.setNumberOfRows { _, _ in T.elements.count }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
             guard
-                let self = self,
-                let value = self.storage?[indexPath.section],
-                let section = self.sectionBuilder?.section(from: value)
+                let self = self
             else { return UITableViewCell() }
             
-            let row = section[ AnyIndex(indexPath.row) ]
+            let elementIndex = AnyIndex(indexPath.row)
             
-            let cell = UITableViewCell()
-
-            let view = row.view
+            let element = T.elements[elementIndex]
             
-            cell.wrapSubview(view)
+            let cell = self.tableView.dequeueReusableCell(
+                Cell.self,
+                for: indexPath
+            )
             
-            row.configure(with: value)
+            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+            
+            let view = element.makeView()
+            
+            cell.contentView.wrapSubview(view)
+            
+            let value = self.storage?[indexPath.section]
+            
+            view.update(with: value)
             
             return cell
             
