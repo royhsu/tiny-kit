@@ -64,77 +64,71 @@ public protocol SectionBuilder {
 
 public protocol Updatable {
     
-    associatedtype Value
-    
-    func update(with value: Value?)
+    func update(with value: Any?)
     
 }
 
-public struct AnyUpdatable<Value>: Updatable where Value: Equatable {
-    
-    private let _updater: (Value?) -> Void
-    
-    public init<U: Updatable>(_ updatable: U) where U.Value == Value {
-        
-        self._updater = updatable.update
-        
-    }
-    
-    public func update(with value: Value?) { return _updater(value) }
-    
-}
+//public struct AnyUpdatable<Value>: Updatable where Value: Equatable {
+//
+//    private let _updater: (Value?) -> Void
+//
+//    public init<U: Updatable>(_ updatable: U) where U.Value == Value {
+//
+//        self._updater = updatable.update
+//
+//    }
+//
+//    public func update(with value: Value?) { return _updater(value) }
+//
+//}
 
-public typealias UpdatableView = Updatable & View
-
-public final class AnyUpdatableView<Value>: UIView, Updatable where Value: Equatable {
-   
-    private final let _updater: (Value?) -> Void
-    
-    public init<V: UpdatableView>(_ view: V) where V.Value == Value {
-        
-        self._updater = view.update
-        
-        super.init(frame: .zero)
-        
-    }
-    
-    internal required init?(coder aDecoder: NSCoder) { fatalError("AnyUpdatableView is a type erasure.") }
-    
-    public final func update(with value: Value?) { _updater(value) }
-
-}
+//public typealias UpdatableView = Updatable & View
+//
+//public final class AnyUpdatableView<Value>: UIView, Updatable where Value: Equatable {
+//
+//    private final let _updater: (Value?) -> Void
+//
+//    public init<V: UpdatableView>(_ view: V) where V.Value == Value {
+//
+//        self._updater = view.update
+//
+//        super.init(frame: .zero)
+//
+//    }
+//
+//    internal required init?(coder aDecoder: NSCoder) { fatalError("AnyUpdatableView is a type erasure.") }
+//
+//    public final func update(with value: Value?) { _updater(value) }
+//
+//}
 
 // MARK: - TemplateElement
 
 public protocol TemplateElement {
     
-    associatedtype Value: Equatable
-    
-    func makeView() -> AnyUpdatableView<Value>
+    func makeView() -> View
     
 }
 
 // MARK: - AnyTemplateElement
 
-public struct AnyTemplateElement<Value>: TemplateElement where Value: Equatable {
-    
-    public let _makeViewFactory: () -> AnyUpdatableView<Value>
-    
-    public init<E: TemplateElement>(_ element: E) where E.Value == Value {
-        
-        self._makeViewFactory = element.makeView
-        
-    }
-    
-    public func makeView() -> AnyUpdatableView<Value> { return _makeViewFactory() }
-    
-}
+//public struct AnyTemplateElement<Value>: TemplateElement where Value: Equatable {
+//
+//    public let _makeViewFactory: () -> AnyUpdatableView<Value>
+//
+//    public init<E: TemplateElement>(_ element: E) where E.Value == Value {
+//
+//        self._makeViewFactory = element.makeView
+//
+//    }
+//
+//    public func makeView() -> AnyUpdatableView<Value> { return _makeViewFactory() }
+//
+//}
 
 public protocol Template {
     
-    associatedtype Element: TemplateElement
-    
-    static var elements: AnyCollection<Element> { get }
+    var elements: AnyCollection<TemplateElement> { get }
     
 }
 
@@ -182,13 +176,25 @@ public protocol Template {
 //  ]
 //)
 
-open class TableViewController<T: Template>: UIViewController {
-    
-    public typealias Value = T.Element.Value
-    
+open class TableViewController<Value>: UIViewController where Value: Equatable {
+
     private final class Cell: UITableViewCell, ReusableCell { }
     
     private final let tableView = UITableView()
+    
+    public final var template: Template? {
+        
+        didSet {
+            
+            if isViewLoaded {
+                
+                DispatchQueue.main.async { self.tableView.reloadData() }
+                
+            }
+            
+        }
+        
+    }
     
     private final let dataSourceController = UITableViewDataSourceController()
     
@@ -224,6 +230,8 @@ open class TableViewController<T: Template>: UIViewController {
         
         super.viewDidLoad()
         
+        tableView.separatorStyle = .none
+        
         tableView.register(Cell.self)
         
         tableView.dataSource = dataSourceController
@@ -238,17 +246,16 @@ open class TableViewController<T: Template>: UIViewController {
             
         }
         
-        dataSourceController.setNumberOfRows { _, _ in T.elements.count }
+        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.elements.count ?? 0 }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
-            guard
-                let self = self
-            else { return UITableViewCell() }
-            
             let elementIndex = AnyIndex(indexPath.row)
             
-            let element = T.elements[elementIndex]
+            guard
+                let self = self,
+                let element = self.template?.elements[elementIndex]
+            else { return UITableViewCell() }
             
             let cell = self.tableView.dequeueReusableCell(
                 Cell.self,
@@ -263,7 +270,9 @@ open class TableViewController<T: Template>: UIViewController {
             
             let value = self.storage?[indexPath.section]
             
-            view.update(with: value)
+            let updatable = view as? Updatable
+            
+            updatable?.update(with: value)
             
             return cell
             

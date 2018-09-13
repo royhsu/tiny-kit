@@ -9,6 +9,8 @@ public struct Post: Codable, Equatable {
     
     let title: String
     
+    let body: String
+    
 }
 
 class PostResource {
@@ -259,13 +261,7 @@ extension PostResource: Resource {
 //
 //}
 
-extension UILabel: Updatable {
-    
-    public func update(with post: Post?) { text = post?.title }
-    
-}
-
-class MyLabel: UILabel {
+class TitleLabel: UILabel, Updatable {
     
     override init(frame: CGRect) {
         
@@ -291,23 +287,69 @@ class MyLabel: UILabel {
         
     }
     
+    public func update(with value: Any?) {
+        
+        let post = value as? Post
+        
+        text = post?.title
+        
+    }
+    
 }
 
-struct PostListTemplate: Template {
+class BodyLabel: UILabel, Updatable {
+    
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        
+        self.prepare()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        self.prepare()
+        
+    }
+    
+    fileprivate func prepare() {
+        
+        numberOfLines = 0
+        
+        font = UIFont.preferredFont(forTextStyle: .body)
+        
+        textColor = .darkGray
+        
+    }
+    
+    public func update(with value: Any?) {
+        
+        let post = value as? Post
+        
+        text = post?.body
+        
+    }
+    
+}
+
+struct PostListTemplate: Template, ExpressibleByArrayLiteral {
     
     enum Element: TemplateElement {
         
         case title
         
-        func makeView() -> AnyUpdatableView<Post> {
+        case body
+        
+        func makeView() -> View {
         
             switch self {
              
-            case .title:
+            case .title: return TitleLabel()
                 
-                let label = MyLabel()
-                
-                return AnyUpdatableView(label)
+            case .body: return BodyLabel()
                 
             }
             
@@ -315,19 +357,22 @@ struct PostListTemplate: Template {
         
     }
     
-    static var elements: AnyCollection<Element> {
-     
-        return AnyCollection(
-            [ .title ]
-        )
-        
-    }
+    init(arrayLiteral elements: Element...) { self.elements = AnyCollection(elements) }
+    
+    var elements: AnyCollection<TemplateElement>
+    
+    static let `default`: PostListTemplate = [
+        .title,
+        .body
+    ]
     
 }
 
-class PostListViewController: TableViewController<PostListTemplate> { }
+class PostListViewController: TableViewController<Post> { }
 
 let viewController = PostListViewController()
+
+viewController.template = PostListTemplate.default
 
 let manager = APIManager(
     resource: PostResource(client: URLSession.shared)
