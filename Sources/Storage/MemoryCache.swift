@@ -54,3 +54,23 @@ public extension MemoryCache {
     }
     
 }
+
+public extension MemoryCache where Key == Int {
+    
+    // TODO: add unit test.
+    public final func setValues(
+        _ values: [Value]
+    ) {
+        
+        let keyValuePairs = values.enumerated().map { ($0.offset, $0.element) }
+        
+        let dictionary = Dictionary(
+            keyValuePairs,
+            uniquingKeysWith: { first, _ in first }
+        )
+        
+        setKeyValuePairs(dictionary)
+        
+    }
+ 
+}

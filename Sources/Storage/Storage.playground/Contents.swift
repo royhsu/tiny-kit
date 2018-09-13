@@ -48,33 +48,26 @@ class APIService {
     
 }
 
-protocol Remote {
+extension APIService: Resource {
     
-    func fetchItems<Item: Decodable>(
-        completionHandler: @escaping (Result<[Item]>) -> Void
-    )
-    
-}
-
-extension APIService: Remote {
-    
-    func fetchItems<Item>(
-        completionHandler: @escaping (Result<[Item]>) -> Void
-    )
-    where Item: Decodable {
+    func fetchItems(
+        page: Page,
+        completionHandler: @escaping (Result<FetchItemsPayload<Post>>) -> Void
+    ) {
         
         fetchPosts { result in
             
-            do {
-            
-                let items: [Item] = try result.resolve().map { $0 as! Item }
+            switch result {
+                
+            case let .success(posts):
                 
                 completionHandler(
-                    .success(items)
+                    .success(
+                        FetchItemsPayload(items: posts)
+                    )
                 )
                 
-            }
-            catch {
+            case let .failure(error):
                 
                 completionHandler(
                     .failure(error)
@@ -88,88 +81,74 @@ extension APIService: Remote {
     
 }
 
-class APICache<Value>: Storage where Value: Decodable {
-
-    typealias Index = Int
-
-    typealias Indices = [Index]
-
-    let remote: Remote
-    
-    private var fetchingIndices = Set<Index>()
-
-    private let _memoryCache = MemoryCache<Index, Value>()
-
-    init(remote: Remote) { self.remote = remote }
-
-    var keyDiff: Observable<Indices> { return _memoryCache.keyDiff }
-
-    var maxKey: Index? { return _memoryCache.maxKey }
-
-    subscript(_ index: Index) -> Value? {
-        
-        if let cachedValue = _memoryCache[index] { return cachedValue }
-    
-        if fetchingIndices.contains(index) { return nil }
-        
-        fetchingIndices.insert(index)
-        
-        remote.fetchItems { [weak self] (result: Result<[Value]>) in
-            
-            self?.fetchingIndices.remove(index)
-            
-            guard
-                let self = self,
-                let values = try? result.resolve()
-            else { return }
-            
-            let keyValuePairs = values.enumerated().map { ($0.offset, $0.element) }
-            
-            let dictionary = Dictionary(
-                keyValuePairs,
-                uniquingKeysWith: { first, _ in first }
-            )
-            
-            dictionary.keys.forEach { index in
-             
-                self.fetchingIndices.remove(index)
-                
-            }
-            
-            self._memoryCache.setKeyValuePairs(dictionary)
-            
-            guard
-                let fetchingMinIndex = self.fetchingIndices.min(),
-                let fetchedLastIndex = self.maxKey
-            else { return }
-            
-            let shouldFetchMoreItems = (fetchingMinIndex > fetchedLastIndex)
-            
-            if shouldFetchMoreItems {
-                
-                print("Still have some unfetched.", self.fetchingIndices)
-                
-            }
-            
-        }
-        
-        return nil
-    
-    }
-    
-}
-
-let service = APIService(client: URLSession.shared)
-
-//service.fetchPost(id: "1") { result in
+//class APICache<Value>: Storage where Value: Decodable {
 //
-//    print(result)
+//    typealias Index = Int
 //
-//}
-
-//service.fetchPosts { result in
+//    typealias Indices = [Index]
 //
-//    print(result)
+//    let remote: Remote
+//
+//    private var fetchingIndices = Set<Index>()
+//
+//    private let _memoryCache = MemoryCache<Index, Value>()
+//
+//    init(remote: Remote) { self.remote = remote }
+//
+//    var keyDiff: Observable<Indices> { return _memoryCache.keyDiff }
+//
+//    var maxKey: Index? { return _memoryCache.maxKey }
+//
+//    subscript(_ index: Index) -> Value? {
+//
+//        if let cachedValue = _memoryCache[index] { return cachedValue }
+//
+//        if fetchingIndices.contains(index) { return nil }
+//
+//        fetchingIndices.insert(index)
+//
+//        remote.fetchItems { [weak self] (result: Result<[Value]>) in
+//
+//            self?.fetchingIndices.remove(index)
+//
+//            guard
+//                let self = self,
+//                let values = try? result.resolve()
+//            else { return }
+//
+//            let keyValuePairs = values.enumerated().map { ($0.offset, $0.element) }
+//
+//            let dictionary = Dictionary(
+//                keyValuePairs,
+//                uniquingKeysWith: { first, _ in first }
+//            )
+//
+//            dictionary.keys.forEach { index in
+//
+//                self.fetchingIndices.remove(index)
+//
+//            }
+//
+//            self._memoryCache.setKeyValuePairs(dictionary)
+//
+//            guard
+//                let fetchingMinIndex = self.fetchingIndices.min(),
+//                let fetchedLastIndex = self.maxKey
+//            else { return }
+//
+//            let shouldFetchMoreItems = (fetchingMinIndex > fetchedLastIndex)
+//
+//            if shouldFetchMoreItems {
+//
+//                print("Still have some unfetched.", self.fetchingIndices)
+//
+//            }
+//
+//        }
+//
+//        return nil
+//
+//    }
 //
 //}
 
@@ -280,17 +259,17 @@ let service = APIService(client: URLSession.shared)
 //
 //}
 
-//typealias Cache = MemoryCache<Int, String>
-
 let viewController = TableViewController<Post>()
 
-let apiCache = APICache<Post>(
-    remote: APIService(client: URLSession.shared)
+let apiStorage = APIStorage(
+    resource: APIService(client: URLSession.shared)
 )
 
-viewController.storage = AnyStorage(apiCache)
+viewController.storage = AnyStorage(apiStorage)
 
 PlaygroundPage.current.liveView = viewController
+
+apiStorage.load()
 
 print("End")
 

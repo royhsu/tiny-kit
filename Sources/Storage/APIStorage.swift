@@ -10,26 +10,37 @@
 
 import TinyCore
 
-public final class APIStorage<Item>: Storage {
-    
-    public final var maxKey: Int?
-    
-    public final subscript(key: Int) -> Item? {
-        
-        return nil
-        
-    }
+public final class APIStorage<Item>: Storage where Item: Decodable {
     
     private final let resource: AnyResource<Item>
     
-    public final let keyDiff = KeyDiff()
+    /// The base storage.
+    private final let _memoryCache = MemoryCache<Int, Item>()
     
     public init<R: Resource>(resource: R) where R.Item == Item { self.resource = AnyResource(resource) }
     
     public final func load() {
         
+        resource.fetchItems(page: .first) { [weak self] result in
+            
+            guard
+                let self = self,
+                let payload = try? result.resolve()
+            else { return }
+            
+            self._memoryCache.setValues(payload.items)
+            
+        }
         
     }
+    
+    // MARK: Storage
+    
+    public final var keyDiff: KeyDiff { return _memoryCache.keyDiff }
+    
+    public final var maxKey: Int? { return _memoryCache.maxKey }
+    
+    public final subscript(key: Int) -> Item? { return _memoryCache[key] }
 
 }
 
@@ -50,8 +61,8 @@ public struct FetchItemsPayload<Item> {
     public let next: Page?
     
     public init(
-        items: [Item],
-        next: Page?
+        items: [Item] = [],
+        next: Page? = nil
     ) {
         
         self.items = items

@@ -42,7 +42,7 @@ internal final class APIStorageTests: XCTestCase {
     
     internal final var subscriptions: [ObservableSubscription] = []
     
-    internal final func test() {
+    internal final func testLoad() {
         
         let promise = expectation(description: "Load items from a given resource.")
 
@@ -53,8 +53,21 @@ internal final class APIStorageTests: XCTestCase {
         let subscription = storage.keyDiff.subscribe { event in
 
             promise.fulfill()
+            
+            XCTAssertEqual(
+                storage.maxKey,
+                1
+            )
 
-            XCTFail()
+            XCTAssertEqual(
+                storage[0],
+                "Hello"
+            )
+            
+            XCTAssertEqual(
+                storage[1],
+                "World"
+            )
 
         }
         
