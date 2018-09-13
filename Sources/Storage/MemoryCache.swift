@@ -29,24 +29,19 @@ where
         
         get { return _storage[key] }
         
-        set { _storage[key] = newValue }
+        set {
+            
+            _storage[key] = newValue
+            
+            keyDiff.value = [ key ]
+            
+        }
         
     }
     
 }
 
 public extension MemoryCache {
-    
-    public final func setValue(
-        _ value: Value,
-        forKey key: Key
-    ) {
-        
-        self[key] = value
-        
-        keyDiff.value = [ key ]
-
-    }
     
     public final func setKeyValuePairs(
         _ pairs: KeyValuePairs
@@ -57,7 +52,5 @@ public extension MemoryCache {
         keyDiff.value = pairs.map { $0.key }
         
     }
-    
-    public final func value(forKey key: Key) -> Value? { return self[key] }
     
 }

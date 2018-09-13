@@ -56,22 +56,6 @@ protocol Remote {
     
 }
 
-//struct AnyStorage<Key, Value> where Key: Hashable & Comparable {
-//
-//    var keyDiff: Observable<[Key]>
-//
-//    var maxKey: Key?
-//
-//    init<S: Storage>(_ storage: S) where S.Key == Key, S.Value == Value {
-//
-//        self.keyDiff = storage.keyDiff
-//
-//        self.maxKey = storage.maxKey
-//
-//    }
-//
-//}
-
 extension APIService: Remote {
     
     func fetchItems<Item>(
@@ -131,7 +115,7 @@ class APICache<Value>: Storage where Value: Decodable {
         fetchingIndices.insert(index)
         
         remote.fetchItems { [weak self] (result: Result<[Value]>) in
-            print("After fetching...")
+            
             self?.fetchingIndices.remove(index)
             
             guard
@@ -155,11 +139,11 @@ class APICache<Value>: Storage where Value: Decodable {
             self._memoryCache.setKeyValuePairs(dictionary)
             
             guard
-                let fetchingLastIndex = self.fetchingIndices.max(),
+                let fetchingMinIndex = self.fetchingIndices.min(),
                 let fetchedLastIndex = self.maxKey
             else { return }
             
-            let shouldFetchMoreItems = (fetchingLastIndex > fetchedLastIndex)
+            let shouldFetchMoreItems = (fetchingMinIndex > fetchedLastIndex)
             
             if shouldFetchMoreItems {
                 
@@ -245,50 +229,7 @@ let service = APIService(client: URLSession.shared)
 //    }
 //
 //}
-//
-//class Dummy: Storage {
-//
-//    private struct Content { }
-//
-//    let indexDiff = IndexDiff()
-//
-//    typealias Index = Int
-//
-//    private var _storage: [Content] = []
-//
-//    var count: Int { return _storage.count }
-//
-//    subscript(_ index: Int) -> String? {
-//
-//        get { return "Loading..." }
-//
-//        set {
-//
-//            let currentLastIndex = _storage.count
-//
-//            let newLastIndex = index + 1
-//
-//            let unallocatedCount = newLastIndex - currentLastIndex
-//
-//            if unallocatedCount > 0 {
-//
-//                _storage.append(
-//                    contentsOf: Array(
-//                        repeating: Content(),
-//                        count: unallocatedCount
-//                    )
-//                )
-//
-//            }
-//
-//            indexDiff.value = [ index ]
-//
-//        }
-//
-//    }
-//
-//}
-//
+
 //class StorageCoordinator: Storage {
 //
 //    private(set) var count: Int = 0
@@ -341,48 +282,15 @@ let service = APIService(client: URLSession.shared)
 
 //typealias Cache = MemoryCache<Int, String>
 
-let viewController = TableViewController<APICache<Post>>()
+let viewController = TableViewController<Post>()
 
 let apiCache = APICache<Post>(
     remote: APIService(client: URLSession.shared)
 )
 
-viewController.storage = apiCache
-//
-//let _ = apiCache.keyDiff.subscribe { event in
-//
-//    print("API Cache:", event.currentValue)
-//
-//}
-//
-//let first = apiCache[0]
-//
-//print(first)
-
-//let coordinator = StorageCoordinator()
-
-//coordinator.storages.append(
-//    contentsOf: [
-//        cache,
-//        dummy
-//    ] as [Storage]
-//)
-
-//viewController.storage = coordinator
+viewController.storage = AnyStorage(apiCache)
 
 PlaygroundPage.current.liveView = viewController
-
-DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-
-//    cache.setKeyValuePairs(
-//        [
-//            0: "Hello",
-//            1: "World",
-//            7: "QQ"
-//        ]
-//    )
-
-}
 
 print("End")
 

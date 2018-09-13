@@ -25,3 +25,49 @@ public protocol Storage {
     subscript(_ key: Key) -> Value? { get }
     
 }
+
+public extension Storage {
+
+    public func value(forKey key: Key) -> Value? { return self[key] }
+    
+}
+
+public final class AnyStorage<Key, Value>: Storage where Key: Hashable & Comparable {
+
+    private final let _valueProvider: (Key) -> Value?
+    
+    private final var subscriptions: [ObservableSubscription] = []
+
+    public init<S: Storage>(_ storage: S) where S.Key == Key, S.Value == Value {
+
+        self.keyDiff = storage.keyDiff
+
+        self.maxKey = storage.maxKey
+        
+        self._valueProvider = storage.value
+        
+        self.prepare()
+
+    }
+    
+    fileprivate final func prepare() {
+        
+        let subscription = keyDiff.subscribe { event in
+            
+            self.maxKey = event.currentValue?.max()
+            
+        }
+        
+        subscriptions.append(subscription)
+        
+    }
+    
+    // MARK: Storage
+    
+    public final let keyDiff: Observable<[Key]>
+    
+    public final private(set) var maxKey: Key?
+    
+    public final subscript(_ key: Key) -> Value? { return _valueProvider(key) }
+
+}

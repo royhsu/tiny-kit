@@ -21,10 +21,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let cache = MemoryCache<Int, String>()
         
-        XCTAssertEqual(
-            cache.maxKey,
-            nil
-        )
+        XCTAssertNil(cache.maxKey)
         
         cache[2] = "Hello"
         
@@ -48,34 +45,63 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
-    internal final func testSubscribeIndexDiff() {
+    internal final func testSubscribeKeyDiffBySubscriptSetter() {
         
         let promise = expectation(description: "Should get notified about indices changes.")
         
         let cache = MemoryCache<Int, String>()
         
-        subscriptions.append(
-            cache.keyDiff.subscribe { event in
-                
-                promise.fulfill()
-                
-                let indices = event.currentValue
-                
-                XCTAssert(
-                    indices?.contains(1) == true
-                )
-                
-                XCTAssert(
-                    indices?.contains(3) == true
-                )
-                
-            }
+        let subscription = cache.keyDiff.subscribe { event in
+            
+            promise.fulfill()
+            
+            let indices = event.currentValue
+            
+            XCTAssert(
+                indices?.contains(0) == true
+            )
+            
+        }
+        
+        subscriptions.append(subscription)
+        
+        cache[0] = "Hello"
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
         )
+        
+    }
+    
+    internal final func testSubscribeKeyDiffByKeyValuePairsSetter() {
+        
+        let promise = expectation(description: "Should get notified about indices changes.")
+        
+        let cache = MemoryCache<Int, String>()
+        
+        let subscription = cache.keyDiff.subscribe { event in
+            
+            promise.fulfill()
+            
+            let indices = event.currentValue
+            
+            XCTAssert(
+                indices?.contains(0) == true
+            )
+            
+            XCTAssert(
+                indices?.contains(2) == true
+            )
+            
+        }
+        
+        subscriptions.append(subscription)
         
         cache.setKeyValuePairs(
             [
-                1: "Hello",
-                3: "World"
+                0: "Hello",
+                2: "World"
             ]
         )
         
