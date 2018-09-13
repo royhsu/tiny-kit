@@ -32,6 +32,8 @@ public extension Storage {
     
 }
 
+// MARK: - AnyStorage
+
 public final class AnyStorage<Key, Value>: Storage where Key: Hashable & Comparable {
 
     private final let _valueProvider: (Key) -> Value?
