@@ -22,6 +22,8 @@
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
 		B033F5C8214A106D001DDBA6 /* AnyStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */; };
+		B033F5CA214A1C6A001DDBA6 /* APIStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C9214A1C6A001DDBA6 /* APIStorage.swift */; };
+		B033F5CD214A210E001DDBA6 /* APIStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5CB214A20BF001DDBA6 /* APIStorageTests.swift */; };
 		B0652DB52148AB67009F8757 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0652DB42148AB67009F8757 /* TinyCore.framework */; };
 		B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
 		B0652DBA2149244D009F8757 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
@@ -60,6 +62,8 @@
 		B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyKit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStorageTests.swift; sourceTree = "<group>"; };
+		B033F5C9214A1C6A001DDBA6 /* APIStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStorage.swift; sourceTree = "<group>"; };
+		B033F5CB214A20BF001DDBA6 /* APIStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStorageTests.swift; sourceTree = "<group>"; };
 		B0652DB42148AB67009F8757 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0652DB72148B118009F8757 /* Storage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Storage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DB92149244D009F8757 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			children = (
 				B0652DB92149244D009F8757 /* Storage.swift */,
 				B0652DC021492994009F8757 /* MemoryCache.swift */,
+				B033F5C9214A1C6A001DDBA6 /* APIStorage.swift */,
 				B0652DB72148B118009F8757 /* Storage.playground */,
 			);
 			path = Storage;
@@ -179,6 +184,7 @@
 			children = (
 				B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */,
 				B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */,
+				B033F5CB214A20BF001DDBA6 /* APIStorageTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
 				B0652DC3214966CC009F8757 /* TableViewController.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
+				B033F5CA214A1C6A001DDBA6 /* APIStorage.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
@@ -315,6 +322,7 @@
 			files = (
 				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
 				B0652DBF2149297A009F8757 /* MemoryCacheTests.swift in Sources */,
+				B033F5CD214A210E001DDBA6 /* APIStorageTests.swift in Sources */,
 				B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,

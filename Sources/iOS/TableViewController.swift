@@ -84,6 +84,12 @@ open class TableViewController<Value>: UIViewController {
         // TODO: add a fetchController to interpolate storage.
         storage?[0]
         
+//        if let lazyStorage = storage as? LazyStorage {
+//
+//            lazyStorage.load()
+//
+//        }
+        
     }
     
 }
