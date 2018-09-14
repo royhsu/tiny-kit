@@ -105,13 +105,14 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             
         }
         
-        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.count ?? 0 }
+        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.numberOfElements ?? 0 }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
             guard
                 let self = self,
-                let element = self.template?.element(at: indexPath.row)
+                let element = self.template?.element(at: indexPath.row),
+                let view = self.template?.view(for: element)
             else { return UITableViewCell() }
             
             let cell = self.tableView.dequeueReusableCell(
@@ -120,8 +121,6 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             )
             
             cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-            
-            let view = element.view
             
             cell.contentView.wrapSubview(view)
             

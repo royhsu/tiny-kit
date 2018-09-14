@@ -10,14 +10,14 @@
 
 public protocol Template {
     
-    associatedtype Element: ViewRepresentable
+    associatedtype Element
     
     func registerView(
         _ viewType: View.Type,
         for element: Element
     )
     
-    var count: Int { get }
+    var numberOfElements: Int { get }
     
     func element(at index: Int) -> Element
     

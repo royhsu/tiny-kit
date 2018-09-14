@@ -10,7 +10,7 @@
 
 public protocol TemplateConfiguration {
     
-    associatedtype Element: Hashable & ViewRepresentable
+    associatedtype Element: Hashable
     
     func preferredViewName(for element: Element) -> String?
     

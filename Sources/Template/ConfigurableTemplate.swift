@@ -8,6 +8,13 @@
 
 // MARK: - ConfigurableTemplate
 
+/// Please define your preferred view by its name with a configuration.
+/// The template will look up wether any registered view matches.
+///
+/// If the template can't find a configuration or mismatches with one, it
+/// will use the earliest and registerd view for elements.
+///
+/// You must register at least one view for each element.
 public final class ConfigurableTemplate<Configuration>: Template
 where Configuration: TemplateConfiguration {
     
@@ -52,7 +59,7 @@ where Configuration: TemplateConfiguration {
     
     // MARK: Template
     
-    public final var count: Int { return elements.count }
+    public final var numberOfElements: Int { return elements.count }
     
     public final func element(at index: Int) -> Element { return elements[ AnyIndex(index) ] }
     
