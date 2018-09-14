@@ -335,23 +335,11 @@ class BodyLabel: UILabel, Updatable {
     
 }
 
-enum PostListElement: String, ViewRepresentable {
+enum PostListElement: String {
     
     case title
     
     case body
-    
-    var view: View {
-        
-        switch self {
-            
-        case .title: return TitleLabel()
-            
-        case .body: return BodyLabel()
-            
-        }
-        
-    }
     
 }
 
