@@ -1,15 +1,15 @@
 //
-//  Unique.swift
+//  Updatable.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/14.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - Unique
+// MARK: - Updatable
 
-public protocol Unique {
+public protocol Updatable {
     
-    var identifier: String { get }
+    func updateValue(_ value: Any?)
     
 }

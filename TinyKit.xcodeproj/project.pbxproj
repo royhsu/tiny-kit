@@ -36,6 +36,7 @@
 		B01D2201214B9D500078E946 /* PostListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2200214B9D500078E946 /* PostListElement.swift */; };
 		B01D2203214B9D6F0078E946 /* PostListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2202214B9D6F0078E946 /* PostListConfiguration.swift */; };
 		B01D2205214B9D8E0078E946 /* PostListTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2204214B9D8E0078E946 /* PostListTemplate.swift */; };
+		B01D2208214B9FBE0078E946 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2206214B9FAE0078E946 /* Updatable.swift */; };
 		B033F5C8214A106D001DDBA6 /* AnyStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */; };
 		B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C9214A1C6A001DDBA6 /* APIManager.swift */; };
 		B033F5CD214A210E001DDBA6 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */; };
@@ -95,6 +96,7 @@
 		B01D2200214B9D500078E946 /* PostListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListElement.swift; sourceTree = "<group>"; };
 		B01D2202214B9D6F0078E946 /* PostListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListConfiguration.swift; sourceTree = "<group>"; };
 		B01D2204214B9D8E0078E946 /* PostListTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTemplate.swift; sourceTree = "<group>"; };
+		B01D2206214B9FAE0078E946 /* Updatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
 		B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStorageTests.swift; sourceTree = "<group>"; };
 		B033F5C9214A1C6A001DDBA6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
 				B01D21E8214B645D0078E946 /* View.swift */,
 				B01D21E6214B643C0078E946 /* ViewRepresentable.swift */,
+				B01D2206214B9FAE0078E946 /* Updatable.swift */,
 				B009B9012146449200B19F6A /* iOS */,
 			);
 			path = Sources;
@@ -398,6 +401,7 @@
 				B033F5D4214A4F3C001DDBA6 /* FetchItemsPayload.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
+				B01D2208214B9FBE0078E946 /* Updatable.swift in Sources */,
 				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
 				B01D21EB214B66E60078E946 /* ConfigurableTemplate.swift in Sources */,
 				B033F5D2214A4E99001DDBA6 /* Resource.swift in Sources */,

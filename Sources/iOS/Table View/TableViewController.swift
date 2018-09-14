@@ -11,12 +11,6 @@
 import UIKit
 import TinyCore
 
-public protocol Updatable {
-    
-    func updateValue(_ value: Any?)
-    
-}
-
 open class TableViewController<T: Template, Value>: UIViewController where Value: Equatable {
 
     private final class Cell: UITableViewCell, ReusableCell { }
