@@ -287,7 +287,7 @@ class TitleLabel: UILabel, Updatable {
         
     }
     
-    public func update(with value: Any?) {
+    public func updateValue(_ value: Any?) {
         
         let post = value as? Post
         
@@ -325,7 +325,7 @@ class BodyLabel: UILabel, Updatable {
         
     }
     
-    public func update(with value: Any?) {
+    public func updateValue(_ value: Any?) {
         
         let post = value as? Post
         
