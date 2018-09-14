@@ -23,7 +23,7 @@ public extension UITableView {
 
         guard
             let cell = dequeueReusableCell(
-                withIdentifier: cellType.identifier,
+                withIdentifier: cellType.reuseIdentifier,
                 for: indexPath
             ) as? Cell
         else { fatalError("Please make sure to register \(cellType) before dequeuing one.") }

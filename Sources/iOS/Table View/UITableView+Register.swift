@@ -19,7 +19,7 @@ public extension UITableView {
 
         register(
             cellType,
-            forCellReuseIdentifier: cellType.identifier
+            forCellReuseIdentifier: cellType.reuseIdentifier
         )
 
     }
@@ -40,7 +40,7 @@ public extension UITableView {
 
         register(
             nib,
-            forCellReuseIdentifier: cellType.identifier
+            forCellReuseIdentifier: cellType.reuseIdentifier
         )
 
     }

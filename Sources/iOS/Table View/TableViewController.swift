@@ -11,25 +11,9 @@
 import UIKit
 import TinyCore
 
-public typealias View = UIView
-
 public protocol Updatable {
     
     func updateValue(_ value: Any?)
-    
-}
-
-// MARK: - TemplateElement
-
-public protocol TemplateElement {
-    
-    func makeView() -> View
-    
-}
-
-public protocol Template {
-    
-    var elements: AnyCollection<TemplateElement> { get }
     
 }
 
@@ -51,13 +35,13 @@ public protocol Template {
 //  ]
 //)
 
-open class TableViewController<Value>: UIViewController where Value: Equatable {
+open class TableViewController<T: Template, Value>: UIViewController where Value: Equatable {
 
     private final class Cell: UITableViewCell, ReusableCell { }
     
     private final let tableView = UITableView()
     
-    public final var template: Template? {
+    public final var template: T? {
         
         didSet {
             
@@ -121,15 +105,13 @@ open class TableViewController<Value>: UIViewController where Value: Equatable {
             
         }
         
-        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.elements.count ?? 0 }
+        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.count ?? 0 }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
-            let elementIndex = AnyIndex(indexPath.row)
-            
             guard
                 let self = self,
-                let element = self.template?.elements[elementIndex]
+                let element = self.template?.element(at: indexPath.row)
             else { return UITableViewCell() }
             
             let cell = self.tableView.dequeueReusableCell(
@@ -139,7 +121,7 @@ open class TableViewController<Value>: UIViewController where Value: Equatable {
             
             cell.contentView.subviews.forEach { $0.removeFromSuperview() }
             
-            let view = element.makeView()
+            let view = element.view
             
             cell.contentView.wrapSubview(view)
             

@@ -335,44 +335,56 @@ class BodyLabel: UILabel, Updatable {
     
 }
 
-struct PostListTemplate: Template, ExpressibleByArrayLiteral {
+enum PostListElement: String, ViewRepresentable {
     
-    enum Element: TemplateElement {
+    case title
+    
+    case body
+    
+    var view: View {
         
-        case title
-        
-        case body
-        
-        func makeView() -> View {
-        
-            switch self {
-             
-            case .title: return TitleLabel()
-                
-            case .body: return BodyLabel()
-                
-            }
+        switch self {
+            
+        case .title: return TitleLabel()
+            
+        case .body: return BodyLabel()
             
         }
         
     }
     
-    init(arrayLiteral elements: Element...) { self.elements = AnyCollection(elements) }
+}
+
+struct PostListConfiguration: TemplateConfiguration {
     
-    var elements: AnyCollection<TemplateElement>
+    typealias Element = PostListElement
     
-    static let `default`: PostListTemplate = [
-        .title,
-        .body
-    ]
+    func preferredViewName(for element: Element) -> String? { return nil }
     
 }
 
-class PostListViewController: TableViewController<Post> { }
+typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
+
+class PostListViewController: TableViewController<PostListTemplate, Post> { }
 
 let viewController = PostListViewController()
 
-viewController.template = PostListTemplate.default
+let template: PostListTemplate = [
+    .title,
+    .body
+]
+
+viewController.template = template
+
+viewController.template?.registerView(
+    TitleLabel.self,
+    for: .title
+)
+
+viewController.template?.registerView(
+    BodyLabel.self,
+    for: .body
+)
 
 let manager = APIManager(
     resource: PostResource(client: URLSession.shared)

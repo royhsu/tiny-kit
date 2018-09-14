@@ -21,6 +21,12 @@
 		B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B92021465E0F00B19F6A /* UIView+Subview.swift */; };
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
+		B01D21E5214B64270078E946 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21E4214B64270078E946 /* Template.swift */; };
+		B01D21E7214B643C0078E946 /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21E6214B643C0078E946 /* ViewRepresentable.swift */; };
+		B01D21E9214B645D0078E946 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21E8214B645D0078E946 /* View.swift */; };
+		B01D21EB214B66E60078E946 /* ConfigurableTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21EA214B66E60078E946 /* ConfigurableTemplate.swift */; };
+		B01D21ED214B67460078E946 /* Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21EC214B67460078E946 /* Unique.swift */; };
+		B01D21EF214B7ACA0078E946 /* TemplateConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21EE214B7ACA0078E946 /* TemplateConfiguration.swift */; };
 		B033F5C8214A106D001DDBA6 /* AnyStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */; };
 		B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C9214A1C6A001DDBA6 /* APIManager.swift */; };
 		B033F5CD214A210E001DDBA6 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */; };
@@ -65,6 +71,12 @@
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyKit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B01D21E4214B64270078E946 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		B01D21E6214B643C0078E946 /* ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentable.swift; sourceTree = "<group>"; };
+		B01D21E8214B645D0078E946 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		B01D21EA214B66E60078E946 /* ConfigurableTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableTemplate.swift; sourceTree = "<group>"; };
+		B01D21EC214B67460078E946 /* Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unique.swift; sourceTree = "<group>"; };
+		B01D21EE214B7ACA0078E946 /* TemplateConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateConfiguration.swift; sourceTree = "<group>"; };
 		B033F5C6214A1068001DDBA6 /* AnyStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStorageTests.swift; sourceTree = "<group>"; };
 		B033F5C9214A1C6A001DDBA6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
@@ -142,10 +154,14 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B01D21E3214B64140078E946 /* Template */,
 				B0652DB62148B0FF009F8757 /* Storage */,
+				B01D21EC214B67460078E946 /* Unique.swift */,
 				B009B90B21464AF400B19F6A /* NibCell.swift */,
 				B009B9022146489E00B19F6A /* ReusableCell.swift */,
 				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
+				B01D21E8214B645D0078E946 /* View.swift */,
+				B01D21E6214B643C0078E946 /* ViewRepresentable.swift */,
 				B009B9012146449200B19F6A /* iOS */,
 			);
 			path = Sources;
@@ -171,6 +187,16 @@
 				B0652DB42148AB67009F8757 /* TinyCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B01D21E3214B64140078E946 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				B01D21E4214B64270078E946 /* Template.swift */,
+				B01D21EE214B7ACA0078E946 /* TemplateConfiguration.swift */,
+				B01D21EA214B66E60078E946 /* ConfigurableTemplate.swift */,
+			);
+			path = Template;
 			sourceTree = "<group>";
 		};
 		B033F5D7214A4F99001DDBA6 /* Table View */ = {
@@ -322,17 +348,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01D21E5214B64270078E946 /* Template.swift in Sources */,
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B0652DC121492994009F8757 /* MemoryCache.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
+				B01D21E9214B645D0078E946 /* View.swift in Sources */,
 				B0652DC3214966CC009F8757 /* TableViewController.swift in Sources */,
+				B01D21EF214B7ACA0078E946 /* TemplateConfiguration.swift in Sources */,
 				B033F5D6214A4F64001DDBA6 /* Page.swift in Sources */,
+				B01D21E7214B643C0078E946 /* ViewRepresentable.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
+				B01D21ED214B67460078E946 /* Unique.swift in Sources */,
 				B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */,
 				B033F5D4214A4F3C001DDBA6 /* FetchItemsPayload.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
+				B01D21EB214B66E60078E946 /* ConfigurableTemplate.swift in Sources */,
 				B033F5D2214A4E99001DDBA6 /* Resource.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,

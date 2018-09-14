@@ -16,7 +16,7 @@ internal final class ReusableCellTests: XCTestCase {
     internal final func testIdentifier() {
 
         XCTAssertEqual(
-            ClassTableViewCell.identifier,
+            ClassTableViewCell.reuseIdentifier,
             "ClassTableViewCell"
         )
 

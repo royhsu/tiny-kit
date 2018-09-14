@@ -10,7 +10,7 @@
 
 public protocol ReusableCell {
 
-    static var identifier: String { get }
+    static var reuseIdentifier: String { get }
 
 }
 
@@ -18,6 +18,6 @@ public protocol ReusableCell {
 
 public extension ReusableCell {
 
-    public static var identifier: String { return String(describing: self) }
+    public static var reuseIdentifier: String { return String(describing: self) }
 
 }
