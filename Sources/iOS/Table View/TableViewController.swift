@@ -17,24 +17,6 @@ public protocol Updatable {
     
 }
 
-// TODO: a way to register multiple templates for the same view, and configure by json.
-// always have a Default.self at the bottom.
-//
-// JSON config
-//{
-//    "template": "BLabel"
-//}
-//
-// In code side.
-//templates.register(
-//  [
-//    ALabel.self,
-//    BLabel.self,
-//    CLabel.self,
-//    Default.self
-//  ]
-//)
-
 open class TableViewController<T: Template, Value>: UIViewController where Value: Equatable {
 
     private final class Cell: UITableViewCell, ReusableCell { }
