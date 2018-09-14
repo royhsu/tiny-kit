@@ -353,6 +353,32 @@ struct PostListConfiguration: TemplateConfiguration {
 
 typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
 
+//struct Section: Template {
+//    typealias Element = <#type#>
+//
+//    
+//    enum PostRow {
+//
+//        case title
+//
+//        case body
+//
+//    }
+//
+//    enum CommentRow {
+//
+//        case body
+//
+//    }
+//
+//}
+
+class GroupedTemplate<T> where T: Template {
+
+    
+    
+}
+
 class PostListViewController: TableViewController<PostListTemplate, Post> { }
 
 let viewController = PostListViewController()

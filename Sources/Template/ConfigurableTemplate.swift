@@ -59,7 +59,7 @@ where Configuration: TemplateConfiguration {
     
     // MARK: Template
     
-    public final var numberOfElements: Int { return elements.count }
+    public final func numberOfElements() -> Int { return elements.count }
     
     public final func element(at index: Int) -> Element { return elements[ AnyIndex(index) ] }
     

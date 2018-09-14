@@ -81,7 +81,7 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             
         }
         
-        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.numberOfElements ?? 0 }
+        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.numberOfElements() ?? 0 }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
