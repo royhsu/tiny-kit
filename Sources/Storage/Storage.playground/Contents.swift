@@ -353,62 +353,305 @@ struct PostListConfiguration: TemplateConfiguration {
 
 typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
 
-//struct Section: Template {
-//    typealias Element = <#type#>
+struct Comment { }
+
+struct FeedStorage {
+    
+    enum Value {
+        
+        case comment(Comment)
+        
+    }
+    
+    var values: [Value]
+    
+}
+
+struct CommentItem: SectionItem {
+    
+    enum Element {
+        
+        case username
+        
+        case text
+        
+    }
+    
+    var elements: [Element] = []
+    
+    var numberOfElements: Int { return elements.count }
+    
+    func element(at index: Int) -> Element { return elements[index] }
+    
+}
+
+struct FeedSection: Section {
+
+    enum Item: SectionItem {
+        
+        case comment(CommentItem)
+        
+        var numberOfElements: Int {
+            
+            switch self {
+                
+            case let .comment(elements): return elements.numberOfElements
+                
+            }
+            
+        }
+        
+        // Important: Any does the trick.
+        func element(at index: Int) -> Any {
+            
+            switch self {
+             
+            case let .comment(elements): return elements.element(at: index)
+                
+            }
+            
+        }
+
+    }
+
+    var items: [Item] = []
+
+    var numberOfItems: Int { return items.count }
+
+    func item(at index: Int) -> Item { return items[index] }
+
+}
+
+//let a = FeedSection(
+//    items: [
+//        .comment(
+//            CommentItem(
+//                elements: [
+//                    .username,
+//                    .text
+//                ]
+//            )
+//        )
+//    ]
+//)
+
+//struct FeedSection: Section {
 //
-//    
-//    enum PostRow {
+//    var items: [FeedItem] = []
 //
-//        case title
+//    var numberOfItems: Int { return items.count }
 //
-//        case body
-//
-//    }
-//
-//    enum CommentRow {
-//
-//        case body
-//
-//    }
+//    func item(at index: Int) -> FeedItem { return items[index] }
 //
 //}
 
-class GroupedTemplate<T> where T: Template {
+protocol SectionReducer {
+ 
+    associatedtype Storage
+    
+    associatedtype S: Section
+    
+    func reduce(storage: Storage) -> S
+    
+}
 
+struct FeedReducer: SectionReducer {
+
+    func reduce(storage: FeedStorage) -> FeedSection {
+
+        let items: [FeedSection.Item] = storage.values.map { value in
+
+            switch value {
+
+            case .comment:
+
+                let item = CommentItem(
+                    elements: [
+                        .username,
+                        .text
+                    ]
+                )
+
+                return .comment(item)
+
+            }
+
+        }
+
+        return FeedSection(items: items)
+
+    }
+
+}
+
+protocol CollectionViewController {
+    
+    associatedtype Reducer: SectionReducer
+    
+}
+
+protocol TableView {
+    
     
     
 }
 
-class PostListViewController: TableViewController<PostListTemplate, Post> { }
+// TODO: Should use a type erasure for reducer.
+class Table2ViewController<R>: UIViewController
+where R: SectionReducer {
 
-let viewController = PostListViewController()
+    typealias Storage = R.Storage
 
-let template: PostListTemplate = [
-    .title,
-    .body
-]
+    typealias Section = R.S
 
-viewController.template = template
+    private var section: Section?
 
-viewController.template?.registerView(
-    TitleLabel.self,
-    for: .title
+    private let dataSource = UITableViewDataSourceController()
+
+    var storage: Storage? {
+
+        didSet {
+
+            update()
+
+        }
+
+    }
+
+    private func update() {
+     
+        DispatchQueue.main.async { [weak self] in
+            
+            guard
+                let self = self,
+                let storage = self.storage,
+                let reducer = self.reducer
+            else { return }
+            
+            self.section = reducer.reduce(storage: storage)
+            
+            self.tableView.reloadData()
+            
+        }
+        
+    }
+    
+    var reducer: R? {
+        
+        didSet {
+            
+            update()
+            
+        }
+        
+    }
+
+    private(set) lazy var tableView = UITableView()
+    
+    init() {
+        
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+    }
+
+    override func loadView() { view = tableView }
+
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+
+        tableView.separatorStyle = .none
+
+        tableView.dataSource = dataSource
+
+        dataSource.setNumberOfSections { [weak self] _ in
+
+            return self?.section?.numberOfItems ?? 0
+
+        }
+
+        dataSource.setNumberOfRows { [weak self] _, index in
+
+            let item = self?.section?.item(at: index)
+
+            return item?.numberOfElements ?? 0
+
+        }
+
+        dataSource.setCellForRow { [weak self] _, indexPath in
+
+            guard
+                let self = self,
+                let section = self.section?.item(at: indexPath.section)
+            else { return UITableViewCell() }
+
+            let cell = UITableViewCell()
+
+            let element = section.element(at: indexPath.row)
+            print(element)
+            cell.textLabel?.text = "\(indexPath)"
+
+//            let view = element.view
+
+            return cell
+
+        }
+
+    }
+
+}
+
+let table2ViewController = Table2ViewController<FeedReducer>()
+
+table2ViewController.reducer = FeedReducer()
+
+PlaygroundPage.current.liveView = table2ViewController
+
+table2ViewController.storage = FeedStorage(
+    values: [
+        .comment(Comment())
+    ]
 )
 
-viewController.template?.registerView(
-    BodyLabel.self,
-    for: .body
-)
-
-let manager = APIManager(
-    resource: PostResource(client: URLSession.shared)
-)
-
-viewController.storage = AnyStorage(manager)
-
-PlaygroundPage.current.liveView = viewController
-
-manager.load()
+//class PostListViewController: TableViewController<PostListTemplate, Post> { }
+//
+//let viewController = PostListViewController()
+//
+//let template: PostListTemplate = [
+//    .title,
+//    .body
+//]
+//
+//viewController.template = template
+//
+//viewController.template?.registerView(
+//    TitleLabel.self,
+//    for: .title
+//)
+//
+//viewController.template?.registerView(
+//    BodyLabel.self,
+//    for: .body
+//)
+//
+//let manager = APIManager(
+//    resource: PostResource(client: URLSession.shared)
+//)
+//
+//viewController.storage = AnyStorage(manager)
+//
+//PlaygroundPage.current.liveView = viewController
+//
+//manager.load()
 
 print("End")
 

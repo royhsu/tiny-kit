@@ -114,3 +114,18 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
     
 }
 
+public protocol CollectionView {
+
+    associatedtype Section
+    
+    var numebrOfSections: Int { get }
+    
+    func section(at index: Int) -> Section
+    
+}
+
+//open class CollectionController {
+//
+//    var collectionView: CollectionView?
+//
+//}
