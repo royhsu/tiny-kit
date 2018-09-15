@@ -105,7 +105,7 @@
 		B033F5D3214A4F3C001DDBA6 /* FetchItemsPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchItemsPayload.swift; sourceTree = "<group>"; };
 		B033F5D5214A4F64001DDBA6 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		B0652DB42148AB67009F8757 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0652DB72148B118009F8757 /* Storage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Storage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B0652DB72148B118009F8757 /* Ideas.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Ideas.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DB92149244D009F8757 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B0652DBE2149297A009F8757 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
 		B0652DC021492994009F8757 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
@@ -175,6 +175,7 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B0652DB72148B118009F8757 /* Ideas.playground */,
 				B01D21E3214B64140078E946 /* Template */,
 				B0652DB62148B0FF009F8757 /* Storage */,
 				B01D21EC214B67460078E946 /* Unique.swift */,
@@ -257,7 +258,6 @@
 				B033F5D1214A4E99001DDBA6 /* Resource.swift */,
 				B033F5D3214A4F3C001DDBA6 /* FetchItemsPayload.swift */,
 				B033F5D5214A4F64001DDBA6 /* Page.swift */,
-				B0652DB72148B118009F8757 /* Storage.playground */,
 			);
 			path = Storage;
 			sourceTree = "<group>";

@@ -11,8 +11,10 @@
 import UIKit
 import TinyCore
 
-open class TableViewController<T: Template, Value>: UIViewController where Value: Equatable {
+open class TableViewController<T: Template>: UIViewController {
 
+    public typealias Value = T.UpdatableView.Value
+    
     private final class Cell: UITableViewCell, ReusableCell { }
     
     private final let tableView = UITableView()
@@ -81,14 +83,15 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             
         }
         
-        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.numberOfElements() ?? 0 }
+        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.numberOfElements ?? 0 }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
             guard
                 let self = self,
                 let element = self.template?.element(at: indexPath.row),
-                let view = self.template?.view(for: element)
+                let updatableView = self.template?.view(for: element),
+                let view = updatableView as? UIView
             else { return UITableViewCell() }
             
             let cell = self.tableView.dequeueReusableCell(
@@ -102,9 +105,7 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             
             let value = self.storage?[indexPath.section]
             
-            let updatable = view as? Updatable
-            
-            updatable?.updateValue(value)
+            updatableView.updateValue(value)
             
             return cell
             

@@ -8,6 +8,14 @@
 
 // MARK: - View
 
+#if canImport(UIKit)
+
 import UIKit
 
 public typealias View = UIView
+
+#else
+
+public protocol View { }
+
+#endif

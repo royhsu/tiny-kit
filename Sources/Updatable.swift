@@ -10,6 +10,8 @@
 
 public protocol Updatable {
     
-    func updateValue(_ value: Any?)
+    associatedtype Value
+    
+    func updateValue(_ value: Value?)
     
 }

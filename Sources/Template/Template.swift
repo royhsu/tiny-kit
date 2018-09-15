@@ -12,65 +12,76 @@ public protocol Template {
     
     associatedtype Element
     
+    associatedtype Value
+    
     func registerView(
-        _ viewType: View.Type,
+        _ viewType: UpdatableView.Type,
         for element: Element
     )
     
-    func numberOfElements() -> Int
+    var numberOfElements: Int { get }
     
     func element(at index: Int) -> Element
     
     func view(for element: Element) -> View
     
+    func updateView(
+        _ view: View,
+        with value: Value
+    )
+    
 }
 
 // MARK: - AnyTemplate
 
-public struct AnyTemplate<Element>: Template {
-    
-    private typealias RegisterViewHandler = (
-        _ viewType: View.Type,
+public struct AnyTemplate<Element, UpdatableView>: Template where UpdatableView: Updatable & View {
+
+    private let _registerViewHandler: (
+        _ viewType: UpdatableView.Type,
         _ element: Element
     )
     -> Void
-    
-    private let _registerViewHandler: RegisterViewHandler
-    
-    private let _numberOfElementsProvider: () -> Int
-    
-    private let _elementProvider: (_ index: Int) -> Element
-    
-    private let _viewProvider: (_ element: Element) -> View
 
-    public init<T>(_ template: T) where T: Template, T.Element == Element {
-        
+    private let _numberOfElementsProvider: () -> Int
+
+    private let _elementProvider: (_ index: Int) -> Element
+
+    private let _viewProvider: (Element) -> UpdatableView
+
+    public init<T>(_ template: T)
+    where
+        T: Template,
+        T.Element == Element,
+        T.UpdatableView == UpdatableView {
+
         self._registerViewHandler = template.registerView
-        
-        self._numberOfElementsProvider = template.numberOfElements
-        
+
+        self._numberOfElementsProvider = { template.numberOfElements }
+
         self._elementProvider = template.element
-        
+
         self._viewProvider = template.view
-        
+
     }
-    
+
+    // MARK: Template
+
     public func registerView(
-        _ viewType: View.Type,
+        _ viewType: UpdatableView.Type,
         for element: Element
     ) {
-        
+
         _registerViewHandler(
             viewType,
             element
         )
-        
+
     }
-    
-    public func numberOfElements() -> Int { return _numberOfElementsProvider() }
-    
+
+    public var numberOfElements: Int { return _numberOfElementsProvider() }
+
     public func element(at index: Int) -> Element { return _elementProvider(index) }
-    
-    public func view(for element: Element) -> View { return _viewProvider(element) }
-    
+
+    public func view(for element: Element) -> UpdatableView { return _viewProvider(element) }
+
 }

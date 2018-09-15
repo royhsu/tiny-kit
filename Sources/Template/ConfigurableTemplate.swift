@@ -15,8 +15,10 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-public final class ConfigurableTemplate<Configuration>: Template
-where Configuration: TemplateConfiguration {
+public final class ConfigurableTemplate<Configuration, UpdatableView>: Template
+where
+    Configuration: TemplateConfiguration,
+    UpdatableView: Updatable & View {
     
     public typealias Element = Configuration.Element
     
@@ -24,7 +26,7 @@ where Configuration: TemplateConfiguration {
         
         let date = Date()
         
-        let viewType: View.Type
+        let viewType: UpdatableView.Type
         
     }
     
@@ -43,7 +45,7 @@ where Configuration: TemplateConfiguration {
     ) { self.elements = AnyCollection(elements) }
     
     public final func registerView(
-        _ viewType: View.Type,
+        _ viewType: UpdatableView.Type,
         for element: Element
     ) {
         
@@ -59,11 +61,11 @@ where Configuration: TemplateConfiguration {
     
     // MARK: Template
     
-    public final func numberOfElements() -> Int { return elements.count }
+    public final var numberOfElements: Int { return elements.count }
     
     public final func element(at index: Int) -> Element { return elements[ AnyIndex(index) ] }
     
-    public final func view(for element: Element) -> View {
+    public final func view(for element: Element) -> UpdatableView {
         
         let viewMapping = elementMapping[element] ?? [:]
         

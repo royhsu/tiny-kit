@@ -373,12 +373,6 @@ typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
 //
 //}
 
-class GroupedTemplate<T> where T: Template {
-
-    
-    
-}
-
 class PostListViewController: TableViewController<PostListTemplate, Post> { }
 
 let viewController = PostListViewController()
