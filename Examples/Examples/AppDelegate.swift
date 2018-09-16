@@ -35,40 +35,39 @@ extension AppDelegate: UIApplicationDelegate {
         
         viewController.reducer = { storage in
             
-            let sections: [PostSectionCollection.Section] = storage.pairs.map { pair in
+            return PostSectionCollection(
+                sections: storage.pairs.map { pair in
                 
-                switch pair.value {
-                    
-                case let .post(storage):
-                    
-                    let template = PostTemplate(
-                        storage: storage,
-                        elements: [
-                            .title,
-                            .body
-                        ]
-                    )
-                    
-                    return .post(template)
-                    
-                case let .comment(storage):
-                    
-                    let template = CommentTemplate(
-                        storage: storage,
-                        elements: [
-                            .username,
-                            .text
-                        ]
-                    )
+                    switch pair.value {
+                        
+                    case let .post(storage):
+                        
+                        let template = PostTemplate(
+                            storage: storage,
+                            elements: [
+                                .title,
+                                .body
+                            ]
+                        )
+                        
+                        return .post(template)
+                        
+                    case let .comment(storage):
+                        
+                        let template = CommentTemplate(
+                            storage: storage,
+                            elements: [
+                                .username,
+                                .text
+                            ]
+                        )
 
-                    return .comment(template)
+                        return .comment(template)
+                        
+                    }
                     
                 }
-                
-                
-            }
-            
-            return PostSectionCollection(sections: sections)
+             )
             
         }
     
