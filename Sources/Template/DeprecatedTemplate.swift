@@ -80,9 +80,7 @@ public protocol SectionItem {
     
     associatedtype Element
     
-    associatedtype Value
-    
-    typealias Storage = AnyStorage<Int, Value>
+    associatedtype Storage
     
     var storage: Storage { get }
     

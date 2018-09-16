@@ -20,9 +20,12 @@ public protocol Storage {
     
     var keyDiff: KeyDiff { get }
     
+    // replace by values.count?
     var maxKey: Key? { get }
     
     func value(forKey key: Key) -> Value?
+    
+    var values: AnyCollection<Value> { get }
     
 }
 
@@ -42,6 +45,8 @@ where Key: Hashable & Comparable {
     private final let _maxKey: () -> Key?
     
     private final let _value: (Key) -> Value?
+    
+    private final let _values: () -> AnyCollection<Value>
 
     public init<S: Storage>(_ storage: S)
     where
@@ -54,6 +59,8 @@ where Key: Hashable & Comparable {
         
         self._value = storage.value
             
+        self._values = { storage.values }
+            
     }
     
     // MARK: Storage
@@ -63,5 +70,7 @@ where Key: Hashable & Comparable {
     public final var maxKey: Key? { return _maxKey() }
     
     public final func value(forKey key: Key) -> Value? { return _value(key) }
+    
+    public final var values: AnyCollection<Value> { return _values() }
 
 }

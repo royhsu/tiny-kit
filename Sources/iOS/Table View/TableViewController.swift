@@ -11,12 +11,12 @@
 import UIKit
 import TinyCore
 
-open class TableViewController<C>: UIViewController
-where C: SectionCollection {
+open class TableViewController<C, S>: UIViewController
+where C: SectionCollection, S: Storage {
     
-    public typealias Storage = C.Item.Storage
+//    public typealias Value = C.Value
     
-    public typealias Reducer = (Storage) -> C
+    public typealias Reducer = (S) -> C
     
     private final class Cell: UITableViewCell, ReusableCell { }
     
@@ -34,7 +34,7 @@ where C: SectionCollection {
     
     private final let dataSourceController = UITableViewDataSourceController()
     
-    public final var storage: Storage? {
+    public final var storage: S? {
         
         didSet {
             

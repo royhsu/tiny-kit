@@ -13,7 +13,7 @@ where Key: Hashable & Comparable {
     
     public typealias KeyValuePairs = [Key: Value]
     
-    fileprivate var _storage: KeyValuePairs = [:]
+    private var _storage: KeyValuePairs = [:]
     
     public let keyDiff = KeyDiff()
     
@@ -26,6 +26,8 @@ where Key: Hashable & Comparable {
         return _storage[key]
         
     }
+    
+    public var values: AnyCollection<Value> { return AnyCollection(_storage.lazy.elements.values) }
     
     public mutating func setValue(
         _ value: Value,
