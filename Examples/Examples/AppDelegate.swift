@@ -29,7 +29,7 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        typealias PostViewController = TableViewController<PostSectionCollection, PostStorage>
+        typealias PostViewController = TableViewController<PostStorage, PostSectionCollection>
 
         let viewController = PostViewController()
         

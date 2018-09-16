@@ -11,7 +11,7 @@
 import UIKit
 import TinyCore
 
-open class TableViewController<C, S>: UIViewController
+open class TableViewController<S, C>: UIViewController
 where
     C: SectionCollection,
     S: Storage {
