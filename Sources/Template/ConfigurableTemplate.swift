@@ -15,7 +15,7 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-public final class ConfigurableTemplate<Configuration>: Section, Template
+public final class ConfigurableTemplate<Configuration>: SectionCollection, DeprecatedTemplate
 where Configuration: TemplateConfiguration {
     
     public var numberOfItems: Int { return numberOfElements() }

@@ -11,21 +11,22 @@
 import UIKit
 import TinyCore
 
-open class TableViewController<T: Template, Value>: UIViewController where Value: Equatable {
-
+open class TableViewController<C>: UIViewController
+where C: SectionCollection {
+    
+    public typealias Storage = C.Item.Storage
+    
+    public typealias Reducer = (Storage) -> C
+    
     private final class Cell: UITableViewCell, ReusableCell { }
     
     private final let tableView = UITableView()
     
-    public final var template: T? {
+    private final var sections: C? {
         
         didSet {
             
-            if isViewLoaded {
-                
-                DispatchQueue.main.async { self.tableView.reloadData() }
-                
-            }
+            if isViewLoaded { asyncReloadTableView() }
             
         }
         
@@ -33,7 +34,7 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
     
     private final let dataSourceController = UITableViewDataSourceController()
     
-    public final var storage: AnyStorage<Int, Value>? {
+    public final var storage: Storage? {
         
         didSet {
             
@@ -43,17 +44,43 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             
             let subscription = storage.keyDiff.subscribe { _ in
                 
-                DispatchQueue.main.async {
-                    
-                    self.tableView.reloadData()
-                    
-                }
+                self.asyncReloadTableView()
                 
             }
             
             subscriptions = [ subscription ]
             
+            reduceStorage()
+            
         }
+        
+    }
+    
+    public final var reducer: Reducer? {
+        
+        didSet { reduceStorage() }
+        
+    }
+    
+    fileprivate final func reduceStorage() {
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            guard
+                let self = self,
+                let storage = self.storage,
+                let reducer = self.reducer
+            else { return }
+            
+            self.sections = reducer(storage)
+            
+        }
+        
+    }
+    
+    fileprivate final func asyncReloadTableView() {
+        
+        DispatchQueue.main.async { [weak self] in self?.tableView.reloadData() }
         
     }
     
@@ -71,25 +98,24 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
         
         tableView.dataSource = dataSourceController
         
-        dataSourceController.setNumberOfSections { [weak self] _ in
+        dataSourceController.setNumberOfSections { [weak self] _ in self?.sections?.numberOfItems ?? 0 }
+        
+        dataSourceController.setNumberOfRows { [weak self] _, section in
             
-            guard
-                let maxKey = self?.storage?.maxKey
-            else { return 0 }
-
-            return maxKey + 1
+            let section = self?.sections?.item(at: section)
+            
+            return section?.numberOfElements ?? 0
             
         }
-        
-        dataSourceController.setNumberOfRows { [weak self] _, _ in self?.template?.numberOfElements() ?? 0 }
         
         dataSourceController.setCellForRow { [weak self] _, indexPath in
             
             guard
                 let self = self,
-                let element = self.template?.element(at: indexPath.row),
-                let view = self.template?.view(for: element)
+                let section = self.sections?.item(at: indexPath.section)
             else { return UITableViewCell() }
+            
+            let view = section.view(at: indexPath.row)
             
             let cell = self.tableView.dequeueReusableCell(
                 Cell.self,
@@ -100,12 +126,6 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
             
             cell.contentView.wrapSubview(view)
             
-            let value = self.storage?[indexPath.section]
-            
-            let updatable = view as? Updatable
-            
-            updatable?.updateValue(value)
-            
             return cell
             
         }
@@ -113,19 +133,3 @@ open class TableViewController<T: Template, Value>: UIViewController where Value
     }
     
 }
-
-public protocol CollectionView {
-
-    associatedtype Section
-    
-    var numebrOfSections: Int { get }
-    
-    func section(at index: Int) -> Section
-    
-}
-
-//open class CollectionController {
-//
-//    var collectionView: CollectionView?
-//
-//}

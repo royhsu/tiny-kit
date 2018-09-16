@@ -8,7 +8,7 @@
 
 // MARK: - Template
 
-public protocol Template {
+public protocol DeprecatedTemplate {
     
     associatedtype Element
     
@@ -27,7 +27,7 @@ public protocol Template {
 
 // MARK: - AnyTemplate
 
-public struct AnyTemplate<Element>: Template {
+public struct AnyTemplate<Element>: DeprecatedTemplate {
     
     private typealias RegisterViewHandler = (
         _ viewType: View.Type,
@@ -43,7 +43,7 @@ public struct AnyTemplate<Element>: Template {
     
     private let _viewProvider: (_ element: Element) -> View
 
-    public init<T>(_ template: T) where T: Template, T.Element == Element {
+    public init<T>(_ template: T) where T: DeprecatedTemplate, T.Element == Element {
         
         self._registerViewHandler = template.registerView
         
@@ -75,49 +75,20 @@ public struct AnyTemplate<Element>: Template {
     
 }
 
+// MARK: - Rename with Template?
 public protocol SectionItem {
     
     associatedtype Element
     
-    associatedtype Storage
+    associatedtype Value
+    
+    typealias Storage = AnyStorage<Int, Value>
     
     var storage: Storage { get }
     
+    // MARK: - Rename with numberOfItems?
     var numberOfElements: Int { get }
     
     func view(at index: Int) -> View
-    
-}
-
-public protocol Section {
-    
-    associatedtype Item: SectionItem
-    
-    var numberOfItems: Int { get }
-    
-    func item(at index: Int) -> Item
-    
-}
-
-public struct AnySection<Item>: Section where Item: SectionItem {
-    
-    private let _numberOfItems: () -> Int
-    
-    private let _item: (_ index: Int) -> Item
-    
-    init<S>(_ section: S)
-    where
-        S: Section,
-        S.Item == Item {
-            
-        self._numberOfItems = { section.numberOfItems }
-            
-        self._item = section.item
-            
-    }
-    
-    public var numberOfItems: Int { return _numberOfItems() }
-    
-    public func item(at index: Int) -> Item { return _item(index) }
     
 }

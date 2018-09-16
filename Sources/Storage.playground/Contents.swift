@@ -361,100 +361,113 @@ struct Comment {
     
 }
 
-struct FeedStorage {
-    
+struct FeedStorage: Storage {
+
     enum Value {
-        
+
         case comment(Comment)
-        
+
     }
     
-    var values: [Value]
+    let _cache = MemoryCache<Int, Value>()
     
+    var keyDiff: KeyDiff { return _cache.keyDiff }
+    
+    var maxKey: Int? { return _cache.maxKey }
+    
+    subscript(_ key: Int) -> Value? { return _cache[key] }
+
 }
 
 struct CommentItem: SectionItem {
-    
+
     enum Element {
-        
+
         case username
-        
+
         case text
-        
+
     }
-    
-    var storage: Comment
+
+    var _cache = MemoryCache<Int, Comment>()
     
     var elements: [Element] = []
     
-    var numberOfElements: Int { return elements.count }
-    
-    func view(at index: Int) -> View {
-        
-        switch elements[index] {
-            
-        case .username:
-            
-            let label = TitleLabel()
-            
-            label.text = storage.username
-            
-            return label
-            
-        case .text:
-            
-            let label = BodyLabel()
-            
-            label.text = storage.text
-            
-            return label
-            
-        }
-    
-    }
-    
-}
+    var storage: AnyStorage<Int, Comment> { return AnyStorage(_cache) }
 
-struct FeedSection: Section {
+    var numberOfElements: Int { return elements.count }
+
+    func view(at index: Int) -> View {
+
+        let element = elements[index]
+        
+        let comment = storage[index]
+        
+        switch element {
+
+        case .username:
+
+            let label = TitleLabel()
+
+            label.text = comment?.username
+
+            return label
+
+        case .text:
+
+            let label = BodyLabel()
+
+            label.text = comment?.text
+
+            return label
+
+        }
+
+    }
+
+}
+//: Collection
+struct FeedCollection: SectionCollection {
 
     enum Item: SectionItem {
-        
+
         typealias Element = Any
-        
+
         case comment(CommentItem)
-        
-        var storage: Any {
-         
+
+        var storage: AnyStorage<Int, Any> {
+
             switch self {
-                
-            case let .comment(elements): return elements.storage
-                
+
+            // FIXME: should conform Storage to Collection protocol.
+            case let .comment(elements): return elements.storage as! AnyStorage<Int, Any>
+
             }
-            
+
         }
-        
+
         var numberOfElements: Int {
-            
+
             switch self {
-                
+
             case let .comment(elements): return elements.numberOfElements
-                
+
             }
-            
+
         }
-        
+
         func view(at index: Int) -> View {
-            
+
             switch self {
 
             case let .comment(elements): return elements.view(at: index)
 
             }
-            
+
         }
 
     }
-
+    
     var items: [Item] = []
 
     var numberOfItems: Int { return items.count }
@@ -463,174 +476,186 @@ struct FeedSection: Section {
 
 }
 
-protocol SectionReducer {
- 
-    associatedtype Storage
-    
-    associatedtype S: Section
-    
-    func reduce(storage: Storage) -> S
-    
-}
+//protocol SectionReducer {
+//
+//    associatedtype Storage
+//
+//    associatedtype S: Section
+//
+//    func reduce(storage: Storage) -> S
+//
+//}
 
-struct FeedReducer: SectionReducer {
+//struct FeedReducer: SectionReducer {
+//
+//    func reduce(storage: FeedStorage) -> FeedSection {
+//
+//        let items: [FeedSection.Item] = storage.values.map { value in
+//
+//            switch value {
+//
+//            case let .comment(storage):
+//
+//                let item = CommentItem(
+//                    storage: storage,
+//                    elements: [
+//                        .username,
+//                        .text
+//                    ]
+//                )
+//
+//                return .comment(item)
+//
+//            }
+//
+//        }
+//
+//        return FeedSection(items: items)
+//
+//    }
+//
+//}
 
-    func reduce(storage: FeedStorage) -> FeedSection {
-
-        let items: [FeedSection.Item] = storage.values.map { value in
-
-            switch value {
-
-            case let .comment(storage):
-
-                let item = CommentItem(
-                    storage: storage,
-                    elements: [
-                        .username,
-                        .text
-                    ]
-                )
-
-                return .comment(item)
-
-            }
-
-        }
-
-        return FeedSection(items: items)
-
-    }
-
-}
-
-protocol CollectionViewController {
-    
-    associatedtype Reducer: SectionReducer
-    
-}
-
-protocol TableView { }
+//protocol CollectionViewController {
+//
+//    associatedtype Reducer: SectionReducer
+//
+//}
+//
+//protocol TableView { }
 
 // TODO: Should use a type erasure for reducer.
-class Table2ViewController<R>: UIViewController
-where R: SectionReducer {
+//class Table2ViewController<R>: UIViewController
+//where R: SectionReducer {
+//
+//    typealias Storage = R.Storage
+//
+//    typealias Section = R.S
+//
+//    private var section: Section?
+//
+//    private let dataSource = UITableViewDataSourceController()
+//
+//    var storage: Storage? {
+//
+//        didSet {
+//
+//            update()
+//
+//        }
+//
+//    }
+//
+//    private func update() {
+//
+//        DispatchQueue.main.async { [weak self] in
+//
+//            guard
+//                let self = self,
+//                let storage = self.storage,
+//                let reducer = self.reducer
+//            else { return }
+//
+//            self.section = reducer.reduce(storage: storage)
+//
+//            self.tableView.reloadData()
+//
+//        }
+//
+//    }
+//
+//    var reducer: R? {
+//
+//        didSet {
+//
+//            update()
+//
+//        }
+//
+//    }
+//
+//    private(set) lazy var tableView = UITableView()
+//
+//    init() {
+//
+//        super.init(
+//            nibName: nil,
+//            bundle: nil
+//        )
+//
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//
+//        super.init(coder: aDecoder)
+//
+//    }
+//
+//    override func loadView() { view = tableView }
+//
+//    override func viewDidLoad() {
+//
+//        super.viewDidLoad()
+//
+//        tableView.separatorStyle = .none
+//
+//        tableView.dataSource = dataSource
+//
+//        dataSource.setNumberOfSections { [weak self] _ in
+//
+//            return self?.section?.numberOfItems ?? 0
+//
+//        }
+//
+//        dataSource.setNumberOfRows { [weak self] _, index in
+//
+//            let item = self?.section?.item(at: index)
+//
+//            return item?.numberOfElements ?? 0
+//
+//        }
+//
+//        dataSource.setCellForRow { [weak self] _, indexPath in
+//
+//            guard
+//                let self = self,
+//                let section = self.section?.item(at: indexPath.section)
+//            else { return UITableViewCell() }
+//
+//            let cell = UITableViewCell()
+//
+//            let view = section.view(at: indexPath.row)
+//
+//            cell.contentView.wrapSubview(view)
+//
+//            return cell
+//
+//        }
+//
+//    }
+//
+//}
+//
+//let table2ViewController = Table2ViewController<FeedReducer>()
+//
+//table2ViewController.reducer = FeedReducer()
+//
+//PlaygroundPage.current.liveView = table2ViewController
+//
 
-    typealias Storage = R.Storage
 
-    typealias Section = R.S
+class FeedListViewController: TableViewController<FeedCollection> { }
 
-    private var section: Section?
+let viewController = FeedListViewController()
 
-    private let dataSource = UITableViewDataSourceController()
+let storage = FeedStorage()
 
-    var storage: Storage? {
+viewController.storage = AnyStorage(storage)
 
-        didSet {
+PlaygroundPage.current.liveView = viewController
 
-            update()
-
-        }
-
-    }
-
-    private func update() {
-     
-        DispatchQueue.main.async { [weak self] in
-            
-            guard
-                let self = self,
-                let storage = self.storage,
-                let reducer = self.reducer
-            else { return }
-            
-            self.section = reducer.reduce(storage: storage)
-            
-            self.tableView.reloadData()
-            
-        }
-        
-    }
-    
-    var reducer: R? {
-        
-        didSet {
-            
-            update()
-            
-        }
-        
-    }
-
-    private(set) lazy var tableView = UITableView()
-    
-    init() {
-        
-        super.init(
-            nibName: nil,
-            bundle: nil
-        )
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
-    }
-
-    override func loadView() { view = tableView }
-
-    override func viewDidLoad() {
-
-        super.viewDidLoad()
-
-        tableView.separatorStyle = .none
-
-        tableView.dataSource = dataSource
-
-        dataSource.setNumberOfSections { [weak self] _ in
-
-            return self?.section?.numberOfItems ?? 0
-
-        }
-
-        dataSource.setNumberOfRows { [weak self] _, index in
-
-            let item = self?.section?.item(at: index)
-
-            return item?.numberOfElements ?? 0
-
-        }
-
-        dataSource.setCellForRow { [weak self] _, indexPath in
-
-            guard
-                let self = self,
-                let section = self.section?.item(at: indexPath.section)
-            else { return UITableViewCell() }
-
-            let cell = UITableViewCell()
-
-            let view = section.view(at: indexPath.row)
-            
-            cell.contentView.wrapSubview(view)
-
-            return cell
-
-        }
-
-    }
-
-}
-
-let table2ViewController = Table2ViewController<FeedReducer>()
-
-table2ViewController.reducer = FeedReducer()
-
-PlaygroundPage.current.liveView = table2ViewController
-
-table2ViewController.storage = FeedStorage(
-    values: [
+storage._cache.setValues(
+    [
         .comment(
             Comment(
                 username: "Roy",
@@ -640,10 +665,7 @@ table2ViewController.storage = FeedStorage(
     ]
 )
 
-//class PostListViewController: TableViewController<PostListTemplate, Post> { }
-//
-//let viewController = PostListViewController()
-//
+
 //let template: PostListTemplate = [
 //    .title,
 //    .body
@@ -666,8 +688,6 @@ table2ViewController.storage = FeedStorage(
 //)
 //
 //viewController.storage = AnyStorage(manager)
-//
-//PlaygroundPage.current.liveView = viewController
 //
 //manager.load()
 
