@@ -362,119 +362,137 @@ struct Comment {
 }
 
 struct FeedStorage: Storage {
-
-    enum Value {
+    
+    enum Element {
 
         case comment(Comment)
 
     }
     
-    let _cache = MemoryCache<Int, Value>()
+    typealias Storage = MemoryCache<Int, Element>
     
-    var keyDiff: KeyDiff { return _cache.keyDiff }
+    typealias Key = Storage.Key
     
-    var maxKey: Int? { return _cache.maxKey }
+    typealias Index = Storage.Index
     
-    subscript(_ key: Int) -> Value? { return _cache[key] }
+    let _storage = Storage()
 
-}
-
-struct CommentItem: SectionItem {
-
-    enum Element {
-
-        case username
-
-        case text
-
-    }
-
-    var _cache = MemoryCache<Int, Comment>()
+    var keyDiff: KeyDiff { return _storage.keyDiff }
     
-    var elements: [Element] = []
-    
-    var storage: AnyStorage<Int, Comment> { return AnyStorage(_cache) }
+    var startIndex: Index { return _storage.startIndex }
 
-    var numberOfElements: Int { return elements.count }
+    var endIndex: Index { return _storage.endIndex }
 
-    func view(at index: Int) -> View {
+    func index(after i: Index) -> Index { return _storage.index(after: i) }
 
-        let element = elements[index]
-        
-        let comment = storage[index]
-        
-        switch element {
+    subscript(position: Index) -> Element {
 
-        case .username:
-
-            let label = TitleLabel()
-
-            label.text = comment?.username
-
-            return label
-
-        case .text:
-
-            let label = BodyLabel()
-
-            label.text = comment?.text
-
-            return label
-
-        }
-
-    }
-
-}
-//: Collection
-struct FeedCollection: SectionCollection {
-
-    enum Item: SectionItem {
-
-        typealias Element = Any
-
-        case comment(CommentItem)
-
-        var storage: AnyStorage<Int, Any> {
-
-            switch self {
-
-            // FIXME: should conform Storage to Collection protocol.
-            case let .comment(elements): return elements.storage as! AnyStorage<Int, Any>
-
-            }
-
-        }
-
-        var numberOfElements: Int {
-
-            switch self {
-
-            case let .comment(elements): return elements.numberOfElements
-
-            }
-
-        }
-
-        func view(at index: Int) -> View {
-
-            switch self {
-
-            case let .comment(elements): return elements.view(at: index)
-
-            }
-
-        }
+        return _storage[position]!
 
     }
     
-    var items: [Item] = []
-
-    var numberOfItems: Int { return items.count }
-
-    func item(at index: Int) -> Item { return items[index] }
-
 }
+
+let storage = FeedStorage()
+
+storage[2] = .comment
+
+//struct CommentItem: SectionItem {
+//
+//    enum Element {
+//
+//        case username
+//
+//        case text
+//
+//    }
+//
+//    var _cache = MemoryCache<Int, Comment>()
+//
+//    var elements: [Element] = []
+//
+//    var storage: AnyStorage<Int, Comment> { return AnyStorage(_cache) }
+//
+//    var numberOfElements: Int { return elements.count }
+//
+//    func view(at index: Int) -> View {
+//
+//        let element = elements[index]
+//
+//        let comment = storage[index]
+//
+//        switch element {
+//
+//        case .username:
+//
+//            let label = TitleLabel()
+//
+//            label.text = comment?.username
+//
+//            return label
+//
+//        case .text:
+//
+//            let label = BodyLabel()
+//
+//            label.text = comment?.text
+//
+//            return label
+//
+//        }
+//
+//    }
+//
+//}
+////: Collection
+//struct FeedCollection: SectionCollection {
+//
+//    enum Item: SectionItem {
+//
+//        typealias Element = Any
+//
+//        case comment(CommentItem)
+//
+//        var storage: AnyStorage<Int, Any> {
+//
+//            switch self {
+//
+//            // FIXME: should conform Storage to Collection protocol.
+//            case let .comment(elements): return elements.storage as! AnyStorage<Int, Any>
+//
+//            }
+//
+//        }
+//
+//        var numberOfElements: Int {
+//
+//            switch self {
+//
+//            case let .comment(elements): return elements.numberOfElements
+//
+//            }
+//
+//        }
+//
+//        func view(at index: Int) -> View {
+//
+//            switch self {
+//
+//            case let .comment(elements): return elements.view(at: index)
+//
+//            }
+//
+//        }
+//
+//    }
+//
+//    var items: [Item] = []
+//
+//    var numberOfItems: Int { return items.count }
+//
+//    func item(at index: Int) -> Item { return items[index] }
+//
+//}
 
 //protocol SectionReducer {
 //
@@ -644,26 +662,26 @@ struct FeedCollection: SectionCollection {
 //
 
 
-class FeedListViewController: TableViewController<FeedCollection> { }
-
-let viewController = FeedListViewController()
-
-let storage = FeedStorage()
-
-viewController.storage = AnyStorage(storage)
-
-PlaygroundPage.current.liveView = viewController
-
-storage._cache.setValues(
-    [
-        .comment(
-            Comment(
-                username: "Roy",
-                text: "Hello TinyWorld"
-            )
-        )
-    ]
-)
+//class FeedListViewController: TableViewController<FeedCollection> { }
+//
+//let viewController = FeedListViewController()
+//
+//let storage = FeedStorage()
+//
+//viewController.storage = AnyStorage(storage)
+//
+//PlaygroundPage.current.liveView = viewController
+//
+//storage._cache.setValues(
+//    [
+//        .comment(
+//            Comment(
+//                username: "Roy",
+//                text: "Hello TinyWorld"
+//            )
+//        )
+//    ]
+//)
 
 
 //let template: PostListTemplate = [

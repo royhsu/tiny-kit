@@ -22,55 +22,46 @@ public protocol Storage {
     
     var maxKey: Key? { get }
     
-    subscript(_ key: Key) -> Value? { get }
+    func value(forKey key: Key) -> Value?
     
 }
 
 public extension Storage {
 
-    public func value(forKey key: Key) -> Value? { return self[key] }
+    public subscript(key: Key) -> Value? { return value(forKey: key) }
     
 }
 
 // MARK: - AnyStorage
 
-// FIXME: broken store propeties.
-public final class AnyStorage<Key, Value>: Storage where Key: Hashable & Comparable {
-
-    private final let _valueProvider: (Key) -> Value?
+public final class AnyStorage<Key, Value>: Storage
+where Key: Hashable & Comparable {
     
-    private final var subscriptions: [ObservableSubscription] = []
-
-    public init<S: Storage>(_ storage: S) where S.Key == Key, S.Value == Value {
-
-        self.keyDiff = storage.keyDiff
-
-        self.maxKey = storage.maxKey
-        
-        self._valueProvider = storage.value
-        
-        self.prepare()
-
-    }
+    private final let _keyDiff: () -> KeyDiff
     
-    fileprivate final func prepare() {
+    private final let _maxKey: () -> Key?
+    
+    private final let _value: (Key) -> Value?
+
+    public init<S: Storage>(_ storage: S)
+    where
+        S.Key == Key,
+        S.Value == Value {
+
+        self._keyDiff = { storage.keyDiff }
+
+        self._maxKey = { storage.maxKey }
         
-        let subscription = keyDiff.subscribe { event in
+        self._value = storage.value
             
-            self.maxKey = event.currentValue?.max()
-            
-        }
-        
-        subscriptions.append(subscription)
-        
     }
     
     // MARK: Storage
     
-    public final let keyDiff: Observable<[Key]>
+    public final var keyDiff: Observable<[Key]> { return _keyDiff() }
     
-    public final private(set) var maxKey: Key?
+    public final var maxKey: Key? { return _maxKey() }
     
-    public final subscript(_ key: Key) -> Value? { return _valueProvider(key) }
+    public final func value(forKey key: Key) -> Value? { return _value(key) }
 
 }

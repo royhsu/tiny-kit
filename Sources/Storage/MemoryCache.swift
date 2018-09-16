@@ -8,42 +8,38 @@
 
 // MARK: - MemoryCache
 
-public final class MemoryCache<Key, Value>: Storage
-where
-    Key: Hashable,
-    Key: Comparable {
+public struct MemoryCache<Key, Value>: Storage
+where Key: Hashable & Comparable {
     
     public typealias KeyValuePairs = [Key: Value]
     
-    private var _storage: KeyValuePairs = [:]
+    fileprivate var _storage: KeyValuePairs = [:]
+    
+    public let keyDiff = KeyDiff()
     
     public init() { }
     
-    // MARK: Storage
-    
-    public final let keyDiff = KeyDiff()
-    
     public var maxKey: Key? { return _storage.keys.max() }
-
-    public subscript(_ key: Key) -> Value? {
+    
+    public func value(forKey key: Key) -> Value? {
         
-        get { return _storage[key] }
-        
-        set {
-            
-            _storage[key] = newValue
-            
-            keyDiff.value = [ key ]
-            
-        }
+        return _storage[key]
         
     }
     
-}
-
-public extension MemoryCache {
+    public mutating func setValue(
+        _ value: Value,
+        forKey key: Key
+    ) {
+        
+        _storage[key] = value
+        
+        keyDiff.value = [ key ]
+        
+    }
     
-    public final func setKeyValuePairs(
+    // TODO: add unit test.
+    public mutating func setKeyValuePairs(
         _ pairs: KeyValuePairs
     ) {
         
@@ -58,7 +54,7 @@ public extension MemoryCache {
 public extension MemoryCache where Key == Int {
     
     // TODO: add unit test.
-    public final func setValues(
+    public mutating func setValues(
         _ values: [Value]
     ) {
         
