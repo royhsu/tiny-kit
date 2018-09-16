@@ -14,38 +14,44 @@ internal final class ConfigurableTemplateTests: XCTestCase {
     
     internal final func testInitialize() {
         
-        let template = PostListTemplate(
+        let bindingTitle2Promise = expectation(description: "Binding the storage with title2 label.")
+        
+        let bindingBodyPromise = expectation(description: "Binding the storage with body label.")
+        
+        let post = Post(
+            id: 1,
+            title: "This is the title.",
+            body: "This is the body."
+        )
+        
+        let template = PostTemplate(
+            storage: post,
             elements: [
                 .title,
                 .body
             ]
         )
         
-        template.registerView(
-            TitleLabel.self,
-            for: .title
+        XCTAssertEqual(
+            template.storage,
+            post
         )
         
-        template.registerView(
-            LargeTitleLabel.self,
-            for: .title
-        )
-        
-        template.registerView(
-            BodyLabel.self,
-            for: .body
+        XCTAssertEqual(
+            template.numberOfElements,
+            2
         )
         
         XCTAssertNil(template.configuration)
         
-        template.configuration = PostListConfiguration { element in
+        template.configuration = PostTemplateConfiguration { element in
             
             switch element {
-            
+                
             case .title:
                 
-                // Test a well-fined view name.
-                return "LargeTitleLabel"
+                // Test a well-defined view name.
+                return "Title2Label"
                 
             case .body:
                 
@@ -56,27 +62,62 @@ internal final class ConfigurableTemplateTests: XCTestCase {
             
         }
         
-        XCTAssertEqual(
-            template.numberOfElements(),
-            2
+        template.registerView(
+            Title1Label.self,
+            binding: { _, _ in
+                
+                XCTFail("Should use the preferred title2 label instead of title2 label.")
+                
+            },
+            for: .title
         )
         
-        XCTAssertEqual(
-            template.element(at: 0),
-            .title
+        template.registerView(
+            Title2Label.self,
+            binding: { storage, view in
+                
+                bindingTitle2Promise.fulfill()
+                
+                XCTAssertEqual(
+                    storage,
+                    post
+                )
+                
+                XCTAssertNotNil(view as? Title2Label)
+                
+            },
+            for: .title
+        )
+        
+        template.registerView(
+            BodyLabel.self,
+            binding: { storage, view in
+                
+                bindingBodyPromise.fulfill()
+                
+                XCTAssertEqual(
+                    storage,
+                    post
+                )
+                
+            },
+            for: .body
         )
         
         XCTAssert(
-            template.view(for: .title) is LargeTitleLabel
-        )
-        
-        XCTAssertEqual(
-            template.element(at: 1),
-            .body
+            template.view(at: 0) is Title2Label
         )
         
         XCTAssert(
-            template.view(for: .body) is BodyLabel
+            template.view(at: 1) is BodyLabel
+        )
+        
+        wait(
+            for: [
+                bindingTitle2Promise,
+                bindingBodyPromise
+            ],
+            timeout: 10.0
         )
         
     }

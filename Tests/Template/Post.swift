@@ -8,7 +8,7 @@
 
 // MARK: - Post
 
-internal struct Post: Codable, Equatable {
+internal struct Post: Equatable {
     
     internal let id: Int
     

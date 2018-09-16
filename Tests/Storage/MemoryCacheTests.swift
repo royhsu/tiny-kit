@@ -2,11 +2,11 @@
 //  MemoryCacheTests.swift
 //  TinyKit Tests
 //
-//  Created by Roy Hsu on 2018/9/12.
+//  Created by Roy Hsu on 2018/9/13.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - MemoryCacheTests
+// MARK: - AnyStorageTests
 
 import TinyCore
 import XCTest
@@ -14,73 +14,61 @@ import XCTest
 @testable import TinyKit
 
 internal final class MemoryCacheTests: XCTestCase {
-
+    
     internal final var subscriptions: [ObservableSubscription] = []
     
-    internal final func testSetterAndGetter() {
+    internal final func testGetterAndSetter() {
         
         let cache = MemoryCache<Int, String>()
         
-        XCTAssertNil(cache.maxKey)
+        let storage = AnyStorage(cache)
         
-        cache[2] = "Hello"
+        XCTAssert(storage.pairs.isEmpty)
+        
+        storage.setPairs(
+            AnyCollection(
+                [
+                    (key: 2, value: "Hello")
+                ]
+            )
+        )
         
         XCTAssertEqual(
-            cache.maxKey,
+            storage.pairs.count,
+            1
+        )
+        
+        XCTAssertNil(
+            storage.pairs.first { $0.key == 0 }
+        )
+        
+        XCTAssertNil(
+            storage.pairs.first { $0.key == 1 }
+        )
+        
+        let pair = storage.pairs.first { $0.key == 2 }
+        
+        XCTAssertEqual(
+            pair?.key,
             2
         )
         
-        XCTAssertNil(
-            cache[0]
-        )
-        
-        XCTAssertNil(
-            cache[1]
-        )
-        
         XCTAssertEqual(
-            cache[2],
+            pair?.value,
             "Hello"
         )
         
     }
     
-    internal final func testSubscribeKeyDiffBySubscriptSetter() {
+    internal final func testSubscribeKeyDiff() {
         
         let promise = expectation(description: "Should get notified about indices changes.")
         
         let cache = MemoryCache<Int, String>()
         
-        let subscription = cache.keyDiff.subscribe { event in
-            
-            promise.fulfill()
-            
-            let indices = event.currentValue
-            
-            XCTAssert(
-                indices?.contains(0) == true
-            )
-            
-        }
+        let storage = AnyStorage(cache)
         
-        subscriptions.append(subscription)
-        
-        cache[0] = "Hello"
-        
-        wait(
-            for: [ promise ],
-            timeout: 10.0
-        )
-        
-    }
-    
-    internal final func testSubscribeKeyDiffByKeyValuePairsSetter() {
-        
-        let promise = expectation(description: "Should get notified about indices changes.")
-        
-        let cache = MemoryCache<Int, String>()
-        
-        let subscription = cache.keyDiff.subscribe { event in
+        let subscription = storage.keyDiff.subscribe { event in
             
             promise.fulfill()
             
@@ -98,11 +86,13 @@ internal final class MemoryCacheTests: XCTestCase {
         
         subscriptions.append(subscription)
         
-        cache.setKeyValuePairs(
-            [
-                0: "Hello",
-                2: "World"
-            ]
+        storage.setPairs(
+            AnyCollection(
+                [
+                    (key: 0, value: "Hello"),
+                    (key: 2, value: "World")
+                ]
+            )
         )
         
         wait(
@@ -111,5 +101,5 @@ internal final class MemoryCacheTests: XCTestCase {
         )
         
     }
-
+    
 }

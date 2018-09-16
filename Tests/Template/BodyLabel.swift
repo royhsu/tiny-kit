@@ -11,7 +11,7 @@
 import TinyKit
 import UIKit
 
-internal final class BodyLabel: UILabel, Updatable {
+internal final class BodyLabel: UILabel {
     
     internal override init(frame: CGRect) {
         
@@ -33,17 +33,9 @@ internal final class BodyLabel: UILabel, Updatable {
         
         numberOfLines = 0
         
-        font = UIFont.preferredFont(forTextStyle: .body)
+        font = .preferredFont(forTextStyle: .body)
         
         textColor = .darkGray
-        
-    }
-    
-    internal final func updateValue(_ value: Any?) {
-        
-        let post = value as? Post
-        
-        text = post?.body
         
     }
     

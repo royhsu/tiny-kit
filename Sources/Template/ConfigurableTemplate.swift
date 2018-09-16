@@ -15,7 +15,7 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-public final class ConfigurableTemplate<Configuration, Storage>: Template
+public final class ConfigurableTemplate<Storage, Configuration>: Template
 where Configuration: TemplateConfiguration {
     
     public typealias Element = Configuration.Element

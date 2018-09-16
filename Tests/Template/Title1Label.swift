@@ -11,7 +11,7 @@
 import TinyKit
 import UIKit
 
-internal final class TitleLabel: UILabel, Updatable {
+internal final class Title1Label: UILabel {
     
     internal override init(frame: CGRect) {
         
@@ -33,15 +33,7 @@ internal final class TitleLabel: UILabel, Updatable {
         
         numberOfLines = 0
         
-        font = UIFont.preferredFont(forTextStyle: .title2)
-        
-    }
-    
-    internal final func updateValue(_ value: Any?) {
-        
-        let post = value as? Post
-        
-        text = post?.title
+        font = UIFont.preferredFont(forTextStyle: .title3)
         
     }
     
