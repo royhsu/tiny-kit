@@ -8,23 +8,6 @@
 
 // MARK: - Template
 
-public protocol DeprecatedTemplate {
-    
-    associatedtype Element
-    
-    func registerView(
-        _ viewType: View.Type,
-        for element: Element
-    )
-    
-    func numberOfElements() -> Int
-    
-    func element(at index: Int) -> Element
-    
-    func view(for element: Element) -> View
-    
-}
-
 public protocol Template {
     
     associatedtype Element

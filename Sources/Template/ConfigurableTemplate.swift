@@ -15,102 +15,118 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-//public final class ConfigurableTemplate<Configuration>: SectionCollection, DeprecatedTemplate
-//where Configuration: TemplateConfiguration {
-//    
-//    public var numberOfItems: Int { return numberOfElements() }
-//    
-//    public func item(at index: Int) -> Configuration.Element { return element(at: index) }
-//    
-//    public typealias Element = Configuration.Element
-//    
-//    public typealias Item = Element
-//    
-//    private struct ViewTypeContainer {
-//        
-//        let date = Date()
-//        
-//        let viewType: View.Type
-//        
-//    }
-//    
-//    private typealias ViewName = String
-//    
-//    private typealias ViewMapping = [ViewName: ViewTypeContainer]
-//    
-//    private final var elementMapping: [Element: ViewMapping] = [:]
-//    
-//    private final var elements: AnyCollection<Element> = AnyCollection( [] )
-//    
-//    public final var configuration: Configuration?
-//    
-//    public init(
-//        elements: [Element] = []
-//    ) { self.elements = AnyCollection(elements) }
-//    
-//    public final func registerView(
-//        _ viewType: View.Type,
-//        for element: Element
-//    ) {
-//        
-//        var viewMapping = elementMapping[element] ?? [:]
-//        
-//        let viewName = String(describing: viewType)
-//        
-//        viewMapping[viewName] = ViewTypeContainer(viewType: viewType)
-//        
-//        elementMapping[element] = viewMapping
-//        
-//    }
-//    
-//    // MARK: Template
-//    
-//    public final func numberOfElements() -> Int { return elements.count }
-//    
-//    public final func element(at index: Int) -> Element { return elements[ AnyIndex(index) ] }
-//    
-//    public final func view(for element: Element) -> View {
-//        
-//        let viewMapping = elementMapping[element] ?? [:]
-//        
-//        guard
-//            let firstViewTypePair = viewMapping
-//                .sorted(
-//                    by: { $0.value.date < $1.value.date }
-//                )
-//                .first
-//        else { fatalError("Please make sure to register at least one view for \(element).") }
-//        
-//        let firstViewType = firstViewTypePair.value.viewType
-//        
-//        guard
-//            let viewName = configuration?.preferredViewName(for: element)
-//        else { return firstViewType.init() }
-//            
-//        if let viewTypeContainer = viewMapping[viewName] {
-//            
-//            return viewTypeContainer.viewType.init()
-//            
-//        }
-//        
-//        print("[Warning] CANNOT find a registered view with name \(viewName). The template automatically fallbacks to use the earliest and registered one \(firstViewType.self) instead.")
-//        
-//        return firstViewType.init()
-//        
-//    }
-//    
-//}
-//
-//// MARK: - ExpressibleByArrayLiteral
-//
-//extension ConfigurableTemplate: ExpressibleByArrayLiteral {
-//    
-//    public typealias ArrayLiteralElement = Element
-//    
-//    public convenience init(arrayLiteral elements: ArrayLiteralElement...) {
-//        
-//        self.init(elements: elements)
-//        
-//    }
-//    
-//}
+public final class ConfigurableTemplate<Configuration, Storage>: Template
+where Configuration: TemplateConfiguration {
+    
+    public typealias Element = Configuration.Element
+    
+    private struct ViewTypeContainer {
+        
+        let date = Date()
+        
+        let viewType: View.Type
+        
+        let binding: (Storage, View) -> Void
+        
+    }
+    
+    private typealias ViewName = String
+    
+    private typealias ViewMapping = [ViewName: ViewTypeContainer]
+    
+    private final var elementMapping: [Element: ViewMapping] = [:]
+    
+    private final var elements: AnyCollection<Element> = AnyCollection( [] )
+    
+    public final let storage: Storage
+    
+    public final var configuration: Configuration?
+    
+    public init(
+        storage: Storage,
+        elements: [Element] = []
+    ) {
+        
+        self.storage = storage
+        
+        self.elements = AnyCollection(elements)
+        
+    }
+    
+    public final func registerView(
+        _ viewType: View.Type,
+        binding: @escaping (Storage, View) -> (),
+        for element: Element
+    ) {
+        
+        var viewMapping = elementMapping[element] ?? [:]
+        
+        let viewName = String(describing: viewType)
+        
+        viewMapping[viewName] = ViewTypeContainer(
+            viewType: viewType,
+            binding: binding
+        )
+        
+        elementMapping[element] = viewMapping
+        
+    }
+    
+    public final var numberOfElements: Int { return elements.count }
+    
+    public final func view(at index: Int) -> View {
+        
+        let index = AnyIndex(index)
+        
+        let element = elements[index]
+        
+        return view(for: element)
+        
+    }
+    
+    public final func view(for element: Element) -> View {
+        
+        let viewMapping = elementMapping[element] ?? [:]
+        
+        guard
+            let firstViewTypePair = viewMapping
+                .sorted(
+                    by: { $0.value.date < $1.value.date }
+                )
+                .first
+        else { fatalError("Please make sure to register at least one view for \(element).") }
+        
+        let defaultContainer = firstViewTypePair.value
+        
+        if let preferredViewName = configuration?.preferredViewName(for: element) {
+            
+            if let preferredContainer = viewMapping[preferredViewName] {
+                
+                let preferredView = preferredContainer.viewType.init()
+                
+                preferredContainer.binding(
+                    storage,
+                    preferredView
+                )
+                
+                return preferredView
+                
+            }
+            
+            // TODO: development-only log.
+            print("[Warning] CANNOT find a registered view with name \(preferredViewName). The template automatically fallbacks to use the earliest and registered one \(defaultContainer.viewType.self) instead.")
+            
+        }
+        
+        let defaultView = defaultContainer.viewType.init()
+        
+        defaultContainer.binding(
+            storage,
+            defaultView
+        )
+        
+        return defaultView
+    
+    }
+    
+}

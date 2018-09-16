@@ -50,6 +50,44 @@ extension AppDelegate: UIApplicationDelegate {
                             ]
                         )
                         
+                        template.configuration = PostTemplateConfiguration()
+                        
+                        template.registerView(
+                            LargeTitleLabel.self,
+                            binding: { storage, view in
+                                
+                                let label = view as? LargeTitleLabel
+                                
+                                label?.text = storage.title
+                                
+                            },
+                            for: .title
+                        )
+                        
+                        template.registerView(
+                            TitleLabel.self,
+                            binding: { storage, view in
+                            
+                                let label = view as? TitleLabel
+                                
+                                label?.text = storage.title
+                                
+                            },
+                            for: .title
+                        )
+                        
+                        template.registerView(
+                            BodyLabel.self,
+                            binding: { storage, view in
+                                
+                                let label = view as? BodyLabel
+                                
+                                label?.text = storage.body
+                                
+                            },
+                            for: .body
+                        )
+                        
                         return .post(template)
                         
                     case let .comment(storage):
