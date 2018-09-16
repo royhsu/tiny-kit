@@ -8,67 +8,31 @@
 
 // MARK: - MemoryCache
 
-public struct MemoryCache<Key, Value>: Storage
+import TinyCore
+
+public final class MemoryCache<Key, Value>: Storage
 where Key: Hashable & Comparable {
     
-    public typealias KeyValuePairs = [Key: Value]
+    private final var _storage: [Key: Value] = [:]
     
-    private var _storage: KeyValuePairs = [:]
-    
-    public let keyDiff = KeyDiff()
+    public final let keyDiff = Observable<[Key]>()
     
     public init() { }
     
-    public var maxKey: Key? { return _storage.keys.max() }
-    
-    public func value(forKey key: Key) -> Value? {
-        
-        return _storage[key]
-        
-    }
-    
-    public var values: AnyCollection<Value> { return AnyCollection(_storage.lazy.elements.values) }
-    
-    public mutating func setValue(
-        _ value: Value,
-        forKey key: Key
-    ) {
-        
-        _storage[key] = value
-        
-        keyDiff.value = [ key ]
-        
-    }
+    public final var values: AnyCollection<Value> { return AnyCollection(_storage.lazy.elements.values) }
     
     // TODO: add unit test.
-    public mutating func setKeyValuePairs(
-        _ pairs: KeyValuePairs
-    ) {
+    public final func setPairs(_ pairs: AnyCollection<(Key, Value)>) {
         
-        _storage = pairs
+        let pairs = pairs.map { (key: $0, value: $1) }
+        
+        _storage = Dictionary(
+            pairs,
+            uniquingKeysWith: { first, _ in first }
+        )
         
         keyDiff.value = pairs.map { $0.key }
         
     }
     
-}
-
-public extension MemoryCache where Key == Int {
-    
-    // TODO: add unit test.
-    public mutating func setValues(
-        _ values: [Value]
-    ) {
-        
-        let keyValuePairs = values.enumerated().map { ($0.offset, $0.element) }
-        
-        let dictionary = Dictionary(
-            keyValuePairs,
-            uniquingKeysWith: { first, _ in first }
-        )
-        
-        setKeyValuePairs(dictionary)
-        
-    }
- 
 }

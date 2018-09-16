@@ -56,7 +56,7 @@ extension AppDelegate: UIApplicationDelegate {
             
         }
         
-        var storage = FeedStorage()
+        let storage = FeedStorage()
     
         viewController.storage = storage
         
@@ -66,9 +66,9 @@ extension AppDelegate: UIApplicationDelegate {
         
         window.makeKeyAndVisible()
         
-        viewController.storage?._storage.setValues(
+        storage.setValues(
             [
-                FeedStorage.Element.comment(
+                .comment(
                     Comment(
                         username: "Roy",
                         text: "Hi"
@@ -196,25 +196,23 @@ struct Comment {
     
 }
 
-struct FeedStorage: Storage {
+class FeedStorage: Storage {
     
-    enum Element {
+    enum Value {
         
         case comment(Comment)
         
     }
     
-    typealias Storage = MemoryCache<Int, Element>
+    typealias Storage = MemoryCache<Int, Value>
     
     var _storage = Storage()
     
-    var keyDiff: KeyDiff { return _storage.keyDiff }
+    var keyDiff: Observable<[Int]> { return _storage.keyDiff }
     
-    var maxKey: Int? { return _storage.maxKey }
-    
-    func value(forKey key: Int) -> Element? { return _storage.value(forKey: key) }
-    
-    var values: AnyCollection<Element> { return _storage.values }
+    var values: AnyCollection<Value> { return _storage.values }
+
+    func setPairs(_ pairs: AnyCollection<(Int, Value)>) { _storage.setPairs(pairs) }
     
 }
 

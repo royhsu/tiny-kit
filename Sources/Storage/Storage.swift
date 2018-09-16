@@ -16,37 +16,41 @@ public protocol Storage {
     
     associatedtype Value
     
-    typealias KeyDiff = Observable<[Key]>
-    
-    var keyDiff: KeyDiff { get }
-    
-    // replace by values.count?
-    var maxKey: Key? { get }
-    
-    func value(forKey key: Key) -> Value?
+    var keyDiff: Observable<[Key]> { get }
     
     var values: AnyCollection<Value> { get }
     
+    func setPairs(_ pairs: AnyCollection<(Key, Value)>)
+    
 }
 
-public extension Storage {
-
-    public subscript(key: Key) -> Value? { return value(forKey: key) }
+public extension Storage where Key == Int {
+    
+    // TODO: add unit test.
+    public func setValues(
+        _ values: [Value]
+    ) {
+        
+        let pairs = values.enumerated().map { ($0.offset, $0.element) }
+        
+        setPairs(
+            AnyCollection(pairs)
+        )
+        
+    }
     
 }
 
 // MARK: - AnyStorage
 
-public final class AnyStorage<Key, Value>: Storage
+public struct AnyStorage<Key, Value>: Storage
 where Key: Hashable & Comparable {
     
-    private final let _keyDiff: () -> KeyDiff
+    private let _keyDiff: () -> Observable<[Key]>
     
-    private final let _maxKey: () -> Key?
+    private let _values: () -> AnyCollection<Value>
     
-    private final let _value: (Key) -> Value?
-    
-    private final let _values: () -> AnyCollection<Value>
+    private let _setPairs: (AnyCollection<(Key, Value)>) -> Void
 
     public init<S: Storage>(_ storage: S)
     where
@@ -54,23 +58,21 @@ where Key: Hashable & Comparable {
         S.Value == Value {
 
         self._keyDiff = { storage.keyDiff }
-
-        self._maxKey = { storage.maxKey }
-        
-        self._value = storage.value
             
         self._values = { storage.values }
+            
+        self._setPairs = storage.setPairs
             
     }
     
     // MARK: Storage
     
-    public final var keyDiff: Observable<[Key]> { return _keyDiff() }
+    public var keyDiff: Observable<[Key]> { return _keyDiff() }
     
-    public final var maxKey: Key? { return _maxKey() }
+    public var values: AnyCollection<Value> { return _values() }
     
-    public final func value(forKey key: Key) -> Value? { return _value(key) }
+    public func setPairs(
+        _ pairs: AnyCollection<(Key, Value)>
+    ) { _setPairs(pairs) }
     
-    public final var values: AnyCollection<Value> { return _values() }
-
 }
