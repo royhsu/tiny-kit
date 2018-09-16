@@ -343,17 +343,23 @@ enum PostListElement: String {
     
 }
 
-struct PostListConfiguration: TemplateConfiguration {
+//struct PostListConfiguration: TemplateConfiguration {
+//
+//    typealias Element = PostListElement
+//
+//    func preferredViewName(for element: Element) -> String? { return nil }
+//
+//}
+
+//typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
+
+struct Comment {
     
-    typealias Element = PostListElement
+    let username: String
     
-    func preferredViewName(for element: Element) -> String? { return nil }
+    let text: String
     
 }
-
-typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
-
-struct Comment { }
 
 struct FeedStorage {
     
@@ -377,11 +383,35 @@ struct CommentItem: SectionItem {
         
     }
     
+    var storage: Comment
+    
     var elements: [Element] = []
     
     var numberOfElements: Int { return elements.count }
     
-    func element(at index: Int) -> Element { return elements[index] }
+    func view(at index: Int) -> View {
+        
+        switch elements[index] {
+            
+        case .username:
+            
+            let label = TitleLabel()
+            
+            label.text = storage.username
+            
+            return label
+            
+        case .text:
+            
+            let label = BodyLabel()
+            
+            label.text = storage.text
+            
+            return label
+            
+        }
+    
+    }
     
 }
 
@@ -389,7 +419,19 @@ struct FeedSection: Section {
 
     enum Item: SectionItem {
         
+        typealias Element = Any
+        
         case comment(CommentItem)
+        
+        var storage: Any {
+         
+            switch self {
+                
+            case let .comment(elements): return elements.storage
+                
+            }
+            
+        }
         
         var numberOfElements: Int {
             
@@ -401,13 +443,12 @@ struct FeedSection: Section {
             
         }
         
-        // Important: Any does the trick.
-        func element(at index: Int) -> Any {
+        func view(at index: Int) -> View {
             
             switch self {
-             
-            case let .comment(elements): return elements.element(at: index)
-                
+
+            case let .comment(elements): return elements.view(at: index)
+
             }
             
         }
@@ -421,29 +462,6 @@ struct FeedSection: Section {
     func item(at index: Int) -> Item { return items[index] }
 
 }
-
-//let a = FeedSection(
-//    items: [
-//        .comment(
-//            CommentItem(
-//                elements: [
-//                    .username,
-//                    .text
-//                ]
-//            )
-//        )
-//    ]
-//)
-
-//struct FeedSection: Section {
-//
-//    var items: [FeedItem] = []
-//
-//    var numberOfItems: Int { return items.count }
-//
-//    func item(at index: Int) -> FeedItem { return items[index] }
-//
-//}
 
 protocol SectionReducer {
  
@@ -463,9 +481,10 @@ struct FeedReducer: SectionReducer {
 
             switch value {
 
-            case .comment:
+            case let .comment(storage):
 
                 let item = CommentItem(
+                    storage: storage,
                     elements: [
                         .username,
                         .text
@@ -490,11 +509,7 @@ protocol CollectionViewController {
     
 }
 
-protocol TableView {
-    
-    
-    
-}
+protocol TableView { }
 
 // TODO: Should use a type erasure for reducer.
 class Table2ViewController<R>: UIViewController
@@ -596,11 +611,9 @@ where R: SectionReducer {
 
             let cell = UITableViewCell()
 
-            let element = section.element(at: indexPath.row)
-            print(element)
-            cell.textLabel?.text = "\(indexPath)"
-
-//            let view = element.view
+            let view = section.view(at: indexPath.row)
+            
+            cell.contentView.wrapSubview(view)
 
             return cell
 
@@ -618,7 +631,12 @@ PlaygroundPage.current.liveView = table2ViewController
 
 table2ViewController.storage = FeedStorage(
     values: [
-        .comment(Comment())
+        .comment(
+            Comment(
+                username: "Roy",
+                text: "Hello TinyWorld"
+            )
+        )
     ]
 )
 

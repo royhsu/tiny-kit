@@ -79,9 +79,13 @@ public protocol SectionItem {
     
     associatedtype Element
     
+    associatedtype Storage
+    
+    var storage: Storage { get }
+    
     var numberOfElements: Int { get }
     
-    func element(at index: Int) -> Element
+    func view(at index: Int) -> View
     
 }
 

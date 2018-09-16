@@ -15,10 +15,16 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-public final class ConfigurableTemplate<Configuration>: Template
+public final class ConfigurableTemplate<Configuration>: Section, Template
 where Configuration: TemplateConfiguration {
     
+    public var numberOfItems: Int { return numberOfElements() }
+    
+    public func item(at index: Int) -> Configuration.Element { return element(at: index) }
+    
     public typealias Element = Configuration.Element
+    
+    public typealias Item = Element
     
     private struct ViewTypeContainer {
         
