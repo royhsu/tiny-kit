@@ -98,11 +98,11 @@ where C: SectionCollection, S: Storage {
         
         tableView.dataSource = dataSourceController
         
-        dataSourceController.setNumberOfSections { [weak self] _ in self?.sections?.numberOfItems ?? 0 }
+        dataSourceController.setNumberOfSections { [weak self] _ in self?.sections?.count ?? 0 }
         
         dataSourceController.setNumberOfRows { [weak self] _, section in
             
-            let section = self?.sections?.item(at: section)
+            let section = self?.sections?.section(at: section)
             
             return section?.numberOfElements ?? 0
             
@@ -112,7 +112,7 @@ where C: SectionCollection, S: Storage {
             
             guard
                 let self = self,
-                let section = self.sections?.item(at: indexPath.section)
+                let section = self.sections?.section(at: indexPath.section)
             else { return UITableViewCell() }
             
             let view = section.view(at: indexPath.row)

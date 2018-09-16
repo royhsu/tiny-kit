@@ -31,7 +31,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         viewController.reducer = { storage in
             
-            let items: [FeedCollection.Item] = storage.values.map { value in
+            let items: [FeedCollection.Section] = storage.values.map { value in
                 
                 switch value {
                     
@@ -216,7 +216,7 @@ class FeedStorage: Storage {
     
 }
 
-struct CommentItem: SectionItem {
+struct CommentItem: Template {
     
     enum Element {
         
@@ -262,7 +262,7 @@ struct CommentItem: SectionItem {
 
 struct FeedCollection: SectionCollection {
     
-    enum Item: SectionItem {
+    enum Section: Template {
         
         typealias Element = Any
         
@@ -302,11 +302,11 @@ struct FeedCollection: SectionCollection {
         
     }
     
-    var items: [Item]
+    var items: [Section]
     
-    var numberOfItems: Int { return items.count }
+    var count: Int { return items.count }
     
-    func item(at index: Int) -> Item { return items[index] }
+    func section(at index: Int) -> Section { return items[index] }
     
 }
 

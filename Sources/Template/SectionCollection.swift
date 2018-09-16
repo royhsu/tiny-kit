@@ -10,48 +10,36 @@
 
 public protocol SectionCollection {
     
-    // Rename with Section
-    associatedtype Item: SectionItem
+    associatedtype Section: Template
     
-//    associatedtype Value
+    var count: Int { get }
     
-//    var storage: AnyStorage<Int, Value> { get }
-    
-    var numberOfItems: Int { get }
-    
-    func item(at index: Int) -> Item
+    func section(at index: Int) -> Section
     
 }
 
 // MARK: - AnySectionCollection
 
-public struct AnySectionCollection<Item>: SectionCollection where Item: SectionItem {
+public struct AnySectionCollection<Section>: SectionCollection where Section: Template {
     
-//    private let _storage: () -> AnyStorage<Int, Value>
+    private let _count: () -> Int
     
-    private let _numberOfItems: () -> Int
-    
-    private let _item: (_ index: Int) -> Item
+    private let _section: (_ index: Int) -> Section
     
     init<S>(_ section: S)
     where
         S: SectionCollection,
-        S.Item == Item
-//        S.Value == Value
+        S.Section == Section
     {
         
-//            self._storage = { section.storage }
+        self._count = { section.count }
         
-        self._numberOfItems = { section.numberOfItems }
-        
-        self._item = section.item
+        self._section = section.section
             
     }
     
-//    public var storage: AnyStorage<Int, Value> { return _storage() }
+    public var count: Int { return _count() }
     
-    public var numberOfItems: Int { return _numberOfItems() }
-    
-    public func item(at index: Int) -> Item { return _item(index) }
+    public func section(at index: Int) -> Section { return _section(index) }
     
 }
