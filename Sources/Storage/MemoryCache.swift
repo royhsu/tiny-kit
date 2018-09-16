@@ -19,10 +19,16 @@ where Key: Hashable & Comparable {
     
     public init() { }
     
-    public final var values: AnyCollection<Value> { return AnyCollection(_storage.lazy.elements.values) }
+    public final var pairs: AnyCollection<(key: Key, value: Value)> {
+        
+        return AnyCollection(
+            _storage.lazy.elements
+        )
+
+    }
     
     // TODO: add unit test.
-    public final func setPairs(_ pairs: AnyCollection<(Key, Value)>) {
+    public final func setPairs(_ pairs: AnyCollection<(key: Key, value: Value)>) {
         
         let pairs = pairs.map { (key: $0, value: $1) }
         

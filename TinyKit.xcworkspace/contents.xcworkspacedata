@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Examples/Examples.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "container:TinyKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:tiny-core/TinyCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Examples/Examples.xcodeproj">
    </FileRef>
 </Workspace>

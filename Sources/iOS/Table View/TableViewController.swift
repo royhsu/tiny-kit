@@ -12,9 +12,9 @@ import UIKit
 import TinyCore
 
 open class TableViewController<C, S>: UIViewController
-where C: SectionCollection, S: Storage {
-    
-//    public typealias Value = C.Value
+where
+    C: SectionCollection,
+    S: Storage {
     
     public typealias Reducer = (S) -> C
     

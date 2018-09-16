@@ -8,6 +8,8 @@
 
 // MARK: - AppDelegate
 
+import TinyCore
+import TinyKit
 import UIKit
 
 @UIApplicationMain
@@ -27,17 +29,31 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let viewController = FeedListViewController()
+        typealias PostViewController = TableViewController<PostSectionCollection, PostStorage>
+
+        let viewController = PostViewController()
         
         viewController.reducer = { storage in
             
-            let items: [FeedCollection.Section] = storage.values.map { value in
+            let sections: [PostSectionCollection.Section] = storage.pairs.map { pair in
                 
-                switch value {
+                switch pair.value {
+                    
+                case let .post(storage):
+                    
+                    let template = PostTemplate(
+                        storage: storage,
+                        elements: [
+                            .title,
+                            .body
+                        ]
+                    )
+                    
+                    return .post(template)
                     
                 case let .comment(storage):
                     
-                    let item = CommentItem(
+                    let template = CommentTemplate(
                         storage: storage,
                         elements: [
                             .username,
@@ -45,20 +61,18 @@ extension AppDelegate: UIApplicationDelegate {
                         ]
                     )
 
-                    return .comment(item)
+                    return .comment(template)
                     
                 }
                 
                 
             }
             
-            return FeedCollection(items: items)
+            return PostSectionCollection(sections: sections)
             
         }
-        
-        let storage = FeedStorage()
     
-        viewController.storage = storage
+        viewController.storage = PostStorage()
         
         window.rootViewController = UINavigationController(
             rootViewController: viewController
@@ -66,8 +80,15 @@ extension AppDelegate: UIApplicationDelegate {
         
         window.makeKeyAndVisible()
         
-        storage.setValues(
+        viewController.storage?.setValues(
             [
+                .post(
+                    Post(
+                        id: 1,
+                        title: "Awesome Template",
+                        body: "This is an example."
+                    )
+                ),
                 .comment(
                     Comment(
                         username: "Roy",
@@ -82,233 +103,3 @@ extension AppDelegate: UIApplicationDelegate {
     }
     
 }
-
-import TinyCore
-import TinyKit
-
-public struct Post: Codable, Equatable {
-    
-    let id: Int
-    
-    let title: String
-    
-    let body: String
-    
-}
-
-class TitleLabel: UILabel, Updatable {
-    
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
-        self.prepare()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
-        self.prepare()
-        
-    }
-    
-    fileprivate func prepare() {
-        
-        numberOfLines = 0
-        
-        font = UIFont.preferredFont(forTextStyle: .title1)
-        
-    }
-    
-    public func updateValue(_ value: Any?) {
-        
-        let post = value as? Post
-        
-        text = post?.title
-        
-    }
-    
-}
-
-class BodyLabel: UILabel, Updatable {
-    
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
-        self.prepare()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
-        self.prepare()
-        
-    }
-    
-    fileprivate func prepare() {
-        
-        numberOfLines = 0
-        
-        font = UIFont.preferredFont(forTextStyle: .body)
-        
-        textColor = .darkGray
-        
-    }
-    
-    public func updateValue(_ value: Any?) {
-        
-        let post = value as? Post
-        
-        text = post?.body
-        
-    }
-    
-}
-
-enum PostListElement: String {
-    
-    case title
-    
-    case body
-    
-}
-
-//struct PostListConfiguration: TemplateConfiguration {
-//
-//    typealias Element = PostListElement
-//
-//    func preferredViewName(for element: Element) -> String? { return nil }
-//
-//}
-
-//typealias PostListTemplate = ConfigurableTemplate<PostListConfiguration>
-
-struct Comment {
-    
-    let username: String
-    
-    let text: String
-    
-}
-
-class FeedStorage: Storage {
-    
-    enum Value {
-        
-        case comment(Comment)
-        
-    }
-    
-    typealias Storage = MemoryCache<Int, Value>
-    
-    var _storage = Storage()
-    
-    var keyDiff: Observable<[Int]> { return _storage.keyDiff }
-    
-    var values: AnyCollection<Value> { return _storage.values }
-
-    func setPairs(_ pairs: AnyCollection<(Int, Value)>) { _storage.setPairs(pairs) }
-    
-}
-
-struct CommentItem: Template {
-    
-    enum Element {
-        
-        case username
-        
-        case text
-        
-    }
-    
-    var storage: Comment
-    
-    var elements: [Element]
-    
-    var numberOfElements: Int { return elements.count }
-    
-    func view(at index: Int) -> View {
-        
-        let element = elements[index]
-        
-        switch element {
-            
-        case .username:
-            
-            let label = TitleLabel()
-            
-            label.text = storage.username
-            
-            return label
-            
-        case .text:
-            
-            let label = BodyLabel()
-            
-            label.text = storage.text
-            
-            return label
-            
-        }
-        
-    }
-    
-}
-
-struct FeedCollection: SectionCollection {
-    
-    enum Section: Template {
-        
-        typealias Element = Any
-        
-        case comment(CommentItem)
-        
-        var storage: Any {
-            
-            switch self {
-                
-            case let .comment(elements): return elements.storage
-                
-            }
-            
-        }
-        
-        var numberOfElements: Int {
-            
-            switch self {
-                
-            case let .comment(elements):
-                
-                return elements.numberOfElements
-                
-            }
-            
-        }
-        
-        func view(at index: Int) -> View {
-            
-            switch self {
-                
-            case let .comment(elements): return elements.view(at: index)
-                
-            }
-            
-        }
-        
-    }
-    
-    var items: [Section]
-    
-    var count: Int { return items.count }
-    
-    func section(at index: Int) -> Section { return items[index] }
-    
-}
-
-class FeedListViewController: TableViewController<FeedCollection, FeedStorage> { }
-

@@ -18,9 +18,9 @@ public protocol Storage {
     
     var keyDiff: Observable<[Key]> { get }
     
-    var values: AnyCollection<Value> { get }
+    var pairs: AnyCollection<(key: Key, value: Value)> { get }
     
-    func setPairs(_ pairs: AnyCollection<(Key, Value)>)
+    func setPairs(_ pairs: AnyCollection<(key:Key, value:Value)>)
     
 }
 
@@ -48,9 +48,9 @@ where Key: Hashable & Comparable {
     
     private let _keyDiff: () -> Observable<[Key]>
     
-    private let _values: () -> AnyCollection<Value>
+    private let _pairs: () -> AnyCollection<(key: Key, value: Value)>
     
-    private let _setPairs: (AnyCollection<(Key, Value)>) -> Void
+    private let _setPairs: (AnyCollection<(key: Key, value: Value)>) -> Void
 
     public init<S: Storage>(_ storage: S)
     where
@@ -59,7 +59,7 @@ where Key: Hashable & Comparable {
 
         self._keyDiff = { storage.keyDiff }
             
-        self._values = { storage.values }
+        self._pairs = { storage.pairs }
             
         self._setPairs = storage.setPairs
             
@@ -69,10 +69,10 @@ where Key: Hashable & Comparable {
     
     public var keyDiff: Observable<[Key]> { return _keyDiff() }
     
-    public var values: AnyCollection<Value> { return _values() }
+    public var pairs: AnyCollection<(key:Key, value: Value)> { return _pairs() }
     
     public func setPairs(
-        _ pairs: AnyCollection<(Key, Value)>
+        _ pairs: AnyCollection<(key: Key, value: Value)>
     ) { _setPairs(pairs) }
     
 }
