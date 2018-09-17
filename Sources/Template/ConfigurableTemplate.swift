@@ -79,84 +79,6 @@ where Configuration: TemplateConfiguration {
         
     }
     
-    public final func registerView<V, T>(
-        _ viewType: V.Type,
-        from bundle: Bundle? = nil,
-        binding: (
-            from: KeyPath<Storage, T?>,
-            to: ReferenceWritableKeyPath<V, T>
-        ),
-        for element: Element
-    )
-    where V: View {
-
-        registerView(
-            viewType,
-            from: bundle,
-            binding: { storage, view in
-
-                if let value = storage[keyPath: binding.from] {
-
-                    view[keyPath: binding.to] = value
-
-                }
-
-            },
-            for: element
-        )
-
-    }
-
-    public final func registerView<V, T>(
-        _ viewType: V.Type,
-        from bundle: Bundle? = nil,
-        binding: (
-            from: KeyPath<Storage, T>,
-            to: ReferenceWritableKeyPath<V, T>
-        ),
-        for element: Element
-    )
-    where V: View {
-
-        registerView(
-            viewType,
-            from: bundle,
-            binding: { storage, view in
-
-                view[keyPath: binding.to] = storage[keyPath: binding.from]
-
-            },
-            for: element
-        )
-
-    }
-
-    public final func registerView<V, T>(
-        _ viewType: V.Type,
-        from bundle: Bundle? = nil,
-        binding: (
-            from: KeyPath<Storage, T>,
-            to: ReferenceWritableKeyPath<V, T?>
-        ),
-        for element: Element
-    )
-    where V: View {
-
-        registerView(
-            viewType,
-            from: bundle,
-            binding: { storage, view in
-
-                let value: T? = storage[keyPath: binding.from]
-
-                view[keyPath: binding.to] = value
-
-            },
-            for: element
-        )
-
-    }
-    
     public final func registerView<V>(
         _ viewType: V.Type,
         from bundle: Bundle? = nil,
@@ -249,6 +171,90 @@ where Configuration: TemplateConfiguration {
         
         return defaultView
     
+    }
+    
+}
+
+// MARK: - KeyPath Binding
+
+public extension ConfigurableTemplate {
+    
+    public final func registerView<V, T>(
+        _ viewType: V.Type,
+        from bundle: Bundle? = nil,
+        binding: (
+            from: KeyPath<Storage, T?>,
+            to: ReferenceWritableKeyPath<V, T>
+        ),
+        for element: Element
+    )
+    where V: View {
+            
+        registerView(
+            viewType,
+            from: bundle,
+            binding: { storage, view in
+                
+                guard
+                    let value = storage[keyPath: binding.from]
+                else { return }
+                    
+                view[keyPath: binding.to] = value
+                
+            },
+            for: element
+        )
+            
+    }
+    
+    public final func registerView<V, T>(
+        _ viewType: V.Type,
+        from bundle: Bundle? = nil,
+        binding: (
+            from: KeyPath<Storage, T>,
+            to: ReferenceWritableKeyPath<V, T>
+        ),
+        for element: Element
+    )
+    where V: View {
+        
+        registerView(
+            viewType,
+            from: bundle,
+            binding: { storage, view in
+                
+                view[keyPath: binding.to] = storage[keyPath: binding.from]
+                
+            },
+            for: element
+        )
+            
+    }
+    
+    public final func registerView<V, T>(
+        _ viewType: V.Type,
+        from bundle: Bundle? = nil,
+        binding: (
+            from: KeyPath<Storage, T>,
+            to: ReferenceWritableKeyPath<V, T?>
+        ),
+        for element: Element
+    )
+    where V: View {
+        
+        registerView(
+            viewType,
+            from: bundle,
+            binding: { storage, view in
+                
+                let value: T? = storage[keyPath: binding.from]
+                
+                view[keyPath: binding.to] = value
+                
+            },
+            for: element
+        )
+            
     }
     
 }
