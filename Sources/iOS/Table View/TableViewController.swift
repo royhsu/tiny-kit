@@ -42,11 +42,7 @@ where
                 let storage = storage
             else { return }
             
-            let subscription = storage.keyDiff.subscribe { _ in
-                
-                self.asyncReloadTableView()
-                
-            }
+            let subscription = storage.keyDiff.subscribe { _ in self.reduceStorage() }
             
             subscriptions = [ subscription ]
             

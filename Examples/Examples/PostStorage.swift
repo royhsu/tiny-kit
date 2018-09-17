@@ -21,20 +21,61 @@ public final class PostStorage: Storage {
         
     }
     
-    private final let _storage = MemoryCache<Int, Value>()
+    private final var storage: AnyStorage<Int, Value> {
+        
+        return AnyStorage(_memoryStorage)
+        
+    }
     
-    public init() { }
+    private final let _memoryStorage = MemoryCache<Int, Value>()
     
-    public final var keyDiff: Observable< Set<Int> > { return _storage.keyDiff }
+    private final var _apiManager: APIManager<Post>?
+    
+    private final var subscriptions: [ObservableSubscription] = []
+    
+    public init(resource: PostResource? = nil) {
+        
+        if let resource = resource {
+            
+            let manager = APIManager(resource: resource)
+            
+            let subscription = manager.keyDiff.subscribe { event in
+                
+                let pairs: [ (key: Int, value: Value?) ] = manager.pairs.map { pair in
+                    
+                    return (
+                        pair.key,
+                        Value.post(pair.value)
+                    )
+                    
+                }
+                
+                self._memoryStorage.setPairs(
+                    AnyCollection(pairs)
+                )
+                
+            }
+            
+            subscriptions.append(subscription)
+            
+            _apiManager = manager
+            
+        }
+        
+    }
+    
+    public final func load() { _apiManager?.load() }
+    
+    public final var keyDiff: Observable< Set<Int> > { return storage.keyDiff }
     
     public final var pairs: AnyCollection< (key: Int, value: Value) > {
         
         return AnyCollection(
-            _storage.pairs.sorted { $0.key < $1.key }
+            storage.pairs.sorted { $0.key < $1.key }
         )
         
     }
     
-    public final func setPairs(_ pairs: AnyCollection< (key: Int, value: Value?) >) { _storage.setPairs(pairs) }
+    public final func setPairs(_ pairs: AnyCollection< (key: Int, value: Value?) >) { storage.setPairs(pairs) }
     
 }

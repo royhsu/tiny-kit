@@ -30,19 +30,17 @@ extension AppDelegate: UIApplicationDelegate {
         
         let viewController = PostViewController()
         
-//        viewController.storage = PostStorage()
-        
-        let manager = APIManager(
+        let storage = PostStorage(
             resource: PostResource(client: URLSession.shared)
         )
         
-//        viewController.storage = AnyStorage(manager)
+        viewController.storage = storage
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
         
         window.makeKeyAndVisible()
         
-        manager.load()
+        storage.load()
         
 //        viewController.storage?.setValues(
 //            [
