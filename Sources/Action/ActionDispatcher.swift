@@ -8,7 +8,7 @@
 
 // MARK: - ActionDispatcher
 
-public protocol ActionDispatcher {
+public protocol ActionDispatcher: AnyObject {
     
     func dispatch(action: Action)
     

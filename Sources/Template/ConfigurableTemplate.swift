@@ -61,7 +61,7 @@ where Configuration: TemplateConfiguration {
     
     public final let storage: Storage
     
-    public final let dispatcher: ActionDispatcher?
+    public final weak var dispatcher: ActionDispatcher?
     
     public final var configuration: Configuration?
     

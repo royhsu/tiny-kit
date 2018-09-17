@@ -14,8 +14,6 @@ import UIKit
 
 public final class PostViewController: CollectionViewController<PostStorage, PostSectionCollection> {
     
-    public final let dispatcher = PostActionDispatcher()
-    
     public final override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -31,7 +29,7 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         
                         let template = PostTemplate(
                             storage: storage,
-                            dispatcher: self.dispatcher,
+                            dispatcher: self,
                             elements: [
                                 .title,
                                 .body,
@@ -72,7 +70,7 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         
                         let template = CommentTemplate(
                             storage: storage,
-                            dispatcher: self.dispatcher,
+                            dispatcher: self,
                             elements: [
                                 .username,
                                 .text
@@ -85,6 +83,63 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                     
                 }
             )
+            
+        }
+        
+    }
+    
+}
+
+// MARK: - Navigation
+
+extension PostViewController: Navigation {
+    
+    public enum Destination {
+        
+        case red
+        
+    }
+    
+    public final func navigate(to destionation: Destination) {
+        
+        switch destionation {
+            
+        case .red:
+            
+            let viewController = ViewController()
+            
+            viewController.view.backgroundColor = .red
+            
+            show(
+                viewController,
+                sender: self
+            )
+            
+        }
+        
+    }
+    
+}
+
+// MARK: - PostViewController
+
+extension PostViewController: ActionDispatcher {
+    
+    public final func dispatch(action: Action) {
+        
+        if let action = action as? LikeButtonAction {
+            
+            switch action {
+                
+            case let .liked(isLiked):
+                
+                print("isLiked:", isLiked)
+                
+                navigate(to: .red)
+                
+            }
+            
+            return
             
         }
         
