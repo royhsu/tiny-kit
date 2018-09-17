@@ -12,7 +12,7 @@ import TinyCore
 import TinyKit
 import UIKit
 
-public final class PostViewController: TableViewController<PostStorage, PostSectionCollection> {
+public final class PostViewController: CollectionViewController<PostStorage, PostSectionCollection> {
 
     public final override func viewDidLoad() {
         

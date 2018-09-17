@@ -30,6 +30,8 @@ extension AppDelegate: UIApplicationDelegate {
         
         let viewController = PostViewController()
         
+        viewController.layout = TableViewLayout()
+        
         let storage = PostStorage(
             resource: PostResource(client: URLSession.shared)
         )

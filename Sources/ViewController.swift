@@ -1,22 +1,22 @@
 //
-//  View.swift
+//  ViewController.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/14.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - View
+// MARK: - ViewController
 
 #if canImport(UIKit)
 
 import UIKit
 
-public typealias View = UIView
+public typealias ViewController = UIViewController
 
 #else
 
-open class View {
+open class ViewController {
     
     open init() { }
     
