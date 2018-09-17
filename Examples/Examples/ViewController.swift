@@ -8,26 +8,92 @@
 
 // MARK: - ViewController
 
+import TinyCore
+import TinyKit
 import UIKit
 
-public final class ViewController: UIViewController {
-
-    // MARK: View Life Cycle
+public final class PostViewController: TableViewController<PostStorage, PostSectionCollection> {
 
     public final override func viewDidLoad() {
-
+        
         super.viewDidLoad()
-
-        setUpRootView(view)
-
-    }
-
-    // MARK: Set Up
-
-    fileprivate final func setUpRootView(_ view: UIView) {
-
-        view.backgroundColor = .white
-
+    
+        reducer = { storage in
+            
+            return PostSectionCollection(
+                sections: storage.pairs.map { pair in
+                    
+                    switch pair.value {
+                        
+                    case let .post(storage):
+                        
+                        let template = PostTemplate(
+                            storage: storage,
+                            elements: [
+                                .title,
+                                .body
+                            ]
+                        )
+                        
+                        template.configuration = PostTemplateConfiguration()
+                        
+                        template.registerView(
+                            LargeTitleLabel.self,
+                            binding: { storage, view in
+                                
+                                let label = view as? LargeTitleLabel
+                                
+                                label?.text = storage.title
+                                
+                            },
+                            for: .title
+                        )
+                        
+                        template.registerView(
+                            TitleLabel.self,
+                            binding: { storage, view in
+                                
+                                let label = view as? TitleLabel
+                                
+                                label?.text = storage.title
+                                
+                            },
+                            for: .title
+                        )
+                        
+                        template.registerView(
+                            BodyLabel.self,
+                            binding: { storage, view in
+                                
+                                let label = view as? BodyLabel
+                                
+                                label?.text = storage.body
+                                
+                            },
+                            for: .body
+                        )
+                        
+                        return .post(template)
+                        
+                    case let .comment(storage):
+                        
+                        let template = CommentTemplate(
+                            storage: storage,
+                            elements: [
+                                .username,
+                                .text
+                            ]
+                        )
+                        
+                        return .comment(template)
+                        
+                    }
+                    
+                }
+            )
+            
+        }
+        
     }
 
 }
