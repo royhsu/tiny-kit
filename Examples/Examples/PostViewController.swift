@@ -6,7 +6,7 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ViewController
+// MARK: - PostViewController
 
 import TinyCore
 import TinyKit

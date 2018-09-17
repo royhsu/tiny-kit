@@ -149,11 +149,10 @@
 		B009B9012146449200B19F6A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B0F80A36214FED3C0052ACA3 /* View */,
 				B033F5D7214A4F99001DDBA6 /* Table View */,
-				B009B92021465E0F00B19F6A /* UIView+Subview.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
-				B0F80A26214FDE800052ACA3 /* UIView+UINib.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -316,6 +315,15 @@
 				B0F80A30214FE6920052ACA3 /* Navigation.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B0F80A36214FED3C0052ACA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B009B92021465E0F00B19F6A /* UIView+Subview.swift */,
+				B0F80A26214FDE800052ACA3 /* UIView+UINib.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
