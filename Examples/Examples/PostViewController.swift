@@ -37,60 +37,6 @@ public final class PostActionDispatcher: ActionDispatcher {
     }
     
 }
-
-public final class LikeButton: UIButton, Actionable {
-    
-    public final var dispatcher: ActionDispatcher?
-    
-    public override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
-        prepare()
-        
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
-        prepare()
-        
-    }
-    
-    private final func prepare() {
-        
-        addTarget(
-            self,
-            action: #selector(like),
-            for: .valueChanged
-        )
-        
-        setTitle(
-            "Like",
-            for: .normal
-        )
-        
-        setTitle(
-            "Liked",
-            for: .selected
-        )
-        
-    }
-    
-    @objc
-    public final func like(_ sender: Any) {
-        
-        isSelected.toggle()
-        
-        let action: LikeButtonAction = .liked(isSelected)
-        
-        dispatcher?.dispatch(action: action)
-        
-    }
-    
-}
-
 public final class PostViewController: CollectionViewController<PostStorage, PostSectionCollection> {
     
     public final let dispatcher = PostActionDispatcher()
@@ -140,6 +86,7 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         
                         template.registerView(
                             LikeButton.self,
+                            from: .main,
                             binding: (from: \.isLiked, to: \.isSelected),
                             for: .like
                         )

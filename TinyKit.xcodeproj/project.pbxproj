@@ -52,6 +52,10 @@
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
 		B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A17214F5A2E0052ACA3 /* TableViewCell.swift */; };
 		B0F80A1A214F5A650052ACA3 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A19214F5A650052ACA3 /* TableView.swift */; };
+		B0F80A1D214FD9540052ACA3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A1C214FD9540052ACA3 /* Action.swift */; };
+		B0F80A1F214FD96A0052ACA3 /* ActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A1E214FD96A0052ACA3 /* ActionDispatcher.swift */; };
+		B0F80A21214FD98B0052ACA3 /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A20214FD98B0052ACA3 /* Actionable.swift */; };
+		B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A26214FDE800052ACA3 /* UIView+UINib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +118,10 @@
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A17214F5A2E0052ACA3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		B0F80A19214F5A650052ACA3 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		B0F80A1C214FD9540052ACA3 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		B0F80A1E214FD96A0052ACA3 /* ActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDispatcher.swift; sourceTree = "<group>"; };
+		B0F80A20214FD98B0052ACA3 /* Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actionable.swift; sourceTree = "<group>"; };
+		B0F80A26214FDE800052ACA3 /* UIView+UINib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UINib.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +151,7 @@
 				B009B92021465E0F00B19F6A /* UIView+Subview.swift */,
 				B00D960A2030753600EF0B7A /* TinyKit.h */,
 				B00D960B2030753600EF0B7A /* Info.plist */,
+				B0F80A26214FDE800052ACA3 /* UIView+UINib.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -179,6 +188,7 @@
 		B00D96122030756200EF0B7A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B0F80A1B214FD9390052ACA3 /* Action */,
 				B009B9012146449200B19F6A /* iOS */,
 				B01D21E3214B64140078E946 /* Template */,
 				B0652DB62148B0FF009F8757 /* Storage */,
@@ -285,6 +295,16 @@
 				B0652DC2214966CC009F8757 /* CollectionViewController.swift */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		B0F80A1B214FD9390052ACA3 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				B0F80A1C214FD9540052ACA3 /* Action.swift */,
+				B0F80A1E214FD96A0052ACA3 /* ActionDispatcher.swift */,
+				B0F80A20214FD98B0052ACA3 /* Actionable.swift */,
+			);
+			path = Action;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,7 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
 				B01D21E5214B64270078E946 /* Template.swift in Sources */,
+				B0F80A21214FD98B0052ACA3 /* Actionable.swift in Sources */,
+				B0F80A1D214FD9540052ACA3 /* Action.swift in Sources */,
+				B0F80A1F214FD96A0052ACA3 /* ActionDispatcher.swift in Sources */,
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B0652DC121492994009F8757 /* MemoryCache.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,

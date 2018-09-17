@@ -26,7 +26,26 @@ where Configuration: TemplateConfiguration {
         
         let viewType: View.Type
         
+        let bundle: Bundle?
+        
         let binding: (Storage, View) -> Void
+        
+        var view: View {
+        
+            guard
+                let bundle = bundle
+            else { return viewType.init() }
+            
+            guard
+                let view = View.loadView(
+                    viewType,
+                    from: bundle
+                )
+            else { fatalError("CANNOT find the coresponding UINib from the bundle \(bundle).") }
+            
+            return view
+            
+        }
         
     }
     
@@ -62,6 +81,7 @@ where Configuration: TemplateConfiguration {
     
     public final func registerView<V, T>(
         _ viewType: V.Type,
+        from bundle: Bundle? = nil,
         binding: (
             from: KeyPath<Storage, T?>,
             to: ReferenceWritableKeyPath<V, T>
@@ -72,6 +92,7 @@ where Configuration: TemplateConfiguration {
 
         registerView(
             viewType,
+            from: bundle,
             binding: { storage, view in
 
                 if let value = storage[keyPath: binding.from] {
@@ -88,6 +109,7 @@ where Configuration: TemplateConfiguration {
 
     public final func registerView<V, T>(
         _ viewType: V.Type,
+        from bundle: Bundle? = nil,
         binding: (
             from: KeyPath<Storage, T>,
             to: ReferenceWritableKeyPath<V, T>
@@ -98,6 +120,7 @@ where Configuration: TemplateConfiguration {
 
         registerView(
             viewType,
+            from: bundle,
             binding: { storage, view in
 
                 view[keyPath: binding.to] = storage[keyPath: binding.from]
@@ -110,6 +133,7 @@ where Configuration: TemplateConfiguration {
 
     public final func registerView<V, T>(
         _ viewType: V.Type,
+        from bundle: Bundle? = nil,
         binding: (
             from: KeyPath<Storage, T>,
             to: ReferenceWritableKeyPath<V, T?>
@@ -120,6 +144,7 @@ where Configuration: TemplateConfiguration {
 
         registerView(
             viewType,
+            from: bundle,
             binding: { storage, view in
 
                 let value: T? = storage[keyPath: binding.from]
@@ -134,6 +159,7 @@ where Configuration: TemplateConfiguration {
     
     public final func registerView<V>(
         _ viewType: V.Type,
+        from bundle: Bundle? = nil,
         binding: @escaping (Storage, V) -> (),
         for element: Element
     )
@@ -145,6 +171,7 @@ where Configuration: TemplateConfiguration {
     
         viewMapping[viewName] = ViewTypeContainer(
             viewType: viewType,
+            bundle: bundle,
             binding: { storage, view in
                 
                 let view = view as! V
@@ -197,7 +224,7 @@ where Configuration: TemplateConfiguration {
             
             if let preferredContainer = viewMapping[preferredViewName] {
                 
-                let preferredView = preferredContainer.viewType.init()
+                let preferredView = preferredContainer.view
                 
                 preferredContainer.binding(
                     storage,
@@ -213,7 +240,7 @@ where Configuration: TemplateConfiguration {
             
         }
         
-        let defaultView = defaultContainer.viewType.init()
+        let defaultView = defaultContainer.view
         
         defaultContainer.binding(
             storage,
@@ -223,21 +250,5 @@ where Configuration: TemplateConfiguration {
         return defaultView
     
     }
-    
-}
-
-import TinyCore
-
-public protocol Action { }
-
-public protocol ActionDispatcher {
-    
-    func dispatch(action: Action)
-    
-}
-
-public protocol Actionable: AnyObject {
-    
-    var dispatcher: ActionDispatcher? { get set }
     
 }
