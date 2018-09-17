@@ -12,31 +12,6 @@ import TinyCore
 import TinyKit
 import UIKit
 
-public enum LikeButtonAction: Action {
-    
-    case liked(Bool)
-    
-}
-
-public final class PostActionDispatcher: ActionDispatcher {
-    
-    public func dispatch(action: Action) {
-    
-        if let action = action as? LikeButtonAction {
-
-            switch action {
-                
-            case let .liked(isLiked): print("isLiked:", isLiked)
-                
-            }
-            
-            return
-            
-        }
-        
-    }
-    
-}
 public final class PostViewController: CollectionViewController<PostStorage, PostSectionCollection> {
     
     public final let dispatcher = PostActionDispatcher()

@@ -26,6 +26,8 @@
 		B0F80A0F214F421F0052ACA3 /* PostResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A0E214F421F0052ACA3 /* PostResource.swift */; };
 		B0F80A23214FDC8F0052ACA3 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A22214FDC8F0052ACA3 /* LikeButton.swift */; };
 		B0F80A25214FDCB70052ACA3 /* LikeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F80A24214FDCB70052ACA3 /* LikeButton.xib */; };
+		B0F80A2C214FE4C60052ACA3 /* PostActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A2B214FE4C60052ACA3 /* PostActionDispatcher.swift */; };
+		B0F80A2E214FE4F00052ACA3 /* LikeButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A2D214FE4F00052ACA3 /* LikeButtonAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		B0F80A0E214F421F0052ACA3 /* PostResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResource.swift; sourceTree = "<group>"; };
 		B0F80A22214FDC8F0052ACA3 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		B0F80A24214FDCB70052ACA3 /* LikeButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeButton.xib; sourceTree = "<group>"; };
+		B0F80A2B214FE4C60052ACA3 /* PostActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionDispatcher.swift; sourceTree = "<group>"; };
+		B0F80A2D214FE4F00052ACA3 /* LikeButtonAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,10 @@
 				B0F80A04214E8C220052ACA3 /* CommentTemplate.swift */,
 				B0F80A06214E8CE50052ACA3 /* PostSectionCollection.swift */,
 				B0F80A08214E8EAC0052ACA3 /* PostStorage.swift */,
+				B0F80A2B214FE4C60052ACA3 /* PostActionDispatcher.swift */,
 				B0F80A22214FDC8F0052ACA3 /* LikeButton.swift */,
 				B0F80A24214FDCB70052ACA3 /* LikeButton.xib */,
+				B0F80A2D214FE4F00052ACA3 /* LikeButtonAction.swift */,
 				B0F809EA214E779D0052ACA3 /* Assets.xcassets */,
 				B0F809EC214E779D0052ACA3 /* LaunchScreen.storyboard */,
 				B0F809EF214E779D0052ACA3 /* Info.plist */,
@@ -187,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0F80A2E214FE4F00052ACA3 /* LikeButtonAction.swift in Sources */,
 				B0F809FB214E89C80052ACA3 /* Post.swift in Sources */,
 				B0F809FD214E8A310052ACA3 /* TitleLabel.swift in Sources */,
 				B0F809FF214E8A6D0052ACA3 /* BodyLabel.swift in Sources */,
@@ -201,6 +208,7 @@
 				B0F80A0F214F421F0052ACA3 /* PostResource.swift in Sources */,
 				B0F80A0B214E9D880052ACA3 /* PostTemplateConfiguration.swift in Sources */,
 				B0F80A05214E8C220052ACA3 /* CommentTemplate.swift in Sources */,
+				B0F80A2C214FE4C60052ACA3 /* PostActionDispatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
