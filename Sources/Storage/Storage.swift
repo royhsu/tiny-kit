@@ -16,19 +16,18 @@ public protocol Storage {
     
     associatedtype Value
     
-    var keyDiff: Observable<[Key]> { get }
+    var keyDiff: Observable< Set<Key> > { get }
     
-    var pairs: AnyCollection<(key: Key, value: Value)> { get }
+    var pairs: AnyCollection< (key: Key, value: Value) > { get }
     
-    func setPairs(_ pairs: AnyCollection<(key:Key, value:Value)>)
+    func setPairs(_ pairs: AnyCollection< (key: Key, value: Value?) >)
     
 }
 
 public extension Storage where Key == Int {
     
-    // TODO: add unit test.
     public func setValues(
-        _ values: [Value]
+        _ values: [Value?]
     ) {
         
         let pairs = values.enumerated().map { ($0.offset, $0.element) }
@@ -39,6 +38,29 @@ public extension Storage where Key == Int {
         
     }
     
+    /// The count of stored pairs.
+    public var count: Int { return pairs.count }
+    
+    public var isEmpty: Bool { return pairs.isEmpty }
+    
+    public subscript(key: Key) -> Value? {
+        
+        get { return pairs.first { $0.key == key }?.value }
+        
+        set {
+            
+            setPairs(
+                AnyCollection(
+                    [
+                        (key, newValue)
+                    ]
+                )
+            )
+            
+        }
+        
+    }
+    
 }
 
 // MARK: - AnyStorage
@@ -46,11 +68,11 @@ public extension Storage where Key == Int {
 public struct AnyStorage<Key, Value>: Storage
 where Key: Hashable & Comparable {
     
-    private let _keyDiff: () -> Observable<[Key]>
+    private let _keyDiff: () -> Observable< Set<Key> >
     
-    private let _pairs: () -> AnyCollection<(key: Key, value: Value)>
+    private let _pairs: () -> AnyCollection< (key: Key, value: Value) >
     
-    private let _setPairs: (AnyCollection<(key: Key, value: Value)>) -> Void
+    private let _setPairs: (AnyCollection< (key: Key, value: Value?) >) -> Void
 
     public init<S: Storage>(_ storage: S)
     where
@@ -67,12 +89,12 @@ where Key: Hashable & Comparable {
     
     // MARK: Storage
     
-    public var keyDiff: Observable<[Key]> { return _keyDiff() }
+    public var keyDiff: Observable< Set<Key> > { return _keyDiff() }
     
-    public var pairs: AnyCollection<(key:Key, value: Value)> { return _pairs() }
+    public var pairs: AnyCollection< (key:Key, value: Value) > { return _pairs() }
     
     public func setPairs(
-        _ pairs: AnyCollection<(key: Key, value: Value)>
+        _ pairs: AnyCollection< (key: Key, value: Value?) >
     ) { _setPairs(pairs) }
     
 }

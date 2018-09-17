@@ -11,26 +11,18 @@
 import TinyCore
 import TinyKit
 
-internal final class MessageResource: Resource {
+internal struct MessageResource: Resource {
     
     internal typealias Message = String
     
-    internal final func fetchItems(
+    internal var fetchItemsResult: Result<FetchItemsPayload<Message>>
+    
+    internal func fetchItems(
         page: Page,
         completionHandler: @escaping (Result< FetchItemsPayload<Message> >) -> Void
     ) {
         
-        completionHandler(
-            .success(
-                FetchItemsPayload(
-                    items: [
-                        "Hello",
-                        "World"
-                    ],
-                    next: nil
-                )
-            )
-        )
+        completionHandler(fetchItemsResult)
         
     }
     

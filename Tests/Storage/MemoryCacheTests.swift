@@ -34,27 +34,20 @@ internal final class MemoryCacheTests: XCTestCase {
         )
         
         XCTAssertEqual(
-            storage.pairs.count,
+            storage.count,
             1
         )
         
         XCTAssertNil(
-            storage.pairs.first { $0.key == 0 }
+            storage[0]
         )
         
         XCTAssertNil(
-            storage.pairs.first { $0.key == 1 }
-        )
-        
-        let pair = storage.pairs.first { $0.key == 2 }
-        
-        XCTAssertEqual(
-            pair?.key,
-            2
+            storage[1]
         )
         
         XCTAssertEqual(
-            pair?.value,
+            storage[2],
             "Hello"
         )
         
@@ -66,7 +59,9 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let cache = MemoryCache<Int, String>()
         
-        let storage = AnyStorage(cache)
+        var storage = AnyStorage(cache)
+        
+        storage[3] = "Existing value"
         
         let subscription = storage.keyDiff.subscribe { event in
             
@@ -78,21 +73,28 @@ internal final class MemoryCacheTests: XCTestCase {
                 indices?.contains(0) == true
             )
             
+            // There is not existing value for key 2. Should not be included in changed indices.
             XCTAssert(
-                indices?.contains(2) == true
+                indices?.contains(2) == false
+            )
+            
+            // There is an existing value for key 3.
+            XCTAssert(
+                indices?.contains(3) == true
             )
             
         }
         
         subscriptions.append(subscription)
         
+        let pairs: [(key: Int, value: String?)] = [
+            (0, "Hello"),
+            (2, nil),
+            (3, nil)
+        ]
+        
         storage.setPairs(
-            AnyCollection(
-                [
-                    (key: 0, value: "Hello"),
-                    (key: 2, value: "World")
-                ]
-            )
+            AnyCollection(pairs)
         )
         
         wait(
