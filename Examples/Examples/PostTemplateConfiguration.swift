@@ -18,6 +18,8 @@ public struct PostTemplateConfiguration: TemplateConfiguration {
         
         case body
         
+        case like
+        
     }
     
     public func preferredViewName(for element: Element) -> String? {
@@ -26,7 +28,7 @@ public struct PostTemplateConfiguration: TemplateConfiguration {
             
         case .title: return "LargeTitleLabel"
             
-        case .body: return nil
+        case .body, .like: return nil
             
         }
         

@@ -22,14 +22,19 @@ public struct CommentTemplate: Template {
     
     public let storage: Comment
     
+    public let dispatcher: ActionDispatcher?
+    
     public let elements: [Element]
     
     public init(
         storage: Comment,
+        dispatcher: ActionDispatcher?,
         elements: [Element]
     ) {
         
         self.storage = storage
+        
+        self.dispatcher = dispatcher
         
         self.elements = elements
         

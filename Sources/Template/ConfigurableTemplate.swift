@@ -38,16 +38,23 @@ where Configuration: TemplateConfiguration {
     
     private final var elements: AnyCollection<Element> = AnyCollection( [] )
     
+    private final var actionMapping: [ Int: (_ event: Any) -> Void ] = [:]
+    
     public final let storage: Storage
+    
+    public final let dispatcher: ActionDispatcher?
     
     public final var configuration: Configuration?
     
     public init(
         storage: Storage,
+        dispatcher: ActionDispatcher?,
         elements: [Element] = []
     ) {
         
         self.storage = storage
+        
+        self.dispatcher = dispatcher
         
         self.elements = AnyCollection(elements)
         
@@ -62,23 +69,23 @@ where Configuration: TemplateConfiguration {
         for element: Element
     )
     where V: View {
-        
+
         registerView(
             viewType,
             binding: { storage, view in
-                
+
                 if let value = storage[keyPath: binding.from] {
-                 
+
                     view[keyPath: binding.to] = value
-                    
+
                 }
-                
+
             },
             for: element
         )
-            
+
     }
-    
+
     public final func registerView<V, T>(
         _ viewType: V.Type,
         binding: (
@@ -88,19 +95,19 @@ where Configuration: TemplateConfiguration {
         for element: Element
     )
     where V: View {
-        
+
         registerView(
             viewType,
             binding: { storage, view in
-                
+
                 view[keyPath: binding.to] = storage[keyPath: binding.from]
-                
+
             },
             for: element
         )
-            
+
     }
-    
+
     public final func registerView<V, T>(
         _ viewType: V.Type,
         binding: (
@@ -110,19 +117,19 @@ where Configuration: TemplateConfiguration {
         for element: Element
     )
     where V: View {
-    
+
         registerView(
             viewType,
             binding: { storage, view in
-                
+
                 let value: T? = storage[keyPath: binding.from]
-                
+
                 view[keyPath: binding.to] = value
-                
+
             },
             for: element
         )
-    
+
     }
     
     public final func registerView<V>(
@@ -135,7 +142,7 @@ where Configuration: TemplateConfiguration {
         var viewMapping = elementMapping[element] ?? [:]
         
         let viewName = String(describing: viewType)
-        
+    
         viewMapping[viewName] = ViewTypeContainer(
             viewType: viewType,
             binding: { storage, view in
@@ -162,7 +169,13 @@ where Configuration: TemplateConfiguration {
         
         let element = elements[index]
         
-        return view(for: element)
+        let view = self.view(for: element)
+        
+        let actionable = view as? Actionable
+            
+        actionable?.dispatcher = dispatcher
+        
+        return view
         
     }
     
@@ -210,5 +223,21 @@ where Configuration: TemplateConfiguration {
         return defaultView
     
     }
+    
+}
+
+import TinyCore
+
+public protocol Action { }
+
+public protocol ActionDispatcher {
+    
+    func dispatch(action: Action)
+    
+}
+
+public protocol Actionable: AnyObject {
+    
+    var dispatcher: ActionDispatcher? { get set }
     
 }

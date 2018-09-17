@@ -16,6 +16,8 @@ public struct Post: Codable, Equatable {
     
     public let body: String
     
+    public let isLiked: Bool = false
+    
     public init(
         id: Int,
         title: String,

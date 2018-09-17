@@ -3,5 +3,6 @@
     <pages>
         <page name='KeyPath'/>
         <page name='Untitled Page'/>
+        <page name='Action'/>
     </pages>
 </playground>
