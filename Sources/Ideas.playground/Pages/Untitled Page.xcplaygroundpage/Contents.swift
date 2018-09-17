@@ -3,86 +3,6 @@ import TinyKit
 import UIKit
 import PlaygroundSupport
 
-public struct Post: Codable, Equatable {
-    
-    let id: Int
-    
-    let title: String
-    
-    let body: String
-    
-}
-
-class PostResource {
-    
-    let client: HTTPClient
-    
-    init(client: HTTPClient) { self.client = client }
-    
-    func fetchPost(
-        id: String,
-        completionHandler: @escaping (Result<Post>) -> Void
-    ) {
-        
-        let url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!
-        
-        client.request(
-            URLRequest(url: url),
-            decoder: JSONDecoder(),
-            completionHandler: completionHandler
-        )
-        
-    }
-    
-    func fetchPosts(
-        completionHandler: @escaping (Result<[Post]>) -> Void
-    ) {
-        
-        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-        
-        client.request(
-            URLRequest(url: url),
-            decoder: JSONDecoder(),
-            completionHandler: completionHandler
-        )
-        
-    }
-    
-}
-
-extension PostResource: Resource {
-    
-    func fetchItems(
-        page: Page,
-        completionHandler: @escaping (Result<FetchItemsPayload<Post>>) -> Void
-    ) {
-        
-        fetchPosts { result in
-            
-            switch result {
-                
-            case let .success(posts):
-                
-                completionHandler(
-                    .success(
-                        FetchItemsPayload(items: posts)
-                    )
-                )
-                
-            case let .failure(error):
-                
-                completionHandler(
-                    .failure(error)
-                )
-                
-            }
-            
-        }
-        
-    }
-    
-}
-
 //class APICache<Value>: Storage where Value: Decodable {
 //
 //    typealias Index = Int
@@ -261,29 +181,10 @@ extension PostResource: Resource {
 //
 //}
 
-//PlaygroundPage.current.liveView = viewController
-
-//let template: PostListTemplate = [
-//    .title,
-//    .body
-//]
-//
-//viewController.template = template
-//
-//viewController.template?.registerView(
-//    TitleLabel.self,
-//    for: .title
-//)
-//
-//viewController.template?.registerView(
-//    BodyLabel.self,
-//    for: .body
-//)
-//
 //let manager = APIManager(
 //    resource: PostResource(client: URLSession.shared)
 //)
-//
+
 //viewController.storage = AnyStorage(manager)
 //
 //manager.load()

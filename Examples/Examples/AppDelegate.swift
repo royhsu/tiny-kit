@@ -8,6 +8,7 @@
 
 // MARK: - AppDelegate
 
+import TinyKit
 import UIKit
 
 @UIApplicationMain
@@ -29,29 +30,37 @@ extension AppDelegate: UIApplicationDelegate {
         
         let viewController = PostViewController()
         
-        viewController.storage = PostStorage()
+//        viewController.storage = PostStorage()
+        
+        let manager = APIManager(
+            resource: PostResource(client: URLSession.shared)
+        )
+        
+//        viewController.storage = AnyStorage(manager)
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
         
         window.makeKeyAndVisible()
         
-        viewController.storage?.setValues(
-            [
-                .post(
-                    Post(
-                        id: 1,
-                        title: "Awesome Template",
-                        body: "This is an example."
-                    )
-                ),
-                .comment(
-                    Comment(
-                        username: "Roy",
-                        text: "Hi"
-                    )
-                )
-            ]
-        )
+        manager.load()
+        
+//        viewController.storage?.setValues(
+//            [
+//                .post(
+//                    Post(
+//                        id: 1,
+//                        title: "Awesome Template",
+//                        body: "This is an example."
+//                    )
+//                ),
+//                .comment(
+//                    Comment(
+//                        username: "Roy",
+//                        text: "Hi"
+//                    )
+//                )
+//            ]
+//        )
         
         return true
             
