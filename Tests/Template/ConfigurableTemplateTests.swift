@@ -14,14 +14,12 @@ internal final class ConfigurableTemplateTests: XCTestCase {
     
     internal final func testInitialize() {
         
-        let bindingTitle2Promise = expectation(description: "Binding the storage with title2 label.")
-        
-        let bindingBodyPromise = expectation(description: "Binding the storage with body label.")
+        let promise = expectation(description: "Binding the storage with view.")
         
         let post = Post(
             id: 1,
-            title: "This is the title.",
-            body: "This is the body."
+            title: "Hello",
+            body: "World"
         )
         
         let template = PostTemplate(
@@ -74,14 +72,16 @@ internal final class ConfigurableTemplateTests: XCTestCase {
         
         template.registerView(
             Title2Label.self,
-            binding: { storage, view in
+            binding: { storage, label in
                 
-                bindingTitle2Promise.fulfill()
+                promise.fulfill()
                 
                 XCTAssertEqual(
                     storage,
                     post
                 )
+                
+                label.text = storage.title
                 
             },
             for: .title
@@ -89,32 +89,26 @@ internal final class ConfigurableTemplateTests: XCTestCase {
         
         template.registerView(
             BodyLabel.self,
-            binding: { storage, view in
-                
-                bindingBodyPromise.fulfill()
-                
-                XCTAssertEqual(
-                    storage,
-                    post
-                )
-                
-            },
+            binding: (from: \.body, to: \.text),
             for: .body
         )
         
-        XCTAssert(
-            template.view(at: 0) is Title2Label
+        let titleLabel = template.view(at: 0) as? Title2Label
+        
+        XCTAssertEqual(
+            titleLabel?.text,
+            "Hello"
         )
         
-        XCTAssert(
-            template.view(at: 1) is BodyLabel
+        let bodyLabel = template.view(at: 1) as? BodyLabel
+        
+        XCTAssertEqual(
+            bodyLabel?.text,
+            "World"
         )
         
         wait(
-            for: [
-                bindingTitle2Promise,
-                bindingBodyPromise
-            ],
+            for: [ promise ],
             timeout: 10.0
         )
         
