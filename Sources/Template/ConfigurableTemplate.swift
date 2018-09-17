@@ -22,15 +22,15 @@ where Configuration: TemplateConfiguration {
     
     private struct ViewTypeContainer {
         
-        let date = Date()
+        internal let date = Date()
         
-        let viewType: View.Type
+        internal let viewType: View.Type
         
-        let bundle: Bundle?
+        internal let bundle: Bundle?
         
-        let binding: (Storage, View) -> Void
+        internal let binding: (Storage, View) -> Void
         
-        var view: View {
+        internal var view: View {
         
             guard
                 let bundle = bundle
@@ -67,7 +67,7 @@ where Configuration: TemplateConfiguration {
     
     public init(
         storage: Storage,
-        dispatcher: ActionDispatcher?,
+        dispatcher: ActionDispatcher? = nil,
         elements: [Element] = []
     ) {
         
