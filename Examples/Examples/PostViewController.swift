@@ -39,11 +39,9 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         
                         template.registerView(
                             LargeTitleLabel.self,
-                            binding: { storage, view in
+                            binding: { storage, label in
                                 
-                                let label = view as? LargeTitleLabel
-                                
-                                label?.text = storage.title
+                                label.text = storage.title
                                 
                             },
                             for: .title
@@ -51,11 +49,9 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         
                         template.registerView(
                             TitleLabel.self,
-                            binding: { storage, view in
+                            binding: { storage, label in
                                 
-                                let label = view as? TitleLabel
-                                
-                                label?.text = storage.title
+                                label.text = storage.title
                                 
                             },
                             for: .title
@@ -63,11 +59,9 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         
                         template.registerView(
                             BodyLabel.self,
-                            binding: { storage, view in
+                            binding: { storage, label in
                                 
-                                let label = view as? BodyLabel
-                                
-                                label?.text = storage.body
+                                label.text = storage.body
                                 
                             },
                             for: .body

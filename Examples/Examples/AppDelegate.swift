@@ -33,7 +33,7 @@ extension AppDelegate: UIApplicationDelegate {
         viewController.layout = TableViewLayout()
         
         let storage = PostStorage(
-            resource: PostResource(client: URLSession.shared)
+//            resource: PostResource(client: URLSession.shared)
         )
         
         viewController.storage = storage
@@ -42,25 +42,25 @@ extension AppDelegate: UIApplicationDelegate {
         
         window.makeKeyAndVisible()
         
-        storage.load()
+//        storage.load()
         
-//        viewController.storage?.setValues(
-//            [
-//                .post(
-//                    Post(
-//                        id: 1,
-//                        title: "Awesome Template",
-//                        body: "This is an example."
-//                    )
-//                ),
-//                .comment(
-//                    Comment(
-//                        username: "Roy",
-//                        text: "Hi"
-//                    )
-//                )
-//            ]
-//        )
+        viewController.storage?.setValues(
+            [
+                .post(
+                    Post(
+                        id: 1,
+                        title: "Awesome Template",
+                        body: "This is an example."
+                    )
+                ),
+                .comment(
+                    Comment(
+                        username: "Roy",
+                        text: "Hi"
+                    )
+                )
+            ]
+        )
         
         return true
             

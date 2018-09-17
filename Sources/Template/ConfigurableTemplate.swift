@@ -53,11 +53,12 @@ where Configuration: TemplateConfiguration {
         
     }
     
-    public final func registerView(
-        _ viewType: View.Type,
-        binding: @escaping (Storage, View) -> (),
+    public final func registerView<V>(
+        _ viewType: V.Type,
+        binding: @escaping (Storage, V) -> (),
         for element: Element
-    ) {
+    )
+    where V: View {
         
         var viewMapping = elementMapping[element] ?? [:]
         
@@ -65,7 +66,16 @@ where Configuration: TemplateConfiguration {
         
         viewMapping[viewName] = ViewTypeContainer(
             viewType: viewType,
-            binding: binding
+            binding: { storage, view in
+                
+                let view = view as! V
+                
+                binding(
+                    storage,
+                    view
+                )
+                
+            }
         )
         
         elementMapping[element] = viewMapping

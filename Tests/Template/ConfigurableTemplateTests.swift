@@ -83,8 +83,6 @@ internal final class ConfigurableTemplateTests: XCTestCase {
                     post
                 )
                 
-                XCTAssertNotNil(view as? Title2Label)
-                
             },
             for: .title
         )
