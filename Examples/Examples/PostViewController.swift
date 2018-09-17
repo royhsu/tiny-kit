@@ -36,34 +36,22 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
                         )
                         
                         template.configuration = PostTemplateConfiguration()
-                        
+                    
                         template.registerView(
                             LargeTitleLabel.self,
-                            binding: { storage, label in
-                                
-                                label.text = storage.title
-                                
-                            },
+                            binding: (from: \.title, to: \.text),
                             for: .title
                         )
                         
                         template.registerView(
                             TitleLabel.self,
-                            binding: { storage, label in
-                                
-                                label.text = storage.title
-                                
-                            },
+                            binding: (from: \.title, to: \.text),
                             for: .title
                         )
                         
                         template.registerView(
                             BodyLabel.self,
-                            binding: { storage, label in
-                                
-                                label.text = storage.body
-                                
-                            },
+                            binding: (from: \.body, to: \.text),
                             for: .body
                         )
                         

@@ -1,23 +1,25 @@
 struct User {
     
-    var name: String
-    
-    var bio: String
+    var id: Int
     
 }
 
-func updateName(_ name: String, keyPath: WritableKeyPath<User, String>, for user: inout User) {
+struct Customer {
     
-    user[keyPath: keyPath] = name
+    var id: String?
     
 }
 
-var user = User(name: "Roy", bio: "Awesome")
+let user = User(id: 1)
 
-updateName("Nice", keyPath: \.bio, for: &user)
+var customer = Customer(id: nil)
 
-user[keyPath: \User.name] = "Roy Hsu"
+let k1 = \User.id
 
-print(user)
+let k2 = \Customer.id
+
+customer[keyPath: k2] = String(user[keyPath: k1])
+
+print(customer)
 
 print("End")
