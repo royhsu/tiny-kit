@@ -31,8 +31,37 @@ public protocol Storage {
     
 }
 
-public protocol NewStorage: Collection
-where Element == (key: Key, value: Value) {
+public struct StorageChange<Key, Value>: Hashable where Key: Hashable {
+
+    public typealias Element = (key: Key, value: Value?)
+    
+    public let key: Key
+
+    public let value: Value?
+
+    public init(key: Key, value: Value?) {
+
+        self.key = key
+
+        self.value = value
+
+    }
+    
+    public static func == (
+        lhs: StorageChange<Key, Value>,
+        rhs: StorageChange<Key, Value>
+    )
+    -> Bool { return lhs.key == rhs.key }
+
+    public func hash(into hasher: inout Hasher) {
+
+        hasher.combine(key.hashValue)
+
+    }
+
+}
+
+public protocol NewStorage: Collection where Element == (key: Key, value: Value) {
 
     associatedtype Key: Hashable
     
@@ -44,7 +73,17 @@ where Element == (key: Key, value: Value) {
 
 public protocol MutableStorage: NewStorage {
     
+    associatedtype Changes: Collection
+    where Changes.Element == StorageChange<Key, Value>
+    
+    var changes: Observable< Changes > { get }
+    
     subscript(key: Key) -> Value? { get set }
+    
+    mutating func merge<S>(_ other: S)
+    where
+        S: Sequence,
+        S.Element == (key: Key, value: Value?)
     
 }
 

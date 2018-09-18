@@ -81,16 +81,31 @@ where Key: Hashable & Comparable {
     
 }
 
-public struct NewMemoryCache<Key, Value>: MutableStorage
-where Key: Hashable {
+public struct NewMemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionaryLiteral where Key: Hashable {
     
     public typealias Storage = Dictionary<Key, Value>
     
     public typealias Element = Storage.Element
     
+    public typealias Change = StorageChange<Key, Value>
+    
+    public typealias Changes = Set<Change>
+    
     public typealias Index = Storage.Index
     
-    private var _storage = Storage()
+    private var _storage: Storage
+    
+    public init(dictionaryLiteral elements: (Key, Value)...) {
+     
+        self._storage = Storage(uniqueKeysWithValues: elements)
+        
+        changes.value = Set(
+            elements.map(StorageChange.init)
+        )
+        
+    }
+    
+    public let changes = Observable<Changes>()
     
     public var startIndex: Index { return _storage.startIndex }
     
@@ -102,10 +117,75 @@ where Key: Hashable {
         
         get { return _storage[key] }
      
-        set { _storage[key] = newValue }
+        set {
+            
+            _storage[key] = newValue
+            
+            changes.value = [
+                Change(
+                    key: key,
+                    value: newValue
+                )
+            ]
+            
+        }
         
     }
     
     public subscript(position: Index) -> Element { return _storage[position] }
+    
+    public mutating func merge<S>(_ other: S)
+    where
+        S: Sequence,
+        S.Element == (key: Key, value: Value?) {
+        
+        var mergingElements: [ (Key, Value) ] = []
+        
+        var removingKeys: [Key] = []
+            
+        var updatingElements: [ (key: Key, value: Value) ] = []
+        
+        for element in other {
+            
+            let key = element.key
+            
+            if let newValue = element.value {
+                
+                mergingElements.append(
+                    (key, newValue)
+                )
+                
+                updatingElements.append(
+                    (key, newValue)
+                )
+                
+            }
+            else {
+                
+                if let existingValue = self[key] {
+                    
+                    updatingElements.append(
+                        (key, existingValue)
+                    )
+                    
+                }
+                else { removingKeys.append(key) }
+                
+            }
+            
+        }
+        
+        removingKeys.forEach { self._storage.removeValue(forKey: $0) }
+
+        _storage.merge(
+            mergingElements,
+            uniquingKeysWith: { _, new in new }
+        )
+        
+        changes.value = Set(
+            updatingElements.map(StorageChange.init)
+        )
+        
+    }
     
 }

@@ -45,55 +45,84 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
-    internal final func testSubscribeKeyDiff() {
+    internal final func testSubscribeChanges() {
         
-        let promise = expectation(description: "Should get notified about indices changes.")
+        let promise = expectation(description: "Get notified about changes.")
         
-        let cache = MemoryCache<Int, String>()
+        var cache: NewMemoryCache = [
+            "existing": "value",
+            "replacing": "current value"
+        ]
         
-        var storage = AnyStorage(cache)
+        let changes = cache.changes
         
-        storage[3] = "Existing value"
-        
-        let subscription = storage.keyDiff.subscribe { event in
-            
+        let subscription = cache.changes.subscribe { event in
+
             promise.fulfill()
+
+            let changes = event.currentValue
             
-            let indices = event.currentValue
+            let existingValueChange = changes?.first { $0.key == "existing" }
             
-            XCTAssert(
-                indices?.contains(0) == true
-            )
+            XCTAssertNil(existingValueChange)
             
-            // There is not existing value for key 2. Should not be included in changed indices.
-            XCTAssert(
-                indices?.contains(2) == false
-            )
+            let newValueChange = changes?.first { $0.key == "new" }
             
-            // There is an existing value for key 3.
-            XCTAssert(
-                indices?.contains(3) == true
-            )
+            let replaceValueChange = changes?.first { $0.key == "replacing" }
+            
+            XCTAssertNotNil(replaceValueChange)
+            
+            XCTAssertNotNil(newValueChange)
+            
+            let nilValueChange = changes?.first { $0.key == "nil" }
+            
+            XCTAssertNil(nilValueChange)
             
         }
         
         subscriptions.append(subscription)
         
-        let pairs: [(key: Int, value: String?)] = [
-            (0, "Hello"),
-            (2, nil),
-            (3, nil)
+        let newElements: [ (String, String?) ] =  [
+            ("new", "value"),
+            ("replacing", "by value"),
+            ("nil", nil)
         ]
         
-        storage.setPairs(
-            AnyCollection(pairs)
+        cache.merge(newElements)
+        
+        XCTAssertEqual(
+            cache["new"],
+            "value"
         )
+        
+        XCTAssertEqual(
+            cache["existing"],
+            "value"
+        )
+    
+        XCTAssertEqual(
+            cache["replacing"],
+            "by value"
+        )
+        
+        XCTAssertNil(
+            cache["nil"]
+        )
+        
+        XCTAssertEqual(
+            cache.count,
+            3
+        )
+        
+        let isObservableKept = (cache.changes === changes)
+        
+        XCTAssert(isObservableKept)
         
         wait(
             for: [ promise ],
             timeout: 10.0
         )
-        
+
     }
     
 }
