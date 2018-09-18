@@ -61,6 +61,12 @@ public struct StorageChange<Key, Value>: Hashable where Key: Hashable {
 
 }
 
+public enum StorageError<Key>: Error {
+    
+    case valueNotFound(key: Key)
+    
+}
+
 public protocol NewStorage: Collection where Element == (key: Key, value: Value) {
 
     associatedtype Key: Hashable
@@ -68,6 +74,11 @@ public protocol NewStorage: Collection where Element == (key: Key, value: Value)
     associatedtype Value
     
     subscript(key: Key) -> Value? { get }
+    
+    func value(
+        forKey key: Key,
+        completion: (Result<Value>) -> Void
+    )
     
 }
 

@@ -157,4 +157,38 @@ internal final class MemoryCacheTests: XCTestCase {
 
     }
     
+    internal final func testGetValueAsynchronously() {
+        
+        let promise = expectation(description: "Get value asynchronously.")
+        
+        let cache: NewMemoryCache = [
+            0: "Hello"
+        ]
+        
+        cache.value(forKey: 0) { result in
+            
+            promise.fulfill()
+            
+            switch result {
+                
+            case let .success(value):
+                
+                XCTAssertEqual(
+                    value,
+                    "Hello"
+                )
+                
+            case let .failure(error): XCTFail("\(error)")
+                
+            }
+            
+        }
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
+    }
+    
 }

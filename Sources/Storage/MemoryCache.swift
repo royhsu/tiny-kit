@@ -134,6 +134,29 @@ public struct NewMemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionar
     
     public subscript(position: Index) -> Element { return _storage[position] }
     
+    public func value(
+        forKey key: Key,
+        completion: (Result<Value>) -> Void
+    ) {
+        
+        guard
+            let value = self[key]
+        else {
+            
+            let error: StorageError<Key> = .valueNotFound(key: key)
+            
+            return completion(
+                .failure(error)
+            )
+            
+        }
+        
+        completion(
+            .success(value)
+        )
+        
+    }
+    
     public mutating func merge<S>(_ other: S)
     where
         S: Sequence,
