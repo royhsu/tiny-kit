@@ -17,11 +17,38 @@ internal final class MemoryCacheTests: XCTestCase {
     
     internal final var subscriptions: [ObservableSubscription] = []
     
-    internal final func testGetterAndSetter() {
+    internal final func testInitialize() {
+        
+        let cache = NewMemoryCache<Int, String>()
+        
+        XCTAssert(cache.isEmpty)
+        
+    }
+    
+    internal final func testMutateSingleKeyAndValue() {
+        
+        let promise = expectation(description: "Get notified about changes.")
         
         var cache = NewMemoryCache<Int, String>()
-    
-        XCTAssert(cache.isEmpty)
+
+        subscriptions.append(
+            cache.changes.subscribe { event in
+                
+                promise.fulfill()
+                
+                let changes = event.currentValue
+                
+                XCTAssertEqual(
+                    changes?.count,
+                    1
+                )
+                
+                let valueChange = changes?.first { $0.key == 2 }
+                
+                XCTAssertNotNil(valueChange)
+                
+            }
+        )
         
         cache[2] = "Hello"
         
@@ -43,9 +70,14 @@ internal final class MemoryCacheTests: XCTestCase {
             "Hello"
         )
         
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
     }
     
-    internal final func testSubscribeChanges() {
+    internal final func testMutateMultipleKeysAndValues() {
         
         let promise = expectation(description: "Get notified about changes.")
         
