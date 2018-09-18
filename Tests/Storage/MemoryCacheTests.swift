@@ -19,35 +19,27 @@ internal final class MemoryCacheTests: XCTestCase {
     
     internal final func testGetterAndSetter() {
         
-        let cache = MemoryCache<Int, String>()
+        var cache = NewMemoryCache<Int, String>()
+    
+        XCTAssert(cache.isEmpty)
         
-        let storage = AnyStorage(cache)
-        
-        XCTAssert(storage.pairs.isEmpty)
-        
-        storage.setPairs(
-            AnyCollection(
-                [
-                    (key: 2, value: "Hello")
-                ]
-            )
-        )
+        cache[2] = "Hello"
         
         XCTAssertEqual(
-            storage.count,
+            cache.count,
             1
         )
         
         XCTAssertNil(
-            storage[0]
+            cache[0]
         )
         
         XCTAssertNil(
-            storage[1]
+            cache[1]
         )
         
         XCTAssertEqual(
-            storage[2],
+            cache[2],
             "Hello"
         )
         

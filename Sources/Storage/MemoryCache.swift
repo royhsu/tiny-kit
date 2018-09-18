@@ -23,7 +23,10 @@ where Key: Hashable & Comparable {
     
     /// Only accepting the first value for a key and ignoring the rest of values for the same key.
     /// The keyDiff will also notify changes including keys are set to nil.
-    public final func setPairs(_ pairs: AnyCollection< (key: Key, value: Value?) >) {
+    public final func setPairs(
+        _ pairs: AnyCollection< (key: Key, value: Value?) >,
+        options: ObservableValueOptions? = nil
+    ) {
         
         // Finding the keys contain existing values.
         let existingValueKeys = pairs
@@ -56,8 +59,53 @@ where Key: Hashable & Comparable {
             uniquingKeysWith: { first, _ in first }
         )
         
-        keyDiff.value = changingKeys
+        keyDiff.setValue(
+            changingKeys,
+            options: options
+        )
         
     }
+    
+    public func removeAll(options: ObservableValueOptions? = nil) {
+        
+        let removingKeys = Set(_storage.keys)
+        
+        _storage = [:]
+        
+        keyDiff.setValue(
+            removingKeys,
+            options: options
+        )
+        
+    }
+    
+}
+
+public struct NewMemoryCache<Key, Value>: MutableStorage
+where Key: Hashable {
+    
+    public typealias Storage = Dictionary<Key, Value>
+    
+    public typealias Element = Storage.Element
+    
+    public typealias Index = Storage.Index
+    
+    private var _storage = Storage()
+    
+    public var startIndex: Index { return _storage.startIndex }
+    
+    public var endIndex: Index { return _storage.endIndex }
+    
+    public func index(after i: Index) -> Index { return _storage.index(after: i) }
+    
+    public subscript(key: Key) -> Value? {
+        
+        get { return _storage[key] }
+     
+        set { _storage[key] = newValue }
+        
+    }
+    
+    public subscript(position: Index) -> Element { return _storage[position] }
     
 }

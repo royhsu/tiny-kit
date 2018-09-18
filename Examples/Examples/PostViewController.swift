@@ -121,7 +121,7 @@ extension PostViewController: Navigation {
     
 }
 
-// MARK: - PostViewController
+// MARK: - ActionDispatcher
 
 extension PostViewController: ActionDispatcher {
     

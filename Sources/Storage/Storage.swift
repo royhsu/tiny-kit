@@ -10,30 +10,73 @@
 
 import TinyCore
 
+// TODO: should drop the indexDiff and conform to Observable instead.
 public protocol Storage {
     
     associatedtype Key: Hashable, Comparable
     
     associatedtype Value
     
+    // TODO: should provide a way to get the diff pairs.
     var keyDiff: Observable< Set<Key> > { get }
     
     var pairs: AnyCollection< (key: Key, value: Value) > { get }
     
-    func setPairs(_ pairs: AnyCollection< (key: Key, value: Value?) >)
+    func setPairs(
+        _ pairs: AnyCollection< (key: Key, value: Value?) >,
+        options: ObservableValueOptions?
+    )
+    
+    func removeAll(options: ObservableValueOptions?)
+    
+}
+
+public protocol NewStorage: Collection
+where Element == (key: Key, value: Value) {
+
+    associatedtype Key: Hashable
+    
+    associatedtype Value
+    
+    subscript(key: Key) -> Value? { get }
+    
+}
+
+public protocol MutableStorage: NewStorage {
+    
+    subscript(key: Key) -> Value? { get set }
+    
+}
+
+public extension NewStorage {
+    
+    public subscript(key: Key) -> Value? {
+        
+        guard
+            let element = first(
+                where: { $0.key == key }
+            )
+        else { return nil }
+        
+        return element.value
+        
+    }
     
 }
 
 public extension Storage where Key == Int {
     
+    // TODO: should define a better name. setIndexedValues
     public func setValues(
-        _ values: [Value?]
+        _ values: [Value?],
+        options: ObservableValueOptions? = nil
     ) {
         
         let pairs = values.enumerated().map { ($0.offset, $0.element) }
         
         setPairs(
-            AnyCollection(pairs)
+            AnyCollection(pairs),
+            options: options
         )
         
     }
@@ -54,7 +97,8 @@ public extension Storage where Key == Int {
                     [
                         (key, newValue)
                     ]
-                )
+                ),
+                options: nil
             )
             
         }
@@ -72,7 +116,13 @@ where Key: Hashable & Comparable {
     
     private let _pairs: () -> AnyCollection< (key: Key, value: Value) >
     
-    private let _setPairs: (AnyCollection< (key: Key, value: Value?) >) -> Void
+    private let _setPairs: (
+        _ pairs: AnyCollection< (key: Key, value: Value?) >,
+        _ options: ObservableValueOptions?
+    )
+    -> Void
+    
+    private let _removeAll: (ObservableValueOptions?) -> Void
 
     public init<S: Storage>(_ storage: S)
     where
@@ -85,16 +135,26 @@ where Key: Hashable & Comparable {
             
         self._setPairs = storage.setPairs
             
+        self._removeAll = storage.removeAll
+            
     }
-    
-    // MARK: Storage
     
     public var keyDiff: Observable< Set<Key> > { return _keyDiff() }
     
     public var pairs: AnyCollection< (key:Key, value: Value) > { return _pairs() }
     
     public func setPairs(
-        _ pairs: AnyCollection< (key: Key, value: Value?) >
-    ) { _setPairs(pairs) }
+        _ pairs: AnyCollection< (key: Key, value: Value?) >,
+        options: ObservableValueOptions? = nil
+    ) {
+        
+        _setPairs(
+            pairs,
+            options
+        )
+        
+    }
+    
+    public func removeAll(options: ObservableValueOptions? = nil) { _removeAll(options) }
     
 }
