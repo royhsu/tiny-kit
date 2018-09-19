@@ -110,8 +110,8 @@ public protocol Initializable {
     
 }
 
-public struct ConfigurableStorage<Key, Value>: Storage where Key: Hashable {
-    
+public class ConfigurableStorage<Key, Value>: Storage where Key: Hashable {
+
     public typealias Cache = MemoryCache<Key, Value>
 
     private typealias SecondaryStorage = AnyStorage<Key, Value>
@@ -123,6 +123,8 @@ public struct ConfigurableStorage<Key, Value>: Storage where Key: Hashable {
     private var primaryStorage = Cache()
     
     private var secondaryStorages: [SecondaryStorage] = []
+    
+    public init() { }
     
     public var startIndex: Index { return primaryStorage.startIndex }
     
@@ -137,14 +139,61 @@ public struct ConfigurableStorage<Key, Value>: Storage where Key: Hashable {
         completion: @escaping (Result<Value>) -> Void
     ) {
         
-        primaryStorage.value(
-            forKey: key,
-            completion: completion
-        )
+        var value: Value?
+        
+        let group = DispatchGroup()
+        
+        for storage in secondaryStorages {
+            
+            group.enter()
+            
+            storage.value(forKey: key) { result in
+        
+                defer { group.leave() }
+                
+                let hasValue = (value != nil)
+                
+                if hasValue { return }
+                
+                guard
+                    let firstValue = try? result.resolve()
+                else { return }
+                
+                value = firstValue
+                
+            }
+            
+            let hasValue = (value != nil)
+            
+            if hasValue { break }
+            
+        }
+        
+        group.notify(
+            queue: .global(qos: .background)
+        ) {
+            
+            if let value = value {
+                
+                completion(
+                    .success(value)
+                )
+                
+                return
+                
+            }
+                
+            let error: StorageError<Key> = .valueNotFound(key: key)
+            
+            completion(
+                .failure(error)
+            )
+            
+        }
         
     }
     
-    public mutating func registerStorage<S>(_ storage: S)
+    public func registerStorage<S>(_ storage: S)
     where S: Storage, S.Key == Key, S.Value == Value {
         
         secondaryStorages.append(
@@ -153,7 +202,7 @@ public struct ConfigurableStorage<Key, Value>: Storage where Key: Hashable {
         
     }
     
-    public mutating func registerStorage<S>(_ storageType: S.Type)
+    public func registerStorage<S>(_ storageType: S.Type)
     where
         S: Storage & Initializable,
         S.Key == Key,

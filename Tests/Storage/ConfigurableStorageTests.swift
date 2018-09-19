@@ -22,20 +22,20 @@ internal final class ConfigurableStorageTests: XCTestCase {
 
     }
     
-    internal final func test() {
+    internal final func testGetValueFromSecondaryStorages() {
         
         let firstValuePromise = expectation(description: "Get the first value from the storage 1.")
         
         let secondValuePromise = expectation(description: "Get the second value from the storage 2.")
         
-        var storage = ConfigurableStorage<String, String>()
+        let storage = ConfigurableStorage<String, String>()
         
         let storage1: MemoryCache = [
-            "first": "first value from storage 1",
-            "second": "second value from storage 1"
+            "first": "first value from storage 1"
         ]
         
         let storage2: MemoryCache = [
+            "first": "first value from storage 2",
             "second": "second value from storage 2"
         ]
         
