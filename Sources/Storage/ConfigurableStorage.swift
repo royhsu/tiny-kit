@@ -12,9 +12,9 @@ import TinyCore
 
 public final class ConfigurableStorage<Key, Value>: Storage, Initializable where Key: Hashable {
     
-    public typealias Cache = MemoryCache<Key, Value>
-    
     private typealias SecondaryStorage = AnyStorage<Key, Value>
+    
+    public typealias Cache = MemoryCache<Key, Value>
     
     public typealias Element = Cache.Element
     
@@ -34,7 +34,7 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
     
     public final subscript(position: Index) -> Element { return cache[position] }
     
-    /// The storage will use the firstly returned value by secondary storages.
+    /// The storage will return the firstly returned value by secondary storages if the value does exist.
     /// The order of looking up a value is the same as the order of the secondary storage being added.
     /// The earlier has higher priority.
     public final func value(

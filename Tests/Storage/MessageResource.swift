@@ -22,7 +22,11 @@ internal struct MessageResource: Resource {
         completionHandler: @escaping (Result< FetchItemsPayload<Message> >) -> Void
     ) {
         
-        completionHandler(fetchItemsResult)
+        DispatchQueue.global(qos: .background).async {
+            
+            completionHandler(self.fetchItemsResult)
+        
+        }
         
     }
     

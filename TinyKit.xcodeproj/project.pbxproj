@@ -36,8 +36,8 @@
 		B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2202214B9D6F0078E946 /* PostTemplateConfiguration.swift */; };
 		B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2204214B9D8E0078E946 /* PostTemplate.swift */; };
 		B033F5C8214A106D001DDBA6 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C6214A1068001DDBA6 /* MemoryCacheTests.swift */; };
-		B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C9214A1C6A001DDBA6 /* APIManager.swift */; };
-		B033F5CD214A210E001DDBA6 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */; };
+		B033F5CA214A1C6A001DDBA6 /* RemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5C9214A1C6A001DDBA6 /* RemoteStorage.swift */; };
+		B033F5CD214A210E001DDBA6 /* RemoteStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5CB214A20BF001DDBA6 /* RemoteStorageTests.swift */; };
 		B033F5D0214A4E4E001DDBA6 /* MessageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5CE214A4E45001DDBA6 /* MessageResource.swift */; };
 		B033F5D2214A4E99001DDBA6 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5D1214A4E99001DDBA6 /* Resource.swift */; };
 		B033F5D4214A4F3C001DDBA6 /* FetchItemsPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5D3214A4F3C001DDBA6 /* FetchItemsPayload.swift */; };
@@ -109,8 +109,8 @@
 		B01D2202214B9D6F0078E946 /* PostTemplateConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplateConfiguration.swift; sourceTree = "<group>"; };
 		B01D2204214B9D8E0078E946 /* PostTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplate.swift; sourceTree = "<group>"; };
 		B033F5C6214A1068001DDBA6 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
-		B033F5C9214A1C6A001DDBA6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
+		B033F5C9214A1C6A001DDBA6 /* RemoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorage.swift; sourceTree = "<group>"; };
+		B033F5CB214A20BF001DDBA6 /* RemoteStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageTests.swift; sourceTree = "<group>"; };
 		B033F5CE214A4E45001DDBA6 /* MessageResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResource.swift; sourceTree = "<group>"; };
 		B033F5D1214A4E99001DDBA6 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		B033F5D3214A4F3C001DDBA6 /* FetchItemsPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchItemsPayload.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 				B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */,
 				B0652DC021492994009F8757 /* MemoryCache.swift */,
 				B0DEAF942152414C00E8E327 /* ConfigurableStorage.swift */,
-				B033F5C9214A1C6A001DDBA6 /* APIManager.swift */,
+				B033F5C9214A1C6A001DDBA6 /* RemoteStorage.swift */,
 				B033F5D1214A4E99001DDBA6 /* Resource.swift */,
 				B033F5D3214A4F3C001DDBA6 /* FetchItemsPayload.swift */,
 				B033F5D5214A4F64001DDBA6 /* Page.swift */,
@@ -298,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				B033F5C6214A1068001DDBA6 /* MemoryCacheTests.swift */,
-				B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */,
+				B033F5CB214A20BF001DDBA6 /* RemoteStorageTests.swift */,
 				B033F5CE214A4E45001DDBA6 /* MessageResource.swift */,
 				B0DEAF8B21520E3000E8E327 /* ConfigurableStorageTests.swift */,
 			);
@@ -476,7 +476,7 @@
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
 				B01D21ED214B67460078E946 /* Unique.swift in Sources */,
 				B0DEAF8A2151FB6A00E8E327 /* MutableStorage.swift in Sources */,
-				B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */,
+				B033F5CA214A1C6A001DDBA6 /* RemoteStorage.swift in Sources */,
 				B0DEAF932152413100E8E327 /* Initializable.swift in Sources */,
 				B033F5D4214A4F3C001DDBA6 /* FetchItemsPayload.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
@@ -501,7 +501,7 @@
 			files = (
 				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
 				B01D21FB214B9CB70078E946 /* Title2Label.swift in Sources */,
-				B033F5CD214A210E001DDBA6 /* APIManagerTests.swift in Sources */,
+				B033F5CD214A210E001DDBA6 /* RemoteStorageTests.swift in Sources */,
 				B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */,
 				B01D21F7214B90050078E946 /* XCTUnwrapped.swift in Sources */,
 				B01D21F3214B8D420078E946 /* ConfigurableTemplateTests.swift in Sources */,
