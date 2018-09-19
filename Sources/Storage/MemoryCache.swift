@@ -38,6 +38,10 @@ public struct MemoryCache<Key, Value>: MutableStorage, Initializable, Expressibl
     
     public let changes = Observable<Changes>()
     
+    private var _isLoaded = false
+
+    public var isLoaded: Bool { return _isLoaded }
+    
     public var startIndex: Index { return _storage.startIndex }
     
     public var endIndex: Index { return _storage.endIndex }
@@ -87,6 +91,8 @@ public struct MemoryCache<Key, Value>: MutableStorage, Initializable, Expressibl
         )
         
     }
+    
+    public mutating func load() { _isLoaded = true }
     
     public mutating func merge<S>(
         _ other: S,

@@ -12,7 +12,7 @@ import TinyCore
 
 public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
-    public typealias Change = StorageChange<Int, Value>
+    public typealias Change = StorageChange<Int, Item>
     
     public typealias Changes = Set<Change>
     
@@ -28,7 +28,9 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     private final var cache = Cache()
 
-    private final var isLoading = false
+    private final var _isLoaded = false
+    
+    public final var isLoaded: Bool { return _isLoaded }
     
     public init<R: Resource>(resource: R) where R.Item == Item { self.resource = AnyResource(resource) }
 
@@ -56,13 +58,23 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
             
         }
         
-        if isLoading { return }
+    }
+    
+    public final func removeAll() { cache = [:] }
+    
+    public final subscript(key: Int) -> Item? {
         
-        isLoading = true
+        get { return cache[key] }
+        
+        set { cache[key] = newValue }
+        
+    }
+    
+    public final func load() {
         
         resource.fetchItems(page: .first) { [weak self] result in
             
-            defer { self?.isLoading = false }
+            defer { self?._isLoaded = true }
             
             guard
                 let self = self,
@@ -73,33 +85,23 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
                 payload.items.enumerated().map { $0 }
             )
             
-            if let value = self[key] {
-            
-                completion(
-                    .success(value)
-                )
-                
-                return
-                
-            }
-            
-            let error: StorageError<Int> = .valueNotFound(key: key)
-            
-            completion(
-                .failure(error)
-            )
+//            if let value = self[key] {
+//
+//                completion(
+//                    .success(value)
+//                )
+//
+//                return
+//
+//            }
+//
+//            let error: StorageError<Int> = .valueNotFound(key: key)
+//
+//            completion(
+//                .failure(error)
+//            )
             
         }
-        
-    }
-    
-    public final func removeAll() { cache = [:] }
-    
-    public final subscript(key: Int) -> Item? {
-        
-        get { return cache[key] }
-        
-        set { cache[key] = newValue }
         
     }
     

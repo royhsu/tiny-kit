@@ -12,9 +12,12 @@ import TinyCore
 
 public final class ConfigurableStorage<Key, Value>: Storage, Initializable where Key: Hashable {
     
-    private typealias SecondaryStorage = AnyStorage<Key, Value>
+    // TODO: need a AnyMutableStorage type erasure?
+    public typealias SecondaryStorage = AnyStorage<Key, Value>
     
     public typealias Cache = MemoryCache<Key, Value>
+
+    public typealias Changes = Cache.Changes
     
     public typealias Element = Cache.Element
     
@@ -31,6 +34,10 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
     public final var endIndex: Index { return cache.endIndex }
     
     public final func index(after i: Index) -> Index { return cache.index(after: i) }
+    
+    public final var changes: Observable<Changes> { return cache.changes }
+    
+    public final var isLoaded: Bool { fatalError("Not implemented.") }
     
     public final subscript(position: Index) -> Element { return cache[position] }
     
@@ -96,30 +103,37 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
         
     }
     
+    public final func load() { }
+    
     public final func registerSecondaryStorage<S>(_ storage: S)
     where
-    S: Storage,
-    S.Key == Key,
-    S.Value == Value {
+        S: Storage,
+        S.Key == Key,
+        S.Value == Value,
+        S.Changes == Changes,
+        S.Changes == SecondaryStorage.Changes {
         
-        secondaryStorages.append(
-            AnyStorage(storage)
-        )
-            
+        fatalError("Not implemented.")
+//        secondaryStorages.append(
+//            AnyStorage(storage)
+//        )
+        
     }
     
     public final func registerSecondaryStorage<S>(_ storageType: S.Type)
     where
-    S: Storage & Initializable,
-    S.Key == Key,
-    S.Value == Value {
+        S: Storage & Initializable,
+        S.Key == Key,
+        S.Value == Value,
+        S.Changes == Changes {
         
-        let storage = S.init()
+        fatalError("Not implemented.")
+//        let storage = S.init()
+//
+//        secondaryStorages.append(
+//            AnyStorage(storage)
+//        )
         
-        secondaryStorages.append(
-            AnyStorage(storage)
-        )
-            
     }
     
 }

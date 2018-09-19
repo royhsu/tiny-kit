@@ -16,6 +16,10 @@ public protocol Storage: Collection where Element == (key: Key, value: Value) {
     
     associatedtype Value
     
+    associatedtype Changes: Collection where Changes.Element == StorageChange<Key, Value>
+    
+    var changes: Observable<Changes> { get }
+    
     subscript(key: Key) -> Value? { get }
     
     func value(
@@ -59,7 +63,13 @@ public struct AnyStorage<Key, Value>: Storage where Key: Hashable {
     
     public typealias Index = Collection.Index
     
+    public typealias Change = StorageChange<Key, Value>
+    
+    public typealias Changes = AnyCollection<Change>
+    
     private let _collection: Collection
+    
+    private let _changes: () -> Observable<Changes>
     
     private let _value: (Key) -> Value?
     
@@ -70,9 +80,11 @@ public struct AnyStorage<Key, Value>: Storage where Key: Hashable {
     -> Void
     
     public init<S: Storage>(_ storage: S)
-    where S.Key == Key, S.Value == Value {
+    where S.Key == Key, S.Value == Value, S.Changes == Changes {
         
         self._collection = AnyCollection(storage)
+        
+        self._changes = { storage.changes }
         
         self._value = storage.value
         
@@ -85,6 +97,8 @@ public struct AnyStorage<Key, Value>: Storage where Key: Hashable {
     public var endIndex: Index { return _collection.endIndex }
     
     public func index(after i: Index) -> Index { return _collection.index(after: i) }
+    
+    public var changes: Observable<Changes> { return _changes() }
     
     public subscript(key: Key) -> Value? { return _value(key) }
     

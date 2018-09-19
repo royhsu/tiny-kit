@@ -12,9 +12,9 @@ import TinyCore
 
 public protocol MutableStorage: Storage {
     
-    associatedtype Changes: Collection where Changes.Element == StorageChange<Key, Value>
+    var isLoaded: Bool { get }
     
-    var changes: Observable<Changes> { get }
+    mutating func load()
     
     subscript(key: Key) -> Value? { get set }
     
@@ -22,6 +22,8 @@ public protocol MutableStorage: Storage {
         _ other: S,
         options: ObservableValueOptions
     )
-    where S: Sequence, S.Element == (key: Key, value: Value?)
+    where
+        S: Sequence,
+        S.Element == (key: Key, value: Value?)
     
 }
