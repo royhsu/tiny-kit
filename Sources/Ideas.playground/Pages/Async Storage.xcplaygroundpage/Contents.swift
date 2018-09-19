@@ -8,42 +8,127 @@ enum StorageError: Error {
     
 }
 
-struct ConfigurableStorage {
+class StorageOperation: Operation {
+    
+    enum OperationError: Error {
+        
+        case cancelled
+        
+    }
+    
+    let key: String
+    
+    let storage: NewMemoryCache<String, String>
+    
+    private(set) var result: Result<String>?
+    
+    private var _isExecuting = false
+    
+    override var isExecuting: Bool { return _isExecuting }
+    
+    override var isFinished: Bool { return result != nil }
+    
+    override var isAsynchronous: Bool { return true }
+    
+    init(
+        key: String,
+        storage: NewMemoryCache<String, String>
+    ) {
+        
+        self.key = key
+        
+        self.storage = storage
+        
+    }
+    
+    override func start() { main() }
+    
+    override func main() {
+        
+        if isCancelled {
+
+            result = .failure(OperationError.cancelled)
+
+            return
+
+        }
+        
+        _isExecuting = true
+        
+        storage.value(forKey: key) { result in
+            
+            self._isExecuting = false
+            
+            if self.isCancelled {
+                
+                self.result = .failure(OperationError.cancelled)
+                
+                return
+                
+            }
+            
+            self.result = result
+            
+        }
+        
+    }
+    
+}
+
+class ConfigurableStorage {
     
     var storages: [NewMemoryCache<String, String>] = []
+    
+    init(storages: [NewMemoryCache<String, String>]) { self.storages = storages }
+    
+    private lazy var queue: OperationQueue = {
+        
+        let queue = OperationQueue()
+        
+        queue.maxConcurrentOperationCount = 1
+        
+        return queue
+        
+    }()
     
     func value(
         forKey key: String,
         completion: @escaping (Result<String>) -> Void
     ) {
         
-        let storages = self.storages
-        
-        DispatchQueue.global().async {
+        let operations: [StorageOperation] = storages.map { storage in
             
-            for index in 0..<storages.count {
+            let operation = StorageOperation(
+                key: key,
+                storage: storage
+            )
+            
+            operation.completionBlock = {
                 
-                let storage = storages[index]
-                
-                if let value = storage[key] {
+                switch operation.result {
+                    
+                case let .success(value)?:
+                    
+                    self.queue.cancelAllOperations()
                     
                     completion(
                         .success(value)
                     )
                     
-                    return
+                default: break
                     
                 }
                 
             }
             
-            completion(
-                .failure(
-                    StorageError.valueNotFound(key: key)
-                )
-            )
+            return operation
             
         }
+        
+        queue.addOperations(
+            operations,
+            waitUntilFinished: false
+        )
         
     }
     

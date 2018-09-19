@@ -21,7 +21,7 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
         reducer = { storage in
             
             return PostSectionCollection(
-                sections: storage.pairs.map { pair in
+                sections: storage.map { pair in
                     
                     switch pair.value {
                         

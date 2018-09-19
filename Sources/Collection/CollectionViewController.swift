@@ -14,7 +14,7 @@ import TinyCore
 open class CollectionViewController<S, C>: ViewController
 where
     C: SectionCollection,
-    S: Storage {
+    S: MutableStorage {
     
     public typealias Reducer = (S) -> C
 
@@ -74,7 +74,7 @@ where
                 let storage = storage
             else { return }
             
-            let subscription = storage.keyDiff.subscribe { _ in self.reduceStorage() }
+            let subscription = storage.changes.subscribe { _ in self.reduceStorage() }
             
             subscriptions = [ subscription ]
             

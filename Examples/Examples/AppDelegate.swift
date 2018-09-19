@@ -44,16 +44,16 @@ extension AppDelegate: UIApplicationDelegate {
         
 //        storage.load()
         
-        viewController.storage?.setValues(
+        viewController.storage?.merge(
             [
-                .post(
+                0: .post(
                     Post(
                         id: 1,
                         title: "Awesome Template",
                         body: "This is an example."
                     )
                 ),
-                .comment(
+                1: .comment(
                     Comment(
                         username: "Roy",
                         text: "Hi"
