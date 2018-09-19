@@ -39,9 +39,9 @@ internal final class ConfigurableStorageTests: XCTestCase {
             "second": "second value from storage 2"
         ]
         
-        storage.registerStorage(storage1)
+        storage.registerSecondaryStorage(storage1)
         
-        storage.registerStorage(storage2)
+        storage.registerSecondaryStorage(storage2)
         
         storage.value(forKey: "first") { result in
             

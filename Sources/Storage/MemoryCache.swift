@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public struct MemoryCache<Key, Value>: Initializable, MutableStorage, ExpressibleByDictionaryLiteral where Key: Hashable {
+public struct MemoryCache<Key, Value>: MutableStorage, Initializable, ExpressibleByDictionaryLiteral where Key: Hashable {
     
     public typealias Storage = Dictionary<Key, Value>
     

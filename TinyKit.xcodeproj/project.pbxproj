@@ -51,6 +51,8 @@
 		B0DEAF8A2151FB6A00E8E327 /* MutableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */; };
 		B0DEAF90215210E100E8E327 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
 		B0DEAF91215210E500E8E327 /* ConfigurableStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF8B21520E3000E8E327 /* ConfigurableStorageTests.swift */; };
+		B0DEAF932152413100E8E327 /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF922152413100E8E327 /* Initializable.swift */; };
+		B0DEAF952152414C00E8E327 /* ConfigurableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF942152414C00E8E327 /* ConfigurableStorage.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* TableViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
@@ -122,6 +124,8 @@
 		B0DEAF872151FB2500E8E327 /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
 		B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableStorage.swift; sourceTree = "<group>"; };
 		B0DEAF8B21520E3000E8E327 /* ConfigurableStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableStorageTests.swift; sourceTree = "<group>"; };
+		B0DEAF922152413100E8E327 /* Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
+		B0DEAF942152414C00E8E327 /* ConfigurableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableStorage.swift; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F80A10214F55390052ACA3 /* TableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
 				B01D21E8214B645D0078E946 /* View.swift */,
 				B01D21E6214B643C0078E946 /* ViewController.swift */,
+				B0DEAF922152413100E8E327 /* Initializable.swift */,
 				B0652DB72148B118009F8757 /* Ideas.playground */,
 			);
 			path = Sources;
@@ -280,6 +285,7 @@
 				B0652DB92149244D009F8757 /* Storage.swift */,
 				B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */,
 				B0652DC021492994009F8757 /* MemoryCache.swift */,
+				B0DEAF942152414C00E8E327 /* ConfigurableStorage.swift */,
 				B033F5C9214A1C6A001DDBA6 /* APIManager.swift */,
 				B033F5D1214A4E99001DDBA6 /* Resource.swift */,
 				B033F5D3214A4F3C001DDBA6 /* FetchItemsPayload.swift */,
@@ -453,6 +459,7 @@
 			files = (
 				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
 				B01D21E5214B64270078E946 /* Template.swift in Sources */,
+				B0DEAF952152414C00E8E327 /* ConfigurableStorage.swift in Sources */,
 				B0F80A21214FD98B0052ACA3 /* Actionable.swift in Sources */,
 				B0F80A1D214FD9540052ACA3 /* Action.swift in Sources */,
 				B0F80A1F214FD96A0052ACA3 /* ActionDispatcher.swift in Sources */,
@@ -470,6 +477,7 @@
 				B01D21ED214B67460078E946 /* Unique.swift in Sources */,
 				B0DEAF8A2151FB6A00E8E327 /* MutableStorage.swift in Sources */,
 				B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */,
+				B0DEAF932152413100E8E327 /* Initializable.swift in Sources */,
 				B033F5D4214A4F3C001DDBA6 /* FetchItemsPayload.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
