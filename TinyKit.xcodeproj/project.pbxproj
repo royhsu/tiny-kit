@@ -44,12 +44,13 @@
 		B033F5D6214A4F64001DDBA6 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F5D5214A4F64001DDBA6 /* Page.swift */; };
 		B0652DB52148AB67009F8757 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0652DB42148AB67009F8757 /* TinyCore.framework */; };
 		B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
-		B0652DBA2149244D009F8757 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
 		B0652DC121492994009F8757 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC021492994009F8757 /* MemoryCache.swift */; };
 		B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* CollectionViewController.swift */; };
 		B0DEAF862151FAA200E8E327 /* StorageChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF852151FAA200E8E327 /* StorageChange.swift */; };
 		B0DEAF882151FB2500E8E327 /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF872151FB2500E8E327 /* StorageError.swift */; };
 		B0DEAF8A2151FB6A00E8E327 /* MutableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */; };
+		B0DEAF90215210E100E8E327 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
+		B0DEAF91215210E500E8E327 /* ConfigurableStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF8B21520E3000E8E327 /* ConfigurableStorageTests.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* TableViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
@@ -120,6 +121,7 @@
 		B0DEAF852151FAA200E8E327 /* StorageChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageChange.swift; sourceTree = "<group>"; };
 		B0DEAF872151FB2500E8E327 /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
 		B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableStorage.swift; sourceTree = "<group>"; };
+		B0DEAF8B21520E3000E8E327 /* ConfigurableStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableStorageTests.swift; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F80A10214F55390052ACA3 /* TableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				B033F5C6214A1068001DDBA6 /* MemoryCacheTests.swift */,
 				B033F5CB214A20BF001DDBA6 /* APIManagerTests.swift */,
 				B033F5CE214A4E45001DDBA6 /* MessageResource.swift */,
+				B0DEAF8B21520E3000E8E327 /* ConfigurableStorageTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -471,8 +474,8 @@
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */,
+				B0DEAF90215210E100E8E327 /* Storage.swift in Sources */,
 				B0DEAF862151FAA200E8E327 /* StorageChange.swift in Sources */,
-				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
 				B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */,
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,
 				B0F80A1A214F5A650052ACA3 /* TableView.swift in Sources */,
@@ -500,6 +503,7 @@
 				B01D21FF214B9D320078E946 /* Post.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
+				B0DEAF91215210E500E8E327 /* ConfigurableStorageTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
 				B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */,
 				B033F5C8214A106D001DDBA6 /* MemoryCacheTests.swift in Sources */,

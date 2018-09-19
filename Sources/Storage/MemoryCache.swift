@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public struct MemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionaryLiteral where Key: Hashable {
+public struct MemoryCache<Key, Value>: Initializable, MutableStorage, ExpressibleByDictionaryLiteral where Key: Hashable {
     
     public typealias Storage = Dictionary<Key, Value>
     
@@ -23,6 +23,8 @@ public struct MemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionaryLi
     public typealias Index = Storage.Index
     
     private var _storage: Storage
+    
+    public init() { self._storage = [:] }
     
     public init(dictionaryLiteral elements: (Key, Value)...) {
      
@@ -65,7 +67,7 @@ public struct MemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionaryLi
     
     public func value(
         forKey key: Key,
-        completion: (Result<Value>) -> Void
+        completion: @escaping (Result<Value>) -> Void
     ) {
         
         guard
