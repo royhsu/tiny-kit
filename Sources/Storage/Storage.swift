@@ -144,6 +144,15 @@ public struct ConfigurableStorage<Key, Value>: Storage where Key: Hashable {
         
     }
     
+    public mutating func registerStorage<S>(_ storage: S)
+    where S: Storage, S.Key == Key, S.Value == Value {
+        
+        secondaryStorages.append(
+            AnyStorage(storage)
+        )
+        
+    }
+    
     public mutating func registerStorage<S>(_ storageType: S.Type)
     where
         S: Storage & Initializable,

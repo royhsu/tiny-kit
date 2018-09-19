@@ -24,14 +24,68 @@ internal final class ConfigurableStorageTests: XCTestCase {
     
     internal final func test() {
         
-        let promise = expectation(description: "Get value from the callback.")
+        let firstValuePromise = expectation(description: "Get the first value from the storage 1.")
+        
+        let secondValuePromise = expectation(description: "Get the second value from the storage 2.")
         
         var storage = ConfigurableStorage<String, String>()
         
-        storage.registerStorage(MemoryCache.self)
+        let storage1: MemoryCache = [
+            "first": "first value from storage 1",
+            "second": "second value from storage 1"
+        ]
+        
+        let storage2: MemoryCache = [
+            "second": "second value from storage 2"
+        ]
+        
+        storage.registerStorage(storage1)
+        
+        storage.registerStorage(storage2)
+        
+        storage.value(forKey: "first") { result in
+            
+            firstValuePromise.fulfill()
+            
+            switch result {
+                
+            case let .success(value):
+                
+                XCTAssertEqual(
+                    value,
+                    "first value from storage 1"
+                )
+            
+            case let .failure(error): XCTFail("\(error)")
+                
+            }
+            
+        }
+        
+        storage.value(forKey: "second") { result in
+            
+            secondValuePromise.fulfill()
+            
+            switch result {
+                
+            case let .success(value):
+                
+                XCTAssertEqual(
+                    value,
+                    "second value from storage 2"
+                )
+                
+            case let .failure(error): XCTFail("\(error)")
+                
+            }
+            
+        }
         
         wait(
-            for: [ promise ],
+            for: [
+                firstValuePromise,
+                secondValuePromise
+            ],
             timeout: 10.0
         )
         
