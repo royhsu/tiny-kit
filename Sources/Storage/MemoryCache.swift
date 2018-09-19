@@ -10,78 +10,7 @@
 
 import TinyCore
 
-public final class MemoryCache<Key, Value>: Storage
-where Key: Hashable & Comparable {
-    
-    private final var _storage: [Key: Value] = [:]
-    
-    public final let keyDiff = Observable< Set<Key> >()
-    
-    public init() { }
-    
-    public final var pairs: AnyCollection< (key: Key, value: Value) > { return AnyCollection(_storage.lazy) }
-    
-    /// Only accepting the first value for a key and ignoring the rest of values for the same key.
-    /// The keyDiff will also notify changes including keys are set to nil.
-    public final func setPairs(
-        _ pairs: AnyCollection< (key: Key, value: Value?) >,
-        options: ObservableValueOptions? = nil
-    ) {
-        
-        // Finding the keys contain existing values.
-        let existingValueKeys = pairs
-            .map { $0.key }
-            .filter { self._storage[$0] != nil }
-        
-        var changingKeys = Set(existingValueKeys)
-        
-        // Filtering out the updating pairs which must contain values.
-        let updatingPairs: [(key: Key, value: Value)] = pairs
-            .map { pair -> (Key, Value)? in
-            
-                let key = pair.key
-                
-                if let value = pair.value {
-                    
-                    changingKeys.insert(key)
-                    
-                    return (key, value)
-                    
-                }
-                
-                return nil
-                
-            }
-            .compactMap { $0 }
-
-        _storage = Dictionary(
-            updatingPairs,
-            uniquingKeysWith: { first, _ in first }
-        )
-        
-        keyDiff.setValue(
-            changingKeys,
-            options: options
-        )
-        
-    }
-    
-    public func removeAll(options: ObservableValueOptions? = nil) {
-        
-        let removingKeys = Set(_storage.keys)
-        
-        _storage = [:]
-        
-        keyDiff.setValue(
-            removingKeys,
-            options: options
-        )
-        
-    }
-    
-}
-
-public struct NewMemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionaryLiteral where Key: Hashable {
+public struct MemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionaryLiteral where Key: Hashable {
     
     public typealias Storage = Dictionary<Key, Value>
     
@@ -157,10 +86,11 @@ public struct NewMemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionar
         
     }
     
-    public mutating func merge<S>(_ other: S)
-    where
-        S: Sequence,
-        S.Element == (key: Key, value: Value?) {
+    public mutating func merge<S>(
+        _ other: S,
+        options: ObservableValueOptions = []
+    )
+    where S: Sequence, S.Element == (key: Key, value: Value?) {
         
         var mergingElements: [ (Key, Value) ] = []
         
@@ -205,8 +135,11 @@ public struct NewMemoryCache<Key, Value>: MutableStorage, ExpressibleByDictionar
             uniquingKeysWith: { _, new in new }
         )
         
-        changes.value = Set(
-            updatingElements.map(StorageChange.init)
+        changes.setValue(
+            Set(
+                updatingElements.map(StorageChange.init)
+            ),
+            options: options
         )
         
     }

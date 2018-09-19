@@ -47,6 +47,9 @@
 		B0652DBA2149244D009F8757 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DB92149244D009F8757 /* Storage.swift */; };
 		B0652DC121492994009F8757 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC021492994009F8757 /* MemoryCache.swift */; };
 		B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* CollectionViewController.swift */; };
+		B0DEAF862151FAA200E8E327 /* StorageChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF852151FAA200E8E327 /* StorageChange.swift */; };
+		B0DEAF882151FB2500E8E327 /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF872151FB2500E8E327 /* StorageError.swift */; };
+		B0DEAF8A2151FB6A00E8E327 /* MutableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* TableViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
@@ -114,6 +117,9 @@
 		B0652DB92149244D009F8757 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B0652DC021492994009F8757 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 		B0652DC2214966CC009F8757 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		B0DEAF852151FAA200E8E327 /* StorageChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageChange.swift; sourceTree = "<group>"; };
+		B0DEAF872151FB2500E8E327 /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
+		B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableStorage.swift; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F80A10214F55390052ACA3 /* TableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -267,7 +273,10 @@
 		B0652DB62148B0FF009F8757 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				B0DEAF852151FAA200E8E327 /* StorageChange.swift */,
+				B0DEAF872151FB2500E8E327 /* StorageError.swift */,
 				B0652DB92149244D009F8757 /* Storage.swift */,
+				B0DEAF892151FB6A00E8E327 /* MutableStorage.swift */,
 				B0652DC021492994009F8757 /* MemoryCache.swift */,
 				B033F5C9214A1C6A001DDBA6 /* APIManager.swift */,
 				B033F5D1214A4E99001DDBA6 /* Resource.swift */,
@@ -451,15 +460,18 @@
 				B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */,
 				B01D21EF214B7ACA0078E946 /* TemplateConfiguration.swift in Sources */,
 				B033F5D6214A4F64001DDBA6 /* Page.swift in Sources */,
+				B0DEAF882151FB2500E8E327 /* StorageError.swift in Sources */,
 				B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */,
 				B01D21E7214B643C0078E946 /* ViewController.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
 				B01D21ED214B67460078E946 /* Unique.swift in Sources */,
+				B0DEAF8A2151FB6A00E8E327 /* MutableStorage.swift in Sources */,
 				B033F5CA214A1C6A001DDBA6 /* APIManager.swift in Sources */,
 				B033F5D4214A4F3C001DDBA6 /* FetchItemsPayload.swift in Sources */,
 				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */,
+				B0DEAF862151FAA200E8E327 /* StorageChange.swift in Sources */,
 				B0652DBA2149244D009F8757 /* Storage.swift in Sources */,
 				B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */,
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,

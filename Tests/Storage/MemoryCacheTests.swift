@@ -19,7 +19,7 @@ internal final class MemoryCacheTests: XCTestCase {
     
     internal final func testInitialize() {
         
-        let cache = NewMemoryCache<Int, String>()
+        let cache = MemoryCache<Int, String>()
         
         XCTAssert(cache.isEmpty)
         
@@ -29,7 +29,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let promise = expectation(description: "Get notified about changes.")
         
-        var cache = NewMemoryCache<Int, String>()
+        var cache = MemoryCache<Int, String>()
 
         subscriptions.append(
             cache.changes.subscribe { event in
@@ -81,7 +81,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let promise = expectation(description: "Get notified about changes.")
         
-        var cache: NewMemoryCache = [
+        var cache: MemoryCache = [
             "existing": "value",
             "replacing": "current value"
         ]
@@ -161,7 +161,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let promise = expectation(description: "Get value asynchronously.")
         
-        let cache: NewMemoryCache = [
+        let cache: MemoryCache = [
             0: "Hello"
         ]
         

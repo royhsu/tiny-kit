@@ -21,7 +21,7 @@ public struct PostStorage: MutableStorage {
         
     }
 
-    public typealias Storage = NewMemoryCache<Int, Value>
+    public typealias Storage = MemoryCache<Int, Value>
     
     public typealias Element = Storage.Element
     
@@ -30,18 +30,8 @@ public struct PostStorage: MutableStorage {
     public typealias Changes = Set<Change>
     
     public typealias Index = Storage.Index
-    
-//    private final var storage: AnyStorage<Int, Value> {
-//
-//        return AnyStorage(_memoryStorage)
-//
-//    }
-    
-    private var _memoryStorage = NewMemoryCache<Int, Value>()
-    
-//    private final var _apiManager: APIManager<Post>?
-    
-//    private final var subscriptions: [ObservableSubscription] = []
+
+    private var _memoryStorage = MemoryCache<Int, Value>()
     
     public init(resource: PostResource? = nil) {
         
@@ -74,11 +64,7 @@ public struct PostStorage: MutableStorage {
         
     }
     
-    public func load() {
-        
-//        _apiManager?.load()
-        
-    }
+    public func load() { }
     
     public var startIndex: Index { return _memoryStorage.startIndex }
     
@@ -87,16 +73,6 @@ public struct PostStorage: MutableStorage {
     public func index(after i: Index) -> Index { return _memoryStorage.index(after: i) }
     
     public var changes: Observable<Changes> { return _memoryStorage.changes }
-    
-//    public final var pairs: AnyCollection< (key: Int, value: Value) > {
-//
-//        return AnyCollection(
-//            storage.pairs.sorted { $0.key < $1.key }
-//        )
-//
-//    }
-//
-//    public final func setPairs(_ pairs: AnyCollection< (key: Int, value: Value?) >) { storage.setPairs(pairs) }
     
     public subscript(key: Int) -> Value? {
         
@@ -119,7 +95,17 @@ public struct PostStorage: MutableStorage {
         
     }
     
-    public mutating func merge<S>(_ other: S)
-    where S : Sequence, S.Element == (key: Int, value: Value?) { _memoryStorage.merge(other) }
+    public mutating func merge<S>(
+        _ other: S,
+        options: ObservableValueOptions = []
+    )
+    where S : Sequence, S.Element == (key: Int, value: Value?) {
+        
+        _memoryStorage.merge(
+            other,
+            options: options
+        )
+        
+    }
     
 }
