@@ -17,10 +17,10 @@ internal final class RemoteStorageTests: XCTestCase {
 
     internal final var subscriptions: [ObservableSubscription] = []
 
-    internal final func testLoad() {
+    internal final func testGetItemsForKeyAsynchronously() {
 
-        let promise = expectation(description: "Load items from a given resource.")
-
+        let promise = expectation(description: "Load items from a given resource while there is no matched item for the key.")
+        
         let storage = RemoteStorage(
             resource: MessageResource(
                 fetchItemsResult: .success(
@@ -35,30 +35,39 @@ internal final class RemoteStorageTests: XCTestCase {
             )
         )
         
-        let subscription = storage.changes.subscribe { event in
-
+        storage.value(forKey: 1) { result in
+            
             promise.fulfill()
-
+            
+            switch result {
+                
+            case let .success(item):
+                
+                XCTAssertEqual(
+                    item,
+                    "World"
+                )
+                
+            case let .failure(error): XCTFail("\(error)")
+                
+            }
+            
             XCTAssertEqual(
                 storage.count,
                 2
             )
-
+            
             XCTAssertEqual(
                 storage[0],
                 "Hello"
             )
-
+            
             XCTAssertEqual(
                 storage[1],
                 "World"
             )
-
+            
         }
-
-        subscriptions.append(subscription)
-
-        storage.load()
 
         wait(
             for: [ promise ],

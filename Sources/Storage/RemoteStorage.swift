@@ -28,6 +28,8 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     private final var cache = Cache()
 
+    private final var isLoading = false
+    
     public init<R: Resource>(resource: R) where R.Item == Item { self.resource = AnyResource(resource) }
 
     public final var startIndex: Index { return cache.startIndex }
@@ -38,36 +40,60 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     public final subscript(position: Index) -> Element { return cache[position] }
     
+    /// The storage will try to fetch items from the given resource if there is no value related to the key.
     public final func value(
         forKey key: Int,
         completion: @escaping (Result<Item>) -> Void
     ) {
         
-        cache.value(
-            forKey: key,
-            completion: completion
-        )
+        if let value = cache[key] {
+            
+            completion(
+                .success(value)
+            )
+         
+            return
+            
+        }
         
-    }
-    
-    public final func removeAll() { cache = [:] }
-
-    public final func load() {
-
+        if isLoading { return }
+        
+        isLoading = true
+        
         resource.fetchItems(page: .first) { [weak self] result in
-
+            
+            defer { self?.isLoading = false }
+            
             guard
                 let self = self,
                 let payload = try? result.resolve()
             else { return }
-
+            
             self.cache.merge(
                 payload.items.enumerated().map { $0 }
             )
-
+            
+            if let value = self[key] {
+            
+                completion(
+                    .success(value)
+                )
+                
+                return
+                
+            }
+            
+            let error: StorageError<Int> = .valueNotFound(key: key)
+            
+            completion(
+                .failure(error)
+            )
+            
         }
-
+        
     }
+    
+    public final func removeAll() { cache = [:] }
     
     public final subscript(key: Int) -> Item? {
         
