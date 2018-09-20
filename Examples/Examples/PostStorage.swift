@@ -13,99 +13,115 @@ import TinyKit
 
 public struct PostStorage: MutableStorage {
     
+    public typealias Key = Int
+    
     public enum Value {
-        
+
         case post(Post)
-        
+
         case comment(Comment)
-        
+
     }
 
-    public typealias Storage = MemoryCache<Int, Value>
-    
-    public typealias Element = Storage.Element
+    public typealias Cache = MemoryCache<Int, Value>
     
     public typealias Change = StorageChange<Int, Value>
     
     public typealias Changes = Set<Change>
     
-    public typealias Index = Storage.Index
-
-    private var _memoryStorage = MemoryCache<Int, Value>()
+    public typealias Index = Cache.Index
     
-    public init(resource: PostResource? = nil) {
-        
-//        if let resource = resource {
-//
-//            let manager = APIManager(resource: resource)
-//
-//            let subscription = manager.keyDiff.subscribe { event in
-//
-//                let pairs: [ (key: Int, value: Value?) ] = manager.pairs.map { pair in
-//
-//                    return (
-//                        pair.key,
-//                        Value.post(pair.value)
-//                    )
-//
-//                }
-//
-//                self._memoryStorage.setPairs(
-//                    AnyCollection(pairs)
-//                )
-//
-//            }
-//
-//            subscriptions.append(subscription)
-//
-//            _apiManager = manager
-//
-//        }
-        
-    }
+    public typealias Element = Cache.Element
     
-    public func load() { }
+    public var startIndex: Index { return cache.startIndex }
     
-    public var startIndex: Index { return _memoryStorage.startIndex }
+    public var endIndex: Index { return cache.endIndex }
     
-    public var endIndex: Index { return _memoryStorage.endIndex }
+    public var changes: Observable<Changes> { return cache.changes }
     
-    public func index(after i: Index) -> Index { return _memoryStorage.index(after: i) }
+    public var isLoaded: Bool { return cache.isLoaded }
     
-    public var changes: Observable<Changes> { return _memoryStorage.changes }
+    private let cache: Cache
     
-    public subscript(key: Int) -> Value? {
-        
-        get { return _memoryStorage[key] }
-        
-        set { _memoryStorage[key] = newValue }
+    public init() { self.cache = Cache() }
+    
+    public func load(completion: LoadCompletion?) {
+       
+        cache.load { _ in
+            
+            let remote = RemoteStorage(
+                resource: PostResource(client: URLSession.shared)
+            )
+            
+            remote.load { result in
+                
+                let values: [ (Int, Value?) ] = remote.lazy.map {
+                    
+                    return (
+                        $0.key,
+                        .post($0.value)
+                    )
+                    
+                }
+                
+                self.cache.removeAll(options: .muteBroadcaster)
+                
+                self.cache.merge(
+                    AnySequence(values)
+                )
+                
+                remote.removeAll()
+                
+                completion?(result)
+                
+            }
+            
+        }
         
     }
     
-    public subscript(position: Index) -> Element { return _memoryStorage[position] }
+    public func index(after i: Index) -> Index { return cache.index(after: i) }
+    
+    public subscript(position: Index) -> Element { return cache[position] }
     
     public func value(
         forKey key: Int,
-        completion: (Result<PostStorage.Value>) -> Void) {
+        completion: @escaping (Result<Value>) -> Void
+    ) {
         
-        _memoryStorage.value(
+        cache.value(
             forKey: key,
             completion: completion
         )
         
     }
     
-    public mutating func merge<S>(
-        _ other: S,
+    public func setValue(
+        _ value: Value?,
+        forKey key: Int,
         options: ObservableValueOptions = []
-    )
-    where S : Sequence, S.Element == (key: Int, value: Value?) {
+    ) {
         
-        _memoryStorage.merge(
+        cache.setValue(
+            value,
+            forKey: key,
+            options: options
+        )
+        
+    }
+    
+    public func merge(
+        _ other: AnySequence< (key: Int, value: Value?) >,
+        options: ObservableValueOptions = []
+    ) {
+        
+        cache.merge(
             other,
             options: options
         )
         
     }
+    
+    public func removeAll(options: ObservableValueOptions) { cache.removeAll(options: options) }
     
 }

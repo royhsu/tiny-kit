@@ -32,35 +32,11 @@ extension AppDelegate: UIApplicationDelegate {
         
         viewController.layout = TableViewLayout()
         
-        let storage = PostStorage(
-//            resource: PostResource(client: URLSession.shared)
-        )
-        
-        viewController.storage = storage
+        viewController.storage = PostStorage()
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
         
         window.makeKeyAndVisible()
-        
-//        storage.load()
-        
-        viewController.storage?.merge(
-            [
-                0: .post(
-                    Post(
-                        id: 1,
-                        title: "Awesome Template",
-                        body: "This is an example."
-                    )
-                ),
-                1: .comment(
-                    Comment(
-                        username: "Roy",
-                        text: "Hi"
-                    )
-                )
-            ]
-        )
         
         return true
             

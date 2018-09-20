@@ -13,8 +13,8 @@ import TinyCore
 
 open class CollectionViewController<S, C>: ViewController
 where
-    C: SectionCollection,
-    S: MutableStorage {
+    S: MutableStorage,
+    C: SectionCollection {
     
     public typealias Reducer = (S) -> C
 
@@ -92,7 +92,7 @@ where
         
     }
     
-    public final override func viewDidLoad() {
+    open override func viewDidLoad() {
         
         super.viewDidLoad()
         
