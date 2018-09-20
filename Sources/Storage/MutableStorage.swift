@@ -23,8 +23,6 @@ public protocol MutableStorage: Storage {
         options: ObservableValueOptions
     )
     
-    subscript(key: Key) -> Value? { get set }
-    
     func merge(
         _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions
@@ -36,7 +34,7 @@ public extension MutableStorage {
     
     subscript(key: Key) -> Value? {
         
-        get { return self[key] }
+        get { return value(forKey: key) }
         
         set {
             
@@ -67,6 +65,10 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
     public typealias Changes = AnyCollection<Change>
     
     private let _storage: Collection
+   
+    private let _isLoaded: () -> Bool
+    
+    private let _load: () -> Void
     
     private let _setValue: (
         _ value: Value?,
@@ -74,10 +76,6 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
         _ options: ObservableValueOptions
     )
     -> Void
-    
-    private let _isLoaded: () -> Bool
-    
-    private let _load: () -> Void
     
     private let _merge: (
         _ other: AnySequence< (key: Key, value: Value?) >,
@@ -116,20 +114,6 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
     
     public func load() { _load() }
     
-    public func setValue(
-        _ value: Value?,
-        forKey key: Key,
-        options: ObservableValueOptions = []
-    ) {
-    
-        _setValue(
-            value,
-            key,
-            options
-        )
-        
-    }
-    
     public subscript(position: Index) -> Element { return _storage[position] }
     
     public func value(
@@ -140,6 +124,20 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
         _storage.value(
             forKey: key,
             completion: completion
+        )
+        
+    }
+    
+    public func setValue(
+        _ value: Value?,
+        forKey key: Key,
+        options: ObservableValueOptions = []
+    ) {
+        
+        _setValue(
+            value,
+            key,
+            options
         )
         
     }

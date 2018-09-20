@@ -114,7 +114,7 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
         S.Changes == Changes,
         S.Changes == SecondaryStorage.Changes {
         
-        fatalError("Not implemented.")
+//        fatalError("Not implemented.")
 //        secondaryStorages.append(
 //            AnyStorage(storage)
 //        )
@@ -129,7 +129,7 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
         S.Value == Value,
         S.Changes == Changes {
         
-        fatalError("Not implemented.")
+//        fatalError("Not implemented.")
 //        let storage = S.init()
 //
 //        secondaryStorages.append(

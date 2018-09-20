@@ -20,7 +20,7 @@ public protocol Storage: Collection where Element == (key: Key, value: Value) {
     
     var changes: Observable<Changes> { get }
     
-    subscript(key: Key) -> Value? { get }
+    func value(forKey key: Key) -> Value?
     
     func value(
         forKey key: Key,
@@ -33,7 +33,7 @@ public protocol Storage: Collection where Element == (key: Key, value: Value) {
 
 public extension Storage {
     
-    public subscript(key: Key) -> Value? {
+    public func value(forKey key: Key) -> Value? {
         
         guard
             let element = first(
@@ -49,7 +49,7 @@ public extension Storage {
 
 public extension Storage {
     
-    public func value(forKey key: Key) -> Value? { return self[key] }
+    public subscript(key: Key) -> Value? { return value(forKey: key) }
     
 }
 
