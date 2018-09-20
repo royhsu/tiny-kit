@@ -1,18 +1,18 @@
 //
-//  PostViewController.swift
+//  FeedViewController.swift
 //  Examples
 //
 //  Created by Roy Hsu on 2018/9/16.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostViewController
+// MARK: - FeedViewController
 
 import TinyCore
 import TinyKit
 import UIKit
 
-public final class PostViewController: CollectionViewController<PostStorage, PostSectionCollection> {
+public final class FeedViewController: CollectionViewController<FeedStorage, FeedSectionCollection> {
     
     public final override func viewDidLoad() {
         
@@ -20,7 +20,7 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
     
         reducer = { storage in
             
-            return PostSectionCollection(
+            return FeedSectionCollection(
                 sections: storage.map { pair in
                     
                     switch pair.value {
@@ -92,7 +92,7 @@ public final class PostViewController: CollectionViewController<PostStorage, Pos
 
 // MARK: - Navigation
 
-extension PostViewController: Navigation {
+extension FeedViewController: Navigation {
     
     public enum Destination {
         
@@ -123,7 +123,7 @@ extension PostViewController: Navigation {
 
 // MARK: - ActionDispatcher
 
-extension PostViewController: ActionDispatcher {
+extension FeedViewController: ActionDispatcher {
     
     public final func dispatch(action: Action) {
         

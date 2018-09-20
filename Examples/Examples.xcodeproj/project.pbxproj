@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01C62E92153D35C008B4026 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62E82153D35C008B4026 /* Feed.swift */; };
+		B01C62EB2153D384008B4026 /* FeedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EA2153D384008B4026 /* FeedError.swift */; };
+		B01C62ED2153D5D5008B4026 /* FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */; };
+		B01C62EF2153D5F3008B4026 /* Post+FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */; };
 		B0F809E7214E779D0052ACA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E6214E779D0052ACA3 /* AppDelegate.swift */; };
-		B0F809E9214E779D0052ACA3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E8214E779D0052ACA3 /* PostViewController.swift */; };
+		B0F809E9214E779D0052ACA3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E8214E779D0052ACA3 /* FeedViewController.swift */; };
 		B0F809EB214E779D0052ACA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F809EA214E779D0052ACA3 /* Assets.xcassets */; };
 		B0F809EE214E779D0052ACA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F809EC214E779D0052ACA3 /* LaunchScreen.storyboard */; };
 		B0F809F7214E77DE0052ACA3 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F809F6214E77DE0052ACA3 /* TinyCore.framework */; };
@@ -19,8 +23,8 @@
 		B0F80A01214E8ACD0052ACA3 /* PostTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A00214E8ACD0052ACA3 /* PostTemplate.swift */; };
 		B0F80A03214E8BD50052ACA3 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A02214E8BD50052ACA3 /* Comment.swift */; };
 		B0F80A05214E8C220052ACA3 /* CommentTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A04214E8C220052ACA3 /* CommentTemplate.swift */; };
-		B0F80A07214E8CE50052ACA3 /* PostSectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A06214E8CE50052ACA3 /* PostSectionCollection.swift */; };
-		B0F80A09214E8EAC0052ACA3 /* PostStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A08214E8EAC0052ACA3 /* PostStorage.swift */; };
+		B0F80A07214E8CE50052ACA3 /* FeedSectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A06214E8CE50052ACA3 /* FeedSectionCollection.swift */; };
+		B0F80A09214E8EAC0052ACA3 /* FeedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A08214E8EAC0052ACA3 /* FeedStorage.swift */; };
 		B0F80A0B214E9D880052ACA3 /* PostTemplateConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A0A214E9D880052ACA3 /* PostTemplateConfiguration.swift */; };
 		B0F80A0D214EA5AC0052ACA3 /* LargeTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A0C214EA5AC0052ACA3 /* LargeTitleLabel.swift */; };
 		B0F80A0F214F421F0052ACA3 /* PostResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A0E214F421F0052ACA3 /* PostResource.swift */; };
@@ -30,9 +34,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B01C62E82153D35C008B4026 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		B01C62EA2153D384008B4026 /* FeedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedError.swift; sourceTree = "<group>"; };
+		B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepresentable.swift; sourceTree = "<group>"; };
+		B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+FeedRepresentable.swift"; sourceTree = "<group>"; };
 		B0F809E3214E779D0052ACA3 /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F809E6214E779D0052ACA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0F809E8214E779D0052ACA3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		B0F809E8214E779D0052ACA3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B0F809EA214E779D0052ACA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0F809ED214E779D0052ACA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0F809EF214E779D0052ACA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,8 +52,8 @@
 		B0F80A00214E8ACD0052ACA3 /* PostTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplate.swift; sourceTree = "<group>"; };
 		B0F80A02214E8BD50052ACA3 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		B0F80A04214E8C220052ACA3 /* CommentTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTemplate.swift; sourceTree = "<group>"; };
-		B0F80A06214E8CE50052ACA3 /* PostSectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSectionCollection.swift; sourceTree = "<group>"; };
-		B0F80A08214E8EAC0052ACA3 /* PostStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStorage.swift; sourceTree = "<group>"; };
+		B0F80A06214E8CE50052ACA3 /* FeedSectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSectionCollection.swift; sourceTree = "<group>"; };
+		B0F80A08214E8EAC0052ACA3 /* FeedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStorage.swift; sourceTree = "<group>"; };
 		B0F80A0A214E9D880052ACA3 /* PostTemplateConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplateConfiguration.swift; sourceTree = "<group>"; };
 		B0F80A0C214EA5AC0052ACA3 /* LargeTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTitleLabel.swift; sourceTree = "<group>"; };
 		B0F80A0E214F421F0052ACA3 /* PostResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResource.swift; sourceTree = "<group>"; };
@@ -88,21 +96,25 @@
 			isa = PBXGroup;
 			children = (
 				B0F809E6214E779D0052ACA3 /* AppDelegate.swift */,
-				B0F809E8214E779D0052ACA3 /* PostViewController.swift */,
-				B0F80A0E214F421F0052ACA3 /* PostResource.swift */,
+				B0F809E8214E779D0052ACA3 /* FeedViewController.swift */,
 				B0F80A0C214EA5AC0052ACA3 /* LargeTitleLabel.swift */,
 				B0F809FC214E8A310052ACA3 /* TitleLabel.swift */,
 				B0F809FE214E8A6D0052ACA3 /* BodyLabel.swift */,
-				B0F809FA214E89C80052ACA3 /* Post.swift */,
-				B0F80A02214E8BD50052ACA3 /* Comment.swift */,
-				B0F80A0A214E9D880052ACA3 /* PostTemplateConfiguration.swift */,
-				B0F80A00214E8ACD0052ACA3 /* PostTemplate.swift */,
-				B0F80A04214E8C220052ACA3 /* CommentTemplate.swift */,
-				B0F80A06214E8CE50052ACA3 /* PostSectionCollection.swift */,
-				B0F80A08214E8EAC0052ACA3 /* PostStorage.swift */,
 				B0F80A22214FDC8F0052ACA3 /* LikeButton.swift */,
 				B0F80A24214FDCB70052ACA3 /* LikeButton.xib */,
 				B0F80A2D214FE4F00052ACA3 /* LikeButtonAction.swift */,
+				B0F809FA214E89C80052ACA3 /* Post.swift */,
+				B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */,
+				B0F80A0E214F421F0052ACA3 /* PostResource.swift */,
+				B0F80A02214E8BD50052ACA3 /* Comment.swift */,
+				B01C62E82153D35C008B4026 /* Feed.swift */,
+				B01C62EA2153D384008B4026 /* FeedError.swift */,
+				B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */,
+				B0F80A08214E8EAC0052ACA3 /* FeedStorage.swift */,
+				B0F80A0A214E9D880052ACA3 /* PostTemplateConfiguration.swift */,
+				B0F80A00214E8ACD0052ACA3 /* PostTemplate.swift */,
+				B0F80A04214E8C220052ACA3 /* CommentTemplate.swift */,
+				B0F80A06214E8CE50052ACA3 /* FeedSectionCollection.swift */,
 				B0F809EA214E779D0052ACA3 /* Assets.xcassets */,
 				B0F809EC214E779D0052ACA3 /* LaunchScreen.storyboard */,
 				B0F809EF214E779D0052ACA3 /* Info.plist */,
@@ -194,13 +206,17 @@
 				B0F809FB214E89C80052ACA3 /* Post.swift in Sources */,
 				B0F809FD214E8A310052ACA3 /* TitleLabel.swift in Sources */,
 				B0F809FF214E8A6D0052ACA3 /* BodyLabel.swift in Sources */,
-				B0F80A09214E8EAC0052ACA3 /* PostStorage.swift in Sources */,
+				B01C62ED2153D5D5008B4026 /* FeedRepresentable.swift in Sources */,
+				B0F80A09214E8EAC0052ACA3 /* FeedStorage.swift in Sources */,
 				B0F80A03214E8BD50052ACA3 /* Comment.swift in Sources */,
 				B0F80A0D214EA5AC0052ACA3 /* LargeTitleLabel.swift in Sources */,
 				B0F80A23214FDC8F0052ACA3 /* LikeButton.swift in Sources */,
-				B0F80A07214E8CE50052ACA3 /* PostSectionCollection.swift in Sources */,
-				B0F809E9214E779D0052ACA3 /* PostViewController.swift in Sources */,
+				B01C62EB2153D384008B4026 /* FeedError.swift in Sources */,
+				B0F80A07214E8CE50052ACA3 /* FeedSectionCollection.swift in Sources */,
+				B01C62E92153D35C008B4026 /* Feed.swift in Sources */,
+				B0F809E9214E779D0052ACA3 /* FeedViewController.swift in Sources */,
 				B0F809E7214E779D0052ACA3 /* AppDelegate.swift in Sources */,
+				B01C62EF2153D5F3008B4026 /* Post+FeedRepresentable.swift in Sources */,
 				B0F80A01214E8ACD0052ACA3 /* PostTemplate.swift in Sources */,
 				B0F80A0F214F421F0052ACA3 /* PostResource.swift in Sources */,
 				B0F80A0B214E9D880052ACA3 /* PostTemplateConfiguration.swift in Sources */,

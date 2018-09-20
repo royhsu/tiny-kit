@@ -28,11 +28,13 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let viewController = PostViewController()
+        let viewController = FeedViewController()
         
         viewController.layout = TableViewLayout()
         
-        viewController.storage = PostStorage()
+        viewController.storage = FeedStorage(
+            resource: PostResource(client: URLSession.shared)
+        )
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
         

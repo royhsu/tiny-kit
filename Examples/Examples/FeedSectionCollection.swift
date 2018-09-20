@@ -1,16 +1,16 @@
 //
-//  PostSectionCollection.swift
+//  FeedSectionCollection.swift
 //  Examples
 //
 //  Created by Roy Hsu on 2018/9/16.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - PostSectionCollection
+// MARK: - FeedSectionCollection
 
 import TinyKit
 
-public struct PostSectionCollection: SectionCollection {
+public struct FeedSectionCollection: SectionCollection {
     
     public enum Section: Template {
         

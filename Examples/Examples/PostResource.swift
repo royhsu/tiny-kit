@@ -52,7 +52,7 @@ extension PostResource: Resource {
     
     public final func fetchItems(
         page: Page,
-        completionHandler: @escaping (Result<FetchItemsPayload<Post>>) -> Void
+        completionHandler: @escaping (Result< FetchItemsPayload<Feed> >) -> Void
     ) {
         
         fetchPosts { result in
@@ -63,7 +63,9 @@ extension PostResource: Resource {
                 
                 completionHandler(
                     .success(
-                        FetchItemsPayload(items: posts)
+                        FetchItemsPayload(
+                            items: posts.map { $0.feed }
+                        )
                     )
                 )
                 
