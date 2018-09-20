@@ -22,6 +22,7 @@ public protocol Storage: Collection where Element == (key: Key, value: Value) {
     
     func value(forKey key: Key) -> Value?
     
+    /// The storage returns a value asynchronously.
     func value(
         forKey key: Key,
         completion: @escaping (Result<Value>) -> Void

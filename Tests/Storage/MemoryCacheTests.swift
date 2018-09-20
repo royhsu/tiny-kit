@@ -25,6 +25,39 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
+    internal final func testLoad() {
+        
+        let promise = expectation(description: "Prepare to be fully loaded.")
+        
+        let cache = MemoryCache<Int, String>()
+        
+        XCTAssertFalse(cache.isLoaded)
+        
+        cache.load { result in
+            
+            promise.fulfill()
+            
+            switch result {
+                
+            case .success:
+            
+                XCTAssert(cache.isLoaded)
+                
+                XCTAssert(cache.isEmpty)
+                
+            case let .failure(error): XCTFail("\(error)")
+            
+            }
+            
+        }
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
+    }
+    
     internal final func testMutateSingleKeyAndValue() {
         
         let promise = expectation(description: "Get notified about changes.")

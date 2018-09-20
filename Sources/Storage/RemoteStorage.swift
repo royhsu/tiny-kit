@@ -77,41 +77,45 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     public final func removeAll() { cache = [:] }
     
-    public final func load() {
+    #warning("missing test.")
+    public final func load(
+        completion: LoadCompletion? = nil
+    ) {
         
         resource.fetchItems(page: .first) { [weak self] result in
             
             defer { self?._isLoaded = true }
             
             guard
-                let self = self,
-                let payload = try? result.resolve()
+                let self = self
             else { return }
             
-            let sequence: [ (key: Key, value: Item?) ] = payload
-                .items
-                .enumerated()
-                .map { $0 }
+            switch result {
+                
+            case let .success(payload):
             
-            self.cache.merge(
-                AnySequence(sequence)
-            )
+                let sequence: [ (key: Key, value: Item?) ] = payload
+                    .items
+                    .enumerated()
+                    .map { $0 }
+                
+                self.cache.merge(
+                    AnySequence(sequence)
+                )
+                
+                completion?(
+                    .success(
+                        Void()
+                    )
+                )
+                
+            case let .failure(error):
+                
+                completion?(
+                    .failure(error)
+                )
             
-//            if let value = self[key] {
-//
-//                completion(
-//                    .success(value)
-//                )
-//
-//                return
-//
-//            }
-//
-//            let error: StorageError<Int> = .valueNotFound(key: key)
-//
-//            completion(
-//                .failure(error)
-//            )
+            }
             
         }
         

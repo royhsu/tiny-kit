@@ -40,7 +40,6 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
     
     private final var _isLoaded = false
 
-    #warning("missing test.")
     public final var isLoaded: Bool { return _isLoaded }
     
     public final var startIndex: Index { return _storage.startIndex }
@@ -48,26 +47,6 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
     public final var endIndex: Index { return _storage.endIndex }
     
     public final func index(after i: Index) -> Index { return _storage.index(after: i) }
-    
-    #warning("missing test.")
-    public func setValue(
-        _ value: Value?,
-        forKey key: Key,
-        options: ObservableValueOptions = []
-    ) {
-        
-        _storage[key] = value
-        
-        if options.contains(.muteBroadcaster) { return }
-        
-        changes.value = [
-            Change(
-                key: key,
-                value: value
-            )
-        ]
-        
-    }
     
     public final subscript(position: Index) -> Element { return _storage[position] }
     
@@ -94,10 +73,39 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
         
     }
     
-    #warning("missing test.")
-    public final func load() { _isLoaded = true }
+    public final func load(completion: LoadCompletion? = nil) {
+        
+        _isLoaded = true
+        
+        completion?(
+            .success(
+                Void()
+            )
+        )
+        
+    }
     
-    #warning("missing test.")
+    #warning("missing test with options.")
+    public func setValue(
+        _ value: Value?,
+        forKey key: Key,
+        options: ObservableValueOptions = []
+    ) {
+        
+        _storage[key] = value
+        
+        if options.contains(.muteBroadcaster) { return }
+        
+        changes.value = [
+            Change(
+                key: key,
+                value: value
+            )
+        ]
+        
+    }
+    
+    #warning("missing test with options.")
     public final func merge(
         _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions = []

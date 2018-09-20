@@ -13,9 +13,13 @@ import TinyCore
 public protocol MutableStorage: Storage {
     
     #warning("Testing required for all concrete types")
+    /// Checking if the storage is loaded properly.
     var isLoaded: Bool { get }
     
-    func load()
+    /// The storage may need to set up or prepare something to be ready. The caller must call this function and observe the changes before accessing values.
+    typealias LoadCompletion = (Result<Void>) -> Void
+    
+    func load(completion: LoadCompletion?)
     
     func setValue(
         _ value: Value?,
@@ -68,7 +72,7 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
    
     private let _isLoaded: () -> Bool
     
-    private let _load: () -> Void
+    private let _load: (LoadCompletion?) -> Void
     
     private let _setValue: (
         _ value: Value?,
@@ -112,7 +116,7 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
 
     public var isLoaded: Bool { return _isLoaded() }
     
-    public func load() { _load() }
+    public func load(completion: LoadCompletion? = nil) { _load(completion) }
     
     public subscript(position: Index) -> Element { return _storage[position] }
     
