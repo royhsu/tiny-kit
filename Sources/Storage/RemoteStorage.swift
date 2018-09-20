@@ -89,9 +89,6 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
-    #warning("missing test.")
-    public final func removeAll() { cache = [:] }
-    
     public final func load(completion: LoadCompletion? = nil) {
         
         state = .loading
@@ -150,13 +147,8 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
             
     }
     
-    #warning("Not implemented.")
     public final func removeAll(
         options: ObservableValueOptions = []
-    ) {
-        
-        
-        
-    }
+    ) { cache.removeAll(options: options) }
 
 }

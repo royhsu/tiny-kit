@@ -92,5 +92,63 @@ internal final class RemoteStorageTests: XCTestCase {
         )
         
     }
+    
+    internal final func testRemoveAll() {
+        
+        let promise = self.expectation(description: "Remove all values.")
+        
+        var isRemoved = false
+        
+        let storage = RemoteStorage(
+            resource: MessageResource(
+                fetchItemsResult: .success(
+                    FetchItemsPayload(
+                        items: [ "Hello" ],
+                        next: nil
+                    )
+                )
+            )
+        )
+        
+        subscriptions.append(
+            storage.changes.subscribe { event in
+                
+                guard isRemoved else { return }
+                
+                promise.fulfill()
+                
+                let changes = event.currentValue
+                
+                XCTAssertEqual(
+                    changes?.count,
+                    1
+                )
+                
+                let removeValueChange = changes?.first { $0.key == 0 }
+                
+                XCTAssertNotNil(removeValueChange)
+                
+                XCTAssertEqual(
+                    removeValueChange?.value,
+                    "Hello"
+                )
+                
+            }
+        )
+        
+        storage.load { _ in
+            
+            isRemoved = true
+            
+            storage.removeAll()
+            
+        }
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
+    }
 
 }
