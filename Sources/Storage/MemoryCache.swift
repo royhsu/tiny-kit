@@ -166,10 +166,25 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
             uniquingKeysWith: { _, new in new }
         )
         
+        let updatingChanges = updatingElements.map(StorageChange.init)
+        
         changes.setValue(
-            Set(
-                updatingElements.map(StorageChange.init)
-            ),
+            Set(updatingChanges),
+            options: options
+        )
+        
+    }
+    
+    public final func removeAll(
+        options: ObservableValueOptions = []
+    ) {
+    
+        let deletingChanges = _storage.map(StorageChange.init)
+        
+        _storage.removeAll()
+        
+        changes.setValue(
+            Set(deletingChanges),
             options: options
         )
         

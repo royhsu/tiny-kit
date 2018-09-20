@@ -39,7 +39,7 @@ internal final class RemoteStorageTests: XCTestCase {
     
     internal final func testLoad() {
         
-        let promise = expectation(description: "Prepare to be fully loaded.")
+        let promise = expectation(description: "Load the storage.")
         
         let storage = RemoteStorage(
             resource: MessageResource(

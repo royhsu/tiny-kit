@@ -226,4 +226,37 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
+    internal final func testRemoveAll() {
+        
+        let promise = expectation(description: "Remove all values.")
+        
+        let cache: MemoryCache = [
+            "delete": "value"
+        ]
+        
+        subscriptions.append(
+            cache.changes.subscribe { event in
+                
+                promise.fulfill()
+                
+                XCTAssert(cache.isEmpty)
+                
+                let changes = event.currentValue
+                
+                let removeValueChange = changes?.first { $0.key == "delete" }
+                
+                XCTAssertNotNil(removeValueChange)
+                
+            }
+        )
+        
+        cache.removeAll()
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
+    }
+    
 }

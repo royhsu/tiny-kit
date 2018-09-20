@@ -31,6 +31,8 @@ public protocol MutableStorage: Storage {
         _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions
     )
+ 
+    func removeAll(options: ObservableValueOptions)
     
 }
 
@@ -87,6 +89,8 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
     )
     -> Void
     
+    private let _removeAll: (ObservableValueOptions) -> Void
+    
     public init<S>(_ storage: S)
     where
         S: MutableStorage,
@@ -103,6 +107,8 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
         self._load = storage.load
             
         self._merge = storage.merge
+            
+        self._removeAll = storage.removeAll
             
     }
     
@@ -157,5 +163,9 @@ public class AnyMutableStorage<Key, Value>: MutableStorage where Key: Hashable {
         )
         
     }
+    
+    public func removeAll(
+        options: ObservableValueOptions = []
+    ) { _removeAll(options) }
     
 }

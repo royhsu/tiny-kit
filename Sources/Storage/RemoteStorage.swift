@@ -12,6 +12,12 @@ import TinyCore
 
 public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
+    private enum State {
+     
+        case initial, loading, loaded
+        
+    }
+    
     public typealias Change = StorageChange<Int, Item>
     
     public typealias Changes = Set<Change>
@@ -28,9 +34,9 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     private final var cache = Cache()
 
-    private final var _isLoaded = false
+    private final var state: State = .initial
     
-    public final var isLoaded: Bool { return _isLoaded }
+    public final var isLoaded: Bool { return state == .loaded }
     
     public init<R: Resource>(resource: R) where R.Item == Item { self.resource = AnyResource(resource) }
 
@@ -88,9 +94,11 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     public final func load(completion: LoadCompletion? = nil) {
         
+        state = .loading
+        
         resource.fetchItems(page: .first) { [weak self] result in
             
-            defer { self?._isLoaded = true }
+            defer { self?.state = .loaded }
             
             guard
                 let self = self
@@ -104,6 +112,8 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
                     .items
                     .enumerated()
                     .map { $0 }
+                
+                self.cache.removeAll(options: .muteBroadcaster)
                 
                 self.cache.merge(
                     AnySequence(sequence)
@@ -138,6 +148,15 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
             options: options
         )
             
+    }
+    
+    #warning("Not implemented.")
+    public final func removeAll(
+        options: ObservableValueOptions = []
+    ) {
+        
+        
+        
     }
 
 }
