@@ -16,10 +16,8 @@ import XCTest
 internal final class RemoteStorageTests: XCTestCase {
 
     internal final var subscriptions: [ObservableSubscription] = []
-
-    internal final func testGetItemsForKeyAsynchronously() {
-
-        let promise = expectation(description: "Load items from a given resource while there is no matched item for the key.")
+    
+    internal final func testInitialize() {
         
         let storage = RemoteStorage(
             resource: MessageResource(
@@ -35,16 +33,50 @@ internal final class RemoteStorageTests: XCTestCase {
             )
         )
         
-        storage.value(forKey: 1) { result in
+        XCTAssert(storage.isEmpty)
+        
+    }
+    
+    internal final func testLoad() {
+        
+        let promise = expectation(description: "Prepare to be fully loaded.")
+        
+        let storage = RemoteStorage(
+            resource: MessageResource(
+                fetchItemsResult: .success(
+                    FetchItemsPayload(
+                        items: [
+                            "Hello",
+                            "World"
+                        ],
+                        next: nil
+                    )
+                )
+            )
+        )
+        
+        XCTAssertFalse(storage.isLoaded)
+        
+        storage.load { result in
             
             promise.fulfill()
             
             switch result {
                 
-            case let .success(item):
+            case .success:
                 
                 XCTAssertEqual(
-                    item,
+                    storage.count,
+                    2
+                )
+                
+                XCTAssertEqual(
+                    storage[0],
+                    "Hello"
+                )
+                
+                XCTAssertEqual(
+                    storage[1],
                     "World"
                 )
                 
@@ -52,28 +84,13 @@ internal final class RemoteStorageTests: XCTestCase {
                 
             }
             
-            XCTAssertEqual(
-                storage.count,
-                2
-            )
-            
-            XCTAssertEqual(
-                storage[0],
-                "Hello"
-            )
-            
-            XCTAssertEqual(
-                storage[1],
-                "World"
-            )
-            
         }
-
+        
         wait(
             for: [ promise ],
             timeout: 10.0
         )
-
+        
     }
 
 }

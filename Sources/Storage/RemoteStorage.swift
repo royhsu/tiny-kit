@@ -10,7 +10,6 @@
 
 import TinyCore
 
-#warning("missing test.")
 public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     public typealias Change = StorageChange<Int, Item>
@@ -44,20 +43,29 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     public final subscript(position: Index) -> Element { return cache[position] }
     
     /// The storage will try to fetch items from the given resource if there is no value related to the key.
+    #warning("Not implemented.")
     public final func value(
         forKey key: Int,
         completion: @escaping (Result<Item>) -> Void
     ) {
         
-        if let value = cache[key] {
-            
-            completion(
-                .success(value)
-            )
-         
-            return
-            
-        }
+//        if let value = cache[key] {
+//
+//            completion(
+//                .success(value)
+//            )
+//
+//            return
+//
+//        }
+//
+//        load { result in
+//
+//            switch result {
+//
+//            }
+//
+//        }
         
     }
     
@@ -75,12 +83,10 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
+    #warning("missing test.")
     public final func removeAll() { cache = [:] }
     
-    #warning("missing test.")
-    public final func load(
-        completion: LoadCompletion? = nil
-    ) {
+    public final func load(completion: LoadCompletion? = nil) {
         
         resource.fetchItems(page: .first) { [weak self] result in
             
@@ -121,6 +127,7 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
+    #warning("missing test.")
     public final func merge(
         _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions = []

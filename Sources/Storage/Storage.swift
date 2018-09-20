@@ -23,6 +23,7 @@ public protocol Storage: Collection where Element == (key: Key, value: Value) {
     func value(forKey key: Key) -> Value?
     
     /// The storage returns a value asynchronously.
+    #warning("seems like no compelling use case to keep this function on the protocol.")
     func value(
         forKey key: Key,
         completion: @escaping (Result<Value>) -> Void
