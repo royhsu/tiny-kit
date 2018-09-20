@@ -75,20 +75,6 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
-    public func setValue(
-        _ value: Value?,
-        forKey key: Key,
-        options: ObservableValueOptions = []
-    ) {
-        
-         cache.setValue(
-            value,
-            forKey: key,
-            options: options
-        )
-        
-    }
-    
     public final func load(completion: LoadCompletion? = nil) {
         
         state = .loading
@@ -131,6 +117,20 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
             }
             
         }
+        
+    }
+    
+    public func setValue(
+        _ value: Value?,
+        forKey key: Key,
+        options: ObservableValueOptions = []
+    ) {
+    
+        cache.setValue(
+            value,
+            forKey: key,
+            options: options
+        )
         
     }
     

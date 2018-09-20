@@ -59,7 +59,7 @@ internal final class RemoteStorageTests: XCTestCase {
         
         storage.load { result in
             
-            promise.fulfill()
+            defer { promise.fulfill() }
             
             switch result {
                 
@@ -93,11 +93,71 @@ internal final class RemoteStorageTests: XCTestCase {
         
     }
     
+    internal final func testSetValue() {
+        
+        let promise = expectation(description: "Get notified about changes.")
+        
+        var isLoaded = false
+        
+        var storage = RemoteStorage(
+            resource: MessageResource(
+                fetchItemsResult: .success(
+                    FetchItemsPayload(
+                        items: [ "Hello" ],
+                        next: nil
+                    )
+                )
+            )
+        )
+        
+        subscriptions.append(
+            storage.changes.subscribe { event in
+                
+                guard
+                    isLoaded
+                else { return }
+                
+                defer { promise.fulfill() }
+                
+                let changes = event.currentValue
+                
+                XCTAssertEqual(
+                    changes?.count,
+                    1
+                )
+                
+                let valueChange = changes?.first { $0.key == 1 }
+                
+                XCTAssertNotNil(valueChange)
+                
+                XCTAssertEqual(
+                    valueChange?.value,
+                    "World"
+                )
+                
+            }
+        )
+        
+        storage.load { _ in
+            
+            isLoaded = true
+            
+            storage[1] = "World"
+            
+        }
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
+    }
+    
     internal final func testRemoveAll() {
         
-        let promise = self.expectation(description: "Remove all values.")
+        let promise = expectation(description: "Remove all values.")
         
-        var isRemoved = false
+        var isLoaded = false
         
         let storage = RemoteStorage(
             resource: MessageResource(
@@ -113,9 +173,11 @@ internal final class RemoteStorageTests: XCTestCase {
         subscriptions.append(
             storage.changes.subscribe { event in
                 
-                guard isRemoved else { return }
+                guard
+                    isLoaded
+                else { return }
                 
-                promise.fulfill()
+                defer { promise.fulfill() }
                 
                 let changes = event.currentValue
                 
@@ -138,7 +200,7 @@ internal final class RemoteStorageTests: XCTestCase {
         
         storage.load { _ in
             
-            isRemoved = true
+            isLoaded = true
             
             storage.removeAll()
             

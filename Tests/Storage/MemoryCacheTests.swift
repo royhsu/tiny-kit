@@ -35,7 +35,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         cache.load { result in
             
-            promise.fulfill()
+            defer { promise.fulfill() }
             
             switch result {
                 
@@ -58,7 +58,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
-    internal final func testMutateSingleKeyAndValue() {
+    internal final func testSetValue() {
         
         let promise = expectation(description: "Get notified about changes.")
         
@@ -67,7 +67,7 @@ internal final class MemoryCacheTests: XCTestCase {
         subscriptions.append(
             cache.changes.subscribe { event in
                 
-                promise.fulfill()
+                defer { promise.fulfill() }
                 
                 let changes = event.currentValue
                 
@@ -123,7 +123,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let subscription = cache.changes.subscribe { event in
 
-            promise.fulfill()
+            defer { promise.fulfill() }
 
             let changes = event.currentValue
             
@@ -202,7 +202,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         cache.value(forKey: 0) { result in
             
-            promise.fulfill()
+            defer { promise.fulfill() }
             
             switch result {
                 
@@ -237,7 +237,7 @@ internal final class MemoryCacheTests: XCTestCase {
         subscriptions.append(
             cache.changes.subscribe { event in
                 
-                promise.fulfill()
+                defer { promise.fulfill() }
                 
                 XCTAssert(cache.isEmpty)
                 
