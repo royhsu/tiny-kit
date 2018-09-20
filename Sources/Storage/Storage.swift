@@ -79,8 +79,12 @@ public struct AnyStorage<Key, Value>: Storage where Key: Hashable {
     )
     -> Void
     
-    public init<S: Storage>(_ storage: S)
-    where S.Key == Key, S.Value == Value, S.Changes == Changes {
+    public init<S>(_ storage: S)
+    where
+        S: Storage,
+        S.Key == Key,
+        S.Value == Value,
+        S.Changes == Changes {
         
         self._collection = AnyCollection(storage)
         
@@ -99,8 +103,6 @@ public struct AnyStorage<Key, Value>: Storage where Key: Hashable {
     public func index(after i: Index) -> Index { return _collection.index(after: i) }
     
     public var changes: Observable<Changes> { return _changes() }
-    
-    public subscript(key: Key) -> Value? { return _value(key) }
     
     public subscript(position: Index) -> Element { return _collection[position] }
     

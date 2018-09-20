@@ -120,7 +120,9 @@ internal final class MemoryCacheTests: XCTestCase {
             ("nil", nil)
         ]
         
-        cache.merge(newElements)
+        cache.merge(
+            AnySequence(newElements)
+        )
         
         XCTAssertEqual(
             cache["new"],

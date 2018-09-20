@@ -10,6 +10,7 @@
 
 import TinyCore
 
+#warning("missing test.")
 public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
     
     public typealias Change = StorageChange<Int, Item>
@@ -60,15 +61,21 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
-    public final func removeAll() { cache = [:] }
-    
-    public final subscript(key: Int) -> Item? {
+    public func setValue(
+        _ value: Value?,
+        forKey key: Key,
+        options: ObservableValueOptions = []
+    ) {
         
-        get { return cache[key] }
-        
-        set { cache[key] = newValue }
+         cache.setValue(
+            value,
+            forKey: key,
+            options: options
+        )
         
     }
+    
+    public final func removeAll() { cache = [:] }
     
     public final func load() {
         
@@ -81,8 +88,13 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
                 let payload = try? result.resolve()
             else { return }
             
+            let sequence: [ (key: Key, value: Item?) ] = payload
+                .items
+                .enumerated()
+                .map { $0 }
+            
             self.cache.merge(
-                payload.items.enumerated().map { $0 }
+                AnySequence(sequence)
             )
             
 //            if let value = self[key] {
@@ -105,13 +117,10 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
-    public final func merge<S>(
-        _ other: S,
+    public final func merge(
+        _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions = []
-    )
-    where
-        S : Sequence,
-        S.Element == (key: Int, value: Item?) {
+    ) {
      
         cache.merge(
             other,

@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public struct MemoryCache<Key, Value>: MutableStorage, Initializable, ExpressibleByDictionaryLiteral where Key: Hashable {
+public final class MemoryCache<Key, Value>: MutableStorage, Initializable, ExpressibleByDictionaryLiteral where Key: Hashable {
     
     public typealias Storage = Dictionary<Key, Value>
     
@@ -22,11 +22,11 @@ public struct MemoryCache<Key, Value>: MutableStorage, Initializable, Expressibl
     
     public typealias Index = Storage.Index
     
-    private var _storage: Storage
+    private final var _storage: Storage
     
-    public init() { self._storage = [:] }
+    public required init() { self._storage = [:] }
     
-    public init(dictionaryLiteral elements: (Key, Value)...) {
+    public required init(dictionaryLiteral elements: (Key, Value)...) {
      
         self._storage = Storage(uniqueKeysWithValues: elements)
         
@@ -36,40 +36,42 @@ public struct MemoryCache<Key, Value>: MutableStorage, Initializable, Expressibl
         
     }
     
-    public let changes = Observable<Changes>()
+    public final let changes = Observable<Changes>()
     
-    private var _isLoaded = false
+    private final var _isLoaded = false
 
-    public var isLoaded: Bool { return _isLoaded }
+    #warning("missing test.")
+    public final var isLoaded: Bool { return _isLoaded }
     
-    public var startIndex: Index { return _storage.startIndex }
+    public final var startIndex: Index { return _storage.startIndex }
     
-    public var endIndex: Index { return _storage.endIndex }
+    public final var endIndex: Index { return _storage.endIndex }
     
-    public func index(after i: Index) -> Index { return _storage.index(after: i) }
+    public final func index(after i: Index) -> Index { return _storage.index(after: i) }
     
-    public subscript(key: Key) -> Value? {
+    #warning("missing test.")
+    public func setValue(
+        _ value: Value?,
+        forKey key: Key,
+        options: ObservableValueOptions = []
+    ) {
         
-        get { return _storage[key] }
-     
-        set {
-            
-            _storage[key] = newValue
-            
-            changes.value = [
-                Change(
-                    key: key,
-                    value: newValue
-                )
-            ]
-            
-        }
+        _storage[key] = value
+        
+        if options.contains(.muteBroadcaster) { return }
+        
+        changes.value = [
+            Change(
+                key: key,
+                value: value
+            )
+        ]
         
     }
     
-    public subscript(position: Index) -> Element { return _storage[position] }
+    public final subscript(position: Index) -> Element { return _storage[position] }
     
-    public func value(
+    public final func value(
         forKey key: Key,
         completion: @escaping (Result<Value>) -> Void
     ) {
@@ -92,13 +94,14 @@ public struct MemoryCache<Key, Value>: MutableStorage, Initializable, Expressibl
         
     }
     
-    public mutating func load() { _isLoaded = true }
+    #warning("missing test.")
+    public final func load() { _isLoaded = true }
     
-    public mutating func merge<S>(
-        _ other: S,
+    #warning("missing test.")
+    public final func merge(
+        _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions = []
-    )
-    where S: Sequence, S.Element == (key: Key, value: Value?) {
+    ) {
         
         var mergingElements: [ (Key, Value) ] = []
         

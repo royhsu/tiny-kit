@@ -105,6 +105,7 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
     
     public final func load() { }
     
+    #warning("Not implemented.")
     public final func registerSecondaryStorage<S>(_ storage: S)
     where
         S: Storage,
@@ -120,6 +121,7 @@ public final class ConfigurableStorage<Key, Value>: Storage, Initializable where
         
     }
     
+    #warning("Not implemented.")
     public final func registerSecondaryStorage<S>(_ storageType: S.Type)
     where
         S: Storage & Initializable,
