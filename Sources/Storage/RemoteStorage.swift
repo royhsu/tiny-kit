@@ -134,7 +134,6 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
         
     }
     
-    #warning("missing test.")
     public final func merge(
         _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions = []

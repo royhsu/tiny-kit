@@ -40,7 +40,7 @@ internal final class ConfigurableTemplateTests: XCTestCase {
             2
         )
         
-        XCTAssertNil(template.configuration)
+        XCTAssert(template.configuration == nil)
         
         template.configuration = PostTemplateConfiguration { element in
             

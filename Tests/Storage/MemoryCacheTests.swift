@@ -35,7 +35,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         cache.load { result in
             
-            defer { promise.fulfill() }
+            promise.fulfill()
             
             switch result {
                 
@@ -67,7 +67,7 @@ internal final class MemoryCacheTests: XCTestCase {
         subscriptions.append(
             cache.changes.subscribe { event in
                 
-                defer { promise.fulfill() }
+                promise.fulfill()
                 
                 let changes = event.currentValue
                 
@@ -78,7 +78,7 @@ internal final class MemoryCacheTests: XCTestCase {
                 
                 let valueChange = changes?.first { $0.key == 2 }
                 
-                XCTAssertNotNil(valueChange)
+                XCTAssert(valueChange != nil)
                 
             }
         )
@@ -90,12 +90,12 @@ internal final class MemoryCacheTests: XCTestCase {
             1
         )
         
-        XCTAssertNil(
-            cache[0]
+        XCTAssert(
+            cache[0] == nil
         )
         
-        XCTAssertNil(
-            cache[1]
+        XCTAssert(
+            cache[1] == nil
         )
         
         XCTAssertEqual(
@@ -110,7 +110,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
-    internal final func testMutateMultipleKeysAndValues() {
+    internal final func testMergeValues() {
         
         let promise = expectation(description: "Get notified about changes.")
         
@@ -123,25 +123,40 @@ internal final class MemoryCacheTests: XCTestCase {
         
         let subscription = cache.changes.subscribe { event in
 
-            defer { promise.fulfill() }
-
+            promise.fulfill()
+            
             let changes = event.currentValue
+            
+            XCTAssertEqual(
+                changes?.count,
+                2
+            )
             
             let existingValueChange = changes?.first { $0.key == "existing" }
             
-            XCTAssertNil(existingValueChange)
+            XCTAssert(existingValueChange == nil)
             
             let newValueChange = changes?.first { $0.key == "new" }
             
+            XCTAssert(newValueChange != nil)
+            
+            XCTAssertEqual(
+                newValueChange?.value,
+                "value"
+            )
+            
             let replaceValueChange = changes?.first { $0.key == "replacing" }
             
-            XCTAssertNotNil(replaceValueChange)
+            XCTAssert(replaceValueChange != nil)
             
-            XCTAssertNotNil(newValueChange)
+            XCTAssertEqual(
+                replaceValueChange?.value,
+                "by value"
+            )
             
             let nilValueChange = changes?.first { $0.key == "nil" }
             
-            XCTAssertNil(nilValueChange)
+            XCTAssert(nilValueChange == nil)
             
         }
         
@@ -172,8 +187,8 @@ internal final class MemoryCacheTests: XCTestCase {
             "by value"
         )
         
-        XCTAssertNil(
-            cache["nil"]
+        XCTAssert(
+            cache["nil"] == nil
         )
         
         XCTAssertEqual(
@@ -202,7 +217,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
         cache.value(forKey: 0) { result in
             
-            defer { promise.fulfill() }
+            promise.fulfill()
             
             switch result {
                 
@@ -237,7 +252,7 @@ internal final class MemoryCacheTests: XCTestCase {
         subscriptions.append(
             cache.changes.subscribe { event in
                 
-                defer { promise.fulfill() }
+                promise.fulfill()
                 
                 XCTAssert(cache.isEmpty)
                 
@@ -245,7 +260,7 @@ internal final class MemoryCacheTests: XCTestCase {
                 
                 let removeValueChange = changes?.first { $0.key == "delete" }
                 
-                XCTAssertNotNil(removeValueChange)
+                XCTAssert(removeValueChange != nil)
                 
             }
         )

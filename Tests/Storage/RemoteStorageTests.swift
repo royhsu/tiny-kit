@@ -59,7 +59,7 @@ internal final class RemoteStorageTests: XCTestCase {
         
         storage.load { result in
             
-            defer { promise.fulfill() }
+            promise.fulfill()
             
             switch result {
                 
@@ -117,7 +117,7 @@ internal final class RemoteStorageTests: XCTestCase {
                     isLoaded
                 else { return }
                 
-                defer { promise.fulfill() }
+                promise.fulfill()
                 
                 let changes = event.currentValue
                 
@@ -128,7 +128,7 @@ internal final class RemoteStorageTests: XCTestCase {
                 
                 let valueChange = changes?.first { $0.key == 1 }
                 
-                XCTAssertNotNil(valueChange)
+                XCTAssert(valueChange != nil)
                 
                 XCTAssertEqual(
                     valueChange?.value,
@@ -143,6 +143,95 @@ internal final class RemoteStorageTests: XCTestCase {
             isLoaded = true
             
             storage[1] = "World"
+            
+        }
+        
+        wait(
+            for: [ promise ],
+            timeout: 10.0
+        )
+        
+    }
+    
+    internal final func testMergeValues() {
+        
+        let promise = expectation(description: "Get notified about changes.")
+        
+        var isLoaded = false
+        
+        let storage = RemoteStorage(
+            resource: MessageResource(
+                fetchItemsResult: .success(
+                    FetchItemsPayload(
+                        items: [ "existing", "replacing" ],
+                        next: nil
+                    )
+                )
+            )
+        )
+        
+        let subscription = storage.changes.subscribe { event in
+            
+            guard
+                isLoaded
+            else { return }
+                
+            promise.fulfill()
+            
+            let changes = event.currentValue
+            
+            XCTAssertEqual(
+                changes?.count,
+                2
+            )
+            
+            let existingValueChange = changes?.first { $0.key == 0 }
+            
+            XCTAssert(existingValueChange == nil)
+            
+            let replaceValueChange = changes?.first { $0.key == 1 }
+            
+            XCTAssert(replaceValueChange != nil)
+            
+            XCTAssertEqual(
+                replaceValueChange?.value,
+                "replaced"
+            )
+            
+            let newValueChange = changes?.first { $0.key == 2 }
+            
+            XCTAssert(newValueChange != nil)
+            
+            XCTAssertEqual(
+                newValueChange?.value,
+                "new"
+            )
+            let nilValueChange = changes?.first { $0.key == 3 }
+            
+            XCTAssert(nilValueChange == nil)
+            
+            XCTAssertEqual(
+                storage.count,
+                3
+            )
+            
+        }
+        
+        subscriptions.append(subscription)
+        
+        storage.load { _ in
+            
+            isLoaded = true
+            
+            let newElements: [ (Int, String?) ] =  [
+                (1, "replaced"),
+                (2, "new"),
+                (3, nil)
+            ]
+    
+            storage.merge(
+                AnySequence(newElements)
+            )
             
         }
         
@@ -177,7 +266,7 @@ internal final class RemoteStorageTests: XCTestCase {
                     isLoaded
                 else { return }
                 
-                defer { promise.fulfill() }
+                promise.fulfill()
                 
                 let changes = event.currentValue
                 
@@ -188,7 +277,7 @@ internal final class RemoteStorageTests: XCTestCase {
                 
                 let removeValueChange = changes?.first { $0.key == 0 }
                 
-                XCTAssertNotNil(removeValueChange)
+                XCTAssert(removeValueChange != nil)
                 
                 XCTAssertEqual(
                     removeValueChange?.value,
