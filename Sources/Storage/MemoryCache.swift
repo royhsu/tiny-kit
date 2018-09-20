@@ -12,6 +12,12 @@ import TinyCore
 
 public final class MemoryCache<Key, Value>: MutableStorage, Initializable, ExpressibleByDictionaryLiteral where Key: Hashable {
     
+    private enum State {
+        
+        case initial, loaded
+        
+    }
+    
     public typealias Storage = Dictionary<Key, Value>
     
     public typealias Element = Storage.Element
@@ -38,9 +44,9 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
     
     public final let changes = Observable<Changes>()
     
-    private final var _isLoaded = false
+    private final var state: State = .initial
 
-    public final var isLoaded: Bool { return _isLoaded }
+    public final var isLoaded: Bool { return state == .loaded }
     
     public final var startIndex: Index { return _storage.startIndex }
     
@@ -54,6 +60,8 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
         forKey key: Key,
         completion: @escaping (Result<Value>) -> Void
     ) {
+        
+        #warning("should prevent accessing before loaded.")
         
         guard
             let value = self[key]
@@ -75,7 +83,7 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
     
     public final func load(completion: LoadCompletion? = nil) {
         
-        _isLoaded = true
+        state = .loaded
         
         completion?(
             .success(
@@ -91,6 +99,8 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
         forKey key: Key,
         options: ObservableValueOptions = []
     ) {
+        
+        #warning("should prevent accessing before loaded.")
         
         _storage[key] = value
         
@@ -110,6 +120,8 @@ public final class MemoryCache<Key, Value>: MutableStorage, Initializable, Expre
         _ other: AnySequence< (key: Key, value: Value?) >,
         options: ObservableValueOptions = []
     ) {
+        
+        #warning("should prevent accessing before loaded.")
         
         var mergingElements: [ (Key, Value) ] = []
         

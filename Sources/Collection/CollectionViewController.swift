@@ -80,6 +80,8 @@ where
             
             reduceStorage()
             
+            if isViewLoaded { loadStorage() }
+            
         }
         
     }
@@ -87,6 +89,14 @@ where
     public final var reducer: Reducer? {
         
         didSet { reduceStorage() }
+        
+    }
+    
+    public final override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        if storage?.isLoaded == false { loadStorage() }
         
     }
     
@@ -101,6 +111,25 @@ where
             else { return }
             
             self.sections = reducer(storage)
+            
+        }
+        
+    }
+    
+    fileprivate final func loadStorage() {
+        
+        storage?.load { [weak self] result in
+            
+            switch result {
+                
+            case .success: self?.reduceStorage()
+                
+            case let .failure(error):
+                
+                #warning("delegate the error.")
+                print("\(error)")
+                
+            }
             
         }
         

@@ -27,7 +27,7 @@ internal final class MemoryCacheTests: XCTestCase {
     
     internal final func testLoad() {
         
-        let promise = expectation(description: "Prepare to be fully loaded.")
+        let promise = expectation(description: "Load the cache.")
         
         let cache = MemoryCache<Int, String>()
         

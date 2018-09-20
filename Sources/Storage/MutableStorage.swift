@@ -16,9 +16,9 @@ public protocol MutableStorage: Storage {
     /// Checking if the storage is loaded properly.
     var isLoaded: Bool { get }
     
-    /// The storage may need to set up or prepare something to be ready. The caller must call this function and observe the changes before accessing values.
     typealias LoadCompletion = (Result<Void>) -> Void
     
+    /// The storage may need to set up or prepare something to be ready. The caller must call this function once before accessing values.
     func load(completion: LoadCompletion?)
     
     func setValue(
