@@ -9,14 +9,17 @@
 // MARK: - CollectionViewController
 
 import UIKit
+import TinyStorage
 import TinyCore
 
 open class CollectionViewController<S, C>: ViewController
 where
-    S: MutableStorage,
+    S: TinyStorage.Storage,
     C: SectionCollection {
     
     public typealias Reducer = (S) -> C
+    
+    private final var subscriptions: [ObservableSubscription] = []
     
     public final var layout: CollectionViewLayout? {
         
@@ -61,7 +64,9 @@ where
                         let lastState = self.sections?.state(at: lastIndexPath.section),
                         case .prefetching = lastState
                     else { return }
+                    
                     print("Loading more...")
+                    
                     self.loadStorage()
                     
                 }
@@ -278,31 +283,5 @@ where
         }
         
     }
-    
-    private final var subscriptions: [ObservableSubscription] = []
-    
-}
-
-public protocol PrefetchableStorage: Storage {
-    
-    
-    
-}
-
-public protocol PrefetchableSectionCollection: SectionCollection {
-    
-//    var numberOfPrefetchingSections: Int { get }
-//
-//    func setNumberOfPrefetchingSections(
-//        provider: @escaping (View) -> Int
-//    )
-//
-//    func setNumberOfPrefetchingItems(
-//        provider: @escaping (View, _ section: Int) -> Int
-//    )
-//
-//    func setViewForPrefetchingItem(
-//        provider: @escaping (View, IndexPath) -> View
-//    )
     
 }

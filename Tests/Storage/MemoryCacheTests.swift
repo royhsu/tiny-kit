@@ -17,6 +17,7 @@ internal final class MemoryCacheTests: XCTestCase {
     
     internal final var subscriptions: [ObservableSubscription] = []
     
+    // Done.
     internal final func testInitialize() {
         
         let cache = MemoryCache<Int, String>()
@@ -25,6 +26,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
+    // Done.
     internal final func testLoad() {
         
         let promise = expectation(description: "Load the cache.")
@@ -58,6 +60,7 @@ internal final class MemoryCacheTests: XCTestCase {
         
     }
     
+    // Done.
     internal final func testSetValue() {
         
         let promise = expectation(description: "Get notified about changes.")
@@ -207,6 +210,7 @@ internal final class MemoryCacheTests: XCTestCase {
 
     }
     
+    // Discard.
     internal final func testGetValueAsynchronously() {
         
         let promise = expectation(description: "Get value asynchronously.")

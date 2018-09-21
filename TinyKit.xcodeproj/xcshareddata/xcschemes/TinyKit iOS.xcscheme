@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B00D96062030753600EF0B7A"
-               BuildableName = "TinyKit.framework"
-               BlueprintName = "TinyKit iOS"
-               ReferencedContainer = "container:TinyKit.xcodeproj">
+               BlueprintIdentifier = "B00B9EDC21551792006CAD5A"
+               BuildableName = "TinyStorage.framework"
+               BlueprintName = "TinyStorage iOS"
+               ReferencedContainer = "container:tiny-storage/TinyStorage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B05D4F631F1E0D9D00929006"
-               BuildableName = "TinyCore.framework"
-               BlueprintName = "TinyCore iOS"
-               ReferencedContainer = "container:tiny-core/TinyCore.xcodeproj">
+               BlueprintIdentifier = "B00D96062030753600EF0B7A"
+               BuildableName = "TinyKit.framework"
+               BlueprintName = "TinyKit iOS"
+               ReferencedContainer = "container:TinyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
