@@ -18,6 +18,12 @@ public protocol SectionCollection {
     
 }
 
+public extension SectionCollection {
+    
+    public var isEmpty: Bool { return (count == 0) }
+    
+}
+
 // MARK: - AnySectionCollection
 
 public struct AnySectionCollection<Section>: SectionCollection where Section: Template {

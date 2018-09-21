@@ -54,15 +54,13 @@ where
                 
                 prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
                     
-                    #warning("TODO: giving the prefetcable data source.")
-                    
                     guard
                         let self = self,
                         let lastIndexPath = indexPaths.max(),
                         let lastState = self.sections?.state(at: lastIndexPath.section),
                         case .prefetching = lastState
                     else { return }
-                    
+                    print("Loading more...")
                     self.loadStorage()
                     
                 }
@@ -119,7 +117,10 @@ where
             }
             else { self.fetchedSections = nil }
             
-            if let prefetchingSections = prefetchingSections {
+            if
+                let prefetchingSections = prefetchingSections,
+                !prefetchingSections.isEmpty
+            {
             
                 self.prefetchingSections = AnySectionCollection(prefetchingSections)
                 
