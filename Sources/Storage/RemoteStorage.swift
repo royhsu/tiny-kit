@@ -96,7 +96,8 @@ public final class RemoteStorage<Item>: MutableStorage where Item: Decodable {
                     .enumerated()
                     .map { $0 }
                 
-                self.cache.removeAll(options: .muteBroadcaster)
+                #warning("TODO: should keep tracking the previous fetched pages.")
+//                self.cache.removeAll(options: .muteBroadcaster)
                 
                 self.cache.merge(
                     AnySequence(sequence)
