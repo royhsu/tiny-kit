@@ -56,22 +56,36 @@ where
         
     }
     
-    private struct Sections<Section>: SectionCollection {
+    private struct Sections<Section>: SectionCollection where Section == C.Section {
         
-        typealias Section = C.Section
+        let fetchedSections: AnySectionCollection<Section>?
         
-        let fetchedSections: C?
+        let prefetchingSections: AnySectionCollection<Section>?
         
-        let prefetchingSections: C?
-        
-        init(
-            fetchedSections: C?,
-            prefetchingSections: C?
-        ) {
+        init<T, U>(
+            fetchedSections: T?,
+            prefetchingSections: U?
+        )
+        where
+            T: SectionCollection,
+            T.Section == Section,
+            U: SectionCollection,
+            U.Section == Section
+        {
             
-            self.fetchedSections = fetchedSections
+            if let fetchedSections = fetchedSections {
+                
+                self.fetchedSections = AnySectionCollection(fetchedSections)
+                
+            }
+            else { self.fetchedSections = nil }
             
-            self.prefetchingSections = prefetchingSections
+            if let prefetchingSections = prefetchingSections {
+            
+                self.prefetchingSections = AnySectionCollection(prefetchingSections)
+                
+            }
+            else { self.prefetchingSections = nil }
             
         }
         
@@ -103,7 +117,7 @@ where
             
             if let prefetchingSections = prefetchingSections {
                 
-                let prefetchingIndex = index - fetchedCount
+                let prefetchingIndex = (index - fetchedCount)
                 
                 return prefetchingSections.section(at: prefetchingIndex)
                 
@@ -223,6 +237,12 @@ where
     }
     
     private final var subscriptions: [ObservableSubscription] = []
+    
+}
+
+public protocol PrefetchableStorage: Storage {
+    
+    
     
 }
 
