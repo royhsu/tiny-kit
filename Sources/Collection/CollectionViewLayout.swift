@@ -27,3 +27,11 @@ public protocol CollectionViewLayout {
     )
     
 }
+
+public protocol PrefetchableCollectViewLayout: CollectionViewLayout {
+    
+    func setPrefetchingForItems(
+        provider: @escaping (View, [IndexPath]) -> Void
+    )
+    
+}

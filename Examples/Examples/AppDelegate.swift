@@ -33,7 +33,26 @@ extension AppDelegate: UIApplicationDelegate {
         viewController.layout = TableViewLayout()
         
         let storage: MemoryCache<Int, Feed> = [
-            0: .post(Post(id: 0, title: "A", body: "AAA"))
+            0: .post(Post(id: 0, title: "A", body: "AAA")),
+            1: .post(Post(id: 0, title: "A", body: "AAA")),
+            2: .post(Post(id: 0, title: "A", body: "AAA")),
+            3: .post(Post(id: 0, title: "A", body: "AAA")),
+            4: .post(Post(id: 0, title: "A", body: "AAA")),
+            5: .post(Post(id: 0, title: "A", body: "AAA")),
+            6: .post(Post(id: 0, title: "A", body: "AAA")),
+            7: .post(Post(id: 0, title: "A", body: "AAA")),
+            8: .post(Post(id: 0, title: "A", body: "AAA")),
+            9: .post(Post(id: 0, title: "A", body: "AAA")),
+            10: .post(Post(id: 0, title: "A", body: "AAA")),
+            11: .post(Post(id: 0, title: "A", body: "AAA")),
+            12: .post(Post(id: 0, title: "A", body: "AAA")),
+            13: .post(Post(id: 0, title: "A", body: "AAA")),
+            14: .post(Post(id: 0, title: "A", body: "AAA")),
+            15: .post(Post(id: 0, title: "A", body: "AAA")),
+            16: .post(Post(id: 0, title: "A", body: "AAA")),
+            17: .post(Post(id: 0, title: "A", body: "AAA")),
+            18: .post(Post(id: 0, title: "A", body: "AAA")),
+            19: .post(Post(id: 0, title: "A", body: "AAA"))
         ]
         
         let prefetchingStorage: MemoryCache<Int, Feed> = [

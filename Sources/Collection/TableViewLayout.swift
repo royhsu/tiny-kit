@@ -8,7 +8,7 @@
 
 // MARK: - TableViewLayout
 
-public final class TableViewLayout: CollectionViewLayout {
+public final class TableViewLayout: PrefetchableCollectViewLayout {
     
     private final class Cell: TableViewCell, ReusableCell { }
     
@@ -25,6 +25,13 @@ public final class TableViewLayout: CollectionViewLayout {
         tableView.register(Cell.self)
         
         tableView.dataSource = dataSource
+        
+        #warning("TODO: consider to drop the old iOS versions.")
+        if #available(iOS 10.0, *) {
+            
+            tableView.prefetchDataSource = dataSource
+            
+        }
         
     }
     
@@ -90,6 +97,21 @@ public final class TableViewLayout: CollectionViewLayout {
             cell.contentView.wrapSubview(view)
             
             return cell
+            
+        }
+        
+    }
+    
+    public func setPrefetchingForItems(
+        provider: @escaping (View, [IndexPath]) -> Void
+    ) {
+        
+        dataSource.setPrefetchingForRows { _, indexPaths in
+         
+            provider(
+                self.collectionView,
+                indexPaths
+            )
             
         }
         

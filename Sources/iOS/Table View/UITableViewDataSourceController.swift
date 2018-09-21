@@ -21,20 +21,30 @@ public final class UITableViewDataSourceController: NSObject {
     -> Int
 
     public typealias CellForRowProvider = (
-        UITableView, IndexPath
+        UITableView,
+        IndexPath
     )
     -> UITableViewCell
-
+    
+    public typealias PrefetchingForRowsProvider = (
+        UITableView,
+        [IndexPath]
+    )
+    -> Void
+    
     private final var numberOfSectionsProvider: NumberOfSectionsProvider?
 
     private final var numberOfRowsProvider: NumberOfRowsProvider?
 
     private final var cellForRowProvider: CellForRowProvider?
+    
+    private final var prefetchingForRowsProvider: PrefetchingForRowsProvider?
 
     public init(
         numberOfSectionsProvider: NumberOfSectionsProvider? = nil,
         numberOfRowsProvider: NumberOfRowsProvider? = nil,
-        cellForRowProvider: CellForRowProvider? = nil
+        cellForRowProvider: CellForRowProvider? = nil,
+        prefetchingForRowsProvider: PrefetchingForRowsProvider? = nil
     ) {
 
         self.numberOfSectionsProvider = numberOfSectionsProvider
@@ -42,6 +52,8 @@ public final class UITableViewDataSourceController: NSObject {
         self.numberOfRowsProvider = numberOfRowsProvider
 
         self.cellForRowProvider = cellForRowProvider
+        
+        self.prefetchingForRowsProvider = prefetchingForRowsProvider
 
     }
     
@@ -50,6 +62,8 @@ public final class UITableViewDataSourceController: NSObject {
     public final func setNumberOfRows(provider: NumberOfRowsProvider?) { numberOfRowsProvider = provider }
     
     public final func setCellForRow(provider: CellForRowProvider?) { cellForRowProvider = provider }
+    
+    public final func setPrefetchingForRows(provider: PrefetchingForRowsProvider?) { prefetchingForRowsProvider = provider }
     
 }
 
@@ -97,4 +111,22 @@ extension UITableViewDataSourceController: UITableViewDataSource {
 
     }
 
+}
+
+// MARK: - UITableViewDataSourcePrefetching
+
+extension UITableViewDataSourceController: UITableViewDataSourcePrefetching {
+    
+    public final func tableView(
+        _ tableView: UITableView,
+        prefetchRowsAt indexPaths: [IndexPath]
+    ) {
+        
+        prefetchingForRowsProvider?(
+            tableView,
+            indexPaths
+        )
+        
+    }
+    
 }

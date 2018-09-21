@@ -50,6 +50,17 @@ where
     
             }
             
+            if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
+                
+                prefetchableLayout.setPrefetchingForItems { _, indexPaths in
+                    
+                    #warning("TODO: giving the prefetcable data source.")
+                    print("prefetching", indexPaths)
+                    
+                }
+                
+            }
+            
             layout?.invalidateLayout()
             
         }
