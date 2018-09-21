@@ -52,10 +52,18 @@ where
             
             if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
                 
-                prefetchableLayout.setPrefetchingForItems { _, indexPaths in
+                prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
                     
                     #warning("TODO: giving the prefetcable data source.")
-                    print("prefetching", indexPaths)
+                    
+                    guard
+                        let self = self,
+                        let lastIndexPath = indexPaths.max(),
+                        let lastState = self.sections?.state(at: lastIndexPath.section),
+                        case .prefetching = lastState
+                    else { return }
+                    
+                    self.loadStorage()
                     
                 }
                 
@@ -68,6 +76,26 @@ where
     }
     
     private struct Sections<Section>: SectionCollection where Section == C.Section {
+        
+        enum State {
+            
+            case fetched(Section)
+            
+            case prefetching(Section)
+            
+            var section: Section {
+                
+                switch self {
+                    
+                case let .fetched(section): return section
+                   
+                case let .prefetching(section): return section
+                    
+                }
+                
+            }
+            
+        }
         
         let fetchedSections: AnySectionCollection<Section>?
         
@@ -110,7 +138,9 @@ where
             
         }
         
-        func section(at index: Int) -> Section {
+        func section(at index: Int) -> Section { return state(at: index).section }
+        
+        func state(at index: Int) -> State {
             
             let fetchedCount = fetchedSections?.count ?? 0
             
@@ -119,10 +149,10 @@ where
             if isFetched {
                 
                 guard
-                    let fetchedSection = fetchedSections?.section(at: index)
+                    let section = fetchedSections?.section(at: index)
                 else { fatalError("Must have a fetched section.") }
                 
-                return fetchedSection
+                return .fetched(section)
                 
             }
             
@@ -130,7 +160,9 @@ where
                 
                 let prefetchingIndex = (index - fetchedCount)
                 
-                return prefetchingSections.section(at: prefetchingIndex)
+                let section = prefetchingSections.section(at: prefetchingIndex)
+                
+                return .prefetching(section)
                 
             }
             
