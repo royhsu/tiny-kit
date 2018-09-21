@@ -56,7 +56,7 @@ where
                     
                     guard
                         let self = self,
-                        let lastIndexPath = indexPaths.max(),
+                        let lastIndexPath = indexPaths.min(),
                         let lastState = self.sections?.state(at: lastIndexPath.section),
                         case .prefetching = lastState
                     else { return }
