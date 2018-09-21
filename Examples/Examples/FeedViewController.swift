@@ -12,7 +12,7 @@ import TinyCore
 import TinyKit
 import UIKit
 
-public final class FeedViewController: CollectionViewController<FeedStorage, FeedSectionCollection> {
+public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection> where S: MutableStorage, S.Value == Feed {
     
     public final override func viewDidLoad() {
         

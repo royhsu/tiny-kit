@@ -89,19 +89,27 @@ where
             
             let fetchedCount = fetchedSections?.count ?? 0
             
-            if let prefetchingSections = prefetchingSections {
+            let isFetched = (fetchedCount != 0) && (index < fetchedCount)
+            
+            if isFetched {
                 
-                let isPrefetching = (index >= fetchedCount)
+                guard
+                    let fetchedSection = fetchedSections?.section(at: index)
+                else { fatalError("Must have a fetched section.") }
                 
-                if isPrefetching { return prefetchingSections.section(at: index) }
+                return fetchedSection
                 
             }
-
-            guard
-                let fetchedSection = fetchedSections?.section(at: index)
-            else { fatalError("Must have a fetched section.") }
             
-            return fetchedSection
+            if let prefetchingSections = prefetchingSections {
+                
+                let prefetchingIndex = index - fetchedCount
+                
+                return prefetchingSections.section(at: prefetchingIndex)
+                
+            }
+            
+            fatalError("Must have a prefetching section.")
             
         }
         
@@ -117,6 +125,8 @@ where
         
     }
 
+    public final var _prefetchingStorage: S?
+    
     public final var storage: S? {
         
         didSet {
@@ -164,7 +174,14 @@ where
             let fetchedSections = reducer(storage)
             
             #warning("TODO: prefetching sections data source.")
-            let prefetchingSections: C? = nil
+            let prefetchingSections: C?
+            
+            if let prefetchingStorage = self._prefetchingStorage {
+                
+                prefetchingSections = reducer(prefetchingStorage)
+                
+            }
+            else { prefetchingSections = nil }
             
             #warning("TODO: sections generator.")
             self.sections = Sections(

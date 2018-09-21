@@ -28,13 +28,25 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let viewController = FeedViewController()
+        let viewController = FeedViewController<MemoryCache<Int, Feed>>()
         
         viewController.layout = TableViewLayout()
         
-        viewController.storage = FeedStorage(
-            resource: PostResource(client: URLSession.shared)
-        )
+        let storage: MemoryCache<Int, Feed> = [
+            0: .post(Post(id: 0, title: "A", body: "AAA"))
+        ]
+        
+        let prefetchingStorage: MemoryCache<Int, Feed> = [
+            0: .comment(Comment(username: "Loading...", text: "Please wait a moment."))
+        ]
+        
+        viewController.storage = storage
+        
+        viewController._prefetchingStorage = prefetchingStorage
+        
+//        viewController.storage = FeedStorage(
+//            resource: PostResource(client: URLSession.shared)
+//        )
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
         
