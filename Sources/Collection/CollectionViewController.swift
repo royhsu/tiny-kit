@@ -221,7 +221,7 @@ where
     
     fileprivate final func reduceStorage() {
         
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.global(qos: .background).async { [weak self] in
             
             guard
                 let self = self,
@@ -231,7 +231,6 @@ where
             
             let fetchedSections = reducer(storage)
             
-            #warning("TODO: prefetching sections data source.")
             let prefetchingSections: C?
             
             if let prefetchingStorage = self._prefetchingStorage {
@@ -241,7 +240,6 @@ where
             }
             else { prefetchingSections = nil }
             
-            #warning("TODO: sections generator.")
             self.sections = Sections(
                 fetchedSections: fetchedSections,
                 prefetchingSections: prefetchingSections
