@@ -8,6 +8,7 @@
 
 // MARK: - AppDelegate
 
+import TinyStorage
 import TinyKit
 import UIKit
 
@@ -28,24 +29,28 @@ extension AppDelegate: UIApplicationDelegate {
     )
     -> Bool {
         
-        let viewController = FeedViewController<RemoteStorage<Feed>>()
+        let viewController = FeedViewController<TinyStorage.MemoryCache<Int, Feed>>()
         
         viewController.layout = TableViewLayout()
         
-        viewController.storage = RemoteStorage(resource: DummyResource())
-        
-        let prefetchingStorage = RemoteStorage(resource: DummyResource())
-        
-        let loadings: [(Int, Feed?)] = [
-            (0, .post(Post(id: 0, title: "Loading...", body: "")))
+        let storage: TinyStorage.MemoryCache<Int, Feed> = [
+            0: .post(Post(id: 0, title: "Loading...", body: ""))
         ]
         
-        prefetchingStorage.merge(
-            AnySequence(loadings),
-            options: .muteBroadcaster
-        )
+        viewController.storage = storage
         
-        viewController._prefetchingStorage = prefetchingStorage
+//        let prefetchingStorage = RemoteStorage(resource: DummyResource())
+//
+//        let loadings: [(Int, Feed?)] = [
+//            (0, .post(Post(id: 0, title: "Loading...", body: "")))
+//        ]
+//
+//        prefetchingStorage.merge(
+//            AnySequence(loadings),
+//            options: .muteBroadcaster
+//        )
+        
+//        viewController._prefetchingStorage = prefetchingStorage
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
         

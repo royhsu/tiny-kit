@@ -10,9 +10,10 @@
 
 import TinyCore
 import TinyKit
+import TinyStorage
 import UIKit
 
-public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection> where S: MutableStorage, S.Value == Feed {
+public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection> where S: TinyStorage.Storage, S.Value == Feed {
     
     public final override func viewDidLoad() {
         
@@ -21,12 +22,12 @@ public final class FeedViewController<S>: CollectionViewController<S, FeedSectio
         reducer = { storage in
             
             return FeedSectionCollection(
-                sections: storage.map { pair in
-                    
+                sections: storage.lazy.map { pair in
+
                     switch pair.value {
-                        
+
                     case let .post(storage):
-                        
+
                         let template = PostTemplate(
                             storage: storage,
                             dispatcher: self,
@@ -36,38 +37,38 @@ public final class FeedViewController<S>: CollectionViewController<S, FeedSectio
                                 .like
                             ]
                         )
-                        
+
                         template.configuration = PostTemplateConfiguration()
-                    
+
                         template.registerView(
                             LargeTitleLabel.self,
                             binding: (from: \.title, to: \.text),
                             for: .title
                         )
-                        
+
                         template.registerView(
                             TitleLabel.self,
                             binding: (from: \.title, to: \.text),
                             for: .title
                         )
-                        
+
                         template.registerView(
                             BodyLabel.self,
                             binding: (from: \.body, to: \.text),
                             for: .body
                         )
-                        
+
                         template.registerView(
                             LikeButton.self,
                             from: .main,
                             binding: (from: \.isLiked, to: \.isSelected),
                             for: .like
                         )
-                        
+
                         return .post(template)
-                        
+
                     case let .comment(storage):
-                        
+
                         let template = CommentTemplate(
                             storage: storage,
                             dispatcher: self,
@@ -76,11 +77,11 @@ public final class FeedViewController<S>: CollectionViewController<S, FeedSectio
                                 .text
                             ]
                         )
-                        
+
                         return .comment(template)
-                        
+
                     }
-                    
+
                 }
             )
             
