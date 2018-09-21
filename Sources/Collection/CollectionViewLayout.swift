@@ -23,7 +23,7 @@ public protocol CollectionViewLayout {
     )
     
     func setViewForItem(
-        provider: @escaping (View, _ indexPath: IndexPath) -> View
+        provider: @escaping (View, IndexPath) -> View
     )
     
 }

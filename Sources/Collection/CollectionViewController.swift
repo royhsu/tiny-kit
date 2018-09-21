@@ -17,7 +17,7 @@ where
     C: SectionCollection {
     
     public typealias Reducer = (S) -> C
-
+    
     public final var layout: CollectionViewLayout? {
         
         didSet {
@@ -56,8 +56,59 @@ where
         
     }
     
-    private final var sections: C? {
+    private struct Sections<Section>: SectionCollection {
         
+        typealias Section = C.Section
+        
+        let fetchedSections: C?
+        
+        let prefetchingSections: C?
+        
+        init(
+            fetchedSections: C?,
+            prefetchingSections: C?
+        ) {
+            
+            self.fetchedSections = fetchedSections
+            
+            self.prefetchingSections = prefetchingSections
+            
+        }
+        
+        var count: Int {
+            
+            let fetchedCount = fetchedSections?.count ?? 0
+            
+            let prefetchingCount = prefetchingSections?.count ?? 0
+            
+            return fetchedCount + prefetchingCount
+            
+        }
+        
+        func section(at index: Int) -> Section {
+            
+            let fetchedCount = fetchedSections?.count ?? 0
+            
+            if let prefetchingSections = prefetchingSections {
+                
+                let isPrefetching = (index >= fetchedCount)
+                
+                if isPrefetching { return prefetchingSections.section(at: index) }
+                
+            }
+
+            guard
+                let fetchedSection = fetchedSections?.section(at: index)
+            else { fatalError("Must have a fetched section.") }
+            
+            return fetchedSection
+            
+        }
+        
+    }
+    
+    private final var sections: Sections<C.Section>? {
+    
         didSet {
             
             if isViewLoaded { asyncReloadCollectionView() }
@@ -65,7 +116,7 @@ where
         }
         
     }
-    
+
     public final var storage: S? {
         
         didSet {
@@ -110,7 +161,16 @@ where
                 let reducer = self.reducer
             else { return }
             
-            self.sections = reducer(storage)
+            let fetchedSections = reducer(storage)
+            
+            #warning("TODO: prefetching sections data source.")
+            let prefetchingSections: C? = nil
+            
+            #warning("TODO: sections generator.")
+            self.sections = Sections(
+                fetchedSections: fetchedSections,
+                prefetchingSections: prefetchingSections
+            )
             
         }
         
@@ -146,5 +206,23 @@ where
     }
     
     private final var subscriptions: [ObservableSubscription] = []
+    
+}
+
+public protocol PrefetchableSectionCollection: SectionCollection {
+    
+//    var numberOfPrefetchingSections: Int { get }
+//
+//    func setNumberOfPrefetchingSections(
+//        provider: @escaping (View) -> Int
+//    )
+//
+//    func setNumberOfPrefetchingItems(
+//        provider: @escaping (View, _ section: Int) -> Int
+//    )
+//
+//    func setViewForPrefetchingItem(
+//        provider: @escaping (View, IndexPath) -> View
+//    )
     
 }
