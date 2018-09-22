@@ -65,7 +65,7 @@ where
                     
                     print("Loading more...")
                     
-//                    self.loadStorage()
+                    self.loadStorage()
                     
                 }
                 
