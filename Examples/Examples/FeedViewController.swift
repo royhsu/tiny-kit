@@ -11,9 +11,11 @@
 import TinyCore
 import TinyKit
 import TinyStorage
-import UIKit
 
-public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection> where S: TinyStorage.Storage, S.Value == Feed {
+public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection>
+where
+    S: Storage,
+    S.Value == Feed {
     
     public final override func viewDidLoad() {
         
@@ -22,7 +24,7 @@ public final class FeedViewController<S>: CollectionViewController<S, FeedSectio
         reducer = { storage in
             
             return FeedSectionCollection(
-                sections: storage.lazy.map { pair in
+                sections: storage.elements.map { pair in
 
                     switch pair.value {
 

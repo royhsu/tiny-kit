@@ -8,13 +8,12 @@
 
 // MARK: - CollectionViewController
 
-import UIKit
 import TinyStorage
 import TinyCore
 
 open class CollectionViewController<S, C>: ViewController
 where
-    S: TinyStorage.Storage,
+    S: Storage,
     C: SectionCollection {
     
     public typealias Reducer = (S) -> C

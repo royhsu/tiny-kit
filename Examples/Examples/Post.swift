@@ -8,7 +8,11 @@
 
 // MARK: - Post
 
-public struct Post: Codable, Equatable {
+import TinyCore
+
+public struct Post: Unique, Codable, Equatable {
+    
+    public var identifier: String { return "\(id)" }
     
     public let id: Int
     

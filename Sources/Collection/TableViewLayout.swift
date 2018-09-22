@@ -26,12 +26,7 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
         
         tableView.dataSource = dataSource
         
-        #warning("TODO: consider to drop the old iOS versions.")
-        if #available(iOS 10.0, *) {
-            
-            tableView.prefetchDataSource = dataSource
-            
-        }
+        tableView.prefetchDataSource = dataSource
         
     }
     

@@ -10,6 +10,7 @@
 
 import TinyCore
 import TinyKit
+import TinyStorage
 
 public final class PostResource {
     
@@ -19,7 +20,7 @@ public final class PostResource {
     
     public final func fetchPost(
         id: String,
-        completionHandler: @escaping (Result<Post>) -> Void
+        completion: @escaping (Result<Post>) -> Void
     ) {
         
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!
@@ -27,13 +28,13 @@ public final class PostResource {
         client.request(
             URLRequest(url: url),
             decoder: JSONDecoder(),
-            completionHandler: completionHandler
+            completion: completion
         )
         
     }
     
     public final func fetchPosts(
-        completionHandler: @escaping (Result<[Post]>) -> Void
+        completion: @escaping (Result<[Post]>) -> Void
     ) {
         
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
@@ -41,18 +42,20 @@ public final class PostResource {
         client.request(
             URLRequest(url: url),
             decoder: JSONDecoder(),
-            completionHandler: completionHandler
+            completion: completion
         )
         
     }
     
 }
 
+// MARK: - Resource
+
 extension PostResource: Resource {
     
     public final func fetchItems(
         page: Page,
-        completionHandler: @escaping (Result< FetchItemsPayload<Feed> >) -> Void
+        completion: @escaping (Result< FetchItemsPayload<Feed> >) -> Void
     ) {
         
         fetchPosts { result in
@@ -61,7 +64,7 @@ extension PostResource: Resource {
                 
             case let .success(posts):
                 
-                completionHandler(
+                completion(
                     .success(
                         FetchItemsPayload(
                             items: posts.map { $0.feed }
@@ -71,7 +74,7 @@ extension PostResource: Resource {
                 
             case let .failure(error):
                 
-                completionHandler(
+                completion(
                     .failure(error)
                 )
                 

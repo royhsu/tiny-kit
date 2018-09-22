@@ -8,7 +8,9 @@
 
 // MARK: - Feed
 
-public enum Feed: Decodable {
+import TinyCore
+
+public enum Feed: Decodable, Unique {
     
     case post(Post)
     
@@ -46,6 +48,17 @@ public enum Feed: Decodable {
         
     }
     
+    public var identifier: String {
+        
+        switch self {
+            
+        case let .post(post): return post.identifier
+            
+        case let .comment(comment): return comment.identifier
+            
+        }
+        
+    }
     
 }
 
