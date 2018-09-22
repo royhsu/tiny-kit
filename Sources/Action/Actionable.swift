@@ -8,7 +8,7 @@
 
 // MARK: - Actionable
 
-public protocol Actionable: AnyObject {
+public protocol Actionable {
     
     var actionDispatcher: ActionDispatcher? { get set }
     

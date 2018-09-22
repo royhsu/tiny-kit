@@ -125,9 +125,13 @@ where Configuration: TemplateConfiguration {
         
         let view = self.view(for: element)
         
-        let actionable = view as? Actionable
+        var actionable = view as? Actionable
             
         actionable?.actionDispatcher = actionDispatcher
+        
+        var failable = view as? Failable
+        
+        failable?.errorHandler = errorHandler
         
         return view
         

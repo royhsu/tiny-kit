@@ -11,12 +11,6 @@
 import UIKit
 import TinyKit
 
-public protocol LikeButtonStorage {
-    
-    var isLiked: Bool { get set }
-    
-}
-
 public final class LikeButton: UIButton, Actionable {
     
     public final var storage: LikeButtonStorage? {
@@ -81,6 +75,8 @@ public final class LikeButton: UIButton, Actionable {
     public final func like(_ sender: Any) {
         
         isSelected.toggle()
+        
+        storage?.isLiked = isSelected
         
         guard
             let storage = storage

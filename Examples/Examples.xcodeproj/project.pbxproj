@@ -13,6 +13,7 @@
 		B01C62EF2153D5F3008B4026 /* Post+FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */; };
 		B07825E5215550C400F7CD56 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E4215550C400F7CD56 /* TinyStorage.framework */; };
 		B0E236242155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */; };
+		B0E236292156170C00FBE7B3 /* LikeButtonStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */; };
 		B0F809E7214E779D0052ACA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E6214E779D0052ACA3 /* AppDelegate.swift */; };
 		B0F809E9214E779D0052ACA3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E8214E779D0052ACA3 /* FeedViewController.swift */; };
 		B0F809EB214E779D0052ACA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F809EA214E779D0052ACA3 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+FeedRepresentable.swift"; sourceTree = "<group>"; };
 		B07825E4215550C400F7CD56 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchingFeedSectionColleciton.swift; sourceTree = "<group>"; };
+		B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonStorage.swift; sourceTree = "<group>"; };
 		B0F809E3214E779D0052ACA3 /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F809E6214E779D0052ACA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0F809E8214E779D0052ACA3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				B0F80A0C214EA5AC0052ACA3 /* LargeTitleLabel.swift */,
 				B0F809FC214E8A310052ACA3 /* TitleLabel.swift */,
 				B0F809FE214E8A6D0052ACA3 /* BodyLabel.swift */,
+				B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */,
 				B0F80A22214FDC8F0052ACA3 /* LikeButton.swift */,
 				B0F80A24214FDCB70052ACA3 /* LikeButton.xib */,
 				B0F80A2D214FE4F00052ACA3 /* LikeButtonAction.swift */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E236292156170C00FBE7B3 /* LikeButtonStorage.swift in Sources */,
 				B0F80A2E214FE4F00052ACA3 /* LikeButtonAction.swift in Sources */,
 				B0F809FB214E89C80052ACA3 /* Post.swift in Sources */,
 				B0F809FD214E8A310052ACA3 /* TitleLabel.swift in Sources */,
