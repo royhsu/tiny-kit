@@ -36,3 +36,10 @@ public struct Comment: Unique, Codable, Equatable {
     
 }
 
+// MARK: - FeedRepresentable
+
+extension Comment: FeedRepresentable {
+    
+    public var feed: Feed { return .comment(self) }
+    
+}

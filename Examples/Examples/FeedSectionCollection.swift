@@ -18,7 +18,9 @@ public struct FeedSectionCollection: SectionCollection {
         
         case post(PostTemplate)
         
-        case comment(CommentTemplate)
+//        case comment(CommentTemplate)
+        
+        case comment(AnswerTemplate)
         
         public var storage: Any {
             

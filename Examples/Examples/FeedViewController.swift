@@ -76,13 +76,23 @@ where
 
                     case let .comment(storage):
 
-                        let template = CommentTemplate(
+//                        let template = CommentTemplate(
+//                            storage: storage,
+//                            actionDispatcher: self.actionDispatcher,
+//                            errorHandler: self.errorHandler,
+//                            elements: [
+//                                .username,
+//                                .text
+//                            ]
+//                        )
+                        
+                        let template = AnswerTemplate(
                             storage: storage,
                             actionDispatcher: self.actionDispatcher,
                             errorHandler: self.errorHandler,
                             elements: [
-                                .username,
-                                .text
+                                .content,
+                                .separator
                             ]
                         )
 

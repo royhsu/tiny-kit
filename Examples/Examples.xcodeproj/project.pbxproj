@@ -14,6 +14,9 @@
 		B07825E5215550C400F7CD56 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E4215550C400F7CD56 /* TinyStorage.framework */; };
 		B0E236242155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */; };
 		B0E236292156170C00FBE7B3 /* LikeButtonStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */; };
+		B0E236312156212C00FBE7B3 /* UIAnswerItemContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */; };
+		B0E236322156212C00FBE7B3 /* UIAnswerItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236302156212C00FBE7B3 /* UIAnswerItemContentView.swift */; };
+		B0E23636215621EF00FBE7B3 /* AnswerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23635215621EF00FBE7B3 /* AnswerTemplate.swift */; };
 		B0F809E7214E779D0052ACA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E6214E779D0052ACA3 /* AppDelegate.swift */; };
 		B0F809E9214E779D0052ACA3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E8214E779D0052ACA3 /* FeedViewController.swift */; };
 		B0F809EB214E779D0052ACA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F809EA214E779D0052ACA3 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 		B07825E4215550C400F7CD56 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchingFeedSectionColleciton.swift; sourceTree = "<group>"; };
 		B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonStorage.swift; sourceTree = "<group>"; };
+		B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIAnswerItemContentView.xib; sourceTree = "<group>"; };
+		B0E236302156212C00FBE7B3 /* UIAnswerItemContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnswerItemContentView.swift; sourceTree = "<group>"; };
+		B0E23635215621EF00FBE7B3 /* AnswerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTemplate.swift; sourceTree = "<group>"; };
 		B0F809E3214E779D0052ACA3 /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F809E6214E779D0052ACA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0F809E8214E779D0052ACA3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +130,9 @@
 				B0F80A04214E8C220052ACA3 /* CommentTemplate.swift */,
 				B0F80A06214E8CE50052ACA3 /* FeedSectionCollection.swift */,
 				B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */,
+				B0E23635215621EF00FBE7B3 /* AnswerTemplate.swift */,
+				B0E236302156212C00FBE7B3 /* UIAnswerItemContentView.swift */,
+				B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */,
 				B0F809EA214E779D0052ACA3 /* Assets.xcassets */,
 				B0F809EC214E779D0052ACA3 /* LaunchScreen.storyboard */,
 				B0F809EF214E779D0052ACA3 /* Info.plist */,
@@ -202,6 +211,7 @@
 				B0F80A25214FDCB70052ACA3 /* LikeButton.xib in Resources */,
 				B0F809EB214E779D0052ACA3 /* Assets.xcassets in Resources */,
 				B0F809EE214E779D0052ACA3 /* LaunchScreen.storyboard in Resources */,
+				B0E236312156212C00FBE7B3 /* UIAnswerItemContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +227,9 @@
 				B0F809FB214E89C80052ACA3 /* Post.swift in Sources */,
 				B0F809FD214E8A310052ACA3 /* TitleLabel.swift in Sources */,
 				B0F809FF214E8A6D0052ACA3 /* BodyLabel.swift in Sources */,
+				B0E236322156212C00FBE7B3 /* UIAnswerItemContentView.swift in Sources */,
 				B01C62ED2153D5D5008B4026 /* FeedRepresentable.swift in Sources */,
+				B0E23636215621EF00FBE7B3 /* AnswerTemplate.swift in Sources */,
 				B0E236242155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift in Sources */,
 				B0F80A09214E8EAC0052ACA3 /* FeedRemoteStorage.swift in Sources */,
 				B0F80A03214E8BD50052ACA3 /* Comment.swift in Sources */,

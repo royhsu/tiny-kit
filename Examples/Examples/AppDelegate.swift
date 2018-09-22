@@ -70,14 +70,20 @@ public struct DummyResource: Resource {
         
         let last = Int.random(in: 1...20)
         
-        let posts = (0..<last).map { Post(id: $0, title: "\($0)", body: "") }
+        let items = (0..<last).map {
+            
+//            Post(id: $0, title: "\($0)", body: "")
+            
+            Comment(id: $0, username: "\($0)", text: "Hello")
+            
+        }
         
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 2.0) {
             
             completion(
                 .success(
                     FetchItemsPayload(
-                        items: posts.map { $0.feed }
+                        items: items.map { $0.feed }
                     )
                 )
             )
