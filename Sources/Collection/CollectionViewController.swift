@@ -19,7 +19,7 @@ where
     
     public typealias Reducer = (S) -> C
     
-    private final var subscriptions: [ObservableSubscription] = []
+    private final var obervation: Observation?
     
     public final var layout: CollectionViewLayout? {
         
@@ -201,9 +201,7 @@ where
                 let storage = storage
             else { return }
             
-            let subscription = storage.changes.subscribe { _ in self.reduceStorage() }
-            
-            subscriptions = [ subscription ]
+            obervation = storage.observe { _ in self.reduceStorage() }
             
             reduceStorage()
             
