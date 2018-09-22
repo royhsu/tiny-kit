@@ -20,8 +20,12 @@ where
     public final override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        actionDispatcher = self
+
+        errorHandler = self
     
-        reducer = { storage in
+        storageReducer = { storage in
             
             return FeedSectionCollection(
                 sections: storage.elements.map { pair in
@@ -32,7 +36,8 @@ where
 
                         let template = PostTemplate(
                             storage: storage,
-                            dispatcher: self,
+                            actionDispatcher: self.actionDispatcher,
+                            errorHandler: self.errorHandler,
                             elements: [
                                 .title,
                                 .body,
@@ -73,7 +78,8 @@ where
 
                         let template = CommentTemplate(
                             storage: storage,
-                            dispatcher: self,
+                            actionDispatcher: self.actionDispatcher,
+                            errorHandler: self.errorHandler,
                             elements: [
                                 .username,
                                 .text
@@ -148,4 +154,12 @@ extension FeedViewController: ActionDispatcher {
         
     }
 
+}
+
+// MARK: - FeedViewController
+
+extension FeedViewController: ErrorHandler {
+    
+    public func `catch`(error: Error) { print("error: \(error)") }
+    
 }

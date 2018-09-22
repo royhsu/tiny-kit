@@ -10,6 +10,6 @@
 
 public protocol Actionable: AnyObject {
     
-    var dispatcher: ActionDispatcher? { get set }
+    var actionDispatcher: ActionDispatcher? { get set }
     
 }

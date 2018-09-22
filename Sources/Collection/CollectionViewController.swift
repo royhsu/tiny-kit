@@ -213,7 +213,11 @@ where
         
     }
     
-    public final var reducer: Reducer? {
+    public final weak var actionDispatcher: ActionDispatcher?
+    
+    public final weak var errorHandler: ErrorHandler?
+    
+    public final var storageReducer: Reducer? {
         
         didSet { reduceStorage() }
         
@@ -234,7 +238,7 @@ where
             guard
                 let self = self,
                 let storage = self.storage,
-                let reducer = self.reducer
+                let reducer = self.storageReducer
             else { return }
             
             let fetchedSections = reducer(storage)
@@ -258,10 +262,7 @@ where
                 
             case .success: self?.reduceStorage()
                 
-            case let .failure(error):
-                
-                #warning("delegate the error.")
-                print("\(error)")
+            case let .failure(error): self?.errorHandler?.catch(error: error)
                 
             }
             

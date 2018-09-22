@@ -13,7 +13,7 @@ import TinyKit
 
 public final class LikeButton: UIButton, Actionable {
     
-    public final var dispatcher: ActionDispatcher?
+    public final weak var actionDispatcher: ActionDispatcher?
     
     public override init(frame: CGRect) {
         
@@ -68,7 +68,7 @@ public final class LikeButton: UIButton, Actionable {
         
         let action: LikeButtonAction = .liked(isSelected)
 
-        dispatcher?.dispatch(action: action)
+        actionDispatcher?.dispatch(action: action)
         
     }
     

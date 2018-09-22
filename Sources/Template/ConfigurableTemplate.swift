@@ -61,19 +61,24 @@ where Configuration: TemplateConfiguration {
     
     public final let storage: Storage
     
-    public final weak var dispatcher: ActionDispatcher?
+    public final weak var actionDispatcher: ActionDispatcher?
+    
+    public final weak var errorHandler: ErrorHandler?
     
     public final var configuration: Configuration?
     
     public init(
         storage: Storage,
-        dispatcher: ActionDispatcher? = nil,
+        actionDispatcher: ActionDispatcher? = nil,
+        errorHandler: ErrorHandler? = nil,
         elements: [Element] = []
     ) {
         
         self.storage = storage
         
-        self.dispatcher = dispatcher
+        self.actionDispatcher = actionDispatcher
+        
+        self.errorHandler = errorHandler
         
         self.elements = AnyCollection(elements)
         
@@ -122,7 +127,7 @@ where Configuration: TemplateConfiguration {
         
         let actionable = view as? Actionable
             
-        actionable?.dispatcher = dispatcher
+        actionable?.actionDispatcher = actionDispatcher
         
         return view
         
