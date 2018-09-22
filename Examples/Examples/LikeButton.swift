@@ -11,7 +11,23 @@
 import UIKit
 import TinyKit
 
+public protocol LikeButtonStorage {
+    
+    var isLiked: Bool { get set }
+    
+}
+
 public final class LikeButton: UIButton, Actionable {
+    
+    public final var storage: LikeButtonStorage? {
+        
+        didSet {
+            
+            isSelected = storage?.isLiked ?? false
+            
+        }
+        
+    }
     
     public final weak var actionDispatcher: ActionDispatcher?
     
@@ -66,7 +82,11 @@ public final class LikeButton: UIButton, Actionable {
         
         isSelected.toggle()
         
-        let action: LikeButtonAction = .liked(isSelected)
+        guard
+            let storage = storage
+        else { return }
+        
+        let action: LikeButtonAction = .liked(storage)
 
         actionDispatcher?.dispatch(action: action)
         

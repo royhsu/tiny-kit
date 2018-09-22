@@ -20,7 +20,7 @@ public struct Post: Unique, Codable, Equatable {
     
     public let body: String
     
-    public let isLiked: Bool = false
+    public var isLiked: Bool = false
     
     public init(
         id: Int,
@@ -37,3 +37,7 @@ public struct Post: Unique, Codable, Equatable {
     }
         
 }
+
+// MARK: - LikeButtonStorage
+
+extension Post: LikeButtonStorage { }

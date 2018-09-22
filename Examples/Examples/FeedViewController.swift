@@ -25,7 +25,7 @@ where
 
         errorHandler = self
     
-        storageReducer = { storage in
+        storageReducer = { [unowned self] storage in
             
             return FeedSectionCollection(
                 sections: storage.elements.map { pair in
@@ -68,7 +68,7 @@ where
                         template.registerView(
                             LikeButton.self,
                             from: .main,
-                            binding: (from: \.isLiked, to: \.isSelected),
+                            binding: { storage, button in button.storage = storage },
                             for: .like
                         )
 
@@ -140,9 +140,9 @@ extension FeedViewController: ActionDispatcher {
             
             switch action {
                 
-            case let .liked(isLiked):
+            case let .liked(storage):
                 
-                print("isLiked:", isLiked)
+                print("isLiked:", storage)
                 
                 navigate(to: .red)
                 
