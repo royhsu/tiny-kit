@@ -40,9 +40,9 @@ extension AppDelegate: UIApplicationDelegate {
             resource: DummyResource()
         )
         
-        viewController._prefetchingSessions = LoadingSectionCollection(
+        viewController._prefetchingSessions = PrefetchingFeedSectionColleciton(
             sections: [
-                LoadingSectionCollection.Section(
+                PrefetchingFeedSectionColleciton.Section(
                     elements: [ .indicator ]
                 )
             ]

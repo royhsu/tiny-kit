@@ -58,7 +58,7 @@ where
                     #warning("FIXME: The loading more won't trigger while the displayed cells were too few.")
                     guard
                         let self = self,
-                        let lastIndexPath = indexPaths.min(),
+                        let lastIndexPath = indexPaths.max(),
                         let lastState = self.sections?.state(at: lastIndexPath.section),
                         case .prefetching = lastState
                     else { return }
