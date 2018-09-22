@@ -12,7 +12,51 @@ import TinyCore
 import TinyKit
 import TinyStorage
 
-public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection>
+public struct LoadingSectionCollection: SectionCollection {
+    
+    public struct Section: Template {
+        
+        public enum Element {
+            
+            case indicator
+            
+        }
+        
+        public let storage: Void
+        
+        private let elements: [Element]
+        
+        public init(
+            elements: [Element]
+        ) { self.elements = elements }
+        
+        public var numberOfElements: Int { return elements.count }
+        
+        public func view(at index: Int) -> View {
+            
+            let view = View()
+         
+            view.backgroundColor = .red
+            
+            return view
+            
+        }
+        
+    }
+    
+    public var sections: [Section]
+    
+    public init(
+        sections: [Section]
+    ) { self.sections = sections }
+    
+    public var count: Int { return sections.count }
+    
+    public func section(at index: Int) -> Section { return sections[index] }
+    
+}
+
+public final class FeedViewController<S>: CollectionViewController<S, FeedSectionCollection, LoadingSectionCollection>
 where
     S: Storage,
     S.Value == Feed {

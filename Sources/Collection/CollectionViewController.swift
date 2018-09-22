@@ -11,10 +11,11 @@
 import TinyStorage
 import TinyCore
 
-open class CollectionViewController<S, C>: ViewController
+open class CollectionViewController<S, C, U>: ViewController
 where
     S: Storage,
-    C: SectionCollection {
+    C: SectionCollection,
+    U: SectionCollection {
     
     public typealias Reducer = (S) -> C
     
@@ -36,19 +37,17 @@ where
     
             layout?.setNumberOfItems { [weak self] _, section in
     
-                let section = self?.sections?.section(at: section)
-    
-                return section?.numberOfElements ?? 0
+                return self?.sections?.numberOfElements(at: section) ?? 0
     
             }
     
             layout?.setViewForItem { [weak self] _, indexPath in
     
                 guard
-                    let section = self?.sections?.section(at: indexPath.section)
+                    let view = self?.sections?.view(at: indexPath)
                 else { return View() }
     
-                return section.view(at: indexPath.item)
+                return view
     
             }
             
@@ -66,7 +65,7 @@ where
                     
                     print("Loading more...")
                     
-                    self.loadStorage()
+//                    self.loadStorage()
                     
                 }
                 
@@ -78,42 +77,24 @@ where
         
     }
     
-    private struct Sections<Section>: SectionCollection where Section == C.Section {
+    private struct Sections {
         
         enum State {
             
-            case fetched(Section)
+            case fetched(C.Section)
             
-            case prefetching(Section)
-            
-            var section: Section {
-                
-                switch self {
-                    
-                case let .fetched(section): return section
-                   
-                case let .prefetching(section): return section
-                    
-                }
-                
-            }
+            case prefetching(U.Section)
             
         }
         
-        let fetchedSections: AnySectionCollection<Section>?
+        let fetchedSections: AnySectionCollection<C.Section>?
         
-        let prefetchingSections: AnySectionCollection<Section>?
+        let prefetchingSections: AnySectionCollection<U.Section>?
         
-        init<T, U>(
-            fetchedSections: T?,
+        init(
+            fetchedSections: C?,
             prefetchingSections: U?
-        )
-        where
-            T: SectionCollection,
-            T.Section == Section,
-            U: SectionCollection,
-            U.Section == Section
-        {
+        ) {
             
             if let fetchedSections = fetchedSections {
                 
@@ -144,18 +125,40 @@ where
             
         }
         
-        func section(at index: Int) -> Section { return state(at: index).section }
+        func numberOfElements(at section: Int) -> Int {
+            
+            switch state(at: section) {
+                
+            case let .fetched(section): return section.numberOfElements
+                
+            case let .prefetching(section): return section.numberOfElements
+                
+            }
+            
+        }
         
-        func state(at index: Int) -> State {
+        func view(at indexPath: IndexPath) -> View {
+            
+            switch state(at: indexPath.section) {
+                
+            case let .fetched(section): return section.view(at: indexPath.item)
+                
+            case let .prefetching(section): return section.view(at: indexPath.item)
+                
+            }
+            
+        }
+        
+        func state(at section: Int) -> State {
             
             let fetchedCount = fetchedSections?.count ?? 0
             
-            let isFetched = (fetchedCount != 0) && (index < fetchedCount)
+            let isFetched = (fetchedCount != 0) && (section < fetchedCount)
             
             if isFetched {
                 
                 guard
-                    let section = fetchedSections?.section(at: index)
+                    let section = fetchedSections?.section(at: section)
                 else { fatalError("Must have a fetched section.") }
                 
                 return .fetched(section)
@@ -164,7 +167,7 @@ where
             
             if let prefetchingSections = prefetchingSections {
                 
-                let prefetchingIndex = (index - fetchedCount)
+                let prefetchingIndex = (section - fetchedCount)
                 
                 let section = prefetchingSections.section(at: prefetchingIndex)
                 
@@ -178,7 +181,7 @@ where
         
     }
     
-    private final var sections: Sections<C.Section>? {
+    private final var sections: Sections? {
     
         didSet {
             
@@ -188,7 +191,7 @@ where
         
     }
 
-    public final var _prefetchingStorage: S?
+    public final var _prefetchingSessions: U?
     
     public final var storage: S? {
         
@@ -236,14 +239,7 @@ where
             
             let fetchedSections = reducer(storage)
             
-            let prefetchingSections: C?
-            
-            if let prefetchingStorage = self._prefetchingStorage {
-                
-                prefetchingSections = reducer(prefetchingStorage)
-                
-            }
-            else { prefetchingSections = nil }
+            let prefetchingSections = self._prefetchingSessions
             
             self.sections = Sections(
                 fetchedSections: fetchedSections,
