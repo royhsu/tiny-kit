@@ -25,6 +25,15 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
     
     public final var collectionView: View { return _collectionView }
     
+    private typealias WidthForItem = (
+        _ collectionView: View,
+        _ layoutFrame: CGRect,
+        _ indexPath: IndexPath
+    )
+    -> CGFloat
+    
+    private final var _widthForItem: WidthForItem?
+    
     public final var interitemSpacing: CGFloat {
         
         get { return flowLayout.minimumLineSpacing }
@@ -40,6 +49,20 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
         set { _collectionView.showsHorizontalScrollIndicator = newValue }
         
     }
+    
+    #warning("""
+    The paging effect is not working what I want.
+    Reson:
+    1. https://stackoverflow.com/questions/42486960/uicollectionview-horizontal-paging-with-space-between-pages
+    2. https://stackoverflow.com/questions/19067459/uiscrollview-paging-enabled-with-content-inset-is-working-strange
+    """)
+//    public final var isPagingEnabled: Bool {
+//
+//        get { return _collectionView.isPagingEnabled }
+//
+//        set { _collectionView.isPagingEnabled = newValue }
+//
+//    }
     
     @available(iOS 11.0, *)
     public final var directionalContentInsets: NSDirectionalEdgeInsets {
@@ -136,15 +159,20 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
         bridge.setSizeForItem { [weak self] _, _, indexPath in
             
             guard
-                let self = self
+                let self = self,
+                let widthForItem = self._widthForItem
             else { return .zero }
             
             let layoutFrame = self._collectionView.layoutFrame
             
-            #warning("Use magic width 100.0 for testing.")
+            let width = widthForItem(
+                self.collectionView,
+                layoutFrame,
+                indexPath
+            )
             
             return CGSize(
-                width: 100.0,
+                width: width,
                 height: layoutFrame.height
             )
             
@@ -252,6 +280,16 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
         }
         
     }
+    
+    #warning("Documentation: required. The default value is zero.")
+    public final func setWidthForItem(
+        _ provider: @escaping (
+            _ collectionView: View,
+            _ layoutFrame: CGRect,
+            _ indexPath: IndexPath
+        )
+        -> CGFloat
+    ) { _widthForItem = provider }
     
 }
 

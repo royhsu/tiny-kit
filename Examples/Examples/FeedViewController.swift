@@ -99,6 +99,8 @@ where
                         
                         layout.showsScrollIndicator = false
                         
+                        layout.setWidthForItem { _, layoutFrame, _ in layoutFrame.width }
+                        
                         let template = AnswerTemplate(
                             storage: storage,
                             layout: layout,
