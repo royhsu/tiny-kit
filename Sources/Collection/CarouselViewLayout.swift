@@ -18,21 +18,66 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
     
     private final let bridge = CollectionViewBridge()
     
-    public final let _collectionView = CollectionView()
+    private final let flowLayout = UICollectionViewFlowLayout()
+    
+    private final let _collectionView: CollectionView
     
     public final var collectionView: View { return _collectionView }
     
     public init() {
         
+        self._collectionView = CollectionView(
+            frame: .zero,
+            collectionViewLayout: flowLayout
+        )
+        
+        self.prepare()
+        
+    }
+    
+    fileprivate final func prepare() {
+        
         _collectionView.bridge = bridge
         
         _collectionView.registerCell(Cell.self)
+    
+        flowLayout.minimumInteritemSpacing = 0.0
         
+        flowLayout.minimumLineSpacing = 0.0
+        
+        flowLayout.scrollDirection = .horizontal
+        
+        flowLayout.headerReferenceSize = .zero
+        
+        flowLayout.footerReferenceSize = .zero
+        
+        flowLayout.sectionInset = .zero
+        
+        bridge.setSizeForItem { [weak self] _, _, indexPath in
+            
+            guard
+                let self = self
+            else { return .zero }
+            
+            let layoutFrame = self._collectionView.layoutFrame
+            
+            #warning("Use magic width 100.0 for testing.")
+            
+            return CGSize(
+                width: 100.0,
+                height: layoutFrame.height
+            )
+            
+        }
+    
     }
     
     public final func invalidate() {
         
-        _collectionView.collectionViewLayout.invalidateLayout()
+        flowLayout.invalidateLayout()
+        
+        #warning("Not sure if needs to manually call reloadData after invalidated layout.")
+        _collectionView.reloadData()
         
     }
     
@@ -135,3 +180,71 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 #error("No carousel view layout for the current platform.")
 
 #endif
+
+// MARK: - Safe Area Rect
+
+import UIKit
+
+public extension UICollectionView {
+    
+    // swiftlint:disable identifier_name
+    public final var layoutFrame: CGRect {
+        
+        let x: CGFloat
+
+        let y: CGFloat
+        
+        let width: CGFloat
+        
+        let height: CGFloat
+        
+        if #available(iOS 11.0, *) {
+            
+            let layoutFrame = safeAreaLayoutGuide.layoutFrame
+            
+            x = layoutFrame.minX
+            
+            y = layoutFrame.minY
+            
+            width = layoutFrame.width
+            
+            height = layoutFrame.height
+            
+        }
+        else {
+            
+            x = contentInset.left
+            
+            y = contentInset.top
+            
+            let expectedWidth = bounds.width
+                - x
+                - contentInset.right
+            
+            let expectedHeight = bounds.height
+                - y
+                - contentInset.bottom
+            
+            width = max(
+                0.0,
+                expectedWidth
+            )
+            
+            height = max(
+                0.0,
+                expectedHeight
+            )
+            
+        }
+        
+        return CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: height
+        )
+        
+    }
+    // swiftlint:enable identifier_name
+    
+}

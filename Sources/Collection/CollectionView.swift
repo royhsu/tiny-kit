@@ -22,6 +22,8 @@ public final class CollectionView: UICollectionView {
             
             prefetchDataSource = bridge
             
+            delegate = bridge
+            
         }
         
     }

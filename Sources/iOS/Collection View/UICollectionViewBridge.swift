@@ -32,6 +32,13 @@ public final class UICollectionViewBridge: NSObject {
     )
     -> Void
     
+    public typealias SizeForItem = (
+        _ collectionView: UICollectionView,
+        _ collectionViewLayout: UICollectionViewLayout,
+        _ indexPath: IndexPath
+    )
+    -> CGSize
+    
     private final var _numberOfSections: NumberOfSections?
     
     private final var _numberOfItems: NumberOfItems?
@@ -39,6 +46,8 @@ public final class UICollectionViewBridge: NSObject {
     private final var _cellForItem: CellForItem?
     
     private final var _prefetchingForItems: PrefetchingForItems?
+    
+    private final var _sizeForItem: SizeForItem?
     
     public override init() { super.init() }
     
@@ -49,6 +58,8 @@ public final class UICollectionViewBridge: NSObject {
     public final func setCellForItem(_ provider: CellForItem?) { _cellForItem = provider }
     
     public final func setPrefetchingForItems(_ provider: PrefetchingForItems?) { _prefetchingForItems = provider }
+    
+    public final func setSizeForItem(_ provider: SizeForItem?) { _sizeForItem = provider }
     
 }
 
@@ -111,6 +122,29 @@ extension UICollectionViewBridge: UICollectionViewDataSourcePrefetching {
             collectionView,
             indexPaths
         )
+        
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension UICollectionViewBridge: UICollectionViewDelegateFlowLayout {
+    
+    public final func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    )
+    -> CGSize {
+        
+        let size = _sizeForItem?(
+            collectionView,
+            collectionViewLayout,
+            indexPath
+        )
+        
+        return size ?? .zero
         
     }
     

@@ -17,14 +17,16 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     private final var _tableView = TableView()
     
     public final var collectionView: View { return _tableView }
+
+    public init() { self.prepare() }
     
-    public init() {
+    fileprivate final func prepare() {
+        
+        _tableView.bridge = bridge
         
         _tableView.separatorStyle = .none
         
         _tableView.registerCell(Cell.self)
-        
-        _tableView.bridge = bridge
         
     }
     

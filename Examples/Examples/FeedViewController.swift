@@ -88,7 +88,8 @@ where
                         
                         let template = AnswerTemplate(
                             storage: storage,
-                            layout: TableViewLayout(),
+//                            layout: TableViewLayout(),
+                            layout: CarouselViewLayout(),
                             actionDispatcher: self.actionDispatcher,
                             errorHandler: self.errorHandler,
                             elements: [
