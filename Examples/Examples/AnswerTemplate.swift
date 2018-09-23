@@ -24,8 +24,6 @@ public struct AnswerTemplate: Template {
     
     public weak var actionDispatcher: ActionDispatcher?
     
-    public weak var errorHandler: ErrorHandler?
-    
     public let elements: [Element]
     
     private let layout: CollectionViewLayout
@@ -34,7 +32,6 @@ public struct AnswerTemplate: Template {
         storage: Comment,
         layout: CollectionViewLayout,
         actionDispatcher: ActionDispatcher? = nil,
-        errorHandler: ErrorHandler? = nil,
         elements: [Element] = []
     ) {
         
@@ -43,8 +40,6 @@ public struct AnswerTemplate: Template {
         self.layout = layout
         
         self.actionDispatcher = actionDispatcher
-        
-        self.errorHandler = errorHandler
         
         self.elements = elements
         

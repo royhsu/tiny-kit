@@ -73,9 +73,9 @@ public struct DummyResource: Resource {
 //        let items = (0..<last).map {
         let items = (0..<1).map {
         
-//            Post(id: $0, title: "\($0)", body: "")
+            Post(id: $0, title: "\($0)", body: "")
             
-            Comment(id: $0, username: "\($0)", text: "Hello")
+//            Comment(id: $0, username: "\($0)", text: "Hello")
             
         }
         

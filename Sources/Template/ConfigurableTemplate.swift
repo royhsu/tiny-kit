@@ -129,10 +129,6 @@ where Configuration: TemplateConfiguration {
             
         actionable?.actionDispatcher = actionDispatcher
         
-        var failable = view as? Failable
-        
-        failable?.errorHandler = errorHandler
-        
         return view
         
     }

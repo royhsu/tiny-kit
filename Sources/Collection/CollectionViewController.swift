@@ -19,7 +19,9 @@ where
     
     public typealias Reducer = (S) -> C
     
-    private final var obervation: Observation?
+    private final var observations: [Observation] = []
+    
+    public final let errors = Observable<Error>()
     
     public final var layout: CollectionViewLayout? {
         
@@ -44,8 +46,25 @@ where
             layout?.setViewForItem { [weak self] _, indexPath in
     
                 guard
-                    let view = self?.sections?.view(at: indexPath)
+                    let self = self,
+                    let view = self.sections?.view(at: indexPath)
                 else { return View() }
+                
+                if let errorHandler = view as? ErrorHandler {
+                    
+                    let observation = self.errors.observe { change in
+                        
+                        guard
+                            let error = change.currentValue
+                        else { return }
+                        
+                        errorHandler.catch(error: error)
+                        
+                    }
+                    
+                    self.observations.append(observation)
+                    
+                }
     
                 return view
     
@@ -201,7 +220,9 @@ where
                 let storage = storage
             else { return }
             
-            obervation = storage.observe { _ in self.reduceStorage() }
+            let observation = storage.observe { _ in self.reduceStorage() }
+            
+            observations.append(observation)
             
             reduceStorage()
             
@@ -212,8 +233,6 @@ where
     }
     
     public final weak var actionDispatcher: ActionDispatcher?
-    
-    public final weak var errorHandler: ErrorHandler?
     
     public final var storageReducer: Reducer? {
         
@@ -260,7 +279,7 @@ where
                 
             case .success: self?.reduceStorage()
                 
-            case let .failure(error): self?.errorHandler?.catch(error: error)
+            case let .failure(error): self?.errors.value = error
                 
             }
             
@@ -271,6 +290,8 @@ where
     fileprivate final func asyncReloadCollectionView() {
         
         DispatchQueue.main.async { [weak self] in
+            
+            self?.observations = []
             
             self?.layout?.invalidate()
             

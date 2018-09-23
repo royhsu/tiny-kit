@@ -11,7 +11,7 @@
 import UIKit
 import TinyKit
 
-public final class LikeButton: UIButton, Actionable {
+public final class LikeButton: UIButton, Actionable, ErrorHandler {
     
     public final var storage: LikeButtonStorage? {
         
@@ -88,5 +88,10 @@ public final class LikeButton: UIButton, Actionable {
         
     }
     
+    public final func `catch`(error: Error) {
+        
+        print(#function, "\(error)")
+        
+    }
+    
 }
-

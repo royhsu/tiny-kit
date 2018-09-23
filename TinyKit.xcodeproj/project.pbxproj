@@ -39,7 +39,6 @@
 		B07825E1215550A800F7CD56 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E0215550A800F7CD56 /* TinyStorage.framework */; };
 		B07825E3215550B300F7CD56 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E2215550B300F7CD56 /* TinyCore.framework */; };
 		B0E2362721560CFB00FBE7B3 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */; };
-		B0E2362B215617B700FBE7B3 /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2362A215617B700FBE7B3 /* Failable.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
 		B0E2366821571BE900FBE7B3 /* TableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */; };
 		B0E2366B21571E0E00FBE7B3 /* UICollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2366A21571E0E00FBE7B3 /* UICollectionViewBridge.swift */; };
@@ -110,7 +109,6 @@
 		B07825E0215550A800F7CD56 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07825E2215550B300F7CD56 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		B0E2362A215617B700FBE7B3 /* Failable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
 		B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewBridge.swift; sourceTree = "<group>"; };
 		B0E2366A21571E0E00FBE7B3 /* UICollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewBridge.swift; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */,
-				B0E2362A215617B700FBE7B3 /* Failable.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -463,7 +460,6 @@
 				B0E23671215723E900FBE7B3 /* CollectionViewBridge.swift in Sources */,
 				B0E2366B21571E0E00FBE7B3 /* UICollectionViewBridge.swift in Sources */,
 				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
-				B0E2362B215617B700FBE7B3 /* Failable.swift in Sources */,
 				B01D21E5214B64270078E946 /* Template.swift in Sources */,
 				B0E2366D2157213700FBE7B3 /* CollectionView.swift in Sources */,
 				B0F80A21214FD98B0052ACA3 /* Actionable.swift in Sources */,

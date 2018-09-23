@@ -22,8 +22,6 @@ where
         super.viewDidLoad()
         
         actionDispatcher = self
-
-        errorHandler = self
     
         storageReducer = { [unowned self] storage in
             
@@ -37,7 +35,6 @@ where
                         let template = PostTemplate(
                             storage: storage,
                             actionDispatcher: self.actionDispatcher,
-                            errorHandler: self.errorHandler,
                             elements: [
                                 .title,
                                 .body,
@@ -105,7 +102,6 @@ where
                             storage: storage,
                             layout: layout,
                             actionDispatcher: self.actionDispatcher,
-                            errorHandler: self.errorHandler,
                             elements: [
                                 .content,
                                 .separator
@@ -158,6 +154,8 @@ extension FeedViewController: Navigation {
 
 // MARK: - ActionDispatcher
 
+public struct TestError: Error { public init() { } }
+
 extension FeedViewController: ActionDispatcher {
     
     public final func dispatch(action: Action) {
@@ -168,9 +166,11 @@ extension FeedViewController: ActionDispatcher {
                 
             case let .liked(storage):
                 
-                print("isLiked:", storage)
+//                print("isLiked:", storage)
+//
+//                navigate(to: .red)
                 
-                navigate(to: .red)
+                errors.value = TestError()
                 
             }
             
@@ -180,12 +180,4 @@ extension FeedViewController: ActionDispatcher {
         
     }
 
-}
-
-// MARK: - FeedViewController
-
-extension FeedViewController: ErrorHandler {
-    
-    public func `catch`(error: Error) { print("error: \(error)") }
-    
 }
