@@ -22,11 +22,9 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
         
         tableView.separatorStyle = .none
         
-        tableView.register(Cell.self)
+        tableView.registerCell(Cell.self)
         
-        tableView.dataSource = bridge
-        
-        tableView.prefetchDataSource = bridge
+        tableView.bridge = bridge
         
     }
     

@@ -1,20 +1,20 @@
 //
-//  TableView.swift
+//  CollectionView.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 2018/9/17.
+//  Created by Roy Hsu on 2018/9/23.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TableView
+// MARK: - CollectionView
 
 #if canImport(UIKit)
 
 import UIKit
 
-public final class TableView: UITableView {
+public final class CollectionView: UICollectionView {
     
-    public final var bridge: TableViewBridge? {
+    public final var bridge: CollectionViewBridge? {
         
         didSet {
             
@@ -30,13 +30,13 @@ public final class TableView: UITableView {
 
 #else
 
-public final class TableView: View {
+public final class CollectionView: View {
     
-    public final var bridge: TableViewBridge?
+    public final var bridge: CollectionViewBridge?
     
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where
-        Cell: TableViewCell,
+        Cell: CollectionViewCell,
         Cell: ReusableCell { fatalError("Not implemented.") }
     
     public final func registerCell<Cell>(
@@ -44,7 +44,7 @@ public final class TableView: View {
         bundle: Bundle?
     )
     where
-        Cell: TableViewCell,
+        Cell: CollectionViewCell,
         Cell: ReusableCell,
         Cell: NibCell { fatalError("Not implemented.") }
     

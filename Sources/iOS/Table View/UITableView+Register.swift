@@ -12,7 +12,7 @@ import UIKit
 
 public extension UITableView {
 
-    public final func register<Cell>(_ cellType: Cell.Type)
+    public final func registerCell<Cell>(_ cellType: Cell.Type)
     where
         Cell: UITableViewCell,
         Cell: ReusableCell {
@@ -24,7 +24,7 @@ public extension UITableView {
 
     }
 
-    public final func register<Cell>(
+    public final func registerCell<Cell>(
         _ cellType: Cell.Type,
         bundle: Bundle?
     )
