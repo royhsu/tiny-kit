@@ -71,7 +71,7 @@ where
                 
             }
             
-            layout?.invalidateLayout()
+            layout?.invalidate()
             
         }
         
@@ -272,7 +272,7 @@ where
         
         DispatchQueue.main.async { [weak self] in
             
-            self?.layout?.invalidateLayout()
+            self?.layout?.invalidate()
             
         }
         

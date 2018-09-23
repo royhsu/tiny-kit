@@ -34,12 +34,13 @@
 		B01D21FF214B9D320078E946 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21FE214B9D320078E946 /* Post.swift */; };
 		B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2202214B9D6F0078E946 /* PostTemplateConfiguration.swift */; };
 		B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2204214B9D8E0078E946 /* PostTemplate.swift */; };
-		B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */; };
+		B0652DB82148B1AC009F8757 /* UITableViewDataSourceBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewDataSourceBridge.swift */; };
 		B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* CollectionViewController.swift */; };
 		B07825E1215550A800F7CD56 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E0215550A800F7CD56 /* TinyStorage.framework */; };
 		B07825E3215550B300F7CD56 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E2215550B300F7CD56 /* TinyCore.framework */; };
 		B0E2362721560CFB00FBE7B3 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */; };
 		B0E2362B215617B700FBE7B3 /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2362A215617B700FBE7B3 /* Failable.swift */; };
+		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* TableViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
@@ -74,7 +75,7 @@
 		B009B91721464DDF00B19F6A /* XCTSuccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTSuccess.swift; sourceTree = "<group>"; };
 		B009B9192146503800B19F6A /* Bundle+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Testing.swift"; sourceTree = "<group>"; };
 		B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
-		B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDataSourceController.swift; sourceTree = "<group>"; };
+		B009B91D2146542E00B19F6A /* UITableViewDataSourceBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDataSourceBridge.swift; sourceTree = "<group>"; };
 		B009B92021465E0F00B19F6A /* UIView+Subview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Subview.swift"; sourceTree = "<group>"; };
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		B07825E2215550B300F7CD56 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B0E2362A215617B700FBE7B3 /* Failable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
+		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F80A10214F55390052ACA3 /* TableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -245,7 +247,7 @@
 		B033F5D7214A4F99001DDBA6 /* Table View */ = {
 			isa = PBXGroup;
 			children = (
-				B009B91D2146542E00B19F6A /* UITableViewDataSourceController.swift */,
+				B009B91D2146542E00B19F6A /* UITableViewDataSourceBridge.swift */,
 				B009B91421464CEF00B19F6A /* UITableView+Register.swift */,
 				B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */,
 			);
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */,
+				B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */,
 				B0F80A10214F55390052ACA3 /* TableViewLayout.swift */,
 				B0F80A17214F5A2E0052ACA3 /* TableViewCell.swift */,
 				B0F80A19214F5A650052ACA3 /* TableView.swift */,
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */,
 				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
 				B0E2362B215617B700FBE7B3 /* Failable.swift in Sources */,
 				B01D21E5214B64270078E946 /* Template.swift in Sources */,
@@ -427,7 +431,7 @@
 				B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */,
 				B01D21E7214B643C0078E946 /* ViewController.swift in Sources */,
 				B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */,
-				B0652DB82148B1AC009F8757 /* UITableViewDataSourceController.swift in Sources */,
+				B0652DB82148B1AC009F8757 /* UITableViewDataSourceBridge.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */,
 				B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */,

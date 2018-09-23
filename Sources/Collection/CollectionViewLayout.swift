@@ -12,26 +12,26 @@ public protocol CollectionViewLayout {
     
     var collectionView: View { get }
     
-    func invalidateLayout()
+    func invalidate()
     
     func setNumberOfSections(
-        provider: @escaping (View) -> Int
+        _ provider: @escaping (_ collectionView: View) -> Int
     )
     
     func setNumberOfItems(
-        provider: @escaping (View, _ section: Int) -> Int
+        _ provider: @escaping (
+            _ collectionView: View,
+            _ section: Int
+        )
+        -> Int
     )
     
     func setViewForItem(
-        provider: @escaping (View, IndexPath) -> View
-    )
-    
-}
-
-public protocol PrefetchableCollectViewLayout: CollectionViewLayout {
-    
-    func setPrefetchingForItems(
-        provider: @escaping (View, [IndexPath]) -> Void
+        _ provider: @escaping (
+            _ collectionView: View,
+            _ indexPath: IndexPath
+        )
+        -> View
     )
     
 }

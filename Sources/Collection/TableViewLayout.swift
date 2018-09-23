@@ -12,7 +12,7 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     
     private final class Cell: TableViewCell, ReusableCell { }
     
-    private final let dataSource = UITableViewDataSourceController()
+    private final let bridge = UITableViewDataSourceBridge()
     
     private final var tableView = TableView()
     
@@ -24,19 +24,19 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
         
         tableView.register(Cell.self)
         
-        tableView.dataSource = dataSource
+        tableView.dataSource = bridge
         
-        tableView.prefetchDataSource = dataSource
+        tableView.prefetchDataSource = bridge
         
     }
     
-    public func invalidateLayout() { tableView.reloadData() }
+    public func invalidate() { tableView.reloadData() }
     
     public final func setNumberOfSections(
-        provider: @escaping (View) -> Int
+        _ provider: @escaping (_ collectionView: View) -> Int
     ) {
         
-        dataSource.setNumberOfSections { [weak self] _ in
+        bridge.setNumberOfSections { [weak self] _ in
             
             if let self = self { return provider(self.collectionView) }
             
@@ -47,10 +47,14 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     }
     
     public final func setNumberOfItems(
-        provider: @escaping (View, _ section: Int) -> Int
+        _ provider: @escaping (
+            _ collectionView: View,
+            _ section: Int
+        )
+        -> Int
     ) {
         
-        dataSource.setNumberOfRows { [weak self] _, section in
+        bridge.setNumberOfRows { [weak self] _, section in
             
             if let self = self {
             
@@ -68,10 +72,14 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     }
     
     public final func setViewForItem(
-        provider: @escaping (View, IndexPath) -> View
+        _ provider: @escaping (
+            _ collectionView: View,
+            _ indexPath: IndexPath
+        )
+        -> View
     ) {
         
-        dataSource.setCellForRow { [weak self] tableView, indexPath in
+        bridge.setCellForRow { [weak self] tableView, indexPath in
             
             let cell = tableView.dequeueReusableCell(
                 Cell.self,
@@ -98,10 +106,10 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     }
     
     public func setPrefetchingForItems(
-        provider: @escaping (View, [IndexPath]) -> Void
+        _ provider: @escaping (View, [IndexPath]) -> Void
     ) {
         
-        dataSource.setPrefetchingForRows { _, indexPaths in
+        bridge.setPrefetchingForRows { _, indexPaths in
          
             provider(
                 self.collectionView,
