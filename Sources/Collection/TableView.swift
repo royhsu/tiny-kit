@@ -48,6 +48,15 @@ public final class TableView: View {
         Cell: ReusableCell,
         Cell: NibCell { fatalError("Not implemented.") }
     
+    func dequeueCell<Cell>(
+        _ cellType: Cell.Type,
+        for indexPath: IndexPath
+    )
+    -> Cell
+    where
+        Cell: TableViewCell,
+        Cell: ReusableCell { fatalError("Not implemented.") }
+    
     public final func reloadData() { fatalError("Not implemented.") }
     
 }

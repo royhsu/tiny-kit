@@ -1,39 +1,45 @@
 //
-//  TableViewLayout.swift
+//  CarouselViewLayout.swift
 //  TinyKit
 //
-//  Created by Roy Hsu on 2018/9/17.
+//  Created by Roy Hsu on 2018/9/23.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TableViewLayout
+// MARK: - CarouselViewLayout
 
-public final class TableViewLayout: PrefetchableCollectViewLayout {
+#if canImport(UIKit)
+
+import UIKit
+
+public final class CarouselViewLayout: PrefetchableCollectViewLayout {
     
-    private final class Cell: TableViewCell, ReusableCell { }
+    private final class Cell: CollectionViewCell, ReusableCell { }
     
-    private final let bridge = TableViewBridge()
+    private final let bridge = CollectionViewBridge()
     
-    private final var _tableView = TableView()
+    public final let _collectionView = CollectionView()
     
-    public final var collectionView: View { return _tableView }
+    public final var collectionView: View { return _collectionView }
     
     public init() {
         
-        _tableView.separatorStyle = .none
+        _collectionView.bridge = bridge
         
-        _tableView.registerCell(Cell.self)
-        
-        _tableView.bridge = bridge
+        _collectionView.registerCell(Cell.self)
         
     }
     
-    public final func invalidate() { _tableView.reloadData() }
+    public final func invalidate() {
+        
+        _collectionView.collectionViewLayout.invalidateLayout()
+        
+    }
     
     public final func setNumberOfSections(
         _ provider: @escaping (_ collectionView: View) -> Int
     ) {
-        
+    
         bridge.setNumberOfSections { [weak self] _ in
             
             guard
@@ -54,7 +60,7 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
         -> Int
     ) {
         
-        bridge.setNumberOfRows { [weak self] _, section in
+        bridge.setNumberOfItems { [weak self] _, section in
             
             guard
                 let self = self
@@ -77,9 +83,9 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
         -> View
     ) {
         
-        bridge.setCellForRow { [weak self] tableView, indexPath in
+        bridge.setCellForItem { [weak self] collectionView, indexPath in
             
-            let cell = tableView.dequeueCell(
+            let cell = collectionView.dequeueCell(
                 Cell.self,
                 for: indexPath
             )
@@ -105,14 +111,14 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     
     public final func setPrefetchingForItems(
         _ provider: @escaping (
-            _ collectionview: View,
+            _ collectionView: View,
             _ indexPaths: [IndexPath]
         )
         -> Void
     ) {
         
-        bridge.setPrefetchingForRows { _, indexPaths in
-         
+        bridge.setPrefetchingForItems { _, indexPaths in
+            
             provider(
                 self.collectionView,
                 indexPaths
@@ -123,3 +129,9 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     }
     
 }
+
+#else
+
+#error("No carousel view layout for the current platform.")
+
+#endif

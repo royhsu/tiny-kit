@@ -46,6 +46,9 @@
 		B0E2366D2157213700FBE7B3 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2366C2157213700FBE7B3 /* CollectionView.swift */; };
 		B0E2366F215723B600FBE7B3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2366E215723B600FBE7B3 /* CollectionViewCell.swift */; };
 		B0E23671215723E900FBE7B3 /* CollectionViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23670215723E900FBE7B3 /* CollectionViewBridge.swift */; };
+		B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23672215726DD00FBE7B3 /* CarouselViewLayout.swift */; };
+		B0E23675215727F300FBE7B3 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23674215727F300FBE7B3 /* UICollectionView+Register.swift */; };
+		B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* TableViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
@@ -113,6 +116,9 @@
 		B0E2366C2157213700FBE7B3 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		B0E2366E215723B600FBE7B3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		B0E23670215723E900FBE7B3 /* CollectionViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewBridge.swift; sourceTree = "<group>"; };
+		B0E23672215726DD00FBE7B3 /* CarouselViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewLayout.swift; sourceTree = "<group>"; };
+		B0E23674215727F300FBE7B3 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
+		B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F80A10214F55390052ACA3 /* TableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -278,6 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				B0E2366A21571E0E00FBE7B3 /* UICollectionViewBridge.swift */,
+				B0E23674215727F300FBE7B3 /* UICollectionView+Register.swift */,
+				B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */,
 			);
 			path = "Collection View";
 			sourceTree = "<group>";
@@ -288,6 +296,7 @@
 				B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */,
 				B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */,
 				B0F80A10214F55390052ACA3 /* TableViewLayout.swift */,
+				B0E23672215726DD00FBE7B3 /* CarouselViewLayout.swift */,
 				B0F80A19214F5A650052ACA3 /* TableView.swift */,
 				B0F80A17214F5A2E0052ACA3 /* TableViewCell.swift */,
 				B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */,
@@ -450,7 +459,9 @@
 				B0F80A1D214FD9540052ACA3 /* Action.swift in Sources */,
 				B0E2366821571BE900FBE7B3 /* TableViewBridge.swift in Sources */,
 				B0F80A1F214FD96A0052ACA3 /* ActionDispatcher.swift in Sources */,
+				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
+				B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
 				B01D21E9214B645D0078E946 /* View.swift in Sources */,
 				B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */,
@@ -461,6 +472,7 @@
 				B0652DB82148B1AC009F8757 /* UITableViewBridge.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0E2366F215723B600FBE7B3 /* CollectionViewCell.swift in Sources */,
+				B0E23675215727F300FBE7B3 /* UICollectionView+Register.swift in Sources */,
 				B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */,
 				B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */,
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,
