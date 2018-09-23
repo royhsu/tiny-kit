@@ -12,58 +12,43 @@ import UIKit
 
 public final class UITableViewBridge: NSObject {
 
-    public typealias NumberOfSections = (UITableView) -> Int
+    public typealias NumberOfSections = (_ tableView: UITableView) -> Int
 
     public typealias NumberOfRows = (
-        UITableView,
+        _ tableView: UITableView,
         _ section: Int
     )
     -> Int
 
     public typealias CellForRow = (
-        UITableView,
+        _ tableView: UITableView,
         IndexPath
     )
     -> UITableViewCell
     
     public typealias PrefetchingForRows = (
-        UITableView,
+        _ tableView: UITableView,
         [IndexPath]
     )
     -> Void
     
-    private final var numberOfSections: NumberOfSections?
+    private final var _numberOfSections: NumberOfSections?
 
-    private final var numberOfRows: NumberOfRows?
+    private final var _numberOfRows: NumberOfRows?
 
-    private final var cellForRow: CellForRow?
+    private final var _cellForRow: CellForRow?
     
-    private final var prefetchingForRows: PrefetchingForRows?
+    private final var _prefetchingForRows: PrefetchingForRows?
 
-    public init(
-        numberOfSections: NumberOfSections? = nil,
-        numberOfRows: NumberOfRows? = nil,
-        cellForRow: CellForRow? = nil,
-        prefetchingForRows: PrefetchingForRows? = nil
-    ) {
-
-        self.numberOfSections = numberOfSections
-
-        self.numberOfRows = numberOfRows
-
-        self.cellForRow = cellForRow
-        
-        self.prefetchingForRows = prefetchingForRows
-
-    }
+    public override init() { super.init() }
     
-    public final func setNumberOfSections(_ provider: NumberOfSections?) { numberOfSections = provider }
+    public final func setNumberOfSections(_ provider: NumberOfSections?) { _numberOfSections = provider }
 
-    public final func setNumberOfRows(_ provider: NumberOfRows?) { numberOfRows = provider }
+    public final func setNumberOfRows(_ provider: NumberOfRows?) { _numberOfRows = provider }
     
-    public final func setCellForRow(_ provider: CellForRow?) { cellForRow = provider }
+    public final func setCellForRow(_ provider: CellForRow?) { _cellForRow = provider }
     
-    public final func setPrefetchingForRows(_ provider: PrefetchingForRows?) { prefetchingForRows = provider }
+    public final func setPrefetchingForRows(_ provider: PrefetchingForRows?) { _prefetchingForRows = provider }
     
 }
 
@@ -73,7 +58,7 @@ extension UITableViewBridge: UITableViewDataSource {
 
     public final func numberOfSections(in tableView: UITableView) -> Int {
         
-        let sections = numberOfSections?(tableView)
+        let sections = _numberOfSections?(tableView)
         
         return sections ?? 1
         
@@ -85,7 +70,7 @@ extension UITableViewBridge: UITableViewDataSource {
     )
     -> Int {
         
-        let rows = numberOfRows?(
+        let rows = _numberOfRows?(
             tableView,
             section
         )
@@ -101,7 +86,7 @@ extension UITableViewBridge: UITableViewDataSource {
     -> UITableViewCell {
         
         guard
-            let cell = cellForRow?(
+            let cell = _cellForRow?(
                 tableView,
                 indexPath
             )
@@ -122,7 +107,7 @@ extension UITableViewBridge: UITableViewDataSourcePrefetching {
         prefetchRowsAt indexPaths: [IndexPath]
     ) {
         
-        prefetchingForRows?(
+        _prefetchingForRows?(
             tableView,
             indexPaths
         )
