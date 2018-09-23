@@ -22,8 +22,6 @@ public struct AnswerTemplate: Template {
     
     public let storage: Comment
     
-    public weak var actionDispatcher: ActionDispatcher?
-    
     public let elements: [Element]
     
     private let layout: CollectionViewLayout
@@ -31,15 +29,12 @@ public struct AnswerTemplate: Template {
     public init(
         storage: Comment,
         layout: CollectionViewLayout,
-        actionDispatcher: ActionDispatcher? = nil,
         elements: [Element] = []
     ) {
         
         self.storage = storage
         
         self.layout = layout
-        
-        self.actionDispatcher = actionDispatcher
         
         self.elements = elements
         

@@ -8,8 +8,10 @@
 
 // MARK: - Actionable
 
+import TinyCore
+
 public protocol Actionable {
     
-    var actionDispatcher: ActionDispatcher? { get set }
+    var actions: Observable<Action> { get }
     
 }

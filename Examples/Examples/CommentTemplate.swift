@@ -22,24 +22,14 @@ public struct CommentTemplate: Template {
     
     public let storage: Comment
     
-    public weak var actionDispatcher: ActionDispatcher?
-    
-    public weak var errorHandler: ErrorHandler?
-    
     public let elements: [Element]
     
     public init(
         storage: Comment,
-        actionDispatcher: ActionDispatcher? = nil,
-        errorHandler: ErrorHandler? = nil,
         elements: [Element] = []
     ) {
         
         self.storage = storage
-        
-        self.actionDispatcher = actionDispatcher
-        
-        self.errorHandler = errorHandler
         
         self.elements = elements
         

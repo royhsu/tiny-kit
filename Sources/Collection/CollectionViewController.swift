@@ -11,7 +11,7 @@
 import TinyStorage
 import TinyCore
 
-open class CollectionViewController<S, C, U>: ViewController
+open class CollectionViewController<S, C, U>: ViewController, Actionable, Failable
 where
     S: Storage,
     C: SectionCollection,
@@ -20,6 +20,8 @@ where
     public typealias Reducer = (S) -> C
     
     private final var observations: [Observation] = []
+    
+    public final let actions = Observable<Action>()
     
     public final let errors = Observable<Error>()
     
@@ -49,6 +51,18 @@ where
                     let self = self,
                     let view = self.sections?.view(at: indexPath)
                 else { return View() }
+                
+                if let actionable = view as? Actionable {
+                    
+                    let observation = actionable.actions.observe { change in
+                        
+                        self.actions.value = change.currentValue
+                        
+                    }
+                    
+                    self.observations.append(observation)
+                    
+                }
                 
                 if let errorHandler = view as? ErrorHandler {
                     
@@ -231,8 +245,6 @@ where
         }
         
     }
-    
-    public final weak var actionDispatcher: ActionDispatcher?
     
     public final var storageReducer: Reducer? {
         

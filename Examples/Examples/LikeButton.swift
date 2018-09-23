@@ -9,9 +9,10 @@
 // MARK: - LikeButton
 
 import UIKit
+import TinyCore
 import TinyKit
 
-public final class LikeButton: UIButton, Actionable, ErrorHandler {
+public final class LikeButton: UIButton, Actionable {
     
     public final var storage: LikeButtonStorage? {
         
@@ -23,7 +24,7 @@ public final class LikeButton: UIButton, Actionable, ErrorHandler {
         
     }
     
-    public final weak var actionDispatcher: ActionDispatcher?
+    public final let actions = Observable<Action>()
     
     public override init(frame: CGRect) {
         
@@ -84,9 +85,15 @@ public final class LikeButton: UIButton, Actionable, ErrorHandler {
         
         let action: LikeButtonAction = .liked(storage)
 
-        actionDispatcher?.dispatch(action: action)
+        actions.value = action
         
     }
+    
+}
+
+// MARK: - ErrorHandler
+
+extension LikeButton: ErrorHandler {
     
     public final func `catch`(error: Error) {
         

@@ -17,13 +17,54 @@ where
     S: Storage,
     S.Value == Feed {
     
+    private final var observations: [Observation] = []
+    
     public final override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        actionDispatcher = self
-    
-        storageReducer = { [unowned self] storage in
+        observations.append(
+            actions.observe { [weak self] change in
+                
+                guard
+                    let self = self,
+                    let action = change.currentValue
+                else { return }
+                
+                if let action = action as? LikeButtonAction {
+                    
+                    switch action {
+                        
+                    case let .liked(storage):
+                        
+                        print("isLiked:", storage)
+                        
+                        DispatchQueue.main.async {
+                        
+                            self.navigate(to: .red)
+                            
+                        }
+                        
+                    }
+                    
+                    return
+                    
+                }
+                
+            }
+        )
+        
+        observations.append(
+            errors.observe { change in
+                
+                let error = change.currentValue
+                
+                print("Error:", error)
+                
+            }
+        )
+        
+        storageReducer = { storage in
             
             return FeedSectionCollection(
                 sections: storage.elements.map { pair in
@@ -34,7 +75,6 @@ where
 
                         let template = PostTemplate(
                             storage: storage,
-                            actionDispatcher: self.actionDispatcher,
                             elements: [
                                 .title,
                                 .body,
@@ -75,8 +115,6 @@ where
 
 //                        let template = CommentTemplate(
 //                            storage: storage,
-//                            actionDispatcher: self.actionDispatcher,
-//                            errorHandler: self.errorHandler,
 //                            elements: [
 //                                .username,
 //                                .text
@@ -101,7 +139,6 @@ where
                         let template = AnswerTemplate(
                             storage: storage,
                             layout: layout,
-                            actionDispatcher: self.actionDispatcher,
                             elements: [
                                 .content,
                                 .separator
@@ -150,34 +187,4 @@ extension FeedViewController: Navigation {
         
     }
     
-}
-
-// MARK: - ActionDispatcher
-
-public struct TestError: Error { public init() { } }
-
-extension FeedViewController: ActionDispatcher {
-    
-    public final func dispatch(action: Action) {
-        
-        if let action = action as? LikeButtonAction {
-            
-            switch action {
-                
-            case let .liked(storage):
-                
-//                print("isLiked:", storage)
-//
-//                navigate(to: .red)
-                
-                errors.value = TestError()
-                
-            }
-            
-            return
-            
-        }
-        
-    }
-
 }
