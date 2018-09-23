@@ -32,21 +32,21 @@ public struct AnswerTemplate: Template {
     
     public init(
         storage: Comment,
+        layout: CollectionViewLayout,
         actionDispatcher: ActionDispatcher? = nil,
         errorHandler: ErrorHandler? = nil,
-        elements: [Element] = [],
-        layout: CollectionViewLayout
+        elements: [Element] = []
     ) {
         
         self.storage = storage
+        
+        self.layout = layout
         
         self.actionDispatcher = actionDispatcher
         
         self.errorHandler = errorHandler
         
         self.elements = elements
-        
-        self.layout = layout
         
     }
     
@@ -83,9 +83,11 @@ public struct AnswerTemplate: Template {
             
             let collectionView = layout.collectionView
             
+            collectionView.backgroundColor = .red
+            
             collectionView.translatesAutoresizingMaskIntoConstraints = false
             
-            collectionView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
+            collectionView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
             
             return collectionView
             

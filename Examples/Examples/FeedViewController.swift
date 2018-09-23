@@ -88,13 +88,13 @@ where
                         
                         let template = AnswerTemplate(
                             storage: storage,
+                            layout: TableViewLayout(),
                             actionDispatcher: self.actionDispatcher,
                             errorHandler: self.errorHandler,
                             elements: [
                                 .content,
                                 .separator
-                            ],
-                            layout: TableViewLayout()
+                            ]
                         )
 
                         return .comment(template)
