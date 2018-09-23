@@ -1,16 +1,16 @@
 //
-//  UITableViewDataSourceBridge.swift
+//  UITableViewBridge.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/10.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UITableViewDataSourceBridge
+// MARK: - UITableViewBridge
 
 import UIKit
 
-public final class UITableViewDataSourceBridge: NSObject {
+public final class UITableViewBridge: NSObject {
 
     public typealias NumberOfSections = (UITableView) -> Int
 
@@ -69,7 +69,7 @@ public final class UITableViewDataSourceBridge: NSObject {
 
 // MARK: - UITableViewDataSource
 
-extension UITableViewDataSourceBridge: UITableViewDataSource {
+extension UITableViewBridge: UITableViewDataSource {
 
     public final func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -115,7 +115,7 @@ extension UITableViewDataSourceBridge: UITableViewDataSource {
 
 // MARK: - UITableViewDataSourcePrefetching
 
-extension UITableViewDataSourceBridge: UITableViewDataSourcePrefetching {
+extension UITableViewBridge: UITableViewDataSourcePrefetching {
     
     public final func tableView(
         _ tableView: UITableView,

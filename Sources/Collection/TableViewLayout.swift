@@ -12,7 +12,7 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     
     private final class Cell: TableViewCell, ReusableCell { }
     
-    private final let bridge = UITableViewDataSourceBridge()
+    private final let bridge = TableViewBridge()
     
     private final var tableView = TableView()
     
