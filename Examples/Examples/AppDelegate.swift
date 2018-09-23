@@ -40,13 +40,13 @@ extension AppDelegate: UIApplicationDelegate {
             resource: DummyResource()
         )
         
-        viewController._prefetchingSessions = PrefetchingFeedSectionColleciton(
-            sections: [
-                PrefetchingFeedSectionColleciton.Section(
-                    elements: [ .indicator ]
-                )
-            ]
-        )
+//        viewController._prefetchingSessions = PrefetchingFeedSectionColleciton(
+//            sections: [
+//                PrefetchingFeedSectionColleciton.Section(
+//                    elements: [ .indicator ]
+//                )
+//            ]
+//        )
 
         window.rootViewController = UINavigationController(rootViewController: viewController)
 
@@ -70,8 +70,9 @@ public struct DummyResource: Resource {
         
         let last = Int.random(in: 1...20)
         
-        let items = (0..<last).map {
-            
+//        let items = (0..<last).map {
+        let items = (0..<1).map {
+        
 //            Post(id: $0, title: "\($0)", body: "")
             
             Comment(id: $0, username: "\($0)", text: "Hello")

@@ -28,11 +28,14 @@ public struct AnswerTemplate: Template {
     
     public let elements: [Element]
     
+    private let layout: CollectionViewLayout
+    
     public init(
         storage: Comment,
         actionDispatcher: ActionDispatcher? = nil,
         errorHandler: ErrorHandler? = nil,
-        elements: [Element] = []
+        elements: [Element] = [],
+        layout: CollectionViewLayout
     ) {
         
         self.storage = storage
@@ -42,6 +45,8 @@ public struct AnswerTemplate: Template {
         self.errorHandler = errorHandler
         
         self.elements = elements
+        
+        self.layout = layout
         
     }
     
@@ -55,18 +60,34 @@ public struct AnswerTemplate: Template {
             
         case .content:
             
-            let view = View.loadView(
-                UIAnswerItemContentView.self,
-                from: .main
-            )!
+            layout.setNumberOfSections { _ in 1 }
             
-            view.voteContainerView.isHidden = true
+            layout.setNumberOfItems { _, _ in 5 }
             
-            view.userNameLabel.text = storage.username
+            layout.setViewForItem { _, _ in
+                
+                let view = View.loadView(
+                    UIAnswerItemContentView.self,
+                    from: .main
+                )!
+    
+                view.voteContainerView.isHidden = true
+    
+                view.userNameLabel.text = self.storage.username
+    
+                view.bodyLabel.text = self.storage.text
+                
+                return view
+                
+            }
             
-            view.bodyLabel.text = storage.text
+            let collectionView = layout.collectionView
             
-            return view
+            collectionView.translatesAutoresizingMaskIntoConstraints = false
+            
+            collectionView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
+            
+            return collectionView
             
         case .separator:
             

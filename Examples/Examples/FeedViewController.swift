@@ -93,7 +93,8 @@ where
                             elements: [
                                 .content,
                                 .separator
-                            ]
+                            ],
+                            layout: TableViewLayout()
                         )
 
                         return .comment(template)

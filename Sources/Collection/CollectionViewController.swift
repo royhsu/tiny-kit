@@ -231,7 +231,7 @@ where
     
     fileprivate final func reduceStorage() {
         
-        DispatchQueue.global(qos: .background).async { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             
             guard
                 let self = self,
