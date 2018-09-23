@@ -86,10 +86,22 @@ where
 //                            ]
 //                        )
                         
+                        let layout = CarouselViewLayout()
+                        
+                        layout.directionalContentInsets = .init(
+                            top: 10.0,
+                            leading: 10.0,
+                            bottom: 10.0,
+                            trailing: 10.0
+                        )
+                        
+                        layout.interitemSpacing = 10.0
+                        
+                        layout.showsScrollIndicator = false
+                        
                         let template = AnswerTemplate(
                             storage: storage,
-//                            layout: TableViewLayout(),
-                            layout: CarouselViewLayout(),
+                            layout: layout,
                             actionDispatcher: self.actionDispatcher,
                             errorHandler: self.errorHandler,
                             elements: [

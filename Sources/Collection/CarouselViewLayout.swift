@@ -12,6 +12,7 @@
 
 import UIKit
 
+#warning("TODO: missing test.")
 public final class CarouselViewLayout: PrefetchableCollectViewLayout {
     
     private final class Cell: CollectionViewCell, ReusableCell { }
@@ -23,6 +24,85 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
     private final let _collectionView: CollectionView
     
     public final var collectionView: View { return _collectionView }
+    
+    public final var interitemSpacing: CGFloat {
+        
+        get { return flowLayout.minimumLineSpacing }
+        
+        set { flowLayout.minimumLineSpacing = newValue }
+        
+    }
+    
+    public final var showsScrollIndicator: Bool {
+        
+        get { return _collectionView.showsHorizontalScrollIndicator }
+        
+        set { _collectionView.showsHorizontalScrollIndicator = newValue }
+        
+    }
+    
+    @available(iOS 11.0, *)
+    public final var directionalContentInsets: NSDirectionalEdgeInsets {
+        
+        get {
+            
+            let direction = View.userInterfaceLayoutDirection(for: collectionView.semanticContentAttribute)
+            
+            let insets = _collectionView.contentInset
+            
+            switch direction {
+                
+            case .leftToRight:
+                
+                return .init(
+                    top: insets.top,
+                    leading: insets.left,
+                    bottom: insets.bottom,
+                    trailing: insets.right
+                )
+             
+            case .rightToLeft:
+                
+                return .init(
+                    top: insets.top,
+                    leading: insets.right,
+                    bottom: insets.bottom,
+                    trailing: insets.left
+                )
+                
+            }
+            
+        }
+        
+        set(newInsets) {
+            
+            let direction = View.userInterfaceLayoutDirection(for: collectionView.semanticContentAttribute)
+            
+            switch direction {
+                
+            case .leftToRight:
+                
+                _collectionView.contentInset = .init(
+                    top: newInsets.top,
+                    left: newInsets.leading,
+                    bottom: newInsets.bottom,
+                    right: newInsets.trailing
+                )
+                
+            case .rightToLeft:
+                
+                _collectionView.contentInset = .init(
+                    top: newInsets.top,
+                    left: newInsets.trailing,
+                    bottom: newInsets.bottom,
+                    right: newInsets.leading
+                )
+                
+            }
+            
+        }
+        
+    }
     
     public init() {
         
@@ -180,71 +260,3 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 #error("No carousel view layout for the current platform.")
 
 #endif
-
-// MARK: - Safe Area Rect
-
-import UIKit
-
-public extension UICollectionView {
-    
-    // swiftlint:disable identifier_name
-    public final var layoutFrame: CGRect {
-        
-        let x: CGFloat
-
-        let y: CGFloat
-        
-        let width: CGFloat
-        
-        let height: CGFloat
-        
-        if #available(iOS 11.0, *) {
-            
-            let layoutFrame = safeAreaLayoutGuide.layoutFrame
-            
-            x = layoutFrame.minX
-            
-            y = layoutFrame.minY
-            
-            width = layoutFrame.width
-            
-            height = layoutFrame.height
-            
-        }
-        else {
-            
-            x = contentInset.left
-            
-            y = contentInset.top
-            
-            let expectedWidth = bounds.width
-                - x
-                - contentInset.right
-            
-            let expectedHeight = bounds.height
-                - y
-                - contentInset.bottom
-            
-            width = max(
-                0.0,
-                expectedWidth
-            )
-            
-            height = max(
-                0.0,
-                expectedHeight
-            )
-            
-        }
-        
-        return CGRect(
-            x: x,
-            y: y,
-            width: width,
-            height: height
-        )
-        
-    }
-    // swiftlint:enable identifier_name
-    
-}
