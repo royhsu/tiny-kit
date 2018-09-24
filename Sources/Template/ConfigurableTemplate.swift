@@ -105,7 +105,7 @@ where Configuration: TemplateConfiguration {
         
     }
     
-    public final var numberOfElements: Int { return elements.count }
+    public final var numberOfViews: Int { return elements.count }
     
     public final func view(at index: Int) -> View {
         

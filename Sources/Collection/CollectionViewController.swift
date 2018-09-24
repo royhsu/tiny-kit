@@ -114,24 +114,26 @@ where
         
         enum State {
             
-            case fetched(C.Section)
+            case fetched(SectionCollection.Section)
             
-            case prefetching(U.Section)
+            case prefetching(SectionCollection.Section)
             
         }
         
-        let fetchedSections: AnySectionCollection<C.Section>?
+        let fetchedSections: SectionCollection?
         
-        let prefetchingSections: AnySectionCollection<U.Section>?
+        let prefetchingSections: SectionCollection?
         
         init(
-            fetchedSections: C?,
-            prefetchingSections: U?
+            fetchedSections: SectionCollection?,
+            prefetchingSections: SectionCollection?
         ) {
             
             if let fetchedSections = fetchedSections {
                 
-                self.fetchedSections = AnySectionCollection(fetchedSections)
+//                self.fetchedSections = AnySectionCollection(fetchedSections)
+                
+                self.fetchedSections = fetchedSections
                 
             }
             else { self.fetchedSections = nil }
@@ -141,7 +143,9 @@ where
                 !prefetchingSections.isEmpty
             {
             
-                self.prefetchingSections = AnySectionCollection(prefetchingSections)
+//                self.prefetchingSections = AnySectionCollection(prefetchingSections)
+                
+                self.prefetchingSections = prefetchingSections
                 
             }
             else { self.prefetchingSections = nil }
@@ -162,9 +166,9 @@ where
             
             switch state(at: section) {
                 
-            case let .fetched(section): return section.numberOfElements
+            case let .fetched(section): return section.numberOfViews
                 
-            case let .prefetching(section): return section.numberOfElements
+            case let .prefetching(section): return section.numberOfViews
                 
             }
             
@@ -174,9 +178,17 @@ where
             
             switch state(at: indexPath.section) {
                 
-            case let .fetched(section): return section.view(at: indexPath.item)
+            case let .fetched(section):
                 
-            case let .prefetching(section): return section.view(at: indexPath.item)
+                return section.view(at: indexPath.item)
+                
+//                return section.view(for: element)
+                
+            case let .prefetching(section):
+                
+                return section.view(at: indexPath.item)
+                
+//                return section.view(for: element)
                 
             }
             

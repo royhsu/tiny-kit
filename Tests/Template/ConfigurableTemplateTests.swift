@@ -36,7 +36,7 @@ internal final class ConfigurableTemplateTests: XCTestCase {
         )
         
         XCTAssertEqual(
-            template.numberOfElements,
+            template.numberOfViews,
             2
         )
         
