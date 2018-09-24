@@ -10,6 +10,6 @@
 
 extension ReusableCell where Self: NibCell {
 
-    public static var nibName: String { return identifier }
+    public static var nibName: String { return reuseIdentifier }
 
 }

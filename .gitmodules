@@ -1,0 +1,6 @@
+[submodule "tiny-core"]
+	path = tiny-core
+	url = https://github.com/royhsu/tiny-core.git
+[submodule "tiny-storage"]
+	path = tiny-storage
+	url = https://github.com/royhsu/tiny-storage.git

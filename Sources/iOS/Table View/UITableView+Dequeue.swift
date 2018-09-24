@@ -12,7 +12,7 @@ import UIKit
 
 public extension UITableView {
 
-    public final func dequeueReusableCell<Cell>(
+    public final func dequeueCell<Cell>(
         _ cellType: Cell.Type,
         for indexPath: IndexPath
     )
@@ -23,7 +23,7 @@ public extension UITableView {
 
         guard
             let cell = dequeueReusableCell(
-                withIdentifier: cellType.identifier,
+                withIdentifier: cellType.reuseIdentifier,
                 for: indexPath
             ) as? Cell
         else { fatalError("Please make sure to register \(cellType) before dequeuing one.") }
