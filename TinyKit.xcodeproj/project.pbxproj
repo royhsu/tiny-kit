@@ -36,6 +36,7 @@
 		B0652DB82148B1AC009F8757 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewBridge.swift */; };
 		B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* CollectionViewController.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
+		B0DE5F182159265E00F91CA1 /* Array+Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+Template.swift */; };
 		B0E2362721560CFB00FBE7B3 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
 		B0E2366821571BE900FBE7B3 /* TableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */; };
@@ -105,6 +106,7 @@
 		B0652DB72148B118009F8757 /* TinyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TinyKit.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DC2214966CC009F8757 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
+		B0DE5F172159265E00F91CA1 /* Array+Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Template.swift"; sourceTree = "<group>"; };
 		B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
 		B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewBridge.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				B01D21E4214B64270078E946 /* Template.swift */,
+				B0DE5F172159265E00F91CA1 /* Array+Template.swift */,
 				B01D21EE214B7ACA0078E946 /* TemplateConfiguration.swift */,
 				B01D21EA214B66E60078E946 /* ConfigurableTemplate.swift */,
 				B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */,
@@ -455,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */,
+				B0DE5F182159265E00F91CA1 /* Array+Template.swift in Sources */,
 				B0E23671215723E900FBE7B3 /* CollectionViewBridge.swift in Sources */,
 				B0E2366B21571E0E00FBE7B3 /* UICollectionViewBridge.swift in Sources */,
 				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
