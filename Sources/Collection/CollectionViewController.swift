@@ -11,13 +11,10 @@
 import TinyStorage
 import TinyCore
 
-open class CollectionViewController<S, C, U>: ViewController, Actionable, Failable
-where
-    S: Storage,
-    C: SectionCollection,
-    U: SectionCollection {
+open class CollectionViewController<S>: ViewController, Actionable, Failable
+where S: Storage {
     
-    public typealias Reducer = (S) -> C
+    public typealias Reducer = (S) -> SectionCollection
     
     private final var observations: [Observation] = []
     
@@ -236,7 +233,7 @@ where
         
     }
 
-    public final var _prefetchingSessions: U?
+    public final var _prefetchingSessions: SectionCollection?
     
     public final var storage: S? {
         
