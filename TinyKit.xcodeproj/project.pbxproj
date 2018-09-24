@@ -16,7 +16,6 @@
 		B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B009B91221464BBA00B19F6A /* NibTableViewCell.xib */; };
 		B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91421464CEF00B19F6A /* UITableView+Register.swift */; };
 		B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91721464DDF00B19F6A /* XCTSuccess.swift */; };
-		B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9192146503800B19F6A /* Bundle+Testing.swift */; };
 		B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */; };
 		B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B92021465E0F00B19F6A /* UIView+Subview.swift */; };
 		B00D960C2030753600EF0B7A /* TinyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B00D960A2030753600EF0B7A /* TinyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -81,7 +80,6 @@
 		B009B91221464BBA00B19F6A /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		B009B91421464CEF00B19F6A /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		B009B91721464DDF00B19F6A /* XCTSuccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTSuccess.swift; sourceTree = "<group>"; };
-		B009B9192146503800B19F6A /* Bundle+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Testing.swift"; sourceTree = "<group>"; };
 		B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
 		B009B91D2146542E00B19F6A /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
 		B009B92021465E0F00B19F6A /* UIView+Subview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Subview.swift"; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			children = (
 				B009B91721464DDF00B19F6A /* XCTSuccess.swift */,
 				B01D21F4214B8FFB0078E946 /* XCTUnwrapped.swift */,
-				B009B9192146503800B19F6A /* Bundle+Testing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -497,7 +494,6 @@
 			files = (
 				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
 				B01D21FB214B9CB70078E946 /* Title2Label.swift in Sources */,
-				B009B91A2146503800B19F6A /* Bundle+Testing.swift in Sources */,
 				B01D21F7214B90050078E946 /* XCTUnwrapped.swift in Sources */,
 				B01D21F3214B8D420078E946 /* ConfigurableTemplateTests.swift in Sources */,
 				B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */,
