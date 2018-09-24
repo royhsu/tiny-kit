@@ -1,6 +1,6 @@
 //
 //  XCTSuccess.swift
-//  TinyKit Tests
+//  TinyTesting
 //
 //  Created by Roy Hsu on 2018/9/9.
 //
