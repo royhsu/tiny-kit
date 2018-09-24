@@ -7,8 +7,8 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
+            buildForTesting = "NO"
+            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -21,8 +21,8 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
+            buildForTesting = "NO"
+            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -61,8 +61,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B00D964B2030764E00EF0B7A"
-               BuildableName = "TinyKit Tests.xctest"
-               BlueprintName = "TinyKit iOS Tests"
+               BuildableName = "TinyKitTests.xctest"
+               BlueprintName = "TinyKitTests iOS"
                ReferencedContainer = "container:TinyKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

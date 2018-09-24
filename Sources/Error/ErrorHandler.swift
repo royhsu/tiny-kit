@@ -8,7 +8,7 @@
 
 // MARK: - ErrorHandler
 
-public protocol ErrorHandler: AnyObject {
+public protocol ErrorHandler {
     
     func `catch`(error: Error)
     

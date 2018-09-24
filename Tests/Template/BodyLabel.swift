@@ -1,6 +1,6 @@
 //
 //  BodyLabel.swift
-//  TinyKit Tests
+//  TinyKitTests
 //
 //  Created by Roy Hsu on 2018/9/14.
 //  Copyright © 2018 TinyWorld. All rights reserved.

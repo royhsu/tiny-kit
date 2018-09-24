@@ -36,8 +36,6 @@
 		B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2204214B9D8E0078E946 /* PostTemplate.swift */; };
 		B0652DB82148B1AC009F8757 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewBridge.swift */; };
 		B0652DC3214966CC009F8757 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* CollectionViewController.swift */; };
-		B07825E1215550A800F7CD56 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E0215550A800F7CD56 /* TinyStorage.framework */; };
-		B07825E3215550B300F7CD56 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07825E2215550B300F7CD56 /* TinyCore.framework */; };
 		B0E2362721560CFB00FBE7B3 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
 		B0E2366821571BE900FBE7B3 /* TableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */; };
@@ -50,6 +48,8 @@
 		B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F51C5A2157A44000B592F5 /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F51C592157A44000B592F5 /* Failable.swift */; };
+		B0F51CA72158743A00B592F5 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA62158743A00B592F5 /* TinyCore.framework */; };
+		B0F51CA92158743A00B592F5 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA82158743A00B592F5 /* TinyStorage.framework */; };
 		B0F7E1A92157386F000F97FE /* UIScrollView+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7E1A82157386F000F97FE /* UIScrollView+SafeArea.swift */; };
 		B0F80A11214F55390052ACA3 /* TableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* TableViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */; };
@@ -88,7 +88,7 @@
 		B00D96072030753600EF0B7A /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D960A2030753600EF0B7A /* TinyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyKit.h; sourceTree = "<group>"; };
 		B00D960B2030753600EF0B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyKit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B01D21E4214B64270078E946 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		B01D21E6214B643C0078E946 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,11 +103,8 @@
 		B01D21FE214B9D320078E946 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B01D2202214B9D6F0078E946 /* PostTemplateConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplateConfiguration.swift; sourceTree = "<group>"; };
 		B01D2204214B9D8E0078E946 /* PostTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplate.swift; sourceTree = "<group>"; };
-		B0652DB42148AB67009F8757 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0652DB72148B118009F8757 /* TinyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TinyKit.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DC2214966CC009F8757 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		B07825E0215550A800F7CD56 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B07825E2215550B300F7CD56 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E2362621560CFB00FBE7B3 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
 		B0E2366721571BE900FBE7B3 /* TableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewBridge.swift; sourceTree = "<group>"; };
@@ -120,6 +117,8 @@
 		B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F51C592157A44000B592F5 /* Failable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
+		B0F51CA62158743A00B592F5 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0F51CA82158743A00B592F5 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F7E1A82157386F000F97FE /* UIScrollView+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+SafeArea.swift"; sourceTree = "<group>"; };
 		B0F80A10214F55390052ACA3 /* TableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLayout.swift; sourceTree = "<group>"; };
 		B0F80A13214F56840052ACA3 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -136,8 +135,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B07825E3215550B300F7CD56 /* TinyCore.framework in Frameworks */,
-				B07825E1215550A800F7CD56 /* TinyStorage.framework in Frameworks */,
+				B0F51CA72158743A00B592F5 /* TinyCore.framework in Frameworks */,
+				B0F51CA92158743A00B592F5 /* TinyStorage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				B00D96072030753600EF0B7A /* TinyKit.framework */,
-				B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */,
+				B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,8 +215,8 @@
 		B00D96572030766600EF0B7A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B01D21F0214B8D230078E946 /* Template */,
 				B009B91621464DDF00B19F6A /* Helpers */,
+				B01D21F0214B8D230078E946 /* Template */,
 				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
 				B009B9062146491400B19F6A /* ClassTableViewCell.swift */,
 				B009B90F21464B9800B19F6A /* NibTableViewCell.swift */,
@@ -230,9 +229,8 @@
 		B00D96812030778F00EF0B7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B07825E2215550B300F7CD56 /* TinyCore.framework */,
-				B07825E0215550A800F7CD56 /* TinyStorage.framework */,
-				B0652DB42148AB67009F8757 /* TinyCore.framework */,
+				B0F51CA62158743A00B592F5 /* TinyCore.framework */,
+				B0F51CA82158743A00B592F5 /* TinyStorage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -375,9 +373,9 @@
 			productReference = B00D96072030753600EF0B7A /* TinyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B00D964B2030764E00EF0B7A /* TinyKit iOS Tests */ = {
+		B00D964B2030764E00EF0B7A /* TinyKitTests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit iOS Tests" */;
+			buildConfigurationList = B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKitTests iOS" */;
 			buildPhases = (
 				B00D96482030764E00EF0B7A /* Sources */,
 				B00D96492030764E00EF0B7A /* Frameworks */,
@@ -388,9 +386,9 @@
 			dependencies = (
 				B00D96532030764E00EF0B7A /* PBXTargetDependency */,
 			);
-			name = "TinyKit iOS Tests";
+			name = "TinyKitTests iOS";
 			productName = TinyKitTests;
-			productReference = B00D964C2030764E00EF0B7A /* TinyKit Tests.xctest */;
+			productReference = B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -428,7 +426,7 @@
 			projectRoot = "";
 			targets = (
 				B00D96062030753600EF0B7A /* TinyKit iOS */,
-				B00D964B2030764E00EF0B7A /* TinyKit iOS Tests */,
+				B00D964B2030764E00EF0B7A /* TinyKitTests iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -714,9 +712,9 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)-Tests";
-				PRODUCT_MODULE_NAME = "$(inherited)_Tests";
-				PRODUCT_NAME = "$(inherited) Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)Tests";
+				PRODUCT_MODULE_NAME = "$(inherited)Tests";
+				PRODUCT_NAME = "$(inherited)Tests";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -734,9 +732,9 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)-Tests";
-				PRODUCT_MODULE_NAME = "$(inherited)_Tests";
-				PRODUCT_NAME = "$(inherited) Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)Tests";
+				PRODUCT_MODULE_NAME = "$(inherited)Tests";
+				PRODUCT_NAME = "$(inherited)Tests";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -763,7 +761,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKit iOS Tests" */ = {
+		B00D96542030764E00EF0B7A /* Build configuration list for PBXNativeTarget "TinyKitTests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B00D96552030764E00EF0B7A /* Debug */,
