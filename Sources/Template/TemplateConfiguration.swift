@@ -15,3 +15,11 @@ public protocol TemplateConfiguration {
     func preferredViewName(for element: Element) -> String?
     
 }
+
+// MARK: - Default Implementation
+
+public extension TemplateConfiguration {
+    
+    public func preferredViewName(for element: Element) -> String? { return nil }
+    
+}

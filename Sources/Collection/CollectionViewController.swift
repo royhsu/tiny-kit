@@ -128,8 +128,6 @@ where S: Storage {
             
             if let fetchedSections = fetchedSections {
                 
-//                self.fetchedSections = AnySectionCollection(fetchedSections)
-                
                 self.fetchedSections = fetchedSections
                 
             }
@@ -139,9 +137,7 @@ where S: Storage {
                 let prefetchingSections = prefetchingSections,
                 !prefetchingSections.isEmpty
             {
-            
-//                self.prefetchingSections = AnySectionCollection(prefetchingSections)
-                
+    
                 self.prefetchingSections = prefetchingSections
                 
             }
@@ -175,17 +171,9 @@ where S: Storage {
             
             switch state(at: indexPath.section) {
                 
-            case let .fetched(section):
+            case let .fetched(section): return section.view(at: indexPath.item)
                 
-                return section.view(at: indexPath.item)
-                
-//                return section.view(for: element)
-                
-            case let .prefetching(section):
-                
-                return section.view(at: indexPath.item)
-                
-//                return section.view(for: element)
+            case let .prefetching(section): return section.view(at: indexPath.item)
                 
             }
             
