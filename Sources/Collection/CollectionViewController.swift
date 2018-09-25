@@ -223,6 +223,7 @@ where S: Storage {
 
     public final var _prefetchingSessions: SectionCollection?
     
+    #warning("TODO: should provide an opt-in way to reduce storage while changes happen.")
     public final var storage: S? {
         
         didSet {
