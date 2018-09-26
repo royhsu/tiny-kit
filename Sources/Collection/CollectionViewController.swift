@@ -95,13 +95,14 @@ where S: Storage {
                     
                     print("Loading more...")
                     
-                    self.reduceStorage()
+                    #warning("Why does here need to reduce the storage?")
+//                    self.reduceStorage()
                     
                 }
                 
             }
             
-            layout?.invalidate()
+//            layout?.invalidate()
             
         }
         
@@ -215,7 +216,7 @@ where S: Storage {
     
         didSet {
             
-            if isViewLoaded { asyncReloadCollectionView() }
+//            if isViewLoaded { asyncReloadCollectionView() }
             
         }
         
@@ -224,11 +225,20 @@ where S: Storage {
     public final var _prefetchingSessions: SectionCollection?
     
     #warning("TODO: should provide an opt-in way to reduce storage while changes happen.")
+    #warning("TODO: is a good idea to pack storage and reducer together? may be not.")
     public final var storage: S? {
         
         didSet {
             
-            if isViewLoaded { loadStorage() }
+            guard
+                let storage = storage
+            else { return }
+            
+            observations = []
+            
+            observations.append(
+                storage.observe { _ in self.reduceStorage() }
+            )
             
         }
         
@@ -240,18 +250,21 @@ where S: Storage {
         
     }
     
-    open override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        if storage?.isLoaded == false { loadStorage() }
-        
-    }
+//    open override func viewDidLoad() {
+//
+//        super.viewDidLoad()
+//
+//        if storage?.isLoaded == false { loadStorage() }
+//
+//    }
     
     fileprivate final func reduceStorage() {
        
+        if storage?.isLoaded == false { return }
+        
+//        #warning("Use sync to ensure reduce happen immediately before the next reload.")
         DispatchQueue.main.async { [weak self] in
-            
+        
             guard
                 let self = self,
                 let storage = self.storage,
@@ -271,45 +284,45 @@ where S: Storage {
         
     }
     
-    fileprivate final func loadStorage() {
-        
-        guard
-            let storage = storage
-        else { return }
-        
-        observations = []
-        
-        observations.append(
-            storage.observe { _ in
-
-                #warning("This will resign first responder.")
-                self.reduceStorage()
-                
-            }
-        )
-        
-        storage.load { [weak self] result in
-            
-            switch result {
-                
-            case .success: self?.reduceStorage()
-                
-            case let .failure(error): self?.errors.value = error
-                
-            }
-            
-        }
-        
-    }
+//    fileprivate final func loadStorage() {
+//
+//        guard
+//            let storage = storage
+//        else { return }
+//
+//        observations = []
+//
+//        observations.append(
+//            storage.observe { _ in
+//
+//                #warning("This will resign first responder.")
+//                self.reduceStorage()
+//
+//            }
+//        )
+//
+//        storage.load { [weak self] result in
+//
+//            switch result {
+//
+//            case .success: self?.reduceStorage()
+//
+//            case let .failure(error): self?.errors.value = error
+//
+//            }
+//
+//        }
+//
+//    }
     
-    fileprivate final func asyncReloadCollectionView() {
-        
-        DispatchQueue.main.async { [weak self] in
-            
-            self?.layout?.invalidate()
-            
-        }
-        
-    }
+//    fileprivate final func asyncReloadCollectionView() {
+//
+//        DispatchQueue.main.async { [weak self] in
+//
+//            self?.layout?.invalidate()
+//
+//        }
+//
+//    }
     
 }
