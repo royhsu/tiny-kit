@@ -95,7 +95,7 @@ where S: Storage {
                     
                     print("Loading more...")
                     
-                    self.loadStorage()
+                    self.reduceStorage()
                     
                 }
                 
@@ -228,16 +228,6 @@ where S: Storage {
         
         didSet {
             
-            guard
-                let storage = storage
-            else { return }
-            
-            let observation = storage.observe { _ in self.reduceStorage() }
-            
-            observations.append(observation)
-            
-            reduceStorage()
-            
             if isViewLoaded { loadStorage() }
             
         }
@@ -259,7 +249,7 @@ where S: Storage {
     }
     
     fileprivate final func reduceStorage() {
-        
+       
         DispatchQueue.main.async { [weak self] in
             
             guard
@@ -283,7 +273,22 @@ where S: Storage {
     
     fileprivate final func loadStorage() {
         
-        storage?.load { [weak self] result in
+        guard
+            let storage = storage
+        else { return }
+        
+        observations = []
+        
+        observations.append(
+            storage.observe { _ in
+
+                #warning("This will resign first responder.")
+                self.reduceStorage()
+                
+            }
+        )
+        
+        storage.load { [weak self] result in
             
             switch result {
                 
@@ -300,8 +305,6 @@ where S: Storage {
     fileprivate final func asyncReloadCollectionView() {
         
         DispatchQueue.main.async { [weak self] in
-            
-            self?.observations = []
             
             self?.layout?.invalidate()
             
