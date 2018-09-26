@@ -11,6 +11,7 @@
 import TinyCore
 import TinyStorage
 
+#warning("TODO: should move into TinyStorage.")
 public final class StorageReducer<T, U> where T: Storage {
     
     private final let storage: T
