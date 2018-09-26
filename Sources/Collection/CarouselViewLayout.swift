@@ -189,6 +189,8 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
         
     }
     
+    public final var numberOfSections: Int { return _collectionView.numberOfSections }
+    
     public final func setNumberOfSections(
         _ provider: @escaping (_ collectionView: View) -> Int
     ) {
@@ -204,6 +206,8 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
         }
         
     }
+    
+    public final func numberOfItems(atSection section: Int) -> Int { return _collectionView.numberOfItems(inSection: section) }
     
     public final func setNumberOfItems(
         _ provider: @escaping (
@@ -225,6 +229,20 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
             )
             
         }
+        
+    }
+
+    public final func viewForItem(at indexPath: IndexPath) -> View {
+        
+        guard
+            let cell = _collectionView.cellForItem(at: indexPath)
+        else { fatalError("Please make sure the cell is visible.") }
+        
+        guard
+            let view = cell.contentView.subviews.first
+        else { fatalError("The view must be the first view of the content view of a cell. ") }
+        
+        return view
         
     }
     

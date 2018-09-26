@@ -30,31 +30,56 @@ public final class StorageReducer<T, U> where T: Storage {
     }
     
     public final func reduce(
+        queue: DispatchQueue = .global(qos: .background),
         completion: @escaping (Result<U>) -> Void
     ) {
         
-        storage.load { [weak self] result in
+        if storage.isLoaded {
             
-            guard
-                let self = self
-            else { return }
-            
-            switch result {
-               
-            case .success:
+            queue.async { [weak self] in
+                
+                guard
+                    let self = self
+                else { return }
                 
                 let value = self.reduction(self.storage)
                 
                 completion(
                     .success(value)
                 )
+                
+            }
             
-            case let .failure(error):
+            return
+            
+        }
+        
+        storage.load { result in
+            
+            queue.async { [weak self] in
+            
+                guard
+                    let self = self
+                else { return }
+                
+                switch result {
+                   
+                case .success:
                     
-                 completion(
-                    .failure(error)
-                )
+                    let value = self.reduction(self.storage)
                     
+                    completion(
+                        .success(value)
+                    )
+                
+                case let .failure(error):
+                    
+                     completion(
+                        .failure(error)
+                    )
+                    
+                }
+                
             }
             
         }

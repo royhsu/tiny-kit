@@ -123,8 +123,8 @@ where S: Storage {
         let prefetchingSections: SectionCollection?
         
         init(
-            fetchedSections: SectionCollection?,
-            prefetchingSections: SectionCollection?
+            fetchedSections: SectionCollection? = nil,
+            prefetchingSections: SectionCollection? = nil
         ) {
             
             if let fetchedSections = fetchedSections {
@@ -222,31 +222,68 @@ where S: Storage {
         
     }
 
-    public final var _prefetchingSessions: SectionCollection?
+    public final var _prefetchingSections: SectionCollection?
     
     #warning("TODO: should provide an opt-in way to reduce storage while changes happen.")
     #warning("TODO: is a good idea to pack storage and reducer together? may be not.")
-    public final var storage: S? {
+//    public final var storage: S? {
+//
+//        didSet {
+//
+//            guard
+//                let storage = storage
+//            else { return }
+//
+//            observations = []
+//
+//            observations.append(
+//                storage.observe { _ in self.reduceStorage() }
+//            )
+//
+//        }
+//
+//    }
+    
+//    public final var storageReducer: Reducer? {
+//
+//        didSet { reduceStorage() }
+//
+//    }
+    
+    public final var storageReducer: StorageReducer<S, SectionCollection>?
+    
+    public final func reduceStorageToSections() {
+    
+        sections = Sections()
         
-        didSet {
+        observations = []
+        
+        guard
+            let reducer = storageReducer
+        else { return }
+        
+        reducer.reduce(queue: .main) { [weak self] result in
             
             guard
-                let storage = storage
+                let self = self
             else { return }
             
-            observations = []
-            
-            observations.append(
-                storage.observe { _ in self.reduceStorage() }
-            )
+            switch result {
+                
+            case let .success(fetchedSections):
+                
+                let prefetchingSections = self._prefetchingSections
+                
+                self.sections = Sections(
+                    fetchedSections: fetchedSections,
+                    prefetchingSections: prefetchingSections
+                )
+                
+            case let .failure(error): self.errors.value = error
+                
+            }
             
         }
-        
-    }
-    
-    public final var storageReducer: Reducer? {
-        
-        didSet { reduceStorage() }
         
     }
     
@@ -258,31 +295,31 @@ where S: Storage {
 //
 //    }
     
-    fileprivate final func reduceStorage() {
-       
-        if storage?.isLoaded == false { return }
+//    fileprivate final func reduceStorage() {
+    
+//        if storage?.isLoaded == false { return }
         
 //        #warning("Use sync to ensure reduce happen immediately before the next reload.")
-        DispatchQueue.main.async { [weak self] in
-        
-            guard
-                let self = self,
-                let storage = self.storage,
-                let reducer = self.storageReducer
-            else { return }
-            
-            let fetchedSections = reducer(storage)
-            
-            let prefetchingSections = self._prefetchingSessions
-            
-            self.sections = Sections(
-                fetchedSections: fetchedSections,
-                prefetchingSections: prefetchingSections
-            )
-            
-        }
-        
-    }
+//        DispatchQueue.main.async { [weak self] in
+//
+//            guard
+//                let self = self,
+//                let storage = self.storage,
+//                let reducer = self.storageReducer
+//            else { return }
+//
+//            let fetchedSections = reducer(storage)
+//
+//            let prefetchingSections = self._prefetchingSections
+//
+//            self.sections = Sections(
+//                fetchedSections: fetchedSections,
+//                prefetchingSections: prefetchingSections
+//            )
+//
+//        }
+//
+//    }
     
 //    fileprivate final func loadStorage() {
 //

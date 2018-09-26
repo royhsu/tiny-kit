@@ -32,6 +32,8 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
     
     public final func invalidate() { _tableView.reloadData() }
     
+    public final var numberOfSections: Int { return _tableView.numberOfSections }
+    
     public final func setNumberOfSections(
         _ provider: @escaping (_ collectionView: View) -> Int
     ) {
@@ -47,6 +49,8 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
         }
         
     }
+    
+    public final func numberOfItems(atSection section: Int) -> Int { return _tableView.numberOfRows(inSection: section) }
     
     public final func setNumberOfItems(
         _ provider: @escaping (
@@ -68,6 +72,20 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
             )
             
         }
+        
+    }
+    
+    public final func viewForItem(at indexPath: IndexPath) -> View {
+        
+        guard
+            let cell = _tableView.cellForRow(at: indexPath)
+        else { fatalError("Please make sure the cell is visible.") }
+        
+        guard
+            let view = cell.contentView.subviews.first
+        else { fatalError("The view must be the first view of the content view of a cell. ") }
+        
+        return view
         
     }
     

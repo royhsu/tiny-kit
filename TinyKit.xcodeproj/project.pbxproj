@@ -22,6 +22,8 @@
 		B00D96512030764E00EF0B7A /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
 		B0191A8C215B606100A11339 /* StorageReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0191A8A215B605100A11339 /* StorageReducerTests.swift */; };
 		B0191A8E215B64C300A11339 /* StorageReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0191A8D215B64C300A11339 /* StorageReducer.swift */; };
+		B0191A90215B75CA00A11339 /* NewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0191A8F215B75CA00A11339 /* NewCollectionViewController.swift */; };
+		B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0191A92215B765B00A11339 /* CollectionViewControllerTests.swift */; };
 		B01D21E5214B64270078E946 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21E4214B64270078E946 /* Template.swift */; };
 		B01D21E7214B643C0078E946 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21E6214B643C0078E946 /* ViewController.swift */; };
 		B01D21E9214B645D0078E946 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D21E8214B645D0078E946 /* View.swift */; };
@@ -94,6 +96,8 @@
 		B00D96582030766600EF0B7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0191A8A215B605100A11339 /* StorageReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageReducerTests.swift; sourceTree = "<group>"; };
 		B0191A8D215B64C300A11339 /* StorageReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageReducer.swift; sourceTree = "<group>"; };
+		B0191A8F215B75CA00A11339 /* NewCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionViewController.swift; sourceTree = "<group>"; };
+		B0191A92215B765B00A11339 /* CollectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewControllerTests.swift; sourceTree = "<group>"; };
 		B01D21E4214B64270078E946 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		B01D21E6214B643C0078E946 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B01D21E8214B645D0078E946 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 			children = (
 				B009B91621464DDF00B19F6A /* Helpers */,
 				B01D21F0214B8D230078E946 /* Template */,
+				B0191A91215B764500A11339 /* Collection */,
 				B0191A8A215B605100A11339 /* StorageReducerTests.swift */,
 				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
 				B009B9062146491400B19F6A /* ClassTableViewCell.swift */,
@@ -240,6 +245,14 @@
 				B0F51CA82158743A00B592F5 /* TinyStorage.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0191A91215B764500A11339 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				B0191A92215B765B00A11339 /* CollectionViewControllerTests.swift */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		B01D21E3214B64140078E946 /* Template */ = {
@@ -320,6 +333,7 @@
 				B0E2366E215723B600FBE7B3 /* CollectionViewCell.swift */,
 				B0E23670215723E900FBE7B3 /* CollectionViewBridge.swift */,
 				B0652DC2214966CC009F8757 /* CollectionViewController.swift */,
+				B0191A8F215B75CA00A11339 /* NewCollectionViewController.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -500,6 +514,7 @@
 				B0E2362721560CFB00FBE7B3 /* ErrorHandler.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
+				B0191A90215B75CA00A11339 /* NewCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +532,7 @@
 				B01D21FF214B9D320078E946 /* Post.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
+				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
 				B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */,
 				B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */,
