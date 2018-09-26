@@ -8,7 +8,15 @@
 
 // MARK: - CollectionViewController
 
+import TinyCore
+
 open class NewCollectionViewController: ViewController {
+    
+    private final var observations: [Observation] = []
+    
+    public final let actions = Observable<Action>()
+    
+    public final let errors = Observable<Error>()
     
     public final var sections: SectionCollection = []
     
@@ -59,10 +67,42 @@ open class NewCollectionViewController: ViewController {
         layout?.setViewForItem { [weak self] _, indexPath in
             
             guard
-                let section = self?.sections.section(at: indexPath.section)
-                else { return View() }
+                let self = self
+            else { return View() }
             
-            return section.view(at: indexPath.item)
+            let section = self.sections.section(at: indexPath.section)
+            
+            let view = section.view(at: indexPath.item)
+            
+            if let actionable = view as? Actionable {
+                
+                let observation = actionable.actions.observe { change in
+                    
+                    self.actions.value = change.currentValue
+                    
+                }
+                
+                self.observations.append(observation)
+                
+            }
+            
+            if let errorHandler = view as? ErrorHandler {
+                
+                let observation = self.errors.observe { change in
+                    
+                    guard
+                        let error = change.currentValue
+                    else { return }
+                    
+                    errorHandler.catch(error: error)
+                    
+                }
+                
+                self.observations.append(observation)
+                
+            }
+            
+            return view
             
         }
         
