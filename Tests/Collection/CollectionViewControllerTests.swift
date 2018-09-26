@@ -16,7 +16,7 @@ internal final class CollectionViewControllerTests: XCTestCase {
     
     internal final func testInitialize() {
         
-        let controller = NewCollectionViewController()
+        let controller = CollectionViewController()
         
         XCTAssert(controller.sections.isEmpty)
         
@@ -24,9 +24,9 @@ internal final class CollectionViewControllerTests: XCTestCase {
         
     }
     
-    internal final func test() {
+    internal final func testLayout() {
         
-        let controller = NewCollectionViewController()
+        let controller = CollectionViewController()
         
         #warning("find a better way to automate this kind of view loading.")
         controller.loadViewIfNeeded()
