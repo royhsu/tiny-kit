@@ -27,18 +27,18 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     )
     -> Bool {
-        
-        let viewController = FeedViewController<FeedRemoteStorage>()
-
-        viewController.layout = TableViewLayout()
+//        
+//        let viewController = FeedViewController<FeedRemoteStorage>()
+//
+//        viewController.layout = TableViewLayout()
 
 //        viewController.storage = FeedRemoteStorage(
 //            resource: PostResource(client: URLSession.shared)
 //        )
-        
-        viewController.storage = FeedRemoteStorage(
-            resource: DummyResource()
-        )
+//
+//        viewController.storage = FeedRemoteStorage(
+//            resource: DummyResource()
+//        )
         
 //        viewController._prefetchingSessions = PrefetchingFeedSectionColleciton(
 //            sections: [
@@ -48,7 +48,9 @@ extension AppDelegate: UIApplicationDelegate {
 //            ]
 //        )
 
-        window.rootViewController = UINavigationController(rootViewController: viewController)
+        window.rootViewController = UINavigationController(
+            rootViewController: NumberListViewController()
+        )
 
         window.makeKeyAndVisible()
         
@@ -58,39 +60,39 @@ extension AppDelegate: UIApplicationDelegate {
     
 }
 
-import TinyCore
-import TinyStorage
-
-public struct DummyResource: Resource {
-    
-    public func fetchItems(
-        page: Page,
-        completion: @escaping (Result< FetchItemsPayload<Feed> >) -> Void
-    ) {
-        
-        let last = Int.random(in: 1...20)
-        
-//        let items = (0..<last).map {
-        let items = (0..<1).map {
-        
-            Post(id: $0, title: "\($0)", body: "")
-            
-//            Comment(id: $0, username: "\($0)", text: "Hello")
-            
-        }
-        
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 2.0) {
-            
-            completion(
-                .success(
-                    FetchItemsPayload(
-                        items: items.map { $0.feed }
-                    )
-                )
-            )
-            
-        }
-        
-    }
-    
-}
+//import TinyCore
+//import TinyStorage
+//
+//public struct DummyResource: Resource {
+//
+//    public func fetchItems(
+//        page: Page,
+//        completion: @escaping (Result< FetchItemsPayload<Feed> >) -> Void
+//    ) {
+//
+//        let last = Int.random(in: 1...20)
+//
+////        let items = (0..<last).map {
+//        let items = (0..<1).map {
+//
+//            Post(id: $0, title: "\($0)", body: "")
+//
+////            Comment(id: $0, username: "\($0)", text: "Hello")
+//
+//        }
+//
+//        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 2.0) {
+//
+//            completion(
+//                .success(
+//                    FetchItemsPayload(
+//                        items: items.map { $0.feed }
+//                    )
+//                )
+//            )
+//
+//        }
+//
+//    }
+//
+//}

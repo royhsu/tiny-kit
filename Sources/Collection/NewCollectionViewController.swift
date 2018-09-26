@@ -8,7 +8,7 @@
 
 // MARK: - CollectionViewController
 
-public final class NewCollectionViewController: ViewController {
+open class NewCollectionViewController: ViewController {
     
     public final var sections: SectionCollection = []
     
@@ -22,7 +22,7 @@ public final class NewCollectionViewController: ViewController {
         
     }
     
-    public final override func viewDidLoad() {
+    open override func viewDidLoad() {
         
         super.viewDidLoad()
         
