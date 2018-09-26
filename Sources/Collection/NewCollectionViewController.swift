@@ -10,13 +10,21 @@
 
 import TinyCore
 
+public protocol ActionDispatcher {
+    
+    func dispatch(
+        action handler: (Action) -> Void
+    )
+    
+}
+
 open class NewCollectionViewController: ViewController {
     
-    private final var observations: [Observation] = []
+    private final var _observations: [Observation] = []
     
-    public final let actions = Observable<Action>()
+    private final var _actionDispatcher: Optional< (Action) -> Void >
     
-    public final let errors = Observable<Error>()
+    private final var _errorHandler: Optional< (Error) -> Void >
     
     public final var sections: SectionCollection = []
     
@@ -38,6 +46,14 @@ open class NewCollectionViewController: ViewController {
         
     }
     
+    public final func setAction(
+        _ dispatcher: @escaping (Action) -> Void
+    ) { _actionDispatcher = dispatcher }
+    
+    public final func setError(
+        _ handler: @escaping (Error) -> Void
+    ) { _errorHandler = handler }
+    
     fileprivate final func prepareLayout() {
         
         if let collectionView = layout?.collectionView {
@@ -49,6 +65,8 @@ open class NewCollectionViewController: ViewController {
         }
         
         layout?.setNumberOfSections { [weak self] _ in
+            
+            self?._observations = []
             
             let count = self?.sections.count ?? 0
             
@@ -76,29 +94,33 @@ open class NewCollectionViewController: ViewController {
             
             if let actionable = view as? Actionable {
                 
-                let observation = actionable.actions.observe { change in
-                    
-                    self.actions.value = change.currentValue
-                    
-                }
-                
-                self.observations.append(observation)
+                self._observations.append(
+                    actionable.actions.observe { [weak self] change in
+                        
+                        guard
+                            let action = change.currentValue
+                        else { return }
+                        
+                        self?._actionDispatcher?(action)
+                        
+                    }
+                )
                 
             }
             
-            if let errorHandler = view as? ErrorHandler {
+            if let failable = view as? Failable {
                 
-                let observation = self.errors.observe { change in
-                    
-                    guard
-                        let error = change.currentValue
-                    else { return }
-                    
-                    errorHandler.catch(error: error)
-                    
-                }
-                
-                self.observations.append(observation)
+                self._observations.append(
+                    failable.errors.observe { [weak self] change in
+                        
+                        guard
+                            let error = change.currentValue
+                        else { return }
+                        
+                        self?._errorHandler?(error)
+                        
+                    }
+                )
                 
             }
             
