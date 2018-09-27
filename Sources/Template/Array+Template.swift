@@ -9,9 +9,9 @@
 // MARK: - Template
 
 extension Array: Template where Element == View {
-    
+
     public var numberOfViews: Int { return count }
-    
+
     public func view(at index: Int) -> View { return self[index] }
-    
+
 }

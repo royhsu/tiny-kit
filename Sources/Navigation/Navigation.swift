@@ -6,12 +6,14 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK - Navigation
+// MARK: - Navigation
 
 public protocol Navigation {
-    
-    associatedtype Destination
-    
+
     func navigate(to destionation: Destination)
-    
+
 }
+
+// MARK: - Destination
+
+public protocol Destination { }

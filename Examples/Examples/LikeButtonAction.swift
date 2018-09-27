@@ -11,7 +11,7 @@
 import TinyKit
 
 public enum LikeButtonAction: Action {
-    
+
     case liked(LikeButtonStorage)
-    
+
 }

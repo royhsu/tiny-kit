@@ -9,17 +9,17 @@
 // MARK: - TemplateConfiguration
 
 public protocol TemplateConfiguration {
-    
+
     associatedtype Element: Hashable
-    
+
     func preferredViewType(for element: Element) -> View.Type?
-    
+
 }
 
 // MARK: - Default Implementation
 
 public extension TemplateConfiguration {
-    
+
     public func preferredViewType(for element: Element) -> View.Type? { return nil }
-    
+
 }

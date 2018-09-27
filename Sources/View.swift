@@ -17,9 +17,9 @@ public typealias View = UIView
 #else
 
 open class View {
-    
+
     open init() { }
-    
+
 }
 
 #endif

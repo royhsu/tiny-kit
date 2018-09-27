@@ -11,19 +11,19 @@
 import UIKit
 
 public extension UICollectionView {
-    
+
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where
         Cell: UICollectionViewCell,
         Cell: ReusableCell {
-            
+
         register(
             cellType,
             forCellWithReuseIdentifier: cellType.reuseIdentifier
         )
-            
+
     }
-    
+
     public final func registerCell<Cell>(
         _ cellType: Cell.Type,
         bundle: Bundle?
@@ -32,17 +32,17 @@ public extension UICollectionView {
         Cell: UICollectionViewCell,
         Cell: ReusableCell,
         Cell: NibCell {
-            
+
         let nib = UINib(
             nibName: cellType.nibName,
             bundle: bundle
         )
-        
+
         register(
             nib,
             forCellWithReuseIdentifier: cellType.reuseIdentifier
         )
-            
+
     }
-    
+
 }

@@ -9,7 +9,7 @@
 // MARK: - PrefetchableCollectViewLayout
 
 public protocol PrefetchableCollectViewLayout: CollectionViewLayout {
-    
+
     func setPrefetchingForItems(
         _ provider: @escaping (
             _ collectionView: View,
@@ -17,5 +17,5 @@ public protocol PrefetchableCollectViewLayout: CollectionViewLayout {
         )
         -> Void
     )
-    
+
 }

@@ -13,44 +13,44 @@ import XCTest
 @testable import TinyKit
 
 internal final class CollectionViewControllerTests: XCTestCase {
-    
+
     internal final func testInitialize() {
-        
+
         let controller = CollectionViewController()
-        
+
         XCTAssert(controller.sections.isEmpty)
-        
+
         XCTAssertNil(controller.layout)
-        
+
     }
-    
+
     internal final func testLayout() {
-        
+
         let controller = CollectionViewController()
-        
+
         #warning("find a better way to automate this kind of view loading.")
         controller.loadViewIfNeeded()
-        
+
         controller.layout = TableViewLayout()
-        
+
         let viewA = View()
-        
+
         let viewB = View()
-        
+
         let viewC = View()
-        
+
         controller.sections = [
             [ viewA ],
             [ viewB, viewC ]
         ]
-        
+
         controller.layout?.invalidate()
-        
+
         XCTAssertEqual(
             controller.layout?.numberOfSections,
             2
         )
-        
+
         XCTAssertEqual(
             controller.layout?.numberOfItems(atSection: 0),
             1
@@ -93,5 +93,5 @@ internal final class CollectionViewControllerTests: XCTestCase {
 //        )
 
     }
-    
+
 }

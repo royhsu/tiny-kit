@@ -9,9 +9,9 @@
 // MARK: - Template
 
 public protocol Template {
-    
+
     var numberOfViews: Int { get }
-    
+
     func view(at index: Int) -> View
-    
+
 }

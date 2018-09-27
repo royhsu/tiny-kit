@@ -11,7 +11,7 @@
 import UIKit
 
 public extension UIView {
-    
+
     /// A convenience method to load a view from the corresponding xib file.
     ///
     /// - Parameter viewType: The subclass of target UIView.
@@ -24,9 +24,9 @@ public extension UIView {
         from bundle: Bundle
     )
     -> View? {
-        
+
         let nibName = String(describing: viewType)
-        
+
         return UINib(
             nibName: nibName,
             bundle: bundle
@@ -37,7 +37,7 @@ public extension UIView {
         )
         .compactMap { $0 as? View }
         .first
-            
+
     }
-    
+
 }

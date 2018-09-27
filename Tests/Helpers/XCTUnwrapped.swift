@@ -18,13 +18,13 @@ public func XCTUnwrapped<T>(
     line: UInt = #line
 )
 -> T {
-    
+
     if let unwrapped = optional { return unwrapped }
-    
+
     fatalError(
         message(),
         file: file,
         line: line
     )
-    
+
 }

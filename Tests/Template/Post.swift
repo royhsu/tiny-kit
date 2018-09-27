@@ -9,12 +9,11 @@
 // MARK: - Post
 
 internal struct Post: Equatable {
-    
-    internal let id: Int
-    
-    internal let title: String
-    
-    internal let body: String
-    
-}
 
+    internal let id: Int
+
+    internal let title: String
+
+    internal let body: String
+
+}

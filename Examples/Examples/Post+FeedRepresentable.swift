@@ -9,7 +9,7 @@
 // MARK: - FeedRepresentable
 
 extension Post: FeedRepresentable {
-    
+
     public var feed: Feed { return .post(self) }
-    
+
 }

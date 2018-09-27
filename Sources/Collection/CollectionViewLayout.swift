@@ -9,19 +9,19 @@
 // MARK: - CollectionViewLayout
 
 public protocol CollectionViewLayout {
-    
+
     var collectionView: View { get }
-    
+
     func invalidate()
-    
+
     var numberOfSections: Int { get }
-    
+
     func setNumberOfSections(
         _ provider: @escaping (_ collectionView: View) -> Int
     )
-    
+
     func numberOfItems(atSection section: Int) -> Int
-    
+
     func setNumberOfItems(
         _ provider: @escaping (
             _ collectionView: View,
@@ -29,9 +29,9 @@ public protocol CollectionViewLayout {
         )
         -> Int
     )
-    
+
     func viewForItem(at indexPath: IndexPath) -> View
-    
+
     func setViewForItem(
         _ provider: @escaping (
             _ collectionView: View,
@@ -39,5 +39,5 @@ public protocol CollectionViewLayout {
         )
         -> View
     )
-    
+
 }

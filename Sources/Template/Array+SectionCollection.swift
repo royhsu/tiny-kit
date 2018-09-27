@@ -9,7 +9,7 @@
 // MARK: - SectionCollection
 
 extension Array: SectionCollection where Element == Template {
-    
+
     public func section(at index: Int) -> Section { return self[index] }
-    
+
 }

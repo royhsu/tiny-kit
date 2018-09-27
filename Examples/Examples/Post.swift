@@ -11,17 +11,17 @@
 import TinyCore
 
 public struct Post: Unique, Codable, Equatable {
-    
+
     public var identifier: String { return "\(id)" }
-    
+
     public let id: Int
-    
+
     public let title: String
-    
+
     public let body: String
-    
+
     public var isLiked: Bool = false
-    
+
     public init(
         id: Int,
         title: String,
@@ -29,13 +29,13 @@ public struct Post: Unique, Codable, Equatable {
     ) {
 
         self.id = id
-        
+
         self.title = title
-        
+
         self.body = body
-        
+
     }
-        
+
 }
 
 // MARK: - LikeButtonStorage

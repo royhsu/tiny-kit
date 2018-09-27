@@ -11,7 +11,7 @@
 import UIKit
 
 public extension UICollectionView {
-    
+
     public final func dequeueCell<Cell>(
         _ cellType: Cell.Type,
         for indexPath: IndexPath
@@ -20,17 +20,16 @@ public extension UICollectionView {
     where
         Cell: UICollectionViewCell,
         Cell: ReusableCell {
-        
+
         guard
             let cell = dequeueReusableCell(
                 withReuseIdentifier: cellType.reuseIdentifier,
                 for: indexPath
             ) as? Cell
         else { fatalError("Please make sure to register \(cellType) before dequeuing one.") }
-        
-        return cell
-            
-    }
-    
-}
 
+        return cell
+
+    }
+
+}

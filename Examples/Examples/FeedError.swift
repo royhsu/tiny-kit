@@ -9,8 +9,7 @@
 // MARK: - FeedError
 
 public enum FeedError: Error {
-    
-    case unknownFeed
-    
-}
 
+    case unknownFeed
+
+}

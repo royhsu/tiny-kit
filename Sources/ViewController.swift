@@ -17,9 +17,9 @@ public typealias ViewController = UIViewController
 #else
 
 open class ViewController {
-    
+
     open init() { }
-    
+
 }
 
 #endif

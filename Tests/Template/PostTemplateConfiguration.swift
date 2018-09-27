@@ -11,17 +11,17 @@
 import TinyKit
 
 internal struct PostTemplateConfiguration: TemplateConfiguration {
-    
+
     public enum Element: String {
-        
+
         case title
-        
+
         case body
-        
+
     }
-    
+
     internal let preferredViewType: (Element) -> View.Type?
-    
+
     internal func preferredViewType(for element: Element) -> View.Type? { return preferredViewType(element) }
-    
+
 }

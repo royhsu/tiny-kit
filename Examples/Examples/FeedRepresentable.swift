@@ -9,7 +9,7 @@
 // MARK: - FeedRepresentable
 
 public protocol FeedRepresentable {
-    
+
     var feed: Feed { get }
-    
+
 }

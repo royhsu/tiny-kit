@@ -13,32 +13,32 @@
 import UIKit
 
 public final class TableView: UITableView {
-    
+
     public final var bridge: TableViewBridge? {
-        
+
         didSet {
-            
+
             dataSource = bridge
-            
+
             prefetchDataSource = bridge
-            
+
         }
-        
+
     }
-    
+
 }
 
 #else
 
 public final class TableView: View {
-    
+
     public final var bridge: TableViewBridge?
-    
+
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where
         Cell: TableViewCell,
         Cell: ReusableCell { fatalError("Not implemented.") }
-    
+
     public final func registerCell<Cell>(
         _ cellType: Cell.Type,
         bundle: Bundle?
@@ -47,7 +47,7 @@ public final class TableView: View {
         Cell: TableViewCell,
         Cell: ReusableCell,
         Cell: NibCell { fatalError("Not implemented.") }
-    
+
     func dequeueCell<Cell>(
         _ cellType: Cell.Type,
         for indexPath: IndexPath
@@ -56,9 +56,9 @@ public final class TableView: View {
     where
         Cell: TableViewCell,
         Cell: ReusableCell { fatalError("Not implemented.") }
-    
+
     public final func reloadData() { fatalError("Not implemented.") }
-    
+
 }
 
 #endif

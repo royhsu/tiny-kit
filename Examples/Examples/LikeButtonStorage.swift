@@ -9,7 +9,7 @@
 // MARK: - LikeButtonStorage
 
 public protocol LikeButtonStorage {
-    
+
     var isLiked: Bool { get set }
-    
+
 }

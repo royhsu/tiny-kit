@@ -25,31 +25,31 @@ public final class UITableViewBridge: NSObject {
         IndexPath
     )
     -> UITableViewCell
-    
+
     public typealias PrefetchingForRows = (
         _ tableView: UITableView,
         [IndexPath]
     )
     -> Void
-    
+
     private final var _numberOfSections: NumberOfSections?
 
     private final var _numberOfRows: NumberOfRows?
 
     private final var _cellForRow: CellForRow?
-    
+
     private final var _prefetchingForRows: PrefetchingForRows?
 
     public override init() { super.init() }
-    
+
     public final func setNumberOfSections(_ provider: NumberOfSections?) { _numberOfSections = provider }
 
     public final func setNumberOfRows(_ provider: NumberOfRows?) { _numberOfRows = provider }
-    
+
     public final func setCellForRow(_ provider: CellForRow?) { _cellForRow = provider }
-    
+
     public final func setPrefetchingForRows(_ provider: PrefetchingForRows?) { _prefetchingForRows = provider }
-    
+
 }
 
 // MARK: - UITableViewDataSource
@@ -57,11 +57,11 @@ public final class UITableViewBridge: NSObject {
 extension UITableViewBridge: UITableViewDataSource {
 
     public final func numberOfSections(in tableView: UITableView) -> Int {
-        
+
         let sections = _numberOfSections?(tableView)
-        
+
         return sections ?? 1
-        
+
     }
 
     public final func tableView(
@@ -69,14 +69,14 @@ extension UITableViewBridge: UITableViewDataSource {
         numberOfRowsInSection section: Int
     )
     -> Int {
-        
+
         let rows = _numberOfRows?(
             tableView,
             section
         )
-        
+
         return rows ?? 0
-        
+
     }
 
     public final func tableView(
@@ -84,7 +84,7 @@ extension UITableViewBridge: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     )
     -> UITableViewCell {
-        
+
         guard
             let cell = _cellForRow?(
                 tableView,
@@ -101,17 +101,17 @@ extension UITableViewBridge: UITableViewDataSource {
 // MARK: - UITableViewDataSourcePrefetching
 
 extension UITableViewBridge: UITableViewDataSourcePrefetching {
-    
+
     public final func tableView(
         _ tableView: UITableView,
         prefetchRowsAt indexPaths: [IndexPath]
     ) {
-        
+
         _prefetchingForRows?(
             tableView,
             indexPaths
         )
-        
+
     }
-    
+
 }
