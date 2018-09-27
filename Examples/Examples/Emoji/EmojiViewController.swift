@@ -12,7 +12,7 @@ import TinyStorage
 import TinyKit
 import UIKit
 
-public final class NumberListViewController: NewCollectionViewController {
+public final class NumberListViewController: CollectionViewController {
     
     public final override func viewDidLoad() {
         

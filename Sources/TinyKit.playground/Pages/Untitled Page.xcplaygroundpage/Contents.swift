@@ -1,4 +1,3 @@
-import TinyCore
 import TinyKit
 import UIKit
 import PlaygroundSupport

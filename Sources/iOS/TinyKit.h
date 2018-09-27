@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import TinyCore;
 
 FOUNDATION_EXPORT double TinyKitVersionNumber;
 

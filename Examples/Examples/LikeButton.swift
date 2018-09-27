@@ -90,15 +90,3 @@ public final class LikeButton: UIButton, Actionable {
     }
     
 }
-
-// MARK: - ErrorHandler
-
-extension LikeButton: ErrorHandler {
-    
-    public final func `catch`(error: Error) {
-        
-        print(#function, "\(error)")
-        
-    }
-    
-}

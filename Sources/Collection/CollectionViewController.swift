@@ -8,8 +8,6 @@
 
 // MARK: - CollectionViewController
 
-import TinyCore
-
 open class CollectionViewController: ViewController {
     
     private final var _observations: [Observation] = []

@@ -9,7 +9,6 @@
 // MARK: - CollectionViewController
 
 import TinyStorage
-import TinyCore
 
 @available(*, deprecated: 1.0, renamed: "CollectionViewController")
 open class _CollectionViewController<S>: ViewController, Actionable, Failable
@@ -66,21 +65,21 @@ where S: Storage {
                     
                 }
                 
-                if let errorHandler = view as? ErrorHandler {
-                    
-                    let observation = self.errors.observe { change in
-                        
-                        guard
-                            let error = change.currentValue
-                        else { return }
-                        
-                        errorHandler.catch(error: error)
-                        
-                    }
-                    
-                    self.observations.append(observation)
-                    
-                }
+//                if let errorHandler = view as? ErrorHandler {
+//
+//                    let observation = self.errors.observe { change in
+//
+//                        guard
+//                            let error = change.currentValue
+//                        else { return }
+//
+//                        errorHandler.catch(error: error)
+//
+//                    }
+//
+//                    self.observations.append(observation)
+//
+//                }
     
                 return view
     
@@ -88,7 +87,7 @@ where S: Storage {
             
             if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
                 
-                prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
+                 prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
                     
                     #warning("FIXME: The loading more won't trigger while the displayed cells were too few.")
                     guard
@@ -100,7 +99,7 @@ where S: Storage {
                     
                     print("Loading more...")
                     
-                    #warning("Why does here need to reduce the storage?")
+//                    #warning("Why does here need to reduce the storage?")
 //                    self.reduceStorage()
                     
                 }
@@ -229,8 +228,6 @@ where S: Storage {
 
     public final var _prefetchingSections: SectionCollection?
     
-    #warning("TODO: should provide an opt-in way to reduce storage while changes happen.")
-    #warning("TODO: is a good idea to pack storage and reducer together? may be not.")
 //    public final var storage: S? {
 //
 //        didSet {
