@@ -55,6 +55,7 @@ where Configuration: TemplateConfiguration {
     
     private final var elementMapping: [Element: ViewMapping] = [:]
     
+    #warning("should use Set<Element> because elements can't be duplicate.")
     private final var elements: AnyCollection<Element> = AnyCollection( [] )
     
     private final var actionMapping: [ Int: (_ event: Any) -> Void ] = [:]
