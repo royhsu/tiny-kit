@@ -12,7 +12,7 @@ public protocol TemplateConfiguration {
     
     associatedtype Element: Hashable
     
-    func preferredViewName(for element: Element) -> String?
+    func preferredViewType(for element: Element) -> View.Type?
     
 }
 
@@ -20,6 +20,6 @@ public protocol TemplateConfiguration {
 
 public extension TemplateConfiguration {
     
-    public func preferredViewName(for element: Element) -> String? { return nil }
+    public func preferredViewType(for element: Element) -> View.Type? { return nil }
     
 }

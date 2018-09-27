@@ -55,8 +55,8 @@ where Configuration: TemplateConfiguration {
     
     private final var elementMapping: [Element: ViewMapping] = [:]
     
-    #warning("should use Set<Element> because elements can't be duplicate.")
-    private final var elements: AnyCollection<Element> = AnyCollection( [] )
+    #warning("need to be replaced by OrderedSet.")
+    private final let elements: [Element]
     
     private final var actionMapping: [ Int: (_ event: Any) -> Void ] = [:]
     
@@ -66,12 +66,12 @@ where Configuration: TemplateConfiguration {
     
     public init(
         storage: Storage,
-        elements: [Element] = []
+        elements: [Element]
     ) {
         
         self.storage = storage
         
-        self.elements = AnyCollection(elements)
+        self.elements = elements
         
     }
     
@@ -84,9 +84,9 @@ where Configuration: TemplateConfiguration {
     where V: View {
         
         var viewMapping = elementMapping[element] ?? [:]
-        
-        let viewName = String(describing: viewType)
     
+        let viewName = name(for: viewType)
+        
         viewMapping[viewName] = ViewTypeContainer(
             viewType: viewType,
             bundle: bundle,
@@ -106,11 +106,11 @@ where Configuration: TemplateConfiguration {
         
     }
     
+    private final func name(for viewType: View.Type) -> String { return String(describing: viewType) }
+    
     public final var numberOfViews: Int { return elements.count }
     
     public final func view(at index: Int) -> View {
-        
-        let index = AnyIndex(index)
         
         let element = elements[index]
         
@@ -132,7 +132,9 @@ where Configuration: TemplateConfiguration {
         
         let defaultContainer = firstViewTypePair.value
         
-        if let preferredViewName = configuration?.preferredViewName(for: element) {
+        if let preferredViewType = configuration?.preferredViewType(for: element) {
+            
+            let preferredViewName = name(for: preferredViewType)
             
             if let preferredContainer = viewMapping[preferredViewName] {
                 

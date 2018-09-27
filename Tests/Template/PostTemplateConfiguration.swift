@@ -20,8 +20,8 @@ internal struct PostTemplateConfiguration: TemplateConfiguration {
         
     }
     
-    internal let preferredViewName: (Element) -> String?
+    internal let preferredViewType: (Element) -> View.Type?
     
-    internal func preferredViewName(for element: Element) -> String? { return preferredViewName(element) }
+    internal func preferredViewType(for element: Element) -> View.Type? { return preferredViewType(element) }
     
 }

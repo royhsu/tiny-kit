@@ -12,14 +12,14 @@ import XCTest
 
 internal final class ConfigurableTemplateTests: XCTestCase {
     
-    internal final func testInitialize() {
+    internal final func testPreferredViews() {
         
-        let promise = expectation(description: "Binding the storage with view.")
+        let promise = expectation(description: "Get the preferred view for each element.")
         
         let post = Post(
             id: 1,
-            title: "Hello",
-            body: "World"
+            title: "hello",
+            body: "world"
         )
         
         let template = PostTemplate(
@@ -46,15 +46,9 @@ internal final class ConfigurableTemplateTests: XCTestCase {
             
             switch element {
                 
-            case .title:
+            case .title: return Title2Label.self
                 
-                // Test a well-defined view name.
-                return "Title2Label"
-                
-            case .body:
-                
-                // Test a wrong view name.
-                return "Not Found!"
+            case .body: return nil
                 
             }
             
@@ -97,14 +91,14 @@ internal final class ConfigurableTemplateTests: XCTestCase {
         
         XCTAssertEqual(
             titleLabel?.text,
-            "Hello"
+            "hello"
         )
         
         let bodyLabel = template.view(at: 1) as? BodyLabel
         
         XCTAssertEqual(
             bodyLabel?.text,
-            "World"
+            "world"
         )
         
         wait(
