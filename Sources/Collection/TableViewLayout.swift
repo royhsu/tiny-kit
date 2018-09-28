@@ -103,6 +103,8 @@ public final class TableViewLayout: PrefetchableCollectViewLayout {
                 Cell.self,
                 for: indexPath
             )
+            
+            cell.selectionStyle = .none
 
             guard
                 let self = self
