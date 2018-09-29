@@ -10,6 +10,7 @@
 
 import TinyKit
 
+/// To demonstrate different layout for each section.
 public final class PaletteViewController: ViewController {
     
     private let base = CollectionViewController()
