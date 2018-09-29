@@ -12,17 +12,17 @@ import TinyKit
 
 public enum PaletteTemplate: Template {
     
-    case ultraViolet(UltraVioletGradient)
+    case horizontal(HorizontalGradientTemplate)
     
-    case mojito(MojitoGradient)
+    case vertical(VerticalGradientTemplate)
     
     public var numberOfViews: Int {
         
         switch self {
             
-        case .ultraViolet: return 1
+        case let .horizontal(gradient): return gradient.numberOfViews
             
-        case let .mojito(gradient): return gradient.template.numberOfViews
+        case let .vertical(gradient): return gradient.numberOfViews
             
         }
         
@@ -32,9 +32,9 @@ public enum PaletteTemplate: Template {
         
         switch self {
             
-        case let .ultraViolet(gradient): return gradient.view
+        case let .horizontal(gradient): return gradient.view(at: index)
             
-        case let .mojito(gradient): return gradient.template.view(at: index)
+        case let .vertical(gradient): return gradient.view(at: index)
             
         }
         

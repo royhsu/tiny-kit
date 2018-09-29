@@ -1,24 +1,24 @@
 //
-//  UltraVioletTemplate.swift
+//  GradientTemplate.swift
 //  Examples
 //
 //  Created by Roy Hsu on 2018/9/29.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UltraVioletTemplate
+// MARK: - GradientTemplate
 
 import TinyKit
 
-public struct UltraVioletTemplate: Template {
-    
-    private let startColor = DynamicColor(hexString: "654ea3")
-    
-    private let endColor = DynamicColor(hexString: "#eaafc8")
+public struct GradientTemplate: Template {
     
     private let colors: [DynamicColor]
     
-    public init() {
+    public init(
+        startColor: DynamicColor,
+        endColor: DynamicColor,
+        amount: UInt
+    ) {
         
         let gradient = DynamicGradient(
             colors: [
@@ -27,7 +27,7 @@ public struct UltraVioletTemplate: Template {
             ]
         )
         
-        self.colors = gradient.colorPalette(amount: 10)
+        self.colors = gradient.colorPalette(amount: amount)
         
     }
     

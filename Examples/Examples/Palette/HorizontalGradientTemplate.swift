@@ -1,20 +1,24 @@
 //
-//  UltraVioletGradient.swift
+//  HorizontalGradientTemplate.swift
 //  Examples
 //
 //  Created by Roy Hsu on 2018/9/29.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - UltraVioletGradient
+// MARK: - HorizontalGradientTemplate
 
 import TinyKit
 
-public struct UltraVioletGradient {
+public struct HorizontalGradientTemplate: Template {
     
     private let controller = CollectionViewController()
     
-    public init() {
+    public init(
+        startColor: DynamicColor,
+        endColor: DynamicColor,
+        amount: UInt
+    ) {
         
         let layout = CarouselViewLayout()
         
@@ -29,11 +33,17 @@ public struct UltraVioletGradient {
         controller.layout = layout
         
         controller.sections = [
-            UltraVioletTemplate()
+            GradientTemplate(
+                startColor: startColor,
+                endColor: endColor,
+                amount: amount
+            )
         ]
         
     }
     
-    public var view: View { return controller.view }
+    public var numberOfViews: Int { return 1 }
+    
+    public func view(at index: Int) -> View { return controller.view }
     
 }
