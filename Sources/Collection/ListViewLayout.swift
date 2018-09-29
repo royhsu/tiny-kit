@@ -1,15 +1,14 @@
 //
-//  TableViewLayout.swift
+//  ListViewLayout.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/17.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TableViewLayout
+// MARK: - ListViewLayout
 
-#warning("rename to ListViewLayout.")
-public final class TableViewLayout: PrefetchableCollectViewLayout {
+public final class ListViewLayout: PrefetchableCollectViewLayout {
 
     private final class Cell: TableViewCell, ReusableCell { }
 
