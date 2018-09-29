@@ -38,6 +38,7 @@
 		B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D2204214B9D8E0078E946 /* PostTemplate.swift */; };
 		B0652DB82148B1AC009F8757 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* UITableViewBridge.swift */; };
 		B0652DC3214966CC009F8757 /* _CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* _CollectionViewController.swift */; };
+		B0B5D435215F407E0093EE01 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5D434215F407E0093EE01 /* NavigationController.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+Template.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -107,6 +108,7 @@
 		B01D2204214B9D8E0078E946 /* PostTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTemplate.swift; sourceTree = "<group>"; };
 		B0652DB72148B118009F8757 /* TinyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TinyKit.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DC2214966CC009F8757 /* _CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CollectionViewController.swift; sourceTree = "<group>"; };
+		B0B5D434215F407E0093EE01 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Template.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				B0F80A30214FE6920052ACA3 /* Navigation.swift */,
+				B0B5D434215F407E0093EE01 /* NavigationController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */,
 				B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */,
+				B0B5D435215F407E0093EE01 /* NavigationController.swift in Sources */,
 				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
 				B01D21E9214B645D0078E946 /* View.swift in Sources */,
 				B0652DC3214966CC009F8757 /* _CollectionViewController.swift in Sources */,
