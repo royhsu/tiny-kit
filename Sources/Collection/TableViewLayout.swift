@@ -8,6 +8,7 @@
 
 // MARK: - TableViewLayout
 
+#warning("rename to ListViewLayout.")
 public final class TableViewLayout: PrefetchableCollectViewLayout {
 
     private final class Cell: TableViewCell, ReusableCell { }
