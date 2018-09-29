@@ -12,13 +12,15 @@ import TinyStorage
 import TinyKit
 import UIKit
 
-public final class NumberListViewController: CollectionViewController {
+public final class NumberListViewController: ViewController {
 
+    private final let base = CollectionViewController()
+    
     public final override func viewDidLoad() {
 
         super.viewDidLoad()
 
-        layout = TableViewLayout()
+        base.layout = ListViewLayout()
 
         let numberSection: Template = (0..<100).map { number in
 
@@ -34,8 +36,14 @@ public final class NumberListViewController: CollectionViewController {
 
         }
 
-        sections = [ numberSection ]
-
+        base.sections = [ numberSection ]
+        
+        addChild(base)
+        
+        view.wrapSubview(base.view)
+        
+        base.didMove(toParent: self)
+        
     }
 
 }

@@ -11,7 +11,7 @@
 		B01C62EB2153D384008B4026 /* FeedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EA2153D384008B4026 /* FeedError.swift */; };
 		B01C62ED2153D5D5008B4026 /* FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */; };
 		B01C62EF2153D5F3008B4026 /* Post+FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */; };
-		B06F6E56215B876F00BBCF0F /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F6E55215B876F00BBCF0F /* EmojiViewController.swift */; };
+		B06F6E56215B876F00BBCF0F /* NumberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F6E55215B876F00BBCF0F /* NumberListViewController.swift */; };
 		B0E236242155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */; };
 		B0E236292156170C00FBE7B3 /* LikeButtonStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */; };
 		B0E236312156212C00FBE7B3 /* UIAnswerItemContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */; };
@@ -45,7 +45,7 @@
 		B01C62EA2153D384008B4026 /* FeedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedError.swift; sourceTree = "<group>"; };
 		B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepresentable.swift; sourceTree = "<group>"; };
 		B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+FeedRepresentable.swift"; sourceTree = "<group>"; };
-		B06F6E55215B876F00BBCF0F /* EmojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
+		B06F6E55215B876F00BBCF0F /* NumberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberListViewController.swift; sourceTree = "<group>"; };
 		B0E236232155FB2F00FBE7B3 /* PrefetchingFeedSectionColleciton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchingFeedSectionColleciton.swift; sourceTree = "<group>"; };
 		B0E236282156170C00FBE7B3 /* LikeButtonStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonStorage.swift; sourceTree = "<group>"; };
 		B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIAnswerItemContentView.xib; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		B06F6E54215B875C00BBCF0F /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
-				B06F6E55215B876F00BBCF0F /* EmojiViewController.swift */,
+				B06F6E55215B876F00BBCF0F /* NumberListViewController.swift */,
 			);
 			path = Emoji;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 				B0F80A23214FDC8F0052ACA3 /* LikeButton.swift in Sources */,
 				B01C62EB2153D384008B4026 /* FeedError.swift in Sources */,
 				B0F80A07214E8CE50052ACA3 /* FeedSectionCollection.swift in Sources */,
-				B06F6E56215B876F00BBCF0F /* EmojiViewController.swift in Sources */,
+				B06F6E56215B876F00BBCF0F /* NumberListViewController.swift in Sources */,
 				B01C62E92153D35C008B4026 /* Feed.swift in Sources */,
 				B0F809E9214E779D0052ACA3 /* FeedViewController.swift in Sources */,
 				B0F809E7214E779D0052ACA3 /* AppDelegate.swift in Sources */,
