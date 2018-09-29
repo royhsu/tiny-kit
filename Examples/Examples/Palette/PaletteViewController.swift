@@ -33,15 +33,15 @@ public final class PaletteViewController: ViewController {
             ),
             PaletteTemplate.vertical(
                 VerticalGradientTemplate(
-                    startColor: DynamicColor(hexString: "#1d976c"),
-                    endColor: DynamicColor(hexString: "#93f9b9"),
+                    startColor: DynamicColor(hexString: "#c21500"),
+                    endColor: DynamicColor(hexString: "#ffc500"),
                     amount: 10
                 )
             ),
             PaletteTemplate.horizontal(
                 HorizontalGradientTemplate(
-                    startColor: DynamicColor(hexString: "#c21500"),
-                    endColor: DynamicColor(hexString: "#ffc500"),
+                    startColor: DynamicColor(hexString: "#1d976c"),
+                    endColor: DynamicColor(hexString: "#93f9b9"),
                     amount: 10
                 )
             )
