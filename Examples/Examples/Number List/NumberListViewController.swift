@@ -8,10 +8,9 @@
 
 // MARK: - NumberListViewController
 
-import TinyStorage
 import TinyKit
-import UIKit
 
+/// To demonstrate how simple it is to create a number list by defining single template.
 public final class NumberListViewController: ViewController {
 
     private final let base = CollectionViewController()
@@ -19,8 +18,8 @@ public final class NumberListViewController: ViewController {
     public final override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        base.layout = ListViewLayout()
+        
+        view.backgroundColor = .white
 
         let numberSection: Template = (0..<100).map { number in
 
@@ -37,6 +36,8 @@ public final class NumberListViewController: ViewController {
         }
 
         base.sections = [ numberSection ]
+        
+        base.layout = ListViewLayout()
         
         addChild(base)
         

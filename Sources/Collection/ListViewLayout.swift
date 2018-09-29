@@ -23,6 +23,8 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
     fileprivate final func prepare() {
 
         _tableView.bridge = bridge
+        
+        _tableView.backgroundColor = nil
 
         _tableView.separatorStyle = .none
 
@@ -103,6 +105,8 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
                 Cell.self,
                 for: indexPath
             )
+            
+            cell.backgroundColor = nil
             
             cell.selectionStyle = .none
 

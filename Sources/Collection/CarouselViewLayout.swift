@@ -159,20 +159,19 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
         bridge.setSizeForItem { [weak self] _, _, indexPath in
 
             guard
-                let self = self,
-                let widthForItem = self._widthForItem
+                let self = self
             else { return .zero }
 
             let layoutFrame = self._collectionView.layoutFrame
 
-            let width = widthForItem(
+            let width = self._widthForItem?(
                 self.collectionView,
                 layoutFrame,
                 indexPath
             )
 
             return CGSize(
-                width: width,
+                width: width ?? layoutFrame.width,
                 height: layoutFrame.height
             )
 
@@ -299,7 +298,8 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     }
 
-    #warning("Documentation: required. The default value is zero.")
+    /// The default width is equal to the width of layout frame.
+    /// This make an item fulfills the layout frame of its parent. You must scroll horizontally to see the next item.
     public final func setWidthForItem(
         _ provider: @escaping (
             _ collectionView: View,
