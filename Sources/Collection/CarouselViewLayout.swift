@@ -140,6 +140,8 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     fileprivate final func prepare() {
 
+        _collectionView.backgroundColor = nil
+        
         _collectionView.bridge = bridge
 
         _collectionView.registerCell(Cell.self)

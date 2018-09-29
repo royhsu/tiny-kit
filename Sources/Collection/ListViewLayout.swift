@@ -21,12 +21,12 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
     public init() { self.prepare() }
 
     fileprivate final func prepare() {
-
-        _tableView.bridge = bridge
         
         _tableView.backgroundColor = nil
-
+        
         _tableView.separatorStyle = .none
+        
+        _tableView.bridge = bridge
 
         _tableView.registerCell(Cell.self)
 
