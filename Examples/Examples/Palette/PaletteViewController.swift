@@ -24,26 +24,20 @@ public final class PaletteViewController: ViewController {
         base.layout = ListViewLayout()
         
         base.sections = [
-            PaletteTemplate.horizontal(
-                HorizontalGradientTemplate(
-                    startColor: DynamicColor(hexString: "#654ea3"),
-                    endColor: DynamicColor(hexString: "#eaafc8"),
-                    amount: 10
-                )
+            HorizontalGradientTemplate(
+                startColor: DynamicColor(hexString: "#654ea3"),
+                endColor: DynamicColor(hexString: "#eaafc8"),
+                amount: 10
             ),
-            PaletteTemplate.vertical(
-                VerticalGradientTemplate(
-                    startColor: DynamicColor(hexString: "#c21500"),
-                    endColor: DynamicColor(hexString: "#ffc500"),
-                    amount: 10
-                )
+            VerticalGradientTemplate(
+                startColor: DynamicColor(hexString: "#c21500"),
+                endColor: DynamicColor(hexString: "#ffc500"),
+                amount: 10
             ),
-            PaletteTemplate.horizontal(
-                HorizontalGradientTemplate(
-                    startColor: DynamicColor(hexString: "#1d976c"),
-                    endColor: DynamicColor(hexString: "#93f9b9"),
-                    amount: 10
-                )
+            HorizontalGradientTemplate(
+                startColor: DynamicColor(hexString: "#1d976c"),
+                endColor: DynamicColor(hexString: "#93f9b9"),
+                amount: 10
             )
         ]
         

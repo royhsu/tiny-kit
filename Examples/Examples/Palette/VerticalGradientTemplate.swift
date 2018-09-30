@@ -12,7 +12,7 @@ import TinyKit
 
 public struct VerticalGradientTemplate: Template {
     
-    private let template: GradientTemplate
+    private let base: GradientTemplate
     
     public init(
         startColor: DynamicColor,
@@ -20,7 +20,7 @@ public struct VerticalGradientTemplate: Template {
         amount: UInt
     ) {
         
-        self.template = GradientTemplate(
+        self.base = GradientTemplate(
             startColor: startColor,
             endColor: endColor,
             amount: amount
@@ -28,11 +28,11 @@ public struct VerticalGradientTemplate: Template {
         
     }
     
-    public var numberOfViews: Int { return template.numberOfViews }
+    public var numberOfViews: Int { return base.numberOfViews }
     
     public func view(at index: Int) -> View {
         
-        let view = template.view(at: index)
+        let view = base.view(at: index)
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
