@@ -49,7 +49,7 @@ extension AppDelegate: UIApplicationDelegate {
 //        )
 
         window.rootViewController = UINavigationController(
-            rootViewController: PaletteViewController()
+            rootViewController: CategoryViewController()
         )
 
         window.makeKeyAndVisible()

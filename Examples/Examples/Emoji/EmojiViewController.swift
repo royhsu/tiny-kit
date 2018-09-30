@@ -1,16 +1,16 @@
 //
-//  EmojiCollectionViewController.swift
+//  EmojiViewController.swift
 //  
 //
 //  Created by Roy Hsu on 2018/9/29.
 //
 
-// MARK: - EmojiCollectionViewController
+// MARK: - EmojiViewController
 
 import TinyKit
 
 // To demonstrate how to change the underlying layout with single line of code.
-public final class EmojiCollectionViewController: ViewController {
+public final class EmojiViewController: ViewController {
     
     private final let base = CollectionViewController()
     

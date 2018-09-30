@@ -36,9 +36,9 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     public final var interitemSpacing: CGFloat {
 
-        get { return flowLayout.minimumLineSpacing }
+        get { return flowLayout.minimumInteritemSpacing }
 
-        set { flowLayout.minimumLineSpacing = newValue }
+        set { flowLayout.minimumInteritemSpacing = newValue }
 
     }
 

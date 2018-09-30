@@ -1,17 +1,17 @@
 //
-//  NumberListViewController.swift
+//  NumberViewController.swift
 //  Examples
 //
 //  Created by Roy Hsu on 2018/9/26.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - NumberListViewController
+// MARK: - NumberViewController
 
 import TinyKit
 
 /// To demonstrate how simple it is to create a number list by defining single template.
-public final class NumberListViewController: ViewController {
+public final class NumberViewController: ViewController {
 
     private final let base = CollectionViewController()
     
