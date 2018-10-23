@@ -26,7 +26,11 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
         
         _tableView.separatorStyle = .none
         
-        _tableView.bridge = bridge
+        _tableView.dataSource = bridge
+        
+        _tableView.prefetchDataSource = bridge
+        
+        _tableView.delegate = bridge
 
         _tableView.registerCell(Cell.self)
 

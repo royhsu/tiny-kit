@@ -142,7 +142,11 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
         _collectionView.backgroundColor = nil
         
-        _collectionView.bridge = bridge
+        _collectionView.dataSource = bridge
+        
+        _collectionView.prefetchDataSource = bridge
+        
+        _collectionView.delegate = bridge
 
         _collectionView.registerCell(Cell.self)
 

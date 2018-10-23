@@ -115,3 +115,7 @@ extension UITableViewBridge: UITableViewDataSourcePrefetching {
     }
 
 }
+
+// MARK: - UITableViewDelegate
+
+extension UITableViewBridge: UITableViewDelegate { }

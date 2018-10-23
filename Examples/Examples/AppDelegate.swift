@@ -65,7 +65,7 @@ extension AppDelegate: UIApplicationDelegate {
 //        base.layout = ListViewLayout()
 
         window.rootViewController = UINavigationController(
-            rootViewController: TextInput3ViewController()
+            rootViewController: CategoryViewController()
         )
 
         window.makeKeyAndVisible()
