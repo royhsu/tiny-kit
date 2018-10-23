@@ -12,6 +12,7 @@
 		B01C62ED2153D5D5008B4026 /* FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */; };
 		B01C62EF2153D5F3008B4026 /* Post+FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */; };
 		B06F6E56215B876F00BBCF0F /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F6E55215B876F00BBCF0F /* NumberViewController.swift */; };
+		B0CB6165217ED02A0097CC40 /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6164217ED02A0097CC40 /* TextInputViewController.swift */; };
 		B0D62D77215FA9C100617EE5 /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62D76215FA9C100617EE5 /* EmojiViewController.swift */; };
 		B0D62D88215FB60100617EE5 /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62D7A215FB60100617EE5 /* HSL.swift */; };
 		B0D62D89215FB60100617EE5 /* DynamicColor+Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62D7B215FB60100617EE5 /* DynamicColor+Lab.swift */; };
@@ -66,6 +67,7 @@
 		B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepresentable.swift; sourceTree = "<group>"; };
 		B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+FeedRepresentable.swift"; sourceTree = "<group>"; };
 		B06F6E55215B876F00BBCF0F /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
+		B0CB6164217ED02A0097CC40 /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
 		B0D62D76215FA9C100617EE5 /* EmojiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
 		B0D62D7A215FB60100617EE5 /* HSL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSL.swift; sourceTree = "<group>"; };
 		B0D62D7B215FB60100617EE5 /* DynamicColor+Lab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DynamicColor+Lab.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				B0E23635215621EF00FBE7B3 /* AnswerTemplate.swift */,
 				B0E236302156212C00FBE7B3 /* UIAnswerItemContentView.swift */,
 				B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */,
+				B0CB6164217ED02A0097CC40 /* TextInputViewController.swift */,
 				B0F809EA214E779D0052ACA3 /* Assets.xcassets */,
 				B0F809EC214E779D0052ACA3 /* LaunchScreen.storyboard */,
 				B0F809EF214E779D0052ACA3 /* Info.plist */,
@@ -337,6 +340,7 @@
 				B0E236292156170C00FBE7B3 /* LikeButtonStorage.swift in Sources */,
 				B0F80A2E214FE4F00052ACA3 /* LikeButtonAction.swift in Sources */,
 				B0D62D8D215FB60100617EE5 /* DynamicColor+HSL.swift in Sources */,
+				B0CB6165217ED02A0097CC40 /* TextInputViewController.swift in Sources */,
 				B0F809FB214E89C80052ACA3 /* Post.swift in Sources */,
 				B0D62D8C215FB60100617EE5 /* DynamicGradient.swift in Sources */,
 				B0F809FD214E8A310052ACA3 /* TitleLabel.swift in Sources */,
