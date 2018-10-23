@@ -10,7 +10,7 @@
 
 import UIKit
 
-public final class UITableViewBridge: NSObject {
+public final class UITableViewBridge: UITableViewController, UITableViewDataSourcePrefetching {
 
     public typealias NumberOfSections = (_ tableView: UITableView) -> Int
 
@@ -40,7 +40,9 @@ public final class UITableViewBridge: NSObject {
 
     private final var _prefetchingForRows: PrefetchingForRows?
 
-    public override init() { super.init() }
+    public init() { super.init(style: .plain) }
+    
+    public required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
 
     public final func setNumberOfSections(_ provider: NumberOfSections?) { _numberOfSections = provider }
 
@@ -49,14 +51,10 @@ public final class UITableViewBridge: NSObject {
     public final func setCellForRow(_ provider: CellForRow?) { _cellForRow = provider }
 
     public final func setPrefetchingForRows(_ provider: PrefetchingForRows?) { _prefetchingForRows = provider }
+    
+    // MARK: UITableViewDataSource
 
-}
-
-// MARK: - UITableViewDataSource
-
-extension UITableViewBridge: UITableViewDataSource {
-
-    public final func numberOfSections(in tableView: UITableView) -> Int {
+    public final override func numberOfSections(in tableView: UITableView) -> Int {
 
         let sections = _numberOfSections?(tableView)
 
@@ -64,7 +62,7 @@ extension UITableViewBridge: UITableViewDataSource {
 
     }
 
-    public final func tableView(
+    public final override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     )
@@ -79,7 +77,7 @@ extension UITableViewBridge: UITableViewDataSource {
 
     }
 
-    public final func tableView(
+    public final override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     )
@@ -95,12 +93,8 @@ extension UITableViewBridge: UITableViewDataSource {
         return cell
 
     }
-
-}
-
-// MARK: - UITableViewDataSourcePrefetching
-
-extension UITableViewBridge: UITableViewDataSourcePrefetching {
+    
+    // MARK: UITableViewDataSourcePrefetching
 
     public final func tableView(
         _ tableView: UITableView,
@@ -115,7 +109,3 @@ extension UITableViewBridge: UITableViewDataSourcePrefetching {
     }
 
 }
-
-// MARK: - UITableViewDelegate
-
-extension UITableViewBridge: UITableViewDelegate { }

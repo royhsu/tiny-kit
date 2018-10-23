@@ -8,37 +8,58 @@
 
 // MARK: - ListViewLayout
 
-public final class ListViewLayout: PrefetchableCollectViewLayout {
+public final class ListViewLayout: ViewController, PrefetchableCollectViewLayout {
 
     private final class Cell: TableViewCell, ReusableCell { }
 
     private final let bridge = TableViewBridge()
 
-    private final var _tableView = TableView()
+    public final var collectionView: View { return bridge.tableView }
 
-    public final var collectionView: View { return _tableView }
-
-    public init() { self.prepare() }
-
+    public init() {
+        
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
+        
+        self.prepare()
+        
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        self.prepare()
+        
+    }
+    
+    public final override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        addChild(bridge)
+        
+        view.wrapSubview(bridge.view)
+        
+        bridge.didMove(toParent: self)
+        
+    }
+    
     fileprivate final func prepare() {
         
-        _tableView.backgroundColor = nil
+        bridge.tableView.backgroundColor = nil
         
-        _tableView.separatorStyle = .none
-        
-        _tableView.dataSource = bridge
-        
-        _tableView.prefetchDataSource = bridge
-        
-        _tableView.delegate = bridge
+        bridge.tableView.separatorStyle = .none
 
-        _tableView.registerCell(Cell.self)
+        bridge.tableView.registerCell(Cell.self)
 
     }
 
-    public final func invalidate() { _tableView.reloadData() }
+    public final func invalidate() { bridge.tableView.reloadData() }
 
-    public final var numberOfSections: Int { return _tableView.numberOfSections }
+    public final var numberOfSections: Int { return bridge.tableView.numberOfSections }
 
     public final func setNumberOfSections(
         _ provider: @escaping (_ collectionView: View) -> Int
@@ -56,7 +77,7 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
 
     }
 
-    public final func numberOfItems(atSection section: Int) -> Int { return _tableView.numberOfRows(inSection: section) }
+    public final func numberOfItems(atSection section: Int) -> Int { return bridge.tableView.numberOfRows(inSection: section) }
 
     public final func setNumberOfItems(
         _ provider: @escaping (
@@ -84,7 +105,7 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
     public final func viewForItem(at indexPath: IndexPath) -> View {
 
         guard
-            let cell = _tableView.cellForRow(at: indexPath)
+            let cell = bridge.tableView.cellForRow(at: indexPath)
         else { fatalError("Please make sure the cell is visible.") }
 
         guard

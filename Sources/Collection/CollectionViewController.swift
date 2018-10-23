@@ -18,11 +18,23 @@ open class CollectionViewController: ViewController {
 
     public final var sections: SectionCollection = []
 
-    public final var layout: CollectionViewLayout? {
+    public typealias Layout = CollectionViewLayout & ViewController
+    
+    public final var layout: Layout? {
 
-        didSet {
+        didSet(oldLayout) {
 
-            if isViewLoaded { prepareLayout() }
+            if isViewLoaded {
+                    
+                oldLayout?.willMove(toParent: nil)
+                
+                oldLayout?.view.removeFromSuperview()
+                
+                oldLayout?.removeFromParent()
+                
+                prepareLayout()
+                
+            }
 
         }
 
@@ -46,15 +58,17 @@ open class CollectionViewController: ViewController {
 
     fileprivate final func prepareLayout() {
 
-        if let collectionView = layout?.collectionView {
+        guard
+            let layout = layout
+        else { return }
+        
+        addChild(layout)
+        
+        view.wrapSubview(layout.view)
+        
+        layout.didMove(toParent: self)
 
-            view.subviews.forEach { $0.removeFromSuperview() }
-
-            view.wrapSubview(collectionView)
-
-        }
-
-        layout?.setNumberOfSections { [weak self] _ in
+        layout.setNumberOfSections { [weak self] _ in
 
             self?._observations = []
 
@@ -64,7 +78,7 @@ open class CollectionViewController: ViewController {
 
         }
 
-        layout?.setNumberOfItems { [weak self] _, section in
+        layout.setNumberOfItems { [weak self] _, section in
 
             let section = self?.sections.section(at: section)
 
@@ -72,7 +86,7 @@ open class CollectionViewController: ViewController {
 
         }
 
-        layout?.setViewForItem { [weak self] _, indexPath in
+        layout.setViewForItem { [weak self] _, indexPath in
 
             guard
                 let self = self

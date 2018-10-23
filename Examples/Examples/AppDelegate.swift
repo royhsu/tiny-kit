@@ -47,22 +47,6 @@ extension AppDelegate: UIApplicationDelegate {
 //                )
 //            ]
 //        )
-        
-//        let base = CollectionViewController()
-//
-//        let textView = UITextView()
-//
-//        textView.backgroundColor = .red
-//
-//        textView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        textView.heightAnchor.constraint(equalToConstant: 500.0).isActive = true
-//
-//        let template: Template = [ textView ]
-//
-//        base.sections = [ template ]
-//
-//        base.layout = ListViewLayout()
 
         window.rootViewController = UINavigationController(
             rootViewController: CategoryViewController()

@@ -13,7 +13,7 @@
 import UIKit
 
 #warning("TODO: missing test.")
-public final class CarouselViewLayout: PrefetchableCollectViewLayout {
+public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLayout {
 
     private final class Cell: CollectionViewCell, ReusableCell { }
 
@@ -134,10 +134,40 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
             collectionViewLayout: flowLayout
         )
 
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
+        
         self.prepare()
 
     }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        
+        self._collectionView = CollectionView(
+            frame: .zero,
+            collectionViewLayout: flowLayout
+        )
+        
+        super.init(coder: aDecoder)
+        
+        self.prepare()
+        
+    }
 
+    public final override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+//        addChild(bridge)
+//
+//        view.wrapSubview(bridge.view)
+//
+//        bridge.didMove(toParent: self)
+//
+    }
+    
     fileprivate final func prepare() {
 
         _collectionView.backgroundColor = nil
