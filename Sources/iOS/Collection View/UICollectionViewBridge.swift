@@ -10,7 +10,7 @@
 
 import UIKit
 
-public final class UICollectionViewBridge: NSObject {
+public final class UICollectionViewBridge: UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching {
 
     public typealias NumberOfSections = (_ collectionView: UICollectionView) -> Int
 
@@ -48,9 +48,13 @@ public final class UICollectionViewBridge: NSObject {
     private final var _prefetchingForItems: PrefetchingForItems?
 
     private final var _sizeForItem: SizeForItem?
+    
+    public final let flowLayout = UICollectionViewFlowLayout()
 
-    public override init() { super.init() }
+    public init() { super.init(collectionViewLayout: flowLayout) }
 
+    public required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
+    
     public final func setNumberOfSections(_ provider: NumberOfSections?) { _numberOfSections = provider }
 
     public final func setNumberOfItems(_ provider: NumberOfItems?) { _numberOfItems = provider }
@@ -61,13 +65,9 @@ public final class UICollectionViewBridge: NSObject {
 
     public final func setSizeForItem(_ provider: SizeForItem?) { _sizeForItem = provider }
 
-}
-
-// MARK: - UICollectionViewBridge
-
-extension UICollectionViewBridge: UICollectionViewDataSource {
-
-    public final func numberOfSections(in collectionView: UICollectionView) -> Int {
+    // MARK: UICollectionViewBridge
+    
+    public final override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
         let sections = _numberOfSections?(collectionView)
 
@@ -75,7 +75,7 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
 
     }
 
-    public final func collectionView(
+    public final override func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     )
@@ -90,7 +90,7 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
 
     }
 
-    public final func collectionView(
+    public final override func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     )
@@ -107,12 +107,8 @@ extension UICollectionViewBridge: UICollectionViewDataSource {
 
     }
 
-}
-
-// MARK: - UICollectionViewDataSourcePrefetching
-
-extension UICollectionViewBridge: UICollectionViewDataSourcePrefetching {
-
+    // MARK: UICollectionViewDataSourcePrefetching
+    
     public final func collectionView(
         _ collectionView: UICollectionView,
         prefetchItemsAt indexPaths: [IndexPath]
@@ -124,13 +120,9 @@ extension UICollectionViewBridge: UICollectionViewDataSourcePrefetching {
         )
 
     }
-
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension UICollectionViewBridge: UICollectionViewDelegateFlowLayout {
-
+    
+    // MARK: UICollectionViewDelegateFlowLayout
+    
     public final func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

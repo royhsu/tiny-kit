@@ -56,8 +56,10 @@ public final class EmojiViewController: ViewController {
         
         let currentOption = LayoutOption.allCases[currentLayoutOptionIndex]
         
+        navigationItem.title = currentOption.name
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: currentOption.name,
+            title: "Next",
             style: .plain,
             target: self,
             action: #selector(changeLayout)
@@ -108,10 +110,9 @@ public final class EmojiViewController: ViewController {
         
         base.collectionView.applyLayout(option.layout)
         
-        #warning("FIXME")
-//        base.invalidate()
+        base.collectionView.layout?.invalidate()
         
-        navigationItem.rightBarButtonItem?.title = option.name
+        navigationItem.title = option.name
         
     }
     
