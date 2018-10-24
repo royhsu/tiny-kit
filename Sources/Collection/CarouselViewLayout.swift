@@ -21,20 +21,20 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
 
     private final let flowLayout = UICollectionViewFlowLayout()
 
-    private final let _collectionView: CollectionView
+    private final let _collectionView: UICollectionView
 
-    public final var collectionView: View { return _collectionView }
+//    public final var collectionView: View { return _collectionView }
     
-    public final unowned let newCollectionView: NewCollectionView
+    public final unowned let collectionView: CollectionView
 
-    public init(collectionView: NewCollectionView) {
+    public init(collectionView: CollectionView) {
         
-        self._collectionView = CollectionView(
+        self._collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: flowLayout
         )
         
-        self.newCollectionView = collectionView
+        self.collectionView = collectionView
         
         super.init(
             nibName: nil,
@@ -87,7 +87,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
 
         get {
 
-            let direction = View.userInterfaceLayoutDirection(for: collectionView.semanticContentAttribute)
+            let direction = View.userInterfaceLayoutDirection(for: _collectionView.semanticContentAttribute)
 
             let insets = _collectionView.contentInset
 
@@ -117,7 +117,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
 
         set(newInsets) {
 
-            let direction = View.userInterfaceLayoutDirection(for: collectionView.semanticContentAttribute)
+            let direction = View.userInterfaceLayoutDirection(for: _collectionView.semanticContentAttribute)
 
             switch direction {
 
@@ -196,7 +196,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
             let layoutFrame = self._collectionView.layoutFrame
 
             let width = self._widthForItem?(
-                self.collectionView,
+                self._collectionView,
                 layoutFrame,
                 indexPath
             )
@@ -231,7 +231,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
                 let self = self
             else { return 0 }
 
-            return provider(self.collectionView)
+            return provider(self._collectionView)
 
         }
 
@@ -254,7 +254,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
             else { return 0 }
 
             return provider(
-                self.collectionView,
+                self._collectionView,
                 section
             )
 
@@ -296,7 +296,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
             else { return cell }
 
             let view = provider(
-                self.collectionView,
+                self._collectionView,
                 indexPath
             )
 
@@ -321,7 +321,7 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
         bridge.setPrefetchingForItems { _, indexPaths in
 
             provider(
-                self.collectionView,
+                self._collectionView,
                 indexPaths
             )
 

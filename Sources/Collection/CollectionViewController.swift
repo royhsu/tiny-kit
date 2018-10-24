@@ -16,80 +16,60 @@ open class CollectionViewController: ViewController {
 
     private final var _errorHandler: Optional< (Error) -> Void >
 
-    public final let collectionView = NewCollectionView()
+    public final let collectionView = CollectionView()
     
-//    public final var sections: SectionCollection = []
-
-//    public typealias Layout = CollectionViewLayout & ViewController
+    public init() {
+     
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
+        
+        self.prepare()
+        
+    }
     
-//    public final var layout: Layout? {
-//
-//        didSet(oldLayout) {
-//
-//            if isViewLoaded {
-//
-//                oldLayout?.willMove(toParent: nil)
-//
-//                oldLayout?.view.removeFromSuperview()
-//
-//                oldLayout?.removeFromParent()
-//
-//                prepareLayout()
-//
-//            }
-//
-//        }
-//
-//    }
+    public required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        self.prepare()
+        
+    }
     
-    open override func loadView() { self.view = collectionView }
-
-    open override func viewDidLoad() {
-
+    public final override func viewDidLoad() {
+        
         super.viewDidLoad()
-    
-        prepareLayout()
-
+        
+        view.wrapSubview(collectionView)
+        
     }
 
-    public final func setAction(
-        _ dispatcher: @escaping (Action) -> Void
-    ) { _actionDispatcher = dispatcher }
-
-    public final func setError(
-        _ handler: @escaping (Error) -> Void
-    ) { _errorHandler = handler }
-
-    fileprivate final func prepareLayout() {
-
-        guard
-            let layout = collectionView.layout as? ViewController
-        else { return }
-
-        addChild(layout)
-
-        view.wrapSubview(layout.view)
-
-        layout.didMove(toParent: self)
-
-//        layout.setNumberOfSections { [weak self] _ in
-//
-//            self?._observations = []
-//
-//            let count = self?.sections.count ?? 0
-//
-//            return count
-//
-//        }
-//
-//        layout.setNumberOfItems { [weak self] _, section in
-//
-//            let section = self?.sections.section(at: section)
-//
-//            return section?.numberOfViews ?? 0
-//
-//        }
-//
+    fileprivate final func prepare() {
+        
+        collectionView.layoutDidChange = { [weak self] oldLayout, newLayout in
+            
+            let oldViewController = oldLayout as? ViewController
+            
+            oldViewController?.willMove(toParent: nil)
+            
+            oldViewController?.view.removeFromSuperview()
+            
+            oldViewController?.removeFromParent()
+            
+            guard
+                let self = self,
+                let newViewController = newLayout as? ViewController
+            else { return }
+            
+            self.addChild(newViewController)
+            
+            self.view.wrapSubview(newViewController.view)
+            
+            newViewController.didMove(toParent: self)
+            
+        }
+        
 //        layout.setViewForItem { [weak self] _, indexPath in
 //
 //            guard
@@ -137,5 +117,13 @@ open class CollectionViewController: ViewController {
 //        }
 
     }
+    
+    public final func setAction(
+        _ dispatcher: @escaping (Action) -> Void
+    ) { _actionDispatcher = dispatcher }
+
+    public final func setError(
+        _ handler: @escaping (Error) -> Void
+    ) { _errorHandler = handler }
 
 }

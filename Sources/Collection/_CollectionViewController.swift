@@ -29,84 +29,27 @@ where S: Storage {
     public final var layout: CollectionViewLayout? {
 
         didSet {
-
-            if let collectionView = layout?.collectionView {
-
-                view.subviews.forEach { $0.removeFromSuperview() }
-
-                view.wrapSubview(collectionView)
-
-            }
-
-            layout?.setNumberOfSections { [weak self] _ in self?.sections?.count ?? 0 }
-
-            layout?.setNumberOfItems { [weak self] _, section in
-
-                return self?.sections?.numberOfElements(at: section) ?? 0
-
-            }
-
-            layout?.setViewForItem { [weak self] _, indexPath in
-
-                guard
-                    let self = self,
-                    let view = self.sections?.view(at: indexPath)
-                else { return View() }
-
-                if let actionable = view as? Actionable {
-
-                    let observation = actionable.actions.observe { change in
-
-                        self.actions.value = change.currentValue
-
-                    }
-
-                    self.observations.append(observation)
-
-                }
-
-//                if let errorHandler = view as? ErrorHandler {
 //
-//                    let observation = self.errors.observe { change in
+//            if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
 //
-//                        guard
-//                            let error = change.currentValue
-//                        else { return }
+//                 prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
 //
-//                        errorHandler.catch(error: error)
+//                    #warning("FIXME: The loading more won't trigger while the displayed cells were too few.")
+//                    guard
+//                        let self = self,
+//                        let lastIndexPath = indexPaths.max(),
+//                        let lastState = self.sections?.state(at: lastIndexPath.section),
+//                        case .prefetching = lastState
+//                    else { return }
 //
-//                    }
+//                    print("Loading more...")
 //
-//                    self.observations.append(observation)
-//
-//                }
-
-                return view
-
-            }
-
-            if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
-
-                 prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
-
-                    #warning("FIXME: The loading more won't trigger while the displayed cells were too few.")
-                    guard
-                        let self = self,
-                        let lastIndexPath = indexPaths.max(),
-                        let lastState = self.sections?.state(at: lastIndexPath.section),
-                        case .prefetching = lastState
-                    else { return }
-
-                    print("Loading more...")
-
 //                    #warning("Why does here need to reduce the storage?")
 //                    self.reduceStorage()
-
-                }
-
-            }
-
-//            layout?.invalidate()
+//
+//                }
+//
+//            }
 
         }
 

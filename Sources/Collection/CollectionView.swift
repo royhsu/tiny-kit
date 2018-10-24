@@ -8,15 +8,7 @@
 
 // MARK: - CollectionView
 
-#if canImport(UIKit)
-
-import UIKit
-
-public final class CollectionView: UICollectionView { }
-
-#endif
-
-public final class NewCollectionView: View {
+public final class CollectionView: View {
     
     public var sections: SectionCollection = []
     
@@ -29,20 +21,25 @@ public final class NewCollectionView: View {
         
     }
     
-    public private(set) var layout: CollectionViewLayout?
+    public final var layoutDidChange: (
+        _ oldLayout: CollectionViewLayout?,
+        _ newLayout: CollectionViewLayout?
+    )
+    -> Void = { _, _ in }
     
-//    private typealias NumberOfSections = (_ collectionView: NewCollectionView) -> Int
-//
-//    private final var _numberOfSections: NumberOfSections = { _ in 1 }
-//
-//    public final var numberOfSections: Int { return _numberOfSections(self) }
-//
-//    public final func setNumberOfSections(
-//        _ provider: @escaping (_ collectionView: NewCollectionView) -> Int
-//    ) { _numberOfSections = provider }
-//
-//    public init() { super.init(frame: .zero) }
-//
-//    public required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
+    public private(set) var layout: CollectionViewLayout? {
+        
+        didSet(oldLayout) {
+            
+            let newLayout = layout
+            
+            layoutDidChange(
+                oldLayout,
+                newLayout
+            )
+            
+        }
+        
+    }
     
 }
