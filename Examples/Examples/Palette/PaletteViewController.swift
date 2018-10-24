@@ -21,8 +21,6 @@ public final class PaletteViewController: ViewController {
         
         view.backgroundColor = .white
         
-        base.collectionView.applyLayout(ListViewLayout.self)
-        
         base.collectionView.sections = [
             HorizontalGradientTemplate(
                 startColor: DynamicColor(hexString: "#654ea3"),
@@ -40,6 +38,8 @@ public final class PaletteViewController: ViewController {
                 amount: 10
             )
         ]
+        
+        base.collectionView.applyLayout(ListViewLayout.self)
         
         addChild(base)
         

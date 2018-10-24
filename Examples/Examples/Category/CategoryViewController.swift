@@ -48,22 +48,21 @@ public final class CategoryViewController: ViewController {
             
         }
         
-//        base.sections = [ categories.map { $0.view } ]
+        base.collectionView.sections = [ categories.map { $0.view } ]
         
-        #warning("FIXME")
-//        let layout = CarouselViewLayout()
+        base.collectionView.applyLayout(CarouselViewLayout.self)
         
-//        layout.interitemSpacing = 20.0
-//
-//        layout.setWidthForItem { _, _, indexPath in
-//
-//            let sizes = categories.map { $0.size }
-//
-//            return sizes[indexPath.item].width
-//
-//        }
-//
-//        base.layout = layout
+        let layout = base.collectionView.layout as? CarouselViewLayout
+        
+        layout?.interitemSpacing = 20.0
+
+        layout?.setWidthForItem { _, _, indexPath in
+
+            let sizes = categories.map { $0.size }
+
+            return sizes[indexPath.item].width
+
+        }
         
         addChild(base)
         
