@@ -8,12 +8,13 @@
 
 // MARK: - ListViewLayout
 
-public final class ListViewLayout: ViewController, CollectionViewLayout {
+public final class ListViewLayout: CollectionViewLayout {
     
     private final class Cell: TableViewCell, ReusableCell { }
 
-    #warning("make this property internal.")
     private final let bridge = TableViewBridge()
+    
+    public final var _viewController: ViewController? { return bridge }
     
     public final unowned let collectionView: CollectionView
 
@@ -21,34 +22,7 @@ public final class ListViewLayout: ViewController, CollectionViewLayout {
         
         self.collectionView = collectionView
         
-        super.init(
-            nibName: nil,
-            bundle: nil
-        )
-        
         self.prepare()
-        
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        
-        fatalError()
-        
-//        super.init(coder: aDecoder)
-//
-//        self.prepare()
-        
-    }
-    
-    public final override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        addChild(bridge)
-        
-        view.wrapSubview(bridge.view)
-        
-        bridge.didMove(toParent: self)
         
     }
     

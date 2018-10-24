@@ -12,9 +12,9 @@ open class CollectionViewController: ViewController {
 
     private final var _observations: [Observation] = []
 
-    private final var _actionDispatcher: Optional< (Action) -> Void >
+    private final var _actionDispatcher: ( (Action) -> Void )?
 
-    private final var _errorHandler: Optional< (Error) -> Void >
+    private final var _errorHandler: ( (Error) -> Void )?
 
     public final let collectionView = CollectionView()
     
@@ -49,7 +49,7 @@ open class CollectionViewController: ViewController {
         
         collectionView.layoutDidChange = { [weak self] oldLayout, newLayout in
             
-            let oldViewController = oldLayout as? ViewController
+            let oldViewController = oldLayout?._viewController
             
             oldViewController?.willMove(toParent: nil)
             
@@ -59,7 +59,7 @@ open class CollectionViewController: ViewController {
             
             guard
                 let self = self,
-                let newViewController = newLayout as? ViewController
+                let newViewController = newLayout?._viewController
             else { return }
             
             self.addChild(newViewController)

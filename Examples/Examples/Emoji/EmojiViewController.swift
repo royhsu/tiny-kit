@@ -20,7 +20,7 @@ public final class EmojiViewController: ViewController {
         
         case carousel
         
-        internal var layout: (ViewController & CollectionViewLayout).Type {
+        internal var layout: CollectionViewLayout.Type {
             
             switch self {
                 

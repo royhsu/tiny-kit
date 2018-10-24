@@ -27,7 +27,7 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     )
     -> Bool {
-//        
+        
 //        let viewController = FeedViewController<FeedRemoteStorage>()
 //
 //        viewController.layout = TableViewLayout()
@@ -49,7 +49,7 @@ extension AppDelegate: UIApplicationDelegate {
 //        )
 
         window.rootViewController = UINavigationController(
-            rootViewController: NumberViewController()
+            rootViewController: TextInputViewController()
         )
 
         window.makeKeyAndVisible()

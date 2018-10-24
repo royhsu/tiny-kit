@@ -13,7 +13,7 @@
 import UIKit
 
 #warning("TODO: missing test.")
-public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLayout {
+public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     private final class Cell: CollectionViewCell, ReusableCell { }
 
@@ -22,8 +22,8 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
     private final let flowLayout = UICollectionViewFlowLayout()
 
     private final let _collectionView: UICollectionView
-
-//    public final var collectionView: View { return _collectionView }
+    
+    public final let _viewController: ViewController? = nil
     
     public final unowned let collectionView: CollectionView
 
@@ -35,11 +35,6 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
         )
         
         self.collectionView = collectionView
-        
-        super.init(
-            nibName: nil,
-            bundle: nil
-        )
         
     }
     
@@ -143,24 +138,6 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
 
         }
 
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        
-        fatalError()
-        
-    }
-
-    public final override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-//        addChild(bridge)
-//
-//        view.wrapSubview(bridge.view)
-//
-//        bridge.didMove(toParent: self)
-//
     }
     
     fileprivate final func prepare() {
