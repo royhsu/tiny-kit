@@ -24,7 +24,25 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
     private final let _collectionView: CollectionView
 
     public final var collectionView: View { return _collectionView }
+    
+    public final unowned let newCollectionView: NewCollectionView
 
+    public init(collectionView: NewCollectionView) {
+        
+        self._collectionView = CollectionView(
+            frame: .zero,
+            collectionViewLayout: flowLayout
+        )
+        
+        self.newCollectionView = collectionView
+        
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
+        
+    }
+    
     private typealias WidthForItem = (
         _ collectionView: View,
         _ layoutFrame: CGRect,
@@ -127,32 +145,9 @@ public final class CarouselViewLayout: ViewController, PrefetchableCollectViewLa
 
     }
 
-    public init() {
-
-        self._collectionView = CollectionView(
-            frame: .zero,
-            collectionViewLayout: flowLayout
-        )
-
-        super.init(
-            nibName: nil,
-            bundle: nil
-        )
-        
-        self.prepare()
-
-    }
-    
     public required init?(coder aDecoder: NSCoder) {
         
-        self._collectionView = CollectionView(
-            frame: .zero,
-            collectionViewLayout: flowLayout
-        )
-        
-        super.init(coder: aDecoder)
-        
-        self.prepare()
+        fatalError()
         
     }
 

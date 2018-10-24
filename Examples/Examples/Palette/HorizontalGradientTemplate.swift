@@ -20,25 +20,26 @@ public struct HorizontalGradientTemplate: Template {
         amount: UInt
     ) {
         
-        let layout = CarouselViewLayout()
+        #warning("FIXME")
+//        let layout = CarouselViewLayout()
+//
+//        layout.setWidthForItem { _, _, _ in 100.0 }
+//
+//        layout.showsScrollIndicator = false
+//
+//        layout.collectionView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        layout.collectionView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+//
+//        controller.layout = layout
         
-        layout.setWidthForItem { _, _, _ in 100.0 }
-        
-        layout.showsScrollIndicator = false
-        
-        layout.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        layout.collectionView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-        
-        controller.layout = layout
-        
-        controller.sections = [
-            GradientTemplate(
-                startColor: startColor,
-                endColor: endColor,
-                amount: amount
-            )
-        ]
+//        controller.sections = [
+//            GradientTemplate(
+//                startColor: startColor,
+//                endColor: endColor,
+//                amount: amount
+//            )
+//        ]
         
     }
     

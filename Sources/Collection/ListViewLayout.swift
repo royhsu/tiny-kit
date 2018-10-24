@@ -9,14 +9,19 @@
 // MARK: - ListViewLayout
 
 public final class ListViewLayout: ViewController, PrefetchableCollectViewLayout {
-
+    
     private final class Cell: TableViewCell, ReusableCell { }
 
+    #warning("make this property internal.")
     private final let bridge = TableViewBridge()
 
     public final var collectionView: View { return bridge.tableView }
+    
+    public final unowned let newCollectionView: NewCollectionView
 
-    public init() {
+    public init(collectionView: NewCollectionView) {
+        
+        self.newCollectionView = collectionView
         
         super.init(
             nibName: nil,
@@ -29,9 +34,11 @@ public final class ListViewLayout: ViewController, PrefetchableCollectViewLayout
     
     public required init?(coder aDecoder: NSCoder) {
         
-        super.init(coder: aDecoder)
+        fatalError()
         
-        self.prepare()
+//        super.init(coder: aDecoder)
+//
+//        self.prepare()
         
     }
     
@@ -54,6 +61,41 @@ public final class ListViewLayout: ViewController, PrefetchableCollectViewLayout
         bridge.tableView.separatorStyle = .none
 
         bridge.tableView.registerCell(Cell.self)
+        
+//        collectionView.wrapSubview(bridge.view)
+        
+        bridge.setNumberOfSections { _ in print("TTTTT"); return self.newCollectionView.sections.count }
+        
+        bridge.setNumberOfRows { _, section in
+            
+            let section = self.newCollectionView.sections.section(at: section)
+                
+            return section.numberOfViews
+            
+        }
+        
+        bridge.setCellForRow { tableView, indexPath in
+            
+            let section = self.newCollectionView.sections.section(at: indexPath.section)
+            
+            let view = section.view(at: indexPath.row)
+            
+            let cell = tableView.dequeueCell(
+                Cell.self,
+                for: indexPath
+            )
+            
+            cell.backgroundColor = nil
+            
+            cell.selectionStyle = .none
+            
+            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+            
+            cell.contentView.wrapSubview(view)
+            
+            return cell
+            
+        }
 
     }
 

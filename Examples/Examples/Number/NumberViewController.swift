@@ -35,9 +35,9 @@ public final class NumberViewController: ViewController {
 
         }
 
-        base.sections = [ numberSection ]
+        base.collectionView.sections = [ numberSection ]
         
-        base.layout = ListViewLayout()
+        base.collectionView.applyLayout(ListViewLayout.self)
         
         addChild(base)
         

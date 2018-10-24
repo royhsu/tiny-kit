@@ -20,13 +20,13 @@ public final class EmojiViewController: ViewController {
         
         case carousel
         
-        internal var layout: ViewController & CollectionViewLayout {
+        internal var layout: (ViewController & CollectionViewLayout).Type {
             
             switch self {
                 
-            case .list: return ListViewLayout()
+            case .list: return ListViewLayout.self
                 
-            case .carousel: return CarouselViewLayout()
+            case .carousel: return CarouselViewLayout.self
                 
             }
             
@@ -83,9 +83,9 @@ public final class EmojiViewController: ViewController {
             
         }
         
-        base.sections = [ emojiSection ]
+        base.collectionView.sections = [ emojiSection ]
         
-        base.layout = currentOption.layout
+        base.collectionView.applyLayout(currentOption.layout)
         
         addChild(base)
         
@@ -106,9 +106,10 @@ public final class EmojiViewController: ViewController {
         
         let option = LayoutOption.allCases[nextIndex]
         
-        base.layout = option.layout
+        base.collectionView.applyLayout(option.layout)
         
-        base.layout?.invalidate()
+        #warning("FIXME")
+//        base.invalidate()
         
         navigationItem.rightBarButtonItem?.title = option.name
         
