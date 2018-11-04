@@ -48,8 +48,6 @@ public extension UIView {
         constraintBuilder: ( (EdgeConstraints) -> Void )? = nil
     ) {
         
-        view.removeFromSuperview()
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(view)
