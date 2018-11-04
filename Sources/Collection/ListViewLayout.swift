@@ -66,7 +66,15 @@ public final class ListViewLayout: CollectionViewLayout {
             return cell
             
         }
-
+        
+        bridge.tableView.alwaysBounceVertical = collectionView.alwaysBounceVertical
+        
+        collectionView.alwaysBounceVerticalDidChange = { [weak self] alwaysBounceVertical in
+            
+            self?.bridge.tableView.alwaysBounceVertical = alwaysBounceVertical
+            
+        }
+        
     }
 
     public final func invalidate() { bridge.tableView.reloadData() }

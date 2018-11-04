@@ -10,9 +10,17 @@
 
 public final class CollectionView: View {
     
-    public var sections: SectionCollection = []
+    public final var alwaysBounceVertical: Bool = true {
+        
+        didSet { alwaysBounceVerticalDidChange?(alwaysBounceVertical) }
+        
+    }
     
-    public func applyLayout(_ layoutType: CollectionViewLayout.Type) {
+    public final var alwaysBounceVerticalDidChange:  ( (Bool) -> Void )?
+
+    public final var sections: SectionCollection = []
+    
+    public final func applyLayout(_ layoutType: CollectionViewLayout.Type) {
         
         layout = layoutType.init(collectionView: self)
         
@@ -27,7 +35,7 @@ public final class CollectionView: View {
     )
     -> Void = { _, _ in }
     
-    public private(set) var layout: CollectionViewLayout? {
+    public private(set) final var layout: CollectionViewLayout? {
         
         didSet(oldLayout) {
             
