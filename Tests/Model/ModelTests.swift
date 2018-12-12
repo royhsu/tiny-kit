@@ -33,13 +33,13 @@ internal final class ModelTestss: XCTestCase {
         var model = Model<String>()
 
         XCTAssertThrowsError(
-            try model.validateValue()
+            try model.validate()
         ) { error in XCTAssert(error is NonNullError) }
 
         model.value = "hello"
 
         XCTAssertEqual(
-            try model.validateValue(),
+            try model.validate(),
             "hello"
         )
 
@@ -72,9 +72,22 @@ internal final class ModelTestss: XCTestCase {
 
                 promise1.fulfill()
 
-                if error is NonEmptyError { return }
-
-                XCTFail("Unexpected error: \(error)")
+                if let error = error as? ModelError<String> {
+                
+                    XCTAssertEqual(
+                        error.currentValue,
+                        ""
+                    )
+                    
+                    XCTAssertEqual(
+                        error.errors.count,
+                        1
+                    )
+                    
+                    XCTAssert(error.errors[0] is NonEmptyError)
+                    
+                }
+                else { XCTFail("Unexpected error: \(error)") }
 
             }
 
