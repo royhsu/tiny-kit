@@ -8,59 +8,46 @@
 
 // MARK: - CollectionView
 
-#if canImport(UIKit)
+public final class CollectionView: View {
 
-import UIKit
+    public final var alwaysBounceVertical: Bool = true {
 
-public final class CollectionView: UICollectionView {
+        didSet { alwaysBounceVerticalDidChange?(alwaysBounceVertical) }
 
-    public final var bridge: CollectionViewBridge? {
+    }
 
-        didSet {
+    public final var alwaysBounceVerticalDidChange:  ( (Bool) -> Void )?
 
-            dataSource = bridge
+    public final var sections: SectionCollection = []
 
-            prefetchDataSource = bridge
+    public final func applyLayout(_ layoutType: CollectionViewLayout.Type) {
 
-            delegate = bridge
+        layout = layoutType.init(collectionView: self)
+
+        #warning("Not sure if this invalidating is required.")
+//        layout?.invalidate()
+
+    }
+
+    public final var layoutDidChange: (
+        _ oldLayout: CollectionViewLayout?,
+        _ newLayout: CollectionViewLayout?
+    )
+    -> Void = { _, _ in }
+
+    public private(set) final var layout: CollectionViewLayout? {
+
+        didSet(oldLayout) {
+
+            let newLayout = layout
+
+            layoutDidChange(
+                oldLayout,
+                newLayout
+            )
 
         }
 
     }
 
 }
-
-#else
-
-public final class CollectionView: View {
-
-    public final var bridge: CollectionViewBridge?
-
-    public final func registerCell<Cell>(_ cellType: Cell.Type)
-    where
-        Cell: CollectionViewCell,
-        Cell: ReusableCell { fatalError("Not implemented.") }
-
-    public final func registerCell<Cell>(
-        _ cellType: Cell.Type,
-        bundle: Bundle?
-    )
-    where
-        Cell: CollectionViewCell,
-        Cell: ReusableCell,
-        Cell: NibCell { fatalError("Not implemented.") }
-
-    func dequeueCell<Cell>(
-        _ cellType: Cell.Type,
-        for indexPath: IndexPath
-    )
-    -> Cell
-    where
-        Cell: CollectionViewCell,
-        Cell: ReusableCell { fatalError("Not implemented.") }
-
-    public final func reloadData() { fatalError("Not implemented.") }
-
-}
-
-#endif

@@ -1,5 +1,5 @@
 //
-//  Array+Template.swift
+//  Array+ViewCollection.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/24.
@@ -8,9 +8,9 @@
 
 // MARK: - Template
 
-extension Array: Template where Element == View {
+extension Array: ViewCollection where Element == View {
 
-    public var numberOfViews: Int { return count }
+    public var count: Int { return count }
 
     public func view(at index: Int) -> View { return self[index] }
 

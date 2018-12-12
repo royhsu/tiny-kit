@@ -8,25 +8,82 @@
 
 // MARK: - Subview
 
-import UIKit
-
 // Reference: https://stackoverflow.com/questions/26652854/ios8-cell-constraints-break-when-adding-disclosure-indicator
 
-// swiftlint:disable large_tuple
 public extension UIView {
 
-    /// A convenient method to add subview and pin it to edges to the parent with Auto Layout.
-    @discardableResult
-    public final func wrapSubview(_ view: UIView) -> (
-        topConstraint: NSLayoutConstraint,
-        leadingConstraint: NSLayoutConstraint,
-        bottomConstraint: NSLayoutConstraint,
-        trailingConstraint: NSLayoutConstraint
+    public struct EdgeConstraints {
+
+        public let topConstraint: NSLayoutConstraint
+
+        public let leadingConstraint: NSLayoutConstraint
+
+        public let bottomConstraint: NSLayoutConstraint
+
+        public let trailingConstraint: NSLayoutConstraint
+
+        public init(
+            top topConstraint: NSLayoutConstraint,
+            leading leadingConstraint: NSLayoutConstraint,
+            bottom bottomConstraint: NSLayoutConstraint,
+            trailing trailingConstraint: NSLayoutConstraint
+        ) {
+
+            self.topConstraint = topConstraint
+
+            self.leadingConstraint = leadingConstraint
+
+            self.bottomConstraint = bottomConstraint
+
+            self.trailingConstraint = trailingConstraint
+
+        }
+
+    }
+
+    /// A convenient method to add subview and pin its edges to the parent view.
+    public final func wrapSubview(
+        _ view: UIView,
+        within guideKeyPath: KeyPath<UIView, UILayoutGuide>? = nil,
+        constraintBuilder: ( (EdgeConstraints) -> Void )? = nil
     ) {
 
-        view.removeFromSuperview()
-
         view.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(view)
+
+        let topAnchor: NSLayoutYAxisAnchor
+
+        let leadingAnchor: NSLayoutXAxisAnchor
+
+        let bottomAnchor: NSLayoutYAxisAnchor
+
+        let trailingAnchor: NSLayoutXAxisAnchor
+
+        if let keyPath = guideKeyPath {
+
+            let guide = self[keyPath: keyPath]
+
+            topAnchor = guide.topAnchor
+
+            leadingAnchor = guide.leadingAnchor
+
+            bottomAnchor = guide.bottomAnchor
+
+            trailingAnchor = guide.trailingAnchor
+
+        }
+        else {
+
+            topAnchor = self.topAnchor
+
+            leadingAnchor = self.leadingAnchor
+
+            bottomAnchor = self.bottomAnchor
+
+            trailingAnchor = self.trailingAnchor
+
+        }
 
         let topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
 
@@ -40,7 +97,14 @@ public extension UIView {
 
         trailingConstraint.priority = UILayoutPriority(900.0)
 
-        addSubview(view)
+        constraintBuilder?(
+            EdgeConstraints(
+                top: topConstraint,
+                leading: leadingConstraint,
+                bottom: bottomConstraint,
+                trailing: trailingConstraint
+            )
+        )
 
         NSLayoutConstraint.activate(
             [
@@ -51,14 +115,6 @@ public extension UIView {
             ]
         )
 
-        return (
-            topConstraint,
-            leadingConstraint,
-            bottomConstraint,
-            trailingConstraint
-        )
-
     }
 
 }
-// swiftlint:enable large_tuple

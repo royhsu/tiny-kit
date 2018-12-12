@@ -11,8 +11,7 @@
 import TinyStorage
 
 @available(*, deprecated: 1.0, renamed: "CollectionViewController")
-open class _CollectionViewController<S>: ViewController, Actionable, Failable
-where S: Storage {
+open class _CollectionViewController<S: Storage>: ViewController {
 
     // Done.
     public typealias Reducer = (S) -> SectionCollection
@@ -20,93 +19,30 @@ where S: Storage {
     // Done.
     private final var observations: [Observation] = []
 
-    // Done.
-    public final let actions = Observable<Action>()
-
-    // Done.
-    public final let errors = Observable<Error>()
-
     public final var layout: CollectionViewLayout? {
 
         didSet {
-
-            if let collectionView = layout?.collectionView {
-
-                view.subviews.forEach { $0.removeFromSuperview() }
-
-                view.wrapSubview(collectionView)
-
-            }
-
-            layout?.setNumberOfSections { [weak self] _ in self?.sections?.count ?? 0 }
-
-            layout?.setNumberOfItems { [weak self] _, section in
-
-                return self?.sections?.numberOfElements(at: section) ?? 0
-
-            }
-
-            layout?.setViewForItem { [weak self] _, indexPath in
-
-                guard
-                    let self = self,
-                    let view = self.sections?.view(at: indexPath)
-                else { return View() }
-
-                if let actionable = view as? Actionable {
-
-                    let observation = actionable.actions.observe { change in
-
-                        self.actions.value = change.currentValue
-
-                    }
-
-                    self.observations.append(observation)
-
-                }
-
-//                if let errorHandler = view as? ErrorHandler {
 //
-//                    let observation = self.errors.observe { change in
+//            if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
 //
-//                        guard
-//                            let error = change.currentValue
-//                        else { return }
+//                 prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
 //
-//                        errorHandler.catch(error: error)
+//                    #warning("FIXME: The loading more won't trigger while the displayed cells were too few.")
+//                    guard
+//                        let self = self,
+//                        let lastIndexPath = indexPaths.max(),
+//                        let lastState = self.sections?.state(at: lastIndexPath.section),
+//                        case .prefetching = lastState
+//                    else { return }
 //
-//                    }
+//                    print("Loading more...")
 //
-//                    self.observations.append(observation)
-//
-//                }
-
-                return view
-
-            }
-
-            if let prefetchableLayout = layout as? PrefetchableCollectViewLayout {
-
-                 prefetchableLayout.setPrefetchingForItems { [weak self] _, indexPaths in
-
-                    #warning("FIXME: The loading more won't trigger while the displayed cells were too few.")
-                    guard
-                        let self = self,
-                        let lastIndexPath = indexPaths.max(),
-                        let lastState = self.sections?.state(at: lastIndexPath.section),
-                        case .prefetching = lastState
-                    else { return }
-
-                    print("Loading more...")
-
 //                    #warning("Why does here need to reduce the storage?")
 //                    self.reduceStorage()
-
-                }
-
-            }
-
-//            layout?.invalidate()
+//
+//                }
+//
+//            }
 
         }
 
@@ -164,9 +100,9 @@ where S: Storage {
 
             switch state(at: section) {
 
-            case let .fetched(section): return section.numberOfViews
+            case let .fetched(section): return section.count
 
-            case let .prefetching(section): return section.numberOfViews
+            case let .prefetching(section): return section.count
 
             }
 
@@ -264,26 +200,26 @@ where S: Storage {
             let reducer = storageReducer
         else { return }
 
-        reducer.reduce(queue: .main) { [weak self] result in
+        reducer.reduce(queue: .main) { [weak self] _ in
 
             guard
                 let self = self
             else { return }
 
-            switch result {
-
-            case let .success(fetchedSections):
-
-                let prefetchingSections = self._prefetchingSections
-
-                self.sections = Sections(
-                    fetchedSections: fetchedSections,
-                    prefetchingSections: prefetchingSections
-                )
-
-            case let .failure(error): self.errors.value = error
-
-            }
+//            switch result {
+//
+//            case let .success(fetchedSections):
+//
+//                let prefetchingSections = self._prefetchingSections
+//
+//                self.sections = Sections(
+//                    fetchedSections: fetchedSections,
+//                    prefetchingSections: prefetchingSections
+//                )
+//
+//            case let .failure(error): self.errors.value = error
+//
+//            }
 
         }
 

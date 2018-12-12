@@ -10,7 +10,7 @@
 
 public protocol SectionCollection {
 
-    typealias Section = Template
+    typealias Section = ViewCollection
 
     var count: Int { get }
 

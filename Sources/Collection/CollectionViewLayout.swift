@@ -10,34 +10,14 @@
 
 public protocol CollectionViewLayout {
 
-    var collectionView: View { get }
+    var collectionView: CollectionView { get }
+
+    init(collectionView: CollectionView)
 
     func invalidate()
 
-    var numberOfSections: Int { get }
-
-    func setNumberOfSections(
-        _ provider: @escaping (_ collectionView: View) -> Int
-    )
-
-    func numberOfItems(atSection section: Int) -> Int
-
-    func setNumberOfItems(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ section: Int
-        )
-        -> Int
-    )
-
-    func viewForItem(at indexPath: IndexPath) -> View
-
-    func setViewForItem(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ indexPath: IndexPath
-        )
-        -> View
-    )
+    /// The underlying layout implementation may require a view controller as the container.
+    /// The layout owner can add this as the child view controller if needed.
+    var _viewController: ViewController? { get }
 
 }

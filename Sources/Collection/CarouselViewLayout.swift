@@ -13,17 +13,23 @@
 import UIKit
 
 #warning("TODO: missing test.")
-public final class CarouselViewLayout: PrefetchableCollectViewLayout {
+public final class CarouselViewLayout: CollectionViewLayout {
 
     private final class Cell: CollectionViewCell, ReusableCell { }
 
     private final let bridge = CollectionViewBridge()
 
-    private final let flowLayout = UICollectionViewFlowLayout()
+    public final var _viewController: ViewController? { return bridge }
 
-    private final let _collectionView: CollectionView
+    public final unowned let collectionView: CollectionView
 
-    public final var collectionView: View { return _collectionView }
+    public init(collectionView: CollectionView) {
+
+        self.collectionView = collectionView
+
+        self.prepare()
+
+    }
 
     private typealias WidthForItem = (
         _ collectionView: View,
@@ -36,17 +42,17 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     public final var interitemSpacing: CGFloat {
 
-        get { return flowLayout.minimumInteritemSpacing }
+        get { return bridge.flowLayout.minimumInteritemSpacing }
 
-        set { flowLayout.minimumInteritemSpacing = newValue }
+        set { bridge.flowLayout.minimumInteritemSpacing = newValue }
 
     }
 
     public final var showsScrollIndicator: Bool {
 
-        get { return _collectionView.showsHorizontalScrollIndicator }
+        get { return bridge.collectionView.showsHorizontalScrollIndicator }
 
-        set { _collectionView.showsHorizontalScrollIndicator = newValue }
+        set { bridge.collectionView.showsHorizontalScrollIndicator = newValue }
 
     }
 
@@ -69,9 +75,9 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
         get {
 
-            let direction = View.userInterfaceLayoutDirection(for: collectionView.semanticContentAttribute)
+            let direction = View.userInterfaceLayoutDirection(for: bridge.collectionView.semanticContentAttribute)
 
-            let insets = _collectionView.contentInset
+            let insets = bridge.collectionView.contentInset
 
             switch direction {
 
@@ -99,13 +105,13 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
         set(newInsets) {
 
-            let direction = View.userInterfaceLayoutDirection(for: collectionView.semanticContentAttribute)
+            let direction = View.userInterfaceLayoutDirection(for: bridge.collectionView.semanticContentAttribute)
 
             switch direction {
 
             case .leftToRight:
 
-                _collectionView.contentInset = .init(
+                bridge.collectionView.contentInset = .init(
                     top: newInsets.top,
                     left: newInsets.leading,
                     bottom: newInsets.bottom,
@@ -114,7 +120,7 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
             case .rightToLeft:
 
-                _collectionView.contentInset = .init(
+                bridge.collectionView.contentInset = .init(
                     top: newInsets.top,
                     left: newInsets.trailing,
                     bottom: newInsets.bottom,
@@ -127,36 +133,58 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     }
 
-    public init() {
-
-        self._collectionView = CollectionView(
-            frame: .zero,
-            collectionViewLayout: flowLayout
-        )
-
-        self.prepare()
-
-    }
-
     fileprivate final func prepare() {
 
-        _collectionView.backgroundColor = nil
-        
-        _collectionView.bridge = bridge
+        bridge.collectionView.backgroundColor = nil
 
-        _collectionView.registerCell(Cell.self)
+        bridge.collectionView.dataSource = bridge
 
-        flowLayout.minimumInteritemSpacing = 0.0
+        bridge.collectionView.prefetchDataSource = bridge
 
-        flowLayout.minimumLineSpacing = 0.0
+        bridge.collectionView.delegate = bridge
 
-        flowLayout.scrollDirection = .horizontal
+        bridge.collectionView.registerCell(Cell.self)
 
-        flowLayout.headerReferenceSize = .zero
+        bridge.flowLayout.minimumInteritemSpacing = 0.0
 
-        flowLayout.footerReferenceSize = .zero
+        bridge.flowLayout.minimumLineSpacing = 0.0
 
-        flowLayout.sectionInset = .zero
+        bridge.flowLayout.scrollDirection = .horizontal
+
+        bridge.flowLayout.headerReferenceSize = .zero
+
+        bridge.flowLayout.footerReferenceSize = .zero
+
+        bridge.flowLayout.sectionInset = .zero
+
+        bridge.setNumberOfSections { _ in self.collectionView.sections.count }
+
+        bridge.setNumberOfItems { _, section in
+
+            let section = self.collectionView.sections.section(at: section)
+
+            return section.count
+
+        }
+
+        bridge.setCellForItem { collectionView, indexPath in
+
+            let section = self.collectionView.sections.section(at: indexPath.section)
+
+            let view = section.view(at: indexPath.row)
+
+            let cell = collectionView.dequeueCell(
+                Cell.self,
+                for: indexPath
+            )
+
+            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+
+            cell.contentView.wrapSubview(view)
+
+            return cell
+
+        }
 
         bridge.setSizeForItem { [weak self] _, _, indexPath in
 
@@ -164,10 +192,10 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
                 let self = self
             else { return .zero }
 
-            let layoutFrame = self._collectionView.layoutFrame
+            let layoutFrame = self.bridge.collectionView.layoutFrame
 
             let width = self._widthForItem?(
-                self.collectionView,
+                self.bridge.collectionView,
                 layoutFrame,
                 indexPath
             )
@@ -183,120 +211,10 @@ public final class CarouselViewLayout: PrefetchableCollectViewLayout {
 
     public final func invalidate() {
 
-        flowLayout.invalidateLayout()
+        bridge.flowLayout.invalidateLayout()
 
         #warning("Not sure if needs to manually call reloadData after invalidated layout.")
-        _collectionView.reloadData()
-
-    }
-
-    public final var numberOfSections: Int { return _collectionView.numberOfSections }
-
-    public final func setNumberOfSections(
-        _ provider: @escaping (_ collectionView: View) -> Int
-    ) {
-
-        bridge.setNumberOfSections { [weak self] _ in
-
-            guard
-                let self = self
-            else { return 0 }
-
-            return provider(self.collectionView)
-
-        }
-
-    }
-
-    public final func numberOfItems(atSection section: Int) -> Int { return _collectionView.numberOfItems(inSection: section) }
-
-    public final func setNumberOfItems(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ section: Int
-        )
-        -> Int
-    ) {
-
-        bridge.setNumberOfItems { [weak self] _, section in
-
-            guard
-                let self = self
-            else { return 0 }
-
-            return provider(
-                self.collectionView,
-                section
-            )
-
-        }
-
-    }
-
-    public final func viewForItem(at indexPath: IndexPath) -> View {
-
-        guard
-            let cell = _collectionView.cellForItem(at: indexPath)
-        else { fatalError("Please make sure the cell is visible.") }
-
-        guard
-            let view = cell.contentView.subviews.first
-        else { fatalError("The view must be the first view of the content view of a cell. ") }
-
-        return view
-
-    }
-
-    public final func setViewForItem(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ indexPath: IndexPath
-        )
-        -> View
-    ) {
-
-        bridge.setCellForItem { [weak self] collectionView, indexPath in
-
-            let cell = collectionView.dequeueCell(
-                Cell.self,
-                for: indexPath
-            )
-
-            guard
-                let self = self
-            else { return cell }
-
-            let view = provider(
-                self.collectionView,
-                indexPath
-            )
-
-            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-
-            cell.contentView.wrapSubview(view)
-
-            return cell
-
-        }
-
-    }
-
-    public final func setPrefetchingForItems(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ indexPaths: [IndexPath]
-        )
-        -> Void
-    ) {
-
-        bridge.setPrefetchingForItems { _, indexPaths in
-
-            provider(
-                self.collectionView,
-                indexPaths
-            )
-
-        }
+        bridge.collectionView.reloadData()
 
     }
 

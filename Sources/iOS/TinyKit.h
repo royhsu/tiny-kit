@@ -7,6 +7,7 @@
 //
 
 @import TinyCore;
+@import TinyValidation;
 @import UIKit;
 
 FOUNDATION_EXPORT double TinyKitVersionNumber;

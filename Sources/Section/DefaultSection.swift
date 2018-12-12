@@ -1,12 +1,12 @@
 //
-//  ConfigurableTemplate.swift
+//  DefaultSection.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/14.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ConfigurableTemplate
+// MARK: - DefaultSection
 
 /// Please define your preferred view by its name with a configuration.
 /// The template will look up wether any registered view matches.
@@ -15,8 +15,7 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-public final class ConfigurableTemplate<Storage, Configuration>: Template
-where Configuration: TemplateConfiguration {
+public final class DefaultSection<Storage, Configuration: DefaultSectionConfiguration>: ViewCollection {
 
     public typealias Element = Configuration.Element
 
@@ -57,8 +56,6 @@ where Configuration: TemplateConfiguration {
 
     #warning("need to be replaced by OrderedSet.")
     private final let elements: [Element]
-
-    private final var actionMapping: [ Int: (_ event: Any) -> Void ] = [:]
 
     public final let storage: Storage
 
@@ -108,7 +105,7 @@ where Configuration: TemplateConfiguration {
 
     private final func name(for viewType: View.Type) -> String { return String(describing: viewType) }
 
-    public final var numberOfViews: Int { return elements.count }
+    public final var count: Int { return elements.count }
 
     public final func view(at index: Int) -> View {
 
@@ -169,7 +166,7 @@ where Configuration: TemplateConfiguration {
 
 // MARK: - KeyPath Binding
 
-public extension ConfigurableTemplate {
+public extension DefaultSection {
 
     public final func registerView<V, T>(
         _ viewType: V.Type,

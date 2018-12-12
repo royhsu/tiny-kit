@@ -10,113 +10,105 @@
 
 open class CollectionViewController: ViewController {
 
-    private final var _observations: [Observation] = []
+    public final let collectionView = CollectionView()
 
-    private final var _actionDispatcher: Optional< (Action) -> Void >
+    public init() {
 
-    private final var _errorHandler: Optional< (Error) -> Void >
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
 
-    public final var sections: SectionCollection = []
-
-    public final var layout: CollectionViewLayout? {
-
-        didSet {
-
-            if isViewLoaded { prepareLayout() }
-
-        }
+        self.prepare()
 
     }
 
-    open override func viewDidLoad() {
+    public required init?(coder aDecoder: NSCoder) {
+
+        super.init(coder: aDecoder)
+
+        self.prepare()
+
+    }
+
+    public final override func viewDidLoad() {
 
         super.viewDidLoad()
 
-        prepareLayout()
+        view.wrapSubview(collectionView)
 
     }
 
-    public final func setAction(
-        _ dispatcher: @escaping (Action) -> Void
-    ) { _actionDispatcher = dispatcher }
+    fileprivate final func prepare() {
 
-    public final func setError(
-        _ handler: @escaping (Error) -> Void
-    ) { _errorHandler = handler }
+        collectionView.layoutDidChange = { [weak self] oldLayout, newLayout in
 
-    fileprivate final func prepareLayout() {
+            let oldViewController = oldLayout?._viewController
 
-        if let collectionView = layout?.collectionView {
+            oldViewController?.willMove(toParent: nil)
 
-            view.subviews.forEach { $0.removeFromSuperview() }
+            oldViewController?.view.removeFromSuperview()
 
-            view.wrapSubview(collectionView)
-
-        }
-
-        layout?.setNumberOfSections { [weak self] _ in
-
-            self?._observations = []
-
-            let count = self?.sections.count ?? 0
-
-            return count
-
-        }
-
-        layout?.setNumberOfItems { [weak self] _, section in
-
-            let section = self?.sections.section(at: section)
-
-            return section?.numberOfViews ?? 0
-
-        }
-
-        layout?.setViewForItem { [weak self] _, indexPath in
+            oldViewController?.removeFromParent()
 
             guard
-                let self = self
-            else { return View() }
+                let self = self,
+                let newViewController = newLayout?._viewController
+            else { return }
 
-            let section = self.sections.section(at: indexPath.section)
+            self.addChild(newViewController)
 
-            let view = section.view(at: indexPath.item)
+            self.view.wrapSubview(newViewController.view)
 
-            if let actionable = view as? Actionable {
-
-                self._observations.append(
-                    actionable.actions.observe { [weak self] change in
-
-                        guard
-                            let action = change.currentValue
-                        else { return }
-
-                        self?._actionDispatcher?(action)
-
-                    }
-                )
-
-            }
-
-            if let failable = view as? Failable {
-
-                self._observations.append(
-                    failable.errors.observe { [weak self] change in
-
-                        guard
-                            let error = change.currentValue
-                        else { return }
-
-                        self?._errorHandler?(error)
-
-                    }
-                )
-
-            }
-
-            return view
+            newViewController.didMove(toParent: self)
 
         }
+
+//        layout.setViewForItem { [weak self] _, indexPath in
+//
+//            guard
+//                let self = self
+//            else { return View() }
+//
+//            let section = self.sections.section(at: indexPath.section)
+//
+//            let view = section.view(at: indexPath.item)
+//
+//            if let actionable = view as? Actionable {
+//
+//                self._observations.append(
+//                    actionable.actions.observe { [weak self] change in
+//
+//                        guard
+//                            let action = change.currentValue
+//                        else { return }
+//
+//                        self?._actionDispatcher?(action)
+//
+//                    }
+//                )
+//
+//            }
+//
+//            if let failable = view as? Failable {
+//
+//                self._observations.append(
+//                    failable.errors.observe { [weak self] change in
+//
+//                        guard
+//                            let error = change.currentValue
+//                        else { return }
+//
+//                        self?._errorHandler?(error)
+//
+//                    }
+//                )
+//
+//            }
+//
+//            return view
+//
+//        }
 
     }
 

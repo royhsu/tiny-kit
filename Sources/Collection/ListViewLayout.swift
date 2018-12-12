@@ -8,116 +8,56 @@
 
 // MARK: - ListViewLayout
 
-public final class ListViewLayout: PrefetchableCollectViewLayout {
+public final class ListViewLayout: CollectionViewLayout {
 
     private final class Cell: TableViewCell, ReusableCell { }
 
     private final let bridge = TableViewBridge()
 
-    private final var _tableView = TableView()
+    public final var _viewController: ViewController? { return bridge }
 
-    public final var collectionView: View { return _tableView }
+    public final unowned let collectionView: CollectionView
 
-    public init() { self.prepare() }
+    public init(collectionView: CollectionView) {
+
+        self.collectionView = collectionView
+
+        self.prepare()
+
+    }
 
     fileprivate final func prepare() {
-        
-        _tableView.backgroundColor = nil
-        
-        _tableView.separatorStyle = .none
-        
-        _tableView.bridge = bridge
 
-        _tableView.registerCell(Cell.self)
+        bridge.tableView.backgroundColor = nil
 
-    }
+        bridge.tableView.separatorStyle = .none
 
-    public final func invalidate() { _tableView.reloadData() }
+        bridge.tableView.registerCell(Cell.self)
 
-    public final var numberOfSections: Int { return _tableView.numberOfSections }
+        bridge.setNumberOfSections { _ in self.collectionView.sections.count }
 
-    public final func setNumberOfSections(
-        _ provider: @escaping (_ collectionView: View) -> Int
-    ) {
+        bridge.setNumberOfRows { _, section in
 
-        bridge.setNumberOfSections { [weak self] _ in
+            let section = self.collectionView.sections.section(at: section)
 
-            guard
-                let self = self
-            else { return 0 }
-
-            return provider(self.collectionView)
+            return section.count
 
         }
 
-    }
+        bridge.setCellForRow { tableView, indexPath in
 
-    public final func numberOfItems(atSection section: Int) -> Int { return _tableView.numberOfRows(inSection: section) }
+            let section = self.collectionView.sections.section(at: indexPath.section)
 
-    public final func setNumberOfItems(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ section: Int
-        )
-        -> Int
-    ) {
-
-        bridge.setNumberOfRows { [weak self] _, section in
-
-            guard
-                let self = self
-            else { return 0 }
-
-            return provider(
-                self.collectionView,
-                section
-            )
-
-        }
-
-    }
-
-    public final func viewForItem(at indexPath: IndexPath) -> View {
-
-        guard
-            let cell = _tableView.cellForRow(at: indexPath)
-        else { fatalError("Please make sure the cell is visible.") }
-
-        guard
-            let view = cell.contentView.subviews.first
-        else { fatalError("The view must be the first view of the content view of a cell. ") }
-
-        return view
-
-    }
-
-    public final func setViewForItem(
-        _ provider: @escaping (
-            _ collectionView: View,
-            _ indexPath: IndexPath
-        )
-        -> View
-    ) {
-
-        bridge.setCellForRow { [weak self] tableView, indexPath in
+            let view = section.view(at: indexPath.row)
 
             let cell = tableView.dequeueCell(
                 Cell.self,
                 for: indexPath
             )
-            
+
             cell.backgroundColor = nil
-            
+
             cell.selectionStyle = .none
-
-            guard
-                let self = self
-            else { return cell }
-
-            let view = provider(
-                self.collectionView,
-                indexPath
-            )
 
             cell.contentView.subviews.forEach { $0.removeFromSuperview() }
 
@@ -127,25 +67,16 @@ public final class ListViewLayout: PrefetchableCollectViewLayout {
 
         }
 
-    }
+        bridge.tableView.alwaysBounceVertical = collectionView.alwaysBounceVertical
 
-    public final func setPrefetchingForItems(
-        _ provider: @escaping (
-            _ collectionview: View,
-            _ indexPaths: [IndexPath]
-        )
-        -> Void
-    ) {
+        collectionView.alwaysBounceVerticalDidChange = { [weak self] alwaysBounceVertical in
 
-        bridge.setPrefetchingForRows { _, indexPaths in
-
-            provider(
-                self.collectionView,
-                indexPaths
-            )
+            self?.bridge.tableView.alwaysBounceVertical = alwaysBounceVertical
 
         }
 
     }
+
+    public final func invalidate() { bridge.tableView.reloadData() }
 
 }
