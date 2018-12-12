@@ -11,15 +11,15 @@
 import TinyKit
 
 public struct HorizontalGradientTemplate: Template {
-    
+
     private let controller = CollectionViewController()
-    
+
     public init(
         startColor: DynamicColor,
         endColor: DynamicColor,
         amount: UInt
     ) {
-        
+
         controller.collectionView.sections = [
             GradientTemplate(
                 startColor: startColor,
@@ -27,9 +27,9 @@ public struct HorizontalGradientTemplate: Template {
                 amount: amount
             )
         ]
-        
+
         controller.collectionView.applyLayout(CarouselViewLayout.self)
-        
+
         let layout = controller.collectionView.layout as? CarouselViewLayout
 
         layout?.setWidthForItem { _, _, _ in 100.0 }
@@ -39,11 +39,11 @@ public struct HorizontalGradientTemplate: Template {
         layout?.collectionView.translatesAutoresizingMaskIntoConstraints = false
 
         layout?.collectionView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-        
+
     }
-    
+
     public var numberOfViews: Int { return 1 }
-    
+
     public func view(at index: Int) -> View { return controller.view }
-    
+
 }

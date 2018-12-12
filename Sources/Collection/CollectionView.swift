@@ -9,45 +9,45 @@
 // MARK: - CollectionView
 
 public final class CollectionView: View {
-    
+
     public final var alwaysBounceVertical: Bool = true {
-        
+
         didSet { alwaysBounceVerticalDidChange?(alwaysBounceVertical) }
-        
+
     }
-    
+
     public final var alwaysBounceVerticalDidChange:  ( (Bool) -> Void )?
 
     public final var sections: SectionCollection = []
-    
+
     public final func applyLayout(_ layoutType: CollectionViewLayout.Type) {
-        
+
         layout = layoutType.init(collectionView: self)
-        
+
         #warning("Not sure if this invalidating is required.")
 //        layout?.invalidate()
-        
+
     }
-    
+
     public final var layoutDidChange: (
         _ oldLayout: CollectionViewLayout?,
         _ newLayout: CollectionViewLayout?
     )
     -> Void = { _, _ in }
-    
+
     public private(set) final var layout: CollectionViewLayout? {
-        
+
         didSet(oldLayout) {
-            
+
             let newLayout = layout
-            
+
             layoutDidChange(
                 oldLayout,
                 newLayout
             )
-            
+
         }
-        
+
     }
-    
+
 }

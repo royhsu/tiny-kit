@@ -1,16 +1,16 @@
 //
-//  Template.swift
+//  ViewCollection.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/14.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - Template
+// MARK: - ViewCollection
 
-public protocol Template {
+public protocol ViewCollection {
 
-    var numberOfViews: Int { get }
+    var count: Int { get }
 
     func view(at index: Int) -> View
 

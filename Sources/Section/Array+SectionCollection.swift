@@ -8,7 +8,7 @@
 
 // MARK: - SectionCollection
 
-extension Array: SectionCollection where Element == Template {
+extension Array: SectionCollection where Element == ViewCollection {
 
     public func section(at index: Int) -> Section { return self[index] }
 

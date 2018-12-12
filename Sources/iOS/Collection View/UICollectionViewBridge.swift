@@ -48,13 +48,13 @@ public final class UICollectionViewBridge: UICollectionViewController, UICollect
     private final var _prefetchingForItems: PrefetchingForItems?
 
     private final var _sizeForItem: SizeForItem?
-    
+
     public final let flowLayout = UICollectionViewFlowLayout()
 
     public init() { super.init(collectionViewLayout: flowLayout) }
 
     public required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
-    
+
     public final func setNumberOfSections(_ provider: NumberOfSections?) { _numberOfSections = provider }
 
     public final func setNumberOfItems(_ provider: NumberOfItems?) { _numberOfItems = provider }
@@ -66,7 +66,7 @@ public final class UICollectionViewBridge: UICollectionViewController, UICollect
     public final func setSizeForItem(_ provider: SizeForItem?) { _sizeForItem = provider }
 
     // MARK: UICollectionViewBridge
-    
+
     public final override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
         let sections = _numberOfSections?(collectionView)
@@ -108,7 +108,7 @@ public final class UICollectionViewBridge: UICollectionViewController, UICollect
     }
 
     // MARK: UICollectionViewDataSourcePrefetching
-    
+
     public final func collectionView(
         _ collectionView: UICollectionView,
         prefetchItemsAt indexPaths: [IndexPath]
@@ -120,9 +120,9 @@ public final class UICollectionViewBridge: UICollectionViewController, UICollect
         )
 
     }
-    
+
     // MARK: UICollectionViewDelegateFlowLayout
-    
+
     public final func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

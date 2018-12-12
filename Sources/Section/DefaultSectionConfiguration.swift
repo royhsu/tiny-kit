@@ -1,14 +1,14 @@
 //
-//  TemplateConfiguration.swift
+//  DefaultSectionConfiguration.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/9/14.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - TemplateConfiguration
+// MARK: - DefaultSectionConfiguration
 
-public protocol TemplateConfiguration {
+public protocol DefaultSectionConfiguration {
 
     associatedtype Element: Hashable
 
@@ -18,7 +18,7 @@ public protocol TemplateConfiguration {
 
 // MARK: - Default Implementation
 
-public extension TemplateConfiguration {
+public extension DefaultSectionConfiguration {
 
     public func preferredViewType(for element: Element) -> View.Type? { return nil }
 

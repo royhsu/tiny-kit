@@ -41,7 +41,7 @@ public final class UITableViewBridge: UITableViewController, UITableViewDataSour
     private final var _prefetchingForRows: PrefetchingForRows?
 
     public init() { super.init(style: .plain) }
-    
+
     public required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
 
     public final func setNumberOfSections(_ provider: NumberOfSections?) { _numberOfSections = provider }
@@ -51,7 +51,7 @@ public final class UITableViewBridge: UITableViewController, UITableViewDataSour
     public final func setCellForRow(_ provider: CellForRow?) { _cellForRow = provider }
 
     public final func setPrefetchingForRows(_ provider: PrefetchingForRows?) { _prefetchingForRows = provider }
-    
+
     // MARK: UITableViewDataSource
 
     public final override func numberOfSections(in tableView: UITableView) -> Int {
@@ -93,7 +93,7 @@ public final class UITableViewBridge: UITableViewController, UITableViewDataSour
         return cell
 
     }
-    
+
     // MARK: UITableViewDataSourcePrefetching
 
     public final func tableView(

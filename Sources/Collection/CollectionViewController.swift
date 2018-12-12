@@ -10,66 +10,60 @@
 
 open class CollectionViewController: ViewController {
 
-    private final var _observations: [Observation] = []
-
-    private final var _actionDispatcher: ( (Action) -> Void )?
-
-    private final var _errorHandler: ( (Error) -> Void )?
-
     public final let collectionView = CollectionView()
-    
+
     public init() {
-     
+
         super.init(
             nibName: nil,
             bundle: nil
         )
-        
+
         self.prepare()
-        
+
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
-        
+
         super.init(coder: aDecoder)
-        
+
         self.prepare()
-        
+
     }
-    
+
     public final override func viewDidLoad() {
-        
+
         super.viewDidLoad()
-        
+
         view.wrapSubview(collectionView)
-        
+
     }
 
     fileprivate final func prepare() {
-        
+
         collectionView.layoutDidChange = { [weak self] oldLayout, newLayout in
-            
+
             let oldViewController = oldLayout?._viewController
-            
+
             oldViewController?.willMove(toParent: nil)
-            
+
             oldViewController?.view.removeFromSuperview()
-            
+
             oldViewController?.removeFromParent()
-            
+
             guard
                 let self = self,
                 let newViewController = newLayout?._viewController
             else { return }
-            
+
             self.addChild(newViewController)
-            
+
             self.view.wrapSubview(newViewController.view)
-            
+
             newViewController.didMove(toParent: self)
-            
+
         }
-        
+
 //        layout.setViewForItem { [weak self] _, indexPath in
 //
 //            guard
@@ -117,13 +111,5 @@ open class CollectionViewController: ViewController {
 //        }
 
     }
-    
-    public final func setAction(
-        _ dispatcher: @escaping (Action) -> Void
-    ) { _actionDispatcher = dispatcher }
-
-    public final func setError(
-        _ handler: @escaping (Error) -> Void
-    ) { _errorHandler = handler }
 
 }

@@ -27,7 +27,7 @@ extension AppDelegate: UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     )
     -> Bool {
-        
+
 //        let viewController = FeedViewController<FeedRemoteStorage>()
 //
 //        viewController.layout = TableViewLayout()

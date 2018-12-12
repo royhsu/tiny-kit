@@ -18,19 +18,19 @@ public final class CarouselViewLayout: CollectionViewLayout {
     private final class Cell: CollectionViewCell, ReusableCell { }
 
     private final let bridge = CollectionViewBridge()
-    
+
     public final var _viewController: ViewController? { return bridge }
-    
+
     public final unowned let collectionView: CollectionView
 
     public init(collectionView: CollectionView) {
-        
+
         self.collectionView = collectionView
 
         self.prepare()
-        
+
     }
-    
+
     private typealias WidthForItem = (
         _ collectionView: View,
         _ layoutFrame: CGRect,
@@ -132,15 +132,15 @@ public final class CarouselViewLayout: CollectionViewLayout {
         }
 
     }
-    
+
     fileprivate final func prepare() {
 
         bridge.collectionView.backgroundColor = nil
-        
+
         bridge.collectionView.dataSource = bridge
-        
+
         bridge.collectionView.prefetchDataSource = bridge
-        
+
         bridge.collectionView.delegate = bridge
 
         bridge.collectionView.registerCell(Cell.self)
@@ -156,34 +156,34 @@ public final class CarouselViewLayout: CollectionViewLayout {
         bridge.flowLayout.footerReferenceSize = .zero
 
         bridge.flowLayout.sectionInset = .zero
-        
+
         bridge.setNumberOfSections { _ in self.collectionView.sections.count }
-        
+
         bridge.setNumberOfItems { _, section in
-            
+
             let section = self.collectionView.sections.section(at: section)
-            
-            return section.numberOfViews
-            
+
+            return section.count
+
         }
-        
+
         bridge.setCellForItem { collectionView, indexPath in
-            
+
             let section = self.collectionView.sections.section(at: indexPath.section)
-            
+
             let view = section.view(at: indexPath.row)
-            
+
             let cell = collectionView.dequeueCell(
                 Cell.self,
                 for: indexPath
             )
-            
+
             cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-            
+
             cell.contentView.wrapSubview(view)
-            
+
             return cell
-            
+
         }
 
         bridge.setSizeForItem { [weak self] _, _, indexPath in

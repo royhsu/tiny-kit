@@ -11,20 +11,13 @@
 import TinyStorage
 
 @available(*, deprecated: 1.0, renamed: "CollectionViewController")
-open class _CollectionViewController<S>: ViewController, Actionable, Failable
-where S: Storage {
+open class _CollectionViewController<S: Storage>: ViewController {
 
     // Done.
     public typealias Reducer = (S) -> SectionCollection
 
     // Done.
     private final var observations: [Observation] = []
-
-    // Done.
-    public final let actions = Observable<Action>()
-
-    // Done.
-    public final let errors = Observable<Error>()
 
     public final var layout: CollectionViewLayout? {
 
@@ -107,9 +100,9 @@ where S: Storage {
 
             switch state(at: section) {
 
-            case let .fetched(section): return section.numberOfViews
+            case let .fetched(section): return section.count
 
-            case let .prefetching(section): return section.numberOfViews
+            case let .prefetching(section): return section.count
 
             }
 
@@ -207,26 +200,26 @@ where S: Storage {
             let reducer = storageReducer
         else { return }
 
-        reducer.reduce(queue: .main) { [weak self] result in
+        reducer.reduce(queue: .main) { [weak self] _ in
 
             guard
                 let self = self
             else { return }
 
-            switch result {
-
-            case let .success(fetchedSections):
-
-                let prefetchingSections = self._prefetchingSections
-
-                self.sections = Sections(
-                    fetchedSections: fetchedSections,
-                    prefetchingSections: prefetchingSections
-                )
-
-            case let .failure(error): self.errors.value = error
-
-            }
+//            switch result {
+//
+//            case let .success(fetchedSections):
+//
+//                let prefetchingSections = self._prefetchingSections
+//
+//                self.sections = Sections(
+//                    fetchedSections: fetchedSections,
+//                    prefetchingSections: prefetchingSections
+//                )
+//
+//            case let .failure(error): self.errors.value = error
+//
+//            }
 
         }
 

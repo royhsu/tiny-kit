@@ -12,15 +12,15 @@ import TinyKit
 
 /// To demonstrate different layout for each section.
 public final class PaletteViewController: ViewController {
-    
+
     private let base = CollectionViewController()
-    
+
     public final override func viewDidLoad() {
-        
+
         super.viewDidLoad()
-        
+
         view.backgroundColor = .white
-        
+
         base.collectionView.sections = [
             HorizontalGradientTemplate(
                 startColor: DynamicColor(hexString: "#654ea3"),
@@ -38,15 +38,15 @@ public final class PaletteViewController: ViewController {
                 amount: 10
             )
         ]
-        
+
         base.collectionView.applyLayout(ListViewLayout.self)
-        
+
         addChild(base)
-        
+
         view.wrapSubview(base.view)
-        
+
         base.didMove(toParent: self)
-        
+
     }
-    
+
 }

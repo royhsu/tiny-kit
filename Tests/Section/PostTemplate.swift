@@ -10,4 +10,4 @@
 
 import TinyKit
 
-internal typealias PostTemplate = ConfigurableTemplate<Post, PostTemplateConfiguration>
+//internal typealias PostTemplate = ConfigurableSection<Post, PostTemplateConfiguration>

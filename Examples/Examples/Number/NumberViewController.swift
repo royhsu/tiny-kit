@@ -14,11 +14,11 @@ import TinyKit
 public final class NumberViewController: ViewController {
 
     private final let base = CollectionViewController()
-    
+
     public final override func viewDidLoad() {
 
         super.viewDidLoad()
-        
+
         view.backgroundColor = .white
 
         let numberSection: Template = (0..<100).map { number in
@@ -36,15 +36,15 @@ public final class NumberViewController: ViewController {
         }
 
         base.collectionView.sections = [ numberSection ]
-        
+
         base.collectionView.applyLayout(ListViewLayout.self)
-        
+
         addChild(base)
-        
+
         view.wrapSubview(base.view)
-        
+
         base.didMove(toParent: self)
-        
+
     }
 
 }
