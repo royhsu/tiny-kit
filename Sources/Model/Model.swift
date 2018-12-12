@@ -91,12 +91,11 @@ public extension Model {
 public extension Model {
     
     public func observe(
-        on queue: DispatchQueue = .main,
         resultHandler: @escaping (Result<Value?>) -> Void
     )
     -> Observation {
 
-        return storage.observe(on: queue) { change in
+        return storage.observe { change in
             
             let currentValue = change.currentValue
             
@@ -132,14 +131,12 @@ public extension Model {
     
     public func bind<Target: AnyObject, U>(
         transform: @escaping (Value?) -> U,
-        on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, U>
     ) {
         
         storage.bind(
             transform: transform,
-            on: queue,
             to: target,
             keyPath: keyPath
         )
@@ -148,14 +145,12 @@ public extension Model {
     
     public func bind<Target: AnyObject, U>(
         transform: @escaping (Value?) -> U?,
-        on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, U?>
     ) {
         
         storage.bind(
             transform: transform,
-            on: queue,
             to: target,
             keyPath: keyPath
         )
@@ -163,13 +158,11 @@ public extension Model {
     }
     
     public func bind<Target: AnyObject>(
-        on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, Value?>
     ) {
         
         storage.bind(
-            on: queue,
             to: target,
             keyPath: keyPath
         )
