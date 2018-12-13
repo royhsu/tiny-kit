@@ -64,6 +64,7 @@ open class NewCollectionViewController: ViewController, CollectionViewDataSource
     
 }
 
+@available(*, deprecated: 1.0, message: "", renamed: "NewCollectionViewController")
 open class CollectionViewController: ViewController {
 
     public final let collectionView = CollectionView()

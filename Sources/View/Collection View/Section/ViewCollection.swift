@@ -8,6 +8,7 @@
 
 // MARK: - ViewCollection
 
+@available(*, deprecated: 1.0, renamed: "NewViewCollection")
 public protocol ViewCollection {
 
     var count: Int { get }
@@ -21,5 +22,11 @@ public protocol NewViewCollection: Emptible {
     var count: Int { get }
     
     subscript(index: Int) -> ViewRepresentable { get }
+    
+}
+
+public extension NewViewCollection {
+    
+    public var isEmpty: Bool { return (count == 0) }
     
 }

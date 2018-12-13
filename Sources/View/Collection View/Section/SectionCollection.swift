@@ -8,6 +8,7 @@
 
 // MARK: - SectionCollection
 
+@available(*, deprecated: 1.0, renamed: "NewSectionCollection")
 public protocol SectionCollection {
 
     typealias Section = ViewCollection
@@ -31,5 +32,11 @@ public protocol NewSectionCollection: Emptible {
     var count: Int { get }
     
     subscript(index: Int) -> NewSection { get }
+    
+}
+
+public extension NewSectionCollection {
+    
+    public var isEmpty: Bool { return (count == 0) }
     
 }
