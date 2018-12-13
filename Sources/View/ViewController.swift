@@ -10,16 +10,6 @@
 
 #if canImport(UIKit)
 
-import UIKit
-
 public typealias ViewController = UIViewController
-
-#else
-
-open class ViewController {
-
-    open init() { }
-
-}
 
 #endif

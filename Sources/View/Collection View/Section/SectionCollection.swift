@@ -23,3 +23,13 @@ public extension SectionCollection {
     public var isEmpty: Bool { return (count == 0) }
 
 }
+
+public protocol NewSectionCollection: Emptible {
+    
+    typealias NewSection = NewViewCollection
+    
+    var count: Int { get }
+    
+    subscript(index: Int) -> NewSection { get }
+    
+}

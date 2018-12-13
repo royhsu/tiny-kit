@@ -10,16 +10,6 @@
 
 #if canImport(UIKit)
 
-import UIKit
-
 public typealias View = UIView
-
-#else
-
-open class View {
-
-    open init() { }
-
-}
 
 #endif

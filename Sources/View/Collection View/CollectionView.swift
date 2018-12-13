@@ -8,6 +8,20 @@
 
 // MARK: - CollectionView
 
+public protocol CollectionViewDataSource: AnyObject {
+    
+    var sections: NewSectionCollection { get }
+    
+}
+
+public protocol NewCollectionView: AnyObject {
+    
+    var dataSource: CollectionViewDataSource? { get set }
+    
+    func reloadData()
+    
+}
+
 public final class CollectionView: View {
 
     public final var alwaysBounceVertical: Bool = true {

@@ -8,6 +8,62 @@
 
 // MARK: - CollectionViewController
 
+open class NewCollectionViewController: ViewController, CollectionViewDataSource {
+    
+    open var sections: NewSectionCollection = []
+    
+    public final var collectionView: (View & NewCollectionView)? { return collectionViewLayout?.collectionView }
+    
+    public final var collectionViewLayout: NewCollectionViewLayout? {
+        
+        willSet {
+            
+            guard
+                isViewLoaded,
+                let oldLayout = collectionViewLayout
+            else { return }
+            
+            oldLayout.collectionView.removeFromSuperview()
+            
+        }
+        
+        didSet {
+            
+            guard
+                isViewLoaded,
+                let newLayout = collectionViewLayout
+            else { return }
+            
+            view.wrapSubview(newLayout.collectionView)
+            
+            newLayout.collectionView.dataSource = self
+            
+        }
+        
+    }
+    
+    open override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        if let initialLayout = collectionViewLayout {
+            
+            view.wrapSubview(initialLayout.collectionView)
+            
+            initialLayout.collectionView.dataSource = self
+            
+        }
+        else {
+            
+            #warning("Debug-only warning.")
+            print("[WARNING]: The collection view controller has no layout to display sections.")
+            
+        }
+        
+    }
+    
+}
+
 open class CollectionViewController: ViewController {
 
     public final let collectionView = CollectionView()

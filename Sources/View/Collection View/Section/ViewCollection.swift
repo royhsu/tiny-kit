@@ -15,3 +15,11 @@ public protocol ViewCollection {
     func view(at index: Int) -> View
 
 }
+
+public protocol NewViewCollection: Emptible {
+    
+    var count: Int { get }
+    
+    subscript(index: Int) -> ViewRepresentable { get }
+    
+}

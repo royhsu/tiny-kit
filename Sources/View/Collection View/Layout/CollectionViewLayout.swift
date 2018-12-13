@@ -21,3 +21,11 @@ public protocol CollectionViewLayout {
     var _viewController: ViewController? { get }
 
 }
+
+//public protocol CollectionViewLayoutDelegate: AnyObject { }
+
+public protocol NewCollectionViewLayout: AnyObject {
+    
+    var collectionView: View & NewCollectionView { get }
+    
+}
