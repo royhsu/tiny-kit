@@ -8,8 +8,6 @@
 
 // MARK: - Safe Area
 
-import UIKit
-
 #warning("TODO: needs to seriously test.")
 public extension UIScrollView {
 

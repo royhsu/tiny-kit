@@ -12,8 +12,4 @@
 
 public typealias CollectionViewBridge = UICollectionViewBridge
 
-#else
-
-#error("No bridge for the current platform.")
-
 #endif

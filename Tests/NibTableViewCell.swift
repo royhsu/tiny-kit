@@ -8,7 +8,6 @@
 
 // MARK: - NibTableViewCell
 
-import UIKit
 import TinyKit
 
 internal final class NibTableViewCell: UITableViewCell { }

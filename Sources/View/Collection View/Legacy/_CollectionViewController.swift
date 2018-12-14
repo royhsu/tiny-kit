@@ -14,12 +14,12 @@ import TinyStorage
 open class _CollectionViewController<S: Storage>: ViewController {
 
     // Done.
-    public typealias Reducer = (S) -> SectionCollection
+    public typealias Reducer = (S) -> LegacySectionCollection
 
     // Done.
     private final var observations: [Observation] = []
 
-    public final var layout: CollectionViewLayout? {
+    public final var layout: LegacyCollectionViewLayout? {
 
         didSet {
 //
@@ -52,19 +52,19 @@ open class _CollectionViewController<S: Storage>: ViewController {
 
         enum State {
 
-            case fetched(SectionCollection.Section)
+            case fetched(LegacySectionCollection.Section)
 
-            case prefetching(SectionCollection.Section)
+            case prefetching(LegacySectionCollection.Section)
 
         }
 
-        let fetchedSections: SectionCollection?
+        let fetchedSections: LegacySectionCollection?
 
-        let prefetchingSections: SectionCollection?
+        let prefetchingSections: LegacySectionCollection?
 
         init(
-            fetchedSections: SectionCollection? = nil,
-            prefetchingSections: SectionCollection? = nil
+            fetchedSections: LegacySectionCollection? = nil,
+            prefetchingSections: LegacySectionCollection? = nil
         ) {
 
             if let fetchedSections = fetchedSections {
@@ -162,7 +162,7 @@ open class _CollectionViewController<S: Storage>: ViewController {
 
     }
 
-    public final var _prefetchingSections: SectionCollection?
+    public final var _prefetchingSections: LegacySectionCollection?
 
 //    public final var storage: S? {
 //
@@ -188,7 +188,7 @@ open class _CollectionViewController<S: Storage>: ViewController {
 //
 //    }
 
-    public final var storageReducer: StorageReducer<S, SectionCollection>?
+    public final var storageReducer: StorageReducer<S, LegacySectionCollection>?
 
     public final func reduceStorageToSections() {
 

@@ -8,10 +8,4 @@
 
 // MARK: - ViewCollection.swift
 
-extension Array: ViewCollection where Element == View {
-
-    public func view(at index: Int) -> View { return self[index] }
-
-}
-
-extension Array: NewViewCollection where Element == ViewRepresentable { }
+extension Array: ViewCollection where Element == ViewRepresentable { }

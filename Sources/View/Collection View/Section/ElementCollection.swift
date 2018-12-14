@@ -24,7 +24,7 @@ public struct ElementCollection<Element>: ExpressibleByArrayLiteral {
     
 }
 
-// MARK: -  Collection
+// MARK: - Collection
 
 extension ElementCollection: Collection {
     
@@ -46,9 +46,9 @@ extension ElementCollection: Emptible {
     
 }
 
-// MARK: - NewSectionCollection
+// MARK: - SectionCollection
 
-extension ElementCollection: NewSectionCollection where Element: NewViewCollection {
+extension ElementCollection: SectionCollection where Element: ViewCollection {
     
     public subscript(index: Int) -> NewSection { return elements[index] }
     

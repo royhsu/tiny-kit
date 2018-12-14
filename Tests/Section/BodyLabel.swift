@@ -9,7 +9,6 @@
 // MARK: - BodyLabel
 
 import TinyKit
-import UIKit
 
 internal final class BodyLabel: UILabel {
 

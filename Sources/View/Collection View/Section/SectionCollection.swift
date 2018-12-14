@@ -8,26 +8,9 @@
 
 // MARK: - SectionCollection
 
-@available(*, deprecated: 1.0, renamed: "NewSectionCollection")
-public protocol SectionCollection {
-
-    typealias Section = ViewCollection
-
-    var count: Int { get }
-
-    func section(at index: Int) -> Section
-
-}
-
-public extension SectionCollection {
-
-    public var isEmpty: Bool { return (count == 0) }
-
-}
-
-public protocol NewSectionCollection: Emptible {
+public protocol SectionCollection: Emptible {
     
-    typealias NewSection = NewViewCollection
+    typealias NewSection = ViewCollection
     
     var count: Int { get }
     
@@ -35,7 +18,7 @@ public protocol NewSectionCollection: Emptible {
     
 }
 
-public extension NewSectionCollection {
+public extension SectionCollection {
     
     public var isEmpty: Bool { return (count == 0) }
     

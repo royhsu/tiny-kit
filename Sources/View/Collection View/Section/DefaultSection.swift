@@ -15,7 +15,7 @@
 /// will use the earliest and registerd view for elements.
 ///
 /// You must register at least one view for each element.
-public final class DefaultSection<Storage, Configuration: DefaultSectionConfiguration>: ViewCollection {
+public final class DefaultSection<Storage, Configuration: DefaultSectionConfiguration>: LegacyViewCollection {
 
     public typealias Element = Configuration.Element
 

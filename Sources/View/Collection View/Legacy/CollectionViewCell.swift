@@ -10,12 +10,6 @@
 
 #if canImport(UIKit)
 
-import UIKit
-
 public typealias CollectionViewCell = UICollectionViewCell
-
-#else
-
-public final class CollectionViewCell: View { }
 
 #endif

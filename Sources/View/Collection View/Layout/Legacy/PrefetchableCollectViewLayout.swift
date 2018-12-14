@@ -8,7 +8,7 @@
 
 // MARK: - PrefetchableCollectViewLayout
 
-public protocol PrefetchableCollectViewLayout: CollectionViewLayout {
+public protocol PrefetchableCollectViewLayout: LegacyCollectionViewLayout {
 
     func setPrefetchingForItems(
         _ provider: @escaping (

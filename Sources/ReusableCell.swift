@@ -14,7 +14,7 @@ public protocol ReusableCell {
 
 }
 
-// MARK: - Default Implementation
+// MARK: - ReusableCell (Default Implementation)
 
 public extension ReusableCell {
 

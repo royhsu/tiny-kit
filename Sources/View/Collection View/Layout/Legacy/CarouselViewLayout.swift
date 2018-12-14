@@ -10,10 +10,8 @@
 
 #if canImport(UIKit)
 
-import UIKit
-
 #warning("TODO: missing test.")
-public final class CarouselViewLayout: CollectionViewLayout {
+public final class CarouselViewLayout: LegacyCollectionViewLayout {
 
     private final class Cell: CollectionViewCell, ReusableCell { }
 
@@ -21,9 +19,9 @@ public final class CarouselViewLayout: CollectionViewLayout {
 
     public final var _viewController: ViewController? { return bridge }
 
-    public final unowned let collectionView: CollectionView
+    public final unowned let collectionView: LegacyCollectionView
 
-    public init(collectionView: CollectionView) {
+    public init(collectionView: LegacyCollectionView) {
 
         self.collectionView = collectionView
 

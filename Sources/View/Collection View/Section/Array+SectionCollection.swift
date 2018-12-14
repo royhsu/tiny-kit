@@ -8,10 +8,4 @@
 
 // MARK: - SectionCollection
 
-extension Array: SectionCollection where Element == ViewCollection {
-
-    public func section(at index: Int) -> Section { return self[index] }
-
-}
-
-extension Array: NewSectionCollection where Element == NewViewCollection { }
+extension Array: SectionCollection where Element == ViewCollection { }

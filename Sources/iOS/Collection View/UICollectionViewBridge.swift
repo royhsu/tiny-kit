@@ -8,8 +8,6 @@
 
 // MARK: - UICollectionViewBridge
 
-import UIKit
-
 public final class UICollectionViewBridge: UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching {
 
     public typealias NumberOfSections = (_ collectionView: UICollectionView) -> Int

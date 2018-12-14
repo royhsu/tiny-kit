@@ -8,8 +8,6 @@
 
 // MARK: - Dequeue
 
-import UIKit
-
 public extension UICollectionView {
 
     public final func dequeueCell<Cell>(

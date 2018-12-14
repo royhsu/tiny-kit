@@ -9,7 +9,6 @@
 // MARK: - TitleLabel
 
 import TinyKit
-import UIKit
 
 internal final class Title1Label: UILabel {
 

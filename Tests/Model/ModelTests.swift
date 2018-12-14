@@ -30,7 +30,7 @@ internal final class ModelTestss: XCTestCase {
 
     internal final func testValidate() {
 
-        var model = Model<String>()
+        let model = Model<String>()
 
         XCTAssertThrowsError(
             try model.validate()
@@ -51,7 +51,7 @@ internal final class ModelTestss: XCTestCase {
 
         let promise2 = expectation(description: "Get a success after setting an non-empty string.")
 
-        var model = Model<String>(
+        let model = Model<String>(
             rules: [ .nonEmpty ]
         )
 
