@@ -8,11 +8,11 @@
 
 // MARK: - Model
 
-public struct Model<Value> {
+public final class Model<Value> {
 
-    private var storage: Observable<Value>
+    private final var storage: Observable<Value>
 
-    public var value: Value? {
+    public final var value: Value? {
 
         get { return storage.value }
 
@@ -20,9 +20,9 @@ public struct Model<Value> {
 
     }
 
-    public var rules: [AnyValidationRule<Value>]
+    public final var rules: [AnyValidationRule<Value>]
 
-    public var isRequired: Bool
+    public final var isRequired: Bool
 
     public init(
         value: Value? = nil,
@@ -45,7 +45,7 @@ public struct Model<Value> {
 public extension Model {
 
     @discardableResult
-    public func validate() throws -> Value? {
+    public final func validate() throws -> Value? {
 
         return try Model.validateValue(
             value,
@@ -90,7 +90,7 @@ public extension Model {
 
 public extension Model {
     
-    public func observe(
+    public final func observe(
         on queue: DispatchQueue = .main,
         resultHandler: @escaping (Result<Value?>) -> Void
     )
@@ -130,7 +130,7 @@ public extension Model {
 
     }
     
-    public func bind<Target: AnyObject, U>(
+    public final func bind<Target: AnyObject, U>(
         transform: @escaping (Value?) -> U,
         on queue: DispatchQueue = .main,
         to target: Target,
@@ -146,7 +146,7 @@ public extension Model {
         
     }
     
-    public func bind<Target: AnyObject, U>(
+    public final func bind<Target: AnyObject, U>(
         transform: @escaping (Value?) -> U?,
         on queue: DispatchQueue = .main,
         to target: Target,
@@ -162,7 +162,7 @@ public extension Model {
         
     }
     
-    public func bind<Target: AnyObject>(
+    public final func bind<Target: AnyObject>(
         on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, Value?>
