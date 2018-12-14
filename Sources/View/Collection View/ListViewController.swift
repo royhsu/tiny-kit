@@ -10,8 +10,6 @@
 
 #if canImport(UIKit)
 
-import UIKit
-
 internal final class ListViewController: UITableViewController {
     
     internal final var bridge = UITableViewBridge()
