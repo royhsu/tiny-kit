@@ -8,8 +8,6 @@
 
 // MARK: - CollectionViewController
 
-import TinyStorage
-
 @available(*, deprecated: 1.0, renamed: "CollectionViewController")
 open class _CollectionViewController<S: Storage>: ViewController {
 

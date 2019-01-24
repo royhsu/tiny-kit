@@ -10,13 +10,13 @@
 
 public final class Model<Value> {
 
-    private final var storage: Observable<Value>
+    private final var storage: Property<Value>
 
     public final var value: Value? {
 
         get { return storage.value }
 
-        set { storage.value = newValue }
+        set { storage.mutateValue { $0 = newValue } }
 
     }
 
@@ -30,7 +30,7 @@ public final class Model<Value> {
         isRequired: Bool = true
     ) {
 
-        self.storage = Observable(value)
+        self.storage = Property(value: value)
 
         self.rules = rules
 
@@ -138,10 +138,9 @@ public extension Model {
     ) {
         
         storage.bind(
-            transform: transform,
             on: queue,
-            to: target,
-            keyPath: keyPath
+            transform: transform,
+            to: (target, keyPath)
         )
         
     }
@@ -154,10 +153,9 @@ public extension Model {
     ) {
         
         storage.bind(
-            transform: transform,
             on: queue,
-            to: target,
-            keyPath: keyPath
+            transform: transform,
+            to: (target, keyPath)
         )
         
     }
@@ -170,8 +168,7 @@ public extension Model {
         
         storage.bind(
             on: queue,
-            to: target,
-            keyPath: keyPath
+            to: (target, keyPath)
         )
         
     }
