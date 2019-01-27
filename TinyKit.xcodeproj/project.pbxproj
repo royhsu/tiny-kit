@@ -46,6 +46,7 @@
 		B03394F721C36A1500CB1FA9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03394F621C36A1500CB1FA9 /* ListViewController.swift */; };
 		B0652DB82148B1AC009F8757 /* LegacyTableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* LegacyTableViewBridge.swift */; };
 		B0652DC3214966CC009F8757 /* _CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* _CollectionViewController.swift */; };
+		B0836F4621FD7224004D68F2 /* ViewController+Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0836F4521FD7224004D68F2 /* ViewController+Initializable.swift */; };
 		B0BE7DE921C1F53A00D51884 /* ViewController+ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE7DE821C1F53A00D51884 /* ViewController+ViewRepresentable.swift */; };
 		B0BE7DED21C2141100D51884 /* ListViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE7DEC21C2141100D51884 /* ListViewLayout.swift */; };
 		B0BE7E0A21C2AA4D00D51884 /* ElementCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE7E0921C2AA4D00D51884 /* ElementCollection.swift */; };
@@ -132,6 +133,7 @@
 		B03394F621C36A1500CB1FA9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B0652DB72148B118009F8757 /* TinyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TinyKit.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DC2214966CC009F8757 /* _CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CollectionViewController.swift; sourceTree = "<group>"; };
+		B0836F4521FD7224004D68F2 /* ViewController+Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Initializable.swift"; sourceTree = "<group>"; };
 		B0BE7DE821C1F53A00D51884 /* ViewController+ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ViewRepresentable.swift"; sourceTree = "<group>"; };
 		B0BE7DEC21C2141100D51884 /* ListViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewLayout.swift; sourceTree = "<group>"; };
 		B0BE7E0921C2AA4D00D51884 /* ElementCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollection.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				B0C8C35B21C1F2F700DED5BF /* ViewRepresentation.swift */,
 				B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */,
 				B0BE7DE821C1F53A00D51884 /* ViewController+ViewRepresentable.swift */,
+				B0836F4521FD7224004D68F2 /* ViewController+Initializable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
+				B0836F4621FD7224004D68F2 /* ViewController+Initializable.swift in Sources */,
 				B03394F521C369CC00CB1FA9 /* ListView.swift in Sources */,
 				B03394E721C3648A00CB1FA9 /* LegacySectionCollection.swift in Sources */,
 				B0C8C36021C1F43900DED5BF /* View+ViewRepresentable.swift in Sources */,
