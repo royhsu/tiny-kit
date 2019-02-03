@@ -11,14 +11,10 @@
 @IBDesignable
 open class UINibView<NibView: UIView>: UIView {
     
-    public final let nibView: NibView = {
-        
-        return UIView.loadView(
-            NibView.self,
-            from: Bundle(for: NibView.self)
-        )!
-        
-    }()
+    public final let nibView = UIView.loadView(
+        NibView.self,
+        from: Bundle(for: NibView.self)
+    )!
     
     public override init(frame: CGRect) {
         

@@ -25,7 +25,7 @@ public final class CarouselViewLayout: LegacyCollectionViewLayout {
 
         self.collectionView = collectionView
 
-        self.prepare()
+        self.load()
 
     }
 
@@ -131,7 +131,7 @@ public final class CarouselViewLayout: LegacyCollectionViewLayout {
 
     }
 
-    fileprivate final func prepare() {
+    fileprivate final func load() {
 
         bridge.collectionView.backgroundColor = nil
 

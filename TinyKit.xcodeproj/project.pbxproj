@@ -68,6 +68,7 @@
 		B0E23675215727F300FBE7B3 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23674215727F300FBE7B3 /* UICollectionView+Register.swift */; };
 		B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */; };
 		B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9A2D521FA9CA700314261 /* UINibView.swift */; };
+		B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EAF6EE2206828E00AF815D /* View+Initializable.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F51CA72158743A00B592F5 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA62158743A00B592F5 /* TinyCore.framework */; };
 		B0F51CA92158743A00B592F5 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA82158743A00B592F5 /* TinyStorage.framework */; };
@@ -155,6 +156,7 @@
 		B0E23674215727F300FBE7B3 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
 		B0E236762157298B00FBE7B3 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 		B0E9A2D521FA9CA700314261 /* UINibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibView.swift; sourceTree = "<group>"; };
+		B0EAF6EE2206828E00AF815D /* View+Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Initializable.swift"; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		B0F51CA62158743A00B592F5 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F51CA82158743A00B592F5 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,6 +356,7 @@
 				B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */,
 				B0BE7DE821C1F53A00D51884 /* ViewController+ViewRepresentable.swift */,
 				B0836F4521FD7224004D68F2 /* ViewController+Initializable.swift */,
+				B0EAF6EE2206828E00AF815D /* View+Initializable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				B01D21E5214B64270078E946 /* LegacyViewCollection.swift in Sources */,
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
+				B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */,
 				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
 				B0836F4621FD7224004D68F2 /* ViewController+Initializable.swift in Sources */,
 				B03394F521C369CC00CB1FA9 /* ListView.swift in Sources */,
