@@ -8,18 +8,19 @@
 
 // MARK: - AnyPaginationService
 
-public struct AnyPaginationService<Element> where Element: CursorRepresentable {
+public struct AnyPaginationService<Element, Cursor> where Element: CursorRepresentable {
     
     private let _fetch: (
-        _ request: FetchRequest<Element.Cursor>,
-        _ completion: @escaping (Result<[Element]>) -> Void
+        _ request: FetchRequest<Cursor>,
+        _ completion: @escaping (Result< Page<Element, Cursor> >) -> Void
     )
     throws -> ServiceTask
     
     init<S>(_ service: S)
     where
         S: PaginationService,
-        S.Element == Element { self._fetch = service.fetch }
+        S.Element == Element,
+        S.Cursor == Cursor { self._fetch = service.fetch }
     
 }
 
@@ -29,8 +30,8 @@ extension AnyPaginationService: PaginationService {
     
     @discardableResult
     public func fetch(
-        with request: FetchRequest<Element.Cursor>,
-        completion: @escaping (Result<[Element]>) -> Void
+        with request: FetchRequest<Cursor>,
+        completion: @escaping (Result< Page<Element, Cursor> >) -> Void
     )
     throws -> ServiceTask {
         

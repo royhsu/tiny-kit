@@ -12,7 +12,11 @@ public struct FetchRequest<Cursor> {
     
     public var fetchCursor: Cursor?
     
-    public var fetchLimit: Int
+    public var fetchLimit: Int {
+        
+        willSet { precondition(newValue > 0, "The fetch limit must be greater than 0.") }
+        
+    }
     
     public init(
         fetchCursor: Cursor? = nil,

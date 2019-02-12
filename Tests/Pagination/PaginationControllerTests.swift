@@ -38,8 +38,10 @@ final class PaginationControllerTests: XCTestCase {
         
         let controller = PaginationController(
             fetchRequest: FetchRequest(fetchLimit: 2),
-            fetchService: MessagesService(
-                result: .success(messages)
+            fetchService: MessageService(
+                result: .success(
+                    Page(elements: messages)
+                )
             )
         )
         
@@ -115,7 +117,7 @@ final class PaginationControllerTests: XCTestCase {
         let errorElementsAfterFetched = expectation(description: "Fetch error elements.")
         
         let controller = PaginationController(
-            fetchService: MessagesService(
+            fetchService: MessageService(
                 result: .failure( MessageError() )
             )
         )

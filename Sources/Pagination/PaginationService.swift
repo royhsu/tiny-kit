@@ -10,12 +10,14 @@
 
 public protocol PaginationService {
     
-    associatedtype Element: CursorRepresentable
+    associatedtype Element
+    
+    associatedtype Cursor
     
     @discardableResult
     func fetch(
-        with request: FetchRequest<Element.Cursor>,
-        completion: @escaping (Result<[Element]>) -> Void
+        with request: FetchRequest<Cursor>,
+        completion: @escaping (Result< Page<Element, Cursor> >) -> Void
     )
     throws -> ServiceTask
     

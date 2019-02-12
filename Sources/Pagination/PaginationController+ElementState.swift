@@ -10,7 +10,7 @@
 
 extension PaginationController {
     
-    enum ElementState {
+    public enum ElementState {
         
         case fetching
         

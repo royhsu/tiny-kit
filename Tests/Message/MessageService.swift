@@ -6,13 +6,13 @@
 //  Copyright © 2019 TinyWorld. All rights reserved.
 //
 
-// MARK: - MessagesService
+// MARK: - MessageService
 
 import TinyCore
 
-struct MessagesService {
+struct MessageService {
     
-    let result: Result<[Message]>
+    let result: Result< Page<Message, Message.Cursor> >
     
 }
 
@@ -20,11 +20,11 @@ struct MessagesService {
 
 import TinyKit
 
-extension MessagesService: PaginationService {
+extension MessageService: PaginationService {
 
     func fetch(
         with request: FetchRequest<Message.Cursor>,
-        completion: @escaping (Result<[Message]>) -> Void
+        completion: @escaping (Result< Page<Message, Message.Cursor> >) -> Void
     )
     throws -> ServiceTask {
         
@@ -38,7 +38,7 @@ extension MessagesService: PaginationService {
 
 // MARK: - Task
 
-extension MessagesService {
+extension MessageService {
     
     private struct Task: ServiceTask {
         

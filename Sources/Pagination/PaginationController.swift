@@ -8,25 +8,26 @@
 
 // MARK: - PaginationController
 
-public final class PaginationController<Element> where Element: CursorRepresentable {
+public final class PaginationController<Element, Cursor> where Element: CursorRepresentable {
     
-    private let fetchRequest: FetchRequest<Element.Cursor>
+    private let fetchRequest: FetchRequest<Cursor>
     
-    private let service: AnyPaginationService<Element>
+    private let service: AnyPaginationService<Element, Cursor>
     
     let fetchIndexManager = PaginationIndexManager()
     
     let storage = Storage()
     
-    var elementStatesDidChange: ( (PaginationController) -> Void )?
+    public var elementStatesDidChange: ( (PaginationController) -> Void )?
     
     public init<S>(
-        fetchRequest: FetchRequest<Element.Cursor> = FetchRequest(),
+        fetchRequest: FetchRequest<Cursor> = FetchRequest(),
         fetchService: S
     )
     where
         S: PaginationService,
-        S.Element == Element {
+        S.Element == Element,
+        S.Cursor == Cursor {
         
         self.fetchRequest = fetchRequest
         
@@ -69,11 +70,11 @@ extension PaginationController {
             
             do {
                 
-                let elements = try result.get()
+                let page = try result.get()
                 
                 self.fetchIndexManager.endAllFetchings()
                 
-                self.storage.elementStates = elements.map { .fetched($0) }
+                self.storage.elementStates = page.elements.map { .fetched($0) }
                 
             }
             catch {
@@ -87,5 +88,11 @@ extension PaginationController {
         }
         
     }
+    
+}
+
+extension PaginationController {
+    
+    public var elementStates: [ElementState] { return storage.elementStates }
     
 }
