@@ -80,37 +80,49 @@ final class PaginationControllerTests: XCTestCase {
         
     }
     
-    func testFetchAllElements() throws {
+    func testFetchAllElementsFromMiddlePage() throws {
         
         enum Step {
             
-            case waitForFetchingFirstPageElements
+            case waitForFetchingMiddlePage
             
-            case waitForFetchedFirstPageElements
+            case waitForFetchedMiddlePage
             
-            case waitForFetchingLastPageElements
+            case waitForFetchingFirstPage
             
-            case waitForFetchedLastPageElements
+            case waitForFetchedFirstPage
+            
+            case waitForFetchingLastPage
+            
+            case waitForFetchedLastPage
             
         }
         
-        var currentStep: Step = .waitForFetchingFirstPageElements
+        var currentStep: Step = .waitForFetchingMiddlePage
         
-        let firstPageElementsFetching = expectation(description: "Before the first page of elements fetched.")
+        let middlePageFetching = expectation(description: "Before the middle page fetched.")
         
-        let firstPageElementsFetched = expectation(description: "After the first page of elements fetched.")
+        let middlePageFetched = expectation(description: "After the middle page fetched.")
         
-        let lastPageElementsFetching = expectation(description: "Before the last page of elements fetched.")
+        let firstPageFetching = expectation(description: "Before the first page fetched.")
         
-        let lastPageElementsFetched = expectation(description: "After the last page of elements fetched.")
+        let firstPageFetched = expectation(description: "After the first page fetched.")
+        
+        let lastPageFetching = expectation(description: "Before the last page fetched.")
+        
+        let lastPageFetched = expectation(description: "After the last page fetched.")
         
         let controller = PaginationController(
-            fetchRequest: FetchRequest(fetchLimit: 2),
+            fetchRequest: FetchRequest(
+                fetchCursor: .middle,
+                fetchLimit: 2
+            ),
             fetchService: MessageService(
                 result: .success(
                     .init(
                         firstPageMessages: [ Message(text: "a") ],
-                        lastPageMessages: [ Message(text: "b") ]
+                        middlePageMessages: [ Message(text: "b") ],
+                        lastPageMessages: [ Message(text: "c") ]
                     )
                 )
             )
@@ -118,77 +130,121 @@ final class PaginationControllerTests: XCTestCase {
         
         controller.elementStatesDidChange = { controller in
             
-            let elementStates = controller.elementStates
+            do {
             
-            switch currentStep {
-
-            case .waitForFetchingFirstPageElements:
-
-                defer { firstPageElementsFetching.fulfill() }
-
-                XCTAssertEqual(
-                    elementStates,
-                    [
-                        .fetching,
-                        .fetching
-                    ]
-                )
-
-                currentStep = .waitForFetchedFirstPageElements
-
-            case .waitForFetchedFirstPageElements:
-
-                defer { firstPageElementsFetched.fulfill() }
+                let elementStates = controller.elementStates
                 
-                XCTAssertFalse(controller.hasPreviousPage)
+                switch currentStep {
+
+                case .waitForFetchingMiddlePage:
+                    
+                    defer { middlePageFetching.fulfill() }
+                    
+                    XCTAssertEqual(
+                        elementStates,
+                        [
+                            .fetching,
+                            .fetching
+                        ]
+                    )
+                    
+                    currentStep = .waitForFetchedMiddlePage
+                    
+                case .waitForFetchedMiddlePage:
+                    
+                    defer { middlePageFetched.fulfill() }
+                    
+                    XCTAssert(controller.hasPreviousPage)
+                    
+                    XCTAssert(controller.hasNextPage)
+                    
+                    XCTAssertEqual(
+                        elementStates,
+                        [
+                            .inactive,
+                            .inactive,
+                            .fetched( Message(text: "b") ),
+                            .inactive,
+                            .inactive
+                        ]
+                    )
+                    
+                    currentStep = .waitForFetchingFirstPage
+                    
+                    try controller.performFetchForPreviousPage()
+                    
+                case .waitForFetchingFirstPage:
+
+                    defer { firstPageFetching.fulfill() }
+
+                    XCTAssertEqual(
+                        elementStates,
+                        [
+                            .fetching,
+                            .fetching,
+                            .fetched( Message(text: "b") ),
+                            .inactive,
+                            .inactive
+                        ]
+                    )
+                    
+                    currentStep = .waitForFetchedFirstPage
+                    
+                case .waitForFetchedFirstPage:
+
+                    defer { firstPageFetched.fulfill() }
+                    
+                    XCTAssertFalse(controller.hasPreviousPage)
+
+                    XCTAssertEqual(
+                        elementStates,
+                        [
+                            .fetched( Message(text: "a") ),
+                            .fetched( Message(text: "b") ),
+                            .inactive,
+                            .inactive
+                        ]
+                    )
+                    
+                    currentStep = .waitForFetchingLastPage
+                    
+                    try controller.performFetchForNextPage()
+                    
+                case .waitForFetchingLastPage:
+
+                    defer { lastPageFetching.fulfill() }
+                    
+                    XCTAssertEqual(
+                        elementStates,
+                        [
+                            .fetched( Message(text: "a") ),
+                            .fetched( Message(text: "b") ),
+                            .fetching,
+                            .fetching
+                        ]
+                    )
+
+                    currentStep = .waitForFetchedLastPage
+
+                case .waitForFetchedLastPage:
+
+                    defer { lastPageFetched.fulfill() }
+                    
+                    XCTAssertFalse(controller.hasNextPage)
+                    
+                    XCTAssertEqual(
+                        elementStates,
+                        [
+                            .fetched( Message(text: "a") ),
+                            .fetched( Message(text: "b") ),
+                            .fetched( Message(text: "c") )
+                        ]
+                    )
+
+                }
                 
-                XCTAssert(controller.hasNextPage)
-
-                XCTAssertEqual(
-                    elementStates,
-                    [
-                        .fetched( Message(text: "a") ),
-                        .inactive,
-                        .inactive
-                    ]
-                )
-                
-                currentStep = .waitForFetchingLastPageElements
-
-                try! controller.performFetchForNextPage()
-
-            case .waitForFetchingLastPageElements:
-
-                defer { lastPageElementsFetching.fulfill() }
-                
-                XCTAssertEqual(
-                    elementStates,
-                    [
-                        .fetched( Message(text: "a") ),
-                        .fetching,
-                        .fetching
-                    ]
-                )
-
-                currentStep = .waitForFetchedLastPageElements
-
-            case .waitForFetchedLastPageElements:
-
-                defer { lastPageElementsFetched.fulfill() }
-
-                XCTAssertFalse(controller.hasPreviousPage)
-                
-                XCTAssertFalse(controller.hasNextPage)
-                
-                XCTAssertEqual(
-                    elementStates,
-                    [
-                        .fetched( Message(text: "a") ),
-                        .fetched( Message(text: "b") )
-                    ]
-                )
-
             }
+            catch { XCTFail("\(error)") }
             
         }
         
@@ -196,10 +252,12 @@ final class PaginationControllerTests: XCTestCase {
         
         wait(
             for: [
-                firstPageElementsFetching,
-                firstPageElementsFetched,
-                lastPageElementsFetching,
-                lastPageElementsFetched
+                middlePageFetching,
+                middlePageFetched,
+                firstPageFetching,
+                firstPageFetched,
+                lastPageFetching,
+                lastPageFetched
             ],
             timeout: expectationTimeout
         )

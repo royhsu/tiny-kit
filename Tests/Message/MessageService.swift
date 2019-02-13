@@ -14,7 +14,7 @@ struct MessageService {
     
     enum Cursor {
         
-        case first, last
+        case first, middle, last
         
     }
     
@@ -22,14 +22,19 @@ struct MessageService {
         
         let firstPageMessages: [Message]
         
+        let middlePageMessages: [Message]?
+        
         let lastPageMessages: [Message]?
         
         init(
             firstPageMessages: [Message],
+            middlePageMessages: [Message]? = nil,
             lastPageMessages: [Message]? = nil
         ) {
            
             self.firstPageMessages = firstPageMessages
+            
+            self.middlePageMessages = middlePageMessages
             
             self.lastPageMessages = lastPageMessages
             
@@ -64,16 +69,28 @@ extension MessageService: PaginationService {
                 return Page(
                     elements: storage.firstPageMessages,
                     previousPageCursor: nil,
-                    nextPageCursor: (storage.lastPageMessages == nil) ? nil : .last
+                    nextPageCursor: (storage.middlePageMessages == nil) ? nil : .middle
                 )
                 
-            case .last:
+            case .middle:
                 
-                guard let messages = storage.lastPageMessages else { return Page() }
+                guard let messages = storage.middlePageMessages else { throw MessageServiceError.noMiddlePage }
+                
+                if storage.lastPageMessages == nil { throw MessageServiceError.noLastPage }
                 
                 return Page(
                     elements: messages,
                     previousPageCursor: .first,
+                    nextPageCursor: .last
+                )
+                
+            case .last:
+                
+                guard let messages = storage.lastPageMessages else { throw MessageServiceError.noLastPage }
+                
+                return Page(
+                    elements: messages,
+                    previousPageCursor: (storage.middlePageMessages == nil) ? nil : .middle,
                     nextPageCursor: nil
                 )
                 
@@ -87,6 +104,14 @@ extension MessageService: PaginationService {
         
     }
 
+}
+
+// MARK: - MessageServiceError
+
+enum MessageServiceError: Error {
+    
+    case noMiddlePage, noLastPage
+    
 }
 
 // MARK: - Task
