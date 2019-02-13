@@ -20,6 +20,8 @@ public final class PaginationController<Element, Cursor> {
     
     let storage = Storage()
     
+    var isDebugging = true
+    
     public var elementStatesDidChange: ( (PaginationController) -> Void )?
     
     public init<S>(
@@ -57,6 +59,18 @@ extension PaginationController {
     
     public func performFetch() throws {
         
+        if isDebugging {
+            
+            print(
+                String(
+                    describing: type(of: self)
+                ),
+                #function,
+                "start fetching..."
+            )
+            
+        }
+        
         if isFetchPerformed { return }
         
         isFetchPerformed = true
@@ -79,6 +93,19 @@ extension PaginationController {
             do {
                 
                 let page = try result.get()
+                
+                if self.isDebugging {
+                    
+                    print(
+                        String(
+                            describing: type(of: self)
+                        ),
+                        #function,
+                        "fetch elements successfully.",
+                        "\(page)"
+                    )
+                    
+                }
                 
                 var previousPage: InactivePage<Cursor>?
                 
@@ -114,6 +141,19 @@ extension PaginationController {
                 
             }
             catch {
+                
+                if self.isDebugging {
+                    
+                    print(
+                        String(
+                            describing: type(of: self)
+                        ),
+                        #function,
+                        "an error occurs while fetching elements.",
+                        "\(error)"
+                    )
+                    
+                }
                 
                 self.fetchIndexManager.endAllFetchings()
                 
