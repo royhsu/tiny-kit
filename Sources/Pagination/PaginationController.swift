@@ -14,6 +14,8 @@ public final class PaginationController<Element, Cursor> {
     
     private let service: AnyPaginationService<Element, Cursor>
     
+    private var isFetchPerformed = false
+    
     let fetchIndexManager = PaginationIndexManager()
     
     let storage = Storage()
@@ -54,6 +56,10 @@ public final class PaginationController<Element, Cursor> {
 extension PaginationController {
     
     public func performFetch() throws {
+        
+        if isFetchPerformed { return }
+        
+        isFetchPerformed = true
 
         let initialFetchingIndices = (0..<fetchRequest.fetchLimit)
         
