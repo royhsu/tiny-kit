@@ -28,6 +28,10 @@ final class PaginationControllerTests: XCTestCase {
         
         XCTAssert(controller.elementStates.isEmpty)
         
+        XCTAssertFalse(controller.hasPreviousPage)
+        
+        XCTAssertFalse(controller.hasNextPage)
+        
     }
     
     func testFetchElementsWithError() throws {

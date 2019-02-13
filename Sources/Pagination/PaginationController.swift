@@ -16,8 +16,6 @@ public final class PaginationController<Element, Cursor> {
     
     private var isFetchPerformedForFirstPage = false
     
-    let fetchIndexManager = PaginationIndexManager()
-    
     private let storage = Atomic(value: PageStorage<Element, Cursor>() )
     
     #warning("Disable on the proudction mode.")
@@ -71,6 +69,8 @@ extension PaginationController {
 
 extension PaginationController {
     
+    /// The controller will try to fetch the first page if there is no fetch cursor specified in the request.
+    /// Re-perform the fetch has no effect on the fetching / fetched elements.
     public func performFetch() throws {
         
         if isDebugging {
@@ -89,10 +89,6 @@ extension PaginationController {
         
         isFetchPerformedForFirstPage = true
 
-        let initialFetchingIndices = (0..<fetchRequest.fetchLimit)
-        
-        for index in initialFetchingIndices { fetchIndexManager.startFetching(for: index) }
-        
         let fetchLimit = fetchRequest.fetchLimit
         
         elementStates = Array(
@@ -145,8 +141,6 @@ extension PaginationController {
                 
                 }
                 
-                self.fetchIndexManager.endAllFetchings()
-                
                 self.storage.mutateValue {
                     
                     $0.currentPages = [ page ]
@@ -175,8 +169,6 @@ extension PaginationController {
                     
                 }
                 
-                self.fetchIndexManager.endAllFetchings()
-                
                 self.elementStates = [ .error ]
                 
             }
@@ -185,9 +177,11 @@ extension PaginationController {
         
     }
     
-    func performFetchForNextPage() throws {
+    /// Make sure to call `performFetch()` before calling this method.
+    /// You can also check the `hasNextPage` value to determine whether to fetch the next page.
+    public func performFetchForNextPage() throws {
         
-        guard isFetchPerformedForFirstPage else { preconditionFailure("The controller has not perform the first fetch yet.") }
+        guard isFetchPerformedForFirstPage else { preconditionFailure("The controller has not perform the initial fetch yet.") }
         
         if isFetching { preconditionFailure("The controller is still fetching elements.") }
         
@@ -274,8 +268,6 @@ extension PaginationController {
                     )
                     
                 }
-                
-                self.fetchIndexManager.endAllFetchings()
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
                 self.elementStates = [ .error ]
