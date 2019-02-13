@@ -65,9 +65,11 @@ extension PaginationController {
         
         for index in initialFetchingIndices { fetchIndexManager.startFetching(for: index) }
         
+        let fetchLimit = fetchRequest.fetchLimit
+        
         storage.elementStates = Array(
             repeating: .fetching,
-            count: fetchRequest.fetchLimit
+            count: fetchLimit
         )
         
         try service.fetch(with: fetchRequest) { [weak self] result in
@@ -78,9 +80,37 @@ extension PaginationController {
                 
                 let page = try result.get()
                 
+                var previousPage: InactivePage<Cursor>?
+                
+                if let cursor = page.previousPageCursor {
+                    
+                    previousPage = InactivePage(
+                        cursor: cursor,
+                        elementCount: fetchLimit
+                    )
+                    
+                }
+                
+                var nextPage: InactivePage<Cursor>?
+                
+                if let cursor = page.nextPageCursor {
+                    
+                    nextPage = InactivePage(
+                        cursor: cursor,
+                        elementCount: fetchLimit
+                    )
+                    
+                }
+                
                 self.fetchIndexManager.endAllFetchings()
                 
-                self.storage.elementStates = page.elements.map { .fetched($0) }
+                let pageManager = PageManager(
+                    currentPages: [ page ],
+                    previousPage: previousPage,
+                    nextPage: nextPage
+                )
+                
+                self.storage.elementStates = pageManager.elementStates
                 
             }
             catch {

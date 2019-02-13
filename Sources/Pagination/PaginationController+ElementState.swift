@@ -12,6 +12,8 @@ extension PaginationController {
     
     public enum ElementState {
         
+        case inactive
+        
         case fetching
         
         case fetched(Element)
