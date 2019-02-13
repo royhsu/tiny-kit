@@ -8,7 +8,7 @@
 
 // MARK: - AnyPaginationService
 
-public struct AnyPaginationService<Element, Cursor> where Element: CursorRepresentable {
+public struct AnyPaginationService<Element, Cursor> {
     
     private let _fetch: (
         _ request: FetchRequest<Cursor>,

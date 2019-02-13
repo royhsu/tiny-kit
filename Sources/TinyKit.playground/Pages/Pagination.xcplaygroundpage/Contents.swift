@@ -11,7 +11,7 @@ struct Message {
 
 extension Message: CursorRepresentable {
     
-    var cursor: UUID { return id}
+    var cursor: UUID { return id }
     
 }
 

@@ -8,7 +8,7 @@
 
 // MARK: - PaginationController
 
-public final class PaginationController<Element, Cursor> where Element: CursorRepresentable {
+public final class PaginationController<Element, Cursor> {
     
     private let fetchRequest: FetchRequest<Cursor>
     
