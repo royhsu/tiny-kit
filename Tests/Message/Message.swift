@@ -8,11 +8,7 @@
 
 // MARK: - Message
 
-import Foundation
-
 struct Message {
-    
-    let id = UUID()
     
     let text: String
     

@@ -46,7 +46,6 @@
 		B03394F721C36A1500CB1FA9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03394F621C36A1500CB1FA9 /* ListViewController.swift */; };
 		B054B1772212D1F8007AB789 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B054B1762212D1F8007AB789 /* Page.swift */; };
 		B062C5AA2212C3F2001807A6 /* PaginationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A22212C3F2001807A6 /* PaginationController.swift */; };
-		B062C5AB2212C3F2001807A6 /* PaginationController+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A32212C3F2001807A6 /* PaginationController+Storage.swift */; };
 		B062C5AC2212C3F2001807A6 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A42212C3F2001807A6 /* FetchRequest.swift */; };
 		B062C5AD2212C3F2001807A6 /* AnyPaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */; };
 		B062C5AE2212C3F2001807A6 /* CursorRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */; };
@@ -54,7 +53,6 @@
 		B062C5B02212C3F2001807A6 /* PaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A82212C3F2001807A6 /* PaginationService.swift */; };
 		B062C5B12212C3F2001807A6 /* PaginationIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A92212C3F2001807A6 /* PaginationIndexManager.swift */; };
 		B062C5B22212C45F001807A6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5972212C348001807A6 /* Message.swift */; };
-		B062C5B32212C45F001807A6 /* Message+CursorRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5982212C348001807A6 /* Message+CursorRepresentable.swift */; };
 		B062C5B42212C45F001807A6 /* MessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5962212C348001807A6 /* MessageError.swift */; };
 		B062C5B52212C45F001807A6 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
 		B062C5B62212C463001807A6 /* PaginationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5992212C348001807A6 /* PaginationControllerTests.swift */; };
@@ -73,8 +71,8 @@
 		B0C8C35E21C1F3F500DED5BF /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35D21C1F3F500DED5BF /* ViewRepresentable.swift */; };
 		B0C8C36021C1F43900DED5BF /* View+ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */; };
 		B0CF89482213B0510020ECD1 /* PageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89462213B04F0020ECD1 /* PageManagerTests.swift */; };
-		B0CF894A2213B9020020ECD1 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89492213B9020020ECD1 /* PageManager.swift */; };
-		B0CF894C2213BB5E0020ECD1 /* InactivePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894B2213BB5E0020ECD1 /* InactivePage.swift */; };
+		B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89492213B9020020ECD1 /* PageStorage.swift */; };
+		B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -156,10 +154,8 @@
 		B062C5952212C348001807A6 /* PaginationIndexManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationIndexManagerTests.swift; sourceTree = "<group>"; };
 		B062C5962212C348001807A6 /* MessageError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageError.swift; sourceTree = "<group>"; };
 		B062C5972212C348001807A6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		B062C5982212C348001807A6 /* Message+CursorRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CursorRepresentable.swift"; sourceTree = "<group>"; };
 		B062C5992212C348001807A6 /* PaginationControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationControllerTests.swift; sourceTree = "<group>"; };
 		B062C5A22212C3F2001807A6 /* PaginationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationController.swift; sourceTree = "<group>"; };
-		B062C5A32212C3F2001807A6 /* PaginationController+Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaginationController+Storage.swift"; sourceTree = "<group>"; };
 		B062C5A42212C3F2001807A6 /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
 		B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyPaginationService.swift; sourceTree = "<group>"; };
 		B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorRepresentable.swift; sourceTree = "<group>"; };
@@ -180,8 +176,8 @@
 		B0C8C35D21C1F3F500DED5BF /* ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentable.swift; sourceTree = "<group>"; };
 		B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ViewRepresentable.swift"; sourceTree = "<group>"; };
 		B0CF89462213B04F0020ECD1 /* PageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManagerTests.swift; sourceTree = "<group>"; };
-		B0CF89492213B9020020ECD1 /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
-		B0CF894B2213BB5E0020ECD1 /* InactivePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivePage.swift; sourceTree = "<group>"; };
+		B0CF89492213B9020020ECD1 /* PageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorage.swift; sourceTree = "<group>"; };
+		B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPage.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ViewCollection.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -401,7 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				B062C5972212C348001807A6 /* Message.swift */,
-				B062C5982212C348001807A6 /* Message+CursorRepresentable.swift */,
 				B062C5962212C348001807A6 /* MessageError.swift */,
 				B062C5942212C348001807A6 /* MessageService.swift */,
 			);
@@ -412,15 +407,14 @@
 			isa = PBXGroup;
 			children = (
 				B062C5A22212C3F2001807A6 /* PaginationController.swift */,
-				B062C5A32212C3F2001807A6 /* PaginationController+Storage.swift */,
 				B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */,
 				B062C5A72212C3F2001807A6 /* PaginationController+ElementState.swift */,
 				B062C5A82212C3F2001807A6 /* PaginationService.swift */,
 				B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */,
 				B062C5A42212C3F2001807A6 /* FetchRequest.swift */,
 				B054B1762212D1F8007AB789 /* Page.swift */,
-				B0CF894B2213BB5E0020ECD1 /* InactivePage.swift */,
-				B0CF89492213B9020020ECD1 /* PageManager.swift */,
+				B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */,
+				B0CF89492213B9020020ECD1 /* PageStorage.swift */,
 				B062C5A92212C3F2001807A6 /* PaginationIndexManager.swift */,
 			);
 			path = Pagination;
@@ -637,10 +631,9 @@
 				B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */,
 				B03394F121C3666D00CB1FA9 /* CollectionViewLayout.swift in Sources */,
 				B0E23671215723E900FBE7B3 /* CollectionViewBridge.swift in Sources */,
-				B0CF894C2213BB5E0020ECD1 /* InactivePage.swift in Sources */,
+				B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */,
 				B0E2366B21571E0E00FBE7B3 /* UICollectionViewBridge.swift in Sources */,
 				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
-				B062C5AB2212C3F2001807A6 /* PaginationController+Storage.swift in Sources */,
 				B01D21E5214B64270078E946 /* LegacyViewCollection.swift in Sources */,
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
@@ -682,7 +675,7 @@
 				B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */,
 				B0C8C35521C1227F00DED5BF /* ModelError.swift in Sources */,
 				B0C8C34C21C0F71D00DED5BF /* Model.swift in Sources */,
-				B0CF894A2213B9020020ECD1 /* PageManager.swift in Sources */,
+				B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */,
 				B062C5AD2212C3F2001807A6 /* AnyPaginationService.swift in Sources */,
 				B01D21EB214B66E60078E946 /* DefaultSection.swift in Sources */,
 				B03394EB21C365B200CB1FA9 /* CollectionView.swift in Sources */,
@@ -706,7 +699,6 @@
 				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
 				B01D21FB214B9CB70078E946 /* Title2Label.swift in Sources */,
 				B062C5B42212C45F001807A6 /* MessageError.swift in Sources */,
-				B062C5B32212C45F001807A6 /* Message+CursorRepresentable.swift in Sources */,
 				B062C5B72212C463001807A6 /* PaginationIndexManagerTests.swift in Sources */,
 				B0CF89482213B0510020ECD1 /* PageManagerTests.swift in Sources */,
 				B01D21F7214B90050078E946 /* XCTUnwrapped.swift in Sources */,

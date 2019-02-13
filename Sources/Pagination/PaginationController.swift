@@ -12,15 +12,23 @@ public final class PaginationController<Element, Cursor> {
     
     private let fetchRequest: FetchRequest<Cursor>
     
-    private let service: AnyPaginationService<Element, Cursor>
+    private let fetchService: AnyPaginationService<Element, Cursor>
     
-    private var isFetchPerformed = false
+    private var isFetchPerformedForFirstPage = false
     
     let fetchIndexManager = PaginationIndexManager()
     
-    let storage = Storage()
+    private let storage = Atomic(value: PageStorage<Element, Cursor>() )
     
+    #warning("Disable on the proudction mode.")
     var isDebugging = true
+    
+    /// The cache.
+    private(set) var elementStates: [ElementState] {
+        
+        didSet { elementStatesDidChange?(self) }
+        
+    }
     
     public var elementStatesDidChange: ( (PaginationController) -> Void )?
     
@@ -35,21 +43,27 @@ public final class PaginationController<Element, Cursor> {
         
         self.fetchRequest = fetchRequest
         
-        self.service = AnyPaginationService(fetchService)
-        
-        self.load()
+        self.fetchService = AnyPaginationService(fetchService)
+            
+        self.elementStates = storage.value.elementStates
         
     }
     
-    private func load() {
+}
+
+extension PaginationController {
+    
+    private final var isFetching: Bool {
         
-        storage.elementStatesDidChange = { [weak self] in
+        let fetchingState = elementStates.first {
             
-            guard let self = self else { return }
+            if case .fetching = $0 { return true }
             
-            self.elementStatesDidChange?(self)
+            return false
             
         }
+        
+        return fetchingState != nil
         
     }
     
@@ -66,14 +80,14 @@ extension PaginationController {
                     describing: type(of: self)
                 ),
                 #function,
-                "start fetching..."
+                "start fetching the first page..."
             )
             
         }
         
-        if isFetchPerformed { return }
+        if isFetchPerformedForFirstPage { return }
         
-        isFetchPerformed = true
+        isFetchPerformedForFirstPage = true
 
         let initialFetchingIndices = (0..<fetchRequest.fetchLimit)
         
@@ -81,12 +95,12 @@ extension PaginationController {
         
         let fetchLimit = fetchRequest.fetchLimit
         
-        storage.elementStates = Array(
+        elementStates = Array(
             repeating: .fetching,
             count: fetchLimit
         )
         
-        try service.fetch(with: fetchRequest) { [weak self] result in
+        try fetchService.fetch(with: fetchRequest) { [weak self] result in
             
             guard let self = self else { return }
             
@@ -101,43 +115,49 @@ extension PaginationController {
                             describing: type(of: self)
                         ),
                         #function,
-                        "fetch elements successfully.",
+                        "fetch elements for the first page successfully.",
                         "\(page)"
                     )
                     
                 }
                 
-                var previousPage: InactivePage<Cursor>?
+                var previousPage: StatefulPage<Cursor>?
                 
                 if let cursor = page.previousPageCursor {
                     
-                    previousPage = InactivePage(
+                    previousPage = StatefulPage(
+                        state: .inactive,
                         cursor: cursor,
                         elementCount: fetchLimit
                     )
-                    
+                
                 }
                 
-                var nextPage: InactivePage<Cursor>?
+                var nextPage: StatefulPage<Cursor>?
                 
                 if let cursor = page.nextPageCursor {
                     
-                    nextPage = InactivePage(
+                    nextPage = StatefulPage(
+                        state: .inactive,
                         cursor: cursor,
                         elementCount: fetchLimit
                     )
-                    
+                
                 }
                 
                 self.fetchIndexManager.endAllFetchings()
                 
-                let pageManager = PageManager(
-                    currentPages: [ page ],
-                    previousPage: previousPage,
-                    nextPage: nextPage
-                )
+                self.storage.mutateValue {
+                    
+                    $0.currentPages = [ page ]
+                    
+                    $0.previousPage = previousPage
+                    
+                    $0.nextPage = nextPage
+                    
+                }
                 
-                self.storage.elementStates = pageManager.elementStates
+                self.elementStates = self.storage.value.elementStates
                 
             }
             catch {
@@ -149,7 +169,7 @@ extension PaginationController {
                             describing: type(of: self)
                         ),
                         #function,
-                        "an error occurs while fetching elements.",
+                        "an error occurs while fetching elements for the first page.",
                         "\(error)"
                     )
                     
@@ -157,7 +177,108 @@ extension PaginationController {
                 
                 self.fetchIndexManager.endAllFetchings()
                 
-                self.storage.elementStates = [ .error ]
+                self.elementStates = [ .error ]
+                
+            }
+            
+        }
+        
+    }
+    
+    func performFetchForNextPage() throws {
+        
+        guard isFetchPerformedForFirstPage else { preconditionFailure("The controller has not perform the first fetch yet.") }
+        
+        if isFetching { preconditionFailure("The controller is still fetching elements.") }
+        
+        guard let nextPageCursor = storage.value.nextPage?.cursor else { preconditionFailure("There is no next page curor.") }
+     
+        if isDebugging {
+            
+            print(
+                String(
+                    describing: type(of: self)
+                ),
+                #function,
+                "start fetching the next page...",
+                nextPageCursor
+            )
+            
+        }
+        
+        var request = fetchRequest
+        
+        request.fetchCursor = nextPageCursor
+        
+        storage.mutateValue { $0.nextPage?.state = .fetching }
+        
+        elementStates = storage.value.elementStates
+        
+        let fetchLimit = request.fetchLimit
+        
+        try fetchService.fetch(with: request) { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            do {
+                
+                let page = try result.get()
+                
+                if self.isDebugging {
+                    
+                    print(
+                        String(
+                            describing: type(of: self)
+                        ),
+                        #function,
+                        "fetch elements for the next page successfully.",
+                        "\(page)"
+                    )
+                    
+                }
+                
+                var nextPage: StatefulPage<Cursor>?
+                
+                if let cursor = page.nextPageCursor {
+                    
+                    nextPage = StatefulPage(
+                        state: .inactive,
+                        cursor: cursor,
+                        elementCount: fetchLimit
+                    )
+                    
+                }
+                
+                self.storage.mutateValue {
+                    
+                    $0.currentPages.append(page)
+                    
+                    $0.nextPage = nextPage
+                    
+                }
+                
+                self.elementStates = self.storage.value.elementStates
+                
+            }
+            catch {
+                
+                if self.isDebugging {
+                    
+                    print(
+                        String(
+                            describing: type(of: self)
+                        ),
+                        #function,
+                        "an error occurs while fetching elements for the next page.",
+                        "\(error)"
+                    )
+                    
+                }
+                
+                self.fetchIndexManager.endAllFetchings()
+                
+                #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
+                self.elementStates = [ .error ]
                 
             }
             
@@ -169,6 +290,6 @@ extension PaginationController {
 
 extension PaginationController {
     
-    public var elementStates: [ElementState] { return storage.elementStates }
+//    public var elementStates: [ElementState] { return cache.elementStates }
     
 }

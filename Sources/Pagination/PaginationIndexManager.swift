@@ -8,6 +8,7 @@
 
 // MARK: - PaginationIndexManager
 
+@available(*, deprecated: 1.0, message: "Could not find any use case.")
 final class PaginationIndexManager {
     
     private let _fetchingIndices = Property(value: [Int]() )
