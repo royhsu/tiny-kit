@@ -135,6 +135,10 @@ final class PaginationControllerTests: XCTestCase {
             case .waitForFetchedFirstPageElements:
 
                 defer { firstPageElementsFetched.fulfill() }
+                
+                XCTAssertFalse(controller.hasPreviousPage)
+                
+                XCTAssert(controller.hasNextPage)
 
                 XCTAssertEqual(
                     elementStates,
@@ -152,7 +156,7 @@ final class PaginationControllerTests: XCTestCase {
             case .waitForFetchingLastPageElements:
 
                 defer { lastPageElementsFetching.fulfill() }
-
+                
                 XCTAssertEqual(
                     elementStates,
                     [
@@ -168,6 +172,10 @@ final class PaginationControllerTests: XCTestCase {
 
                 defer { lastPageElementsFetched.fulfill() }
 
+                XCTAssertFalse(controller.hasPreviousPage)
+                
+                XCTAssertFalse(controller.hasNextPage)
+                
                 XCTAssertEqual(
                     elementStates,
                     [

@@ -290,6 +290,8 @@ extension PaginationController {
 
 extension PaginationController {
     
-//    public var elementStates: [ElementState] { return cache.elementStates }
+    public var hasPreviousPage: Bool { return storage.value.hasPreviousPage }
+    
+    public var hasNextPage: Bool { return storage.value.hasNextPage }
     
 }
