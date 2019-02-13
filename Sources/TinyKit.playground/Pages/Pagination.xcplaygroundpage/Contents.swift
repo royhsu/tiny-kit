@@ -113,7 +113,7 @@ final class MessageTableViewController: UITableViewController {
         
         switch state {
 
-        case .fetching: cell.textLabel?.text = "Loading..."
+        case .inactive, .fetching: cell.textLabel?.text = "Loading..."
 
         case let .fetched(message): cell.textLabel?.text = message.text
 

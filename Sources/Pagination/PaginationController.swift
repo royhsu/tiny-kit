@@ -21,7 +21,7 @@ public final class PaginationController<Element, Cursor> {
     var isDebugging = false
     
     /// A cache for certain value in the storage.
-    private(set) var elementStates: [ElementState] {
+    public private(set) var elementStates: [ElementState] {
         
         didSet { elementStatesDidChange?(self) }
         
