@@ -12,7 +12,7 @@ public final class PrefetchController<Element, Cursor> {
     
     private let paginationController: PaginationController<Element, Cursor>
     
-    let indexManager: PrefetchIndexManager
+    private let indexManager: PrefetchIndexManager
     
     public var elementStatesDidChange: ( (PrefetchController) -> Void )?
     
