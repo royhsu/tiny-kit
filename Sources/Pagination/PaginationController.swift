@@ -20,35 +20,10 @@ public final class PaginationController<Element, Cursor> {
     
     var isDebugging = false
     
-    var willGetElementState: (
-        (
-            _ controller: PaginationController,
-            _ index: Int,
-            _ state: ElementState<Element>
-        )
-        -> Void
-    )?
-    
     /// A cache for certain value in the storage.
-    public private(set) var elementStates: ElementStateArray<Element> {
+    public private(set) var elementStates: [ElementState<Element>] {
         
-        didSet {
-            
-            elementStates.willGetElementState = { [weak self] _, index, state in
-                
-                guard let self = self else { return }
-                
-                self.willGetElementState?(
-                    self,
-                    index,
-                    state
-                )
-                
-            }
-            
-            elementStatesDidChange?(self)
-            
-        }
+        didSet { elementStatesDidChange?(self) }
         
     }
     
@@ -67,25 +42,7 @@ public final class PaginationController<Element, Cursor> {
         
         self.fetchService = AnyPaginationService(fetchService)
             
-        self.elementStates = ElementStateArray(storage.value.elementStates)
-        
-        self.load()
-            
-    }
-    
-    private func load() {
-        
-        elementStates.willGetElementState = { [weak self] _, index, state in
-            
-            guard let self = self else { return }
-            
-            self.willGetElementState?(
-                self,
-                index,
-                state
-            )
-            
-        }
+        self.elementStates = storage.value.elementStates
         
     }
     
@@ -95,12 +52,7 @@ extension PaginationController {
     
     private final var isFetching: Bool {
         
-        var states = elementStates
-        
-        #warning("TODO: find a better strategy to prevent calling unwanted event.")
-        states.willGetElementState = nil
-        
-        let fetchingState = states.first {
+        let fetchingState = elementStates.first {
             
             if case .fetching = $0 { return true }
             
@@ -136,11 +88,9 @@ extension PaginationController {
 
         let fetchLimit = fetchRequest.fetchLimit
         
-        elementStates = ElementStateArray(
-            Array(
-                repeating: .fetching,
-                count: fetchLimit
-            )
+        elementStates = Array(
+            repeating: .fetching,
+            count: fetchLimit
         )
         
         try fetchService.fetch(with: fetchRequest) { [weak self] result in
@@ -196,7 +146,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = ElementStateArray(self.storage.value.elementStates)
+                self.elementStates = self.storage.value.elementStates
                 
             }
             catch {
@@ -212,7 +162,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = ElementStateArray( [ .error ] )
+                self.elementStates = [ .error ]
                 
             }
             
@@ -247,7 +197,7 @@ extension PaginationController {
         
         storage.mutateValue { $0.previousPage?.state = .fetching }
         
-        elementStates = ElementStateArray(storage.value.elementStates)
+        elementStates = storage.value.elementStates
         
         let fetchLimit = request.fetchLimit
         
@@ -293,7 +243,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = ElementStateArray(self.storage.value.elementStates)
+                self.elementStates = self.storage.value.elementStates
                 
             }
             catch {
@@ -310,7 +260,7 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.elementStates = ElementStateArray( [ .error ] )
+                self.elementStates = [ .error ]
                 
             }
             
@@ -345,7 +295,7 @@ extension PaginationController {
         
         storage.mutateValue { $0.nextPage?.state = .fetching }
         
-        elementStates = ElementStateArray(storage.value.elementStates)
+        elementStates = storage.value.elementStates
         
         let fetchLimit = request.fetchLimit
         
@@ -388,7 +338,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = ElementStateArray(self.storage.value.elementStates)
+                self.elementStates = self.storage.value.elementStates
                 
             }
             catch {
@@ -405,7 +355,7 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.elementStates = ElementStateArray( [ .error ] )
+                self.elementStates = [ .error ]
                 
             }
             
@@ -420,10 +370,7 @@ extension PaginationController {
     #warning("TODO: add testing.")
     func isPreviousPageIndex(_ index: Int) -> Bool {
         
-        var states = elementStates
-        
-        #warning("TODO: find a better strategy to prevent calling unwanted event.")
-        states.willGetElementState = nil
+        let states = elementStates
         
         guard index < states.count else { return false }
         
@@ -442,10 +389,7 @@ extension PaginationController {
     #warning("TODO: add testing.")
     func isNextPageIndex(_ index: Int) -> Bool {
         
-        var states = elementStates
-        
-        #warning("TODO: find a better strategy to prevent calling unwanted event.")
-        states.willGetElementState = nil
+        let states = elementStates
         
         guard index < states.count else { return false }
         

@@ -15,13 +15,17 @@ final class DefaultPrefetchBatchTimer: PrefetchBatchTimer {
     
     var timeout: ( (PrefetchBatchTimer) -> Void )?
     
-    private lazy var timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+    private lazy var timer = Timer.scheduledTimer(
+        withTimeInterval: 0.5,
+        repeats: true,
+        block: { [weak self] _ in
         
-        guard let self = self else { return }
+            guard let self = self else { return }
         
-        self.timeout?(self)
+            self.timeout?(self)
         
-    }
+        }
+    )
     
     init() { _ = timer }
     

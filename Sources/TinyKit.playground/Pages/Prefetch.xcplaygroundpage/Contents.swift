@@ -14,9 +14,7 @@ final class MessageTableViewController: UITableViewController {
                     self.isViewLoaded
                 else { return }
 
-                print("new states", controller.elementStates)
-                
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
 
                     self.tableView.reloadData()
 
@@ -28,15 +26,7 @@ final class MessageTableViewController: UITableViewController {
 
     }
 
-    private var elementStates: ElementStateArray<Message> {
-        
-        var states = prefetchController?.elementStates ?? []
-        
-        states.willGetElementState = nil
-        
-        return states
-        
-    }
+    private var elementStates: [ElementState<Message>] { return prefetchController?.elementStates ?? [] }
 
     override func viewDidLoad() {
 
@@ -83,7 +73,7 @@ final class MessageTableViewController: UITableViewController {
         return cell
 
     }
-
+    
 }
 
 let controller = MessageTableViewController()

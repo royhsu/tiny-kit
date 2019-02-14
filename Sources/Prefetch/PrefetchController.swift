@@ -105,17 +105,6 @@ public final class PrefetchController<Element, Cursor> {
         #warning("TODO: remove in production.")
         paginationController.isDebugging = true
         
-        paginationController.willGetElementState = { [weak self] _, index, state in
-            
-            guard
-                let self = self,
-                case .inactive = state
-            else { return }
-            
-            self.prefetchIndexManager.queue.append(index)
-            
-        }
-        
         paginationController.elementStatesDidChange = { [weak self] controller in
             
             guard let self = self else { return }
@@ -130,7 +119,6 @@ public final class PrefetchController<Element, Cursor> {
 
 extension PrefetchController {
     
-    #warning("TODO: provide a default fetch timer for public use.")
     public convenience init<S>(
         fetchRequest: FetchRequest<Cursor> = FetchRequest(),
         fetchService: S
@@ -158,6 +146,25 @@ extension PrefetchController {
 
 extension PrefetchController {
     
-    public var elementStates: ElementStateArray<Element> { return paginationController.elementStates }
+    /// Setting the prefetch indices will trigger the controller to fetch the elements if they haven't been fetched.
+    public var prefetchIndices: [Int] {
+        
+        get { return prefetchIndexManager.queue }
+        
+        set {
+            
+            for index in newValue {
+            
+                guard case .inactive = elementStates[index] else { continue }
+                
+                prefetchIndexManager.queue.append(index)
+                
+            }
+            
+        }
+        
+    }
+    
+    public var elementStates: [ElementState<Element>] { return paginationController.elementStates }
     
 }

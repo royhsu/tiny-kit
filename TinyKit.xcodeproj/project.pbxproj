@@ -76,7 +76,6 @@
 		B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */; };
 		B0CF895B22153A610020ECD1 /* PrefetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895A22153A610020ECD1 /* PrefetchController.swift */; };
 		B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
-		B0CF895F221544F70020ECD1 /* ElementStateArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895E221544F70020ECD1 /* ElementStateArray.swift */; };
 		B0CF8963221551C70020ECD1 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89602215514B0020ECD1 /* Timer.swift */; };
 		B0CF8965221568990020ECD1 /* DefaultPrefetchBatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
@@ -187,7 +186,6 @@
 		B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchBatchTimer.swift; sourceTree = "<group>"; };
 		B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchControllerTests.swift; sourceTree = "<group>"; };
 		B0CF895A22153A610020ECD1 /* PrefetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchController.swift; sourceTree = "<group>"; };
-		B0CF895E221544F70020ECD1 /* ElementStateArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementStateArray.swift; sourceTree = "<group>"; };
 		B0CF89602215514B0020ECD1 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPrefetchBatchTimer.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
@@ -428,7 +426,6 @@
 				B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */,
 				B0CF89492213B9020020ECD1 /* PageStorage.swift */,
 				B062C5A72212C3F2001807A6 /* ElementState.swift */,
-				B0CF895E221544F70020ECD1 /* ElementStateArray.swift */,
 			);
 			path = Pagination;
 			sourceTree = "<group>";
@@ -709,7 +706,6 @@
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,
 				B03394E921C3655600CB1FA9 /* CollectionViewController.swift in Sources */,
 				B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */,
-				B0CF895F221544F70020ECD1 /* ElementStateArray.swift in Sources */,
 				B0C8C35521C1227F00DED5BF /* ModelError.swift in Sources */,
 				B0C8C34C21C0F71D00DED5BF /* Model.swift in Sources */,
 				B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */,

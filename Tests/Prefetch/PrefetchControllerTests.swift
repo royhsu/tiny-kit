@@ -117,7 +117,19 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 currentStep = .waitForFetchingFirstPage
                 
-                self.prefetchElements(for: controller)
+                guard
+                    let pretchableIndex = controller.elementStates.firstIndex(
+                        where: {
+                            
+                            if case .inactive = $0 { return true }
+                            
+                            return false
+                            
+                        }
+                    )
+                else { XCTFail("There must be a fetchable index."); return }
+                
+                controller.prefetchIndices = [ pretchableIndex ]
                 
                 fetchTimer.timeOut()
 
@@ -154,7 +166,19 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 currentStep = .waitForFetchingLastPage
                 
-                self.prefetchElements(for: controller)
+                guard
+                    let pretchableIndex = controller.elementStates.firstIndex(
+                        where: {
+                    
+                            if case .inactive = $0 { return true }
+                    
+                            return false
+                    
+                        }
+                    )
+                else { XCTFail("There must be a fetchable index."); return }
+                
+                controller.prefetchIndices = [ pretchableIndex ]
                 
                 fetchTimer.timeOut()
                 
@@ -204,27 +228,6 @@ final class PrefetchControllerTests: XCTestCase {
             ],
             timeout: expectionTimeout
         )
-        
-    }
-    
-}
-
-extension PrefetchControllerTests {
-    
-    private func prefetchElements<Element, Cursor>(
-        for controller: (PrefetchController<Element, Cursor>)
-    ) {
-        
-        // This will trigger the controller to prefetch the next page automatically.
-        let inactiveState = controller.elementStates.first {
-            
-            if case .inactive = $0 { return true }
-            
-            return false
-            
-        }
-        
-        XCTAssertNotNil(inactiveState)
         
     }
     
