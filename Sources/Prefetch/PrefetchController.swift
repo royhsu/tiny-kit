@@ -12,9 +12,12 @@ public final class PrefetchController<Element, Cursor> {
     
     private let paginationController: PaginationController<Element, Cursor>
     
+    let indexManager: PrefetchIndexManager
+    
     public var elementStatesDidChange: ( (PrefetchController) -> Void )?
     
-    public init<S>(
+    init<S>(
+        fetchTimer: PrefetchBatchTimer,
         fetchRequest: FetchRequest<Cursor> = FetchRequest(),
         fetchService: S
     )
@@ -22,6 +25,15 @@ public final class PrefetchController<Element, Cursor> {
         S: PaginationService,
         S.Element == Element,
         S.Cursor == Cursor {
+            
+        self.indexManager = PrefetchIndexManager(
+            batchTimer: fetchTimer,
+            batchTask: { _, indices in
+                
+                print("Batch task for indices.", indices)
+                
+            }
+        )
             
         self.paginationController = PaginationController(
             fetchRequest: fetchRequest,
@@ -37,6 +49,14 @@ public final class PrefetchController<Element, Cursor> {
         #warning("TODO: remove in production.")
         paginationController.isDebugging = true
         
+        paginationController.willGetElement = { [weak self] _, index in
+            
+            guard let self = self else { return }
+            
+            self.indexManager.queue.append(index)
+            
+        }
+        
         paginationController.elementStatesDidChange = { [weak self] controller in
             
             guard let self = self else { return }
@@ -46,6 +66,23 @@ public final class PrefetchController<Element, Cursor> {
         }
         
     }
+    
+}
+
+extension PrefetchController {
+    
+    #warning("TODO: provide a default fetch timer for public use.")
+//    public init<S>(
+//        fetchRequest: FetchRequest<Cursor> = FetchRequest(),
+//        fetchService: S
+//    )
+//    where
+//        S: PaginationService,
+//        S.Element == Element,
+//        S.Cursor == Cursor {
+//
+//
+//    }
     
 }
 

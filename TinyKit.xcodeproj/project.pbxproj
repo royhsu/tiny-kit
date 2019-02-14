@@ -77,6 +77,7 @@
 		B0CF895B22153A610020ECD1 /* PrefetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895A22153A610020ECD1 /* PrefetchController.swift */; };
 		B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
 		B0CF895F221544F70020ECD1 /* ElementStateArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895E221544F70020ECD1 /* ElementStateArray.swift */; };
+		B0CF8963221551C70020ECD1 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89602215514B0020ECD1 /* Timer.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -186,6 +187,7 @@
 		B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchControllerTests.swift; sourceTree = "<group>"; };
 		B0CF895A22153A610020ECD1 /* PrefetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchController.swift; sourceTree = "<group>"; };
 		B0CF895E221544F70020ECD1 /* ElementStateArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementStateArray.swift; sourceTree = "<group>"; };
+		B0CF89602215514B0020ECD1 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ViewCollection.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 			children = (
 				B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */,
 				B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */,
+				B0CF89602215514B0020ECD1 /* Timer.swift */,
 			);
 			path = Prefetch;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */,
 				B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */,
 				B0C8C34F21C0F74800DED5BF /* ModelTests.swift in Sources */,
+				B0CF8963221551C70020ECD1 /* Timer.swift in Sources */,
 				B062C5B62212C463001807A6 /* PaginationControllerTests.swift in Sources */,
 				B01D21FD214B9CEB0078E946 /* BodyLabel.swift in Sources */,
 				B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */,

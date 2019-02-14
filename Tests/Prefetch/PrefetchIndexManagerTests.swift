@@ -57,13 +57,3 @@ final class PrefetchIndexManagerTests: XCTestCase {
     }
     
 }
-
-// MARK: - Timer
-
-fileprivate final class Timer: PrefetchBatchTimer {
-    
-    var timeout: ( (PrefetchBatchTimer) -> Void )?
-    
-    func timeOut() { timeout?(self) }
-    
-}

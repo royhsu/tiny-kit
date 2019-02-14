@@ -8,9 +8,18 @@
 
 // MARK: - ElementStateArray
 
+#warning("TODO: add testing.")
 public struct ElementStateArray<Element> {
     
     private var _states: [ElementState<Element>]
+    
+    var willGetElement: (
+        (
+            _ array: ElementStateArray,
+            _ index: Int
+        )
+        -> Void
+    )?
     
     public init<S>(_ sequence: S)
     where
@@ -29,13 +38,30 @@ extension ElementStateArray: Collection {
     
     public func index(after i: Int) -> Int { return _states.index(after: i) }
     
-    public subscript(index: Int) -> ElementState<Element> { return _states[index] }
+    public subscript(index: Int) -> ElementState<Element> {
+        
+        willGetElement?(
+            self,
+            index
+        )
+        
+        return _states[index]
+        
+    }
     
 }
 
 // MARK: - Equatable
 
-extension ElementStateArray: Equatable where Element: Equatable { }
+extension ElementStateArray: Equatable where Element: Equatable {
+    
+    public static func == (
+        lhs: ElementStateArray,
+        rhs: ElementStateArray
+    )
+    -> Bool { return lhs._states == rhs._states }
+    
+}
 
 // MARK: - ExpressibleByArrayLiteral
 

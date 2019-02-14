@@ -19,6 +19,7 @@ final class PrefetchControllerTests: XCTestCase {
     func testDefault() {
         
         let controller = PrefetchController(
+            fetchTimer: Timer(),
             fetchService: MessageService(
                 result: .success(
                     .init(firstPageMessages: [] )
@@ -54,7 +55,10 @@ final class PrefetchControllerTests: XCTestCase {
         
         let lastPageFetched = expectation(description: "After the last page fetched.")
         
+        let fetchTimer = Timer()
+        
         let controller = PrefetchController(
+            fetchTimer: fetchTimer,
             fetchRequest: FetchRequest(fetchLimit: 2),
             fetchService: MessageService(
                 result: .success(
@@ -96,12 +100,39 @@ final class PrefetchControllerTests: XCTestCase {
                         .inactive
                     ]
                 )
-
+                
                 currentStep = .waitForFetchingLastPage
+                
+                self.prefetchElements(for: controller)
+                
+                fetchTimer.timeOut()
 
-            case .waitForFetchingLastPage: XCTFail()
+            case .waitForFetchingLastPage:
+                
+                defer { lastPageFetching.fulfill() }
+                
+                XCTAssertEqual(
+                    controller.elementStates,
+                    [
+                        .fetched( Message(text: "a") ),
+                        .fetching,
+                        .fetching
+                    ]
+                )
+                
+                currentStep = .waitForFetchedLastPage
 
-            case .waitForFetchedLastPage: XCTFail()
+            case .waitForFetchedLastPage:
+                
+                defer { lastPageFetched.fulfill() }
+                
+                XCTAssertEqual(
+                    controller.elementStates,
+                    [
+                        .fetched( Message(text: "a") ),
+                        .fetched( Message(text: "b") )
+                    ]
+                )
 
             }
             
@@ -118,6 +149,27 @@ final class PrefetchControllerTests: XCTestCase {
             ],
             timeout: expectionTimeout
         )
+        
+    }
+    
+}
+
+extension PrefetchControllerTests {
+    
+    private func prefetchElements<Element, Cursor>(
+        for controller: (PrefetchController<Element, Cursor>)
+    ) {
+        
+        // This will trigger the controller to prefetch the next page automatically.
+        let inactiveState = controller.elementStates.first {
+            
+            if case .inactive = $0 { return true }
+            
+            return false
+            
+        }
+        
+        XCTAssertNotNil(inactiveState)
         
     }
     

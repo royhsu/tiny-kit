@@ -20,10 +20,33 @@ public final class PaginationController<Element, Cursor> {
     
     var isDebugging = false
     
+    var willGetElement: (
+        (
+            _ controller: PaginationController,
+            _ index: Int
+        )
+        -> Void
+    )?
+    
     /// A cache for certain value in the storage.
     public private(set) var elementStates: ElementStateArray<Element> {
         
-        didSet { elementStatesDidChange?(self) }
+        didSet {
+            
+            elementStates.willGetElement = { [weak self] _, index in
+                
+                guard let self = self else { return }
+                
+                self.willGetElement?(
+                    self,
+                    index
+                )
+                
+            }
+            
+            elementStatesDidChange?(self)
+            
+        }
         
     }
     
@@ -43,6 +66,23 @@ public final class PaginationController<Element, Cursor> {
         self.fetchService = AnyPaginationService(fetchService)
             
         self.elementStates = ElementStateArray(storage.value.elementStates)
+        
+        self.load()
+            
+    }
+    
+    private func load() {
+        
+        elementStates.willGetElement = { [weak self] _, index in
+            
+            guard let self = self else { return }
+            
+            self.willGetElement?(
+                self,
+                index
+            )
+            
+        }
         
     }
     
