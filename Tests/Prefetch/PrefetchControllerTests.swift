@@ -35,6 +35,10 @@ final class PrefetchControllerTests: XCTestCase {
         
         enum Step {
             
+            case waitForFetchingMiddlePage
+            
+            case waitForFetchedMiddlePage
+            
             case waitForFetchingFirstPage
             
             case waitForFetchedFirstPage
@@ -45,7 +49,11 @@ final class PrefetchControllerTests: XCTestCase {
             
         }
         
-        var currentStep: Step = .waitForFetchingFirstPage
+        var currentStep: Step = .waitForFetchingMiddlePage
+        
+        let middlePageFetching = expectation(description: "Before the middle page fetched.")
+        
+        let middlePageFetched = expectation(description: "After the middle page fetched.")
         
         let firstPageFetching = expectation(description: "Before the first page fetched.")
         
@@ -59,12 +67,16 @@ final class PrefetchControllerTests: XCTestCase {
         
         let controller = PrefetchController(
             fetchTimer: fetchTimer,
-            fetchRequest: FetchRequest(fetchLimit: 2),
+            fetchRequest: FetchRequest(
+                fetchCursor: .middle,
+                fetchLimit: 2
+            ),
             fetchService: MessageService(
                 result: .success(
                     .init(
                         firstPageMessages: [ Message(text: "a") ],
-                        lastPageMessages: [ Message(text: "b") ]
+                        middlePageMessages: [ Message(text: "b") ],
+                        lastPageMessages: [ Message(text: "c") ]
                     )
                 )
             )
@@ -74,9 +86,9 @@ final class PrefetchControllerTests: XCTestCase {
             
             switch currentStep {
 
-            case .waitForFetchingFirstPage:
+            case .waitForFetchingMiddlePage:
 
-                defer { firstPageFetching.fulfill() }
+                defer { middlePageFetching.fulfill() }
 
                 XCTAssertEqual(
                     controller.elementStates,
@@ -86,16 +98,55 @@ final class PrefetchControllerTests: XCTestCase {
                     ]
                 )
 
-                currentStep = .waitForFetchedFirstPage
+                currentStep = .waitForFetchedMiddlePage
 
-            case .waitForFetchedFirstPage:
+            case .waitForFetchedMiddlePage:
 
-                defer { firstPageFetched.fulfill() }
+                defer { middlePageFetched.fulfill() }
 
                 XCTAssertEqual(
                     controller.elementStates,
                     [
+                        .inactive,
+                        .inactive,
+                        .fetched( Message(text: "b") ),
+                        .inactive,
+                        .inactive
+                    ]
+                )
+                
+                currentStep = .waitForFetchingFirstPage
+                
+                self.prefetchElements(for: controller)
+                
+                fetchTimer.timeOut()
+
+            case .waitForFetchingFirstPage:
+                
+                defer { firstPageFetching.fulfill() }
+                
+                XCTAssertEqual(
+                    controller.elementStates,
+                    [
+                        .fetching,
+                        .fetching,
+                        .fetched( Message(text: "b") ),
+                        .inactive,
+                        .inactive
+                    ]
+                )
+                
+                currentStep = .waitForFetchedFirstPage
+
+            case .waitForFetchedFirstPage:
+                
+                defer { firstPageFetched.fulfill() }
+                
+                XCTAssertEqual(
+                    controller.elementStates,
+                    [
                         .fetched( Message(text: "a") ),
+                        .fetched( Message(text: "b") ),
                         .inactive,
                         .inactive
                     ]
@@ -106,7 +157,7 @@ final class PrefetchControllerTests: XCTestCase {
                 self.prefetchElements(for: controller)
                 
                 fetchTimer.timeOut()
-
+                
             case .waitForFetchingLastPage:
                 
                 defer { lastPageFetching.fulfill() }
@@ -115,25 +166,27 @@ final class PrefetchControllerTests: XCTestCase {
                     controller.elementStates,
                     [
                         .fetched( Message(text: "a") ),
+                        .fetched( Message(text: "b") ),
                         .fetching,
                         .fetching
                     ]
                 )
                 
                 currentStep = .waitForFetchedLastPage
-
+                
             case .waitForFetchedLastPage:
                 
                 defer { lastPageFetched.fulfill() }
-                
+
                 XCTAssertEqual(
                     controller.elementStates,
                     [
                         .fetched( Message(text: "a") ),
-                        .fetched( Message(text: "b") )
+                        .fetched( Message(text: "b") ),
+                        .fetched( Message(text: "c") )
                     ]
                 )
-
+                
             }
             
         }
@@ -142,6 +195,8 @@ final class PrefetchControllerTests: XCTestCase {
         
         wait(
             for: [
+                middlePageFetching,
+                middlePageFetched,
                 firstPageFetching,
                 firstPageFetched,
                 lastPageFetching,

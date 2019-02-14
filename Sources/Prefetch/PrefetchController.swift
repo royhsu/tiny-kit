@@ -36,7 +36,7 @@ public final class PrefetchController<Element, Cursor> {
                     
                     do {
                     
-                        try self.paginationController.performFetchForNextPage()
+                        try self.paginationController.performFetchForPreviousPage()
                         
                     }
                     catch {

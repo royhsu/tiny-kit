@@ -95,7 +95,12 @@ extension PaginationController {
     
     private final var isFetching: Bool {
         
-        let fetchingState = elementStates.first {
+        var states = elementStates
+        
+        #warning("TODO: find a better strategy to prevent calling unwanted event.")
+        states.willGetElementState = nil
+        
+        let fetchingState = states.first {
             
             if case .fetching = $0 { return true }
             
@@ -415,7 +420,10 @@ extension PaginationController {
     #warning("TODO: add testing.")
     func isPreviousPageIndex(_ index: Int) -> Bool {
         
-        let states = elementStates
+        var states = elementStates
+        
+        #warning("TODO: find a better strategy to prevent calling unwanted event.")
+        states.willGetElementState = nil
         
         guard index < states.count else { return false }
         
@@ -434,7 +442,10 @@ extension PaginationController {
     #warning("TODO: add testing.")
     func isNextPageIndex(_ index: Int) -> Bool {
         
-        let states = elementStates
+        var states = elementStates
+        
+        #warning("TODO: find a better strategy to prevent calling unwanted event.")
+        states.willGetElementState = nil
         
         guard index < states.count else { return false }
         

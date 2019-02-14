@@ -23,3 +23,25 @@ public enum ElementState<Element> {
 // MARK: - Equatable
 
 extension ElementState: Equatable where Element: Equatable { }
+
+// MARK: - CustomDebugStringConvertible
+
+extension ElementState: CustomDebugStringConvertible {
+    
+    public var debugDescription: String {
+        
+        switch self {
+            
+        case .inactive: return ".inactive."
+            
+        case .fetching: return ".fetching"
+            
+        case let .fetched(element): return ".fetched(\(element))"
+            
+        case .error: return ".error"
+            
+        }
+        
+    }
+    
+}
