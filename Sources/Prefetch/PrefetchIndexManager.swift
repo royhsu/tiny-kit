@@ -77,6 +77,7 @@ final class PrefetchIndexManager {
 
 extension PrefetchIndexManager {
     
+    #warning("TODO: remove duplicate indices from the queue.")
     var queue: [Int] {
         
         get { return _indices.value }
