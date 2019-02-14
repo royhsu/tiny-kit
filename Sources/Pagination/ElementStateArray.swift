@@ -13,7 +13,8 @@ public struct ElementStateArray<Element> {
     
     private var _states: [ElementState<Element>]
     
-    var willGetElementState: (
+    #warning("TODO: hard to maintain. need an alternative.")
+    public var willGetElementState: (
         (
             _ array: ElementStateArray,
             _ index: Int,

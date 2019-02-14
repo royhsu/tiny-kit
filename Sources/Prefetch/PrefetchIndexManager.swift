@@ -55,6 +55,9 @@ final class PrefetchIndexManager {
             
             let batchIndices = self.queue
             
+            #warning("TODO: add testing.")
+            if batchIndices.isEmpty { return }
+            
             self.queue = []
             
             self.batchTaskQueue.async {

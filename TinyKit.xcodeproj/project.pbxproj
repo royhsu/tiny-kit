@@ -78,6 +78,7 @@
 		B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
 		B0CF895F221544F70020ECD1 /* ElementStateArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895E221544F70020ECD1 /* ElementStateArray.swift */; };
 		B0CF8963221551C70020ECD1 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89602215514B0020ECD1 /* Timer.swift */; };
+		B0CF8965221568990020ECD1 /* DefaultPrefetchBatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -188,6 +189,7 @@
 		B0CF895A22153A610020ECD1 /* PrefetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchController.swift; sourceTree = "<group>"; };
 		B0CF895E221544F70020ECD1 /* ElementStateArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementStateArray.swift; sourceTree = "<group>"; };
 		B0CF89602215514B0020ECD1 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPrefetchBatchTimer.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ViewCollection.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				B0CF895A22153A610020ECD1 /* PrefetchController.swift */,
 				B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */,
 				B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */,
+				B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */,
 			);
 			path = Prefetch;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				B062C5B02212C3F2001807A6 /* PaginationService.swift in Sources */,
 				B0F80A11214F55390052ACA3 /* LegacyListViewLayout.swift in Sources */,
 				B0BE7E0A21C2AA4D00D51884 /* ElementCollection.swift in Sources */,
+				B0CF8965221568990020ECD1 /* DefaultPrefetchBatchTimer.swift in Sources */,
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,
 				B03394E921C3655600CB1FA9 /* CollectionViewController.swift in Sources */,
 				B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */,

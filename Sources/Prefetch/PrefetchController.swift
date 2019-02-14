@@ -131,17 +131,22 @@ public final class PrefetchController<Element, Cursor> {
 extension PrefetchController {
     
     #warning("TODO: provide a default fetch timer for public use.")
-//    public init<S>(
-//        fetchRequest: FetchRequest<Cursor> = FetchRequest(),
-//        fetchService: S
-//    )
-//    where
-//        S: PaginationService,
-//        S.Element == Element,
-//        S.Cursor == Cursor {
-//
-//
-//    }
+    public convenience init<S>(
+        fetchRequest: FetchRequest<Cursor> = FetchRequest(),
+        fetchService: S
+    )
+    where
+        S: PaginationService,
+        S.Element == Element,
+        S.Cursor == Cursor {
+
+        self.init(
+            fetchTimer: DefaultPrefetchBatchTimer(),
+            fetchRequest: fetchRequest,
+            fetchService: fetchService
+        )
+            
+    }
     
 }
 
