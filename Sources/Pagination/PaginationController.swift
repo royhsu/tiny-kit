@@ -21,7 +21,7 @@ public final class PaginationController<Element, Cursor> {
     var isDebugging = false
     
     /// A cache for certain value in the storage.
-    public private(set) var elementStates: [ElementState] {
+    public private(set) var elementStates: ElementStateArray<Element> {
         
         didSet { elementStatesDidChange?(self) }
         
@@ -42,7 +42,7 @@ public final class PaginationController<Element, Cursor> {
         
         self.fetchService = AnyPaginationService(fetchService)
             
-        self.elementStates = storage.value.elementStates
+        self.elementStates = ElementStateArray(storage.value.elementStates)
         
     }
     
@@ -88,9 +88,11 @@ extension PaginationController {
 
         let fetchLimit = fetchRequest.fetchLimit
         
-        elementStates = Array(
-            repeating: .fetching,
-            count: fetchLimit
+        elementStates = ElementStateArray(
+            Array(
+                repeating: .fetching,
+                count: fetchLimit
+            )
         )
         
         try fetchService.fetch(with: fetchRequest) { [weak self] result in
@@ -146,7 +148,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.elementStates
+                self.elementStates = ElementStateArray(self.storage.value.elementStates)
                 
             }
             catch {
@@ -162,7 +164,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = [ .error ]
+                self.elementStates = ElementStateArray( [ .error ] )
                 
             }
             
@@ -197,7 +199,7 @@ extension PaginationController {
         
         storage.mutateValue { $0.previousPage?.state = .fetching }
         
-        elementStates = storage.value.elementStates
+        elementStates = ElementStateArray(storage.value.elementStates)
         
         let fetchLimit = request.fetchLimit
         
@@ -243,7 +245,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.elementStates
+                self.elementStates = ElementStateArray(self.storage.value.elementStates)
                 
             }
             catch {
@@ -260,7 +262,7 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.elementStates = [ .error ]
+                self.elementStates = ElementStateArray( [ .error ] )
                 
             }
             
@@ -295,7 +297,7 @@ extension PaginationController {
         
         storage.mutateValue { $0.nextPage?.state = .fetching }
         
-        elementStates = storage.value.elementStates
+        elementStates = ElementStateArray(storage.value.elementStates)
         
         let fetchLimit = request.fetchLimit
         
@@ -338,7 +340,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.elementStates
+                self.elementStates = ElementStateArray(self.storage.value.elementStates)
                 
             }
             catch {
@@ -355,7 +357,7 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.elementStates = [ .error ]
+                self.elementStates = ElementStateArray( [ .error ] )
                 
             }
             

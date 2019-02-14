@@ -49,11 +49,10 @@
 		B062C5AC2212C3F2001807A6 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A42212C3F2001807A6 /* FetchRequest.swift */; };
 		B062C5AD2212C3F2001807A6 /* AnyPaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */; };
 		B062C5AE2212C3F2001807A6 /* CursorRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */; };
-		B062C5AF2212C3F2001807A6 /* PaginationController+ElementState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A72212C3F2001807A6 /* PaginationController+ElementState.swift */; };
+		B062C5AF2212C3F2001807A6 /* ElementState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A72212C3F2001807A6 /* ElementState.swift */; };
 		B062C5B02212C3F2001807A6 /* PaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A82212C3F2001807A6 /* PaginationService.swift */; };
 		B062C5B22212C45F001807A6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5972212C348001807A6 /* Message.swift */; };
 		B062C5B42212C45F001807A6 /* MessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5962212C348001807A6 /* MessageError.swift */; };
-		B062C5B52212C45F001807A6 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
 		B062C5B62212C463001807A6 /* PaginationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5992212C348001807A6 /* PaginationControllerTests.swift */; };
 		B0652DB82148B1AC009F8757 /* LegacyTableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91D2146542E00B19F6A /* LegacyTableViewBridge.swift */; };
 		B0652DC3214966CC009F8757 /* _CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0652DC2214966CC009F8757 /* _CollectionViewController.swift */; };
@@ -74,6 +73,10 @@
 		B0CF8951221506930020ECD1 /* PrefetchIndexManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */; };
 		B0CF8954221506B80020ECD1 /* PrefetchIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */; };
 		B0CF89562215143E0020ECD1 /* PrefetchBatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */; };
+		B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */; };
+		B0CF895B22153A610020ECD1 /* PrefetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895A22153A610020ECD1 /* PrefetchController.swift */; };
+		B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
+		B0CF895F221544F70020ECD1 /* ElementStateArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895E221544F70020ECD1 /* ElementStateArray.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -159,7 +162,7 @@
 		B062C5A42212C3F2001807A6 /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
 		B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyPaginationService.swift; sourceTree = "<group>"; };
 		B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorRepresentable.swift; sourceTree = "<group>"; };
-		B062C5A72212C3F2001807A6 /* PaginationController+ElementState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaginationController+ElementState.swift"; sourceTree = "<group>"; };
+		B062C5A72212C3F2001807A6 /* ElementState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementState.swift; sourceTree = "<group>"; };
 		B062C5A82212C3F2001807A6 /* PaginationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationService.swift; sourceTree = "<group>"; };
 		B0652DB72148B118009F8757 /* TinyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TinyKit.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B0652DC2214966CC009F8757 /* _CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CollectionViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +183,9 @@
 		B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchIndexManagerTests.swift; sourceTree = "<group>"; };
 		B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchIndexManager.swift; sourceTree = "<group>"; };
 		B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchBatchTimer.swift; sourceTree = "<group>"; };
+		B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchControllerTests.swift; sourceTree = "<group>"; };
+		B0CF895A22153A610020ECD1 /* PrefetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchController.swift; sourceTree = "<group>"; };
+		B0CF895E221544F70020ECD1 /* ElementStateArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementStateArray.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ViewCollection.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -411,13 +417,14 @@
 			children = (
 				B062C5A22212C3F2001807A6 /* PaginationController.swift */,
 				B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */,
-				B062C5A72212C3F2001807A6 /* PaginationController+ElementState.swift */,
 				B062C5A82212C3F2001807A6 /* PaginationService.swift */,
 				B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */,
 				B062C5A42212C3F2001807A6 /* FetchRequest.swift */,
 				B054B1762212D1F8007AB789 /* Page.swift */,
 				B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */,
 				B0CF89492213B9020020ECD1 /* PageStorage.swift */,
+				B062C5A72212C3F2001807A6 /* ElementState.swift */,
+				B0CF895E221544F70020ECD1 /* ElementStateArray.swift */,
 			);
 			path = Pagination;
 			sourceTree = "<group>";
@@ -468,6 +475,7 @@
 		B0CF894D221506310020ECD1 /* Prefetch */ = {
 			isa = PBXGroup;
 			children = (
+				B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */,
 				B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */,
 			);
 			path = Prefetch;
@@ -476,6 +484,7 @@
 		B0CF89522215069F0020ECD1 /* Prefetch */ = {
 			isa = PBXGroup;
 			children = (
+				B0CF895A22153A610020ECD1 /* PrefetchController.swift */,
 				B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */,
 				B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */,
 			);
@@ -654,6 +663,7 @@
 				B0E2366B21571E0E00FBE7B3 /* UICollectionViewBridge.swift in Sources */,
 				B0F80A27214FDE800052ACA3 /* UIView+UINib.swift in Sources */,
 				B01D21E5214B64270078E946 /* LegacyViewCollection.swift in Sources */,
+				B0CF895B22153A610020ECD1 /* PrefetchController.swift in Sources */,
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
 				B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */,
@@ -680,7 +690,7 @@
 				B0652DB82148B1AC009F8757 /* LegacyTableViewBridge.swift in Sources */,
 				B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */,
 				B0E2366F215723B600FBE7B3 /* CollectionViewCell.swift in Sources */,
-				B062C5AF2212C3F2001807A6 /* PaginationController+ElementState.swift in Sources */,
+				B062C5AF2212C3F2001807A6 /* ElementState.swift in Sources */,
 				B0E23675215727F300FBE7B3 /* UICollectionView+Register.swift in Sources */,
 				B0BE7DED21C2141100D51884 /* ListViewLayout.swift in Sources */,
 				B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */,
@@ -692,6 +702,7 @@
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,
 				B03394E921C3655600CB1FA9 /* CollectionViewController.swift in Sources */,
 				B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */,
+				B0CF895F221544F70020ECD1 /* ElementStateArray.swift in Sources */,
 				B0C8C35521C1227F00DED5BF /* ModelError.swift in Sources */,
 				B0C8C34C21C0F71D00DED5BF /* Model.swift in Sources */,
 				B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */,
@@ -723,16 +734,17 @@
 				B01D21F7214B90050078E946 /* XCTUnwrapped.swift in Sources */,
 				B01D21F3214B8D420078E946 /* ConfigurableTemplateTests.swift in Sources */,
 				B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */,
+				B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */,
 				B0C8C34F21C0F74800DED5BF /* ModelTests.swift in Sources */,
 				B062C5B62212C463001807A6 /* PaginationControllerTests.swift in Sources */,
 				B01D21FD214B9CEB0078E946 /* BodyLabel.swift in Sources */,
+				B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */,
 				B01D21FF214B9D320078E946 /* Post.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
 				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
 				B062C5B22212C45F001807A6 /* Message.swift in Sources */,
-				B062C5B52212C45F001807A6 /* MessageService.swift in Sources */,
 				B0CF8951221506930020ECD1 /* PrefetchIndexManagerTests.swift in Sources */,
 				B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */,
 				B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */,

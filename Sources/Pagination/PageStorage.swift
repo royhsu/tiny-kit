@@ -42,9 +42,7 @@ extension PageStorage {
 
 extension PageStorage {
     
-    typealias ElementState = PaginationController<Element, Cursor>.ElementState
-    
-    var elementStates: [ElementState] {
+    var elementStates: [ElementState<Element>] {
         
         let currentStates: [ElementState] = currentPages.reduce( [] ) { result, page in
             
@@ -61,11 +59,11 @@ extension PageStorage {
     }
     
     #warning("TODO: testing.")
-    func parseElementStates(for page: StatefulPage<Cursor>?) -> [ElementState] {
+    func parseElementStates(for page: StatefulPage<Cursor>?) -> [ElementState<Element>] {
         
         guard let page = page else { return [] }
             
-        let state: ElementState
+        let state: ElementState<Element>
         
         switch page.state {
             

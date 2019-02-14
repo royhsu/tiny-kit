@@ -10,6 +10,7 @@
 
 import TinyCore
 
+#warning("TODO: add testing.")
 struct MessageService {
     
     enum Cursor {
@@ -66,11 +67,27 @@ extension MessageService: PaginationService {
                 
             case .first:
                 
-                return Page(
-                    elements: storage.firstPageMessages,
-                    previousPageCursor: nil,
-                    nextPageCursor: (storage.middlePageMessages == nil) ? nil : .middle
-                )
+                if storage.middlePageMessages != nil {
+                    
+                    return Page(
+                        elements: storage.firstPageMessages,
+                        previousPageCursor: nil,
+                        nextPageCursor: .middle
+                    )
+                    
+                }
+                
+                if storage.lastPageMessages != nil {
+                    
+                    return Page(
+                        elements: storage.firstPageMessages,
+                        previousPageCursor: nil,
+                        nextPageCursor: .last
+                    )
+                    
+                }
+                
+                throw MessageServiceError.noLastPage
                 
             case .middle:
                 
