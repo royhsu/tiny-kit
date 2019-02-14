@@ -22,7 +22,16 @@ public final class PrefetchController<Element, Cursor> {
 
                 print("Batch task for indices.", prefetchIndices)
                 
-                #warning("FIXME: the current implementation will ignore the next page prefetch if the previous page is fetching due to the queued indices will all be wiped out after this batch task executed.")
+                #warning(
+                """
+                FIXME: the current implementation will ignore the next page prefetching if the previous page is fetching due to the queued indices will all be wiped out after this batch task executed.
+                
+                Possible strategy:
+                1. Determine wether to fetch the previous / next page, and maybe even fetch both of them.
+                2. Queue and prioritize the fetch request. Priority: previous > next page.
+                3. Perform all queued fetch requests in order.
+                """
+                )
                 
                 guard let self = self else { return }
                 
