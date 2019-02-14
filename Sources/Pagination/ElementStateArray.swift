@@ -13,10 +13,11 @@ public struct ElementStateArray<Element> {
     
     private var _states: [ElementState<Element>]
     
-    var willGetElement: (
+    var willGetElementState: (
         (
             _ array: ElementStateArray,
-            _ index: Int
+            _ index: Int,
+            _ state: ElementState<Element>
         )
         -> Void
     )?
@@ -40,12 +41,15 @@ extension ElementStateArray: Collection {
     
     public subscript(index: Int) -> ElementState<Element> {
         
-        willGetElement?(
+        let state = _states[index]
+        
+        willGetElementState?(
             self,
-            index
+            index,
+            state
         )
         
-        return _states[index]
+        return state
         
     }
     

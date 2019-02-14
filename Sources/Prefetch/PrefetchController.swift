@@ -12,7 +12,70 @@ public final class PrefetchController<Element, Cursor> {
     
     private let paginationController: PaginationController<Element, Cursor>
     
-    private let indexManager: PrefetchIndexManager
+    private let fetchTimer: PrefetchBatchTimer
+    
+    private lazy var prefetchIndexManager: PrefetchIndexManager = {
+        
+        return PrefetchIndexManager(
+            batchTimer: fetchTimer,
+            batchTask: { [weak self] _, prefetchIndices in
+
+                print("Batch task for indices.", prefetchIndices)
+                
+                guard let self = self else { return }
+                
+                guard let prefetchIndex = prefetchIndices.first else {
+                    
+                    preconditionFailure("There must contain a least one prefetch-able index.")
+                    
+                }
+                
+                if
+                    self.paginationController.isPreviousPageIndex(prefetchIndex),
+                    self.paginationController.hasPreviousPage {
+                    
+                    do {
+                    
+                        try self.paginationController.performFetchForNextPage()
+                        
+                    }
+                    catch {
+                        
+                        #warning("TODO: error handling.")
+                        print("\(error)")
+                        
+                    }
+                    
+                    return
+                    
+                }
+                
+                if
+                    self.paginationController.isNextPageIndex(prefetchIndex),
+                    self.paginationController.hasNextPage {
+                    
+                    do {
+                        
+                        try self.paginationController.performFetchForNextPage()
+                        
+                    }
+                    catch {
+                        
+                        #warning("TODO: error handling.")
+                        print("\(error)")
+                        
+                    }
+                    
+                    return
+                    
+                }
+
+                preconditionFailure("Unexpected prefetch index \(prefetchIndex)")
+                
+            }
+        )
+        
+    }()
     
     public var elementStatesDidChange: ( (PrefetchController) -> Void )?
     
@@ -25,15 +88,8 @@ public final class PrefetchController<Element, Cursor> {
         S: PaginationService,
         S.Element == Element,
         S.Cursor == Cursor {
-            
-        self.indexManager = PrefetchIndexManager(
-            batchTimer: fetchTimer,
-            batchTask: { _, indices in
-                
-                print("Batch task for indices.", indices)
-                
-            }
-        )
+        
+        self.fetchTimer = fetchTimer
             
         self.paginationController = PaginationController(
             fetchRequest: fetchRequest,
@@ -49,11 +105,14 @@ public final class PrefetchController<Element, Cursor> {
         #warning("TODO: remove in production.")
         paginationController.isDebugging = true
         
-        paginationController.willGetElement = { [weak self] _, index in
+        paginationController.willGetElementState = { [weak self] _, index, state in
             
-            guard let self = self else { return }
+            guard
+                let self = self,
+                case .inactive = state
+            else { return }
             
-            self.indexManager.queue.append(index)
+            self.prefetchIndexManager.queue.append(index)
             
         }
         

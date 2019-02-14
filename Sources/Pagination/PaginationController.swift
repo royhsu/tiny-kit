@@ -20,10 +20,11 @@ public final class PaginationController<Element, Cursor> {
     
     var isDebugging = false
     
-    var willGetElement: (
+    var willGetElementState: (
         (
             _ controller: PaginationController,
-            _ index: Int
+            _ index: Int,
+            _ state: ElementState<Element>
         )
         -> Void
     )?
@@ -33,13 +34,14 @@ public final class PaginationController<Element, Cursor> {
         
         didSet {
             
-            elementStates.willGetElement = { [weak self] _, index in
+            elementStates.willGetElementState = { [weak self] _, index, state in
                 
                 guard let self = self else { return }
                 
-                self.willGetElement?(
+                self.willGetElementState?(
                     self,
-                    index
+                    index,
+                    state
                 )
                 
             }
@@ -73,13 +75,14 @@ public final class PaginationController<Element, Cursor> {
     
     private func load() {
         
-        elementStates.willGetElement = { [weak self] _, index in
+        elementStates.willGetElementState = { [weak self] _, index, state in
             
             guard let self = self else { return }
             
-            self.willGetElement?(
+            self.willGetElementState?(
                 self,
-                index
+                index,
+                state
             )
             
         }
@@ -400,6 +403,48 @@ extension PaginationController {
                 self.elementStates = ElementStateArray( [ .error ] )
                 
             }
+            
+        }
+        
+    }
+    
+}
+
+extension PaginationController {
+    
+    #warning("TODO: add testing.")
+    func isPreviousPageIndex(_ index: Int) -> Bool {
+        
+        let states = elementStates
+        
+        guard index < states.count else { return false }
+        
+        let state = states[index]
+        
+        switch state {
+            
+        case .inactive, .fetching, .error: return hasPreviousPage
+        
+        case .fetched: return false
+            
+        }
+        
+    }
+    
+    #warning("TODO: add testing.")
+    func isNextPageIndex(_ index: Int) -> Bool {
+        
+        let states = elementStates
+        
+        guard index < states.count else { return false }
+        
+        let state = states[index]
+        
+        switch state {
+            
+        case .inactive, .fetching, .error: return hasNextPage
+            
+        case .fetched: return false
             
         }
         
