@@ -22,6 +22,8 @@ public final class PrefetchController<Element, Cursor> {
 
                 print("Batch task for indices.", prefetchIndices)
                 
+                #warning("FIXME: the current implementation will ignore the next page prefetch if the previous page is fetching due to the queued indices will all be wiped out after this batch task executed.")
+                
                 guard let self = self else { return }
                 
                 guard let prefetchIndex = prefetchIndices.first else {
@@ -69,8 +71,6 @@ public final class PrefetchController<Element, Cursor> {
                     return
                     
                 }
-
-                preconditionFailure("Unexpected prefetch index \(prefetchIndex)")
                 
             }
         )
@@ -151,17 +151,7 @@ extension PrefetchController {
         
         get { return prefetchIndexManager.queue }
         
-        set {
-            
-            for index in newValue {
-            
-                guard case .inactive = elementStates[index] else { continue }
-                
-                prefetchIndexManager.queue.append(index)
-                
-            }
-            
-        }
+        set { prefetchIndexManager.queue.append(contentsOf: newValue) }
         
     }
     

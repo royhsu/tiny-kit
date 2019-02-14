@@ -31,7 +31,7 @@ final class MessageTableViewController: UITableViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+    
         tableView.register(
             UITableViewCell.self,
             forCellReuseIdentifier: String(describing: UITableViewCell.self)
