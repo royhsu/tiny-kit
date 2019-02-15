@@ -14,7 +14,7 @@ final class PrefetchTaskManager {
     
     private var executingTasks: [PrefetchPage: PrefetchTask] = [:]
     
-    private var allTasksCompletion: ( (PrefetchTaskManager) -> Void )?
+    private(set) var allTasksCompletion: ( (PrefetchTaskManager) -> Void )?
     
     private(set) var isExecutingTasks = false {
         
@@ -22,13 +22,17 @@ final class PrefetchTaskManager {
             
             if isExecutingTasks { return }
             
-            allTasksCompletion?(self)
+            let completion = allTasksCompletion
+            
+            allTasksCompletion = nil
+            
+            completion?(self)
             
         }
         
     }
     
-    var isDebugging = false
+    var isDebugging = true
     
 }
 
@@ -107,7 +111,7 @@ extension PrefetchTaskManager {
                     print(
                         String(describing: type(of: self) ),
                         #function,
-                        "The task for the prevous page has been completed."
+                        "The task for the previous page has been completed."
                     )
                     
                 }

@@ -74,6 +74,8 @@ final class PrefetchTaskManagerTests: XCTestCase {
             
             XCTAssert(manager.tasks.isEmpty)
             
+            XCTAssertNil(manager.allTasksCompletion)
+            
         }
         
         wait(

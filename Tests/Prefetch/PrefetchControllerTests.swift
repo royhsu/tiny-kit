@@ -96,6 +96,7 @@ final class PrefetchControllerTests: XCTestCase {
                         .fetching,
                         .fetching
                     ]
+                    
                 )
 
                 currentStep = .waitForFetchedMiddlePage

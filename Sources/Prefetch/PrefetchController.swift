@@ -22,7 +22,7 @@ public final class PrefetchController<Element, Cursor> {
             batchTimer: prefetchTimer,
             batchTask: { [weak self] _, prefetchIndices in
 
-                print("Batch task for indices.", prefetchIndices)
+//                print("Batch task for indices.", prefetchIndices)
                 
                 guard let self = self else { return }
                 
