@@ -155,7 +155,15 @@ extension PrefetchController {
         
         get { return prefetchIndexManager.queue }
         
-        set { prefetchIndexManager.queue.append(contentsOf: newValue) }
+        set {
+            
+            DispatchQueue.global().async {
+                
+                self.prefetchIndexManager.queue.append(contentsOf: newValue)
+                
+            }
+            
+        }
         
     }
     
