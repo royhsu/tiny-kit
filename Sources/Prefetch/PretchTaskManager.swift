@@ -14,7 +14,19 @@ final class PrefetchTaskManager {
     
     private var executingTasks: [PrefetchPage: PrefetchTask] = [:]
     
-    private var isExecutingTasks = false
+    private var allTasksCompletion: ( (PrefetchTaskManager) -> Void )?
+    
+    private(set) var isExecutingTasks = false {
+        
+        didSet {
+            
+            if isExecutingTasks { return }
+            
+            allTasksCompletion?(self)
+            
+        }
+        
+    }
     
     var isDebugging = false
     
@@ -34,13 +46,17 @@ extension PrefetchTaskManager {
 
 extension PrefetchTaskManager {
     
-    func executeAllTasks() {
+    func executeAllTasks(
+        completion: ( (PrefetchTaskManager) -> Void )? = nil
+    ) {
         
         if isExecutingTasks { preconditionFailure("There are still tasks executing.") }
         
         isExecutingTasks = true
         
         executingTasks = _tasks
+        
+        allTasksCompletion = completion
         
         if isDebugging {
             

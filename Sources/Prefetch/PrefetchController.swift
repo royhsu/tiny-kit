@@ -12,28 +12,21 @@ public final class PrefetchController<Element, Cursor> {
     
     private let paginationController: PaginationController<Element, Cursor>
     
-    private let fetchTimer: PrefetchBatchTimer
+    private let prefetchTimer: PrefetchBatchTimer
+    
+    private let prefetchTaskManager = PrefetchTaskManager()
     
     private lazy var prefetchIndexManager: PrefetchIndexManager = {
         
         return PrefetchIndexManager(
-            batchTimer: fetchTimer,
+            batchTimer: prefetchTimer,
             batchTask: { [weak self] _, prefetchIndices in
 
                 print("Batch task for indices.", prefetchIndices)
                 
-                #warning(
-                """
-                FIXME: the current implementation will ignore the next page prefetching if the previous page is fetching due to the queued indices will all be wiped out after this batch task executed.
-                
-                Possible strategy:
-                1. Determine wether to fetch the previous / next page, and maybe even fetch both of them.
-                2. Queue and prioritize the fetch request. Priority: previous > next page.
-                3. Perform all queued fetch requests in order.
-                """
-                )
-                
                 guard let self = self else { return }
+                
+                if self.prefetchTaskManager.isExecutingTasks { return }
                 
                 guard let prefetchIndex = prefetchIndices.first else {
                     
@@ -45,19 +38,19 @@ public final class PrefetchController<Element, Cursor> {
                     self.paginationController.isPreviousPageIndex(prefetchIndex),
                     self.paginationController.hasPreviousPage {
                     
-                    do {
+                    self.prefetchTaskManager.tasks[.previous] = { _, completion in
                     
-                        try self.paginationController.performFetchForPreviousPage()
+                        do { try self.paginationController.performFetchForPreviousPage(completion: completion) }
+                        catch {
+                            
+                            #warning("TODO: error handling.")
+                            print("\(error)")
+                            
+                            completion()
+                            
+                        }
                         
                     }
-                    catch {
-                        
-                        #warning("TODO: error handling.")
-                        print("\(error)")
-                        
-                    }
-                    
-                    return
                     
                 }
                 
@@ -65,21 +58,23 @@ public final class PrefetchController<Element, Cursor> {
                     self.paginationController.isNextPageIndex(prefetchIndex),
                     self.paginationController.hasNextPage {
                     
-                    do {
-                        
-                        try self.paginationController.performFetchForNextPage()
-                        
-                    }
-                    catch {
-                        
-                        #warning("TODO: error handling.")
-                        print("\(error)")
-                        
-                    }
+                    self.prefetchTaskManager.tasks[.next] = { _, completion in
                     
-                    return
+                        do { try self.paginationController.performFetchForNextPage(completion: completion) }
+                        catch {
+                            
+                            #warning("TODO: error handling.")
+                            print("\(error)")
+                            
+                            completion()
+                            
+                        }
+                        
+                    }
                     
                 }
+                
+                self.prefetchTaskManager.executeAllTasks()
                 
             }
         )
@@ -98,7 +93,7 @@ public final class PrefetchController<Element, Cursor> {
         S.Element == Element,
         S.Cursor == Cursor {
         
-        self.fetchTimer = fetchTimer
+        self.prefetchTimer = fetchTimer
             
         self.paginationController = PaginationController(
             fetchRequest: fetchRequest,

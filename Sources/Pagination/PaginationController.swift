@@ -172,7 +172,9 @@ extension PaginationController {
     
     /// Make sure to call `performFetch()` before calling this method.
     /// You can also check the `hasPreviousPage` value to determine whether to fetch the previous page.
-    public func performFetchForPreviousPage() throws {
+    public func performFetchForPreviousPage(
+        completion: ( () -> Void )? = nil
+    ) throws {
         
         guard isFetchPerformedForInitialPage else { preconditionFailure("The controller has not perform the initial fetch yet.") }
         
@@ -204,6 +206,8 @@ extension PaginationController {
         try fetchService.fetch(with: request) { [weak self] result in
             
             guard let self = self else { return }
+            
+            defer { completion?() }
             
             do {
                 
@@ -270,7 +274,9 @@ extension PaginationController {
     
     /// Make sure to call `performFetch()` before calling this method.
     /// You can also check the `hasNextPage` value to determine whether to fetch the next page.
-    public func performFetchForNextPage() throws {
+    public func performFetchForNextPage(
+        completion: ( () -> Void )? = nil
+    ) throws {
         
         guard isFetchPerformedForInitialPage else { preconditionFailure("The controller has not perform the initial fetch yet.") }
         
@@ -302,6 +308,8 @@ extension PaginationController {
         try fetchService.fetch(with: request) { [weak self] result in
             
             guard let self = self else { return }
+            
+            defer { completion?() }
             
             do {
                 

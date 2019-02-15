@@ -485,8 +485,8 @@
 			isa = PBXGroup;
 			children = (
 				B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */,
-				B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */,
 				B0CF896F22164B6A0020ECD1 /* PrefetchTaskManagerTests.swift */,
+				B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */,
 				B0CF89602215514B0020ECD1 /* Timer.swift */,
 			);
 			path = Prefetch;

@@ -22,6 +22,8 @@ final class PrefetchTaskManagerTests: XCTestCase {
         
         let prefetchForNextPage = expectation(description: "Perform prefetch for the next page.")
         
+        let allTasks = expectation(description: "Execute all the tasks.")
+        
         let manager = PrefetchTaskManager()
         
         manager.tasks[.next] = { manager, completion in
@@ -33,6 +35,8 @@ final class PrefetchTaskManagerTests: XCTestCase {
                 completion()
                 
             }
+            
+            XCTAssert(manager.isExecutingTasks)
             
             XCTAssertNil(
                 manager.tasks[.next]
@@ -50,6 +54,8 @@ final class PrefetchTaskManagerTests: XCTestCase {
                 
             }
             
+            XCTAssert(manager.isExecutingTasks)
+            
             XCTAssertNil(
                 manager.tasks[.previous]
             )
@@ -60,12 +66,21 @@ final class PrefetchTaskManagerTests: XCTestCase {
             
         }
         
-        manager.executeAllTasks()
+        manager.executeAllTasks { _ in
+            
+            defer { allTasks.fulfill() }
+            
+            XCTAssertFalse(manager.isExecutingTasks)
+            
+            XCTAssert(manager.tasks.isEmpty)
+            
+        }
         
         wait(
             for: [
                 prefetchForPreviousPage,
-                prefetchForNextPage
+                prefetchForNextPage,
+                allTasks
             ],
             timeout: expectationTimeout
         )
