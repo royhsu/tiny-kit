@@ -66,6 +66,10 @@ final class PrefetchTaskManagerTests: XCTestCase {
             
         }
         
+        XCTAssertNotNil(manager.tasks[.previous])
+        
+        XCTAssertNotNil(manager.tasks[.next])
+        
         manager.executeAllTasks { _ in
             
             defer { allTasks.fulfill() }

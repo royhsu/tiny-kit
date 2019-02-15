@@ -55,10 +55,9 @@ final class PrefetchIndexManager {
             
             let batchIndices = self.queue
             
-            #warning("TODO: add testing.")
             if batchIndices.isEmpty { return }
             
-            self.queue = []
+            self._indices.mutateValue { $0 = [] }
             
             self.batchTaskQueue.async {
                 
@@ -77,12 +76,21 @@ final class PrefetchIndexManager {
 
 extension PrefetchIndexManager {
     
-    #warning("TODO: remove duplicate indices from the queue.")
     var queue: [Int] {
         
         get { return _indices.value }
      
-        set { _indices.mutateValue { $0 = newValue } }
+        set {
+            
+            _indices.mutateValue { indices in
+                
+                let newIndices = newValue.filter { index in !indices.contains(index) }
+                
+                indices.append(contentsOf: newIndices)
+            
+            }
+            
+        }
         
     }
     

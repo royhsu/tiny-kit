@@ -22,7 +22,7 @@ public final class PrefetchController<Element, Cursor> {
             batchTimer: prefetchTimer,
             batchTask: { [weak self] _, prefetchIndices in
 
-//                print("Batch task for indices.", prefetchIndices)
+                print("Batch task for indices.", prefetchIndices)
                 
                 guard let self = self else { return }
                 
@@ -73,6 +73,8 @@ public final class PrefetchController<Element, Cursor> {
                     }
                     
                 }
+                
+                if self.prefetchTaskManager.tasks.isEmpty { return }
                 
                 self.prefetchTaskManager.executeAllTasks()
                 
@@ -150,20 +152,15 @@ extension PrefetchController {
 
 extension PrefetchController {
     
-    /// Setting the prefetch indices will trigger the controller to fetch the elements if they haven't been fetched.
+    public var isFetching: Bool { return paginationController.isFetching }
+    
+    /// Set the prefetch indices will trigger the controller to fetch the elements if they haven't been fetched.
+    /// Beware of some potential performance issue may happen if the caller doesn't handle queuing indices well.
     public var prefetchIndices: [Int] {
         
         get { return prefetchIndexManager.queue }
         
-        set {
-            
-            DispatchQueue.global().async {
-                
-                self.prefetchIndexManager.queue.append(contentsOf: newValue)
-                
-            }
-            
-        }
+        set { prefetchIndexManager.queue.append(contentsOf: newValue) }
         
     }
     

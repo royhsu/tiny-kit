@@ -24,10 +24,21 @@ final class PageStorageTests: XCTestCase {
         
         XCTAssertFalse(storage.hasNextPage)
         
+        let result = storage.reduce()
+        
         XCTAssertEqual(
-            storage.elementStates,
+            result.elementStates,
             []
         )
+        
+        XCTAssertEqual(
+            result.currentPagesElementStateIndices,
+            []
+        )
+        
+        XCTAssertNil(result.previousPageElementStateIndices)
+        
+        XCTAssertNil(result.nextPageElementStateIndices)
         
     }
     
@@ -48,13 +59,27 @@ final class PageStorageTests: XCTestCase {
         
         XCTAssert(storage.hasPreviousPage)
         
+        let result = storage.reduce()
+        
         XCTAssertEqual(
-            storage.elementStates,
+            result.elementStates,
             [
                 .inactive,
                 .fetched("a")
             ]
         )
+        
+        XCTAssertEqual(
+            result.previousPageElementStateIndices,
+            [ 0 ]
+        )
+        
+        XCTAssertEqual(
+            result.currentPagesElementStateIndices,
+            [ 1 ]
+        )
+        
+        XCTAssertNil(result.nextPageElementStateIndices)
         
     }
     
@@ -75,13 +100,81 @@ final class PageStorageTests: XCTestCase {
         
         XCTAssert(storage.hasNextPage)
         
+        let result = storage.reduce()
+        
         XCTAssertEqual(
-            storage.elementStates,
+            result.elementStates,
             [
                 .fetched("a"),
                 .fetching,
                 .fetching
             ]
+        )
+        
+        XCTAssertNil(result.previousPageElementStateIndices)
+        
+        XCTAssertEqual(
+            result.currentPagesElementStateIndices,
+            [ 0 ]
+        )
+
+        XCTAssertEqual(
+            result.nextPageElementStateIndices,
+            [ 1, 2 ]
+        )
+        
+    }
+    
+    func testReduce() {
+        
+        struct Cursor { }
+        
+        let currentPage = Page<String, Cursor>(elements: [ "b", "c" ] )
+        
+        let storage = PageStorage(
+            currentPages: [ currentPage ],
+            previousPage: StatefulPage(
+                state: .inactive,
+                cursor: Cursor(),
+                elementCount: 3
+            ),
+            nextPage: StatefulPage(
+                state: .fetching,
+                cursor: Cursor(),
+                elementCount: 4
+            )
+        )
+        
+        let result = storage.reduce()
+        
+        XCTAssertEqual(
+            result.elementStates,
+            [
+                .inactive,
+                .inactive,
+                .inactive,
+                .fetched("b"),
+                .fetched("c"),
+                .fetching,
+                .fetching,
+                .fetching,
+                .fetching
+            ]
+        )
+        
+        XCTAssertEqual(
+            result.previousPageElementStateIndices,
+            [ 0, 1, 2 ]
+        )
+        
+        XCTAssertEqual(
+            result.currentPagesElementStateIndices,
+            [ 3, 4 ]
+        )
+        
+        XCTAssertEqual(
+            result.nextPageElementStateIndices,
+            [ 5, 6, 7, 8 ]
         )
         
     }

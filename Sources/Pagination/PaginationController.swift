@@ -42,7 +42,7 @@ public final class PaginationController<Element, Cursor> {
         
         self.fetchService = AnyPaginationService(fetchService)
             
-        self.elementStates = storage.value.elementStates
+        self.elementStates = storage.value.reduce().elementStates
         
     }
     
@@ -50,7 +50,7 @@ public final class PaginationController<Element, Cursor> {
 
 extension PaginationController {
     
-    private final var isFetching: Bool {
+    var isFetching: Bool {
         
         let fetchingState = elementStates.first {
             
@@ -146,7 +146,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.elementStates
+                self.elementStates = self.storage.value.reduce().elementStates
                 
             }
             catch {
@@ -199,7 +199,7 @@ extension PaginationController {
         
         storage.mutateValue { $0.previousPage?.state = .fetching }
         
-        elementStates = storage.value.elementStates
+        elementStates = storage.value.reduce().elementStates
         
         let fetchLimit = request.fetchLimit
         
@@ -247,7 +247,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.elementStates
+                self.elementStates = self.storage.value.reduce().elementStates
                 
             }
             catch {
@@ -301,7 +301,7 @@ extension PaginationController {
         
         storage.mutateValue { $0.nextPage?.state = .fetching }
         
-        elementStates = storage.value.elementStates
+        elementStates = storage.value.reduce().elementStates
         
         let fetchLimit = request.fetchLimit
         
@@ -346,7 +346,7 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.elementStates
+                self.elementStates = self.storage.value.reduce().elementStates
                 
             }
             catch {

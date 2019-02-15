@@ -16,6 +16,17 @@ final class PrefetchIndexManagerTests: XCTestCase {
     
     private let expectationTimeout = 5.0
     
+    func testDefault() {
+        
+        let manager = PrefetchIndexManager(
+            batchTimer: Timer(),
+            batchTask: { manager, batchIndices in }
+        )
+        
+        XCTAssert(manager.queue.isEmpty)
+        
+    }
+    
     func testBatchTask() {
         
         let batchTask = expectation(description: "Execute the batch task.")
@@ -52,6 +63,24 @@ final class PrefetchIndexManagerTests: XCTestCase {
         wait(
             for: [ batchTask ],
             timeout: expectationTimeout
+        )
+        
+    }
+    
+    func testPreventDuplicateIndices() {
+        
+        let manager = PrefetchIndexManager(
+            batchTimer: Timer(),
+            batchTask: { manager, batchIndices in }
+        )
+        
+        manager.queue.append(0)
+        
+        manager.queue.append(0)
+        
+        XCTAssertEqual(
+            manager.queue,
+            [ 0 ]
         )
         
     }

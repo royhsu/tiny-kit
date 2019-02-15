@@ -42,7 +42,26 @@ extension PageStorage {
 
 extension PageStorage {
     
-    var elementStates: [ElementState<Element>] {
+    func reduce() -> (
+        elementStates: [ElementState<Element>],
+        currentPagesElementStateIndices: [Int],
+        previousPageElementStateIndices: [Int]?,
+        nextPageElementStateIndices: [Int]?
+    ) {
+        
+        var elementStateCount = 0
+        
+        let previousStates = parseElementStates(for: previousPage)
+        
+        var previousPageElementStateIndices: [Int]?
+            
+        if !previousStates.isEmpty {
+            
+            previousPageElementStateIndices = previousStates.indices.map { $0 + elementStateCount }
+            
+            elementStateCount += previousStates.count
+            
+        }
         
         let currentStates: [ElementState] = currentPages.reduce( [] ) { result, page in
             
@@ -50,16 +69,32 @@ extension PageStorage {
             
         }
         
-        let previousStates = parseElementStates(for: previousPage)
+        let currentPagesElementStateIndices = currentStates.indices.map { $0 + elementStateCount }
+        
+        elementStateCount += currentStates.count
         
         let nextStates = parseElementStates(for: nextPage)
         
-        return previousStates + currentStates + nextStates
+        var nextPageElementStateIndices: [Int]?
+        
+        if !nextStates.isEmpty {
+            
+            nextPageElementStateIndices = nextStates.indices.map { $0 + elementStateCount }
+            
+            elementStateCount += nextStates.count
+            
+        }
+        
+        return (
+            previousStates + currentStates + nextStates,
+            currentPagesElementStateIndices,
+            previousPageElementStateIndices,
+            nextPageElementStateIndices
+        )
         
     }
     
-    #warning("TODO: testing.")
-    func parseElementStates(for page: StatefulPage<Cursor>?) -> [ElementState<Element>] {
+    private func parseElementStates(for page: StatefulPage<Cursor>?) -> [ElementState<Element>] {
         
         guard let page = page else { return [] }
             

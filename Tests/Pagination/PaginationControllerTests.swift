@@ -28,6 +28,8 @@ final class PaginationControllerTests: XCTestCase {
         
         XCTAssert(controller.elementStates.isEmpty)
         
+        XCTAssertFalse(controller.isFetching)
+        
         XCTAssertFalse(controller.hasPreviousPage)
         
         XCTAssertFalse(controller.hasNextPage)
@@ -140,6 +142,8 @@ final class PaginationControllerTests: XCTestCase {
                     
                     defer { middlePageFetching.fulfill() }
                     
+                    XCTAssert(controller.isFetching)
+                    
                     XCTAssertEqual(
                         elementStates,
                         [
@@ -153,6 +157,8 @@ final class PaginationControllerTests: XCTestCase {
                 case .waitForFetchedMiddlePage:
                     
                     defer { middlePageFetched.fulfill() }
+                    
+                    XCTAssertFalse(controller.isFetching)
                     
                     XCTAssert(controller.hasPreviousPage)
                     
@@ -177,6 +183,8 @@ final class PaginationControllerTests: XCTestCase {
 
                     defer { firstPageFetching.fulfill() }
 
+                    XCTAssert(controller.isFetching)
+                    
                     XCTAssertEqual(
                         elementStates,
                         [
@@ -193,6 +201,8 @@ final class PaginationControllerTests: XCTestCase {
                 case .waitForFetchedFirstPage:
 
                     defer { firstPageFetched.fulfill() }
+                    
+                    XCTAssertFalse(controller.isFetching)
                     
                     XCTAssertFalse(controller.hasPreviousPage)
 
@@ -214,6 +224,8 @@ final class PaginationControllerTests: XCTestCase {
 
                     defer { lastPageFetching.fulfill() }
                     
+                    XCTAssert(controller.isFetching)
+                    
                     XCTAssertEqual(
                         elementStates,
                         [
@@ -229,6 +241,8 @@ final class PaginationControllerTests: XCTestCase {
                 case .waitForFetchedLastPage:
 
                     defer { lastPageFetched.fulfill() }
+                    
+                    XCTAssertFalse(controller.isFetching)
                     
                     XCTAssertFalse(controller.hasNextPage)
                     

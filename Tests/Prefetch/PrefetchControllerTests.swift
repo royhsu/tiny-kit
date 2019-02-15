@@ -29,6 +29,8 @@ final class PrefetchControllerTests: XCTestCase {
         
         XCTAssert(controller.elementStates.isEmpty)
         
+        XCTAssertFalse(controller.isFetching)
+        
     }
     
     func testFetchAllElementsByPrefetching() throws {
@@ -90,6 +92,8 @@ final class PrefetchControllerTests: XCTestCase {
 
                 defer { middlePageFetching.fulfill() }
 
+                XCTAssert(controller.isFetching)
+                
                 XCTAssertEqual(
                     controller.elementStates,
                     [
@@ -98,13 +102,15 @@ final class PrefetchControllerTests: XCTestCase {
                     ]
                     
                 )
-
+        
                 currentStep = .waitForFetchedMiddlePage
 
             case .waitForFetchedMiddlePage:
 
                 defer { middlePageFetched.fulfill() }
 
+                XCTAssertFalse(controller.isFetching)
+                
                 XCTAssertEqual(
                     controller.elementStates,
                     [
@@ -138,6 +144,8 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 defer { firstPageFetching.fulfill() }
                 
+                XCTAssert(controller.isFetching)
+                
                 XCTAssertEqual(
                     controller.elementStates,
                     [
@@ -154,6 +162,8 @@ final class PrefetchControllerTests: XCTestCase {
             case .waitForFetchedFirstPage:
                 
                 defer { firstPageFetched.fulfill() }
+                
+                XCTAssertFalse(controller.isFetching)
                 
                 XCTAssertEqual(
                     controller.elementStates,
@@ -187,6 +197,8 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 defer { lastPageFetching.fulfill() }
                 
+                XCTAssert(controller.isFetching)
+                
                 XCTAssertEqual(
                     controller.elementStates,
                     [
@@ -203,6 +215,8 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 defer { lastPageFetched.fulfill() }
 
+                XCTAssertFalse(controller.isFetching)
+                
                 XCTAssertEqual(
                     controller.elementStates,
                     [

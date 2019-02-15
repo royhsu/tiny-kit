@@ -40,7 +40,7 @@ extension PrefetchTaskManager {
     
     var tasks: [PrefetchPage: PrefetchTask] {
         
-        get { return executingTasks }
+        get { return isExecutingTasks ? executingTasks : _tasks }
         
         set { _tasks = _tasks.merging(newValue) { (old, new) in new } }
         
