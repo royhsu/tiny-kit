@@ -78,6 +78,10 @@
 		B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
 		B0CF8963221551C70020ECD1 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89602215514B0020ECD1 /* Timer.swift */; };
 		B0CF8965221568990020ECD1 /* DefaultPrefetchBatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */; };
+		B0CF897122164B800020ECD1 /* PrefetchTaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF896F22164B6A0020ECD1 /* PrefetchTaskManagerTests.swift */; };
+		B0CF897322164E160020ECD1 /* PretchTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF897222164E160020ECD1 /* PretchTaskManager.swift */; };
+		B0CF8975221655B10020ECD1 /* PrefetchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8974221655B10020ECD1 /* PrefetchPage.swift */; };
+		B0CF8977221655C80020ECD1 /* PrefetchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8976221655C80020ECD1 /* PrefetchTask.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -188,6 +192,10 @@
 		B0CF895A22153A610020ECD1 /* PrefetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchController.swift; sourceTree = "<group>"; };
 		B0CF89602215514B0020ECD1 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPrefetchBatchTimer.swift; sourceTree = "<group>"; };
+		B0CF896F22164B6A0020ECD1 /* PrefetchTaskManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchTaskManagerTests.swift; sourceTree = "<group>"; };
+		B0CF897222164E160020ECD1 /* PretchTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretchTaskManager.swift; sourceTree = "<group>"; };
+		B0CF8974221655B10020ECD1 /* PrefetchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchPage.swift; sourceTree = "<group>"; };
+		B0CF8976221655C80020ECD1 /* PrefetchTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchTask.swift; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ViewCollection.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -478,6 +486,7 @@
 			children = (
 				B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */,
 				B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */,
+				B0CF896F22164B6A0020ECD1 /* PrefetchTaskManagerTests.swift */,
 				B0CF89602215514B0020ECD1 /* Timer.swift */,
 			);
 			path = Prefetch;
@@ -487,6 +496,9 @@
 			isa = PBXGroup;
 			children = (
 				B0CF895A22153A610020ECD1 /* PrefetchController.swift */,
+				B0CF897222164E160020ECD1 /* PretchTaskManager.swift */,
+				B0CF8974221655B10020ECD1 /* PrefetchPage.swift */,
+				B0CF8976221655C80020ECD1 /* PrefetchTask.swift */,
 				B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */,
 				B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */,
 				B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */,
@@ -696,6 +708,7 @@
 				B062C5AF2212C3F2001807A6 /* ElementState.swift in Sources */,
 				B0E23675215727F300FBE7B3 /* UICollectionView+Register.swift in Sources */,
 				B0BE7DED21C2141100D51884 /* ListViewLayout.swift in Sources */,
+				B0CF8975221655B10020ECD1 /* PrefetchPage.swift in Sources */,
 				B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */,
 				B0C8C35C21C1F2F700DED5BF /* ViewRepresentation.swift in Sources */,
 				B03394F321C3692800CB1FA9 /* UITableViewBridge.swift in Sources */,
@@ -706,6 +719,7 @@
 				B0F80A18214F5A2E0052ACA3 /* TableViewCell.swift in Sources */,
 				B03394E921C3655600CB1FA9 /* CollectionViewController.swift in Sources */,
 				B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */,
+				B0CF897322164E160020ECD1 /* PretchTaskManager.swift in Sources */,
 				B0C8C35521C1227F00DED5BF /* ModelError.swift in Sources */,
 				B0C8C34C21C0F71D00DED5BF /* Model.swift in Sources */,
 				B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */,
@@ -717,6 +731,7 @@
 				B0F80A31214FE6920052ACA3 /* Navigation.swift in Sources */,
 				B0F7E1A92157386F000F97FE /* UIScrollView+SafeArea.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
+				B0CF8977221655C80020ECD1 /* PrefetchTask.swift in Sources */,
 				B0C8C35E21C1F3F500DED5BF /* ViewRepresentable.swift in Sources */,
 				B03394E521C3640E00CB1FA9 /* ViewCollection.swift in Sources */,
 				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
@@ -744,6 +759,7 @@
 				B01D21FD214B9CEB0078E946 /* BodyLabel.swift in Sources */,
 				B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */,
 				B01D21FF214B9D320078E946 /* Post.swift in Sources */,
+				B0CF897122164B800020ECD1 /* PrefetchTaskManagerTests.swift in Sources */,
 				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
 				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
 				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
