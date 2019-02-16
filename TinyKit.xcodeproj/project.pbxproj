@@ -82,6 +82,7 @@
 		B0CF897322164E160020ECD1 /* PretchTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF897222164E160020ECD1 /* PretchTaskManager.swift */; };
 		B0CF8975221655B10020ECD1 /* PrefetchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8974221655B10020ECD1 /* PrefetchPage.swift */; };
 		B0CF8977221655C80020ECD1 /* PrefetchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8976221655C80020ECD1 /* PrefetchTask.swift */; };
+		B0CF89892216AF010020ECD1 /* PaginationController+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89882216AF010020ECD1 /* PaginationController+Cache.swift */; };
 		B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */; };
 		B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */; };
 		B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */; };
@@ -196,6 +197,7 @@
 		B0CF897222164E160020ECD1 /* PretchTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretchTaskManager.swift; sourceTree = "<group>"; };
 		B0CF8974221655B10020ECD1 /* PrefetchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchPage.swift; sourceTree = "<group>"; };
 		B0CF8976221655C80020ECD1 /* PrefetchTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchTask.swift; sourceTree = "<group>"; };
+		B0CF89882216AF010020ECD1 /* PaginationController+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationController+Cache.swift"; sourceTree = "<group>"; };
 		B0DE5F152159230F00F91CA1 /* Array+SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionCollection.swift"; sourceTree = "<group>"; };
 		B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ViewCollection.swift"; sourceTree = "<group>"; };
 		B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchableCollectViewLayout.swift; sourceTree = "<group>"; };
@@ -426,14 +428,15 @@
 			isa = PBXGroup;
 			children = (
 				B062C5A22212C3F2001807A6 /* PaginationController.swift */,
-				B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */,
+				B0CF89882216AF010020ECD1 /* PaginationController+Cache.swift */,
 				B062C5A82212C3F2001807A6 /* PaginationService.swift */,
 				B062C5A52212C3F2001807A6 /* AnyPaginationService.swift */,
 				B062C5A42212C3F2001807A6 /* FetchRequest.swift */,
+				B0CF89492213B9020020ECD1 /* PageStorage.swift */,
 				B054B1762212D1F8007AB789 /* Page.swift */,
 				B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */,
-				B0CF89492213B9020020ECD1 /* PageStorage.swift */,
 				B062C5A72212C3F2001807A6 /* ElementState.swift */,
+				B062C5A62212C3F2001807A6 /* CursorRepresentable.swift */,
 			);
 			path = Pagination;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 			files = (
 				B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */,
 				B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */,
+				B0CF89892216AF010020ECD1 /* PaginationController+Cache.swift in Sources */,
 				B03394F121C3666D00CB1FA9 /* CollectionViewLayout.swift in Sources */,
 				B0E23671215723E900FBE7B3 /* CollectionViewBridge.swift in Sources */,
 				B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */,

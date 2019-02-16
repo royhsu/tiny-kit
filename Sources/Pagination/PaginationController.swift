@@ -20,12 +20,9 @@ public final class PaginationController<Element, Cursor> {
     
     var isDebugging = false
     
-    /// A cache for certain value in the storage.
-    public private(set) var elementStates: [ElementState<Element>] {
-        
-        didSet { elementStatesDidChange?(self) }
-        
-    }
+    private var cache: Cache
+    
+    public var elementStates: [ElementState<Element>] { return cache.elementStates }
     
     public var elementStatesDidChange: ( (PaginationController) -> Void )?
     
@@ -41,26 +38,8 @@ public final class PaginationController<Element, Cursor> {
         self.fetchRequest = fetchRequest
         
         self.fetchService = AnyPaginationService(fetchService)
-            
-        self.elementStates = storage.value.reduce().elementStates
         
-    }
-    
-}
-
-extension PaginationController {
-    
-    var isFetching: Bool {
-        
-        let fetchingState = elementStates.first {
-            
-            if case .fetching = $0 { return true }
-            
-            return false
-            
-        }
-        
-        return fetchingState != nil
+        self.cache = Cache(storage: storage.value)
         
     }
     
@@ -88,10 +67,12 @@ extension PaginationController {
 
         let fetchLimit = fetchRequest.fetchLimit
         
-        elementStates = Array(
+        cache.elementStates = Array(
             repeating: .fetching,
             count: fetchLimit
         )
+        
+        elementStatesDidChange?(self)
         
         try fetchService.fetch(with: fetchRequest) { [weak self] result in
             
@@ -146,7 +127,9 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.reduce().elementStates
+                self.cache = Cache(storage: self.storage.value)
+                
+                self.elementStatesDidChange?(self)
                 
             }
             catch {
@@ -162,7 +145,9 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = [ .error ]
+                self.cache.elementStates = [ .error ]
+                
+                self.elementStatesDidChange?(self)
                 
             }
             
@@ -199,7 +184,9 @@ extension PaginationController {
         
         storage.mutateValue { $0.previousPage?.state = .fetching }
         
-        elementStates = storage.value.reduce().elementStates
+        cache = Cache(storage: storage.value)
+        
+        elementStatesDidChange?(self)
         
         let fetchLimit = request.fetchLimit
         
@@ -247,7 +234,9 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.reduce().elementStates
+                self.cache = Cache(storage: self.storage.value)
+                
+                self.elementStatesDidChange?(self)
                 
             }
             catch {
@@ -264,7 +253,9 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.elementStates = [ .error ]
+                self.cache.elementStates = [ .error ]
+                
+                self.elementStatesDidChange?(self)
                 
             }
             
@@ -301,7 +292,9 @@ extension PaginationController {
         
         storage.mutateValue { $0.nextPage?.state = .fetching }
         
-        elementStates = storage.value.reduce().elementStates
+        cache = Cache(storage: storage.value)
+        
+        elementStatesDidChange?(self)
         
         let fetchLimit = request.fetchLimit
         
@@ -346,7 +339,9 @@ extension PaginationController {
                     
                 }
                 
-                self.elementStates = self.storage.value.reduce().elementStates
+                self.cache = Cache(storage: self.storage.value)
+                
+                self.elementStatesDidChange?(self)
                 
             }
             catch {
@@ -363,7 +358,9 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.elementStates = [ .error ]
+                self.cache.elementStates = [ .error ]
+                
+                self.elementStatesDidChange?(self)
                 
             }
             
@@ -376,40 +373,26 @@ extension PaginationController {
 extension PaginationController {
     
     #warning("TODO: add testing.")
-    func isPreviousPageIndex(_ index: Int) -> Bool {
-        
-        let states = elementStates
-        
-        guard index < states.count else { return false }
-        
-        let state = states[index]
-        
-        switch state {
-            
-        case .inactive, .fetching, .error: return hasPreviousPage
-        
-        case .fetched: return false
-            
-        }
-        
-    }
+    func isPreviousPageIndex(_ index: Int) -> Bool { return cache.previousPageElementStateIndices?.contains(index) ?? false }
     
     #warning("TODO: add testing.")
-    func isNextPageIndex(_ index: Int) -> Bool {
+    func isNextPageIndex(_ index: Int) -> Bool { return cache.nextPageElementStateIndices?.contains(index) ?? false }
+    
+}
+
+extension PaginationController {
+    
+    public var isFetching: Bool {
         
-        let states = elementStates
-        
-        guard index < states.count else { return false }
-        
-        let state = states[index]
-        
-        switch state {
+        let fetchingState = elementStates.first {
             
-        case .inactive, .fetching, .error: return hasNextPage
+            if case .fetching = $0 { return true }
             
-        case .fetched: return false
+            return false
             
         }
+        
+        return fetchingState != nil
         
     }
     

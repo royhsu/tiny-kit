@@ -22,61 +22,71 @@ public final class PrefetchController<Element, Cursor> {
             batchTimer: prefetchTimer,
             batchTask: { [weak self] _, prefetchIndices in
 
-                print("Batch task for indices.", prefetchIndices)
-                
                 guard let self = self else { return }
                 
                 if self.prefetchTaskManager.isExecutingTasks { return }
                 
-                guard let prefetchIndex = prefetchIndices.first else {
+                let prefetchIndices = [
+                    prefetchIndices.min(),
+                    prefetchIndices.max()
+                ]
+                .compactMap { $0 }
+                
+                print("Batch task for indices.", prefetchIndices)
+                
+                if prefetchIndices.isEmpty {
                     
                     preconditionFailure("There must contain a least one prefetch-able index.")
                     
                 }
                 
-                if
-                    self.paginationController.isPreviousPageIndex(prefetchIndex),
-                    self.paginationController.hasPreviousPage {
-                    
-                    self.prefetchTaskManager.tasks[.previous] = { _, completion in
-                    
-                        do { try self.paginationController.performFetchForPreviousPage(completion: completion) }
-                        catch {
-                            
-                            #warning("TODO: error handling.")
-                            print("\(error)")
-                            
-                            completion()
+                for prefetchIndex in prefetchIndices {
+                
+                    if
+                        self.paginationController.isPreviousPageIndex(prefetchIndex),
+                        self.paginationController.hasPreviousPage {
+                        
+                        self.prefetchTaskManager.tasks[.previous] = { _, completion in
+                        
+                            do { try self.paginationController.performFetchForPreviousPage(completion: completion) }
+                            catch {
+                                
+                                #warning("TODO: error handling.")
+                                print("\(error)")
+                                
+                                completion()
+                                
+                            }
                             
                         }
                         
                     }
                     
-                }
-                
-                if
-                    self.paginationController.isNextPageIndex(prefetchIndex),
-                    self.paginationController.hasNextPage {
-                    
-                    self.prefetchTaskManager.tasks[.next] = { _, completion in
-                    
-                        do { try self.paginationController.performFetchForNextPage(completion: completion) }
-                        catch {
-                            
-                            #warning("TODO: error handling.")
-                            print("\(error)")
-                            
-                            completion()
+                    if
+                        self.paginationController.isNextPageIndex(prefetchIndex),
+                        self.paginationController.hasNextPage {
+                        
+                        self.prefetchTaskManager.tasks[.next] = { _, completion in
+                        
+                            do { try self.paginationController.performFetchForNextPage(completion: completion) }
+                            catch {
+                                
+                                #warning("TODO: error handling.")
+                                print("\(error)")
+                                
+                                completion()
+                                
+                            }
                             
                         }
                         
                     }
                     
+                    if self.prefetchTaskManager.tasks.isEmpty { return }
+                    
+                    self.prefetchTaskManager.executeAllTasks()
+                    
                 }
-                
-                if self.prefetchTaskManager.tasks.isEmpty { return }
-                
-                self.prefetchTaskManager.executeAllTasks()
                 
             }
         )
