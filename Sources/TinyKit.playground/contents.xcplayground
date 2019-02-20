@@ -3,5 +3,6 @@
     <pages>
         <page name='Prefetch'/>
         <page name='Pagination'/>
+        <page name='Form'/>
     </pages>
 </playground>
