@@ -13,7 +13,7 @@
 #warning("TODO: missing test.")
 public final class CarouselViewLayout: LegacyCollectionViewLayout {
 
-    private final class Cell: CollectionViewCell, ReusableCell { }
+    private final class Cell: CollectionViewCell, Reusable { }
 
     private final let bridge = CollectionViewBridge()
 

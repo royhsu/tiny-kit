@@ -17,7 +17,7 @@ public extension UITableView {
     -> Cell
     where
         Cell: UITableViewCell,
-        Cell: ReusableCell {
+        Cell: Reusable {
 
         guard
             let cell = dequeueReusableCell(

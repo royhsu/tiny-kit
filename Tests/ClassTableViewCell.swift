@@ -12,6 +12,6 @@ import TinyKit
 
 internal final class ClassTableViewCell: UITableViewCell { }
 
-// MARK: - ReusableCell
+// MARK: - Reusable
 
-extension ClassTableViewCell: ReusableCell { }
+extension ClassTableViewCell: Reusable { }

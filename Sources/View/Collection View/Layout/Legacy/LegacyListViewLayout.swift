@@ -10,7 +10,7 @@
 
 public final class LegacyListViewLayout: LegacyCollectionViewLayout {
 
-    private final class Cell: TableViewCell, ReusableCell { }
+    private final class Cell: TableViewCell, Reusable { }
 
     private final let bridge = LegacyTableViewBridge()
 

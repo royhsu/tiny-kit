@@ -17,7 +17,7 @@ public extension UICollectionView {
     -> Cell
     where
         Cell: UICollectionViewCell,
-        Cell: ReusableCell {
+        Cell: Reusable {
 
         guard
             let cell = dequeueReusableCell(

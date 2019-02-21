@@ -1,5 +1,5 @@
 //
-//  ReusableCell+NibCell.swift
+//  Reusable+NibCell.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/8/18.
@@ -8,7 +8,7 @@
 
 // MARK: - NibCell
 
-extension ReusableCell where Self: NibCell {
+extension NibCell where Self: Reusable {
 
     public static var nibName: String { return reuseIdentifier }
 

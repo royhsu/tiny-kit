@@ -12,7 +12,7 @@ internal final class ListView: UIView, CollectionView {
     
     #if canImport(UIKit)
     
-    private final class Cell: UITableViewCell, ReusableCell { }
+    private final class Cell: UITableViewCell, Reusable { }
     
     #endif
     

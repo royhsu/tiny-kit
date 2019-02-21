@@ -13,7 +13,7 @@ public extension UITableView {
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where
         Cell: UITableViewCell,
-        Cell: ReusableCell {
+        Cell: Reusable {
 
         register(
             cellType,
@@ -28,7 +28,7 @@ public extension UITableView {
     )
     where
         Cell: UITableViewCell,
-        Cell: ReusableCell,
+        Cell: Reusable,
         Cell: NibCell {
 
         let nib = UINib(

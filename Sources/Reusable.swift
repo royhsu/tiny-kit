@@ -1,23 +1,22 @@
 //
-//  ReusableCell.swift
+//  Reusable.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/8/18.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - ReusableCell
+// MARK: - Reusable
 
-#warning("TODO: rename to Reusable.")
-public protocol ReusableCell {
+public protocol Reusable {
 
     static var reuseIdentifier: String { get }
 
 }
 
-// MARK: - ReusableCell (Default Implementation)
+// MARK: - Reusable (Default Implementation)
 
-public extension ReusableCell {
+public extension Reusable {
 
     public static var reuseIdentifier: String { return String(describing: self) }
 

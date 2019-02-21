@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9022146489E00B19F6A /* ReusableCell.swift */; };
+		B009B9032146489F00B19F6A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9022146489E00B19F6A /* Reusable.swift */; };
 		B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9062146491400B19F6A /* ClassTableViewCell.swift */; };
 		B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B904214648F500B19F6A /* ReusableCellTests.swift */; };
 		B009B90C21464AF500B19F6A /* NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90B21464AF400B19F6A /* NibCell.swift */; };
@@ -117,7 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B009B9022146489E00B19F6A /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
+		B009B9022146489E00B19F6A /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B009B904214648F500B19F6A /* ReusableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellTests.swift; sourceTree = "<group>"; };
 		B009B9062146491400B19F6A /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		B009B90B21464AF400B19F6A /* NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCell.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 				B009B9012146449200B19F6A /* iOS */,
 				B0F80A2F214FE6750052ACA3 /* Navigation */,
 				B009B90B21464AF400B19F6A /* NibCell.swift */,
-				B009B9022146489E00B19F6A /* ReusableCell.swift */,
+				B009B9022146489E00B19F6A /* Reusable.swift */,
 				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
 				B0652DB72148B118009F8757 /* TinyKit.playground */,
 			);
@@ -684,7 +684,7 @@
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
 				B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */,
-				B009B9032146489F00B19F6A /* ReusableCell.swift in Sources */,
+				B009B9032146489F00B19F6A /* Reusable.swift in Sources */,
 				B0836F4621FD7224004D68F2 /* ViewController+Initializable.swift in Sources */,
 				B062C5AE2212C3F2001807A6 /* CursorRepresentable.swift in Sources */,
 				B03394F521C369CC00CB1FA9 /* ListView.swift in Sources */,

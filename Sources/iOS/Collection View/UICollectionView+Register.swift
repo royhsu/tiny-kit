@@ -13,7 +13,7 @@ public extension UICollectionView {
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where
         Cell: UICollectionViewCell,
-        Cell: ReusableCell {
+        Cell: Reusable {
 
         register(
             cellType,
@@ -28,7 +28,7 @@ public extension UICollectionView {
     )
     where
         Cell: UICollectionViewCell,
-        Cell: ReusableCell,
+        Cell: Reusable,
         Cell: NibCell {
 
         let nib = UINib(

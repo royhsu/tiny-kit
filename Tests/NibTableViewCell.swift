@@ -12,10 +12,10 @@ import TinyKit
 
 internal final class NibTableViewCell: UITableViewCell { }
 
-// MARK: - ReusableCell
+// MARK: - Reusable
 
-extension NibTableViewCell: ReusableCell {  }
+extension NibTableViewCell: Reusable {  }
 
-// MARK: - ReusableCell
+// MARK: - Reusable
 
 extension NibTableViewCell: NibCell { }
