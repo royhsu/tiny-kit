@@ -8,8 +8,6 @@
 
 // MARK: - UINib
 
-import UIKit
-
 public extension UIView {
 
     /// A convenience method to load a view from the corresponding xib file.

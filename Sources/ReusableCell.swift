@@ -8,13 +8,14 @@
 
 // MARK: - ReusableCell
 
+#warning("TODO: rename to Reusable.")
 public protocol ReusableCell {
 
     static var reuseIdentifier: String { get }
 
 }
 
-// MARK: - Default Implementation
+// MARK: - ReusableCell (Default Implementation)
 
 public extension ReusableCell {
 

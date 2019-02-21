@@ -8,8 +8,6 @@
 
 // MARK: - Register
 
-import UIKit
-
 public extension UICollectionView {
 
     public final func registerCell<Cell>(_ cellType: Cell.Type)

@@ -7,6 +7,7 @@
 //
 
 @import TinyCore;
+@import TinyStorage;
 @import TinyValidation;
 @import UIKit;
 

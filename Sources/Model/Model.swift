@@ -8,21 +8,21 @@
 
 // MARK: - Model
 
-public struct Model<Value> {
+public final class Model<Value> {
 
-    private var storage: Observable<Value>
+    private final var storage: Property<Value>
 
-    public var value: Value? {
+    public final var value: Value? {
 
         get { return storage.value }
 
-        set { storage.value = newValue }
+        set { storage.mutateValue { $0 = newValue } }
 
     }
 
-    public var rules: [AnyValidationRule<Value>]
+    public final var rules: [AnyValidationRule<Value>]
 
-    public var isRequired: Bool
+    public final var isRequired: Bool
 
     public init(
         value: Value? = nil,
@@ -30,7 +30,7 @@ public struct Model<Value> {
         isRequired: Bool = true
     ) {
 
-        self.storage = Observable(value)
+        self.storage = Property(value: value)
 
         self.rules = rules
 
@@ -45,7 +45,7 @@ public struct Model<Value> {
 public extension Model {
 
     @discardableResult
-    public func validate() throws -> Value? {
+    public final func validate() throws -> Value? {
 
         return try Model.validateValue(
             value,
@@ -90,12 +90,13 @@ public extension Model {
 
 public extension Model {
     
-    public func observe(
+    public final func observe(
+        on queue: DispatchQueue = .main,
         resultHandler: @escaping (Result<Value?>) -> Void
     )
     -> Observation {
 
-        return storage.observe { change in
+        return storage.observe(on: queue) { change in
             
             let currentValue = change.currentValue
             
@@ -129,42 +130,45 @@ public extension Model {
 
     }
     
-    public func bind<Target: AnyObject, U>(
+    public final func bind<Target: AnyObject, U>(
         transform: @escaping (Value?) -> U,
+        on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, U>
     ) {
         
         storage.bind(
+            on: queue,
             transform: transform,
-            to: target,
-            keyPath: keyPath
+            to: (target, keyPath)
         )
         
     }
     
-    public func bind<Target: AnyObject, U>(
+    public final func bind<Target: AnyObject, U>(
         transform: @escaping (Value?) -> U?,
+        on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, U?>
     ) {
         
         storage.bind(
+            on: queue,
             transform: transform,
-            to: target,
-            keyPath: keyPath
+            to: (target, keyPath)
         )
         
     }
     
-    public func bind<Target: AnyObject>(
+    public final func bind<Target: AnyObject>(
+        on queue: DispatchQueue = .main,
         to target: Target,
         keyPath: ReferenceWritableKeyPath<Target, Value?>
     ) {
         
         storage.bind(
-            to: target,
-            keyPath: keyPath
+            on: queue,
+            to: (target, keyPath)
         )
         
     }

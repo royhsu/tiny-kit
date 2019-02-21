@@ -8,7 +8,6 @@
 
 // MARK: - ClassTableViewCell
 
-import UIKit
 import TinyKit
 
 internal final class ClassTableViewCell: UITableViewCell { }

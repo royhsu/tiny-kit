@@ -8,8 +8,9 @@
 
 // MARK: - ReusableCellTests
 
-import UIKit
 import XCTest
+
+@testable import TinyKit
 
 internal final class ReusableCellTests: XCTestCase {
 

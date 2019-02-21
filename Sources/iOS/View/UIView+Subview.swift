@@ -42,11 +42,13 @@ public extension UIView {
     }
 
     /// A convenient method to add subview and pin its edges to the parent view.
+    @discardableResult
     public final func wrapSubview(
         _ view: UIView,
         within guideKeyPath: KeyPath<UIView, UILayoutGuide>? = nil,
         constraintBuilder: ( (EdgeConstraints) -> Void )? = nil
-    ) {
+    )
+    -> EdgeConstraints {
 
         view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -85,9 +87,9 @@ public extension UIView {
 
         }
 
-        let topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
+        let topConstraint = view.topAnchor.constraint(equalTo: topAnchor)
 
-        let leadingConstraint = leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let leadingConstraint = view.leadingAnchor.constraint(equalTo: leadingAnchor)
 
         let bottomConstraint = bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
@@ -97,14 +99,14 @@ public extension UIView {
 
         trailingConstraint.priority = UILayoutPriority(900.0)
 
-        constraintBuilder?(
-            EdgeConstraints(
-                top: topConstraint,
-                leading: leadingConstraint,
-                bottom: bottomConstraint,
-                trailing: trailingConstraint
-            )
+        let contraints = EdgeConstraints(
+            top: topConstraint,
+            leading: leadingConstraint,
+            bottom: bottomConstraint,
+            trailing: trailingConstraint
         )
+        
+        constraintBuilder?(contraints)
 
         NSLayoutConstraint.activate(
             [
@@ -114,6 +116,8 @@ public extension UIView {
                 trailingConstraint
             ]
         )
+        
+        return contraints
 
     }
 
