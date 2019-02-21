@@ -11,65 +11,65 @@
 import TinyKit
 
 /// To demonstrate how to make the width of view match its content with carousel layout.
-public final class CategoryViewController: ViewController {
-
-    private let base = CollectionViewController()
-
-    public final override func viewDidLoad() {
-
-        super.viewDidLoad()
-
-        view.backgroundColor = .white
-
-        let categories = [
-            "Clothing",
-            "Shoes",
-            "Accessories",
-            "Watches",
-            "Jewelry",
-            "HandBag",
-            "Wallets"
-        ]
-        .map { category -> (view: View, size: CGSize) in
-
-            let label = UILabel()
-
-            label.backgroundColor = .orange
-
-            label.textAlignment = .center
-
-            label.font = .preferredFont(forTextStyle: .title1)
-
-            label.text = category
-
-            let size = label.sizeThatFits(label.frame.size)
-
-            return (label, size)
-
-        }
-
-        base.collectionView.sections = [ categories.map { $0.view } ]
-
-        base.collectionView.applyLayout(CarouselViewLayout.self)
-
-        let layout = base.collectionView.layout as? CarouselViewLayout
-
-        layout?.interitemSpacing = 20.0
-
-        layout?.setWidthForItem { _, _, indexPath in
-
-            let sizes = categories.map { $0.size }
-
-            return sizes[indexPath.item].width
-
-        }
-
-        addChild(base)
-
-        view.wrapSubview(base.view)
-
-        base.didMove(toParent: self)
-
-    }
-
-}
+//public final class CategoryViewController: ViewController {
+//
+//    private let base = CollectionViewController()
+//
+//    public final override func viewDidLoad() {
+//
+//        super.viewDidLoad()
+//
+//        view.backgroundColor = .white
+//
+//        let categories = [
+//            "Clothing",
+//            "Shoes",
+//            "Accessories",
+//            "Watches",
+//            "Jewelry",
+//            "HandBag",
+//            "Wallets"
+//        ]
+//        .map { category -> (view: View, size: CGSize) in
+//
+//            let label = UILabel()
+//
+//            label.backgroundColor = .orange
+//
+//            label.textAlignment = .center
+//
+//            label.font = .preferredFont(forTextStyle: .title1)
+//
+//            label.text = category
+//
+//            let size = label.sizeThatFits(label.frame.size)
+//
+//            return (label, size)
+//
+//        }
+//
+//        base.collectionView.sections = [ categories.map { $0.view } ]
+//
+//        base.collectionView.applyLayout(CarouselViewLayout.self)
+//
+//        let layout = base.collectionView.layout as? CarouselViewLayout
+//
+//        layout?.interitemSpacing = 20.0
+//
+//        layout?.setWidthForItem { _, _, indexPath in
+//
+//            let sizes = categories.map { $0.size }
+//
+//            return sizes[indexPath.item].width
+//
+//        }
+//
+//        addChild(base)
+//
+//        view.wrapSubview(base.view)
+//
+//        base.didMove(toParent: self)
+//
+//    }
+//
+//}

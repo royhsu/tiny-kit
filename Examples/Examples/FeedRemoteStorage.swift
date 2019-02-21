@@ -8,6 +8,4 @@
 
 // MARK: - FeedRemoteStorage
 
-import TinyStorage
-
-public typealias FeedRemoteStorage = RemoteStorage<Feed>
+//public typealias FeedRemoteStorage = RemoteStorage<Feed>

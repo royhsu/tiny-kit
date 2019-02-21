@@ -8,6 +8,8 @@
 
 // MARK: - SectionCollection
 
+import TinyCore
+
 public protocol SectionCollection: Emptible {
     
     typealias NewSection = ViewCollection

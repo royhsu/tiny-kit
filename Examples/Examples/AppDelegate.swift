@@ -14,7 +14,7 @@ import UIKit
 @UIApplicationMain
 public final class AppDelegate: UIResponder {
 
-    public final let window = UIWindow(frame: UIScreen.main.bounds)
+//    public final let window = UIWindow(frame: UIScreen.main.bounds)
 
 }
 
@@ -48,11 +48,11 @@ extension AppDelegate: UIApplicationDelegate {
 //            ]
 //        )
 
-        window.rootViewController = UINavigationController(
-            rootViewController: PaletteViewController()
-        )
-
-        window.makeKeyAndVisible()
+//        window.rootViewController = UINavigationController(
+//            rootViewController: PaletteViewController()
+//        )
+//
+//        window.makeKeyAndVisible()
 
         return true
 

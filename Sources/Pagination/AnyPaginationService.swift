@@ -8,6 +8,8 @@
 
 // MARK: - AnyPaginationService
 
+import TinyCore
+
 public struct AnyPaginationService<Element, Cursor> {
     
     private let _fetch: (

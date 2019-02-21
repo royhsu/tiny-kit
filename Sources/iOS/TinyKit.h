@@ -6,10 +6,7 @@
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-@import TinyCore;
-@import TinyStorage;
-@import TinyValidation;
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 FOUNDATION_EXPORT double TinyKitVersionNumber;
 

@@ -8,6 +8,8 @@
 
 // MARK: - PrefetchIndexManager
 
+import TinyCore
+
 final class PrefetchIndexManager {
     
     private let batchTimer: PrefetchBatchTimer

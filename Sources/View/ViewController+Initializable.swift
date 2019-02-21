@@ -8,4 +8,6 @@
 
 // MARK: - Initializable
 
+import TinyCore
+
 extension ViewController: Initializable { }

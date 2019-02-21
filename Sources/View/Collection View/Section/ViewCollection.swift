@@ -8,6 +8,8 @@
 
 //  MARK: - ViewCollection
 
+import TinyCore
+
 public protocol ViewCollection: Emptible {
     
     var count: Int { get }

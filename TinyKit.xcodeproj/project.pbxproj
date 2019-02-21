@@ -98,7 +98,6 @@
 		B0EAF71B220862DD00AF815D /* UITableView+Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EAF71A220862DC00AF815D /* UITableView+Utilites.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
 		B0F51CA72158743A00B592F5 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA62158743A00B592F5 /* TinyCore.framework */; };
-		B0F51CA92158743A00B592F5 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA82158743A00B592F5 /* TinyStorage.framework */; };
 		B0F7E1A92157386F000F97FE /* UIScrollView+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7E1A82157386F000F97FE /* UIScrollView+SafeArea.swift */; };
 		B0F80A11214F55390052ACA3 /* LegacyListViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* LegacyListViewLayout.swift */; };
 		B0F80A14214F56840052ACA3 /* LegacyCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A13214F56840052ACA3 /* LegacyCollectionViewLayout.swift */; };
@@ -227,9 +226,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0C8C34A21C0F70F00DED5BF /* TinyValidation.framework in Frameworks */,
 				B0F51CA72158743A00B592F5 /* TinyCore.framework in Frameworks */,
-				B0F51CA92158743A00B592F5 /* TinyStorage.framework in Frameworks */,
+				B0C8C34A21C0F70F00DED5BF /* TinyValidation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

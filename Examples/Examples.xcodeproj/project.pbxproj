@@ -11,6 +11,12 @@
 		B01C62EB2153D384008B4026 /* FeedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EA2153D384008B4026 /* FeedError.swift */; };
 		B01C62ED2153D5D5008B4026 /* FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */; };
 		B01C62EF2153D5F3008B4026 /* Post+FeedRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */; };
+		B0217A9F221EC10C005F19EB /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0217A9E221EC10C005F19EB /* TinyCore.framework */; };
+		B0217AA0221EC10C005F19EB /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0217A9E221EC10C005F19EB /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0217AA2221EC10C005F19EB /* TinyValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0217AA1221EC10C005F19EB /* TinyValidation.framework */; };
+		B0217AA3221EC10C005F19EB /* TinyValidation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0217AA1221EC10C005F19EB /* TinyValidation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0217AA5221EC10C005F19EB /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0217AA4221EC10C005F19EB /* TinyKit.framework */; };
+		B0217AA6221EC10C005F19EB /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0217AA4221EC10C005F19EB /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B06F6E56215B876F00BBCF0F /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F6E55215B876F00BBCF0F /* NumberViewController.swift */; };
 		B0CB6165217ED02A0097CC40 /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6164217ED02A0097CC40 /* TextInputViewController.swift */; };
 		B0D62D77215FA9C100617EE5 /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62D76215FA9C100617EE5 /* EmojiViewController.swift */; };
@@ -38,9 +44,6 @@
 		B0E236312156212C00FBE7B3 /* UIAnswerItemContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E2362F2156212C00FBE7B3 /* UIAnswerItemContentView.xib */; };
 		B0E236322156212C00FBE7B3 /* UIAnswerItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E236302156212C00FBE7B3 /* UIAnswerItemContentView.swift */; };
 		B0E23636215621EF00FBE7B3 /* AnswerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E23635215621EF00FBE7B3 /* AnswerTemplate.swift */; };
-		B0F51CAB215874DC00B592F5 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CAA215874DC00B592F5 /* TinyCore.framework */; };
-		B0F51CAD215874DC00B592F5 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CAC215874DC00B592F5 /* TinyKit.framework */; };
-		B0F51CAF215874DC00B592F5 /* TinyStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CAE215874DC00B592F5 /* TinyStorage.framework */; };
 		B0F809E7214E779D0052ACA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E6214E779D0052ACA3 /* AppDelegate.swift */; };
 		B0F809E9214E779D0052ACA3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F809E8214E779D0052ACA3 /* FeedViewController.swift */; };
 		B0F809EB214E779D0052ACA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F809EA214E779D0052ACA3 /* Assets.xcassets */; };
@@ -61,11 +64,34 @@
 		B0F80A2E214FE4F00052ACA3 /* LikeButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A2D214FE4F00052ACA3 /* LikeButtonAction.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B0217AA7221EC10C005F19EB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B0217AA0221EC10C005F19EB /* TinyCore.framework in Embed Frameworks */,
+				B0217AA6221EC10C005F19EB /* TinyKit.framework in Embed Frameworks */,
+				B0217AA3221EC10C005F19EB /* TinyValidation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B01C62E82153D35C008B4026 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		B01C62EA2153D384008B4026 /* FeedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedError.swift; sourceTree = "<group>"; };
 		B01C62EC2153D5D5008B4026 /* FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepresentable.swift; sourceTree = "<group>"; };
 		B01C62EE2153D5F3008B4026 /* Post+FeedRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+FeedRepresentable.swift"; sourceTree = "<group>"; };
+		B0217A92221EC0F1005F19EB /* TinyValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0217A94221EC0FF005F19EB /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0217A97221EC0FF005F19EB /* TinyValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0217A9A221EC0FF005F19EB /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0217A9E221EC10C005F19EB /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0217AA1221EC10C005F19EB /* TinyValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0217AA4221EC10C005F19EB /* TinyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06F6E55215B876F00BBCF0F /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		B0CB6164217ED02A0097CC40 /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
 		B0D62D76215FA9C100617EE5 /* EmojiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
@@ -123,9 +149,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0F51CAB215874DC00B592F5 /* TinyCore.framework in Frameworks */,
-				B0F51CAD215874DC00B592F5 /* TinyKit.framework in Frameworks */,
-				B0F51CAF215874DC00B592F5 /* TinyStorage.framework in Frameworks */,
+				B0217A9F221EC10C005F19EB /* TinyCore.framework in Frameworks */,
+				B0217AA5221EC10C005F19EB /* TinyKit.framework in Frameworks */,
+				B0217AA2221EC10C005F19EB /* TinyValidation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +225,12 @@
 		B0F809DA214E779D0052ACA3 = {
 			isa = PBXGroup;
 			children = (
+				B0217AA4221EC10C005F19EB /* TinyKit.framework */,
+				B0217AA1221EC10C005F19EB /* TinyValidation.framework */,
+				B0217A9E221EC10C005F19EB /* TinyCore.framework */,
+				B0217A9A221EC0FF005F19EB /* TinyKit.framework */,
+				B0217A97221EC0FF005F19EB /* TinyValidation.framework */,
+				B0217A94221EC0FF005F19EB /* TinyCore.framework */,
 				B0F809E5214E779D0052ACA3 /* Examples */,
 				B0F809E4214E779D0052ACA3 /* Products */,
 				B0F809F5214E77DE0052ACA3 /* Frameworks */,
@@ -257,6 +289,7 @@
 		B0F809F5214E77DE0052ACA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0217A92221EC0F1005F19EB /* TinyValidation.framework */,
 				B0F51CAA215874DC00B592F5 /* TinyCore.framework */,
 				B0F51CAC215874DC00B592F5 /* TinyKit.framework */,
 				B0F51CAE215874DC00B592F5 /* TinyStorage.framework */,
@@ -274,6 +307,7 @@
 				B0F809DF214E779D0052ACA3 /* Sources */,
 				B0F809E0214E779D0052ACA3 /* Frameworks */,
 				B0F809E1214E779D0052ACA3 /* Resources */,
+				B0217AA7221EC10C005F19EB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

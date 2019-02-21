@@ -5,7 +5,7 @@
       location = "group:tiny-core/TinyCore.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:tiny-storage/TinyStorage.xcodeproj">
+      location = "group:tiny-validation/TinyValidation.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:TinyKit.xcodeproj">

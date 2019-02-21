@@ -8,6 +8,8 @@
 
 // MARK: - PaginationController
 
+import TinyCore
+
 public final class PaginationController<Element, Cursor> {
     
     private let fetchRequest: FetchRequest<Cursor>

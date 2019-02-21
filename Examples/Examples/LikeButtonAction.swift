@@ -8,10 +8,10 @@
 
 // MARK: - LikeButtonAction
 
-import TinyKit
+//import TinyKit
 
-public enum LikeButtonAction: Action {
-
-    case liked(LikeButtonStorage)
-
-}
+//public enum LikeButtonAction: Action {
+//
+//    case liked(LikeButtonStorage)
+//
+//}

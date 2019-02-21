@@ -8,6 +8,8 @@
 
 // MARK: - PaginationService
 
+import TinyCore
+
 public protocol PaginationService {
     
     associatedtype Element

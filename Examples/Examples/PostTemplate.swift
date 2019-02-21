@@ -10,4 +10,4 @@
 
 import TinyKit
 
-public typealias PostTemplate = ConfigurableTemplate<Post, PostTemplateConfiguration>
+//public typealias PostTemplate = ConfigurableTemplate<Post, PostTemplateConfiguration>

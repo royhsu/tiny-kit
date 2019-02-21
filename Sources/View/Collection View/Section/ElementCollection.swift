@@ -40,6 +40,8 @@ extension ElementCollection: Collection {
 
 // MARK: - Emptible
 
+import TinyCore
+
 extension ElementCollection: Emptible {
     
     public var isEmpty: Bool { return elements.isEmpty }
