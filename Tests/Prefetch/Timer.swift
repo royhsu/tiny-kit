@@ -8,12 +8,22 @@
 
 // MARK: - Timer
 
-@testable import TinyKit
-
-final class Timer: PrefetchBatchTimer {
+final class Timer {
     
-    var timeout: ( (PrefetchBatchTimer) -> Void )?
+    private var timeout: ( (Timer) -> Void )?
     
     func timeOut() { timeout?(self) }
+    
+}
+
+// MARK: - PrefetchBatchScheduler
+
+@testable import TinyKit
+
+extension Timer: PrefetchBatchScheduler {
+    
+    func scheduleTask(
+        _ task: @escaping (PrefetchBatchScheduler) -> Void
+    ) { timeout = task }
     
 }

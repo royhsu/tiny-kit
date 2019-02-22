@@ -70,9 +70,8 @@
 		B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */; };
 		B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89492213B9020020ECD1 /* PageStorage.swift */; };
 		B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */; };
-		B0CF8951221506930020ECD1 /* PrefetchIndexManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */; };
 		B0CF8954221506B80020ECD1 /* PrefetchIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */; };
-		B0CF89562215143E0020ECD1 /* PrefetchBatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */; };
+		B0CF89562215143E0020ECD1 /* PrefetchBatchScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89552215143E0020ECD1 /* PrefetchBatchScheduler.swift */; };
 		B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */; };
 		B0CF895B22153A610020ECD1 /* PrefetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF895A22153A610020ECD1 /* PrefetchController.swift */; };
 		B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5942212C348001807A6 /* MessageService.swift */; };
@@ -184,9 +183,8 @@
 		B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorageTests.swift; sourceTree = "<group>"; };
 		B0CF89492213B9020020ECD1 /* PageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorage.swift; sourceTree = "<group>"; };
 		B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPage.swift; sourceTree = "<group>"; };
-		B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchIndexManagerTests.swift; sourceTree = "<group>"; };
 		B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchIndexManager.swift; sourceTree = "<group>"; };
-		B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchBatchTimer.swift; sourceTree = "<group>"; };
+		B0CF89552215143E0020ECD1 /* PrefetchBatchScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchBatchScheduler.swift; sourceTree = "<group>"; };
 		B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchControllerTests.swift; sourceTree = "<group>"; };
 		B0CF895A22153A610020ECD1 /* PrefetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefetchController.swift; sourceTree = "<group>"; };
 		B0CF89602215514B0020ECD1 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -501,7 +499,6 @@
 			children = (
 				B0CF895722153A220020ECD1 /* PrefetchControllerTests.swift */,
 				B0CF896F22164B6A0020ECD1 /* PrefetchTaskManagerTests.swift */,
-				B0CF894E221506560020ECD1 /* PrefetchIndexManagerTests.swift */,
 				B0CF89602215514B0020ECD1 /* Timer.swift */,
 			);
 			path = Prefetch;
@@ -515,7 +512,7 @@
 				B0CF8974221655B10020ECD1 /* PrefetchPage.swift */,
 				B0CF8976221655C80020ECD1 /* PrefetchTask.swift */,
 				B0CF8953221506B80020ECD1 /* PrefetchIndexManager.swift */,
-				B0CF89552215143E0020ECD1 /* PrefetchBatchTimer.swift */,
+				B0CF89552215143E0020ECD1 /* PrefetchBatchScheduler.swift */,
 				B0CF8964221568990020ECD1 /* DefaultPrefetchBatchTimer.swift */,
 			);
 			path = Prefetch;
@@ -743,7 +740,7 @@
 				B01D21EB214B66E60078E946 /* DefaultSection.swift in Sources */,
 				B0CF8954221506B80020ECD1 /* PrefetchIndexManager.swift in Sources */,
 				B03394EB21C365B200CB1FA9 /* CollectionView.swift in Sources */,
-				B0CF89562215143E0020ECD1 /* PrefetchBatchTimer.swift in Sources */,
+				B0CF89562215143E0020ECD1 /* PrefetchBatchScheduler.swift in Sources */,
 				B0F80A31214FE6920052ACA3 /* Navigation.swift in Sources */,
 				B0F7E1A92157386F000F97FE /* UIScrollView+SafeArea.swift in Sources */,
 				B009B92121465E0F00B19F6A /* UIView+Subview.swift in Sources */,
@@ -781,7 +778,6 @@
 				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
 				B062C5B22212C45F001807A6 /* Message.swift in Sources */,
-				B0CF8951221506930020ECD1 /* PrefetchIndexManagerTests.swift in Sources */,
 				B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */,
 				B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */,
 			);

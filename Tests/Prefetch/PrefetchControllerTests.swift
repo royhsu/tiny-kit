@@ -18,8 +18,10 @@ final class PrefetchControllerTests: XCTestCase {
     
     func testDefault() {
         
+        let timer = Timer()
+        
         let controller = PrefetchController(
-            fetchTimer: Timer(),
+            fetchScheduler: timer,
             fetchService: MessageService(
                 result: .success(
                     .init(firstPageMessages: [] )
@@ -65,10 +67,10 @@ final class PrefetchControllerTests: XCTestCase {
         
         let lastPageFetched = expectation(description: "After the last page fetched.")
         
-        let fetchTimer = Timer()
+        let timer = Timer()
         
         let controller = PrefetchController(
-            fetchTimer: fetchTimer,
+            fetchScheduler: timer,
             fetchRequest: FetchRequest(
                 fetchCursor: .middle,
                 fetchLimit: 2
@@ -138,7 +140,7 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 controller.prefetchIndices = [ pretchableIndex ]
                 
-                fetchTimer.timeOut()
+                timer.timeOut()
 
             case .waitForFetchingFirstPage:
                 
@@ -191,7 +193,7 @@ final class PrefetchControllerTests: XCTestCase {
                 
                 controller.prefetchIndices = [ pretchableIndex ]
                 
-                fetchTimer.timeOut()
+                timer.timeOut()
                 
             case .waitForFetchingLastPage:
                 
@@ -232,17 +234,7 @@ final class PrefetchControllerTests: XCTestCase {
         
         try controller.performFetch()
         
-        wait(
-            for: [
-                middlePageFetching,
-                middlePageFetched,
-                firstPageFetching,
-                firstPageFetched,
-                lastPageFetching,
-                lastPageFetched
-            ],
-            timeout: expectionTimeout
-        )
+        waitForExpectations(timeout: expectionTimeout)
         
     }
     

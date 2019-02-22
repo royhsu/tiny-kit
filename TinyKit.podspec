@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'TinyKit'
-  spec.version = '0.9.0'
+  spec.version = '0.10.0'
   spec.license = 'MIT'
   spec.summary = 'TinyKit provides practical functionalities that will help us to build apps much more quickly.'
   spec.homepage = 'https://github.com/royhsu/tiny-kit'
@@ -14,6 +14,6 @@ Pod::Spec.new do |spec|
   spec.ios.source_files = 'Sources/iOS/Sources/*.swift', 'Sources/iOS/Sources/**/*.swift', 'Sources/iOS/Sources/**/**/*.swift', 'Sources/iOS/Sources/**/**/**/*.swift'
   spec.ios.deployment_target = '10.0'
   spec.swift_version = '4.2'
-  spec.dependency 'TinyCore', '0.7.0'
-  spec.dependency 'TinyValidation', '0.2.0'
+  spec.dependency 'TinyCore', '0.8.0'
+  spec.dependency 'TinyValidation', '0.3.0'
 end

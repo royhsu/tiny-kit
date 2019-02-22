@@ -8,18 +8,20 @@
 
 // MARK: - PrefetchController
 
+import TinyCore
+
 public final class PrefetchController<Element, Cursor> {
     
     private let paginationController: PaginationController<Element, Cursor>
     
-    private let prefetchTimer: PrefetchBatchTimer
+    private let prefetchScheduler: PrefetchBatchScheduler
     
     private let prefetchTaskManager = PrefetchTaskManager()
     
     private lazy var prefetchIndexManager: PrefetchIndexManager = {
         
         return PrefetchIndexManager(
-            batchTimer: prefetchTimer,
+            batchScheduler: prefetchScheduler,
             batchTask: { [weak self] _, prefetchIndices in
 
                 guard let self = self else { return }
@@ -96,7 +98,7 @@ public final class PrefetchController<Element, Cursor> {
     public var elementStatesDidChange: ( (PrefetchController) -> Void )?
     
     init<S>(
-        fetchTimer: PrefetchBatchTimer,
+        fetchScheduler: PrefetchBatchScheduler,
         fetchRequest: FetchRequest<Cursor> = FetchRequest(),
         fetchService: S
     )
@@ -105,7 +107,7 @@ public final class PrefetchController<Element, Cursor> {
         S.Element == Element,
         S.Cursor == Cursor {
         
-        self.prefetchTimer = fetchTimer
+        self.prefetchScheduler = fetchScheduler
             
         self.paginationController = PaginationController(
             fetchRequest: fetchRequest,
@@ -145,7 +147,7 @@ extension PrefetchController {
         S.Cursor == Cursor {
 
         self.init(
-            fetchTimer: DefaultPrefetchBatchTimer(),
+            fetchScheduler: DefaultPrefetchBatchTimer(),
             fetchRequest: fetchRequest,
             fetchService: fetchService
         )
@@ -170,7 +172,13 @@ extension PrefetchController {
         
         get { return prefetchIndexManager.queue }
         
-        set { prefetchIndexManager.queue.append(contentsOf: newValue) }
+        set {
+            
+            let newIndices = newValue.filter { index in !prefetchIndexManager.queue.contains(index) }
+            
+            for index in newIndices { prefetchIndexManager.dispatch(index) }
+            
+        }
         
     }
     

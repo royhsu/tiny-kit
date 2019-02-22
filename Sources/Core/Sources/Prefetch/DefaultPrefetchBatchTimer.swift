@@ -11,9 +11,9 @@
 import Foundation
 
 #warning("TODO: refactor with a better implementation and make sure not to cause memory leaks.")
-final class DefaultPrefetchBatchTimer: PrefetchBatchTimer {
+final class DefaultPrefetchBatchTimer {
     
-    var timeout: ( (PrefetchBatchTimer) -> Void )?
+    private var timeout: ( (DefaultPrefetchBatchTimer) -> Void )?
     
     private lazy var timer = Timer.scheduledTimer(
         withTimeInterval: 0.5,
@@ -30,5 +30,15 @@ final class DefaultPrefetchBatchTimer: PrefetchBatchTimer {
     init() { _ = timer }
     
     deinit { timer.invalidate() }
+    
+}
+
+// MARK: - PrefetchBatchScheduler
+
+extension DefaultPrefetchBatchTimer: PrefetchBatchScheduler {
+    
+    func scheduleTask(
+        _ task: @escaping (PrefetchBatchScheduler) -> Void
+    ) { timeout = task }
     
 }
