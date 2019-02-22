@@ -328,8 +328,6 @@
 		B01D21E3214B64140078E946 /* Section */ = {
 			isa = PBXGroup;
 			children = (
-				B01D21E4214B64270078E946 /* LegacyViewCollection.swift */,
-				B03394E621C3648A00CB1FA9 /* LegacySectionCollection.swift */,
 				B03394E421C3640E00CB1FA9 /* ViewCollection.swift */,
 				B0DE5F172159265E00F91CA1 /* Array+ViewCollection.swift */,
 				B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */,
@@ -398,17 +396,12 @@
 				B0E23670215723E900FBE7B3 /* CollectionViewBridge.swift */,
 				B0652DC2214966CC009F8757 /* _CollectionViewController.swift */,
 				B0191A8F215B75CA00A11339 /* LegacyCollectionViewController.swift */,
-			);
-			path = Legacy;
-			sourceTree = "<group>";
-		};
-		B03394EF21C3664100CB1FA9 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
 				B0F80A13214F56840052ACA3 /* LegacyCollectionViewLayout.swift */,
 				B0E23665215719D500FBE7B3 /* PrefetchableCollectViewLayout.swift */,
 				B0F80A10214F55390052ACA3 /* LegacyListViewLayout.swift */,
 				B0E23672215726DD00FBE7B3 /* CarouselViewLayout.swift */,
+				B01D21E4214B64270078E946 /* LegacyViewCollection.swift */,
+				B03394E621C3648A00CB1FA9 /* LegacySectionCollection.swift */,
 			);
 			path = Legacy;
 			sourceTree = "<group>";
@@ -480,7 +473,6 @@
 		B0BE7DEB21C213F200D51884 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				B03394EF21C3664100CB1FA9 /* Legacy */,
 				B0BE7DEC21C2141100D51884 /* ListViewLayout.swift */,
 				B03394F021C3666D00CB1FA9 /* CollectionViewLayout.swift */,
 			);
