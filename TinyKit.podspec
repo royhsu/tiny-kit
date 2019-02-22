@@ -10,8 +10,8 @@ Pod::Spec.new do |spec|
     :tag => spec.version
   }
   spec.framework = 'UIKit'
-  spec.source_files = 'Sources/Core/Sources/', 'Sources/Core/Sources/**/', 'Sources/Core/Sources/**/**/', 'Sources/Core/Sources/**/**/**/'
-  spec.ios.source_files = 'Sources/iOS/Sources/', 'Sources/iOS/Sources/**/', 'Sources/iOS/Sources/**/**/', 'Sources/iOS/Sources/**/**/**/'
+  spec.source_files = 'Sources/Core/Sources/*.swift', 'Sources/Core/Sources/**/*.swift', 'Sources/Core/Sources/**/**/*.swift', 'Sources/Core/Sources/**/**/**/*.swift'
+  spec.ios.source_files = 'Sources/iOS/Sources/*.swift', 'Sources/iOS/Sources/**/*.swift', 'Sources/iOS/Sources/**/**/*.swift', 'Sources/iOS/Sources/**/**/**/*.swift'
   spec.ios.deployment_target = '10.0'
   spec.swift_version = '4.2'
   spec.dependency 'TinyCore', '0.7.0'
