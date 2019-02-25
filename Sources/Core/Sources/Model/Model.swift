@@ -43,6 +43,38 @@ public final class Model<Value> {
 
 }
 
+// MARK: - Decodable
+
+extension Model: Decodable where Value: Decodable {
+    
+    public convenience init(from decoder: Decoder) throws {
+        
+        let container = try decoder.singleValueContainer()
+        
+        let value = try container.decode(Value.self)
+        
+        self.init(value: value)
+        
+    }
+    
+}
+
+// MARK: - Encodable
+
+extension Model: Encodable where Value: Encodable {
+    
+    public func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.singleValueContainer()
+        
+        let validValue = try validate()
+        
+        try container.encode(validValue)
+        
+    }
+    
+}
+
 // MARK: - Validation
 
 public extension Model {
