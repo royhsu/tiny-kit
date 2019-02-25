@@ -291,7 +291,7 @@
 				B062C5932212C30D001807A6 /* Pagination */,
 				B062C5A02212C35B001807A6 /* Message */,
 				B009B91621464DDF00B19F6A /* Helpers */,
-				B0C8C34D21C0F73000DED5BF /* Model */,
+				B0C8C34D21C0F73000DED5BF /* Field */,
 				B01D21F0214B8D230078E946 /* Section */,
 				B0191A91215B764500A11339 /* Collection */,
 				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
@@ -483,12 +483,12 @@
 			path = Field;
 			sourceTree = "<group>";
 		};
-		B0C8C34D21C0F73000DED5BF /* Model */ = {
+		B0C8C34D21C0F73000DED5BF /* Field */ = {
 			isa = PBXGroup;
 			children = (
 				B0C8C34E21C0F74800DED5BF /* FieldTests.swift */,
 			);
-			path = Model;
+			path = Field;
 			sourceTree = "<group>";
 		};
 		B0CF894D221506310020ECD1 /* Prefetch */ = {
