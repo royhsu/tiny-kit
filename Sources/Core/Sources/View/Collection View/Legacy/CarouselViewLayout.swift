@@ -9,6 +9,7 @@
 // MARK: - CarouselViewLayout
 
 #if canImport(UIKit)
+import TinyCore
 
 #warning("TODO: missing test.")
 public final class CarouselViewLayout: LegacyCollectionViewLayout {

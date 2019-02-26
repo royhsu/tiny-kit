@@ -8,6 +8,8 @@
 
 // MARK: - Register
 
+import TinyCore
+
 public extension UITableView {
 
     public final func registerCell<Cell>(_ cellType: Cell.Type)
@@ -24,15 +26,14 @@ public extension UITableView {
 
     public final func registerCell<Cell>(
         _ cellType: Cell.Type,
-        bundle: Bundle?
+        nibIn bundle: Bundle?
     )
     where
         Cell: UITableViewCell,
-        Cell: Reusable,
-        Cell: NibCell {
+        Cell: Reusable {
 
         let nib = UINib(
-            nibName: cellType.nibName,
+            nibName: cellType.reuseIdentifier,
             bundle: bundle
         )
 

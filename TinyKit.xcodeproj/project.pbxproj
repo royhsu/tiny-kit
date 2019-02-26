@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B009B9032146489F00B19F6A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9022146489E00B19F6A /* Reusable.swift */; };
 		B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9062146491400B19F6A /* ClassTableViewCell.swift */; };
 		B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B904214648F500B19F6A /* ReusableCellTests.swift */; };
-		B009B90C21464AF500B19F6A /* NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90B21464AF400B19F6A /* NibCell.swift */; };
-		B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */; };
 		B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90F21464B9800B19F6A /* NibTableViewCell.swift */; };
 		B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B009B91221464BBA00B19F6A /* NibTableViewCell.xib */; };
 		B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91421464CEF00B19F6A /* UITableView+Register.swift */; };
@@ -117,11 +114,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B009B9022146489E00B19F6A /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B009B904214648F500B19F6A /* ReusableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellTests.swift; sourceTree = "<group>"; };
 		B009B9062146491400B19F6A /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
-		B009B90B21464AF400B19F6A /* NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCell.swift; sourceTree = "<group>"; };
-		B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+NibCell.swift"; sourceTree = "<group>"; };
 		B009B90F21464B9800B19F6A /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		B009B91221464BBA00B19F6A /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		B009B91421464CEF00B19F6A /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
@@ -380,9 +374,6 @@
 				B0BE7DEA21C1F58900D51884 /* View */,
 				B0C8C34821C0F70200DED5BF /* Field */,
 				B0F80A2F214FE6750052ACA3 /* Navigation */,
-				B009B90B21464AF400B19F6A /* NibCell.swift */,
-				B009B9022146489E00B19F6A /* Reusable.swift */,
-				B009B90D21464B1000B19F6A /* ReusableCell+NibCell.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -698,7 +689,6 @@
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
 				B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */,
-				B009B9032146489F00B19F6A /* Reusable.swift in Sources */,
 				B0836F4621FD7224004D68F2 /* ViewController+Initializable.swift in Sources */,
 				B062C5AE2212C3F2001807A6 /* CursorRepresentable.swift in Sources */,
 				B03394F521C369CC00CB1FA9 /* ListView.swift in Sources */,
@@ -709,7 +699,6 @@
 				B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */,
 				B03394F721C36A1500CB1FA9 /* ListViewController.swift in Sources */,
 				B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */,
-				B009B90E21464B1000B19F6A /* ReusableCell+NibCell.swift in Sources */,
 				B01D21E9214B645D0078E946 /* View.swift in Sources */,
 				B03394ED21C365CA00CB1FA9 /* CollectionViewDataSource.swift in Sources */,
 				B0652DC3214966CC009F8757 /* _CollectionViewController.swift in Sources */,
@@ -750,7 +739,6 @@
 				B0CF8977221655C80020ECD1 /* PrefetchTask.swift in Sources */,
 				B0C8C35E21C1F3F500DED5BF /* ViewRepresentable.swift in Sources */,
 				B03394E521C3640E00CB1FA9 /* ViewCollection.swift in Sources */,
-				B009B90C21464AF500B19F6A /* NibCell.swift in Sources */,
 				B0191A90215B75CA00A11339 /* LegacyCollectionViewController.swift in Sources */,
 				B062C5AC2212C3F2001807A6 /* FetchRequest.swift in Sources */,
 				B0BE7DE921C1F53A00D51884 /* ViewController+ViewRepresentable.swift in Sources */,

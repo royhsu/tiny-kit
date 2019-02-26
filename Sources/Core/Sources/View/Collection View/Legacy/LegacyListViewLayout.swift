@@ -8,6 +8,8 @@
 
 // MARK: - LegacyListViewLayout
 
+import TinyCore
+
 public final class LegacyListViewLayout: LegacyCollectionViewLayout {
 
     private final class Cell: TableViewCell, Reusable { }

@@ -8,6 +8,8 @@
 
 // MARK: - Dequeue
 
+import TinyCore
+
 public extension UITableView {
 
     public final func dequeueCell<Cell>(
