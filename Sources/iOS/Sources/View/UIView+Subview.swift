@@ -91,11 +91,11 @@ public extension UIView {
 
         let leadingConstraint = view.leadingAnchor.constraint(equalTo: leadingAnchor)
 
-        let bottomConstraint = bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let bottomConstraint = view.bottomAnchor.constraint(equalTo: bottomAnchor)
 
         bottomConstraint.priority = UILayoutPriority(900.0)
 
-        let trailingConstraint = trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let trailingConstraint = view.trailingAnchor.constraint(equalTo: trailingAnchor)
 
         trailingConstraint.priority = UILayoutPriority(900.0)
 
