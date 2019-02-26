@@ -1,41 +1,36 @@
 //
-//  Field.swift
+//  OptionalField.swift
 //  TinyKit
 //
 //  Created by Roy Hsu on 2018/12/12.
 //  Copyright © 2018 TinyWorld. All rights reserved.
 //
 
-// MARK: - Field
+// MARK: - OptionalField
 
 import TinyCore
 import TinyValidation
 
-public final class Field<Value> {
-
+public final class OptionalField<Value> {
+    
     private let _storage: Property<Value>
 
     public var rules: [AnyValidationRule<Value>]
 
-    public var isRequired: Bool
-
     public init(
         value: Value? = nil,
-        rules: [AnyValidationRule<Value>] = [],
-        isRequired: Bool = true
+        rules: [AnyValidationRule<Value>] = []
     ) {
 
         self._storage = Property(value: value)
 
         self.rules = rules
 
-        self.isRequired = isRequired
-
     }
 
 }
 
-extension Field {
+extension OptionalField {
     
     public func mutateValue(
         _ mutation: @escaping (inout Value?) -> Void
@@ -43,81 +38,18 @@ extension Field {
     
 }
 
-// MARK: - Decodable
-
-extension Field: Decodable where Value: Decodable {
-    
-    public convenience init(from decoder: Decoder) throws {
-        
-        let container = try decoder.singleValueContainer()
-        
-        let value = try container.decode(Value.self)
-        
-        self.init(value: value)
-        
-    }
-    
-}
-
-// MARK: - Encodable
-
-extension Field: Encodable where Value: Encodable {
-    
-    public func encode(to encoder: Encoder) throws {
-        
-        var container = encoder.singleValueContainer()
-        
-        let validValue = try validate()
-        
-        try container.encode(validValue)
-        
-    }
-    
-}
-
 // MARK: - Validation
 
-public extension Field {
+public extension OptionalField {
 
     @discardableResult
-    public final func validate() throws -> Value? {
+    public final func validateValueIfPresent() throws -> Value? {
 
-        return try Field.validateValue(
-            value,
-            rules: rules,
-            isRequired: isRequired
-        )
-
-    }
-
-    @discardableResult
-    private static func validateValue(
-        _ value: Value?,
-        rules: [AnyValidationRule<Value>],
-        isRequired: Bool
-    )
-    throws -> Value? {
-
-        if isRequired {
-
-            let value = try value.explicitValidated(
-                by: NonNullRule()
-            )
-
-            try rules.forEach { rule in _ = try rule.validate(value) }
-
-            return value
-
-        }
-        else {
-
-            guard let value = value else { return nil }
-
-            try rules.forEach { rule in _ = try rule.validate(value) }
-
-            return value
-
-        }
+        guard let value = value else { return nil }
+        
+        try rules.forEach { rule in _ = try rule.validate(value) }
+        
+        return value
 
     }
 
@@ -125,7 +57,7 @@ public extension Field {
 
 // MARK: - Observable
 
-extension Field: Observable {
+extension OptionalField: Observable {
     
     public var value: Value? { return _storage.value }
     
@@ -146,7 +78,7 @@ extension Field: Observable {
 
 // MARK: - Binding
 
-public extension Field {
+public extension OptionalField {
     
     public typealias BindingDestination = Property<Value>.BindingDestination
     

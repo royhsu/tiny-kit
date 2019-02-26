@@ -61,8 +61,8 @@
 		B0BE7DED21C2141100D51884 /* ListViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE7DEC21C2141100D51884 /* ListViewLayout.swift */; };
 		B0BE7E0A21C2AA4D00D51884 /* ElementCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE7E0921C2AA4D00D51884 /* ElementCollection.swift */; };
 		B0C8C34A21C0F70F00DED5BF /* TinyValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C8C34921C0F70F00DED5BF /* TinyValidation.framework */; };
-		B0C8C34C21C0F71D00DED5BF /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C34B21C0F71D00DED5BF /* Field.swift */; };
-		B0C8C34F21C0F74800DED5BF /* FieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C34E21C0F74800DED5BF /* FieldTests.swift */; };
+		B0C8C34C21C0F71D00DED5BF /* OptionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C34B21C0F71D00DED5BF /* OptionalField.swift */; };
+		B0C8C34F21C0F74800DED5BF /* OptionalFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C34E21C0F74800DED5BF /* OptionalFieldTests.swift */; };
 		B0C8C35C21C1F2F700DED5BF /* ViewRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35B21C1F2F700DED5BF /* ViewRepresentation.swift */; };
 		B0C8C35E21C1F3F500DED5BF /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35D21C1F3F500DED5BF /* ViewRepresentable.swift */; };
 		B0C8C36021C1F43900DED5BF /* View+ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */; };
@@ -95,6 +95,8 @@
 		B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EAF6EE2206828E00AF815D /* View+Initializable.swift */; };
 		B0EAF71B220862DD00AF815D /* UITableView+Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EAF71A220862DC00AF815D /* UITableView+Utilites.swift */; };
 		B0EE0A25214DF59E001EBEE2 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */; };
+		B0EE0FE42224DA4E00231AAF /* RequiredField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0FE32224DA4D00231AAF /* RequiredField.swift */; };
+		B0EE0FE72224DA9F00231AAF /* RequiredFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE0FE52224DA6A00231AAF /* RequiredFieldTests.swift */; };
 		B0F51CA72158743A00B592F5 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F51CA62158743A00B592F5 /* TinyCore.framework */; };
 		B0F7E1A92157386F000F97FE /* UIScrollView+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7E1A82157386F000F97FE /* UIScrollView+SafeArea.swift */; };
 		B0F80A11214F55390052ACA3 /* LegacyListViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80A10214F55390052ACA3 /* LegacyListViewLayout.swift */; };
@@ -173,8 +175,8 @@
 		B0BE7DEC21C2141100D51884 /* ListViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewLayout.swift; sourceTree = "<group>"; };
 		B0BE7E0921C2AA4D00D51884 /* ElementCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollection.swift; sourceTree = "<group>"; };
 		B0C8C34921C0F70F00DED5BF /* TinyValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0C8C34B21C0F71D00DED5BF /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
-		B0C8C34E21C0F74800DED5BF /* FieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTests.swift; sourceTree = "<group>"; };
+		B0C8C34B21C0F71D00DED5BF /* OptionalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalField.swift; sourceTree = "<group>"; };
+		B0C8C34E21C0F74800DED5BF /* OptionalFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalFieldTests.swift; sourceTree = "<group>"; };
 		B0C8C35B21C1F2F700DED5BF /* ViewRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentation.swift; sourceTree = "<group>"; };
 		B0C8C35D21C1F3F500DED5BF /* ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentable.swift; sourceTree = "<group>"; };
 		B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ViewRepresentable.swift"; sourceTree = "<group>"; };
@@ -206,6 +208,8 @@
 		B0EAF6EE2206828E00AF815D /* View+Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Initializable.swift"; sourceTree = "<group>"; };
 		B0EAF71A220862DC00AF815D /* UITableView+Utilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utilites.swift"; sourceTree = "<group>"; };
 		B0EE0A24214DF59E001EBEE2 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
+		B0EE0FE32224DA4D00231AAF /* RequiredField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredField.swift; sourceTree = "<group>"; };
+		B0EE0FE52224DA6A00231AAF /* RequiredFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredFieldTests.swift; sourceTree = "<group>"; };
 		B0F51CA62158743A00B592F5 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F51CA82158743A00B592F5 /* TinyStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F7E1A82157386F000F97FE /* UIScrollView+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+SafeArea.swift"; sourceTree = "<group>"; };
@@ -478,7 +482,8 @@
 		B0C8C34821C0F70200DED5BF /* Field */ = {
 			isa = PBXGroup;
 			children = (
-				B0C8C34B21C0F71D00DED5BF /* Field.swift */,
+				B0C8C34B21C0F71D00DED5BF /* OptionalField.swift */,
+				B0EE0FE32224DA4D00231AAF /* RequiredField.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -486,7 +491,8 @@
 		B0C8C34D21C0F73000DED5BF /* Field */ = {
 			isa = PBXGroup;
 			children = (
-				B0C8C34E21C0F74800DED5BF /* FieldTests.swift */,
+				B0C8C34E21C0F74800DED5BF /* OptionalFieldTests.swift */,
+				B0EE0FE52224DA6A00231AAF /* RequiredFieldTests.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -730,7 +736,8 @@
 				B03394E921C3655600CB1FA9 /* CollectionViewController.swift in Sources */,
 				B0E9A2D621FA9CA700314261 /* UINibView.swift in Sources */,
 				B0CF897322164E160020ECD1 /* PretchTaskManager.swift in Sources */,
-				B0C8C34C21C0F71D00DED5BF /* Field.swift in Sources */,
+				B0EE0FE42224DA4E00231AAF /* RequiredField.swift in Sources */,
+				B0C8C34C21C0F71D00DED5BF /* OptionalField.swift in Sources */,
 				B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */,
 				B062C5AD2212C3F2001807A6 /* AnyPaginationService.swift in Sources */,
 				B01D21EB214B66E60078E946 /* DefaultSection.swift in Sources */,
@@ -762,7 +769,7 @@
 				B01D21F3214B8D420078E946 /* ConfigurableTemplateTests.swift in Sources */,
 				B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */,
 				B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */,
-				B0C8C34F21C0F74800DED5BF /* FieldTests.swift in Sources */,
+				B0C8C34F21C0F74800DED5BF /* OptionalFieldTests.swift in Sources */,
 				B0CF8963221551C70020ECD1 /* Timer.swift in Sources */,
 				B062C5B62212C463001807A6 /* PaginationControllerTests.swift in Sources */,
 				B01D21FD214B9CEB0078E946 /* BodyLabel.swift in Sources */,
@@ -774,6 +781,7 @@
 				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
 				B062C5B22212C45F001807A6 /* Message.swift in Sources */,
+				B0EE0FE72224DA9F00231AAF /* RequiredFieldTests.swift in Sources */,
 				B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */,
 				B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */,
 			);
