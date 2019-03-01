@@ -77,3 +77,17 @@ extension RequiredField: Observable {
     }
     
 }
+
+// MARK: - CustomStringConvertible
+
+extension RequiredField: CustomDebugStringConvertible {
+    
+    public var debugDescription: String {
+        
+        guard let value = value else { return "< Field: value = nil >" }
+        
+        return "< Field: value = \(value) >"
+        
+    }
+    
+}
