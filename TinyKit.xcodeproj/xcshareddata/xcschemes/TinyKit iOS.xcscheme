@@ -17,7 +17,7 @@
                BlueprintIdentifier = "B05D4F631F1E0D9D00929006"
                BuildableName = "TinyCore.framework"
                BlueprintName = "TinyCore iOS"
-               ReferencedContainer = "container:tiny-core/TinyCore.xcodeproj">
+               ReferencedContainer = "container:../tiny-core/TinyCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "B063818F21450513004BC4DC"
                BuildableName = "TinyValidation.framework"
                BlueprintName = "TinyValidation iOS"
-               ReferencedContainer = "container:tiny-validation/TinyValidation.xcodeproj">
+               ReferencedContainer = "container:../tiny-validation/TinyValidation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
