@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B9062146491400B19F6A /* ClassTableViewCell.swift */; };
-		B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B904214648F500B19F6A /* ReusableCellTests.swift */; };
-		B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B90F21464B9800B19F6A /* NibTableViewCell.swift */; };
-		B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B009B91221464BBA00B19F6A /* NibTableViewCell.xib */; };
 		B009B91521464CEF00B19F6A /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91421464CEF00B19F6A /* UITableView+Register.swift */; };
 		B009B91821464DDF00B19F6A /* XCTSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91721464DDF00B19F6A /* XCTSuccess.swift */; };
 		B009B91C214651D600B19F6A /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */; };
@@ -114,10 +110,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B009B904214648F500B19F6A /* ReusableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellTests.swift; sourceTree = "<group>"; };
-		B009B9062146491400B19F6A /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
-		B009B90F21464B9800B19F6A /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
-		B009B91221464BBA00B19F6A /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		B009B91421464CEF00B19F6A /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		B009B91721464DDF00B19F6A /* XCTSuccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTSuccess.swift; sourceTree = "<group>"; };
 		B009B91B214651D600B19F6A /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
@@ -292,10 +284,6 @@
 				B0C8C34D21C0F73000DED5BF /* Field */,
 				B01D21F0214B8D230078E946 /* Section */,
 				B0191A91215B764500A11339 /* Collection */,
-				B009B904214648F500B19F6A /* ReusableCellTests.swift */,
-				B009B9062146491400B19F6A /* ClassTableViewCell.swift */,
-				B009B90F21464B9800B19F6A /* NibTableViewCell.swift */,
-				B009B91221464BBA00B19F6A /* NibTableViewCell.xib */,
 				B00D96582030766600EF0B7A /* Info.plist */,
 			);
 			path = Tests;
@@ -658,7 +646,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B009B91321464BBA00B19F6A /* NibTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,7 +736,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B009B9092146498200B19F6A /* ReusableCellTests.swift in Sources */,
 				B01D21FB214B9CB70078E946 /* Title2Label.swift in Sources */,
 				B062C5B42212C45F001807A6 /* MessageError.swift in Sources */,
 				B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */,
@@ -764,8 +750,6 @@
 				B0CF895922153A290020ECD1 /* PrefetchControllerTests.swift in Sources */,
 				B01D21FF214B9D320078E946 /* Post.swift in Sources */,
 				B0CF897122164B800020ECD1 /* PrefetchTaskManagerTests.swift in Sources */,
-				B009B91121464BA200B19F6A /* NibTableViewCell.swift in Sources */,
-				B009B9082146493F00B19F6A /* ClassTableViewCell.swift in Sources */,
 				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
 				B062C5B22212C45F001807A6 /* Message.swift in Sources */,
