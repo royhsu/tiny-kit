@@ -21,6 +21,21 @@ final class FormFieldTests: XCTestCase {
         
         XCTAssertNil(field.value)
         
+        XCTAssertEqual(
+            field.createdDate,
+            field.modifiedDate
+        )
+        
+    }
+    
+    func testModifiedDate() {
+        
+        let field = FormField<String>()
+        
+        field.value = "new value"
+        
+        XCTAssert(field.createdDate < field.modifiedDate)
+        
     }
     
     func testAlwaysValidateValue() {
