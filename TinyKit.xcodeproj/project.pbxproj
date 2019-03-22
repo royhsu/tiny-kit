@@ -64,6 +64,8 @@
 		B0CE1B562245017C006A39AE /* FormField+ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */; };
 		B0CE1B5822450EB9006A39AE /* FormField+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5722450EB9006A39AE /* FormField+Validation.swift */; };
 		B0CE1B5A22451556006A39AE /* FormField+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5922451556006A39AE /* FormField+Observable.swift */; };
+		B0CE1B5D2245186E006A39AE /* FormField+CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5B2245185E006A39AE /* FormField+CodableTests.swift */; };
+		B0CE1B5F22451AAF006A39AE /* FormField+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5E22451AAF006A39AE /* FormField+Codable.swift */; };
 		B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */; };
 		B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89492213B9020020ECD1 /* PageStorage.swift */; };
 		B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */; };
@@ -176,6 +178,8 @@
 		B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+ValidationTests.swift"; sourceTree = "<group>"; };
 		B0CE1B5722450EB9006A39AE /* FormField+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+Validation.swift"; sourceTree = "<group>"; };
 		B0CE1B5922451556006A39AE /* FormField+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+Observable.swift"; sourceTree = "<group>"; };
+		B0CE1B5B2245185E006A39AE /* FormField+CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+CodableTests.swift"; sourceTree = "<group>"; };
+		B0CE1B5E22451AAF006A39AE /* FormField+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+Codable.swift"; sourceTree = "<group>"; };
 		B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorageTests.swift; sourceTree = "<group>"; };
 		B0CF89492213B9020020ECD1 /* PageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorage.swift; sourceTree = "<group>"; };
 		B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPage.swift; sourceTree = "<group>"; };
@@ -476,6 +480,7 @@
 				B0CE1B4E2244FACB006A39AE /* FormField.swift */,
 				B0CE1B5922451556006A39AE /* FormField+Observable.swift */,
 				B0CE1B5722450EB9006A39AE /* FormField+Validation.swift */,
+				B0CE1B5E22451AAF006A39AE /* FormField+Codable.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 				B0EE0FE52224DA6A00231AAF /* RequiredFieldTests.swift */,
 				B0CE1B502244FDD5006A39AE /* FormFieldTests.swift */,
 				B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */,
+				B0CE1B5B2245185E006A39AE /* FormField+CodableTests.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -745,6 +751,7 @@
 				B0C8C35E21C1F3F500DED5BF /* ViewRepresentable.swift in Sources */,
 				B03394E521C3640E00CB1FA9 /* ViewCollection.swift in Sources */,
 				B0191A90215B75CA00A11339 /* LegacyCollectionViewController.swift in Sources */,
+				B0CE1B5F22451AAF006A39AE /* FormField+Codable.swift in Sources */,
 				B062C5AC2212C3F2001807A6 /* FetchRequest.swift in Sources */,
 				B0BE7DE921C1F53A00D51884 /* ViewController+ViewRepresentable.swift in Sources */,
 			);
@@ -758,6 +765,7 @@
 				B062C5B42212C45F001807A6 /* MessageError.swift in Sources */,
 				B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */,
 				B01D21F7214B90050078E946 /* XCTUnwrapped.swift in Sources */,
+				B0CE1B5D2245186E006A39AE /* FormField+CodableTests.swift in Sources */,
 				B01D21F3214B8D420078E946 /* ConfigurableTemplateTests.swift in Sources */,
 				B0CE1B562245017C006A39AE /* FormField+ValidationTests.swift in Sources */,
 				B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */,
