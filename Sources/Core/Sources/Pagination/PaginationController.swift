@@ -18,7 +18,7 @@ public final class PaginationController<Element, Cursor> {
     
     private var isFetchPerformedForInitialPage = false
     
-    private let storage = Atomic(value: PageStorage<Element, Cursor>() )
+    private let storage = Atomic( PageStorage<Element, Cursor>() )
     
     var isDebugging = false
     
@@ -119,7 +119,7 @@ extension PaginationController {
                 
                 }
                 
-                self.storage.mutateValue {
+                self.storage.modify {
                     
                     $0.currentPages = [ page ]
                     
@@ -184,7 +184,7 @@ extension PaginationController {
         
         request.fetchCursor = cursor
         
-        storage.mutateValue { $0.previousPage?.state = .fetching }
+        storage.modify { $0.previousPage?.state = .fetching }
         
         cache = Cache(storage: storage.value)
         
@@ -225,7 +225,7 @@ extension PaginationController {
                     
                 }
                 
-                self.storage.mutateValue {
+                self.storage.modify {
                     
                     $0.currentPages.insert(
                         page,
@@ -292,7 +292,7 @@ extension PaginationController {
         
         request.fetchCursor = cursor
         
-        storage.mutateValue { $0.nextPage?.state = .fetching }
+        storage.modify { $0.nextPage?.state = .fetching }
         
         cache = Cache(storage: storage.value)
         
@@ -333,7 +333,7 @@ extension PaginationController {
                     
                 }
                 
-                self.storage.mutateValue {
+                self.storage.modify {
                     
                     $0.currentPages.append(page)
                     

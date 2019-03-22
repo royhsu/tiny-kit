@@ -22,7 +22,7 @@ public final class RequiredField<Value> {
         rules: [AnyValidationRule<Value>] = []
     ) {
         
-        self._storage = Property(value: value)
+        self._storage = Property(value)
         
         self.rules = rules
         
@@ -34,7 +34,7 @@ extension RequiredField {
     
     public func mutateValue(
         _ mutation: @escaping (inout Value?) -> Void
-    ) { _storage.mutateValue(mutation) }
+    ) { _storage.modify(mutation) }
     
 }
 

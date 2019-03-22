@@ -13,21 +13,13 @@ import Foundation
 
 public final class FormField<Value> {
     
-    let _storage: Property<Storage>
+    let _storage: Property<Value>
     
     public var validation = Validation()
     
     public init(_ initialValue: Value? = nil) {
         
-        let date = Date()
-        
-        self._storage = Property(
-            value: Storage(
-                value: initialValue,
-                createdDate: date,
-                modifiedDate: date
-            )
-        )
+        self._storage = Property(initialValue)
         
     }
     
@@ -35,39 +27,21 @@ public final class FormField<Value> {
 
 extension FormField {
     
-    public var createdDate: Date { return _storage.value!.createdDate }
-    
-    public var modifiedDate: Date { return _storage.value!.modifiedDate }
-    
-    public func modify(_ closure: @escaping (inout Value?) -> () ) {
+    public var value: Value? {
         
-        _storage.mutateValue { storage in
-            
-            var newValue = storage?.value
-            
-            closure(&newValue)
-            
-            storage?.value = newValue
-            
-            storage?.modifiedDate = Date()
-            
-        }
+        get { return _storage.value }
+        
+        set { modify { $0 = newValue } }
         
     }
     
-}
-
-// MARK: - Storage
-
-extension FormField {
+    public var createdDate: Date { return _storage.createdDate }
     
-    struct Storage {
+    public var modifiedDate: Date { return _storage.modifiedDate }
+    
+    public func modify(_ closure: @escaping (inout Value?) -> Void) {
         
-        var value: Value?
-        
-        let createdDate: Date
-        
-        var modifiedDate: Date
+        _storage.modify(closure)
         
     }
     
