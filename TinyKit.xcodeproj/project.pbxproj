@@ -62,6 +62,8 @@
 		B0CE1B4F2244FACB006A39AE /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B4E2244FACB006A39AE /* FormField.swift */; };
 		B0CE1B532244FE6E006A39AE /* FormFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B502244FDD5006A39AE /* FormFieldTests.swift */; };
 		B0CE1B562245017C006A39AE /* FormField+ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */; };
+		B0CE1B5822450EB9006A39AE /* FormField+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5722450EB9006A39AE /* FormField+Validation.swift */; };
+		B0CE1B5A22451556006A39AE /* FormField+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5922451556006A39AE /* FormField+Observable.swift */; };
 		B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */; };
 		B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89492213B9020020ECD1 /* PageStorage.swift */; };
 		B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */; };
@@ -172,6 +174,8 @@
 		B0CE1B4E2244FACB006A39AE /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		B0CE1B502244FDD5006A39AE /* FormFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldTests.swift; sourceTree = "<group>"; };
 		B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+ValidationTests.swift"; sourceTree = "<group>"; };
+		B0CE1B5722450EB9006A39AE /* FormField+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+Validation.swift"; sourceTree = "<group>"; };
+		B0CE1B5922451556006A39AE /* FormField+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+Observable.swift"; sourceTree = "<group>"; };
 		B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorageTests.swift; sourceTree = "<group>"; };
 		B0CF89492213B9020020ECD1 /* PageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorage.swift; sourceTree = "<group>"; };
 		B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPage.swift; sourceTree = "<group>"; };
@@ -470,6 +474,8 @@
 				B0C8C34B21C0F71D00DED5BF /* OptionalField.swift */,
 				B0EE0FE32224DA4D00231AAF /* RequiredField.swift */,
 				B0CE1B4E2244FACB006A39AE /* FormField.swift */,
+				B0CE1B5922451556006A39AE /* FormField+Observable.swift */,
+				B0CE1B5722450EB9006A39AE /* FormField+Validation.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -684,6 +690,7 @@
 				B01D21E5214B64270078E946 /* LegacyViewCollection.swift in Sources */,
 				B0CF895B22153A610020ECD1 /* PrefetchController.swift in Sources */,
 				B0E2366D2157213700FBE7B3 /* LegacyCollectionView.swift in Sources */,
+				B0CE1B5A22451556006A39AE /* FormField+Observable.swift in Sources */,
 				B0E23673215726DD00FBE7B3 /* CarouselViewLayout.swift in Sources */,
 				B0EAF6EF2206828E00AF815D /* View+Initializable.swift in Sources */,
 				B0836F4621FD7224004D68F2 /* ViewController+Initializable.swift in Sources */,
@@ -695,6 +702,7 @@
 				B0EAF71B220862DD00AF815D /* UITableView+Utilites.swift in Sources */,
 				B0DE5F162159230F00F91CA1 /* Array+SectionCollection.swift in Sources */,
 				B03394F721C36A1500CB1FA9 /* ListViewController.swift in Sources */,
+				B0CE1B5822450EB9006A39AE /* FormField+Validation.swift in Sources */,
 				B0E236772157298B00FBE7B3 /* UICollectionView+Dequeue.swift in Sources */,
 				B01D21E9214B645D0078E946 /* View.swift in Sources */,
 				B03394ED21C365CA00CB1FA9 /* CollectionViewDataSource.swift in Sources */,

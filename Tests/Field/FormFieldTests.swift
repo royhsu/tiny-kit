@@ -21,56 +21,51 @@ final class FormFieldTests: XCTestCase {
         
         XCTAssertNil(field.value)
         
-        XCTAssertEqual(
-            field.validation.strategy,
-            .onlyWhenPresented
-        )
+    }
+    
+    func testAlwaysValidateValue() {
         
-        XCTAssert(field.validation.rules.isEmpty)
+        let field = FormField<String>()
+        
+        field.validation.rules = [ .nonNull ]
+        
+        field.validation.strategy = .always
+        
+        XCTAssertThrowsError(
+            try field.validateIfNeeded()
+        ) { XCTAssert($0 is NonNullError) }
+        
+        field.value = "new value"
+        
+        XCTAssertEqual(
+            try field.validateIfNeeded(),
+            "new value"
+        )
         
     }
     
-//    func testValidateWithoutRules() {
-//
-//        let field = RequiredField<String>()
-//
-//        XCTAssertThrowsError(
-//            try field.validateValue()
-//        ) { XCTAssert($0 is NonNullError) }
-//
-//        field.mutateValue { $0 = "valid" }
-//
-//        XCTAssertEqual(
-//            try field.validateValue(),
-//            "valid"
-//        )
-//
-//    }
-//
-//    func testValidateWithRules() {
-//
-//        let field = RequiredField<String>(
-//            rules: [ .nonEmpty ]
-//        )
-//
-//        XCTAssertThrowsError(
-//            try field.validateValue()
-//        ) { XCTAssert($0 is NonNullError) }
-//
-//        field.mutateValue { $0 = "" }
-//
-//        XCTAssertThrowsError(
-//            try field.validateValue()
-//        ) { XCTAssert($0 is NonEmptyError) }
-//
-//        field.mutateValue { $0 = "valid" }
-//
-//        XCTAssertEqual(
-//            try field.validateValue(),
-//            "valid"
-//        )
-//
-//    }
+    func testValidateOnlyWhenValuePresented() {
+        
+        let field = FormField<String>()
+        
+        field.validation.rules = [ .nonEmpty ]
+        
+        XCTAssertNoThrow( try field.validateIfNeeded() )
+        
+        field.value = ""
+        
+        XCTAssertThrowsError(
+            try field.validateIfNeeded()
+        ) { XCTAssert($0 is NonEmptyError) }
+        
+        field.value = "new value"
+        
+        XCTAssertEqual(
+            try field.validateIfNeeded(),
+            "new value"
+        )
+        
+    }
     
     func testEquality() {
         
