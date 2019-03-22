@@ -59,6 +59,9 @@
 		B0C8C35C21C1F2F700DED5BF /* ViewRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35B21C1F2F700DED5BF /* ViewRepresentation.swift */; };
 		B0C8C35E21C1F3F500DED5BF /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35D21C1F3F500DED5BF /* ViewRepresentable.swift */; };
 		B0C8C36021C1F43900DED5BF /* View+ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */; };
+		B0CE1B4F2244FACB006A39AE /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B4E2244FACB006A39AE /* FormField.swift */; };
+		B0CE1B532244FE6E006A39AE /* FormFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B502244FDD5006A39AE /* FormFieldTests.swift */; };
+		B0CE1B562245017C006A39AE /* FormField+ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */; };
 		B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */; };
 		B0CF894A2213B9020020ECD1 /* PageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF89492213B9020020ECD1 /* PageStorage.swift */; };
 		B0CF894C2213BB5E0020ECD1 /* StatefulPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */; };
@@ -166,6 +169,9 @@
 		B0C8C35B21C1F2F700DED5BF /* ViewRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentation.swift; sourceTree = "<group>"; };
 		B0C8C35D21C1F3F500DED5BF /* ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentable.swift; sourceTree = "<group>"; };
 		B0C8C35F21C1F43900DED5BF /* View+ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ViewRepresentable.swift"; sourceTree = "<group>"; };
+		B0CE1B4E2244FACB006A39AE /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		B0CE1B502244FDD5006A39AE /* FormFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldTests.swift; sourceTree = "<group>"; };
+		B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormField+ValidationTests.swift"; sourceTree = "<group>"; };
 		B0CF89462213B04F0020ECD1 /* PageStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorageTests.swift; sourceTree = "<group>"; };
 		B0CF89492213B9020020ECD1 /* PageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStorage.swift; sourceTree = "<group>"; };
 		B0CF894B2213BB5E0020ECD1 /* StatefulPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPage.swift; sourceTree = "<group>"; };
@@ -463,6 +469,7 @@
 			children = (
 				B0C8C34B21C0F71D00DED5BF /* OptionalField.swift */,
 				B0EE0FE32224DA4D00231AAF /* RequiredField.swift */,
+				B0CE1B4E2244FACB006A39AE /* FormField.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -472,6 +479,8 @@
 			children = (
 				B0C8C34E21C0F74800DED5BF /* OptionalFieldTests.swift */,
 				B0EE0FE52224DA6A00231AAF /* RequiredFieldTests.swift */,
+				B0CE1B502244FDD5006A39AE /* FormFieldTests.swift */,
+				B0CE1B5422450174006A39AE /* FormField+ValidationTests.swift */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -664,6 +673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0E23666215719D600FBE7B3 /* PrefetchableCollectViewLayout.swift in Sources */,
+				B0CE1B4F2244FACB006A39AE /* FormField.swift in Sources */,
 				B0DE5F182159265E00F91CA1 /* Array+ViewCollection.swift in Sources */,
 				B0CF89892216AF010020ECD1 /* PaginationController+Cache.swift in Sources */,
 				B03394F121C3666D00CB1FA9 /* CollectionViewLayout.swift in Sources */,
@@ -741,6 +751,7 @@
 				B0CF89482213B0510020ECD1 /* PageStorageTests.swift in Sources */,
 				B01D21F7214B90050078E946 /* XCTUnwrapped.swift in Sources */,
 				B01D21F3214B8D420078E946 /* ConfigurableTemplateTests.swift in Sources */,
+				B0CE1B562245017C006A39AE /* FormField+ValidationTests.swift in Sources */,
 				B01D2203214B9D6F0078E946 /* PostTemplateConfiguration.swift in Sources */,
 				B0CF895D2215419D0020ECD1 /* MessageService.swift in Sources */,
 				B0C8C34F21C0F74800DED5BF /* OptionalFieldTests.swift in Sources */,
@@ -752,6 +763,7 @@
 				B0CF897122164B800020ECD1 /* PrefetchTaskManagerTests.swift in Sources */,
 				B0191A95215B768500A11339 /* CollectionViewControllerTests.swift in Sources */,
 				B01D21F9214B9C550078E946 /* Title1Label.swift in Sources */,
+				B0CE1B532244FE6E006A39AE /* FormFieldTests.swift in Sources */,
 				B062C5B22212C45F001807A6 /* Message.swift in Sources */,
 				B0EE0FE72224DA9F00231AAF /* RequiredFieldTests.swift in Sources */,
 				B01D2205214B9D8E0078E946 /* PostTemplate.swift in Sources */,
