@@ -12,6 +12,8 @@ import TinyValidation
 
 extension FormField {
     
+    /// The form field will only validate its value depending on which validation
+    /// strategy being specified. See `FormField.Validation.Strategy` for details.
     @discardableResult
     public func validateIfNeeded() throws -> Value? {
         
