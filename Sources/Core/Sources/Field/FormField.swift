@@ -39,6 +39,8 @@ extension FormField {
     
     public var modifiedDate: Date { return _storage.modifiedDate }
     
+    public var isModified: Bool { return modifiedDate > createdDate }
+    
     public func modify(_ closure: @escaping (inout Value?) -> Void) {
         
         _storage.modify(closure)
