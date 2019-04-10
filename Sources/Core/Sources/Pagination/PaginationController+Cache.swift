@@ -8,23 +8,27 @@
 
 // MARK: - Cache
 
+import TinyCore
+
 extension PaginationController {
     
-    struct Cache {
+    final class Cache {
         
-        var elementStates: [ElementState<Element>]
+        let elementStates = Property<[ElementState<Element>]>()
         
-        var currentPagesElementStateIndices: [Int]
+        var currentPagesElementStateIndices: [Int] = []
         
         var previousPageElementStateIndices: [Int]?
         
         var nextPageElementStateIndices: [Int]?
         
-        init(storage: PageStorage<Element, Cursor>? = nil) {
+        init() { }
+        
+        func update(with storage: PageStorage<Element, Cursor>?) {
             
             let result = storage?.reduce()
             
-            self.elementStates = result?.elementStates ?? []
+            self.elementStates.value = result?.elementStates ?? []
             
             self.currentPagesElementStateIndices = result?.currentPagesElementStateIndices ?? []
             
