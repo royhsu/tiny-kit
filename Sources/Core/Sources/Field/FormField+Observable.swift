@@ -14,7 +14,7 @@ extension FormField: Observable {
     
     public func observe(
         on queue: DispatchQueue = .global(),
-        observer: @escaping (Property<Value>.ObservedChange) -> Void
+        observer: @escaping (ObservedChange<Value?>) -> Void
     )
     -> Observation { return _storage.observe(on: queue, observer: observer) }
 

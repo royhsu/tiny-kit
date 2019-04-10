@@ -14,19 +14,15 @@ import XCTest
 
 final class PaginationControllerTests: XCTestCase {
     
-    private let expectationTimeout = 5.0
-    
     func testDefault() {
         
         let controller = PaginationController(
             fetchService: MessageService(
-                result: .success(
-                    .init(firstPageMessages: [] )
-                )
+                result: .success(.init(firstPageMessages: []))
             )
         )
         
-        XCTAssert(controller.elementStates.isEmpty)
+        XCTAssertEqual(controller.elementStates.value, [])
         
         XCTAssertFalse(controller.isFetching)
         
@@ -50,7 +46,7 @@ final class PaginationControllerTests: XCTestCase {
         
         let controller = PaginationController(
             fetchService: MessageService(
-                result: .failure( MessageError() )
+                result: .failure(MessageError())
             )
         )
         
@@ -65,7 +61,7 @@ final class PaginationControllerTests: XCTestCase {
                 defer { errorElementsAfterFetched.fulfill() }
                 
                 XCTAssertEqual(
-                    controller.elementStates,
+                    controller.elementStates.value,
                     [ .error ]
                 )
                 
@@ -75,10 +71,7 @@ final class PaginationControllerTests: XCTestCase {
         
         try controller.performFetch()
         
-        wait(
-            for: [ errorElementsAfterFetched ],
-            timeout: expectationTimeout
-        )
+        waitForExpectations(timeout: 10.0)
         
     }
     
@@ -145,7 +138,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.isFetching)
                     
                     XCTAssertEqual(
-                        elementStates,
+                        elementStates.value,
                         [
                             .fetching,
                             .fetching
@@ -165,11 +158,11 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.hasNextPage)
                     
                     XCTAssertEqual(
-                        elementStates,
+                        elementStates.value,
                         [
                             .inactive,
                             .inactive,
-                            .fetched( Message(text: "b") ),
+                            .fetched(Message(text: "b")),
                             .inactive,
                             .inactive
                         ]
@@ -186,11 +179,11 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.isFetching)
                     
                     XCTAssertEqual(
-                        elementStates,
+                        elementStates.value,
                         [
                             .fetching,
                             .fetching,
-                            .fetched( Message(text: "b") ),
+                            .fetched(Message(text: "b")),
                             .inactive,
                             .inactive
                         ]
@@ -207,10 +200,10 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssertFalse(controller.hasPreviousPage)
 
                     XCTAssertEqual(
-                        elementStates,
+                        elementStates.value,
                         [
-                            .fetched( Message(text: "a") ),
-                            .fetched( Message(text: "b") ),
+                            .fetched(Message(text: "a")),
+                            .fetched(Message(text: "b")),
                             .inactive,
                             .inactive
                         ]
@@ -227,10 +220,10 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.isFetching)
                     
                     XCTAssertEqual(
-                        elementStates,
+                        elementStates.value,
                         [
-                            .fetched( Message(text: "a") ),
-                            .fetched( Message(text: "b") ),
+                            .fetched(Message(text: "a")),
+                            .fetched(Message(text: "b")),
                             .fetching,
                             .fetching
                         ]
@@ -247,11 +240,11 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssertFalse(controller.hasNextPage)
                     
                     XCTAssertEqual(
-                        elementStates,
+                        elementStates.value,
                         [
-                            .fetched( Message(text: "a") ),
-                            .fetched( Message(text: "b") ),
-                            .fetched( Message(text: "c") )
+                            .fetched(Message(text: "a")),
+                            .fetched(Message(text: "b")),
+                            .fetched(Message(text: "c"))
                         ]
                     )
 
@@ -264,17 +257,7 @@ final class PaginationControllerTests: XCTestCase {
         
         try controller.performFetch()
         
-        wait(
-            for: [
-                middlePageFetching,
-                middlePageFetched,
-                firstPageFetching,
-                firstPageFetched,
-                lastPageFetching,
-                lastPageFetched
-            ],
-            timeout: expectationTimeout
-        )
+        waitForExpectations(timeout: 10.0)
         
     }
     

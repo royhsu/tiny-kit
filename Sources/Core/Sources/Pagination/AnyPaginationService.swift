@@ -18,7 +18,7 @@ public struct AnyPaginationService<Element, Cursor> {
     )
     throws -> ServiceTask
     
-    init<S>(_ service: S)
+    public init<S>(_ service: S)
     where
         S: PaginationService,
         S.Element == Element,

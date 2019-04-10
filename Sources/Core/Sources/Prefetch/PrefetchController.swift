@@ -182,6 +182,6 @@ extension PrefetchController {
         
     }
     
-    public var elementStates: [ElementState<Element>] { return paginationController.elementStates }
+    public var elementStates: [ElementState<Element>] { return paginationController.elementStates.value ?? [] }
     
 }

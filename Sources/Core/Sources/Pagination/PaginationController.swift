@@ -18,15 +18,15 @@ public final class PaginationController<Element, Cursor> {
     
     private var isFetchPerformedForInitialPage = false
     
-    private let storage = Atomic( PageStorage<Element, Cursor>() )
+    private let storage = Atomic(PageStorage<Element, Cursor>())
     
     var isDebugging = false
     
-    private var cache: Cache
+    private let cache = Cache()
     
-    public var elementStates: [ElementState<Element>] { return cache.elementStates }
+    public var elementStates: AnyObservable<[ElementState<Element>]?> { return AnyObservable(cache.elementStates) }
     
-    public var elementStatesDidChange: ( (PaginationController) -> Void )?
+    public var elementStatesDidChange: ((PaginationController) -> Void)?
     
     public init<S>(
         fetchRequest: FetchRequest<Cursor> = FetchRequest(),
@@ -41,7 +41,7 @@ public final class PaginationController<Element, Cursor> {
         
         self.fetchService = AnyPaginationService(fetchService)
         
-        self.cache = Cache(storage: storage.value)
+        self.cache.update(with: storage.value)
         
     }
     
@@ -69,7 +69,7 @@ extension PaginationController {
 
         let fetchLimit = fetchRequest.fetchLimit
         
-        cache.elementStates = Array(
+        cache.elementStates.value = Array(
             repeating: .fetching,
             count: fetchLimit
         )
@@ -129,7 +129,7 @@ extension PaginationController {
                     
                 }
                 
-                self.cache = Cache(storage: self.storage.value)
+                self.cache.update(with: self.storage.value)
                 
                 self.elementStatesDidChange?(self)
                 
@@ -147,7 +147,7 @@ extension PaginationController {
                     
                 }
                 
-                self.cache.elementStates = [ .error ]
+                self.cache.elementStates.value = [ .error ]
                 
                 self.elementStatesDidChange?(self)
                 
@@ -186,7 +186,7 @@ extension PaginationController {
         
         storage.modify { $0.previousPage?.state = .fetching }
         
-        cache = Cache(storage: storage.value)
+        cache.update(with: storage.value)
         
         elementStatesDidChange?(self)
         
@@ -236,7 +236,7 @@ extension PaginationController {
                     
                 }
                 
-                self.cache = Cache(storage: self.storage.value)
+                self.cache.update(with: self.storage.value)
                 
                 self.elementStatesDidChange?(self)
                 
@@ -255,7 +255,7 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.cache.elementStates = [ .error ]
+                self.cache.elementStates.value = [ .error ]
                 
                 self.elementStatesDidChange?(self)
                 
@@ -294,7 +294,7 @@ extension PaginationController {
         
         storage.modify { $0.nextPage?.state = .fetching }
         
-        cache = Cache(storage: storage.value)
+        cache.update(with: storage.value)
         
         elementStatesDidChange?(self)
         
@@ -341,7 +341,7 @@ extension PaginationController {
                     
                 }
                 
-                self.cache = Cache(storage: self.storage.value)
+                self.cache.update(with: self.storage.value)
                 
                 self.elementStatesDidChange?(self)
                 
@@ -360,7 +360,7 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.cache.elementStates = [ .error ]
+                self.cache.elementStates.value = [ .error ]
                 
                 self.elementStatesDidChange?(self)
                 
@@ -386,7 +386,7 @@ extension PaginationController {
     
     public var isFetching: Bool {
         
-        let fetchingState = elementStates.first {
+        let fetchingState = elementStates.value?.first {
             
             if case .fetching = $0 { return true }
             
