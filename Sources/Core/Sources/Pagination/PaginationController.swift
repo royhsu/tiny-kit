@@ -22,10 +22,11 @@ public final class PaginationController<Element, Cursor> {
     
     var isDebugging = false
     
-    private let cache = Cache()
+    private let cache: Cache
     
-    public var elementStates: AnyObservable<[ElementState<Element>]?> { return AnyObservable(cache.elementStates) }
+    public let elementStates: AnyObservable<[ElementState<Element>]?>
     
+    @available(*, deprecated, renamed: "elementStates", message: "Please observe the elementStates property instead.")
     public var elementStatesDidChange: ((PaginationController) -> Void)?
     
     public init<S>(
@@ -40,14 +41,20 @@ public final class PaginationController<Element, Cursor> {
         self.fetchRequest = fetchRequest
         
         self.fetchService = AnyPaginationService(fetchService)
+            
+        self.cache = Cache()
         
-        self.cache.update(with: storage.value)
+        self.elementStates = AnyObservable(cache.elementStates)
+            
+        self.load()
         
     }
     
 }
 
 extension PaginationController {
+    
+    private func load() { cache.update(with: storage.value) }
     
     /// The controller will try to fetch the first page if there is no fetch cursor specified in the request.
     /// Re-perform the fetch has no effect on the fetching / fetched elements.
