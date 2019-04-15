@@ -10,13 +10,17 @@
 
 public extension UITableView {
     
-    public func scrollToBottom(animated: Bool) {
+    func scrollToBottom(animated: Bool) {
         
-        let lastSection = numberOfSections - 1
+        if numberOfSections == 0 { return }
+        
+        let lastSection = max(0, numberOfSections - 1)
         
         let rows = numberOfRows(inSection: lastSection)
         
-        let lastRow = rows - 1
+        if rows == 0 { return }
+        
+        let lastRow = max(0, rows - 1)
         
         let lastIndexPath = IndexPath(
             row: lastRow,
