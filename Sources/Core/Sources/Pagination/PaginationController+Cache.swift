@@ -28,13 +28,17 @@ extension PaginationController {
             
             let result = storage?.reduce()
             
-            self.elementStates.value = result?.elementStates ?? []
+            self.elementStates.modify {
+                
+                $0 = result?.elementStates ?? []
             
-            self.currentPagesElementStateIndices = result?.currentPagesElementStateIndices ?? []
+                self.currentPagesElementStateIndices = result?.currentPagesElementStateIndices ?? []
             
-            self.previousPageElementStateIndices = result?.previousPageElementStateIndices
+                self.previousPageElementStateIndices = result?.previousPageElementStateIndices
             
-            self.nextPageElementStateIndices = result?.nextPageElementStateIndices
+                self.nextPageElementStateIndices = result?.nextPageElementStateIndices
+                
+            }
             
         }
         

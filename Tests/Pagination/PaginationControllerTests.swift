@@ -8,11 +8,14 @@
 
 // MARK: - PaginationControllerTests
 
+import TinyCore
 import XCTest
 
 @testable import TinyKit
 
 final class PaginationControllerTests: XCTestCase {
+    
+    private var observation: Observation?
     
     func testDefault() {
         
@@ -50,7 +53,9 @@ final class PaginationControllerTests: XCTestCase {
             )
         )
         
-        controller.elementStatesDidChange = { controller in
+        observation = controller.elementStates.observe { change in
+            
+            let elementStates = change.currentValue
             
             switch currentStep {
             
@@ -61,7 +66,7 @@ final class PaginationControllerTests: XCTestCase {
                 defer { errorElementsAfterFetched.fulfill() }
                 
                 XCTAssertEqual(
-                    controller.elementStates.value,
+                    elementStates,
                     [ .error ]
                 )
                 
@@ -123,11 +128,11 @@ final class PaginationControllerTests: XCTestCase {
             )
         )
         
-        controller.elementStatesDidChange = { controller in
+        observation = controller.elementStates.observe { change in
             
             do {
             
-                let elementStates = controller.elementStates
+                let elementStates = change.currentValue
                 
                 switch currentStep {
 
@@ -138,7 +143,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.isFetching)
                     
                     XCTAssertEqual(
-                        elementStates.value,
+                        elementStates,
                         [
                             .fetching,
                             .fetching
@@ -158,7 +163,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.hasNextPage)
                     
                     XCTAssertEqual(
-                        elementStates.value,
+                        elementStates,
                         [
                             .inactive,
                             .inactive,
@@ -179,7 +184,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.isFetching)
                     
                     XCTAssertEqual(
-                        elementStates.value,
+                        elementStates,
                         [
                             .fetching,
                             .fetching,
@@ -200,7 +205,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssertFalse(controller.hasPreviousPage)
 
                     XCTAssertEqual(
-                        elementStates.value,
+                        elementStates,
                         [
                             .fetched(Message(text: "a")),
                             .fetched(Message(text: "b")),
@@ -220,7 +225,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssert(controller.isFetching)
                     
                     XCTAssertEqual(
-                        elementStates.value,
+                        elementStates,
                         [
                             .fetched(Message(text: "a")),
                             .fetched(Message(text: "b")),
@@ -240,7 +245,7 @@ final class PaginationControllerTests: XCTestCase {
                     XCTAssertFalse(controller.hasNextPage)
                     
                     XCTAssertEqual(
-                        elementStates.value,
+                        elementStates,
                         [
                             .fetched(Message(text: "a")),
                             .fetched(Message(text: "b")),

@@ -26,9 +26,6 @@ public final class PaginationController<Element, Cursor> {
     
     public let elementStates: AnyObservable<[ElementState<Element>]?>
     
-    @available(*, deprecated, renamed: "elementStates", message: "Please observe the elementStates property instead.")
-    public var elementStatesDidChange: ((PaginationController) -> Void)?
-    
     public init<S>(
         fetchRequest: FetchRequest<Cursor> = FetchRequest(),
         fetchService: S
@@ -63,7 +60,7 @@ extension PaginationController {
         if isDebugging {
             
             print(
-                String(describing: type(of: self) ),
+                String(describing: type(of: self)),
                 #function,
                 "start fetching the initial page..."
             )
@@ -76,12 +73,11 @@ extension PaginationController {
 
         let fetchLimit = fetchRequest.fetchLimit
         
-        cache.elementStates.value = Array(
-            repeating: .fetching,
-            count: fetchLimit
-        )
-        
-        elementStatesDidChange?(self)
+        cache.elementStates.modify { elementStates in
+            
+            elementStates = Array(repeating: .fetching, count: fetchLimit)
+            
+        }
         
         try fetchService.fetch(with: fetchRequest) { [weak self] result in
             
@@ -94,7 +90,7 @@ extension PaginationController {
                 if self.isDebugging {
                     
                     print(
-                        String(describing: type(of: self) ),
+                        String(describing: type(of: self)),
                         #function,
                         "fetch the initial page successfully.",
                         "\(page)"
@@ -126,19 +122,17 @@ extension PaginationController {
                 
                 }
                 
-                self.storage.modify {
+                self.storage.modify { storage in
                     
-                    $0.currentPages = [ page ]
+                    storage.currentPages = [ page ]
                     
-                    $0.previousPage = previousPage
+                    storage.previousPage = previousPage
                     
-                    $0.nextPage = nextPage
+                    storage.nextPage = nextPage
+                    
+                    self.cache.update(with: storage)
                     
                 }
-                
-                self.cache.update(with: self.storage.value)
-                
-                self.elementStatesDidChange?(self)
                 
             }
             catch {
@@ -146,7 +140,7 @@ extension PaginationController {
                 if self.isDebugging {
                     
                     print(
-                        String(describing: type(of: self) ),
+                        String(describing: type(of: self)),
                         #function,
                         "an error occurs while fetching the initial page.",
                         "\(error)"
@@ -154,9 +148,11 @@ extension PaginationController {
                     
                 }
                 
-                self.cache.elementStates.value = [ .error ]
-                
-                self.elementStatesDidChange?(self)
+                self.cache.elementStates.modify { storage in
+                    
+                    storage = [ .error ]
+                    
+                }
                 
             }
             
@@ -179,7 +175,7 @@ extension PaginationController {
         if isDebugging {
             
             print(
-                String(describing: type(of: self) ),
+                String(describing: type(of: self)),
                 #function,
                 "start fetching the previous page with the cursor \(cursor)...",
                 cursor
@@ -191,11 +187,13 @@ extension PaginationController {
         
         request.fetchCursor = cursor
         
-        storage.modify { $0.previousPage?.state = .fetching }
-        
-        cache.update(with: storage.value)
-        
-        elementStatesDidChange?(self)
+        storage.modify { storage in
+            
+            storage.previousPage?.state = .fetching
+            
+            self.cache.update(with: storage)
+            
+        }
         
         let fetchLimit = request.fetchLimit
         
@@ -212,7 +210,7 @@ extension PaginationController {
                 if self.isDebugging {
                     
                     print(
-                        String(describing: type(of: self) ),
+                        String(describing: type(of: self)),
                         #function,
                         "fetch the previous page successfully.",
                         "\(page)"
@@ -232,20 +230,18 @@ extension PaginationController {
                     
                 }
                 
-                self.storage.modify {
+                self.storage.modify { storage in
                     
-                    $0.currentPages.insert(
+                    storage.currentPages.insert(
                         page,
                         at: 0
                     )
                     
-                    $0.previousPage = newPreviousPage
+                    storage.previousPage = newPreviousPage
+                    
+                    self.cache.update(with: storage)
                     
                 }
-                
-                self.cache.update(with: self.storage.value)
-                
-                self.elementStatesDidChange?(self)
                 
             }
             catch {
@@ -253,7 +249,7 @@ extension PaginationController {
                 if self.isDebugging {
                     
                     print(
-                        String(describing: type(of: self) ),
+                        String(describing: type(of: self)),
                         #function,
                         "an error occurs while fetching the next page.",
                         "\(error)"
@@ -262,9 +258,11 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.cache.elementStates.value = [ .error ]
-                
-                self.elementStatesDidChange?(self)
+                self.cache.elementStates.modify { elementStates in
+                    
+                    elementStates = [ .error ]
+                    
+                }
                 
             }
             
@@ -287,7 +285,7 @@ extension PaginationController {
         if isDebugging {
             
             print(
-                String(describing: type(of: self) ),
+                String(describing: type(of: self)),
                 #function,
                 "start fetching the next page with the cursor \(cursor)...",
                 cursor
@@ -299,11 +297,13 @@ extension PaginationController {
         
         request.fetchCursor = cursor
         
-        storage.modify { $0.nextPage?.state = .fetching }
-        
-        cache.update(with: storage.value)
-        
-        elementStatesDidChange?(self)
+        storage.modify { storage in
+            
+            storage.nextPage?.state = .fetching
+            
+            self.cache.update(with: storage)
+            
+        }
         
         let fetchLimit = request.fetchLimit
         
@@ -320,7 +320,7 @@ extension PaginationController {
                 if self.isDebugging {
                     
                     print(
-                        String(describing: type(of: self) ),
+                        String(describing: type(of: self)),
                         #function,
                         "fetch the next page successfully.",
                         "\(page)"
@@ -340,17 +340,15 @@ extension PaginationController {
                     
                 }
                 
-                self.storage.modify {
+                self.storage.modify { storage in
                     
-                    $0.currentPages.append(page)
+                    storage.currentPages.append(page)
                     
-                    $0.nextPage = newNextPage
+                    storage.nextPage = newNextPage
+                    
+                    self.cache.update(with: storage)
                     
                 }
-                
-                self.cache.update(with: self.storage.value)
-                
-                self.elementStatesDidChange?(self)
                 
             }
             catch {
@@ -358,7 +356,7 @@ extension PaginationController {
                 if self.isDebugging {
                     
                     print(
-                        String(describing: type(of: self) ),
+                        String(describing: type(of: self)),
                         #function,
                         "an error occurs while fetching the next page.",
                         "\(error)"
@@ -367,9 +365,11 @@ extension PaginationController {
                 }
                 
                 #warning("TODO: find a better way to handle the error. Should be able to re-perform the fetch for the next page.")
-                self.cache.elementStates.value = [ .error ]
-                
-                self.elementStatesDidChange?(self)
+                self.cache.elementStates.modify { elementStates in
+                    
+                    elementStates = [ .error ]
+                    
+                }
                 
             }
             
