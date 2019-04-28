@@ -37,6 +37,19 @@
 		B03394F321C3692800CB1FA9 /* UITableViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03394F221C3692800CB1FA9 /* UITableViewBridge.swift */; };
 		B03394F521C369CC00CB1FA9 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03394F421C369CC00CB1FA9 /* ListView.swift */; };
 		B03394F721C36A1500CB1FA9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03394F621C36A1500CB1FA9 /* ListViewController.swift */; };
+		B037F140223CE52E006B9D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F13F223CE52E006B9D52 /* AppDelegate.swift */; };
+		B037F142223CE52E006B9D52 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F141223CE52E006B9D52 /* LandingViewController.swift */; };
+		B037F144223CE52E006B9D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B037F143223CE52E006B9D52 /* Assets.xcassets */; };
+		B037F147223CE52E006B9D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B037F145223CE52E006B9D52 /* LaunchScreen.storyboard */; };
+		B037F14D223CE570006B9D52 /* TinyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B037F14C223CE570006B9D52 /* TinyCore.framework */; };
+		B037F14E223CE570006B9D52 /* TinyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B037F14C223CE570006B9D52 /* TinyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B037F150223CE570006B9D52 /* TinyValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B037F14F223CE570006B9D52 /* TinyValidation.framework */; };
+		B037F151223CE570006B9D52 /* TinyValidation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B037F14F223CE570006B9D52 /* TinyValidation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B037F152223CE570006B9D52 /* TinyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; };
+		B037F153223CE570006B9D52 /* TinyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B00D96072030753600EF0B7A /* TinyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B037F15E223CE859006B9D52 /* TinyKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F15D223CE859006B9D52 /* TinyKitUITests.swift */; };
+		B037F168223DE7C4006B9D52 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F167223DE7C4006B9D52 /* AuthViewController.swift */; };
+		B037F16A223DEA52006B9D52 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037F169223DEA52006B9D52 /* AuthViewController.swift */; };
 		B054B1772212D1F8007AB789 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B054B1762212D1F8007AB789 /* Page.swift */; };
 		B062C5AA2212C3F2001807A6 /* PaginationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A22212C3F2001807A6 /* PaginationController.swift */; };
 		B062C5AC2212C3F2001807A6 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062C5A42212C3F2001807A6 /* FetchRequest.swift */; };
@@ -107,7 +120,37 @@
 			remoteGlobalIDString = B00D96062030753600EF0B7A;
 			remoteInfo = TinyKit;
 		};
+		B037F154223CE570006B9D52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B00D95FE2030753600EF0B7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B00D96062030753600EF0B7A;
+			remoteInfo = "TinyKit iOS";
+		};
+		B037F160223CE859006B9D52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B00D95FE2030753600EF0B7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B037F13C223CE52E006B9D52;
+			remoteInfo = TinyKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B037F156223CE570006B9D52 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B037F14E223CE570006B9D52 /* TinyCore.framework in Embed Frameworks */,
+				B037F153223CE570006B9D52 /* TinyKit.framework in Embed Frameworks */,
+				B037F151223CE570006B9D52 /* TinyValidation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B009B91421464CEF00B19F6A /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
@@ -144,6 +187,19 @@
 		B03394F221C3692800CB1FA9 /* UITableViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewBridge.swift; sourceTree = "<group>"; };
 		B03394F421C369CC00CB1FA9 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		B03394F621C36A1500CB1FA9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B037F13D223CE52E006B9D52 /* TinyKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B037F13F223CE52E006B9D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B037F141223CE52E006B9D52 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		B037F143223CE52E006B9D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B037F146223CE52E006B9D52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B037F148223CE52E006B9D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B037F14C223CE570006B9D52 /* TinyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B037F14F223CE570006B9D52 /* TinyValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TinyValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B037F15B223CE859006B9D52 /* TinyKitUITests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyKitUITests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B037F15D223CE859006B9D52 /* TinyKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyKitUITests.swift; sourceTree = "<group>"; };
+		B037F15F223CE859006B9D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B037F167223DE7C4006B9D52 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		B037F169223DEA52006B9D52 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B054B1762212D1F8007AB789 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		B062C5942212C348001807A6 /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		B062C5962212C348001807A6 /* MessageError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageError.swift; sourceTree = "<group>"; };
@@ -224,6 +280,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B037F13A223CE52E006B9D52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B037F14D223CE570006B9D52 /* TinyCore.framework in Frameworks */,
+				B037F152223CE570006B9D52 /* TinyKit.framework in Frameworks */,
+				B037F150223CE570006B9D52 /* TinyValidation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B037F158223CE859006B9D52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -249,8 +322,12 @@
 		B00D95FD2030753600EF0B7A = {
 			isa = PBXGroup;
 			children = (
+				B037F14F223CE570006B9D52 /* TinyValidation.framework */,
+				B037F14C223CE570006B9D52 /* TinyCore.framework */,
 				B00D96122030756200EF0B7A /* Sources */,
 				B00D96572030766600EF0B7A /* Tests */,
+				B037F13E223CE52E006B9D52 /* TinyKit */,
+				B037F15C223CE859006B9D52 /* TinyKitUITests */,
 				B00D96082030753600EF0B7A /* Products */,
 				B00D96812030778F00EF0B7A /* Frameworks */,
 			);
@@ -261,6 +338,8 @@
 			children = (
 				B00D96072030753600EF0B7A /* TinyKit.framework */,
 				B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */,
+				B037F13D223CE52E006B9D52 /* TinyKit.app */,
+				B037F15B223CE859006B9D52 /* TinyKitUITests iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,6 +425,7 @@
 		B0217AC4221FC9E8005F19EB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B037F166223DE79B006B9D52 /* Auth */,
 				B0F80A36214FED3C0052ACA3 /* View */,
 				B0F7E1AA215767A1000F97FE /* Scroll View */,
 				B033F5D7214A4F99001DDBA6 /* Table View */,
@@ -395,6 +475,36 @@
 				B0EAF71A220862DC00AF815D /* UITableView+Utilites.swift */,
 			);
 			path = "Table View";
+			sourceTree = "<group>";
+		};
+		B037F13E223CE52E006B9D52 /* TinyKit */ = {
+			isa = PBXGroup;
+			children = (
+				B037F13F223CE52E006B9D52 /* AppDelegate.swift */,
+				B037F141223CE52E006B9D52 /* LandingViewController.swift */,
+				B037F169223DEA52006B9D52 /* AuthViewController.swift */,
+				B037F143223CE52E006B9D52 /* Assets.xcassets */,
+				B037F145223CE52E006B9D52 /* LaunchScreen.storyboard */,
+				B037F148223CE52E006B9D52 /* Info.plist */,
+			);
+			path = TinyKit;
+			sourceTree = "<group>";
+		};
+		B037F15C223CE859006B9D52 /* TinyKitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B037F15D223CE859006B9D52 /* TinyKitUITests.swift */,
+				B037F15F223CE859006B9D52 /* Info.plist */,
+			);
+			path = TinyKitUITests;
+			sourceTree = "<group>";
+		};
+		B037F166223DE79B006B9D52 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B037F167223DE7C4006B9D52 /* AuthViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		B062C5932212C30D001807A6 /* Pagination */ = {
@@ -601,13 +711,50 @@
 			productReference = B00D964C2030764E00EF0B7A /* TinyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		B037F13C223CE52E006B9D52 /* TinyKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B037F14B223CE52E006B9D52 /* Build configuration list for PBXNativeTarget "TinyKit" */;
+			buildPhases = (
+				B037F139223CE52E006B9D52 /* Sources */,
+				B037F13A223CE52E006B9D52 /* Frameworks */,
+				B037F13B223CE52E006B9D52 /* Resources */,
+				B037F156223CE570006B9D52 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B037F155223CE570006B9D52 /* PBXTargetDependency */,
+			);
+			name = TinyKit;
+			productName = TinyKit;
+			productReference = B037F13D223CE52E006B9D52 /* TinyKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B037F15A223CE859006B9D52 /* TinyKitUITests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B037F162223CE859006B9D52 /* Build configuration list for PBXNativeTarget "TinyKitUITests iOS" */;
+			buildPhases = (
+				B037F157223CE859006B9D52 /* Sources */,
+				B037F158223CE859006B9D52 /* Frameworks */,
+				B037F159223CE859006B9D52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B037F161223CE859006B9D52 /* PBXTargetDependency */,
+			);
+			name = "TinyKitUITests iOS";
+			productName = TinyKitUITests;
+			productReference = B037F15B223CE859006B9D52 /* TinyKitUITests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B00D95FE2030753600EF0B7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = TinyWorld;
 				TargetAttributes = {
@@ -621,6 +768,15 @@
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
+					B037F13C223CE52E006B9D52 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
+					B037F15A223CE859006B9D52 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B037F13C223CE52E006B9D52;
+					};
 				};
 			};
 			buildConfigurationList = B00D96012030753600EF0B7A /* Build configuration list for PBXProject "TinyKit" */;
@@ -629,6 +785,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = B00D95FD2030753600EF0B7A;
 			productRefGroup = B00D96082030753600EF0B7A /* Products */;
@@ -637,6 +794,8 @@
 			targets = (
 				B00D96062030753600EF0B7A /* TinyKit iOS */,
 				B00D964B2030764E00EF0B7A /* TinyKitTests iOS */,
+				B037F15A223CE859006B9D52 /* TinyKitUITests iOS */,
+				B037F13C223CE52E006B9D52 /* TinyKit */,
 			);
 		};
 /* End PBXProject section */
@@ -650,6 +809,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B00D964A2030764E00EF0B7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B037F13B223CE52E006B9D52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B037F144223CE52E006B9D52 /* Assets.xcassets in Resources */,
+				B037F147223CE52E006B9D52 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B037F159223CE859006B9D52 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -680,6 +855,7 @@
 				B062C5AE2212C3F2001807A6 /* CursorRepresentable.swift in Sources */,
 				B03394F521C369CC00CB1FA9 /* ListView.swift in Sources */,
 				B03394E721C3648A00CB1FA9 /* LegacySectionCollection.swift in Sources */,
+				B037F168223DE7C4006B9D52 /* AuthViewController.swift in Sources */,
 				B0C8C36021C1F43900DED5BF /* View+ViewRepresentable.swift in Sources */,
 				B054B1772212D1F8007AB789 /* Page.swift in Sources */,
 				B0EAF71B220862DD00AF815D /* UITableView+Utilites.swift in Sources */,
@@ -759,6 +935,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B037F139223CE52E006B9D52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B037F142223CE52E006B9D52 /* LandingViewController.swift in Sources */,
+				B037F16A223DEA52006B9D52 /* AuthViewController.swift in Sources */,
+				B037F140223CE52E006B9D52 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B037F157223CE859006B9D52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B037F15E223CE859006B9D52 /* TinyKitUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -767,7 +961,28 @@
 			target = B00D96062030753600EF0B7A /* TinyKit iOS */;
 			targetProxy = B00D96522030764E00EF0B7A /* PBXContainerItemProxy */;
 		};
+		B037F155223CE570006B9D52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B00D96062030753600EF0B7A /* TinyKit iOS */;
+			targetProxy = B037F154223CE570006B9D52 /* PBXContainerItemProxy */;
+		};
+		B037F161223CE859006B9D52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B037F13C223CE52E006B9D52 /* TinyKit */;
+			targetProxy = B037F160223CE859006B9D52 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B037F145223CE52E006B9D52 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B037F146223CE52E006B9D52 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B00D960D2030753600EF0B7A /* Debug */ = {
@@ -988,6 +1203,82 @@
 			};
 			name = Release;
 		};
+		B037F149223CE52E006B9D52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				INFOPLIST_FILE = TinyKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKit.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B037F14A223CE52E006B9D52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				INFOPLIST_FILE = TinyKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKit.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B037F163223CE859006B9D52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				INFOPLIST_FILE = TinyKitUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TinyKit;
+			};
+			name = Debug;
+		};
+		B037F164223CE859006B9D52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CE6946X84;
+				INFOPLIST_FILE = TinyKitUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tinyworld.TinyKitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TinyKit;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1014,6 +1305,24 @@
 			buildConfigurations = (
 				B00D96552030764E00EF0B7A /* Debug */,
 				B00D96562030764E00EF0B7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B037F14B223CE52E006B9D52 /* Build configuration list for PBXNativeTarget "TinyKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B037F149223CE52E006B9D52 /* Debug */,
+				B037F14A223CE52E006B9D52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B037F162223CE859006B9D52 /* Build configuration list for PBXNativeTarget "TinyKitUITests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B037F163223CE859006B9D52 /* Debug */,
+				B037F164223CE859006B9D52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
