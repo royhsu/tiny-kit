@@ -43,7 +43,7 @@ struct MessageService {
         
     }
     
-    let result: Result<Storage>
+    let result: Result<Storage, Error>
     
 }
 
@@ -55,67 +55,77 @@ extension MessageService: PaginationService {
 
     func fetch(
         with request: FetchRequest<Cursor>,
-        completion: @escaping (Result< Page<Message, Cursor> >) -> Void
+        completion: @escaping (Result<Page<Message, Cursor>, Error>) -> Void
     )
-    throws -> ServiceTask {
+    -> ServiceTask {
         
-        let newResult = result.map { storage -> Page<Message, Cursor> in
-            
-            let cursor = request.fetchCursor ?? .first
-            
-            switch cursor {
+        completion(
+            Result {
                 
-            case .first:
+                let storage = try result.get()
                 
-                if storage.middlePageMessages != nil {
+                let cursor = request.fetchCursor ?? .first
+                
+                switch cursor {
+                    
+                case .first:
+                    
+                    if storage.middlePageMessages != nil {
+                        
+                        return Page(
+                            elements: storage.firstPageMessages,
+                            previousPageCursor: nil,
+                            nextPageCursor: .middle
+                        )
+                
+                    }
+                    
+                    if storage.lastPageMessages != nil {
+                        
+                        return Page(
+                            elements: storage.firstPageMessages,
+                            previousPageCursor: nil,
+                            nextPageCursor: .last
+                        )
+                        
+                    }
+                    
+                    throw MessageServiceError.noLastPage
+                    
+                case .middle:
+                    
+                    guard let messages = storage.middlePageMessages else {
+                        
+                        throw MessageServiceError.noMiddlePage
+                        
+                    }
+                    
+                    if storage.lastPageMessages == nil {
+                        
+                        throw MessageServiceError.noLastPage
+                        
+                    }
                     
                     return Page(
-                        elements: storage.firstPageMessages,
-                        previousPageCursor: nil,
-                        nextPageCursor: .middle
-                    )
-                    
-                }
-                
-                if storage.lastPageMessages != nil {
-                    
-                    return Page(
-                        elements: storage.firstPageMessages,
-                        previousPageCursor: nil,
+                        elements: messages,
+                        previousPageCursor: .first,
                         nextPageCursor: .last
                     )
                     
+                case .last:
+                    
+                    guard let messages = storage.lastPageMessages else { throw MessageServiceError.noLastPage }
+                    
+                    return Page(
+                        elements: messages,
+                        previousPageCursor: (storage.middlePageMessages == nil) ? nil : .middle,
+                        nextPageCursor: nil
+                    )
+                    
                 }
                 
-                throw MessageServiceError.noLastPage
-                
-            case .middle:
-                
-                guard let messages = storage.middlePageMessages else { throw MessageServiceError.noMiddlePage }
-                
-                if storage.lastPageMessages == nil { throw MessageServiceError.noLastPage }
-                
-                return Page(
-                    elements: messages,
-                    previousPageCursor: .first,
-                    nextPageCursor: .last
-                )
-                
-            case .last:
-                
-                guard let messages = storage.lastPageMessages else { throw MessageServiceError.noLastPage }
-                
-                return Page(
-                    elements: messages,
-                    previousPageCursor: (storage.middlePageMessages == nil) ? nil : .middle,
-                    nextPageCursor: nil
-                )
-                
             }
-            
-        }
-        
-        completion(newResult)
+        )
         
         return Task()
         

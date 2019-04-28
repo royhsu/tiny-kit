@@ -20,7 +20,7 @@ public protocol SectionCollection: Emptible {
     
 }
 
-public extension SectionCollection {
+extension SectionCollection {
     
     public var isEmpty: Bool { return (count == 0) }
     

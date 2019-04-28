@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public extension UITableView {
+extension UITableView {
 
     public final func dequeueCell<Cell>(
         _ cellType: Cell.Type,

@@ -53,10 +53,10 @@ extension FormField {
 
 extension FormField: Equatable where Value: Equatable {
     
-    public static func == (
-        lhs: FormField,
-        rhs: FormField
-    )
-    -> Bool { return lhs.value == rhs.value }
-    
+    public static func == (lhs: FormField, rhs: FormField) -> Bool {
+
+        return lhs.value == rhs.value
+
+    }
+
 }

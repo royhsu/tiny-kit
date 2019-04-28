@@ -166,7 +166,7 @@ public final class DefaultSection<Storage, Configuration: DefaultSectionConfigur
 
 // MARK: - KeyPath Binding
 
-public extension DefaultSection {
+extension DefaultSection {
 
     public final func registerView<V, T>(
         _ viewType: V.Type,

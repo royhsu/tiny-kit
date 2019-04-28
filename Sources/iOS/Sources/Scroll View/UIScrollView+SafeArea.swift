@@ -9,7 +9,7 @@
 // MARK: - Safe Area
 
 #warning("TODO: needs to seriously test.")
-public extension UIScrollView {
+extension UIScrollView {
 
     // swiftlint:disable identifier_name
     public final var layoutFrame: CGRect {

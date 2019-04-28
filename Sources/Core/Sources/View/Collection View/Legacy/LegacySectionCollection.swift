@@ -19,7 +19,7 @@ public protocol LegacySectionCollection {
     
 }
 
-public extension LegacySectionCollection {
+extension LegacySectionCollection {
     
     public var isEmpty: Bool { return (count == 0) }
     

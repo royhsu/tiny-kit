@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public extension UICollectionView {
+extension UICollectionView {
 
     public final func dequeueCell<Cell>(
         _ cellType: Cell.Type,

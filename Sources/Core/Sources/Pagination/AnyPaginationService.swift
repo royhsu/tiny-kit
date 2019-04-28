@@ -14,9 +14,9 @@ public struct AnyPaginationService<Element, Cursor> {
     
     private let _fetch: (
         _ request: FetchRequest<Cursor>,
-        _ completion: @escaping (Result< Page<Element, Cursor> >) -> Void
+        _ completion: @escaping (Result<Page<Element, Cursor>, Error>) -> Void
     )
-    throws -> ServiceTask
+    -> ServiceTask
     
     public init<S>(_ service: S)
     where
@@ -33,16 +33,8 @@ extension AnyPaginationService: PaginationService {
     @discardableResult
     public func fetch(
         with request: FetchRequest<Cursor>,
-        completion: @escaping (Result< Page<Element, Cursor> >) -> Void
+        completion: @escaping (Result<Page<Element, Cursor>, Error>) -> Void
     )
-    throws -> ServiceTask {
-        
-        return try _fetch(
-            request,
-            completion
-        )
-            
-    }
+    -> ServiceTask { return _fetch(request, completion) }
     
 }
-

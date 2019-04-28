@@ -17,7 +17,7 @@ public func XCTSuccess(
 
     XCTAssertTrue(
         true,
-        message,
+        message(),
         file: file,
         line: line
     )

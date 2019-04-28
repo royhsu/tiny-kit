@@ -55,7 +55,7 @@ extension PaginationController {
     
     /// The controller will try to fetch the first page if there is no fetch cursor specified in the request.
     /// Re-perform the fetch has no effect on the fetching / fetched elements.
-    public func performFetch() throws {
+    public func performFetch() {
         
         if isDebugging {
             
@@ -79,7 +79,7 @@ extension PaginationController {
             
         }
         
-        try fetchService.fetch(with: fetchRequest) { [weak self] result in
+        fetchService.fetch(with: fetchRequest) { [weak self] result in
             
             guard let self = self else { return }
             
@@ -164,7 +164,7 @@ extension PaginationController {
     /// You can also check the `hasPreviousPage` value to determine whether to fetch the previous page.
     public func performFetchForPreviousPage(
         completion: ( () -> Void )? = nil
-    ) throws {
+    ) {
         
         guard isFetchPerformedForInitialPage else { preconditionFailure("The controller has not perform the initial fetch yet.") }
         
@@ -197,7 +197,7 @@ extension PaginationController {
         
         let fetchLimit = request.fetchLimit
         
-        try fetchService.fetch(with: request) { [weak self] result in
+        fetchService.fetch(with: request) { [weak self] result in
             
             guard let self = self else { return }
             
@@ -274,7 +274,7 @@ extension PaginationController {
     /// You can also check the `hasNextPage` value to determine whether to fetch the next page.
     public func performFetchForNextPage(
         completion: ( () -> Void )? = nil
-    ) throws {
+    ) {
         
         guard isFetchPerformedForInitialPage else { preconditionFailure("The controller has not perform the initial fetch yet.") }
         
@@ -307,7 +307,7 @@ extension PaginationController {
         
         let fetchLimit = request.fetchLimit
         
-        try fetchService.fetch(with: request) { [weak self] result in
+        fetchService.fetch(with: request) { [weak self] result in
             
             guard let self = self else { return }
             

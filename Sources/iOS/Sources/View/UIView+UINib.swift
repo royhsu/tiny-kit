@@ -8,7 +8,7 @@
 
 // MARK: - UINib
 
-public extension UIView {
+extension UIView {
 
     /// A convenience method to load a view from the corresponding xib file.
     ///

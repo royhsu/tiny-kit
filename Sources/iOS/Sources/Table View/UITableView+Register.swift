@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public extension UITableView {
+extension UITableView {
 
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where

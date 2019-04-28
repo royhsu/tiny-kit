@@ -10,7 +10,7 @@
 
 import TinyCore
 
-public extension UICollectionView {
+extension UICollectionView {
 
     public final func registerCell<Cell>(_ cellType: Cell.Type)
     where

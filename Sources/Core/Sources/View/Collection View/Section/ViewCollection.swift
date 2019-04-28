@@ -20,7 +20,7 @@ public protocol ViewCollection: Emptible {
 
 // MARK: - ViewCollection (Default Implementation)
 
-public extension ViewCollection {
+extension ViewCollection {
     
     public var isEmpty: Bool { return (count == 0) }
     

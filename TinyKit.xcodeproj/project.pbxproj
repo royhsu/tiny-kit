@@ -622,12 +622,12 @@
 				TargetAttributes = {
 					B00D96062030753600EF0B7A = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					B00D964B2030764E00EF0B7A = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -638,6 +638,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = B00D95FD2030753600EF0B7A;
 			productRefGroup = B00D96082030753600EF0B7A /* Products */;
@@ -928,7 +929,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -955,7 +956,7 @@
 				PRODUCT_MODULE_NAME = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -975,7 +976,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)Tests";
 				PRODUCT_MODULE_NAME = "$(inherited)Tests";
 				PRODUCT_NAME = "$(inherited)Tests";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -995,7 +996,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)Tests";
 				PRODUCT_MODULE_NAME = "$(inherited)Tests";
 				PRODUCT_NAME = "$(inherited)Tests";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

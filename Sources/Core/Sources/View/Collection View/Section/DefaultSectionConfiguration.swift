@@ -18,7 +18,7 @@ public protocol DefaultSectionConfiguration {
 
 // MARK: - Default Implementation
 
-public extension DefaultSectionConfiguration {
+extension DefaultSectionConfiguration {
 
     public func preferredViewType(for element: Element) -> View.Type? { return nil }
 

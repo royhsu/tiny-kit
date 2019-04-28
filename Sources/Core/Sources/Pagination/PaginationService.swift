@@ -19,8 +19,8 @@ public protocol PaginationService {
     @discardableResult
     func fetch(
         with request: FetchRequest<Cursor>,
-        completion: @escaping (Result< Page<Element, Cursor> >) -> Void
+        completion: @escaping (Result<Page<Element, Cursor>, Error>) -> Void
     )
-    throws -> ServiceTask
+    -> ServiceTask
     
 }
