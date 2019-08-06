@@ -47,6 +47,13 @@ extension FormField {
         
     }
     
+    /// To modify the underlyine value without notifying observers.
+    public func modifySilently(_ closure: @escaping (inout Value?) -> Void) {
+        
+        _storage.modifySilently(closure)
+        
+    }
+    
 }
 
 // MARK: - Equatable
